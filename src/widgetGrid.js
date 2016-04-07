@@ -72,7 +72,6 @@ function findLowestCol(widgets:Array) {
         }
         return prev;
     }, colHeights);
-    console.log("Heights: " + JSON.stringify(colHeights));
 
     return Object.keys(colHeights).reduce(function (a, b) {
         return Number(colHeights[a] <= colHeights[b] ? a : b);
@@ -88,18 +87,12 @@ function layoutForWidget(layout:Array, widget) {
 export const widgets = (state = initialState.widgets, action) => {
     switch (action.type) {
         case ADD_WIDGET:
-            let col = findLowestCol(state);
-            action.col = state.length % 6;
-            action.col = col;
-            console.log("Lowest Col:" + findLowestCol(state));
-            //console.log("col:" + action.col);
+            action.col = findLowestCol(state);
             return [
                 ...state,
                 widget(undefined, action)
             ];
         case UPDATE_LAYOUT:
-            // TODO: Update the layout in widgets based on id's
-
             return state.map((widget) => {
                 let layout = layoutForWidget(action.layout, widget);
                 return {
