@@ -5,7 +5,7 @@ module.exports = {
     //context: __dirname + "/src",
     cache: true,
     entry: {
-        app: "./src",
+        app: "./src/app.js",
         vendor: ["react", "react-dom", "redux", "react-redux"]
     },
     output: {

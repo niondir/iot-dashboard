@@ -3,6 +3,7 @@ var gutil = require('gulp-util');
 const babel = require('gulp-babel');
 const webpack = require('webpack');
 
+var browserSync = require('browser-sync').create();
 
 ////////////////////
 // Main Tasks
@@ -12,16 +13,11 @@ const webpack = require('webpack');
  Setup everything for a smooth development
  */
 
-gulp.slurped = false;
+
 gulp.task("dev", ["compile", "browser-sync"], function () {
 	gulp.watch(["src/**/*.js"], ["webpack"]);
 	gulp.watch(["src/**/*.html"], ["copy:html"]);
-
-	// Watch gulpfile
-	if (!gulp.slurped) {
-		gulp.watch("gulpfile.js", ["compile"]);
-		gulp.slurped = true;
-	}
+	gulp.watch("./dist/**/*.*", browserSync.reload);
 
 	gulp.watch("package.json", ["compile"]);
 });
@@ -71,7 +67,6 @@ gulp.task("webpack:server", function (callback) {
 	});
 });
 
-var browserSync = require('browser-sync').create();
 gulp.task('browser-sync', function () {
 	browserSync.init({
 		server: {
