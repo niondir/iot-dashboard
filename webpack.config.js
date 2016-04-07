@@ -1,7 +1,13 @@
 var path = require("path");
 var webpack = require("webpack");
 
-var paths = {src: path.join(__dirname, "src")};
+var paths = {
+    src: path.join(__dirname, "src"),
+    css: [
+        path.join(__dirname, "node_modules/semantic-ui-css"),
+        path.join(__dirname, "node_modules/react-grid-layout")
+    ]
+};
 
 module.exports = {
     //context: __dirname + "/dist",
@@ -21,7 +27,8 @@ module.exports = {
             path.resolve('./dist')
         ]
     },
-    devtool: 'cheap-eval-source-map',
+   // resolveLoader: {root: path.join(__dirname, "node_modules")},
+    //devtool: 'cheap-eval-source-map',
     module: {
         loaders: [
             {
@@ -31,14 +38,22 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: "style-loader!css-loader"
+                loader: "style-loader!css-loader",
+                include: paths.css
             },
             {
                 test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: "url-loader?limit=10000&mimetype=application/font-woff"
+                loader: "url-loader?limit=10000&mimetype=application/font-woff",
+                include: paths.css
             },
-            {test: /\.(ttf|eot|svg|woff(2)?)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader"},
-            {test: /\.(png)$/, loader: "file-loader"}
+            {
+                test: /\.(ttf|eot|svg|woff(2)?)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader",
+                include: paths.css
+            },
+            {
+                test: /\.(png)$/, loader: "file-loader",
+                include: paths.css
+            }
         ]
     },
     plugins: [

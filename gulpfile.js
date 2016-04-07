@@ -14,13 +14,13 @@ var browserSync = require('browser-sync').create();
  */
 
 
-gulp.task("dev", ["compile", "browser-sync"], function () {
-	gulp.watch(["src/**/*.js"], ["webpack"]);
+gulp.task("dev", ["webpack:server", 'copy:all'/*, "browser-sync"*/], function () {
+	//gulp.watch(["src/**/*.js"], ["webpack"]);
 	gulp.watch(["src/**/*.html"], ["copy:html"]);
-	gulp.watch("./dist/**/*.*", browserSync.reload);
+	//gulp.watch("./dist/**/*.*", browserSync.reload);
 
-	gulp.watch("package.json", ["compile"]);
-	gulp.watch("webpack.config.js", ["webpack"]);
+	//gulp.watch("package.json", ["compile"]);
+	//gulp.watch("webpack.config.js", ["webpack"]);
 });
 
 
@@ -32,6 +32,7 @@ gulp.task('compile', ['webpack', 'copy:all'], () => {
 
 gulp.task('webpack', function (callback) {
 	var webpackConfig = require('./webpack.config.js');
+
 	webpack(webpackConfig, function (error, stats) {
 		if (error) throw new gutil.PluginError('webpack', error);
 		gutil.log('[webpack]', stats.toString());
@@ -39,6 +40,7 @@ gulp.task('webpack', function (callback) {
 		callback();
 	});
 });
+
 
 
 ///////////////
@@ -73,6 +75,8 @@ gulp.task("webpack:server", function (callback) {
 
 	new WebpackDevServer(compiler, {
 		// server and middleware options
+		contentBase: './dist',
+		publicPath: "/"
 	}).listen(8080, "localhost", function (err) {
 		if (err) throw new gutil.PluginError("webpack-dev-server", err);
 		// Server listening

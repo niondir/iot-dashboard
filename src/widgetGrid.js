@@ -16,7 +16,7 @@ const colsLg = 6;
 const initialState = {
     widgets: [
         {
-            id: "Initial Widget",
+            id: "Initial Widget with way more text",
             row: 0,
             col: 0,
             width: 1,
@@ -31,6 +31,14 @@ export function addWidget(width = 1, height = 1) {
         type: ADD_WIDGET,
         width: width,
         height: height
+    }
+}
+
+const DELETE_WIDGET = "DELETE_WIDGET";
+export function deleteWidget(id) {
+    return {
+        type: DELETE_WIDGET,
+        id: id
     }
 }
 
@@ -92,6 +100,8 @@ export const widgets = (state = initialState.widgets, action) => {
                 ...state,
                 widget(undefined, action)
             ];
+        case DELETE_WIDGET:
+            return state.filter(w => w.id !== action.id);
         case UPDATE_LAYOUT:
             return state.map((widget) => {
                 let layout = layoutForWidget(action.layout, widget);
@@ -113,26 +123,66 @@ export var reducer = Redux.combineReducers({
 });
 
 
-class WidgetGrid extends Component {
-    onLayoutChange(layout) {
-        console.log("Layout:" + JSON.stringify(layout));
+class RemoveButton extends Component {
+    render() {
+        let data = this.props.data;
+        return <a className="item no-drag"
+                  onClick={() => this.props.onClick(data.id)}>
+            <i className="remove icon no-drag"></i>
+        </a>
     }
+}
+
+let DeleteWidgetButton = connect(
+    (state) => {
+        return {}
+    },
+    (dispatch) => {
+        return {
+            onClick: (id) => {
+                dispatch(deleteWidget(id))
+            }
+        };
+    }
+)(RemoveButton);
+
+class WidgetGrid extends Component {
 
     render() {
         let widgetData:Array<object> = this.props.widgets || [];
         let widgets = widgetData.map((data) => {
-            return <div className="ui raised segment"
+            return <div className="ui raised segments"
                         style={{margin: 0}}
                         key={data.id}
                         _grid={{x: data.col, y: data.row, w: data.width, h: data.height}}>
-                <WidgetContent content={data.id}/>
+
+
+                <div className="ui small top attached inverted borderless icon menu">
+
+                    <div className="content">
+                        <div className="header item"><span className="">{data.id}</span></div>
+                    </div>
+                    <div className="right menu">
+                        <a className="item drag">
+                            <i className="move icon drag"></i>
+                        </a>
+                        <DeleteWidgetButton data={data}/>
+                    </div>
+                </div>
+
+                <div className="ui segment">
+                    <WidgetContent/>
+                </div>
             </div>;
         });
+
 
         return (
             <ResponsiveGrid className="column" cols={12} rowHeight={200}
                             breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}}
                             cols={{lg: 6, md: 6, sm: 6, xs: 4, xxs: 2}}
+                            draggableCancel=".no-drag"
+                            draggableHandle=".drag"
                             onLayoutChange={(layout) => { if (this.props.onLayoutChange) this.props.onLayoutChange(layout)}}
             >
                 {widgets}
@@ -161,15 +211,16 @@ let WidgetGridContainer = connect(
     mapDispatchToProps
 )(WidgetGrid);
 
+
 /* className={SemUtil.numberToClass(this.props.width) + " wide column" */
 class WidgetContent extends Component {
     render() {
         return <div>
-            {this.props.content}
+            Some fancy widget
         </div>
 
     }
 }
 
 
-export { WidgetGridContainer as WidgetGrid };
+export {WidgetGridContainer as WidgetGrid};
