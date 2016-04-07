@@ -17,22 +17,10 @@ export default class Layout extends Component {
                         {/*<img className="logo" src="assets/images/logo.png"/>*/}
                         Dashboard
                     </a>
-                    <a href="#" className="item">Home</a>
                     <div className="ui simple dropdown item">
                         Widgets <i className="dropdown icon"></i>
                         <div className="menu">
                             <Nav.AddWidget title="Add Widget"/>
-
-                            <div className="divider"></div>
-                            <div className="header">Header Item</div>
-                            <div className="item">
-                                <i className="dropdown icon"></i>
-                                Sub Menu
-                                <div className="menu">
-                                    <a className="item" href="#">Link Item</a>
-                                    <a className="item" href="#">Link Item</a>
-                                </div>
-                            </div>
                             <a className="item" href="#">Link Item</a>
                         </div>
                     </div>
@@ -43,7 +31,7 @@ export default class Layout extends Component {
                     <WidgetGrid.WidgetGrid widgets={[1,2,3,4]}/>
                
             </div>
-            <CounterApp/>
+            {/*<CounterApp/>*/}
         </div>
     }
 
