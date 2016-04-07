@@ -3,7 +3,6 @@ import {Component} from 'react';
 import * as ReactDOM from 'react-dom';
 import * as Redux from 'redux';
 import {connect} from 'react-redux'
-import {Provider} from 'react-redux'
 
 
 const initialState = {
