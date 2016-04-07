@@ -33,13 +33,26 @@ gulp.task('compile', ['webpack', 'copy:all'], () => {
 gulp.task('webpack', function (callback) {
 	var webpackConfig = require('./webpack.config.js');
 	webpack(webpackConfig, function (error, stats) {
-		//if (error) throw new gutil.PluginError('webpack', error);
+		if (error) throw new gutil.PluginError('webpack', error);
 		gutil.log('[webpack]', stats.toString());
 
 		callback();
 	});
 });
 
+
+///////////////
+// Clean Tasks
+///////////////
+var del = require('del');
+
+gulp.task('clean', ['clean:dist']);
+
+gulp.task('clean:dist', function () {
+	return del([
+		'dist/**/*'
+	]);
+});
 ///////////////
 // Copy Tasks
 ///////////////

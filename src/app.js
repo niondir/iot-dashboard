@@ -6,8 +6,8 @@ import {Provider} from 'react-redux'
 import Layout from './layout'
 import * as Counter from './exampleCounter'
 import * as Grid from './widgetGrid'
-import 'semantic-ui/dist/semantic.css';
-import 'semantic-ui/dist/semantic.js';
+import 'semantic-ui-css/semantic.css';
+import 'semantic-ui-css/semantic.js';
 import createLogger from 'redux-logger';
 
 let reducer = Redux.combineReducers({

@@ -1,9 +1,12 @@
 var path = require("path");
 var webpack = require("webpack");
 
+var paths = {src: path.join(__dirname, "src")};
+
 module.exports = {
     //context: __dirname + "/dist",
     cache: true,
+    bail: true,
     entry: {
         app: "./src/app.js",
         vendor: ["react", "react-dom", "redux", "react-redux", "react-grid-layout"]
@@ -18,19 +21,22 @@ module.exports = {
             path.resolve('./dist')
         ]
     },
-    devtool: 'source-map',
+    devtool: 'cheap-eval-source-map',
     module: {
         loaders: [
             {
                 test: /\.js/,
                 loader: 'babel?cacheDirectory',
-                include: path.join(__dirname, "src")
+                include: paths.src
             },
             {
                 test: /\.css$/,
                 loader: "style-loader!css-loader"
             },
-            {test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff"},
+            {
+                test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: "url-loader?limit=10000&mimetype=application/font-woff"
+            },
             {test: /\.(ttf|eot|svg|woff(2)?)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader"},
             {test: /\.(png)$/, loader: "file-loader"}
         ]
