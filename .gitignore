@@ -1,0 +1,6 @@
+/dist
+/node_modules
+
+# IntelliJ Project Files
+/.idea
+*.iml
