@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 
 
 const initialState = {
-	counter: 2
+	value: 2
 };
 
 function incCounter(amount) {
@@ -17,12 +17,12 @@ function incCounter(amount) {
 }
 
 
-export function counterReducer(state = initialState, action) {
+export function reducer(state = initialState, action) {
 	switch (action.type) {
 		case "INC_COUNTER":
 			return {
 				...state,
-				counter: state.counter += action.amount
+				value: state.value += action.amount
 			};
 		default:
 			return state;
@@ -41,7 +41,7 @@ class Counter extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		value: state.counter
+		value: state.counter.value
 	}
 };
 
@@ -53,7 +53,7 @@ const mapDispatchToProps = (dispatch) => {
 	}
 };
 
-export let CounterApp = connect(
+export const CounterApp = connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(Counter);

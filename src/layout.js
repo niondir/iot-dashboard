@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 import {Provider} from 'react-redux'
 import {CounterApp} from './exampleCounter'
 import * as WidgetGrid from './widgetGrid'
+import * as Nav from './navigation'
 
 export default class Layout extends Component {
     render() {
@@ -13,15 +14,15 @@ export default class Layout extends Component {
             <div className="ui fixed inverted menu">
                 <div className="ui container">
                     <a href="#" className="header item">
-                        <img className="logo" src="assets/images/logo.png"/>
-                        Project Name
+                        {/*<img className="logo" src="assets/images/logo.png"/>*/}
+                        Dashboard
                     </a>
                     <a href="#" className="item">Home</a>
                     <div className="ui simple dropdown item">
-                        Dropdown <i className="dropdown icon"></i>
+                        Widgets <i className="dropdown icon"></i>
                         <div className="menu">
-                            <a className="item" href="#">Link Item</a>
-                            <a className="item" href="#">Link Item</a>
+                            <Nav.AddWidget title="Add Widget"/>
+
                             <div className="divider"></div>
                             <div className="header">Header Item</div>
                             <div className="item">

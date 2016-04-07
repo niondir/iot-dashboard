@@ -5,11 +5,20 @@ import {connect} from 'react-redux'
 import {Provider} from 'react-redux'
 import Layout from './layout'
 import * as Counter from './exampleCounter'
+import * as Grid from './widgetGrid'
 import 'semantic-ui/dist/semantic.css';
 import 'semantic-ui/dist/semantic.js';
+import createLogger from 'redux-logger';
 
+let reducer = Redux.combineReducers({
+	counter: Counter.reducer,
+	widgetGrid: Grid.reducer
+});
 
-let store = Redux.createStore(Counter.counterReducer, undefined);
+const logger = createLogger();
+let store = Redux.createStore(reducer, Redux.applyMiddleware(logger));
+
+console.log(store.getState());
 
 ReactDOM.render(
 	<Provider store={store}>

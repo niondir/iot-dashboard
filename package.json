@@ -19,6 +19,7 @@
     "react-grid-layout": "^0.11.2",
     "react-redux": "^4.4.1",
     "redux": "^3.3.1",
+    "redux-logger": "^2.6.1",
     "require-dot-file": "^0.4.0",
     "semantic-ui": "^2.1.8"
   },

@@ -6,7 +6,7 @@ module.exports = {
     cache: true,
     entry: {
         app: "./src/app.js",
-        vendor: ["react", "react-dom", "redux", "react-redux", "gridster"]
+        vendor: ["react", "react-dom", "redux", "react-redux", "react-grid-layout"]
     },
     output: {
         path: path.join(__dirname, "dist"),
