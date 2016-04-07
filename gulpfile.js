@@ -20,6 +20,7 @@ gulp.task("dev", ["compile", "browser-sync"], function () {
 	gulp.watch("./dist/**/*.*", browserSync.reload);
 
 	gulp.watch("package.json", ["compile"]);
+	gulp.watch("webpack.config.js", ["webpack"]);
 });
 
 
@@ -28,8 +29,9 @@ gulp.task("dev", ["compile", "browser-sync"], function () {
 gulp.task('compile', ['webpack', 'copy:all'], () => {
 });
 
-var webpackConfig = require('./webpack.config.js');
+
 gulp.task('webpack', function (callback) {
+	var webpackConfig = require('./webpack.config.js');
 	webpack(webpackConfig, function (error, stats) {
 		//if (error) throw new gutil.PluginError('webpack', error);
 		gutil.log('[webpack]', stats.toString());
@@ -53,6 +55,7 @@ gulp.task('copy:html', function () {
 var WebpackDevServer = require("webpack-dev-server");
 gulp.task("webpack:server", function (callback) {
 	// Start a webpack-dev-server
+	var webpackConfig = require('./webpack.config.js');
 	var compiler = webpack(webpackConfig);
 
 	new WebpackDevServer(compiler, {
