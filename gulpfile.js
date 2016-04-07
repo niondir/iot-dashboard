@@ -2,55 +2,80 @@ const gulp = require('gulp');
 var gutil = require('gulp-util');
 const babel = require('gulp-babel');
 const webpack = require('webpack');
-var WebpackDevServer = require("webpack-dev-server");
 
-gulp.task('default', function () {
-    // place code for your default task here
+
+////////////////////
+// Main Tasks
+////////////////////
+
+/*
+ Setup everything for a smooth development
+ */
+
+gulp.slurped = false;
+gulp.task("dev", ["compile", "browser-sync"], function () {
+	gulp.watch(["src/**/*.js"], ["webpack"]);
+	gulp.watch(["src/**/*.html"], ["copy:html"]);
+
+	// Watch gulpfile
+	if (!gulp.slurped) {
+		gulp.watch("gulpfile.js", ["compile"]);
+		gulp.slurped = true;
+	}
+
+	gulp.watch("package.json", ["compile"]);
 });
 
-gulp.task("dev", ["webpack"], function() {
-    gulp.watch(["src/**/*"], ["webpack"]);
-});
 
+////////////////////
 
-gulp.task('compile', () => {
-    return gulp.src('src/**/*.js')
-        .pipe(babel({
-            presets: ['react', 'es2015']
-        }))
-        .pipe(webpack(require('./webpack.config.js')))
-        .pipe(gulp.dest('dist/'));
+gulp.task('compile', ['webpack', 'copy:all'], () => {
 });
 
 var webpackConfig = require('./webpack.config.js');
-gulp.task('webpack', function(callback) {
-    webpack(webpackConfig, function(error, stats) {
-        //if (error) throw new gutil.PluginError('webpack', error);
-        gutil.log('[webpack]', stats.toString());
+gulp.task('webpack', function (callback) {
+	webpack(webpackConfig, function (error, stats) {
+		//if (error) throw new gutil.PluginError('webpack', error);
+		gutil.log('[webpack]', stats.toString());
 
-        callback();
-    });
+		callback();
+	});
 });
 
+///////////////
+// Copy Tasks
+///////////////
 
+gulp.task('copy:all', ['copy:html']);
 
 gulp.task('copy:html', function () {
-    gulp.src('./src/**/*.html')
-        .pipe(gulp.dest('./dist'));
+	gulp.src('./src/**/*.html')
+		.pipe(gulp.dest('./dist'));
 });
 
-gulp.task("wpdev", function(callback) {
-    // Start a webpack-dev-server
-    var compiler = webpack(webpackConfig);
 
-    new WebpackDevServer(compiler, {
-        // server and middleware options
-    }).listen(8080, "localhost", function(err) {
-        if(err) throw new gutil.PluginError("webpack-dev-server", err);
-        // Server listening
-        gutil.log("[webpack-dev-server]", "http://localhost:8080/webpack-dev-server/index.html");
+var WebpackDevServer = require("webpack-dev-server");
+gulp.task("webpack:server", function (callback) {
+	// Start a webpack-dev-server
+	var compiler = webpack(webpackConfig);
 
-        // keep the server alive or continue?
-        // callback();
-    });
+	new WebpackDevServer(compiler, {
+		// server and middleware options
+	}).listen(8080, "localhost", function (err) {
+		if (err) throw new gutil.PluginError("webpack-dev-server", err);
+		// Server listening
+		gutil.log("[webpack-dev-server]", "http://localhost:8080/webpack-dev-server/index.html");
+
+		// keep the server alive or continue?
+		// callback();
+	});
+});
+
+var browserSync = require('browser-sync').create();
+gulp.task('browser-sync', function () {
+	browserSync.init({
+		server: {
+			baseDir: "./dist"
+		}
+	});
 });
