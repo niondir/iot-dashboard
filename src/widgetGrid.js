@@ -3,16 +3,12 @@ import * as Redux from 'redux';
 import * as Uuid from './util/uuid'
 import {Component} from 'react';
 import {connect} from 'react-redux'
-import * as SemUtil from './semanticUiUtil'
-import $ from 'jquery'
 import * as Widgets from './widgets/widgets'
+import * as WidgetConfig from './widgets/widgetConfig'
 require('react-grid-layout/css/styles.css');
-//require('react-resizable/css/styles.css');
 
 import {Responsive as ResponsiveReactGridLayout, WidthProvider}  from 'react-grid-layout';
 const ResponsiveGrid = WidthProvider(ResponsiveReactGridLayout);
-
-const colsLg = 6;
 
 const initialState = {
     widgets: [
@@ -72,32 +68,7 @@ const widget = (state = {}, action) => {
     }
 };
 
-function findLowestCol(widgets: Array) {
-    let colHeights = {};
-    for (let i = 0; i < 6; i++) {
-        colHeights[i] = 0;
-    }
-    colHeights = widgets.reduce((prev, curr) => {
-        prev[curr.col] = prev[curr.col] || 0;
-        let currHeight = curr.row + curr.height || 0;
-        if (prev[curr.col] < currHeight) {
-            for (let i = curr.col; i < curr.col + curr.width; i++) {
-                prev[i] = currHeight;
-            }
-        }
-        return prev;
-    }, colHeights);
 
-    return Object.keys(colHeights).reduce(function (a, b) {
-        return Number(colHeights[a] <= colHeights[b] ? a : b);
-    });
-}
-
-function layoutForWidget(layout:Array, widget) {
-    return layout.find((l) => {
-        return l.i === widget.id;
-    })
-}
 
 export const widgets = (state = initialState.widgets, action) => {
     switch (action.type) {
@@ -153,38 +124,43 @@ let DeleteWidgetButton = connect(
     }
 )(RemoveButton);
 
+/**
+ * The Dragable Frame of a Widget.
+ * Contains generic UI controls, shared by all Widgets
+ */
+const WidgetFrame = (widgetState) => {
+    let widget = Widgets.getWidget(widgetState.type);
+    return (
+        <div className="ui raised segments"
+             style={{margin: 0}}
+             key={widgetState.id}
+             _grid={{x: widgetState.col, y: widgetState.row, w: widgetState.width, h: widgetState.height}}>
+
+
+            <div className="ui small top attached inverted borderless icon menu">
+
+                <div className="content">
+                    <div className="header item"><span className="">{widgetState.id}</span></div>
+                </div>
+                <div className="right menu">
+                    <a className="item drag">
+                        <i className="move icon drag"></i>
+                    </a>
+                    <DeleteWidgetButton data={widgetState}/>
+                </div>
+            </div>
+
+            <div className="ui segment">
+                {React.createElement(widget.widget, widgetState.props)}
+            </div>
+        </div>)
+};
+
 class WidgetGrid extends Component {
 
     render() {
         let widgetData:Array<object> = this.props.widgets || [];
-        let widgets = widgetData.map((data) => {
-            let widget = Widgets.getWidget(data.type);
-            
-            return <div className="ui raised segments"
-                        style={{margin: 0}}
-                        key={data.id}
-                        _grid={{x: data.col, y: data.row, w: data.width, h: data.height}}>
-
-
-                <div className="ui small top attached inverted borderless icon menu">
-
-                    <div className="content">
-                        <div className="header item"><span className="">{data.id}</span></div>
-                    </div>
-                    <div className="right menu">
-                        <a className="item drag">
-                            <i className="move icon drag"></i>
-                        </a>
-                        <DeleteWidgetButton data={data}/>
-                    </div>       
-                </div>
-
-                <div className="ui segment">
-                    {React.createElement(widget.widget, data.props)}
-                </div>
-            </div>;
-        });
-
+        let widgets = widgetData.map((data) => WidgetFrame(data));
 
         return (
             <ResponsiveGrid className="column" cols={12} rowHeight={200}
@@ -200,26 +176,45 @@ class WidgetGrid extends Component {
     }
 }
 
-
-const mapStateToProps = (state) => {
-    return {
-        widgets: state.widgetGrid.widgets
-    }
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onLayoutChange: (layout) => {
-            dispatch(updateLayout(layout))
+const WidgetGridContainer = connect(
+    (state) => {
+        return {
+            widgets: state.widgetGrid.widgets
         }
-    };
-};
-
-let WidgetGridContainer = connect(
-    mapStateToProps,
-    mapDispatchToProps
+    },
+    (dispatch) => {
+        return {
+            onLayoutChange: (layout) => {
+                dispatch(updateLayout(layout))
+            }
+        };
+    }
 )(WidgetGrid);
-
-
-
 export {WidgetGridContainer as WidgetGrid};
+
+function findLowestCol(widgets:Array) {
+    let colHeights = {};
+    for (let i = 0; i < 6; i++) {
+        colHeights[i] = 0;
+    }
+    colHeights = widgets.reduce((prev, curr) => {
+        prev[curr.col] = prev[curr.col] || 0;
+        let currHeight = curr.row + curr.height || 0;
+        if (prev[curr.col] < currHeight) {
+            for (let i = curr.col; i < curr.col + curr.width; i++) {
+                prev[i] = currHeight;
+            }
+        }
+        return prev;
+    }, colHeights);
+
+    return Object.keys(colHeights).reduce(function (a, b) {
+        return Number(colHeights[a] <= colHeights[b] ? a : b);
+    });
+}
+
+function layoutForWidget(layout:Array, widget) {
+    return layout.find((l) => {
+        return l.i === widget.id;
+    })
+}

@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Component} from 'react';
 import {connect} from 'react-redux'
 import * as WidgetGrid from './widgetGrid'
+import * as WidgetConfig from './widgets/widgetConfig'
 
 export class LinkItem extends Component {
    
@@ -26,8 +27,7 @@ export const AddWidget = connect(
     (dispatch) => {
         return {
             onClick: (linkItem) => {
-                // Todo get widget props from modal dialog
-                dispatch(WidgetGrid.addWidget(linkItem.props.type, {text: "My Text component " + (Math.random() * 1000).toFixed()}))
+                dispatch(WidgetConfig.createWidget(linkItem.props.type, {text: "My Text component " + (Math.random() * 1000).toFixed()}))
             }
         }
     }

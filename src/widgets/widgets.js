@@ -18,6 +18,10 @@ export function register(module) {
     };
 }
 
-export function getWidget(name:String) {
-    return widgets[name];
+export function getWidget(type:String) {
+    return widgets[type];
+}
+
+export function getWidgets():Array {
+    return Object.keys(widgets).map(key => widgets[key]);
 }
