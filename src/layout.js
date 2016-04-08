@@ -8,6 +8,7 @@ import {CounterApp} from './exampleCounter'
 import * as WidgetGrid from './widgetGrid'
 import * as Nav from './navigation'
 import $ from 'jquery'
+import {ConfigDialog} from './widgets/textWidget'
 
 export default class Layout extends Component {
 
@@ -28,11 +29,16 @@ export default class Layout extends Component {
 
     render() {
         return <div className="container">
+
+
+           <ConfigDialog/> 
+            
             <div className="ui flowing basic widgets-menu popup">
                 <div className="ui one column relaxed divided grid">
                     <div className="column">
                         <h4 className="ui header">Simple</h4>
                         <div className="ui link list">
+                            {/* TODO: render nav items based on the widget registry */}
                             <Nav.AddWidget title="Text" icon="plus" type="text"/>
                             <Nav.AddWidget title="Clock" icon="plus" type="time"/>
                         </div>
@@ -48,7 +54,7 @@ export default class Layout extends Component {
                         Dashboard
                     </a>
                     <a className="add-widget item">New Widget <i className="dropdown icon"></i></a>
-
+                    <a href="#" className="item" onClick={ConfigDialog.showModal}>Popup</a>
                     <div className="ui simple dropdown item">
                         Widgets <i className="dropdown icon"></i>
                         <div className="menu">
@@ -61,7 +67,7 @@ export default class Layout extends Component {
 
             <div className="ui grid">
 
-                <WidgetGrid.WidgetGrid widgets={[1,2,3,4]}/>
+                <WidgetGrid.WidgetGrid/>
 
             </div>
             {/*<CounterApp/>*/}

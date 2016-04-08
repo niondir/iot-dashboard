@@ -4,8 +4,9 @@ import * as ReactDOM from 'react-dom';
 import * as Redux from 'redux';
 import {connect} from 'react-redux'
 
+export const TYPE = "time";
 
-export class TimeWidget extends Component {
+export class Widget extends Component {
 
     renderTime() {
         const currentTime = new Date();
@@ -15,7 +16,7 @@ export class TimeWidget extends Component {
         let s = currentTime.getSeconds();
 
         if (h === 0) {
-            h = 12;
+            h = 12;              
         } else if (h > 12) {
             h = h - 12;
             diem = 'PM';

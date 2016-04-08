@@ -175,11 +175,11 @@ class WidgetGrid extends Component {
                             <i className="move icon drag"></i>
                         </a>
                         <DeleteWidgetButton data={data}/>
-                    </div>
+                    </div>       
                 </div>
 
                 <div className="ui segment">
-                    {widget.createComponent(data.props)}
+                    {React.createElement(widget.widget, data.props)}
                 </div>
             </div>;
         });

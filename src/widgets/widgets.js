@@ -1,20 +1,20 @@
 import * as React from 'react';
-import {TimeWidget} from './timeWidget'
-import {TextWidget} from './textWidget'
+import * as TimeWidget from './timeWidget'
+import * as TextWidget from './textWidget'
 
 
 let widgets = {};
 
 
 export function init() {
-    register("time", TimeWidget);
-    register("text", TextWidget);
+    register(TimeWidget);
+    register(TextWidget);
 }
 
-export function register(name:String, component) {
-    widgets[name] = {
-        component: component,
-        createComponent: React.createFactory(component)
+export function register(module) {
+    widgets[module.TYPE] = {
+        widget: module.Widget,
+        configDialog: module.ConfigDialog
     };
 }
 
