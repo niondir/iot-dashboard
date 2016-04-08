@@ -21,7 +21,7 @@ export const AddWidget = connect(
     (dispatch) => {
         return {
             onClick: () => {
-                dispatch(WidgetGrid.addWidget())
+                dispatch(WidgetGrid.addWidget("text"))
             }
         }
     }

@@ -5,6 +5,7 @@ import {Component} from 'react';
 import {connect} from 'react-redux'
 import * as SemUtil from './semanticUiUtil'
 import $ from 'jquery'
+import * as Widgets from './widgets/widgets'
 require('react-grid-layout/css/styles.css');
 //require('react-resizable/css/styles.css');
 
@@ -16,6 +17,7 @@ const colsLg = 6;
 const initialState = {
     widgets: [
         {
+            type: "time",
             id: "Initial Widget with way more text",
             row: 0,
             col: 0,
@@ -26,11 +28,13 @@ const initialState = {
 };
 
 const ADD_WIDGET = "ADD_WIDGET";
-export function addWidget(width = 1, height = 1) {
+export function addWidget(type, width = 1, height = 1) {
     return {
         type: ADD_WIDGET,
         width: width,
-        height: height
+        height: height,
+        widgetType: type,
+        widgetProps: {text: "My Text component"}
     }
 }
 
@@ -55,6 +59,8 @@ const widget = (state = {}, action) => {
         case ADD_WIDGET:
             return {
                 id: Uuid.generate(),
+                type: action.widgetType,
+                props: action.widgetProps,
                 row: Infinity,
                 col: action.col,
                 width: action.width,
@@ -65,7 +71,7 @@ const widget = (state = {}, action) => {
     }
 };
 
-function findLowestCol(widgets:Array) {
+function findLowestCol(widgets: Array) {
     let colHeights = {};
     for (let i = 0; i < 6; i++) {
         colHeights[i] = 0;
@@ -151,6 +157,8 @@ class WidgetGrid extends Component {
     render() {
         let widgetData:Array<object> = this.props.widgets || [];
         let widgets = widgetData.map((data) => {
+            let widget = Widgets.getWidget(data.type);
+            
             return <div className="ui raised segments"
                         style={{margin: 0}}
                         key={data.id}
@@ -171,7 +179,7 @@ class WidgetGrid extends Component {
                 </div>
 
                 <div className="ui segment">
-                    <WidgetContent/>
+                    {React.createElement(widget.component, data.props) }
                 </div>
             </div>;
         });
@@ -211,16 +219,6 @@ let WidgetGridContainer = connect(
     mapDispatchToProps
 )(WidgetGrid);
 
-
-/* className={SemUtil.numberToClass(this.props.width) + " wide column" */
-class WidgetContent extends Component {
-    render() {
-        return <div>
-            Some fancy widget
-        </div>
-
-    }
-}
 
 
 export {WidgetGridContainer as WidgetGrid};

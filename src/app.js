@@ -9,6 +9,9 @@ import * as Grid from './widgetGrid'
 import 'semantic-ui-css/semantic.css';
 import 'semantic-ui-css/semantic.js';
 import createLogger from 'redux-logger';
+import * as Widgets from './widgets/widgets'
+
+Widgets.init();
 
 let reducer = Redux.combineReducers({
 	counter: Counter.reducer,
