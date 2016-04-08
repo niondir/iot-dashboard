@@ -14,26 +14,26 @@ export class Widget extends Component {
     }
 }
 
-
+// TODO: We should get it generic and only base it on the Widget state
 export class ConfigDialog extends React.Component {
 
 
-    showModal() {
+    static showModal() {
         $(`.ui.modal.edit-${TYPE}-widget`)
             .modal('setting', 'closable', false)
-            .modal('setting', 'onApprove', ($element) => false)
-            .modal('setting', 'onDeny', ($element) => false)
+            .modal('setting', 'onApprove', ($element) => true)
+            .modal('setting', 'onDeny', ($element) => true)
             .modal('show');
     };
 
-    closeModal() {
+    static closeModal() {
         $(`.ui.modal.edit-${TYPE}-widget`)
             .modal('close');
     };
 
 
     render() {
-        return <Modal className={`edit-${TYPE}-widget`} title="Configure Widget">
+        return <Modal className={`edit-${TYPE}-widget`} title="Configure Text Widget">
             <div className="content">
                 <form className="ui form">
                     <div className="field">

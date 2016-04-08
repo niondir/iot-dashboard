@@ -23,6 +23,7 @@ const initialState = {
             col: 0,
             width: 1,
             height: 1
+            // TODO: Get some customProps for arbitrary widget state
         }
     ]
 };

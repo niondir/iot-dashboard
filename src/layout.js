@@ -54,13 +54,7 @@ export default class Layout extends Component {
                         Dashboard
                     </a>
                     <a className="add-widget item">New Widget <i className="dropdown icon"></i></a>
-                    <a href="#" className="item" onClick={ConfigDialog.showModal}>Popup</a>
-                    <div className="ui simple dropdown item">
-                        Widgets <i className="dropdown icon"></i>
-                        <div className="menu">
-                            <Nav.AddWidget title="Add Widget" type="text"/>
-                        </div>
-                    </div>
+                    <a href="#" className="item" onClick={ConfigDialog.showModal}>Widget Config Demo</a>
                 </div>
             </div>
 
