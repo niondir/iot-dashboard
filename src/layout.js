@@ -12,6 +12,7 @@ import {ConfigDialog} from './widgets/textWidget'
 
 export default class Layout extends Component {
 
+
     componentDidMount() {
         $('.main.menu .add-widget')
             .popup({

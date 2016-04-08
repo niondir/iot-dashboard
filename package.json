@@ -21,6 +21,7 @@
     "react-redux": "^4.4.1",
     "redux": "^3.3.1",
     "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.0.1",
     "require-dot-file": "^0.4.0",
     "semantic-ui-css": "^2.1.8"
   },
@@ -35,6 +36,7 @@
     "browser-sync": "^2.11.2",
     "css-loader": "^0.23.1",
     "del": "^2.2.0",
+    "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",

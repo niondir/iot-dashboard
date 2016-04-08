@@ -4,6 +4,7 @@ import * as ReactDOM from 'react-dom';
 import * as Redux from 'redux';
 import {connect} from 'react-redux'
 import {Modal} from './widgetConfig'
+import $ from 'jquery'
 
 export const TYPE = "text";
 
@@ -19,7 +20,7 @@ export class ConfigDialog extends React.Component {
 
 
     static showModal() {
-        $(`.ui.modal.edit-${TYPE}-widget`)
+        $(`.ui.modal.config-widget-${TYPE}`)
             .modal('setting', 'closable', false)
             .modal('setting', 'onApprove', ($element) => true)
             .modal('setting', 'onDeny', ($element) => true)
@@ -27,13 +28,13 @@ export class ConfigDialog extends React.Component {
     };
 
     static closeModal() {
-        $(`.ui.modal.edit-${TYPE}-widget`)
+        $(`.ui.modal.config-widget-${TYPE}`)
             .modal('close');
     };
 
 
     render() {
-        return <Modal className={`edit-${TYPE}-widget`} title="Configure Text Widget">
+        return <Modal className={`config-widget-${TYPE}`} title="Configure Text Widget">
             <div className="content">
                 <form className="ui form">
                     <div className="field">

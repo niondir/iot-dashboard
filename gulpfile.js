@@ -73,12 +73,14 @@ var WebpackDevServer = require("webpack-dev-server");
 gulp.task("webpack:server", function (callback) {
 	// Start a webpack-dev-server
 	var webpackConfig = require('./webpack.config.js');
+	webpackConfig.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
 	var compiler = webpack(webpackConfig);
 
 	new WebpackDevServer(compiler, {
 		// server and middleware options
 		contentBase: './dist',
-		publicPath: "/"
+		publicPath: "/",
+		hot: true
 	}).listen(8080, "localhost", function (err) {
 		if (err) throw new gutil.PluginError("webpack-dev-server", err);
 		// Server listening

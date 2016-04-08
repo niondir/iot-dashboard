@@ -8,9 +8,16 @@ const initialState = {
 
 const SHOW_MODAL = "SHOW_WIDGET_CONFIG_MODAL";
 export function showModal(widgetType:String) {
-    return {
-        type: SHOW_MODAL,
-        widgetType: widgetType
+    return dispatch => {
+        $(`.ui.modal.config-widget-${widgetType}`)
+            .modal('setting', 'closable', false)
+            .modal('setting', 'onApprove', ($element) => true)
+            .modal('setting', 'onDeny', ($element) => true)
+            .modal('show');
+        dispatch({
+            type: SHOW_MODAL,
+            widgetType: widgetType
+        });
     }
 }
 
