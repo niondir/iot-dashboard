@@ -28,13 +28,13 @@ const initialState = {
 };
 
 const ADD_WIDGET = "ADD_WIDGET";
-export function addWidget(type, width = 1, height = 1) {
+export function addWidget(type, props = {}, width = 1, height = 1) {
     return {
         type: ADD_WIDGET,
         width: width,
         height: height,
         widgetType: type,
-        widgetProps: {text: "My Text component"}
+        widgetProps: props
     }
 }
 
@@ -179,7 +179,7 @@ class WidgetGrid extends Component {
                 </div>
 
                 <div className="ui segment">
-                    {React.createElement(widget.component, data.props) }
+                    {widget.createComponent(data.props)}
                 </div>
             </div>;
         });

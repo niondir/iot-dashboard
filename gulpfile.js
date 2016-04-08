@@ -24,10 +24,12 @@ gulp.task("dev", ["webpack:server", 'copy:all'/*, "browser-sync"*/], function ()
 });
 
 
-////////////////////
-
 gulp.task('compile', ['webpack', 'copy:all'], () => {
 });
+
+////////////////////
+
+
 
 
 gulp.task('webpack', function (callback) {

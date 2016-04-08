@@ -21,7 +21,7 @@ export const AddWidget = connect(
     (dispatch) => {
         return {
             onClick: () => {
-                dispatch(WidgetGrid.addWidget("text"))
+                dispatch(WidgetGrid.addWidget("text", {text: "My Text component " + (Math.random() * 1000).toFixed()}))
             }
         }
     }
