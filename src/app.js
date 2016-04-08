@@ -7,7 +7,7 @@ import Layout from './layout'
 import * as Counter from './exampleCounter'
 import * as Grid from './widgetGrid'
 import 'semantic-ui-css/semantic.css';
-import 'semantic-ui-css/semantic.js';
+import 'semantic-ui-css/semantic';
 import createLogger from 'redux-logger';
 import * as Widgets from './widgets/widgets'
 
