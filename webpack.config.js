@@ -15,7 +15,7 @@ module.exports = {
     bail: true,
     entry: {
         app: "./src/app.js",
-        vendor: ["react", "react-dom", "redux", "react-redux", "react-grid-layout"]
+        vendor: ["react", "react-dom", "redux", "react-redux", "react-grid-layout", "redux-logger"]
     },
     output: {
         path: path.join(__dirname, "dist"),
