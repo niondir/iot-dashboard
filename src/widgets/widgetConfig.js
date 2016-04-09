@@ -2,8 +2,22 @@ import * as React from 'react'
 import $ from 'jquery'
 import * as Widgets from './widgets'
 
-export function widgetProps(state = {}, action) {
+const UPDATE_PROPS = "UPDATE_WIDGET_CONFIG_WIDGET_PROPS";
+export function updateWidgetProps(props = {}) {
+    return {
+        type: UPDATE_PROPS,
+        widgetProps: props
+    }
+}
+
+
+export function widgetConfig(state = {}, action) {
     switch (action.type) {
+        case UPDATE_PROPS:
+            return {
+                ...state,
+                widgetProps: action.widgetProps
+            };
         default:
             return state;
     }
@@ -26,17 +40,19 @@ export function createWidget(type, initialProps = {}) {
         }
         dispatch(showModal(type, (approved) => {
             if (approved) {
-                // TODO: Overwirte initial props by user props
-                dispatch(Widgets.addWidget(type, initialProps));
+                let widgetProps = getState().widgetConfig.widgetProps;
+                // take initial props first and overwrite with widget prop from the dialog
+                dispatch(Widgets.addWidget(type, Object.assign({}, initialProps, widgetProps)));
             }
             return true;
         }));
     }
 }
 
-const SHOW_MODAL = "SHOW_WIDGET_CONFIG_MODAL";
+const SHOW_WIDGET_CONFIG_MODAL = "SHOW_WIDGET_CONFIG_MODAL";
 export function showModal(widgetType:String, callaback:Function) {
     return dispatch => {
+
         $(`.ui.modal.config-widget-${widgetType}`)
             .modal('setting', 'closable', false)
             .modal('setting', 'debug', false)
@@ -48,7 +64,7 @@ export function showModal(widgetType:String, callaback:Function) {
             })
             .modal('show');
         dispatch({
-            type: SHOW_MODAL,
+            type: SHOW_WIDGET_CONFIG_MODAL,
             widgetType: widgetType
         });
     }
@@ -63,7 +79,7 @@ export function closeModal(success = false) {
 
 function configDialog(state = initialState, action) {
     switch (action.type) {
-        case SHOW_MODAL:
+        case SHOW_WIDGET_CONFIG_MODAL:
             return {
                 ...state,
                 visible: true,

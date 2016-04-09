@@ -1,10 +1,9 @@
 import * as React from 'react';
 import {Component} from 'react';
-import * as ReactDOM from 'react-dom';
-import * as Redux from 'redux';
 import {connect} from 'react-redux'
 import {Modal} from './widgetConfig'
-import $ from 'jquery'
+import * as WidgetConfig from './widgetConfig'
+import * as Widgets from './widgets'
 
 export const TYPE = "text";
 
@@ -16,10 +15,10 @@ export class Widget extends Component {
 }
 
 // TODO: We should get it generic and only base it on the Widget state
-export class ConfigDialog extends React.Component {
+class ConfigDialog extends React.Component {
 
     modalApply() {
-        
+        this.props.dispatch(WidgetConfig.updateWidgetProps({text: (Math.random() * 1000).toFixed()}))
     }
 
     modalCancel() {
@@ -43,3 +42,12 @@ export class ConfigDialog extends React.Component {
         </Modal>
     }
 }
+
+const ConfigDialogContainer = connect((state) => {
+    return {
+        widgetProps: state.widgetConfig.widgetProps
+    }
+})(ConfigDialog);
+
+
+export {ConfigDialogContainer as ConfigDialog}

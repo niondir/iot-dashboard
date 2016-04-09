@@ -9,6 +9,7 @@ import 'semantic-ui-css/semantic.css';
 import 'semantic-ui-css/semantic';
 import createLogger from 'redux-logger';
 import * as Widgets from './widgets/widgets'
+import * as WidgetConfig from './widgets/widgetConfig'
 import thunk from 'redux-thunk'
 
 Widgets.init();
@@ -16,7 +17,8 @@ Widgets.init();
 let reducer = Redux.combineReducers({
     counter: Counter.reducer,
     widgets: Widgets.widgets,
-    widgetGrid: Grid.widgetGrid
+    widgetGrid: Grid.widgetGrid,
+    widgetConfig: WidgetConfig.widgetConfig
 });
 
 const logger = createLogger();

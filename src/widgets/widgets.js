@@ -20,6 +20,7 @@ const ADD_WIDGET = "ADD_WIDGET";
 export function addWidget(type, props = {}, width = 1, height = 1) {
     return {
         type: ADD_WIDGET,
+        id: Uuid.generate(),
         width: width,
         height: height,
         widgetType: type,
@@ -31,10 +32,8 @@ export function addWidget(type, props = {}, width = 1, height = 1) {
 const UPDATE_WIDGET_PROPS = "UPDATE_WIDGET_PROPS";
 export function updateWidgetProps(id, props = {}) {
     return {
-        type: ADD_WIDGET,
-        width: width,
-        height: height,
-        widgetType: type,
+        type: UPDATE_WIDGET_PROPS,
+        id: id,
         widgetProps: props
     }
 }
@@ -56,33 +55,38 @@ export function updateLayout(layout) {
     }
 }
 
+
+function objAsList(obj) {
+    return Object.keys(obj).map(key => obj[key])
+}
 export function widgets(state = initialWidgets, action) {
+    let newState;
     switch (action.type) {
         case ADD_WIDGET:
-            action.col = findSmalestCol(state);
-            return [
-                ...state,
-                widget(undefined, action)
-            ];
+            action.col = findSmallestCol(objAsList(state));
+            newState = {...state};
+            newState[action.id] = widget(undefined, action)
+            return newState;
         case UPDATE_WIDGET_PROPS:
         {
-            return state;
+            return widget(state[action.id]);
         }
         case DELETE_WIDGET:
             return state.filter(w => w.id !== action.id);
         case UPDATE_LAYOUT:
             // TODO: Maybe just store the layout somewhere else? Is it possible?
-            return Object.keys(state).map(id => state[id])
-                .map((widget) => {
-                    let layout = layoutById(action.layout, widget.id);
-                    return {
-                        ...widget,
-                        row: layout.y,
-                        col: layout.x,
-                        width: layout.w,
-                        height: layout.h
-                    }
-                });
+            newState = {...state};
+            for (let id in state) {
+                let layout = layoutById(action.layout, id);
+                newState[id] =  {
+                    ...newState[id],
+                    row: layout.y,
+                    col: layout.x,
+                    width: layout.w,
+                    height: layout.h
+                }
+            }
+            return newState;
         default:
             return state;
     }
@@ -92,13 +96,18 @@ function widget(state = {}, action) {
     switch (action.type) {
         case ADD_WIDGET:
             return {
-                id: Uuid.generate(),
+                id: action.id,
                 type: action.widgetType,
                 props: action.widgetProps,
                 row: Infinity,
                 col: action.col,
                 width: action.width,
                 height: action.height
+            };
+        case UPDATE_WIDGET_PROPS:
+            return {
+                ...state,
+                props: action.widgetProps
             };
         default:
             return state;
@@ -172,7 +181,7 @@ class RemoveButton extends React.Component {
     }
 }
 
-let DeleteWidgetButton = connect(
+export let DeleteWidgetButton = connect(
     (state) => {
         return {}
     },
@@ -193,7 +202,7 @@ function layoutById(layout:Array, id) {
     })
 }
 
-function findSmalestCol(widgets:Array) {
+function findSmallestCol(widgets:Array) {
     let colHeights = {};
     for (let i = 0; i < 6; i++) {
         colHeights[i] = 0;
