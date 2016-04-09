@@ -2,27 +2,6 @@ import * as React from 'react'
 import $ from 'jquery'
 import * as Widgets from './widgets'
 
-const UPDATE_PROPS = "UPDATE_WIDGET_CONFIG_WIDGET_PROPS";
-export function updateWidgetProps(props = {}) {
-    return {
-        type: UPDATE_PROPS,
-        widgetProps: props
-    }
-}
-
-
-export function widgetConfig(state = {}, action) {
-    switch (action.type) {
-        case UPDATE_PROPS:
-            return {
-                ...state,
-                widgetProps: action.widgetProps
-            };
-        default:
-            return state;
-    }
-}
-
 export const WidgetConfigDialogs = () => {
     let i = 0;
     const configDialogs = Widgets.getWidgets().map((widget) => {
@@ -38,93 +17,57 @@ export function createWidget(type, initialProps = {}) {
             dispatch(Widgets.addWidget(type, initialProps));
             return;
         }
-        dispatch(showModal(type, (approved) => {
-            if (approved) {
-                let widgetProps = getState().widgetConfig.widgetProps;
-                // take initial props first and overwrite with widget prop from the dialog
-                dispatch(Widgets.addWidget(type, Object.assign({}, initialProps, widgetProps)));
-            }
-            return true;
-        }));
+        Modal.showModal(type);
     }
 }
 
-const SHOW_WIDGET_CONFIG_MODAL = "SHOW_WIDGET_CONFIG_MODAL";
-export function showModal(widgetType:String, callaback:Function) {
-    return dispatch => {
-
-        $(`.ui.modal.config-widget-${widgetType}`)
-            .modal('setting', 'closable', false)
-            .modal('setting', 'debug', false)
-            .modal('setting', 'onApprove', ($element) => {
-                return callaback(true);
-            })
-            .modal('setting', 'onDeny', ($element) => {
-                return callaback(false);
-            })
-            .modal('show');
-        dispatch({
-            type: SHOW_WIDGET_CONFIG_MODAL,
-            widgetType: widgetType
-        });
-    }
-}
-
-const CLOSE_MODAL = "CLOSE_WIDGET_CONFIG_MODAL";
-export function closeModal(success = false) {
-    return {
-        type: CLOSE_MODAL
-    }
-}
-
-function configDialog(state = initialState, action) {
-    switch (action.type) {
-        case SHOW_WIDGET_CONFIG_MODAL:
-            return {
-                ...state,
-                visible: true,
-                widgetType: action.widgetType
-            };
-        case CLOSE_MODAL:
-            return {
-                ...state,
-                visible: false,
-                widgetType: null
-            };
-        default:
-            return state;
-    }
-}
-
-function isFunction(functionToCheck) {
-    var getType = {};
-    return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
-}
-
-function myLog(obj) {
-    console.log(obj);
-    return obj;
-}
 
 export class Modal extends React.Component {
 
     componentDidMount() {
-        $('.ui.modal').modal({detachable: false});
+        $(`.ui.modal.widget-config`)
+            .modal({
+                detachable: false,
+                closable: false,
+                onApprove: ($element) => false,
+                onDeny: ($element) => false
+            })
+    }
+
+    static showModal(widgetType:String) {
+        $(`.ui.modal.widget-config.${widgetType}-widget`)
+            .modal('show');
+    }
+
+    static closeModal(widgetType:String) {
+        $(`.ui.modal.widget-config.${widgetType}-widget`).modal('hide');
+    }
+
+    handlePositive() {
+        if (this.props.positive() !== false) {
+            Modal.closeModal(this.props.widgetType);
+        }
+    }
+
+    handleDeny() {
+        if (this.props.deny() !== false) {
+            Modal.closeModal(this.props.widgetType);
+        }
     }
 
     render() {
-        return <div className={"ui modal " + this.props.className}>
+        return <div className={"ui modal widget-config " + this.props.widgetType + "-widget"}>
 
             <div className="header">
                 {this.props.title}
             </div>
             {this.props.children}
             <div className="actions">
-                <div className="ui black deny button" onClick={this.props.deny}>
+                <div className="ui black cancel button" onClick={this.handleDeny.bind(this)}>
                     Cancel
                 </div>
-                <div className="ui positive right labeled icon button"
-                     onClick={this.props.positive}>
+                <div className="ui right labeled icon positive button"
+                     onClick={this.handlePositive.bind(this)}>
                     Save
                     <i className="checkmark icon"></i>
                 </div>

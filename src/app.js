@@ -16,9 +16,7 @@ Widgets.init();
 
 let reducer = Redux.combineReducers({
     counter: Counter.reducer,
-    widgets: Widgets.widgets,
-    widgetGrid: Grid.widgetGrid,
-    widgetConfig: WidgetConfig.widgetConfig
+    widgets: Widgets.widgets
 });
 
 const logger = createLogger();

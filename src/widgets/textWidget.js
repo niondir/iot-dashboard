@@ -14,28 +14,34 @@ export class Widget extends Component {
     }
 }
 
-// TODO: We should get it generic and only base it on the Widget state
+const initialState = {text: ""};
+
 class ConfigDialog extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = initialState;
+    }
+
     modalApply() {
-        this.props.dispatch(WidgetConfig.updateWidgetProps({text: (Math.random() * 1000).toFixed()}))
+        this.props.dispatch(Widgets.addWidget(TYPE, Object.assign({}, {text: this.state.text})));
+        this.setState(initialState);
     }
 
     modalCancel() {
     }
 
     render() {
-        return <Modal className={`config-widget-${TYPE}`} title="Configure Text Widget"
+        return <Modal widgetType={TYPE} title="Configure Text Widget"
                       positive={() => this.modalApply()}
                       deny={() => this.modalCancel()}>
             <div className="content">
-                <a className="" href="#" onMouseEnter={() => console.log("oh please")}>
-                    My Link
-                </a>
                 <form className="ui form">
                     <div className="field">
                         <label>Text</label>
-                        <input type="text" name="first-name" placeholder="Content of the widget"/>
+                        <input type="text" name="first-name" placeholder="Content of the widget"
+                               value={this.state.text}
+                               onChange={(e) => this.setState({text: e.target.value})}/>
                     </div>
                 </form>
             </div>
@@ -43,11 +49,7 @@ class ConfigDialog extends React.Component {
     }
 }
 
-const ConfigDialogContainer = connect((state) => {
-    return {
-        widgetProps: state.widgetConfig.widgetProps
-    }
-})(ConfigDialog);
 
 
-export {ConfigDialogContainer as ConfigDialog}
+
+export {ConfigDialog}

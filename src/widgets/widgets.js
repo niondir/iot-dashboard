@@ -72,7 +72,8 @@ export function widgets(state = initialWidgets, action) {
             return widget(state[action.id]);
         }
         case DELETE_WIDGET:
-            return state.filter(w => w.id !== action.id);
+            newState = {...state};
+            return delete newState[action.id];
         case UPDATE_LAYOUT:
             // TODO: Maybe just store the layout somewhere else? Is it possible?
             newState = {...state};
@@ -123,9 +124,8 @@ export function init() {
 export function register(module) {
     widgets[module.TYPE] = {
         widget: module.Widget,
-        configDialog: module.ConfigDialog
-
-    };
+        configDialog: module.ConfigDialog ? connect()(module.ConfigDialog) : null
+    }
 }
 
 export function getWidget(type:String) {
@@ -188,7 +188,7 @@ export let DeleteWidgetButton = connect(
     (dispatch) => {
         return {
             onClick: (id) => {
-                dispatch(Widgets.deleteWidget(id))
+                dispatch(deleteWidget(id))
             }
         };
     }
