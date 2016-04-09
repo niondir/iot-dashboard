@@ -79,6 +79,7 @@ module.exports = {
         new webpack.PrefetchPlugin('./src/layout.js'),
         new webpack.PrefetchPlugin(paths.node_modules, 'semantic-ui-css/semantic.css'),
         new webpack.PrefetchPlugin(paths.node_modules, 'react/lib/ReactDOM.js'),
+        new webpack.PrefetchPlugin(paths.node_modules, 'react-grid-layout/build/ReactGridLayout.js'),
 
         new webpack.ProvidePlugin({
             $: "jquery",

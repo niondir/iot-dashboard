@@ -17,9 +17,22 @@ export class Widget extends Component {
 
 // TODO: We should get it generic and only base it on the Widget state
 export class ConfigDialog extends React.Component {
+
+    modalApply() {
+        
+    }
+
+    modalCancel() {
+    }
+
     render() {
-        return <Modal className={`config-widget-${TYPE}`} title="Configure Text Widget">
+        return <Modal className={`config-widget-${TYPE}`} title="Configure Text Widget"
+                      positive={() => this.modalApply()}
+                      deny={() => this.modalCancel()}>
             <div className="content">
+                <a className="" href="#" onMouseEnter={() => console.log("oh please")}>
+                    My Link
+                </a>
                 <form className="ui form">
                     <div className="field">
                         <label>Text</label>

@@ -1,17 +1,19 @@
 import * as React from 'react'
 import $ from 'jquery'
-import * as WidgetGrid from '../widgetGrid'
 import * as Widgets from './widgets'
 
-const initialState = {
-    visible: false,
-    widgetType: null
-};
+export function widgetProps(state = {}, action) {
+    switch (action.type) {
+        default:
+            return state;
+    }
+}
 
 export const WidgetConfigDialogs = () => {
+    let i = 0;
     const configDialogs = Widgets.getWidgets().map((widget) => {
-            return widget.configDialog ? React.createElement(widget.configDialog, {}) : null;
-        });
+        return widget.configDialog ? React.createElement(widget.configDialog, {key: i++}) : null;
+    });
     return <div>{configDialogs}</div>
 };
 
@@ -19,13 +21,13 @@ export function createWidget(type, initialProps = {}) {
     const widget = Widgets.getWidget(type);
     return (dispatch, getState) => {
         if (!widget.configDialog) {
-            dispatch(WidgetGrid.addWidget(type, initialProps));
+            dispatch(Widgets.addWidget(type, initialProps));
             return;
         }
         dispatch(showModal(type, (approved) => {
             if (approved) {
                 // TODO: Overwirte initial props by user props
-                dispatch(WidgetGrid.addWidget(type, initialProps));
+                dispatch(Widgets.addWidget(type, initialProps));
             }
             return true;
         }));
@@ -37,10 +39,9 @@ export function showModal(widgetType:String, callaback:Function) {
     return dispatch => {
         $(`.ui.modal.config-widget-${widgetType}`)
             .modal('setting', 'closable', false)
+            .modal('setting', 'debug', false)
             .modal('setting', 'onApprove', ($element) => {
-
-                let r = callaback(true);
-                console.log("r: " + r);
+                return callaback(true);
             })
             .modal('setting', 'onDeny', ($element) => {
                 return callaback(false);
@@ -79,7 +80,22 @@ function configDialog(state = initialState, action) {
     }
 }
 
+function isFunction(functionToCheck) {
+    var getType = {};
+    return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
+}
+
+function myLog(obj) {
+    console.log(obj);
+    return obj;
+}
+
 export class Modal extends React.Component {
+
+    componentDidMount() {
+        $('.ui.modal').modal({detachable: false});
+    }
+
     render() {
         return <div className={"ui modal " + this.props.className}>
 
@@ -88,10 +104,11 @@ export class Modal extends React.Component {
             </div>
             {this.props.children}
             <div className="actions">
-                <div className="ui black deny button">
+                <div className="ui black deny button" onClick={this.props.deny}>
                     Cancel
                 </div>
-                <div className="ui positive right labeled icon button">
+                <div className="ui positive right labeled icon button"
+                     onClick={this.props.positive}>
                     Save
                     <i className="checkmark icon"></i>
                 </div>
