@@ -6,7 +6,9 @@ import * as Widgets from './widgets'
 
 export const TYPE_INFO = {
     type: "text",
-    name: "Text"
+    defaultProps: {
+        name: "Text"
+    }
 };
 
 export class Widget extends Component {

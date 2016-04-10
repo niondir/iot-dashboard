@@ -9,22 +9,23 @@ let initialWidgets = {
     "initial_time_widget": {
         type: "time",
         id: "initial_time_widget",
-        name: "Time",
         row: 0,
         col: 0,
         width: 1,
         height: 1,
-        props: {}
+        props: {name: "Time"}
     },
     "initial_text_widget": {
         type: "text",
         id: "initial_text_widget",
-        name: "Text",
         row: 0,
         col: 1,
         width: 3,
         height: 1,
-        props: {text: "This is a text widget"}
+        props: {
+            name: "Text",
+            text: "This is a text widget"
+        }
     }
 };
 
@@ -33,7 +34,6 @@ export function addWidget(type, props = {}, width = 1, height = 1) {
     return {
         type: ADD_WIDGET,
         id: Uuid.generate(),
-        name: type,
         width: width,
         height: height,
         widgetType: type,
@@ -127,6 +127,7 @@ function widget(state = {}, action) {
             return {
                 id: action.id,
                 type: action.widgetType,
+                name: action.widgetType,
                 props: action.widgetProps,
                 row: Infinity,
                 col: action.col,
@@ -152,6 +153,7 @@ export function init() {
 export function register(module) {
     console.assert(module.TYPE_INFO, "Missing TYPE_INFO on widget module. Every module must export TYPE_INFO");
     widgets[module.TYPE_INFO.type] = {
+        ...module.TYPE_INFO,
         widget: module.Widget,
         configDialog: module.ConfigDialog ? module.ConfigDialog : null
     }
@@ -174,7 +176,6 @@ export function getWidgets():Array {
  */
 export function WidgetFrame(widgetState) {
     let widget = getWidget(widgetState.type);
-    console.log("type: " + widgetState.type + " " + (widget.configDialog ? true : false))
     console.assert(widget, "No registered widget with type: " + widgetState.type);
     return (
         <div className="ui raised segments"
@@ -184,13 +185,14 @@ export function WidgetFrame(widgetState) {
 
             <div className="ui inverted segment">
                 <div className="ui tiny horizontal right floated inverted list">
-                    <ConfigWidgetButton className="right item" widgetState={widgetState} visible={(widget.configDialog ? true : false)} icon="configure"/>
+                    <ConfigWidgetButton className="right item" widgetState={widgetState}
+                                        visible={(widget.configDialog ? true : false)} icon="configure"/>
                     <a className="right item drag">
                         <i className="move icon drag"></i>
                     </a>
                     <DeleteWidgetButton className="right floated item" widgetState={widgetState} icon="remove"/>
                 </div>
-                <div className="ui item top attached">{widgetState.name || "\u00a0"}</div>
+                <div className="ui item top attached">{widgetState.props.name || "\u00a0"}</div>
             </div>
 
             <div className="ui segment">
@@ -224,8 +226,7 @@ export let DeleteWidgetButton = connect(
 
 export let ConfigWidgetButton = connect(
     (state) => {
-        return {
-        }
+        return {}
     },
     (dispatch) => {
         return {

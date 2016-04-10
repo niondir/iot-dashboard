@@ -6,7 +6,9 @@ import {connect} from 'react-redux'
 
 export const TYPE_INFO = {
     type: "time",
-    name: "Timer"
+    defaultProps: {
+        name: "Timer"
+    }
 };
 
 

@@ -10,11 +10,12 @@ const initialState = {
 };
 
 
-export function openWidgetCreateDialog(type) {
+export function openWidgetCreateDialog(type, defaultProps) {
     return (dispatch) => {
         dispatch({
             type: "START_CREATE_WIDGET",
-            widgetType: type
+            widgetType: type,
+            widgetProps: defaultProps
         });
         ConfigDialog.showModal(type);
     }
@@ -43,7 +44,7 @@ export function widgetConfigDialog(state = initialState, action) {
                 type: action.widgetType,
                 id: null,
                 name: action.widgetType,
-                props: {} // no known widget props for new widgets
+                props: action.widgetProps || {}
             };
         case "START_CONFIGURE_WIDGET":
             return {
@@ -68,14 +69,14 @@ export const WidgetConfigDialogs = () => {
     return <div>{configDialogs}</div>
 };
 
-export function createWidget(type, initialProps = {}) {
+export function createWidget(type) {
     const widget = Widgets.getWidget(type);
     return (dispatch, getState) => {
         if (!widget.configDialog) {
-            dispatch(Widgets.addWidget(type, initialProps));
+            dispatch(Widgets.addWidget(type, widget.defaultProps));
             return;
         }
-        dispatch(openWidgetCreateDialog(type));
+        dispatch(openWidgetCreateDialog(type, widget.defaultProps));
     }
 }
 
@@ -117,6 +118,7 @@ class ConfigDialog extends React.Component {
         );
         let widgetProps = this.refs.configForm.handlePositive();
         if (widgetProps !== false) {
+            widgetProps = {...this.props.widgetProps, widgetProps};
             console.log(this.refs.configForm);
             if (this.props.widgetId) {
                 console.log("this.dispatch:" + this.dispatch);
