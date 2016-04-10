@@ -4,8 +4,9 @@ import * as Widgets from './widgets'
 import {connect} from 'react-redux'
 
 const initialState = {
-    widgetType: null,
-    widgetProps: {}
+    type: null,
+    name: null,
+    props: {}
 };
 
 
@@ -28,7 +29,7 @@ export function openWidgetConfigDialog(id) {
         const widget = state.widgets[id];
         dispatch({
             type: "START_CONFIGURE_WIDGET",
-            id: id
+            widget: widget
         });
         ConfigDialog.showModal();
     }
@@ -39,17 +40,18 @@ export function widgetConfigDialog(state = initialState, action) {
         case "START_CREATE_WIDGET":
             return {
                 ...state,
-                widgetType: action.widgetType,
-                widgetProps: {} // no known widget props for new widgets
+                type: action.widgetType,
+                id: null,
+                name: action.widgetType,
+                props: {} // no known widget props for new widgets
             };
         case "START_CONFIGURE_WIDGET":
-            const widget = state.widgets[action.id];
             return {
                 ...state,
-                widgetType: widget.type,
-                widgetProps: {
-                    text: "always the same text" // TODO: use widget.props as widgetProps value
-                }
+                type: action.widget.type,
+                id: action.widget.id,
+                name: action.widget.name,
+                props: action.widget.props
             };
         default:
             return state;
@@ -59,7 +61,7 @@ export function widgetConfigDialog(state = initialState, action) {
 export const WidgetConfigDialogs = () => {
     let i = 0;
     return <div><ConfigDialogContainer/></div>;
-    // TODO: Do we need multiple?
+    // TODO: Do we need multiple? -> No remove in future
     const configDialogs = Widgets.getWidgets().map((widget) => {
         return widget.configDialog ? React.createElement(widget.configDialog, {key: i++}) : null;
     });
@@ -82,7 +84,6 @@ class ConfigDialog extends React.Component {
 
     constructor(props) {
         super(props);
-        this.widgetProps = {text: "nothing set"}
     }
 
     componentDidMount() {
@@ -110,16 +111,27 @@ class ConfigDialog extends React.Component {
     }
 
     handlePositive() {
+        console.assert(
+            this.refs.configForm.handlePositive,
+            "props.handlePositive() is missing on widget config dialog for widget " + this.props.widgetType
+        );
         let widgetProps = this.refs.configForm.handlePositive();
         if (widgetProps !== false) {
             console.log(this.refs.configForm);
-            this.props.dispatch(Widgets.addWidget(this.props.widgetType, widgetProps));
+            if (this.props.widgetId) {
+                console.log("this.dispatch:" + this.dispatch);
+                this.props.dispatch(Widgets.updateWidgetProps(this.props.widgetId, widgetProps));
+            }
+            else {
+                this.props.dispatch(Widgets.addWidget(this.props.widgetType, widgetProps));
+            }
             ConfigDialog.closeModal(this.props.widgetType);
         }
     }
 
     handleDeny() {
-        let denyResult = this.refs.configForm.handleDeny();
+        let handleDeny = this.refs.configForm.handleDeny.bind(this.refs.configForm);
+        let denyResult = handleDeny ? handleDeny() : true;
         if (denyResult !== false) {
             console.log("closing modal");
             ConfigDialog.closeModal(this.props.widgetType);
@@ -135,12 +147,13 @@ class ConfigDialog extends React.Component {
             </div>
         }
 
-        return <div className={"ui modal widget-config " + this.props.widgetType + "-widget"}>
+        return <div className={"ui modal widget-config"}>
             <div className="header">
                 Configure {this.props.widgetName} Widget
             </div>
             {React.createElement(widget.configDialog, {
-                ref: "configForm"
+                ref: "configForm",
+                widgetProps: this.props.widgetProps
             })}
             <div className="actions">
                 <div className="ui black cancel button"
@@ -159,9 +172,10 @@ class ConfigDialog extends React.Component {
 
 const ConfigDialogContainer = connect((state) => {
     return {
-        widgetType: state.widgetConfig.widgetType,
-        widgetName: state.widgetConfig.widgetName,
-        widgetProps: state.widgetConfig.widgetProps,
+        widgetId: state.widgetConfig.id,
+        widgetType: state.widgetConfig.type,
+        widgetName: state.widgetConfig.name,
+        widgetProps: state.widgetConfig.props,
         title: "Configure Text Widget" // TODO: get this dynamically e.g from widgetState
     }
 })(ConfigDialog);

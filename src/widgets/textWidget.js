@@ -16,13 +16,10 @@ export class Widget extends Component {
     }
 }
 
-const initialState = {text: ""};
-
 class ConfigDialog extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = initialState;
     }
 
     /**
@@ -31,23 +28,30 @@ class ConfigDialog extends React.Component {
      * Return the widget props that should be used for the widget after save
      */
     handlePositive() {
-        let state = this.state;
-        this.setState(initialState);
-        return state;
+        let result = {
+            text: this.input.value
+        };
+        this.input.value = "";
+        return result;
+
     }
 
     handleDeny() {
+        this.input.value = "";
         return true;
     }
 
     render() {
+        if (this.input) {
+            this.input.value = this.props.widgetProps.text || "";
+        }
         return <div className="content">
             <form className="ui form">
                 <div className="field">
                     <label>Text</label>
                     <input type="text" name="first-name" placeholder="Content of the widget"
-                           value={this.state.text}
-                        onChange={(e) => this.setState({text: e.target.value})}
+                           defaultValue={this.props.widgetProps.text}
+                           ref={node => { this.input = node;}}
                     />
                 </div>
             </form>

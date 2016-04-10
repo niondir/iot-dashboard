@@ -9,6 +9,7 @@ let initialWidgets = {
     "initial_time_widget": {
         type: "time",
         id: "initial_time_widget",
+        name: "Time",
         row: 0,
         col: 0,
         width: 1,
@@ -18,6 +19,7 @@ let initialWidgets = {
     "initial_text_widget": {
         type: "text",
         id: "initial_text_widget",
+        name: "Text",
         row: 0,
         col: 1,
         width: 3,
@@ -31,6 +33,7 @@ export function addWidget(type, props = {}, width = 1, height = 1) {
     return {
         type: ADD_WIDGET,
         id: Uuid.generate(),
+        name: type,
         width: width,
         height: height,
         widgetType: type,
@@ -88,11 +91,17 @@ export function widgets(state = initialWidgets, action) {
             return newState;
         case UPDATE_WIDGET_PROPS:
         {
-            return widget(state[action.id]);
+            const widgetState = state[action.id];
+            console.assert(widgetState, "Can not find widget with id: " + action.id);
+
+            newState = {...state};
+            newState[action.id] = widget(widgetState, action);
+            return newState;
         }
         case DELETE_WIDGET:
             newState = {...state};
-            return delete newState[action.id];
+            delete newState[action.id];
+            return newState;
         case UPDATE_LAYOUT:
             // TODO: Maybe just store the layout somewhere else? Is it possible?
             newState = {...state};
@@ -165,6 +174,8 @@ export function getWidgets():Array {
  */
 export function WidgetFrame(widgetState) {
     let widget = getWidget(widgetState.type);
+    console.log("type: " + widgetState.type + " " + (widget.configDialog ? true : false))
+    console.assert(widget, "No registered widget with type: " + widgetState.type);
     return (
         <div className="ui raised segments"
              style={{margin: 0}}
@@ -173,13 +184,13 @@ export function WidgetFrame(widgetState) {
 
             <div className="ui inverted segment">
                 <div className="ui tiny horizontal right floated inverted list">
-                    <ConfigWidgetButton className="right item" widgetState={widgetState} icon="configure"/>
+                    <ConfigWidgetButton className="right item" widgetState={widgetState} visible={(widget.configDialog ? true : false)} icon="configure"/>
                     <a className="right item drag">
                         <i className="move icon drag"></i>
                     </a>
                     <DeleteWidgetButton className="right floated item" widgetState={widgetState} icon="remove"/>
                 </div>
-                <div className="ui item top attached">{widgetState.id}</div>
+                <div className="ui item top attached">{widgetState.name || "\u00a0"}</div>
             </div>
 
             <div className="ui segment">
@@ -191,7 +202,7 @@ export function WidgetFrame(widgetState) {
 class WidgetButton extends React.Component {
     render() {
         let data = this.props.widgetState;
-        return <a className={this.props.className}
+        return <a className={this.props.className + (this.props.visible !== false ? "" : " hidden transition")}
                   onClick={() => this.props.onClick(data)}>
             <i className={this.props.icon + " icon"}></i>
         </a>
@@ -213,7 +224,8 @@ export let DeleteWidgetButton = connect(
 
 export let ConfigWidgetButton = connect(
     (state) => {
-        return {}
+        return {
+        }
     },
     (dispatch) => {
         return {
