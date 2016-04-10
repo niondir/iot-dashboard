@@ -85,7 +85,11 @@ export function widgets(state = initialWidgets, action) {
     let newState;
     switch (action.type) {
         case ADD_WIDGET:
-            action.col = findSmallestCol(objAsList(state));
+            let {row, col} = findSmallestCol(objAsList(state));
+            action.row = row;
+            action.col = col;
+            console.log("row:" + row);
+            console.log("col:" + col);
             newState = {...state};
             newState[action.id] = widget(undefined, action);
             return newState;
@@ -129,7 +133,7 @@ function widget(state = {}, action) {
                 type: action.widgetType,
                 name: action.widgetType,
                 props: action.widgetProps,
-                row: Infinity,
+                row: action.row,
                 col: action.col,
                 width: action.width,
                 height: action.height
@@ -145,11 +149,6 @@ function widget(state = {}, action) {
 }
 
 // TODO: Move to widgetRegistry module or own class
-export function init() {
-    register(TimeWidget);
-    register(TextWidget);
-}
-
 export function register(module) {
     console.assert(module.TYPE_INFO, "Missing TYPE_INFO on widget module. Every module must export TYPE_INFO");
     widgets[module.TYPE_INFO.type] = {
@@ -261,7 +260,13 @@ function findSmallestCol(widgets:Array) {
         return prev;
     }, colHeights);
 
-    return Object.keys(colHeights).reduce(function (a, b) {
+    const heights = Object.keys(colHeights).map(key => colHeights[key]);
+    console.log(heights);
+    const col = Object.keys(colHeights).reduce(function (a, b) {
         return Number(colHeights[a] <= colHeights[b] ? a : b);
     });
+    Math.min(...colHeights);
+    console.log(Math.min(...heights))
+    console.log(Math.min(...heights) + 1)
+    return {col: col, row: Math.min(...heights) + 1}
 }

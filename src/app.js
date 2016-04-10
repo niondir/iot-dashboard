@@ -3,34 +3,44 @@ import * as ReactDOM from 'react-dom';
 import * as Redux from 'redux';
 import {Provider} from 'react-redux'
 import Layout from './layout'
-import * as Counter from './exampleCounter'
-import * as Grid from './widgetGrid'
+import * as Persist from './widgets/persistence'
+// Css
 import 'semantic-ui-css/semantic.css';
 import 'semantic-ui-css/semantic';
+// Redux Middleware
 import createLogger from 'redux-logger';
+import thunk from 'redux-thunk'
+// Reducers
 import * as Widgets from './widgets/widgets'
+import * as Counter from './exampleCounter'
 import * as WidgetTypes from './widgets/widgetTypes'
 import * as WidgetConfig from './widgets/widgetConfig'
-import thunk from 'redux-thunk'
+// Widgets
+import * as TimeWidget from './widgets/timeWidget'
+import * as TextWidget from './widgets/textWidget'
 
-Widgets.init();
+
+
+Widgets.register(TimeWidget);
+Widgets.register(TextWidget);
+
 
 let reducer = Redux.combineReducers({
     counter: Counter.reducer,
     widgets: Widgets.widgets,
-    widgetTypes: WidgetTypes.widgetTypes,
+    widgetTypes: WidgetTypes.widgetTypes, //TODO: Unused?
     widgetConfig: WidgetConfig.widgetConfigDialog
 });
 
 const logger = createLogger();
 let store = Redux.createStore(
     reducer,
+    Persist.loadFromLocalStorage(),
     Redux.applyMiddleware(
         thunk,
+        Persist.persistenceMiddleware,
         logger // must be last
     ));
-
-console.log(store.getState());
 
 ReactDOM.render(
     <Provider store={store}>
