@@ -4,7 +4,11 @@ import * as ReactDOM from 'react-dom';
 import * as Redux from 'redux';
 import {connect} from 'react-redux'
 
-export const TYPE = "time";
+export const TYPE_INFO = {
+    type: "time",
+    name: "Timer"
+};
+
 
 export class Widget extends Component {
 

@@ -3,16 +3,26 @@ import * as TimeWidget from './timeWidget'
 import * as TextWidget from './textWidget'
 import {connect} from 'react-redux'
 import * as Uuid from '../util/uuid'
+import * as WidgetConfig from './widgetConfig'
 
 let initialWidgets = {
-    "initial_widget": {
-        type: "time",
-        id: "initial_widget",
+    "initial_time_widget": {
+        type: "text",
+        id: "initial_time_widget",
         row: 0,
         col: 0,
         width: 1,
-        height: 1
-        // TODO: Get some customProps for arbitrary widget state
+        height: 1,
+        props: {}
+    },
+    "initial_text_widget": {
+        type: "text",
+        id: "initial_text_widget",
+        row: 0,
+        col: 1,
+        width: 1,
+        height: 1,
+        props: {text: "This is a text widget"}
     }
 };
 
@@ -28,6 +38,15 @@ export function addWidget(type, props = {}, width = 1, height = 1) {
     }
 }
 
+export function configureWidget(widgetState) {
+    return function (dispatch, getState) {
+        const state = getState();
+        if (state.widgetTypes[widgetState.type].configurable) {
+            WidgetConfig.ConfigDialog.showModal(widgetState.type);
+            //dispatch();
+        }
+    }
+}
 
 const UPDATE_WIDGET_PROPS = "UPDATE_WIDGET_PROPS";
 export function updateWidgetProps(id, props = {}) {
@@ -65,7 +84,7 @@ export function widgets(state = initialWidgets, action) {
         case ADD_WIDGET:
             action.col = findSmallestCol(objAsList(state));
             newState = {...state};
-            newState[action.id] = widget(undefined, action)
+            newState[action.id] = widget(undefined, action);
             return newState;
         case UPDATE_WIDGET_PROPS:
         {
@@ -79,7 +98,7 @@ export function widgets(state = initialWidgets, action) {
             newState = {...state};
             for (let id in state) {
                 let layout = layoutById(action.layout, id);
-                newState[id] =  {
+                newState[id] = {
                     ...newState[id],
                     row: layout.y,
                     col: layout.x,
@@ -122,9 +141,10 @@ export function init() {
 }
 
 export function register(module) {
-    widgets[module.TYPE] = {
+    console.assert(module.TYPE_INFO, "Missing TYPE_INFO on widget module. Every module must export TYPE_INFO");
+    widgets[module.TYPE_INFO.type] = {
         widget: module.Widget,
-        configDialog: module.ConfigDialog ? connect()(module.ConfigDialog) : null
+        configDialog: module.ConfigDialog ? module.ConfigDialog : null
     }
 }
 
@@ -153,15 +173,13 @@ export function WidgetFrame(widgetState) {
 
 
             <div className="ui small top attached inverted borderless icon menu">
-
-                <div className="content">
-                    <div className="header item"><span className="">{widgetState.id}</span></div>
-                </div>
+                <div className="header item"><span className="">{widgetState.id}</span></div>
                 <div className="right menu">
+                    <ConfigWidgetButton widgetState={widgetState} icon="configure"/>
                     <a className="item drag">
                         <i className="move icon drag"></i>
                     </a>
-                    <DeleteWidgetButton data={widgetState}/>
+                    <DeleteWidgetButton widgetState={widgetState} icon="remove"/>
                 </div>
             </div>
 
@@ -171,12 +189,12 @@ export function WidgetFrame(widgetState) {
         </div>)
 }
 
-class RemoveButton extends React.Component {
+class WidgetButton extends React.Component {
     render() {
-        let data = this.props.data;
-        return <a className="item no-drag"
-                  onClick={() => this.props.onClick(data.id)}>
-            <i className="remove icon no-drag"></i>
+        let data = this.props.widgetState;
+        return <a className="item"
+                  onClick={() => this.props.onClick(data)}>
+            <i className={this.props.icon + " icon"}></i>
         </a>
     }
 }
@@ -187,12 +205,25 @@ export let DeleteWidgetButton = connect(
     },
     (dispatch) => {
         return {
-            onClick: (id) => {
-                dispatch(deleteWidget(id))
+            onClick: (widgetState) => {
+                dispatch(deleteWidget(widgetState.id))
             }
         };
     }
-)(RemoveButton);
+)(WidgetButton);
+
+export let ConfigWidgetButton = connect(
+    (state) => {
+        return {}
+    },
+    (dispatch) => {
+        return {
+            onClick: (widgetState) => {
+                dispatch(WidgetConfig.openWidgetConfigDialog(widgetState.id))
+            }
+        };
+    }
+)(WidgetButton);
 
 // Local functions
 

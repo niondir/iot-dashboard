@@ -1,11 +1,13 @@
 import * as React from 'react';
 import {Component} from 'react';
 import {connect} from 'react-redux'
-import {Modal} from './widgetConfig'
 import * as WidgetConfig from './widgetConfig'
 import * as Widgets from './widgets'
 
-export const TYPE = "text";
+export const TYPE_INFO = {
+    type: "text",
+    name: "Text"
+};
 
 export class Widget extends Component {
 
@@ -23,33 +25,34 @@ class ConfigDialog extends React.Component {
         this.state = initialState;
     }
 
-    modalApply() {
-        this.props.dispatch(Widgets.addWidget(TYPE, Object.assign({}, {text: this.state.text})));
+    /**
+     * Handle positive action on the config dialog.
+     * Return false to prevent closing.
+     * Return the widget props that should be used for the widget after save
+     */
+    handlePositive() {
+        let state = this.state;
         this.setState(initialState);
+        return state;
     }
 
-    modalCancel() {
+    handleDeny() {
+        return true;
     }
 
     render() {
-        return <Modal widgetType={TYPE} title="Configure Text Widget"
-                      positive={() => this.modalApply()}
-                      deny={() => this.modalCancel()}>
-            <div className="content">
-                <form className="ui form">
-                    <div className="field">
-                        <label>Text</label>
-                        <input type="text" name="first-name" placeholder="Content of the widget"
-                               value={this.state.text}
-                               onChange={(e) => this.setState({text: e.target.value})}/>
-                    </div>
-                </form>
-            </div>
-        </Modal>
+        return <div className="content">
+            <form className="ui form">
+                <div className="field">
+                    <label>Text</label>
+                    <input type="text" name="first-name" placeholder="Content of the widget"
+                           value={this.state.text}
+                        onChange={(e) => this.setState({text: e.target.value})}
+                    />
+                </div>
+            </form>
+        </div>
     }
 }
-
-
-
 
 export {ConfigDialog}

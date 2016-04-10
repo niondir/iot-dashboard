@@ -80,7 +80,8 @@ gulp.task("webpack:server", function (callback) {
 		// server and middleware options
 		contentBase: './dist',
 		publicPath: "/",
-		hot: true
+		hot: true,
+		bail: false
 	}).listen(8080, "localhost", function (err) {
 		if (err) throw new gutil.PluginError("webpack-dev-server", err);
 		// Server listening
