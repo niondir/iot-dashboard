@@ -7,7 +7,7 @@ import * as WidgetConfig from './widgetConfig'
 
 let initialWidgets = {
     "initial_time_widget": {
-        type: "text",
+        type: "time",
         id: "initial_time_widget",
         row: 0,
         col: 0,
@@ -20,7 +20,7 @@ let initialWidgets = {
         id: "initial_text_widget",
         row: 0,
         col: 1,
-        width: 1,
+        width: 3,
         height: 1,
         props: {text: "This is a text widget"}
     }
@@ -171,16 +171,15 @@ export function WidgetFrame(widgetState) {
              key={widgetState.id}
              _grid={{x: widgetState.col, y: widgetState.row, w: widgetState.width, h: widgetState.height}}>
 
-
-            <div className="ui small top attached inverted borderless icon menu">
-                <div className="header item"><span className="">{widgetState.id}</span></div>
-                <div className="right menu">
-                    <ConfigWidgetButton widgetState={widgetState} icon="configure"/>
-                    <a className="item drag">
+            <div className="ui inverted segment">
+                <div className="ui tiny horizontal right floated inverted list">
+                    <ConfigWidgetButton className="right item" widgetState={widgetState} icon="configure"/>
+                    <a className="right item drag">
                         <i className="move icon drag"></i>
                     </a>
-                    <DeleteWidgetButton widgetState={widgetState} icon="remove"/>
+                    <DeleteWidgetButton className="right floated item" widgetState={widgetState} icon="remove"/>
                 </div>
+                <div className="ui item top attached">{widgetState.id}</div>
             </div>
 
             <div className="ui segment">
@@ -192,7 +191,7 @@ export function WidgetFrame(widgetState) {
 class WidgetButton extends React.Component {
     render() {
         let data = this.props.widgetState;
-        return <a className="item"
+        return <a className={this.props.className}
                   onClick={() => this.props.onClick(data)}>
             <i className={this.props.icon + " icon"}></i>
         </a>
