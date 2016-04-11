@@ -76,7 +76,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js"),
         new ExtractTextPlugin("[name].bundle.css"),
-        new webpack.PrefetchPlugin('./src/layout.js'),
+        new webpack.PrefetchPlugin('./src/pageLayout.js'),
         new webpack.PrefetchPlugin(paths.node_modules, 'semantic-ui-css/semantic.css'),
         new webpack.PrefetchPlugin(paths.node_modules, 'react/lib/ReactDOM.js'),
         new webpack.PrefetchPlugin(paths.node_modules, 'react-grid-layout/build/ReactGridLayout.js'),

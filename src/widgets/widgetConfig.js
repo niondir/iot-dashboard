@@ -118,10 +118,8 @@ class ConfigDialog extends React.Component {
         );
         let widgetProps = this.refs.configForm.handlePositive();
         if (widgetProps !== false) {
-            widgetProps = {...this.props.widgetProps, widgetProps};
-            console.log(this.refs.configForm);
+            widgetProps = {...this.props.widgetProps, ...widgetProps};
             if (this.props.widgetId) {
-                console.log("this.dispatch:" + this.dispatch);
                 this.props.dispatch(Widgets.updateWidgetProps(this.props.widgetId, widgetProps));
             }
             else {
@@ -135,7 +133,6 @@ class ConfigDialog extends React.Component {
         let handleDeny = this.refs.configForm.handleDeny.bind(this.refs.configForm);
         let denyResult = handleDeny ? handleDeny() : true;
         if (denyResult !== false) {
-            console.log("closing modal");
             ConfigDialog.closeModal(this.props.widgetType);
         }
     }

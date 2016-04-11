@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import * as Uuid from '../util/uuid'
 import * as WidgetConfig from './widgetConfig'
 
-let initialWidgets = {
+export const initialWidgets = {
     "initial_time_widget": {
         type: "time",
         id: "initial_time_widget",
@@ -30,14 +30,19 @@ let initialWidgets = {
 };
 
 const ADD_WIDGET = "ADD_WIDGET";
-export function addWidget(type, props = {}, width = 1, height = 1) {
-    return {
-        type: ADD_WIDGET,
-        id: Uuid.generate(),
-        width: width,
-        height: height,
-        widgetType: type,
-        widgetProps: props
+export function addWidget(widgetType, widgetProps = {}, width = 1, height = 1) {
+    return (dispatch, getState) => {
+        let widgets = getState().widgets;
+
+        return dispatch({
+            type: ADD_WIDGET,
+            id: Uuid.generate(),
+            ...calcNewWidgetPosition(widgets),
+            width,
+            height,
+            widgetType,
+            widgetProps
+        });
     }
 }
 
@@ -52,11 +57,11 @@ export function configureWidget(widgetState) {
 }
 
 const UPDATE_WIDGET_PROPS = "UPDATE_WIDGET_PROPS";
-export function updateWidgetProps(id, props = {}) {
+export function updateWidgetProps(id, widgetProps = {}) {
     return {
         type: UPDATE_WIDGET_PROPS,
-        id: id,
-        widgetProps: props
+        id,
+        widgetProps
     }
 }
 
@@ -64,61 +69,54 @@ const DELETE_WIDGET = "DELETE_WIDGET";
 export function deleteWidget(id) {
     return {
         type: DELETE_WIDGET,
-        id: id
+        id
     }
 }
 
 
-const UPDATE_LAYOUT = "UPDATE_LAYOUT";
+const UPDATE_LAYOUT = "UPDATE_WIDGET_LAYOUT";
 export function updateLayout(layout) {
     return {
         type: UPDATE_LAYOUT,
-        layout: layout
+        layout
     }
 }
 
 
-function objAsList(obj) {
+function valuesOf(obj) {
     return Object.keys(obj).map(key => obj[key])
 }
 export function widgets(state = initialWidgets, action) {
     let newState;
     switch (action.type) {
         case ADD_WIDGET:
-            let {row, col} = findSmallestCol(objAsList(state));
-            action.row = row;
-            action.col = col;
-            console.log("row:" + row);
-            console.log("col:" + col);
-            newState = {...state};
-            newState[action.id] = widget(undefined, action);
-            return newState;
+
+            return {
+                ...state,
+                [action.id]: widget(undefined, action)
+            };
         case UPDATE_WIDGET_PROPS:
         {
             const widgetState = state[action.id];
             console.assert(widgetState, "Can not find widget with id: " + action.id);
 
-            newState = {...state};
-            newState[action.id] = widget(widgetState, action);
-            return newState;
+            return {
+                ...state,
+                [action.id]: widget(widgetState, action)
+            };
         }
         case DELETE_WIDGET:
             newState = {...state};
             delete newState[action.id];
             return newState;
         case UPDATE_LAYOUT:
-            // TODO: Maybe just store the layout somewhere else? Is it possible?
-            newState = {...state};
-            for (let id in state) {
-                let layout = layoutById(action.layout, id);
-                newState[id] = {
-                    ...newState[id],
-                    row: layout.y,
-                    col: layout.x,
-                    width: layout.w,
-                    height: layout.h
-                }
-            }
+            return valuesOf(state)
+                .reduce((newState, {id}) => {
+                        newState[id] = widget(newState[id], action);
+                        return newState;
+                    }, {...state}
+                );
+
             return newState;
         default:
             return state;
@@ -142,6 +140,15 @@ function widget(state = {}, action) {
             return {
                 ...state,
                 props: action.widgetProps
+            };
+        case UPDATE_LAYOUT:
+            let layout = layoutById(action.layout, state.id);
+            return {
+                ...state,
+                row: layout.y,
+                col: layout.x,
+                width: layout.w,
+                height: layout.h
             };
         default:
             return state;
@@ -244,12 +251,12 @@ function layoutById(layout:Array, id) {
     })
 }
 
-function findSmallestCol(widgets:Array) {
+function calcNewWidgetPosition(widgets:Object) {
     let colHeights = {};
     for (let i = 0; i < 6; i++) {
         colHeights[i] = 0;
     }
-    colHeights = widgets.reduce((prev, curr) => {
+    colHeights = valuesOf(widgets).reduce((prev, curr) => {
         prev[curr.col] = prev[curr.col] || 0;
         let currHeight = curr.row + curr.height || 0;
         if (prev[curr.col] < currHeight) {
@@ -260,13 +267,10 @@ function findSmallestCol(widgets:Array) {
         return prev;
     }, colHeights);
 
-    const heights = Object.keys(colHeights).map(key => colHeights[key]);
-    console.log(heights);
-    const col = Object.keys(colHeights).reduce(function (a, b) {
+    const heights = valuesOf(colHeights);
+    const col = Object.keys(colHeights).reduce((a, b) => {
         return Number(colHeights[a] <= colHeights[b] ? a : b);
     });
     Math.min(...colHeights);
-    console.log(Math.min(...heights))
-    console.log(Math.min(...heights) + 1)
     return {col: col, row: Math.min(...heights) + 1}
 }
