@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as Redux from 'redux';
 import {Provider} from 'react-redux'
-import Layout from './layout'
+import Layout from './pageLayout'
 import * as Persist from './widgets/persistence'
 // Css
 import 'semantic-ui-css/semantic.css';
