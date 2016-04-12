@@ -3,7 +3,8 @@ import {Component} from 'react';
 import * as WidgetGrid from './widgetGrid'
 import * as Nav from './navigation'
 import $ from 'jquery'
-import {WidgetConfigDialogs} from './widgets/widgetConfig'
+import {WidgetConfigDialog} from './widgets/widgetConfig'
+import * as Layouts from './layouts/layouts.ui'
 
 export default class Layout extends Component {
 
@@ -26,8 +27,7 @@ export default class Layout extends Component {
     render() {
         return <div className="container">
 
-            {/* All the hidden config dialogs of registered widgets*/}
-            <WidgetConfigDialogs/>
+            <WidgetConfigDialog/>
 
             <div className="ui flowing basic widgets-menu popup">
                 <div className="ui one column relaxed divided grid">
@@ -49,7 +49,11 @@ export default class Layout extends Component {
                         {/*<img className="logo" src="assets/images/logo.png"/>*/}
                         Dashboard
                     </a>
+
+                    <Layouts.NavItem layouts={[{name: "My Layout"}]}/>
+                    
                     <a className="add-widget item">New Widget <i className="dropdown icon"></i></a>
+
                 </div>
             </div>
 

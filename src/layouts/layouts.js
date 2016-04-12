@@ -1,5 +1,6 @@
 import * as Widgets from '../widgets/widgets'
 import {valuesOf} from '../util/collection'
+import {generate as generateUuid} from '../util/uuid'
 import {genCrudReducer} from '../util/reducer'
 
 const initialLayouts = {
@@ -13,6 +14,16 @@ const initialLayouts = {
 const ADD_LAYOUT = "ADD_LAYOUT";
 const UPDATE_LAYOUT = "UPDATE_LAYOUT";
 const DELETE_LAYOUT = "DELETE_LAYOUT";
+
+export function addLayout(name, widgets) {
+    return {
+        type: ADD_LAYOUT,
+        id: generateUuid(),
+        name,
+        widgets
+    }
+}
+
 const layoutCrudReducer = genCrudReducer([ADD_LAYOUT, UPDATE_LAYOUT, DELETE_LAYOUT], layout, initialLayouts);
 export function layouts(state = initialLayouts, action) {
     state = layoutCrudReducer(state, action);

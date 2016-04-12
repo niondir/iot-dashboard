@@ -59,14 +59,8 @@ export function widgetConfigDialog(state = initialState, action) {
     }
 }
 
-export const WidgetConfigDialogs = () => {
-    let i = 0;
+export const WidgetConfigDialog = () => {
     return <div><ConfigDialogContainer/></div>;
-    // TODO: Do we need multiple? -> No remove in future
-    const configDialogs = Widgets.getWidgets().map((widget) => {
-        return widget.configDialog ? React.createElement(widget.configDialog, {key: i++}) : null;
-    });
-    return <div>{configDialogs}</div>
 };
 
 export function createWidget(type) {
