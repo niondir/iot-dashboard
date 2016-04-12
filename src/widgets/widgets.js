@@ -4,6 +4,8 @@ import * as TextWidget from './textWidget'
 import {connect} from 'react-redux'
 import * as Uuid from '../util/uuid'
 import * as WidgetConfig from './widgetConfig'
+import {valuesOf} from '../util/collection'
+import {genCrudReducer} from '../util/reducer'
 
 export const initialWidgets = {
     "initial_time_widget": {
@@ -82,33 +84,11 @@ export function updateLayout(layout) {
     }
 }
 
-
-function valuesOf(obj) {
-    return Object.keys(obj).map(key => obj[key])
-}
+const widgetsCrudReducer = genCrudReducer([ADD_WIDGET, UPDATE_WIDGET_PROPS, DELETE_WIDGET], widget, initialWidgets);
 export function widgets(state = initialWidgets, action) {
+    state = widgetsCrudReducer(state, action);
     let newState;
     switch (action.type) {
-        case ADD_WIDGET:
-
-            return {
-                ...state,
-                [action.id]: widget(undefined, action)
-            };
-        case UPDATE_WIDGET_PROPS:
-        {
-            const widgetState = state[action.id];
-            console.assert(widgetState, "Can not find widget with id: " + action.id);
-
-            return {
-                ...state,
-                [action.id]: widget(widgetState, action)
-            };
-        }
-        case DELETE_WIDGET:
-            newState = {...state};
-            delete newState[action.id];
-            return newState;
         case UPDATE_LAYOUT:
             return valuesOf(state)
                 .reduce((newState, {id}) => {
@@ -116,8 +96,6 @@ export function widgets(state = initialWidgets, action) {
                         return newState;
                     }, {...state}
                 );
-
-            return newState;
         default:
             return state;
     }
