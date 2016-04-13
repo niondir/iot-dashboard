@@ -50,7 +50,7 @@ export default class Layout extends Component {
                         Dashboard
                     </a>
 
-                    <Layouts.NavItem layouts={[{name: "My Layout"}]}/>
+                    <Layouts.TopNavItem/>
                     
                     <a className="add-widget item">New Widget <i className="dropdown icon"></i></a>
 

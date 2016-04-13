@@ -14,6 +14,7 @@ const initialLayouts = {
 const ADD_LAYOUT = "ADD_LAYOUT";
 const UPDATE_LAYOUT = "UPDATE_LAYOUT";
 const DELETE_LAYOUT = "DELETE_LAYOUT";
+const LOAD_LAYOUT = "LOAD_LAYOUT";
 
 export function addLayout(name, widgets) {
     return {
@@ -28,14 +29,13 @@ const layoutCrudReducer = genCrudReducer([ADD_LAYOUT, UPDATE_LAYOUT, DELETE_LAYO
 export function layouts(state = initialLayouts, action) {
     state = layoutCrudReducer(state, action);
     switch (state.type) {
-        case "ADD_LAYOUT":
         default:
             return state;
     }
 }
 
-export function layout(state = initialLayouts, action) {
-    switch (state.type) {
+export function layout(state, action) {
+    switch (action.type) {
         case ADD_LAYOUT:
             return {
                 id: action.id,

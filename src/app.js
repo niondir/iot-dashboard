@@ -15,6 +15,7 @@ import * as Widgets from './widgets/widgets'
 import * as Counter from './exampleCounter'
 import * as WidgetTypes from './widgets/widgetTypes'
 import * as WidgetConfig from './widgets/widgetConfig'
+import * as Layouts from './layouts/layouts'
 // Widgets
 import * as TimeWidget from './widgets/timeWidget'
 import * as TextWidget from './widgets/textWidget'
@@ -29,7 +30,8 @@ let reducer = Redux.combineReducers({
     counter: Counter.reducer,
     widgets: Widgets.widgets,
     widgetTypes: WidgetTypes.widgetTypes, //TODO: Unused?
-    widgetConfig: WidgetConfig.widgetConfigDialog
+    widgetConfig: WidgetConfig.widgetConfigDialog,
+    layouts: Layouts.layouts
 });
 
 const logger = createLogger();
