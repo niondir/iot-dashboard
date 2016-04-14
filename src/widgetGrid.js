@@ -12,17 +12,22 @@ const ResponsiveGrid = WidthProvider(ResponsiveReactGridLayout);
 
 class WidgetGrid extends Component {
 
+    onLayoutChange(layout) {
+        if (this.props.onLayoutChange) {
+            this.props.onLayoutChange(layout)
+        }
+    }
+
     render() {
         let widgetData:Array<object> = this.props.widgets || [];
         let widgets = widgetData.map((data) => Widgets.WidgetFrame(data));
-
         return (
             <ResponsiveGrid className="column" cols={12} rowHeight={200}
                             breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}}
                             cols={{lg: 6, md: 6, sm: 6, xs: 4, xxs: 2}}
                             draggableCancel=".no-drag"
                             draggableHandle=".drag"
-                            onLayoutChange={(layout) => { if (this.props.onLayoutChange) this.props.onLayoutChange(layout)}}
+                            onLayoutChange={this.onLayoutChange.bind(this)}
             >
                 {widgets}
             </ResponsiveGrid>
@@ -33,7 +38,7 @@ class WidgetGrid extends Component {
 const WidgetGridContainer = connect(
     (state) => {
         return {
-            widgets: Object.keys(state.widgets).map(id => state.widgets[id]) ||[]
+            widgets: Object.keys(state.widgets).map(id => state.widgets[id]) || []
         }
     },
     (dispatch) => {

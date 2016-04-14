@@ -31,6 +31,7 @@ export function genCrudReducer(actionNames:Array<String>, elementReducer:Functio
                 delete newState[id];
                 return newState;
             case UPDATE_ACTION:
+                //if(id === undefined) return state;
                 const elementState = state[id];
                 console.assert(elementState, "Can not find element with id: " + id);
                 return {
@@ -38,6 +39,7 @@ export function genCrudReducer(actionNames:Array<String>, elementReducer:Functio
                     [id]: elementReducer(elementState, action)
                 };
             default:
+
                 return state;
         }
     }

@@ -31,7 +31,8 @@ let reducer = Redux.combineReducers({
     widgets: Widgets.widgets,
     widgetTypes: WidgetTypes.widgetTypes, //TODO: Unused?
     widgetConfig: WidgetConfig.widgetConfigDialog,
-    layouts: Layouts.layouts
+    layouts: Layouts.layouts,
+    currentLayout: Layouts.currentLayout
 });
 
 const logger = createLogger();

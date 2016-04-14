@@ -1,11 +1,10 @@
 import * as React from 'react';
-import * as TimeWidget from './timeWidget'
-import * as TextWidget from './textWidget'
 import {connect} from 'react-redux'
 import * as Uuid from '../util/uuid'
 import * as WidgetConfig from './widgetConfig'
 import {valuesOf} from '../util/collection'
 import {genCrudReducer} from '../util/reducer'
+import {LOAD_LAYOUT} from '../layouts/layouts.actions'
 
 export const initialWidgets = {
     "initial_time_widget": {
@@ -80,14 +79,13 @@ const UPDATE_LAYOUT = "UPDATE_WIDGET_LAYOUT";
 export function updateLayout(layout) {
     return {
         type: UPDATE_LAYOUT,
-        layout
+        layout: layout
     }
 }
 
 const widgetsCrudReducer = genCrudReducer([ADD_WIDGET, UPDATE_WIDGET_PROPS, DELETE_WIDGET], widget, initialWidgets);
 export function widgets(state = initialWidgets, action) {
     state = widgetsCrudReducer(state, action);
-    let newState;
     switch (action.type) {
         case UPDATE_LAYOUT:
             return valuesOf(state)
@@ -96,6 +94,9 @@ export function widgets(state = initialWidgets, action) {
                         return newState;
                     }, {...state}
                 );
+
+        case LOAD_LAYOUT:
+            return action.layout.widgets;
         default:
             return state;
     }
@@ -158,7 +159,7 @@ export function getWidgets():Array {
  * The Dragable Frame of a Widget.
  * Contains generic UI controls, shared by all Widgets
  */
-export function WidgetFrame(widgetState) {
+export const WidgetFrame = (widgetState) => {
     let widget = getWidget(widgetState.type);
     console.assert(widget, "No registered widget with type: " + widgetState.type);
     return (

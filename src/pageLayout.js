@@ -13,12 +13,13 @@ export default class Layout extends Component {
         $('.main.menu .add-widget')
             .popup({
                 popup: '.widgets-menu.popup',
-                hoverable: true,
-                preserve: true,
+                movePopup: false,
+                hoverable: true, // Do not close while mouse over
+                preserve: true, // Stay in DOM after close
                 position: 'bottom left',
                 delay: {
-                    show: 300,
-                    hide: 800
+                    show: 0,
+                    hide: 50
                 }
             });
     }
@@ -28,15 +29,14 @@ export default class Layout extends Component {
         return <div className="container">
 
             <WidgetConfigDialog/>
-
-            <div className="ui flowing basic widgets-menu popup">
-                <div className="ui one column relaxed divided grid">
+            <div className="ui flowing basic widgets-menu menu popup">
+                <div className="ui sixteen column relaxed divided grid">
                     <div className="column">
-                        <h4 className="ui header">Simple</h4>
                         <div className="ui link list">
+                            <h4 className="ui header">Simple</h4>
                             {/* TODO: render nav items based on the widget registry */}
-                            <Nav.AddWidget title="Text" icon="plus" type="text"/>
-                            <Nav.AddWidget title="Clock" icon="plus" type="time"/>
+                            <Nav.AddWidget text="Text" type="text"/>
+                            <Nav.AddWidget text="Clock" type="time"/>
                         </div>
                     </div>
                 </div>
@@ -51,12 +51,11 @@ export default class Layout extends Component {
                     </a>
 
                     <Layouts.TopNavItem/>
-                    
+
                     <a className="add-widget item">New Widget <i className="dropdown icon"></i></a>
 
                 </div>
             </div>
-
 
             <div className="ui grid">
                 <WidgetGrid.WidgetGrid/>

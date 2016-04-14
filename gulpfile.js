@@ -61,10 +61,14 @@ gulp.task('clean:dist', function () {
 // Copy Tasks
 ///////////////
 
-gulp.task('copy:all', ['copy:html']);
+gulp.task('copy:all', ['copy:html', 'copy:css']);
 
 gulp.task('copy:html', function () {
 	gulp.src('./src/**/*.html')
+		.pipe(gulp.dest('./dist'));
+});
+gulp.task('copy:css', function () {
+	gulp.src('./css/**/*.css')
 		.pipe(gulp.dest('./dist'));
 });
 
@@ -74,16 +78,17 @@ gulp.task("webpack:server", function (callback) {
 	// Start a webpack-dev-server
 	var webpackConfig = require('./webpack.config.js');
 	webpackConfig.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
+	webpackConfig.bail= false;
 	var compiler = webpack(webpackConfig);
 
 	new WebpackDevServer(compiler, {
 		// server and middleware options
 		contentBase: './dist',
 		publicPath: "/",
-		hot: true,
-		bail: false
+		hot: true
 	}).listen(8080, "localhost", function (err) {
-		if (err) throw new gutil.PluginError("webpack-dev-server", err);
+		//if (err) throw new gutil.PluginError("webpack-dev-server", err);
+		if (err) console.error(err);
 		// Server listening
 		gutil.log("[webpack-dev-server]", "http://localhost:8080/webpack-dev-server/index.html");
 
