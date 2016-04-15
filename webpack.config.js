@@ -39,7 +39,6 @@ module.exports = {
         }
     },
     // resolveLoader: {root: path.join(__dirname, "node_modules")},
-    devtool: '#cheap-module-source-map',
     module: {
         loaders: [
             {
