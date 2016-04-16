@@ -94,7 +94,6 @@ export function widgets(state = initialWidgets, action) {
                         return newState;
                     }, {...state}
                 );
-
         case LOAD_LAYOUT:
             return action.layout.widgets;
         default:

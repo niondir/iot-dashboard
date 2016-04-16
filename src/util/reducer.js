@@ -27,8 +27,7 @@ export function genCrudReducer(actionNames:Array<String>, elementReducer:Functio
             case CREATE_ACTION:
                 return {...state, [id]: elementReducer(undefined, action)};
             case DELETE_ACTION:
-                var newState = {...state};
-                delete newState[id];
+                let  {[id]: deleted, ...newState} = state;
                 return newState;
             case UPDATE_ACTION:
                 //if(id === undefined) return state;
@@ -39,7 +38,6 @@ export function genCrudReducer(actionNames:Array<String>, elementReducer:Functio
                     [id]: elementReducer(elementState, action)
                 };
             default:
-
                 return state;
         }
     }

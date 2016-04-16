@@ -20,7 +20,8 @@ const TopNavItem = (props) => {
             <div className="header">Load Layout</div>
 
             {props.layouts.map(layout => {
-                return <LayoutItem text={layout.name} icon="plus" layout={layout} key={layout.id}/>
+                return <LayoutItem text={layout.name} icon="plus" layout={layout}
+                                   key={layout.id}/>
             })}
 
         </div>
@@ -61,7 +62,7 @@ class SaveInput extends React.Component {
         return <div className="item">
             <div className="ui icon input">
                 <input type="text" placeholder="Save as..." ref="input" onKeyPress={this.onEnter.bind(this)}/>
-                <i className="save icon"/>
+                <i className="save icon" onClick={this.onEnter.bind(this)} style={{cursor:"pointer", zIndex:90000}}/>
             </div>
         </div>
     }
@@ -93,18 +94,37 @@ const SaveLayout = connect((state) => {
 class MyLayoutItem extends React.Component {
     render() {
         let props = this.props;
+
+        let indexIconClass = null;
+        if (props.currentLayout.id == props.layout.id) {
+            indexIconClass = "tiny selected radio icon";
+        }
+        else {
+            indexIconClass = "tiny radio icon";
+        }
+
         return <a className="item" href="#" onClick={() => props.onClick(props)}>
-            <i className="right floated remove huge icon" style={{'zIndex':9000}} onClick={(e) => {
-            this.props.deleteLayout(props);
+            <i className={indexIconClass}/>
+            <i className="right floated remove huge icon" style={{zIndex:9000}} onClick={(e) => {
+            props.deleteLayout(props);
             e.stopPropagation();
             }}/> {props.text}
         </a>;
     }
 }
 
+MyLayoutItem.propTypes = {
+    deleteLayout: Prop.func.isRequired,
+    onClick: Prop.func.isRequired,
+    layout: Prop.object.isRequired,
+    currentLayout: Prop.object
+};
+
 const LayoutItem = connect(
     (state) => {
-        return {}
+        return {
+            currentLayout: state.currentLayout,
+        }
     },
     (dispatch, props)=> {
         return {
