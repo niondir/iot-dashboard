@@ -29,9 +29,6 @@ const TopNavItem = (props) => {
 };
 
 TopNavItem.propTypes = {
-    addLayout: Prop.func,
-    deleteLayout: Prop.func,
-    widgets: Prop.object,
     layouts: Prop.arrayOf(
         Prop.shape({
             name: Prop.string
@@ -46,9 +43,10 @@ const TopNavItemContainer = connect((state) => {
     },
     (dispatch)=> {
         return {
-            addLayout: (name) => Layouts.addLayout(name, state.widgets)
         }
     })(TopNavItem);
+
+export {TopNavItemContainer as TopNavItem}
 
 class SaveInput extends React.Component {
     onEnter(e) {
@@ -153,7 +151,5 @@ const ResetLayoutButton = connect(
         }
     }
 )(ui.LinkItem);
-
-export {TopNavItemContainer as TopNavItem}
 
 

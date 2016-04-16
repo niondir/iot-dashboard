@@ -1,7 +1,0 @@
-
-
-export const ADD_LAYOUT = "ADD_LAYOUT";
-export const UPDATE_LAYOUT = "UPDATE_LAYOUT";
-export const DELETE_LAYOUT = "DELETE_LAYOUT";
-export const LOAD_LAYOUT = "LOAD_LAYOUT";
-export const SET_CURRENT_LAYOUT = "SET_CURRENT_LAYOUT";

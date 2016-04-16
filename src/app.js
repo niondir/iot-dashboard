@@ -16,19 +16,31 @@ import * as Counter from './exampleCounter'
 import * as WidgetTypes from './widgets/widgetTypes'
 import * as WidgetConfig from './widgets/widgetConfig'
 import * as Layouts from './layouts/layouts'
+import {DASHBOARD_IMPORT} from './actionNames'
 // Widgets
 import * as TimeWidget from './widgets/timeWidget'
 import * as TextWidget from './widgets/textWidget'
 
 
-
 Widgets.register(TimeWidget);
 Widgets.register(TextWidget);
 
+function importReducerFactory(baseReducer:Function) {
+    return importReducer.bind(this, baseReducer);
+}
+
+function importReducer(baseReducer:Function, state, action) {
+    switch (action.type) {
+        case DASHBOARD_IMPORT:
+            return action.state.widgets;
+        default:
+            return baseReducer(state, action);
+    }
+}
 
 let reducer = Redux.combineReducers({
     counter: Counter.reducer,
-    widgets: Widgets.widgets,
+    widgets: importReducerFactory(Widgets.widgets),
     widgetTypes: WidgetTypes.widgetTypes, //TODO: Unused?
     widgetConfig: WidgetConfig.widgetConfigDialog,
     layouts: Layouts.layouts,

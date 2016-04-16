@@ -4,7 +4,7 @@ import * as Uuid from '../util/uuid'
 import * as WidgetConfig from './widgetConfig'
 import {valuesOf} from '../util/collection'
 import {genCrudReducer} from '../util/reducer'
-import {LOAD_LAYOUT} from '../layouts/layouts.actions'
+import {LOAD_LAYOUT, ADD_WIDGET, UPDATE_WIDGET_PROPS, DELETE_WIDGET, UPDATE_WIDGET_LAYOUT, DASHBOARD_IMPORT} from '../actionNames'
 
 export const initialWidgets = {
     "initial_time_widget": {
@@ -30,7 +30,7 @@ export const initialWidgets = {
     }
 };
 
-const ADD_WIDGET = "ADD_WIDGET";
+
 export function addWidget(widgetType, widgetProps = {}, width = 1, height = 1) {
     return (dispatch, getState) => {
         let widgets = getState().widgets;
@@ -57,7 +57,6 @@ export function configureWidget(widgetState) {
     }
 }
 
-const UPDATE_WIDGET_PROPS = "UPDATE_WIDGET_PROPS";
 export function updateWidgetProps(id, widgetProps = {}) {
     return {
         type: UPDATE_WIDGET_PROPS,
@@ -66,7 +65,6 @@ export function updateWidgetProps(id, widgetProps = {}) {
     }
 }
 
-const DELETE_WIDGET = "DELETE_WIDGET";
 export function deleteWidget(id) {
     return {
         type: DELETE_WIDGET,
@@ -74,11 +72,9 @@ export function deleteWidget(id) {
     }
 }
 
-
-const UPDATE_LAYOUT = "UPDATE_WIDGET_LAYOUT";
 export function updateLayout(layout) {
     return {
-        type: UPDATE_LAYOUT,
+        type: UPDATE_WIDGET_LAYOUT,
         layout: layout
     }
 }
@@ -87,7 +83,7 @@ const widgetsCrudReducer = genCrudReducer([ADD_WIDGET, UPDATE_WIDGET_PROPS, DELE
 export function widgets(state = initialWidgets, action) {
     state = widgetsCrudReducer(state, action);
     switch (action.type) {
-        case UPDATE_LAYOUT:
+        case UPDATE_WIDGET_LAYOUT:
             return valuesOf(state)
                 .reduce((newState, {id}) => {
                         newState[id] = widget(newState[id], action);
@@ -119,7 +115,7 @@ function widget(state = {}, action) {
                 ...state,
                 props: action.widgetProps
             };
-        case UPDATE_LAYOUT:
+        case UPDATE_WIDGET_LAYOUT:
             let layout = layoutById(action.layout, state.id);
             return {
                 ...state,

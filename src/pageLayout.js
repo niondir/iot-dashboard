@@ -5,6 +5,7 @@ import * as Nav from './navigation'
 import $ from 'jquery'
 import {WidgetConfigDialog} from './widgets/widgetConfig'
 import * as Layouts from './layouts/layouts.ui'
+import * as Import from './dashboard/import.ui'
 
 export default class Layout extends Component {
 
@@ -29,6 +30,8 @@ export default class Layout extends Component {
         return <div className="container">
 
             <WidgetConfigDialog/>
+            <Import.Modal/>
+
             <div className="ui flowing basic widgets-menu menu popup">
                 <div className="ui sixteen column relaxed divided grid">
                     <div className="column">
@@ -50,10 +53,9 @@ export default class Layout extends Component {
                         Dashboard
                     </a>
 
+                    <Import.TopNavItem/>
                     <Layouts.TopNavItem/>
-
                     <a className="add-widget item">New Widget <i className="dropdown icon"></i></a>
-
                 </div>
             </div>
 

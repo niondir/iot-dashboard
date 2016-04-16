@@ -1,7 +1,7 @@
 import * as Widgets from '../widgets/widgets'
 import {generate as generateUuid} from '../util/uuid'
 import {genCrudReducer} from '../util/reducer'
-import {ADD_LAYOUT, LOAD_LAYOUT, UPDATE_LAYOUT, DELETE_LAYOUT, SET_CURRENT_LAYOUT} from './layouts.actions'
+import {ADD_LAYOUT, LOAD_LAYOUT, UPDATE_LAYOUT, DELETE_LAYOUT, SET_CURRENT_LAYOUT} from '../actionNames'
 
 const initialLayouts = {
     "default": {
@@ -34,19 +34,23 @@ export function setCurrentLayout(id) {
     }
 }
 
+export function loadEmptyLayout() {
+    return {
+        type: LOAD_LAYOUT,
+        layout: {
+            id: "empty",
+            widgets: {}
+        }
+    };
+}
+
 export function loadLayout(id) {
     return (dispatch, getState) => {
         const state = getState();
 
         const layout = state.layouts[id];
         // Bad hack to force the grid layout to update correctly
-        dispatch({
-            type: LOAD_LAYOUT,
-            layout: {
-                id: "empty",
-                widgets: {}
-            }
-        });
+        dispatch(loadEmptyLayout());
 
         if (!layout) {
             return;

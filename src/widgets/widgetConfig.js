@@ -2,6 +2,7 @@ import * as React from 'react'
 import $ from 'jquery'
 import * as Widgets from './widgets'
 import {connect} from 'react-redux'
+import {START_CREATE_WIDGET, START_CONFIGURE_WIDGET} from '../actionNames'
 
 const initialState = {
     type: null,
@@ -13,7 +14,7 @@ const initialState = {
 export function openWidgetCreateDialog(type, defaultProps) {
     return (dispatch) => {
         dispatch({
-            type: "START_CREATE_WIDGET",
+            type: START_CREATE_WIDGET,
             widgetType: type,
             widgetProps: defaultProps
         });
@@ -29,7 +30,7 @@ export function openWidgetConfigDialog(id) {
         const state = getState();
         const widget = state.widgets[id];
         dispatch({
-            type: "START_CONFIGURE_WIDGET",
+            type: START_CONFIGURE_WIDGET,
             widget: widget
         });
         ConfigDialog.showModal();
@@ -38,7 +39,7 @@ export function openWidgetConfigDialog(id) {
 
 export function widgetConfigDialog(state = initialState, action) {
     switch (action.type) {
-        case "START_CREATE_WIDGET":
+        case START_CREATE_WIDGET:
             return {
                 ...state,
                 type: action.widgetType,
@@ -46,7 +47,7 @@ export function widgetConfigDialog(state = initialState, action) {
                 name: action.widgetType,
                 props: action.widgetProps || {}
             };
-        case "START_CONFIGURE_WIDGET":
+        case START_CONFIGURE_WIDGET:
             return {
                 ...state,
                 type: action.widget.type,
