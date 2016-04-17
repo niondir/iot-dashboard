@@ -12,12 +12,19 @@ const initialLayouts = {
 };
 
 export function addLayout(name, widgets) {
-    return {
-        type: ADD_LAYOUT,
-        id: generateUuid(),
-        name,
-        widgets
+    return (dispatch) => {
+
+
+        let addLayout = dispatch({
+            type: ADD_LAYOUT,
+            id: generateUuid(),
+            name,
+            widgets
+        });
+
+        dispatch(setCurrentLayout(addLayout.id));
     }
+
 }
 
 export function deleteLayout(id) {

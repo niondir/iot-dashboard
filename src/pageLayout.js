@@ -40,6 +40,7 @@ export default class Layout extends Component {
                             {/* TODO: render nav items based on the widget registry */}
                             <Nav.AddWidget text="Text" type="text"/>
                             <Nav.AddWidget text="Clock" type="time"/>
+                            <Nav.AddWidget text="Chart" type="chart"/>
                         </div>
                     </div>
                 </div>

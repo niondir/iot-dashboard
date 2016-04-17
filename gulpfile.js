@@ -68,6 +68,10 @@ gulp.task('copy:css', function () {
     gulp.src('./css/**/*.css')
         .pipe(gulp.dest('./dist'));
 });
+gulp.task('copy:vendor', function () {
+    gulp.src('./vendor/**/*.*')
+        .pipe(gulp.dest('./dist/vendor'));
+});
 
 
 var WebpackDevServer = require("webpack-dev-server");

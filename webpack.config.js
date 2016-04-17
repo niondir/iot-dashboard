@@ -4,6 +4,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var paths = {
     src: path.join(__dirname, "src"),
+    vendor: path.join(__dirname, "vendor"),
     node_modules: path.join(__dirname, "node_modules"),
     css: [
         path.join(__dirname, "node_modules/semantic-ui-css"),
@@ -20,7 +21,7 @@ module.exports = {
         vendor: [
             "react", "react-dom", "react-grid-layout", "react-grid-layout/css/styles.css",
             "redux", "react-redux", "redux-logger", "redux-thunk",
-            "semantic-ui-css/semantic", "semantic-ui-css/semantic.css", "jquery"
+            "semantic-ui-css/semantic", "semantic-ui-css/semantic.css", "jquery", "c3css"
         ]
     },
     output: {
@@ -35,7 +36,10 @@ module.exports = {
             path.resolve('./dist')
         ],
         alias: {
-            jquery: path.resolve('./node_modules/jquery')
+            jquery: path.resolve('./node_modules/jquery'),
+            d3: path.resolve('./vendor/d3/d3.js'),
+            c3: path.resolve('./vendor/c3/c3.js'),
+            c3css: path.resolve('./vendor/c3/c3.css')
         }
     },
     // resolveLoader: {root: path.join(__dirname, "node_modules")},
@@ -66,7 +70,8 @@ module.exports = {
                 include: paths.css
             },
             {
-                test: /\.(png)$/, loader: "file-loader?name=img/[name].[sha256:hash:base58:10].[ext]",
+                test: /\.(png)$/,
+                loader: "file-loader?name=img/[name].[sha256:hash:base58:10].[ext]",
                 include: paths.css
             }
         ]

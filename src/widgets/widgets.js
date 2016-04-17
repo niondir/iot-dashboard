@@ -176,7 +176,7 @@ export const WidgetFrame = (widgetState) => {
             </div>
 
             <div className="ui segment">
-                {React.createElement(widget.widget, widgetState.props)}
+                {React.createElement(widget.widget, {...widgetState.props, _state: widgetState})}
             </div>
         </div>)
 }

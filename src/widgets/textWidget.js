@@ -47,6 +47,7 @@ class ConfigDialog extends React.Component {
         if (this.input) {
             this.input.value = this.props.widgetProps.text || "";
         }
+
         return <div className="content">
             <form className="ui form">
                 <div className="field">

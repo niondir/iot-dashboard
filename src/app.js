@@ -7,6 +7,7 @@ import * as Persist from './widgets/persistence'
 // Css
 import 'semantic-ui-css/semantic.css';
 import 'semantic-ui-css/semantic';
+import 'c3css';
 // Redux Middleware
 import createLogger from 'redux-logger';
 import thunk from 'redux-thunk'
@@ -20,10 +21,12 @@ import {DASHBOARD_IMPORT} from './actionNames'
 // Widgets
 import * as TimeWidget from './widgets/timeWidget'
 import * as TextWidget from './widgets/textWidget'
+import * as ChartWidget from './widgets/chartWidget'
 
 
 Widgets.register(TimeWidget);
 Widgets.register(TextWidget);
+Widgets.register(ChartWidget);
 
 function importReducerFactory(baseReducer:Function) {
     return importReducer.bind(this, baseReducer);
