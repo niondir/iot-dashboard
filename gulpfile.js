@@ -2,6 +2,7 @@ const gulp = require('gulp');
 var gutil = require('gulp-util');
 const babel = require('gulp-babel');
 const webpack = require('webpack');
+var inject = require('gulp-inject');
 
 var browserSync = require('browser-sync').create();
 
@@ -14,13 +15,21 @@ var browserSync = require('browser-sync').create();
  */
 
 
-gulp.task("dev", ["webpack:server", 'copy:all'/*, "browser-sync"*/], function () {
+gulp.task("dev", ["webpack:server", 'copy:all', 'inject'/*, "browser-sync"*/], function () {
+    gulp.run('watch');
+    
     //gulp.watch(["src/**/*.js"], ["webpack"]);
-    gulp.watch(["src/**/*.html"], ["copy:html"]);
+    
     //gulp.watch("./dist/**/*.*", browserSync.reload);
 
     //gulp.watch("package.json", ["compile"]);
     //gulp.watch("webpack.config.js", ["webpack"]);
+});
+
+
+gulp.task('watch', ['copy:all', 'inject'], () => {
+    gulp.watch("src/**/*.html", ["copy:html"]);
+    gulp.watch("src/**/*.test.js", ["inject:tests"]);
 });
 
 
@@ -41,6 +50,27 @@ gulp.task('webpack', function (callback) {
     });
 });
 
+
+///////////////
+// Inject Tasks
+///////////////
+gulp.task('inject', ['inject:tests']);
+
+gulp.task('inject:tests', function () {
+    var target = gulp.src('./src/tests.js');
+    // It's not necessary to read the files (will speed up things), we're only after their paths: 
+    var sources = gulp.src(['./src/**/*.test.js'], {read: false});
+
+    return target.pipe(inject(sources, {
+            relative: true,
+            starttag: '/* inject:tests */',
+            endtag: '/* endinject */',
+            transform: function (filepath, file, i, length) {
+                return "import './" + filepath + "'";
+            }
+        }))
+        .pipe(gulp.dest('./src'));
+});
 
 ///////////////
 // Clean Tasks

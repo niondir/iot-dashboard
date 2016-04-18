@@ -18,10 +18,12 @@ module.exports = {
     bail: true, // Fail fast
     entry: {
         app: ["./src/app.js"],
+        tests: ['mocha!./src/tests.js'],
+        mocha: ['./src/tests.js'],
         vendor: [
             "react", "react-dom", "react-grid-layout", "react-grid-layout/css/styles.css",
             "redux", "react-redux", "redux-logger", "redux-thunk",
-            "semantic-ui-css/semantic", "semantic-ui-css/semantic.css", "jquery", "c3css"
+            "semantic-ui-css/semantic", "semantic-ui-css/semantic.css", "jquery", "c3css", "c3", "d3"
         ]
     },
     output: {
@@ -78,7 +80,7 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js"),
+        new webpack.optimize.CommonsChunkPlugin( {names:["vendor"],  filename:"vendor.bundle.js", chunks: ["app"]}),
         new ExtractTextPlugin("[name].bundle.css"),
         new webpack.PrefetchPlugin('./src/pageLayout.js'),
         new webpack.PrefetchPlugin(paths.node_modules, 'semantic-ui-css/semantic.css'),

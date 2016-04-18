@@ -2,6 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux'
 import * as Uuid from '../util/uuid'
 import * as WidgetConfig from './widgetConfig'
+import WidgetPlugins from './widgetPlugins'
 import {valuesOf} from '../util/collection'
 import {genCrudReducer} from '../util/reducer'
 import {LOAD_LAYOUT, ADD_WIDGET, UPDATE_WIDGET_PROPS, DELETE_WIDGET, UPDATE_WIDGET_LAYOUT, DASHBOARD_IMPORT} from '../actionNames'
@@ -129,33 +130,13 @@ function widget(state = {}, action) {
     }
 }
 
-// TODO: Move to widgetRegistry module or own class
-export function register(module) {
-    console.assert(module.TYPE_INFO, "Missing TYPE_INFO on widget module. Every module must export TYPE_INFO");
-    widgets[module.TYPE_INFO.type] = {
-        ...module.TYPE_INFO,
-        widget: module.Widget,
-        configDialog: module.ConfigDialog ? module.ConfigDialog : null
-    }
-}
-
-export function getWidget(type:String) {
-    return widgets[type];
-}
-
-export function getWidgets():Array {
-    return Object.keys(widgets).map(key => widgets[key]);
-}
-
-// End Widget Registry
-
 
 /**
  * The Dragable Frame of a Widget.
  * Contains generic UI controls, shared by all Widgets
  */
 export const WidgetFrame = (widgetState) => {
-    let widget = getWidget(widgetState.type);
+    let widget = WidgetPlugins.getWidget(widgetState.type);
     console.assert(widget, "No registered widget with type: " + widgetState.type);
     return (
         <div className="ui raised segments"
@@ -179,7 +160,7 @@ export const WidgetFrame = (widgetState) => {
                 {React.createElement(widget.widget, {...widgetState.props, _state: widgetState})}
             </div>
         </div>)
-}
+};
 
 class WidgetButton extends React.Component {
     render() {

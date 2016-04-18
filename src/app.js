@@ -19,14 +19,22 @@ import * as WidgetConfig from './widgets/widgetConfig'
 import * as Layouts from './layouts/layouts'
 import {DASHBOARD_IMPORT} from './actionNames'
 // Widgets
-import * as TimeWidget from './widgets/timeWidget'
-import * as TextWidget from './widgets/textWidget'
+import WidgetPlugins from './widgets/widgetPlugins'
+import * as TimeWidget from './widgets/plugins/timeWidget'
+import * as TextWidget from './widgets/plugins/textWidget'
 import * as ChartWidget from './widgets/chartWidget'
+// Datasources
+import DatasourcePlugins from './datasource/datasourcePlugins'
+import * as RandomDatasource from './datasource/plugins/randomDatasource'
+
+WidgetPlugins.register(TimeWidget);
+WidgetPlugins.register(TextWidget);
+WidgetPlugins.register(ChartWidget);
 
 
-Widgets.register(TimeWidget);
-Widgets.register(TextWidget);
-Widgets.register(ChartWidget);
+DatasourcePlugins.register(RandomDatasource);
+
+
 
 function importReducerFactory(baseReducer:Function) {
     return importReducer.bind(this, baseReducer);
@@ -60,8 +68,17 @@ let store = Redux.createStore(
         logger // must be last
     ));
 
-ReactDOM.render(
-    <Provider store={store}>
-        <Layout/>
-    </Provider>,
-    document.getElementById('app'));
+
+
+    let element = document.getElementById('app');
+
+    if (element) {
+        ReactDOM.render(
+            <Provider store={store}>
+                <Layout/>
+            </Provider>,
+            element);
+    }
+    else {
+        console.warn("Can not get element '#app' from DOM. Okay for headless execution.");
+    }

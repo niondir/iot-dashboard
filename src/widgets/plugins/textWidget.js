@@ -1,8 +1,6 @@
 import * as React from 'react';
 import {Component} from 'react';
 import {connect} from 'react-redux'
-import * as WidgetConfig from './widgetConfig'
-import * as Widgets from './widgets'
 
 export const TYPE_INFO = {
     type: "text",

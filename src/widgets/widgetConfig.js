@@ -1,6 +1,7 @@
 import * as React from 'react'
 import $ from 'jquery'
 import * as Widgets from './widgets'
+import WidgetPlugins from './widgetPlugins'
 import {connect} from 'react-redux'
 import {START_CREATE_WIDGET, START_CONFIGURE_WIDGET} from '../actionNames'
 
@@ -65,7 +66,7 @@ export const WidgetConfigDialog = () => {
 };
 
 export function createWidget(type) {
-    const widget = Widgets.getWidget(type);
+    const widget = WidgetPlugins.getWidget(type);
     return (dispatch, getState) => {
         if (!widget.configDialog) {
             dispatch(Widgets.addWidget(type, widget.defaultProps));
@@ -133,7 +134,7 @@ class ConfigDialog extends React.Component {
     }
 
     render() {
-        const widget = Widgets.getWidget(this.props.widgetType);
+        const widget = WidgetPlugins.getWidget(this.props.widgetType);
 
         if (!widget) {
             return <div className={"ui modal widget-config"}>
