@@ -80,7 +80,7 @@ export function updateLayout(layout) {
     }
 }
 
-const widgetsCrudReducer = genCrudReducer([ADD_WIDGET, UPDATE_WIDGET_PROPS, DELETE_WIDGET], widget, initialWidgets);
+const widgetsCrudReducer = genCrudReducer([ADD_WIDGET, UPDATE_WIDGET_PROPS, DELETE_WIDGET], widget);
 export function widgets(state = initialWidgets, action) {
     state = widgetsCrudReducer(state, action);
     switch (action.type) {
@@ -92,7 +92,8 @@ export function widgets(state = initialWidgets, action) {
                     }, {...state}
                 );
         case LOAD_LAYOUT:
-            return action.layout.widgets;
+            console.assert(action.layout.widgets, "Layout is missing Widgets, id: " + action.layout.id);
+            return action.layout.widgets || {};
         default:
             return state;
     }

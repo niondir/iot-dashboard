@@ -1,5 +1,8 @@
 import {assert} from 'chai'
 import DatasourcePlugins from './datasourcePlugins'
+import {genCrudReducer} from '../util/reducer'
+import * as Action from '../actionNames'
+import * as Uuid from '../util/uuid'
 
 const initialDatasources = {
     "my-random": {
@@ -9,18 +12,32 @@ const initialDatasources = {
     }
 };
 
-export function add(a, b) {
-    return a + b;
+
+export function addDatasource() {
+    return {
+         id: Uuid.generate()
+    }
 }
 
-describe('Test Datasource', function() {
-    describe('#test()', function () {
-        it('It should return the sum of two values', function () {
-            assert.equal(11, add(5,6));
-            assert.equal(5, add(-1,6));
-            assert.equal(6, add(0,6));
-        });
-    });
-});
+const datasourceCrudReducer = genCrudReducer([Action.ADD_DATASOURCE, Action.UPDATE_DATASOURCE, Action.DELETE_DATASOURCE], datasource);
+export function datasources(state = initialDatasources, action) {
+    state = datasourceCrudReducer(state, action);
+    switch (action.type) {
+        default:
+            return state;
+    }
+}
 
-
+function datasource(state, action) {
+    switch (action.type) {
+        case Action.ADD_DATASOURCE:
+            return {
+                id: action.id,
+                type: action.type,
+                name: action.type
+            };
+        case Action.UPDATE_DATASOURCE:
+        default:
+            return state;
+    }
+}

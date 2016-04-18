@@ -1,9 +1,6 @@
 import * as React from 'react';
 import $ from 'jquery'
 
-var showModal = function(){
-    $(window).trigger('modal.visible');
-}
 
 // This is an element on the page that renders a fullscreen overalay for the modals
 var ModalPage = React.createClass({

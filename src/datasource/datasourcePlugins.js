@@ -14,8 +14,13 @@ export class PluginRegistry {
         }
     }
 
-    getDatasource(type:String) {
+    getPlugin(type:String) {
         return this.datasources[type];
+    }
+
+
+    getPlugins() {
+        return {...this.datasources};
     }
 }
 

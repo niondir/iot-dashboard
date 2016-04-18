@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux'
 import {valuesOf} from '../util/collection'
 import * as Layouts from './layouts'
-import * as ui from '../uiElements'
+import * as ui from '../ui/elements.ui'
 const Prop = React.PropTypes;
 
 
@@ -103,7 +103,7 @@ class MyLayoutItem extends React.Component {
 
         return <a className="item" href="#" onClick={() => props.onClick(props)}>
             <i className={indexIconClass}/>
-            <i className="right floated remove huge icon" style={{zIndex:9000}} onClick={(e) => {
+            <i className="right floated remove huge icon" onClick={(e) => {
             props.deleteLayout(props);
             e.stopPropagation();
             }}/> {props.text}
@@ -121,7 +121,7 @@ MyLayoutItem.propTypes = {
 const LayoutItem = connect(
     (state) => {
         return {
-            currentLayout: state.currentLayout,
+            currentLayout: state.currentLayout
         }
     },
     (dispatch, props)=> {

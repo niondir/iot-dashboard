@@ -11,7 +11,7 @@
  * The name of the property to fetch the id from the action. Default: 'id'
  * @returns {crudReducer}
  */
-export function genCrudReducer(actionNames:Array<String>, elementReducer:Function, initialState = {}, idProperty = 'id') {
+export function genCrudReducer(actionNames:Array<String>, elementReducer:Function, idProperty = 'id') {
     console.assert(actionNames.length === 3, "ActionNames must contain 3 names for create, update, delete in that order");
     let [CREATE_ACTION, UPDATE_ACTION, DELETE_ACTION] = actionNames;
     console.assert(CREATE_ACTION.includes("ADD") || CREATE_ACTION.includes("CREATE"),
@@ -21,7 +21,7 @@ export function genCrudReducer(actionNames:Array<String>, elementReducer:Functio
     console.assert(DELETE_ACTION.includes("DELETE") || DELETE_ACTION.includes("REMOVE"),
         "The delete action name should probably contain DELETE or REMOVE, but is: " + DELETE_ACTION);
 
-    return function crudReducer(state = initialState, action) {
+    return function crudReducer(state, action) {
         let id = action[idProperty];
         switch (action.type) {
             case CREATE_ACTION:

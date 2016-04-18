@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import {valuesOf} from '../util/collection'
-import * as ui from '../uiElements'
+import * as ui from '../ui/elements.ui'
 const Prop = React.PropTypes;
 
 

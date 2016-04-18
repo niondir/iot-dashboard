@@ -2,9 +2,59 @@ import {assert} from 'chai'
 
 export const TYPE_INFO = {
     type: "random",
-    defaultProps: {
-        name: "Text"
+    name: "Random",
+    settings: {
+        string: {
+            name: 'some String',
+            type: 'string',
+            "defaultValue": "Some default value",
+            "description": "This is pretty self explanatory..."
+        },
+        text: {
+            name: 'some Text',
+            type: 'text',
+            "defaultValue": "Some default value",
+            "description": "This is pretty self explanatory..."
+        },
+        boolean: {
+            name: 'some Boolean',
+            type: 'string',
+            "defaultValue": true,
+            "description": "This is pretty self explanatory..."
+        },
+        multi: {
+            name: 'some Options',
+            type: 'option',
+            "description": "This is pretty self explanatory...",
+            "options": [
+                {
+                    "name": "0-50",
+                    "value": "young"
+                },
+                {
+                    "name": "51-100",
+                    "value": "old"
+                }
+            ]
+        },
+        array: {
+            name: 'some Array',
+            type: 'array',
+            "description": "This is pretty self explanatory...",
+            "options": [
+                {
+                    "name": "0-50",
+                    "value": "young"
+                },
+                {
+                    "name": "51-100",
+                    "value": "old"
+                }
+            ]
+        }
     }
+    ,
+    defaultProps: {}
 };
 
 

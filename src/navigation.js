@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Component} from 'react';
 import {connect} from 'react-redux'
 import * as WidgetConfig from './widgets/widgetConfig'
-import {LinkItem} from './uiElements'
+import {LinkItem} from './ui/elements.ui'
 
 
 

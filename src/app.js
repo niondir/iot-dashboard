@@ -13,10 +13,9 @@ import createLogger from 'redux-logger';
 import thunk from 'redux-thunk'
 // Reducers
 import * as Widgets from './widgets/widgets'
-import * as Counter from './exampleCounter'
-import * as WidgetTypes from './widgets/widgetTypes'
 import * as WidgetConfig from './widgets/widgetConfig'
 import * as Layouts from './layouts/layouts'
+import * as Datasource from './datasource/datasource'
 import {DASHBOARD_IMPORT} from './actionNames'
 // Widgets
 import WidgetPlugins from './widgets/widgetPlugins'
@@ -26,6 +25,7 @@ import * as ChartWidget from './widgets/chartWidget'
 // Datasources
 import DatasourcePlugins from './datasource/datasourcePlugins'
 import * as RandomDatasource from './datasource/plugins/randomDatasource'
+import * as TimeDatasource from './datasource/plugins/timeDatasource'
 
 WidgetPlugins.register(TimeWidget);
 WidgetPlugins.register(TextWidget);
@@ -33,6 +33,7 @@ WidgetPlugins.register(ChartWidget);
 
 
 DatasourcePlugins.register(RandomDatasource);
+DatasourcePlugins.register(TimeDatasource);
 
 
 
@@ -50,12 +51,11 @@ function importReducer(baseReducer:Function, state, action) {
 }
 
 let reducer = Redux.combineReducers({
-    counter: Counter.reducer,
     widgets: importReducerFactory(Widgets.widgets),
-    widgetTypes: WidgetTypes.widgetTypes, //TODO: Unused?
     widgetConfig: WidgetConfig.widgetConfigDialog,
     layouts: Layouts.layouts,
-    currentLayout: Layouts.currentLayout
+    currentLayout: Layouts.currentLayout,
+    datasource: Datasource.datasources
 });
 
 const logger = createLogger();

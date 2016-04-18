@@ -40,8 +40,6 @@ export class Modal extends React.Component {
 
     render() {
         let props = this.props;
-        console.log("state")
-        console.log(props.state)
         const actions = [
             {
                 className: "ui right black button",
