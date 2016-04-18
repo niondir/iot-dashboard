@@ -3,8 +3,8 @@
 
 
 /* inject:tests */
-import './widgets/widgetPlugins.test.js'
 import './datasource/datasourcePlugins.test.js'
+import './widgets/widgetPlugins.test.js'
 import './datasource/plugins/randomDatasource.test.js'
 /* endinject */
 

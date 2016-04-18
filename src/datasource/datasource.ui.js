@@ -5,6 +5,7 @@ import DatasourcePlugins from './datasourcePlugins'
 import {connect} from 'react-redux'
 import {valuesOf} from '../util/collection'
 import * as ui from '../ui/elements.ui'
+import * as SettingsUi from '../ui/settings.ui'
 const Prop = React.PropTypes;
 
 
@@ -56,12 +57,36 @@ export class Modal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedType: 'random'
+            selectedType: ''
         }
     }
 
     componentWillReceiveProps(nextProps) {
     }
+
+    componentWillUpdate() {
+        console.log("State: ", this.state)
+    }
+
+    componentDidMount() {
+        this._initPopup();
+    }
+
+    componentDidUpdate() {
+        this._initPopup();
+        console.log("State: ", this.state)
+    }
+
+    _initPopup() {
+        $('.icon.help.circle')
+            .popup({
+                position: "top left",
+                offset: -10
+            });
+        $('.ui.checkbox')
+            .checkbox();
+    }
+
 
     render() {
         let props = this.props;
@@ -92,11 +117,34 @@ export class Modal extends React.Component {
         >
             <div className="ui one column grid">
                 <div className="column">
-                    <form className="ui form">
+                    <form className="ui form"
+                          onSubmit={e => {console.log($(e.target).serialize()); e.preventDefault();}}
+                          onInput={(e) => {
+                          let value = e.target.value;
+
+                          if (e.target.type === "checkbox") {
+                            value = e.target.checked;
+                          }
+                           console.log("onInput", value);
+                          //this.setState({[e.target.name]: value});
+                          }}
+                          onChange={(e) => {
+                          let value = e.target.value;
+
+                          if (e.target.type === "checkbox") {
+                            value = e.target.checked;
+                          }
+
+                            console.log("onChange", value)
+                          this.setState({[e.target.name]: value});
+                          }}
+                    >
                         <div className="field">
                             <label>Type</label>
-                            <select className="ui fluid dropdown" value={this.state.selectedType} onChange={(e) => {this.setState({selectedType: e.value})}}>
-                                <option key="none" value="">Select Type</option>
+                            <select className="ui fluid dropdown" value={this.state.selectedType} onChange={(e) => {
+                            this.setState({selectedType: e.target.value});
+                            }}>
+                                <option key="none" value="">Select Type...</option>
                                 {valuesOf(datasources).map(source => {
                                     return <option key={source.type} value={source.type}>{source.name}</option>
                                 })}
@@ -104,16 +152,13 @@ export class Modal extends React.Component {
                         </div>
                         <ui.Divider/>
                         {selectedSource ?
-                            valuesOf(selectedSource.settings).map(setting => {
-                                return <div key={setting.name} className="field">
-                                    <label>{setting.name}</label>
-                                    <input />
-                                    </div>
+                            valuesOf(selectedSource.settings, 'id').map(setting => {
+                                return <SettingsUi.Field key={setting.id} {...setting}/>;
                             })
                             :
                             null
-
                         }
+                        <input type="submit" value="Submit"/>
                     </form>
 
                 </div>

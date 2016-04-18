@@ -24,6 +24,8 @@ export default class Layout extends Component {
                     hide: 50
                 }
             });
+
+        
     }
 
 

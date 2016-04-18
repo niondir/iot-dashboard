@@ -13,6 +13,7 @@ export default class ModalDialog extends React.Component {
             .modal({
                 detachable: false,
                 closable: false,
+                observeChanges: true,
                 onApprove: ($element) => false,
                 onDeny: ($element) => false
             })

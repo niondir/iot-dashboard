@@ -5,10 +5,9 @@ export const TYPE_INFO = {
     name: "Random",
     settings: {
         string: {
-            name: 'some String',
+            name: 'some String w/o description',
             type: 'string',
-            "defaultValue": "Some default value",
-            "description": "This is pretty self explanatory..."
+            "defaultValue": "Some default value"
         },
         text: {
             name: 'some Text',
@@ -18,7 +17,7 @@ export const TYPE_INFO = {
         },
         boolean: {
             name: 'some Boolean',
-            type: 'string',
+            type: 'boolean',
             "defaultValue": true,
             "description": "This is pretty self explanatory..."
         },
@@ -26,21 +25,7 @@ export const TYPE_INFO = {
             name: 'some Options',
             type: 'option',
             "description": "This is pretty self explanatory...",
-            "options": [
-                {
-                    "name": "0-50",
-                    "value": "young"
-                },
-                {
-                    "name": "51-100",
-                    "value": "old"
-                }
-            ]
-        },
-        array: {
-            name: 'some Array',
-            type: 'array',
-            "description": "This is pretty self explanatory...",
+            "defaultValue": "old",
             "options": [
                 {
                     "name": "0-50",

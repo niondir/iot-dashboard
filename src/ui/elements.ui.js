@@ -30,7 +30,7 @@ export const Icon = (props) => {
         classes.push(props.size);
     }
     classes.push('icon');
-    return <i className={classes.join(" ")} onClick={props.onClick}/>
+    return <i {...props} className={classes.join(" ")}/>
 };
 
 Icon.propTypes = {
