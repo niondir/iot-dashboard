@@ -25,8 +25,7 @@ function SettingsInput(props) {
                 <label>{props.description}</label>
             </div>;*/
         case "option":
-            return <select name={props.id} className="ui fluid dropdown">
-                <option key="none" defaultValue={props.defaultValue}>Select {props.options.name}...</option>
+            return <select name={props.id} defaultValue={props.defaultValue} className="ui fluid dropdown">
                 {props.options.map(option => {
                     return <option key={option.value} value={option.value}>{option.name}</option>
                 })}

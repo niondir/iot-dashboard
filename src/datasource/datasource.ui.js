@@ -3,9 +3,10 @@ import ModalDialog from '../ui/modal.ui'
 import * as Datasource from './datasource'
 import DatasourcePlugins from './datasourcePlugins'
 import {connect} from 'react-redux'
-import {valuesOf} from '../util/collection'
+import {valuesOf, chunk} from '../util/collection'
 import * as ui from '../ui/elements.ui'
 import * as SettingsUi from '../ui/settings.ui'
+import serializeForm from '../util/formSerializer'
 const Prop = React.PropTypes;
 
 
@@ -16,35 +17,40 @@ const TopNavItem = (props) => {
         <div className="ui menu">
             <ui.LinkItem icon="plus" onClick={() => {props.createDatasource()}}>Add Datasource</ui.LinkItem>
             <ui.Divider/>
-            <ui.LinkItem onClick={() => {}}>
-                <ui.Icon type="delete" size="huge" align="right" onClick={() => alert()}/>
-                Random Values
-            </ui.LinkItem>
-            <ui.LinkItem onClick={() => {}}>
-                <ui.Icon type="delete" size="huge" align="right"/>
-                Time
-            </ui.LinkItem>
-            <ui.LinkItem onClick={() => {}}>Test</ui.LinkItem>
+            {
+                valuesOf(props.datasources).map(ds => {
+                    return <ui.LinkItem key={ds.id} onClick={() => {/*Edit*/}}>
+                        <ui.Icon type="delete" size="huge" align="right" onClick={() => props.deleteDatasource(ds.id)}/>
+                        {ds.props.name}
+                    </ui.LinkItem>
+                })
+            }
         </div>
     </div>
 };
 
 TopNavItem.propTypes = {
-    createDatasource: Prop.func,
-    datasources: Prop.arrayOf(
+    createDatasource: Prop.func.isRequired,
+    deleteDatasource: Prop.func.isRequired,
+    datasources: Prop.objectOf(
         Prop.shape({
-            name: Prop.string
+            type: Prop.string.isRequired,
+            id: Prop.string.isRequired,
+            props: Prop.object.isRequired
         })
-    )
+    ).isRequired
 };
 
 const TopItemNavComponent = connect(
     (state) => {
-        return {}
+        return {
+            datasources: state.datasources
+        }
     },
     (dispatch) => {
         return {
-            createDatasource: () => ModalDialog.showModal("datasource-create")
+            createDatasource: () => ModalDialog.showModal("datasource-create"),
+            deleteDatasource: (id) => dispatch(Datasource.deleteDatasource(id))
         }
     }
 )(TopNavItem);
@@ -58,26 +64,18 @@ export class Modal extends React.Component {
         super(props);
         this.state = {
             selectedType: ''
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-    }
-
-    componentWillUpdate() {
-        console.log("State: ", this.state)
+        };
     }
 
     componentDidMount() {
-        this._initPopup();
+        this._initSemanticUi();
     }
 
     componentDidUpdate() {
-        this._initPopup();
-        console.log("State: ", this.state)
+        this._initSemanticUi();
     }
 
-    _initPopup() {
+    _initSemanticUi() {
         $('.icon.help.circle')
             .popup({
                 position: "top left",
@@ -86,7 +84,6 @@ export class Modal extends React.Component {
         $('.ui.checkbox')
             .checkbox();
     }
-
 
     render() {
         let props = this.props;
@@ -102,14 +99,25 @@ export class Modal extends React.Component {
                 iconClass: "save icon",
                 label: "Create",
                 onClick: () => {
-                    props.createDatasource(this.refs.data.value);
+                    const options = {
+                        hash: true,
+                        disabled: true,
+                        empty: true,
+                        realBooleans: true
+                    };
+
+                    const formData = serializeForm(this.refs.form, options);
+                    const {type, ...dsProps} = formData;
+                    this.props.addDatasource(type, dsProps);
+                    this.setState({selectedType: ""});
                     return true;
                 }
             }
         ];
 
+
         const datasources = DatasourcePlugins.getPlugins();
-        const selectedSource = DatasourcePlugins.getPlugin(this.state.selectedType);
+        const selectedSource = DatasourcePlugins.getPlugin(this.state.selectedType) || {settings: {}};
 
         return <ModalDialog id="datasource-create"
                             title="Create Datasource"
@@ -117,48 +125,44 @@ export class Modal extends React.Component {
         >
             <div className="ui one column grid">
                 <div className="column">
-                    <form className="ui form"
-                          onSubmit={e => {console.log($(e.target).serialize()); e.preventDefault();}}
-                          onInput={(e) => {
-                          let value = e.target.value;
-
-                          if (e.target.type === "checkbox") {
-                            value = e.target.checked;
-                          }
-                           console.log("onInput", value);
-                          //this.setState({[e.target.name]: value});
-                          }}
-                          onChange={(e) => {
-                          let value = e.target.value;
-
-                          if (e.target.type === "checkbox") {
-                            value = e.target.checked;
-                          }
-
-                            console.log("onChange", value)
-                          this.setState({[e.target.name]: value});
-                          }}
-                    >
+                    <form className="ui form" ref="form">
                         <div className="field">
                             <label>Type</label>
-                            <select className="ui fluid dropdown" value={this.state.selectedType} onChange={(e) => {
-                            this.setState({selectedType: e.target.value});
-                            }}>
+                            <select className="ui fluid dropdown" name="type" value={this.state.selectedType}
+                                    onChange={(e) => {this.setState({selectedType: e.target.value});}}
+                            >
                                 <option key="none" value="">Select Type...</option>
                                 {valuesOf(datasources).map(source => {
                                     return <option key={source.type} value={source.type}>{source.name}</option>
                                 })}
                             </select>
                         </div>
+                        <div className="two fields">
+                            <div className="field">
+                                <label>Name</label>
+                                <input name="name" placeholder="Name of the Datasource ..."/>
+                            </div>
+
+                            <div className="field">
+                                <label>Update Intervall</label>
+                                <input name="interval" placeholder="Update Interval in Seconds ..." defaultValue="5"/>
+                            </div>
+                        </div>
                         <ui.Divider/>
-                        {selectedSource ?
-                            valuesOf(selectedSource.settings, 'id').map(setting => {
-                                return <SettingsUi.Field key={setting.id} {...setting}/>;
+                        {
+                            chunk(valuesOf(selectedSource.settings, 'id'), 2).map(chunk => {
+                                return <div key={chunk[0].id} className="two fields">
+                                    {selectedSource ?
+                                        chunk.map(setting => {
+                                            return <SettingsUi.Field key={setting.id} {...setting}/>;
+                                        })
+                                        :
+                                        null
+                                    }
+                                </div>
                             })
-                            :
-                            null
                         }
-                        <input type="submit" value="Submit"/>
+
                     </form>
 
                 </div>
@@ -168,6 +172,20 @@ export class Modal extends React.Component {
 }
 
 Modal.propTypes = {
-    datasource: Prop.object,
-    createDatasource: Prop.func
+    addDatasource: Prop.func.isRequired
 };
+
+const CreateDatasourceDialog = connect(
+    (state) => {
+        return {}
+    },
+    (dispatch) => {
+        return {
+            addDatasource: (type, dsProps) => {
+                dispatch(Datasource.addDatasource(type, dsProps))
+            }
+        }
+    }
+)(Modal);
+
+export {CreateDatasourceDialog as Modal}

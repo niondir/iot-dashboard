@@ -13,9 +13,23 @@ const initialDatasources = {
 };
 
 
-export function addDatasource() {
+export function addDatasource(dsType, props) {
+    if (!dsType) {
+        throw new Error("Can not add Datasource without Type");
+    }
+    
     return {
-         id: Uuid.generate()
+        type: Action.ADD_DATASOURCE,
+        id: Uuid.generate(),
+        dsType,
+        props
+    }
+}
+
+export function deleteDatasource(id) {
+    return {
+        type: Action.DELETE_DATASOURCE,
+        id
     }
 }
 
@@ -33,8 +47,8 @@ function datasource(state, action) {
         case Action.ADD_DATASOURCE:
             return {
                 id: action.id,
-                type: action.type,
-                name: action.type
+                type: action.dsType,
+                props: action.props
             };
         case Action.UPDATE_DATASOURCE:
         default:
