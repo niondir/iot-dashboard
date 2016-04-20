@@ -16,7 +16,7 @@ The **latest development snapshot** is on the `dev` branch.
 
 ## Demo ##
 
- [Live Demo](http://dev.iot-dashboard.org/) of the `last-stable` version.
+ [Live Demo](http://demo.iot-dashboard.org/) of the `last-stable` version.
 
 ## Setup ##
 
