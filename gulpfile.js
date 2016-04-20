@@ -1,45 +1,55 @@
 const gulp = require('gulp');
 var gutil = require('gulp-util');
-const babel = require('gulp-babel');
-const webpack = require('webpack');
-var inject = require('gulp-inject');
-
-var browserSync = require('browser-sync').create();
 
 ////////////////////
 // Main Tasks
 ////////////////////
 
-/*
- Setup everything for a smooth development
+/**
+ * Setup everything for a smooth development
  */
+gulp.task("dev", ['webpack:server', 'watch']);
 
 
-gulp.task("dev", ["webpack:server", 'copy:all', 'inject'/*, "browser-sync"*/], function () {
-    gulp.run('watch');
-    
-    //gulp.watch(["src/**/*.js"], ["webpack"]);
-    
-    //gulp.watch("./dist/**/*.*", browserSync.reload);
-
-    //gulp.watch("package.json", ["compile"]);
-    //gulp.watch("webpack.config.js", ["webpack"]);
-});
-
-
-gulp.task('watch', ['copy:all', 'inject'], () => {
+/**
+ * Keeps files up to date that are not covered by Webpack
+ */
+gulp.task('watch', () => {
     gulp.watch("src/**/*.html", ["copy:html"]);
     gulp.watch("src/**/*.test.js", ["inject:tests"]);
 });
 
 
-gulp.task('compile', ['webpack', 'copy:all'], () => {
-});
+/** 
+ * Build everything required for a successful deployment
+ * */
+gulp.task("build", ['compile']);
+
+gulp.task('compile', ['webpack', 'copy']);
+
+gulp.task('test',['mocha']);
 
 ////////////////////
 
+//////////////////
+// Testing Tasks
+//////////////////
 
-gulp.task('webpack', function (callback) {
+var mocha = require('gulp-mocha');
+
+gulp.task('mocha', ['webpack', 'inject:tests'], function () {
+    return gulp.src('dist/mocha.bundle.js', {read: false})
+        // gulp-mocha needs filepaths so you can't have any plugins before it 
+        .pipe(mocha({reporter: 'spec'})); // more details with 'spec', more fun with 'nyan'
+});
+
+//////////////////
+// Compile Tasks
+// ///////////////
+const babel = require('gulp-babel');
+const webpack = require('webpack');
+
+gulp.task('webpack', ['inject'], function (callback) {
     var webpackConfig = require('./webpack.config.js');
 
     webpack(webpackConfig, function (error, stats) {
@@ -50,10 +60,11 @@ gulp.task('webpack', function (callback) {
     });
 });
 
-
 ///////////////
 // Inject Tasks
 ///////////////
+var inject = require('gulp-inject');
+
 gulp.task('inject', ['inject:tests']);
 
 gulp.task('inject:tests', function () {
@@ -88,7 +99,7 @@ gulp.task('clean:dist', function () {
 // Copy Tasks
 ///////////////
 
-gulp.task('copy:all', ['copy:html', 'copy:css']);
+gulp.task('copy', ['copy:html', 'copy:css']);
 
 gulp.task('copy:html', function () {
     gulp.src('./src/**/*.html')
@@ -105,7 +116,7 @@ gulp.task('copy:vendor', function () {
 
 
 var WebpackDevServer = require("webpack-dev-server");
-gulp.task("webpack:server", function (callback) {
+gulp.task("webpack:server", ['copy', 'inject'], function (callback) {
     // Start a webpack-dev-server
     var webpackConfig = require('./webpack.config.js');
     webpackConfig.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
@@ -126,13 +137,5 @@ gulp.task("webpack:server", function (callback) {
 
         // keep the server alive or continue?
         // callback();
-    });
-});
-
-gulp.task('browser-sync', function () {
-    browserSync.init({
-        server: {
-            baseDir: "./dist"
-        }
     });
 });
