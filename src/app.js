@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as Redux from 'redux';
 import {Provider} from 'react-redux'
+import {reducer as formReducer} from 'redux-form';
 import Layout from './pageLayout'
 import * as Persist from './widgets/persistence'
 // Css
@@ -55,7 +56,8 @@ let reducer = Redux.combineReducers({
     widgetConfig: WidgetConfig.widgetConfigDialog,
     layouts: Layouts.layouts,
     currentLayout: Layouts.currentLayout,
-    datasources: Datasource.datasources
+    datasources: Datasource.datasources,
+    form: formReducer
 });
 
 const logger = createLogger();

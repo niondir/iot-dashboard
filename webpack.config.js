@@ -22,7 +22,7 @@ module.exports = {
         mocha: ['./src/tests.js'],
         vendor: [
             "react", "react-dom", "react-grid-layout", "react-grid-layout/css/styles.css",
-            "redux", "react-redux", "redux-logger", "redux-thunk",
+            "redux", "react-redux", "redux-logger", "redux-thunk", "redux-form",
             "semantic-ui-css/semantic", "semantic-ui-css/semantic.css", "jquery", "c3css", "c3", "d3",
             "form-serialize"
         ]

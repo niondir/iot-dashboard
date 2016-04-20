@@ -7,6 +7,7 @@ import {valuesOf, chunk} from '../util/collection'
 import * as ui from '../ui/elements.ui'
 import * as SettingsUi from '../ui/settings.ui'
 import serializeForm from '../util/formSerializer'
+import {reduxForm} from 'redux-form';
 const Prop = React.PropTypes;
 
 
@@ -59,32 +60,6 @@ export {TopItemNavComponent as TopNavItem}
 
 export class Modal extends React.Component {
 
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedType: ''
-        };
-    }
-
-    componentDidMount() {
-        this._initSemanticUi();
-    }
-
-    componentDidUpdate() {
-        this._initSemanticUi();
-    }
-
-    _initSemanticUi() {
-        $('.icon.help.circle')
-            .popup({
-                position: "top left",
-                offset: -10
-            });
-        $('.ui.checkbox')
-            .checkbox();
-    }
-
     render() {
         let props = this.props;
 
@@ -116,8 +91,7 @@ export class Modal extends React.Component {
         ];
 
 
-        const datasources = DatasourcePlugins.getPlugins();
-        const selectedSource = DatasourcePlugins.getPlugin(this.state.selectedType) || {settings: {}};
+
 
         return <ModalDialog id="datasource-create"
                             title="Create Datasource"
@@ -125,45 +99,7 @@ export class Modal extends React.Component {
         >
             <div className="ui one column grid">
                 <div className="column">
-                    <form className="ui form" ref="form">
-                        <div className="field">
-                            <label>Type</label>
-                            <select className="ui fluid dropdown" name="type" value={this.state.selectedType}
-                                    onChange={(e) => {this.setState({selectedType: e.target.value});}}
-                            >
-                                <option key="none" value="">Select Type...</option>
-                                {valuesOf(datasources).map(source => {
-                                    return <option key={source.type} value={source.type}>{source.name}</option>
-                                })}
-                            </select>
-                        </div>
-                        <div className="two fields">
-                            <div className="field">
-                                <label>Name</label>
-                                <input name="name" placeholder="Name of the Datasource ..."/>
-                            </div>
-
-                            <div className="field">
-                                <label>Update Intervall</label>
-                                <input name="interval" placeholder="Update Interval in Seconds ..." defaultValue="5"/>
-                            </div>
-                        </div>
-                        <ui.Divider/>
-                        {
-                            chunk(valuesOf(selectedSource.settings, 'id'), 2).map(chunk => {
-                                return <div key={chunk[0].id} className="two fields">
-                                    {selectedSource ?
-                                        chunk.map(setting => {
-                                            return <SettingsUi.Field key={setting.id} {...setting}/>;
-                                        })
-                                        :
-                                        null
-                                    }
-                                </div>
-                            })
-                        }
-
-                    </form>
+                    <DatasourceForm/>
 
                 </div>
             </div>
@@ -187,5 +123,84 @@ const CreateDatasourceDialog = connect(
         }
     }
 )(Modal);
+
+class DatasourceForm extends React.Componen {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedType: ''
+        };
+    }
+
+    componentDidMount() {
+        this._initSemanticUi();
+    }
+
+    componentDidUpdate() {
+        this._initSemanticUi();
+    }
+
+    _initSemanticUi() {
+        $('.icon.help.circle')
+            .popup({
+                position: "top left",
+                offset: -10
+            });
+        $('.ui.checkbox')
+            .checkbox();
+    }
+
+    render() {
+        const props = props;
+        const datasources = DatasourcePlugins.getPlugins();
+        const selectedSource = DatasourcePlugins.getPlugin(this.state.selectedType) || {settings: {}};
+
+        return <form className="ui form" ref="form">
+            <div className="field">
+                <label>Type</label>
+                <select className="ui fluid dropdown" name="type" value={this.state.selectedType}
+                        onChange={(e) => {this.setState({selectedType: e.target.value});}}
+                >
+                    <option key="none" value="">Select Type...</option>
+                    {valuesOf(datasources).map(source => {
+                        return <option key={source.type} value={source.type}>{source.name}</option>
+                    })}
+                </select>
+            </div>
+            <div className="two fields">
+                <div className="field">
+                    <label>Name</label>
+                    <input name="name" placeholder="Name of the Datasource ..."/>
+                </div>
+
+                <div className="field">
+                    <label>Update Intervall</label>
+                    <input name="interval" placeholder="Update Interval in Seconds ..." defaultValue="5"/>
+                </div>
+            </div>
+            <ui.Divider/>
+            {
+                chunk(valuesOf(selectedSource.settings, 'id'), 2).map(chunk => {
+                    return <div key={chunk[0].id} className="two fields">
+                        {selectedSource ?
+                            chunk.map(setting => {
+                                return <SettingsUi.Field key={setting.id} {...setting}/>;
+                            })
+                            :
+                            null
+                        }
+                    </div>
+                })
+            }
+
+        </form>
+    }
+}
+
+SettingsFormRedux = reduxForm({ // <----- THIS IS THE IMPORTANT PART!
+    form: 'datasource-settings',                           // a unique name for this form
+    fields: ['firstName', 'lastName', 'email'] // all the fields in your form
+})(ContactForm);
 
 export {CreateDatasourceDialog as Modal}
