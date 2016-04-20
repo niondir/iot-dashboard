@@ -8,16 +8,20 @@ const initialDatasources = {
     "my-random": {
         id: "my-random",
         type: "random",
-        name: "Random Datasource"
+        props: {
+            name: "Random Datasource"
+        }
     }
 };
 
 
 export function addDatasource(dsType, props) {
     if (!dsType) {
+        console.warn("dsType: ", dsType);
+        console.warn("props: ", props);
         throw new Error("Can not add Datasource without Type");
     }
-    
+
     return {
         type: Action.ADD_DATASOURCE,
         id: Uuid.generate(),

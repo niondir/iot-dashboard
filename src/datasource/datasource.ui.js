@@ -7,7 +7,7 @@ import {valuesOf, chunk} from '../util/collection'
 import * as ui from '../ui/elements.ui'
 import * as SettingsUi from '../ui/settings.ui'
 import serializeForm from '../util/formSerializer'
-import {reduxForm} from 'redux-form';
+import {reduxForm, reset} from 'redux-form';
 const Prop = React.PropTypes;
 
 
@@ -60,38 +60,59 @@ export {TopItemNavComponent as TopNavItem}
 
 export class Modal extends React.Component {
 
-    render() {
-        let props = this.props;
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedType: ''
+        };
+    }
 
+    onSubmit(formData, dispatch) {
+        this.props.addDatasource(this.state.selectedType, formData);
+        return true;
+    }
+
+    resetForm() {
+        this.props.restForm('datasource-settings');
+    }
+
+    render() {
         const actions = [
             {
-                className: "ui right black button",
+                className: "ui right button",
+                label: "Reset",
+                onClick: () => {
+                    this.resetForm();
+                    return false;
+                }
+            },
+            {
+                className: "ui right red button",
                 label: "Cancel",
-                onClick: () => true
+                onClick: () => {
+                    this.resetForm();
+                    return true;
+                }
             },
             {
                 className: "ui right labeled icon positive button",
                 iconClass: "save icon",
                 label: "Create",
                 onClick: () => {
-                    const options = {
-                        hash: true,
-                        disabled: true,
-                        empty: true,
-                        realBooleans: true
-                    };
-
-                    const formData = serializeForm(this.refs.form, options);
-                    const {type, ...dsProps} = formData;
-                    this.props.addDatasource(type, dsProps);
-                    this.setState({selectedType: ""});
-                    return true;
+                    const success = this.refs.form.submit();
+                    if (success) this.resetForm();
+                    return success;
                 }
             }
         ];
 
-
-
+        const datasources = DatasourcePlugins.getPlugins();
+        const selectedSource = DatasourcePlugins.getPlugin(this.state.selectedType) || {settings: {}};
+        const fields = valuesOf(selectedSource.settings, "id").map(setting => setting.id);
+        const initialValues = valuesOf(selectedSource.settings, "id").reduce((initialValues, setting) => {
+            initialValues[setting.id] = setting.defaultValue;
+            return initialValues;
+        }, {interval: 5});
 
         return <ModalDialog id="datasource-create"
                             title="Create Datasource"
@@ -99,7 +120,25 @@ export class Modal extends React.Component {
         >
             <div className="ui one column grid">
                 <div className="column">
-                    <DatasourceForm/>
+                    <div className="field">
+                        <label>Type</label>
+                        <select className="ui fluid dropdown" name="type" value={this.state.selectedType}
+                                onChange={(e) => {this.setState({selectedType: e.target.value});}}
+                            {...fields.type}
+                        >
+                            <option key="none" value="">Select Type...</option>
+                            {valuesOf(datasources).map(source => {
+                                return <option key={source.type} value={source.type}>{source.name}</option>
+                            })}
+                        </select>
+                    </div>
+                    <SettingsReduxForm ref="form"
+                                       form='datasource-settings'
+                                       selectedType={this.state.selectedType}
+                                       onSubmit={this.onSubmit.bind(this)}
+                                       fields={["type", "name", "interval", ...fields]}
+                                       initialValues={initialValues}
+                    />
 
                 </div>
             </div>
@@ -108,7 +147,8 @@ export class Modal extends React.Component {
 }
 
 Modal.propTypes = {
-    addDatasource: Prop.func.isRequired
+    addDatasource: Prop.func.isRequired,
+    restForm: Prop.func.isRequired
 };
 
 const CreateDatasourceDialog = connect(
@@ -117,6 +157,7 @@ const CreateDatasourceDialog = connect(
     },
     (dispatch) => {
         return {
+            restForm: (id) => dispatch(reset(id)),
             addDatasource: (type, dsProps) => {
                 dispatch(Datasource.addDatasource(type, dsProps))
             }
@@ -124,14 +165,8 @@ const CreateDatasourceDialog = connect(
     }
 )(Modal);
 
-class DatasourceForm extends React.Componen {
+class SettingsForm extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedType: ''
-        };
-    }
 
     componentDidMount() {
         this._initSemanticUi();
@@ -152,31 +187,20 @@ class DatasourceForm extends React.Componen {
     }
 
     render() {
-        const props = props;
-        const datasources = DatasourcePlugins.getPlugins();
-        const selectedSource = DatasourcePlugins.getPlugin(this.state.selectedType) || {settings: {}};
+        const props = this.props;
+        const fields = props.fields;
+        const selectedSource = DatasourcePlugins.getPlugin(props.selectedType) || {settings: {}};
 
-        return <form className="ui form" ref="form">
-            <div className="field">
-                <label>Type</label>
-                <select className="ui fluid dropdown" name="type" value={this.state.selectedType}
-                        onChange={(e) => {this.setState({selectedType: e.target.value});}}
-                >
-                    <option key="none" value="">Select Type...</option>
-                    {valuesOf(datasources).map(source => {
-                        return <option key={source.type} value={source.type}>{source.name}</option>
-                    })}
-                </select>
-            </div>
+        return <form className="ui form">
             <div className="two fields">
                 <div className="field">
                     <label>Name</label>
-                    <input name="name" placeholder="Name of the Datasource ..."/>
+                    <input name="name" placeholder="Name of the Datasource ..." {...fields.name}/>
                 </div>
 
                 <div className="field">
                     <label>Update Intervall</label>
-                    <input name="interval" placeholder="Update Interval in Seconds ..." defaultValue="5"/>
+                    <input name="interval" placeholder="Update Interval in Seconds ..." {...fields.interval}/>
                 </div>
             </div>
             <ui.Divider/>
@@ -185,7 +209,7 @@ class DatasourceForm extends React.Componen {
                     return <div key={chunk[0].id} className="two fields">
                         {selectedSource ?
                             chunk.map(setting => {
-                                return <SettingsUi.Field key={setting.id} {...setting}/>;
+                                return <SettingsUi.Field key={setting.id} {...setting} field={fields[setting.id]}/>;
                             })
                             :
                             null
@@ -198,9 +222,10 @@ class DatasourceForm extends React.Componen {
     }
 }
 
-SettingsFormRedux = reduxForm({ // <----- THIS IS THE IMPORTANT PART!
-    form: 'datasource-settings',                           // a unique name for this form
-    fields: ['firstName', 'lastName', 'email'] // all the fields in your form
-})(ContactForm);
+SettingsForm.propTypes = {
+    selectedType: Prop.string.isRequired
+};
+
+const SettingsReduxForm = reduxForm({})(SettingsForm);
 
 export {CreateDatasourceDialog as Modal}
