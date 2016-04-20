@@ -16,7 +16,7 @@ The **latest development snapshot** is on the `dev` branch.
 
 ## Demo ##
 
- [Live Demo](https://niondir.github.io/iot-dashboard/) of the `last-stable` version.
+ [Live Demo](http://dev.iot-dashboard.org/) of the `last-stable` version.
 
 ## Setup ##
 
