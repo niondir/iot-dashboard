@@ -11,7 +11,7 @@ describe('Widget Plugins', function () {
                 }
             });
 
-            let plugin = WidgetPlugins.getWidget('foo');
+            let plugin = WidgetPlugins.getPlugin('foo');
 
             assert.isOk(plugin);
             assert.equal('foo', plugin.type);

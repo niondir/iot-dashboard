@@ -3,7 +3,62 @@ import {assert} from 'chai'
 export const TYPE_INFO = {
     type: "random",
     name: "Random",
-    settings: {
+    settings: [
+        {
+            id: 'string',
+            name: 'some String w/o description',
+            type: 'string',
+            defaultValue: "Some default value"
+        },
+        {
+            id: 'text',
+            name: 'some Text',
+            type: 'text',
+            defaultValue: "Some default value",
+            description: "This is pretty self explanatory..."
+        },
+        {
+            id: 'bool',
+            name: 'some Boolean',
+            type: 'boolean',
+            defaultValue: true,
+            description: "This is pretty self explanatory..."
+        },
+        {
+            id: 'multi',
+            name: 'some Options',
+            type: 'option',
+            description: "This is pretty self explanatory...",
+            defaultValue: "old",
+            options: [
+                {
+                    "name": "0-50",
+                    "value": "young"
+                },
+                {
+                    "name": "51-100",
+                    "value": "old"
+                }
+            ]
+        },
+        {
+            id: 'multi2',
+            name: 'option w/o default',
+            type: 'option',
+            description: "This is pretty self explanatory...",
+            options: [
+                {
+                    "name": "0-50",
+                    "value": "young"
+                },
+                {
+                    "name": "51-100",
+                    "value": "old"
+                }
+            ]
+        }
+    ],
+    settingsX: {
         string: {
             name: 'some String w/o description',
             type: 'string',

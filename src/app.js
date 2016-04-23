@@ -4,7 +4,7 @@ import * as Redux from 'redux';
 import {Provider} from 'react-redux'
 import {reducer as formReducer} from 'redux-form';
 import Layout from './pageLayout'
-import * as Persist from './widgets/persistence'
+import * as Persist from './persistence'
 // Css
 import 'semantic-ui-css/semantic.css';
 import 'semantic-ui-css/semantic';

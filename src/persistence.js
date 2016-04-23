@@ -8,7 +8,8 @@ export function persistenceMiddleware({getState}) {
 }
 
 export function saveToLocalStorage(state) {
-    window.localStorage.setItem("appState", JSON.stringify(state));
+    const {form ,...savableState} = state;
+    window.localStorage.setItem("appState", JSON.stringify(savableState));
 }
 
 

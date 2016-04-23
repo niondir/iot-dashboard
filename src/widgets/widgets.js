@@ -137,7 +137,7 @@ function widget(state = {}, action) {
  * Contains generic UI controls, shared by all Widgets
  */
 export const WidgetFrame = (widgetState) => {
-    let widget = WidgetPlugins.getWidget(widgetState.type);
+    let widget = WidgetPlugins.getPlugin(widgetState.type);
     console.assert(widget, "No registered widget with type: " + widgetState.type);
     return (
         <div className="ui raised segments"

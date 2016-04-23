@@ -1,12 +1,13 @@
-import * as React from 'react';
-import {Component} from 'react';
-import * as WidgetGrid from './widgetGrid'
-import * as Nav from './navigation'
-import $ from 'jquery'
-import {WidgetConfigDialog} from './widgets/widgetConfig'
-import * as Layouts from './layouts/layouts.ui'
-import * as Import from './dashboard/import.ui'
-import * as Datasources from './datasource/datasource.ui'
+import * as React from "react";
+import {Component} from "react";
+import * as WidgetGrid from "./widgetGrid";
+import * as Nav from "./navigation";
+import $ from "jquery";
+import * as Layouts from "./layouts/layouts.ui";
+import WidgetConfigDialog from "./widgets/widgetConfigDialog.ui";
+import * as Import from "./dashboard/import.ui";
+import DatasourceConfigDialog from "./datasource/datasourceConfigDialog.ui";
+import DatasourceNavItem from "./datasource/datasourceNavItem.ui";
 
 export default class Layout extends Component {
 
@@ -34,7 +35,7 @@ export default class Layout extends Component {
 
             <WidgetConfigDialog/>
             <Import.Modal/>
-            <Datasources.Modal/>
+            <DatasourceConfigDialog/>
 
             <div className="ui flowing basic widgets-menu menu popup">
                 <div className="ui sixteen column relaxed divided grid">
@@ -60,7 +61,7 @@ export default class Layout extends Component {
 
                     <Import.TopNavItem/>
                     <Layouts.TopNavItem/>
-                    <Datasources.TopNavItem/>
+                    <DatasourceNavItem/>
                     <a className="add-widget item">New Widget <i className="dropdown icon"></i></a>
                 </div>
             </div>
