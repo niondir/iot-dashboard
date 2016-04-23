@@ -16,7 +16,7 @@ export class PluginRegistry {
             getOrCreateInstance: (dsState) => {
                 let instance = this.instances[dsState.id];
                 if (!instance) {
-                    instance = new module.Datasource(dsState.props);
+                    instance = new module.Datasource(dsState.props, dsState.data);
                     this.instances[dsState.id] = instance;
                 }
                 return instance;

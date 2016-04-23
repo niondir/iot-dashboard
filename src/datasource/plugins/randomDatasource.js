@@ -33,13 +33,14 @@ function getRandomInt(min, max) {
 export class Datasource {
 
 
-    constructor(props) {
+    constructor(props, history) {
         this.props = props;
         // Initialize with non random values to demonstrate loading of historic values
-        this.history = []; // [{value: 10}, {value: 20}, {value: 30}, {value: 40}, {value: 50}]
-        this.x = 0;
+        this.history = history || []; // [{value: 10}, {value: 20}, {value: 30}, {value: 40}, {value: 50}]
+        this.x = history[history.length-1].x + 1 || 0;
     }
 
+    // TODO: We can not edit datasources yet :)
     updateProps(props) {
         this.props = props;
     }

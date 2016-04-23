@@ -26,12 +26,7 @@ export default class ModalDialog extends React.Component {
     static closeModal(id) {
         $('.ui.modal.' + id).modal('hide');
     }
-
-
-    setWidgetProps(props) {
-        this.widgetProps = props;
-    }
-
+    
     onClick(e, action) {
         if (action.onClick(e)) {
             ModalDialog.closeModal(this.props.id);

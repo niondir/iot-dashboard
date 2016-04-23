@@ -65,8 +65,8 @@ let store = Redux.createStore(
     Persist.loadFromLocalStorage(),
     Redux.applyMiddleware(
         thunk,
-        Persist.persistenceMiddleware,
-        logger // must be last
+        Persist.persistenceMiddleware
+        //logger // must be last
     ));
 
 DatasourceWorker.initializeWorkers(store.getState().datasources, store.dispatch);

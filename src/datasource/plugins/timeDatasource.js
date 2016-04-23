@@ -41,7 +41,8 @@ export class Datasource {
     };
 
     getNewValues() {
-        return [{date: new Date()}]
+        const now = new Date();
+        return [{date: now}]
     }
 
 }
