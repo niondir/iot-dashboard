@@ -44,7 +44,6 @@ export default class Layout extends Component {
                             <h4 className="ui header">Simple</h4>
                             {/* TODO: render nav items based on the widget registry */}
                             <Nav.AddWidget text="Text" type="text"/>
-                            <Nav.AddWidget text="Clock" type="time"/>
                             <Nav.AddWidget text="Chart" type="chart"/>
                         </div>
                     </div>

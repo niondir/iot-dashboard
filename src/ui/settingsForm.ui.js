@@ -31,9 +31,10 @@ class SettingsForm extends React.Component {
         const fields = props.fields;
 
         return <form className="ui form">
+            {/*className="two fields" with chunk size of 2*/}
             {
-                chunk(this.props.settings, 2).map(chunk => {
-                    return <div key={chunk[0].id} className="two fields">
+                chunk(this.props.settings, 1).map(chunk => {
+                    return <div key={chunk[0].id} className="field">
                         {chunk.map(setting => {
                             return <Field key={setting.id} {...setting} field={fields[setting.id]}/>;
                         })}

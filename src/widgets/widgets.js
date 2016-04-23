@@ -23,7 +23,7 @@ export const initialWidgets = {
         "props": {"name": "Random Values", "datasource": "initial_random_source"},
         "row": 0,
         "col": 0,
-        "width": 4,
+        "width": 3,
         "height": 1
     },
     "initial_text": {
@@ -32,7 +32,7 @@ export const initialWidgets = {
         "name": "text",
         "props": {"name": "Random data", "datasource": "initial_random_source"},
         "row": 0,
-        "col": 4,
+        "col": 3,
         "width": 2,
         "height": 2
     }

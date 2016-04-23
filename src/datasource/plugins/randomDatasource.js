@@ -37,7 +37,12 @@ export class Datasource {
         this.props = props;
         // Initialize with non random values to demonstrate loading of historic values
         this.history = history || []; // [{value: 10}, {value: 20}, {value: 30}, {value: 40}, {value: 50}]
-        this.x = history[history.length-1].x + 1 || 0;
+        this.x = 0;
+
+        if (this.history.length > 1) {
+            this.x = history[history.length - 1].x + 1 || 0;
+        }
+
     }
 
     // TODO: We can not edit datasources yet :)

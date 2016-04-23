@@ -4,13 +4,8 @@ import {connect} from 'react-redux'
 
 export const TYPE_INFO = {
     type: "text",
+    description: "Display content of a datasource as plain text",
     settings: [
-        {
-            id: 'text',
-            name: 'Text',
-            type: 'string',
-            description: "Some text that will be displayed ..."
-        },
         {
             id: 'datasource',
             name: 'Datasource',
@@ -27,7 +22,7 @@ export class Widget extends Component {
         const data = props.getData(this.props.datasource);
 
         if(!data || data.length == 0) {
-            return <p>No data in datasource: {this.props.datasource}</p>
+            return <p>No data</p>
         }
         
         return <p>{JSON.stringify(data)}</p>

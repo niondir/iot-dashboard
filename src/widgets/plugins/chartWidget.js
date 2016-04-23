@@ -6,6 +6,7 @@ import * as c3 from 'c3';
 
 export const TYPE_INFO = {
     type: "chart",
+    description: "Renders a line chart. Will be way more flexible in future.",
     settings: [
         {
             id: 'datasource',

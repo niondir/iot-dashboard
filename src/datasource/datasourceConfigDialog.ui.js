@@ -72,14 +72,17 @@ class DatasourceConfigModal extends React.Component {
 
         const datasources = DatasourcePlugins.getPlugins();
         const selectedSource = DatasourcePlugins.getPlugin(this.state.selectedType) || {settings: []};
-
-        const settings = [...selectedSource.settings];
+        let settings = [];
+        if (selectedSource.settings) {
+            settings = [...selectedSource.settings];
+        }
+        /*
         unshiftIfNotExists(settings, {
             id: 'interval',
             name: 'Interval',
             type: 'string',
             defaultValue: "5"
-        });
+        });*/
         unshiftIfNotExists(settings, {
             id: 'name',
             name: 'Name',

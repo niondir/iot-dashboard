@@ -22,7 +22,8 @@ const WidgetFrame = (props) => {
             console.warn("Can not find Datasource with id " + id + " for widget: ", widgetState, " Returning empty data!");
             return [];
         }
-        return [...ds.data];
+
+        return ds.data ? [...ds.data] : [];
     };
 
     return (

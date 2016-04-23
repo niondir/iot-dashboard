@@ -98,6 +98,17 @@ class WidgetConfigModal extends React.Component {
         >
             <div className="ui one column grid">
                 <div className="column">
+                    {selectedWidget.description ?
+
+                            <div className="ui icon message">
+                                <i className="idea icon"/>
+                                <div className="content">
+                                    {selectedWidget.description}
+                                </div>
+
+                            </div>
+                        : null
+                    }
                     <SettingsForm ref="form"
                                   form={FORM_ID}
                                   settings={settings}
