@@ -16,6 +16,7 @@ const TopNavItem = (props) => {
         <div className="ui menu">
             <SaveLayout/>
             <ResetLayoutButton text="Reset Current Layout" icon="undo"/>
+            <SaveLayoutButton text="Save Layout" icon="save"/>
             <div className="ui divider"></div>
             <div className="header">Load Layout</div>
 
@@ -33,12 +34,16 @@ TopNavItem.propTypes = {
         Prop.shape({
             name: Prop.string
         })
-    )
+    ),
+    widgets: Prop.object,
+    currentLayout: Prop.object
 };
 
 const TopNavItemContainer = connect((state) => {
         return {
-            layouts: valuesOf(state.layouts)
+            layouts: valuesOf(state.layouts),
+            currentLayout: state.currentLayout,
+            widgets: state.widgets
         }
     },
     (dispatch)=> {
@@ -142,7 +147,8 @@ const LayoutItem = connect(
 const ResetLayoutButton = connect(
     (state) => {
         return {
-            id: state.currentLayout.id
+            id: state.currentLayout.id,
+            disabled: !state.currentLayout.id
         }
     },
     (dispatch, props)=> {
@@ -152,4 +158,18 @@ const ResetLayoutButton = connect(
     }
 )(ui.LinkItem);
 
+const SaveLayoutButton = connect(
+    (state) => {
+        return {
+            id: state.currentLayout.id,
+            widgets: state.widgets,
+            disabled: !state.currentLayout.id
+        }
+    },
+    (dispatch)=> {
+        return {
+            onClick: (props) => dispatch(Layouts.updateLayout(props.id, props.widgets))
+        }
+    }
+)(ui.LinkItem);
 

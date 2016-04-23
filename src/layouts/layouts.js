@@ -27,6 +27,15 @@ export function addLayout(name, widgets) {
 
 }
 
+export function updateLayout(id, widgets) {
+    return {
+        type: UPDATE_LAYOUT,
+        id,
+        widgets
+    }
+}
+
+
 export function deleteLayout(id) {
     return {
         type: DELETE_LAYOUT,
@@ -87,6 +96,11 @@ export function layout(state, action) {
             return {
                 id: action.id,
                 name: action.name,
+                widgets: action.widgets
+            };
+        case UPDATE_LAYOUT:
+            return {
+                ...state,
                 widgets: action.widgets
             };
         default:

@@ -79,8 +79,9 @@ export function fetchDatasourceData() {
                 const pastData = dsInstance.getPastValues();
                 dispatch(setDatasourceData(dsState.id, pastData));
             }*/
-
-            dispatch(setDatasourceData(dsState.id, newData));
+            const action = setDatasourceData(dsState.id, newData);
+            action.doNotLog = true;
+            dispatch(action);
         })
     };
 }

@@ -11,13 +11,15 @@ export const LinkItem = (props) => {
         icon = <i className={props.icon +" icon"}/>;
     }
 
-    return <a className="item" href="#" onClick={() => props.onClick(props)}>{icon} {props.children} {props.text}</a>;
+    return <a className={"item" + (props.disabled ? " disabled" : "")} href="#"
+              onClick={() => props.onClick(props)}>{icon} {props.children} {props.text}</a>;
 };
 
 LinkItem.propTypes = {
     onClick: Prop.func.isRequired,
     text: Prop.string,
-    icon: Prop.string
+    icon: Prop.string,
+    disabled: Prop.bool
 };
 
 export const Icon = (props) => {

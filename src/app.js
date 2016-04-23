@@ -59,14 +59,24 @@ let reducer = Redux.combineReducers({
     form: formReducer
 });
 
-const logger = createLogger();
+const logger = createLogger({
+    duration : false, // Print the duration of each action?
+    timestamp : true, // Print the timestamp with each action?
+    logErrors : true, // Should the logger catch, log, and re-throw errors?
+    predicate : (getState, action) => {
+        if (action.doNotLog) {
+            return false;
+        }
+        return true;
+    }
+});
 let store = Redux.createStore(
     reducer,
     Persist.loadFromLocalStorage(),
     Redux.applyMiddleware(
         thunk,
-        Persist.persistenceMiddleware
-        //logger // must be last
+        Persist.persistenceMiddleware,
+        logger // must be last
     ));
 
 DatasourceWorker.initializeWorkers(store.getState().datasources, store.dispatch);
