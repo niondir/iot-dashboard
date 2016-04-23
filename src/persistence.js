@@ -2,6 +2,14 @@
 
 let lastSave = new Date();
 
+export function clearData() {
+    lastSave = new Date();
+    if (window.confirm("Wipe app data and reload page?")) {
+        window.localStorage.setItem("appState", undefined);
+        location.reload();
+    }
+}
+
 export function persistenceMiddleware({getState}) {
     return (next) => (action) => {
 

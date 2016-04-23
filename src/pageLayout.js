@@ -1,13 +1,14 @@
-import * as React from "react";
-import {Component} from "react";
-import WidgetGrid from "./widgets/widgetGrid.ui";
-import * as Nav from "./navigation";
-import $ from "jquery";
-import * as Layouts from "./layouts/layouts.ui";
-import WidgetConfigDialog from "./widgets/widgetConfigDialog.ui";
-import * as Import from "./dashboard/import.ui";
-import DatasourceConfigDialog from "./datasource/datasourceConfigDialog.ui";
-import DatasourceNavItem from "./datasource/datasourceNavItem.ui";
+import * as React from "react"
+import {Component} from "react"
+import WidgetGrid from "./widgets/widgetGrid.ui"
+import * as Nav from "./navigation"
+import $ from "jquery"
+import * as Layouts from "./layouts/layouts.ui"
+import WidgetConfigDialog from "./widgets/widgetConfigDialog.ui"
+import * as Import from "./dashboard/import.ui"
+import DatasourceConfigDialog from "./datasource/datasourceConfigDialog.ui"
+import DatasourceNavItem from "./datasource/datasourceNavItem.ui"
+import * as Persistence from './persistence'
 
 export default class Layout extends Component {
 
@@ -62,6 +63,10 @@ export default class Layout extends Component {
                     <a className="add-widget item">New Widget <i className="dropdown icon"></i></a>
                     <Layouts.TopNavItem/>
                     <DatasourceNavItem/>
+                    <a className="item" onClick={() => Persistence.clearData()}>
+                        <i className="red bomb icon"/>
+                        Wipe Everything!
+                    </a>
 
                 </div>
             </div>
