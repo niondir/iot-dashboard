@@ -18,7 +18,7 @@ const WidgetFrame = (props) => {
     const datasourceResolver = (id) => {
         const ds = props.datasources[id];
         if (!ds) {
-            console.warn("Can not find Datasource with id " + id + "for widget: ", widgetState);
+            console.warn("Can not find Datasource with id " + id + " for widget: ", widgetState);
         }
         return ds;
     };

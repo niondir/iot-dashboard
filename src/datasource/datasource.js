@@ -1,8 +1,10 @@
 import {assert} from 'chai'
 import * as DatasourceWorker from './datasourceWorker'
+import DatasourcePlugins from './datasourcePlugins'
 import {genCrudReducer} from '../util/reducer'
 import * as Action from '../actionNames'
 import * as Uuid from '../util/uuid'
+import {valuesOf} from '../util/collection'
 
 const initialDatasources = {
     "my-random": {
@@ -32,7 +34,7 @@ export function addDatasource(dsType, props) {
             props
         });
         const state = getState();
-        DatasourceWorker.updateWorkers(state.datasources, dispatch);
+        DatasourceWorker.initializeWorkers(state.datasources, dispatch);
     }
 }
 
@@ -50,6 +52,29 @@ export function setDatasourceData(id, data) {
         data
     }
 }
+
+export function appendDatasourceData(id, data) {
+    return {
+        type: Action.APPEND_DATASOURCE_DATA,
+        id,
+        data
+    }
+}
+
+export function fetchDatasourceData() {
+    return (dispatch, getState) => {
+        const state = getState();
+        const dsStates = state.datasources;
+        
+        valuesOf(dsStates).forEach(dsState => {
+            const dsPlugin = DatasourcePlugins.getPlugin(dsState.type);
+            const dsInstance = dsPlugin.getOrCreateInstance(dsState.id);
+            const newData = dsInstance.getNewValues();
+            dispatch(appendDatasourceData(dsState.id, newData));
+        })
+    };
+}
+
 
 const datasourceCrudReducer = genCrudReducer([Action.ADD_DATASOURCE, Action.DELETE_DATASOURCE], datasource);
 export function datasources(state = initialDatasources, action) {
@@ -69,10 +94,15 @@ function datasource(state, action) {
                 props: action.props
             };
         case Action.SET_DATASOURCE_DATA:
-            console.log("Setting data to: ", action.data);
             return {
                 ...state,
                 data: action.data
+            };
+        case Action.APPEND_DATASOURCE_DATA:
+            const stateData = state.data ||[];
+            return {
+                ...state,
+                data: [...stateData, ...action.data]
             };
         default:
             return state;

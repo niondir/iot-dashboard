@@ -20,16 +20,14 @@ import * as Datasource from './datasource/datasource'
 import {DASHBOARD_IMPORT} from './actionNames'
 // Widgets
 import WidgetPlugins from './widgets/widgetPlugins'
-import * as TimeWidget from './widgets/plugins/timeWidget'
 import * as TextWidget from './widgets/plugins/textWidget'
-import * as ChartWidget from './widgets/chartWidget'
+import * as ChartWidget from './widgets/plugins/chartWidget'
 // Datasources
 import * as DatasourceWorker from './datasource/datasourceWorker'
 import DatasourcePlugins from './datasource/datasourcePlugins'
 import * as RandomDatasource from './datasource/plugins/randomDatasource'
 import * as TimeDatasource from './datasource/plugins/timeDatasource'
 
-WidgetPlugins.register(TimeWidget);
 WidgetPlugins.register(TextWidget);
 WidgetPlugins.register(ChartWidget);
 
@@ -71,7 +69,7 @@ let store = Redux.createStore(
         logger // must be last
     ));
 
-DatasourceWorker.updateWorkers(store.getState().datasources, store.dispatch);
+DatasourceWorker.initializeWorkers(store.getState().datasources, store.dispatch);
 
 
 

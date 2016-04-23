@@ -2,17 +2,19 @@ import * as Datasource from './datasource'
 import DatasourcePlugins from './datasourcePlugins'
 import {valuesOf} from '../util/collection'
 
+// TODO: Should we have not serializable workers in the state and just skip on serialization?
 let workers = [];
 
-export function updateWorkers(datasources, dispatch) {
-    workers.forEach(worker => {
-        worker.dispose();
-    });
-    workers = [];
-    valuesOf(datasources).forEach(dsState => {
+export function initializeWorkers(dsStates, dispatch) {
+    const heartbeat = setInterval(()=> {
+        dispatch(Datasource.fetchDatasourceData());
+    }, 1000);
+
+    return;
+    valuesOf(dsStates).forEach(dsState => {
         const dsPlugin = DatasourcePlugins.getPlugin(dsState.type);
 
-        console.log("plugin", dsPlugin)
+        console.log("plugin", dsPlugin);
 
         const dsInstance = new dsPlugin.Datasource();
 
@@ -20,13 +22,29 @@ export function updateWorkers(datasources, dispatch) {
     })
 }
 
+export function addWorker(dsState, dispatch) {
+    const dsPlugin = DatasourcePlugins.getPlugin(dsState.type);
+    console.log("plugin", dsPlugin);
+    const dsInstance = new dsPlugin.Datasource();
+    workers.push(new DatasourceWorker(dsState, dsInstance, dispatch))
+}
+
+export function removeWorker(dsState, dispatch) {
+    const dsPlugin = DatasourcePlugins.getPlugin(dsState.type);
+    console.log("plugin", dsPlugin);
+    const dsInstance = new dsPlugin.Datasource();
+    workers.push(new DatasourceWorker(dsState, dsInstance, dispatch))
+}
+
 export default class DatasourceWorker {
 
     constructor(dsState, dsInstance, dispatch) {
+        return;
         this.dispatch = dispatch;
 
+        dispatch(Datasource.setDatasourceData(dsState.id, dsInstance.getPastValues()));
         this.timer = setInterval(()=> {
-            dispatch(Datasource.setDatasourceData(dsState.id, dsInstance.getNewValues()));
+            dispatch(Datasource.appendDatasourceData(dsState.id, dsInstance.getNewValues()));
         }, 1000);
     }
 

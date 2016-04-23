@@ -119,6 +119,10 @@ function widget(state = {}, action) {
             };
         case UPDATE_WIDGET_LAYOUT:
             let layout = layoutById(action.layout, state.id);
+            if (layout == null) {
+                console.warn("No layout for widget. Skipping update of position. Id: " + state.id);
+                return state;
+            }
             return {
                 ...state,
                 row: layout.y,

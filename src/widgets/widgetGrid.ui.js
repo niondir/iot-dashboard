@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import * as Widgets from './widgets'
 import WidgetFrame from './widgetFrame.ui'
 import * as WidgetConfig from './widgetConfig'
+import WidgetPlugins from './widgetPlugins'
 require('react-grid-layout/css/styles.css');
 const Prop = React.PropTypes;
 
@@ -24,7 +25,17 @@ class WidgetGrid extends Component {
         const props = this.props;
         let widgetData:Array<object> = this.props.widgets || [];
         // WidgetFrame must be loaded as function, else the grid is not working properly.
-        let widgets = widgetData.map((data) => WidgetFrame({widget: data, datasources: props.datasources}));
+        // TODO: Remove unknown widget from state
+        console.log("WidgetData: ", widgetData);
+        let widgets = widgetData.map((data) => {
+            let widget = WidgetPlugins.getPlugin(data.type);
+            if (!widget) {
+                console.warn("No WidgetPlugin for type '" + data.type + "'! Skipping rendering of that widget.");
+                return null;
+            }
+            return WidgetFrame({widget: data, datasources: props.datasources})
+        }).filter(frame => frame !== null);
+
         /* //Does NOT work that way:
          let widgets = widgetData.map((data) => <WidgetFrame {...data}
          key={data.id}
