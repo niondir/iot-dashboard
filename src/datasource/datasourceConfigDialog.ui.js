@@ -3,7 +3,7 @@ import ModalDialog from '../ui/modal.ui'
 import * as Datasource from './datasource'
 import DatasourcePlugins from './datasourcePlugins'
 import {connect} from 'react-redux'
-import {valuesOf, chunk} from '../util/collection'
+import {valuesOf} from '../util/collection'
 import * as ui from '../ui/elements.ui'
 import SettingsForm from '../ui/settingsForm.ui'
 import {reset} from 'redux-form';
@@ -67,7 +67,7 @@ class DatasourceConfigModal extends React.Component {
         const datasources = DatasourcePlugins.getPlugins();
         const selectedSource = DatasourcePlugins.getPlugin(this.state.selectedType) || {settings: []};
 
-        const settings = [...selectedSource.settings];
+        const settings = [...selectedSource.settings || []];
         settings.unshift({
                 id: 'name',
                 name: 'Name',

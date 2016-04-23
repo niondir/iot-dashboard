@@ -8,6 +8,10 @@ export const TYPE_INFO = {
 
 export class Datasource {
 
+    constructor() {
+        
+    }
+
     getNewValues() {
         return [{date: new Date()}]
     }

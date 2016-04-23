@@ -72,7 +72,7 @@ export function loadLayout(id) {
     }
 }
 
-const layoutCrudReducer = genCrudReducer([ADD_LAYOUT, UPDATE_LAYOUT, DELETE_LAYOUT], layout);
+const layoutCrudReducer = genCrudReducer([ADD_LAYOUT, DELETE_LAYOUT], layout);
 export function layouts(state = initialLayouts, action) {
     state = layoutCrudReducer(state, action);
     switch (action.type) {

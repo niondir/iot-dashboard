@@ -12,12 +12,10 @@
  * @returns {crudReducer}
  */
 export function genCrudReducer(actionNames:Array<String>, elementReducer:Function, idProperty = 'id') {
-    console.assert(actionNames.length === 3, "ActionNames must contain 3 names for create, update, delete in that order");
-    let [CREATE_ACTION, UPDATE_ACTION, DELETE_ACTION] = actionNames;
+    console.assert(actionNames.length === 2, "ActionNames must contain 2 names for create, delete in that order");
+    let [CREATE_ACTION, DELETE_ACTION] = actionNames;
     console.assert(CREATE_ACTION.includes("ADD") || CREATE_ACTION.includes("CREATE"),
         "The create action name should probably contain ADD or DELETE, but is: " + CREATE_ACTION);
-    console.assert(UPDATE_ACTION.includes("UPDATE"),
-        "The update action name should probably contain UPDATE, but is: " + UPDATE_ACTION);
     console.assert(DELETE_ACTION.includes("DELETE") || DELETE_ACTION.includes("REMOVE"),
         "The delete action name should probably contain DELETE or REMOVE, but is: " + DELETE_ACTION);
 
@@ -29,16 +27,24 @@ export function genCrudReducer(actionNames:Array<String>, elementReducer:Functio
             case DELETE_ACTION:
                 let  {[id]: deleted, ...newState} = state;
                 return newState;
-            case UPDATE_ACTION:
-                //if(id === undefined) return state;
+            default: // Update if we have an id property
+                if(id === undefined) return state;
                 const elementState = state[id];
-                console.assert(elementState, "Can not find element with id: " + id);
+                if (elementState == undefined) {
+                    // Do not update what we don't have.
+                    console.log("No element with id ", id, "in state ", state);
+                    return state;
+                }
+                const updatedElement = elementReducer(elementState, action);
+                if (updatedElement == undefined) {
+                    console.error("ElementReducer has some problem: ", elementReducer, " with action: ", action);
+                    throw new Error("Reducer must return the original state if they not implement the action. Check action " + action.type + ".");
+                }
+
                 return {
                     ...state,
-                    [id]: elementReducer(elementState, action)
+                    [id]: updatedElement
                 };
-            default:
-                return state;
         }
     }
 }

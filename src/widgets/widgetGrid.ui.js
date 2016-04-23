@@ -2,9 +2,11 @@ import * as React from 'react';
 import * as Redux from 'redux';
 import {Component} from 'react';
 import {connect} from 'react-redux'
-import * as Widgets from './widgets/widgets'
-import * as WidgetConfig from './widgets/widgetConfig'
+import * as Widgets from './widgets'
+import WidgetFrame from './widgetFrame.ui'
+import * as WidgetConfig from './widgetConfig'
 require('react-grid-layout/css/styles.css');
+const Prop = React.PropTypes;
 
 import {Responsive as ResponsiveReactGridLayout, WidthProvider}  from 'react-grid-layout';
 const ResponsiveGrid = WidthProvider(ResponsiveReactGridLayout);
@@ -19,8 +21,15 @@ class WidgetGrid extends Component {
     }
 
     render() {
+        const props = this.props;
         let widgetData:Array<object> = this.props.widgets || [];
-        let widgets = widgetData.map((data) => Widgets.WidgetFrame(data));
+        // WidgetFrame must be loaded as function, else the grid is not working properly.
+        let widgets = widgetData.map((data) => WidgetFrame({widget: data, datasources: props.datasources}));
+        /* //Does NOT work that way:
+         let widgets = widgetData.map((data) => <WidgetFrame {...data}
+         key={data.id}
+         _grid={{x: data.col, y: data.row, w: data.width, h: data.height}}
+         />);*/
         return (
             <ResponsiveGrid className="column" cols={12} rowHeight={200}
                             breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}}
@@ -35,10 +44,17 @@ class WidgetGrid extends Component {
     }
 }
 
-const WidgetGridContainer = connect(
+WidgetGrid.propTypes = {
+    widgets: Prop.array.isRequired,
+    datasources: Prop.object.isRequired,
+    onLayoutChange: Prop.func
+};
+
+export default connect(
     (state) => {
         return {
-            widgets: Object.keys(state.widgets).map(id => state.widgets[id]) || []
+            widgets: Object.keys(state.widgets).map(id => state.widgets[id]) || [],
+            datasources: state.datasources || {}
         }
     },
     (dispatch) => {
@@ -49,6 +65,4 @@ const WidgetGridContainer = connect(
         };
     }
 )(WidgetGrid);
-export {WidgetGridContainer as WidgetGrid};
-
 

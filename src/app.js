@@ -24,6 +24,7 @@ import * as TimeWidget from './widgets/plugins/timeWidget'
 import * as TextWidget from './widgets/plugins/textWidget'
 import * as ChartWidget from './widgets/chartWidget'
 // Datasources
+import * as DatasourceWorker from './datasource/datasourceWorker'
 import DatasourcePlugins from './datasource/datasourcePlugins'
 import * as RandomDatasource from './datasource/plugins/randomDatasource'
 import * as TimeDatasource from './datasource/plugins/timeDatasource'
@@ -69,6 +70,8 @@ let store = Redux.createStore(
         Persist.persistenceMiddleware,
         logger // must be last
     ));
+
+DatasourceWorker.updateWorkers(store.getState().datasources, store.dispatch);
 
 
 

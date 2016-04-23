@@ -1,5 +1,5 @@
 import {assert} from 'chai'
-import DatasourcePlugins from './datasourcePlugins'
+import * as DatasourceWorker from './datasourceWorker'
 import {genCrudReducer} from '../util/reducer'
 import * as Action from '../actionNames'
 import * as Uuid from '../util/uuid'
@@ -22,11 +22,17 @@ export function addDatasource(dsType, props) {
         throw new Error("Can not add Datasource without Type");
     }
 
-    return {
-        type: Action.ADD_DATASOURCE,
-        id: Uuid.generate(),
-        dsType,
-        props
+    
+
+    return function (dispatch, getState) {
+        dispatch({
+            type: Action.ADD_DATASOURCE,
+            id: Uuid.generate(),
+            dsType,
+            props
+        });
+        const state = getState();
+        DatasourceWorker.updateWorkers(state.datasources, dispatch);
     }
 }
 
@@ -37,7 +43,15 @@ export function deleteDatasource(id) {
     }
 }
 
-const datasourceCrudReducer = genCrudReducer([Action.ADD_DATASOURCE, Action.UPDATE_DATASOURCE, Action.DELETE_DATASOURCE], datasource);
+export function setDatasourceData(id, data) {
+    return {
+        type: Action.SET_DATASOURCE_DATA,
+        id,
+        data
+    }
+}
+
+const datasourceCrudReducer = genCrudReducer([Action.ADD_DATASOURCE, Action.DELETE_DATASOURCE], datasource);
 export function datasources(state = initialDatasources, action) {
     state = datasourceCrudReducer(state, action);
     switch (action.type) {
@@ -54,7 +68,12 @@ function datasource(state, action) {
                 type: action.dsType,
                 props: action.props
             };
-        case Action.UPDATE_DATASOURCE:
+        case Action.SET_DATASOURCE_DATA:
+            console.log("Setting data to: ", action.data);
+            return {
+                ...state,
+                data: action.data
+            };
         default:
             return state;
     }

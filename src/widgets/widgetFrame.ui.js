@@ -1,0 +1,91 @@
+import * as React from 'react';
+import {connect} from 'react-redux'
+import * as WidgetConfig from './widgetConfig'
+import WidgetPlugins from './widgetPlugins'
+import DatasourcePlugins from '../datasource/datasourcePlugins'
+const Prop = React.PropTypes;
+
+/**
+ * The Dragable Frame of a Widget.
+ * Contains generic UI controls, shared by all Widgets
+ */
+const WidgetFrame = (props) => {
+    const widgetState = props.widget;
+
+    let widget = WidgetPlugins.getPlugin(widgetState.type);
+    console.assert(widget, "No registered widget with type: " + widgetState.type);
+
+    const datasourceResolver = (id) => {
+        const ds = props.datasources[id];
+        if (!ds) {
+            console.warn("Can not find Datasource with id " + id + "for widget: ", widgetState);
+        }
+        return ds;
+    };
+
+    return (
+        <div className="ui raised segments"
+             style={{margin: 0}}
+             key={widgetState.id}
+             _grid={{x: widgetState.col, y: widgetState.row, w: widgetState.width, h: widgetState.height}}>
+
+            <div className="ui inverted segment">
+                <div className="ui tiny horizontal right floated inverted list">
+                    <ConfigWidgetButton className="right item" widgetState={widgetState}
+                                        visible={(widget.settings ? true : false)} icon="configure"/>
+                    <a className="right item drag">
+                        <i className="move icon drag"></i>
+                    </a>
+                    <DeleteWidgetButton className="right floated item" widgetState={widgetState} icon="remove"/>
+                </div>
+                <div className="ui item top attached">{widgetState.props.name || "\u00a0"}</div>
+            </div>
+
+            <div className="ui segment">
+                {React.createElement(widget.widget, {
+                    ...widgetState.props,
+                    _state: widgetState,
+                    getDatasource: datasourceResolver
+                })}
+            </div>
+        </div>)
+};
+
+
+export default WidgetFrame;
+
+class WidgetButton extends React.Component {
+    render() {
+        let data = this.props.widgetState;
+        return <a className={this.props.className + (this.props.visible !== false ? "" : " hidden transition")}
+                  onClick={() => this.props.onClick(data)}>
+            <i className={this.props.icon + " icon"}></i>
+        </a>
+    }
+}
+
+let DeleteWidgetButton = connect(
+    (state) => {
+        return {}
+    },
+    (dispatch) => {
+        return {
+            onClick: (widgetState) => {
+                dispatch(deleteWidget(widgetState.id))
+            }
+        };
+    }
+)(WidgetButton);
+
+let ConfigWidgetButton = connect(
+    (state) => {
+        return {}
+    },
+    (dispatch) => {
+        return {
+            onClick: (widgetState) => {
+                dispatch(WidgetConfig.openWidgetConfigDialog(widgetState.id))
+            }
+        };
+    }
+)(WidgetButton);

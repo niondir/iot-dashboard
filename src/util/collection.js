@@ -1,4 +1,4 @@
-export function valuesOf(obj, keyField) {
+export function valuesOf(obj, keyField) : Array {
     if (!obj) {
         return []
     }
@@ -10,7 +10,7 @@ export function valuesOf(obj, keyField) {
     return Object.keys(obj).map(key => obj[key])
 }
 
-export function chunk(array:array, chunkSize:number, handle:Function) {
+export function chunk(array:array, chunkSize:number, handle:Function) : Array {
     let i, j, chunk;
     let chunkNum = 0;
     let chunks = [];

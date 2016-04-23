@@ -1,7 +1,9 @@
 import React from 'react';
+import {connect} from 'react-redux'
 import * as ui from './elements.ui'
 import {reduxForm, reset} from 'redux-form';
 import {chunk} from '../util/collection'
+import {valuesOf} from '../util/collection'
 const Prop = React.PropTypes;
 
 class SettingsForm extends React.Component {
@@ -73,6 +75,7 @@ Field.propTypes = {
 
 
 function SettingsInput(props) {
+
     switch (props.type) {
         case "text":
             return <textarea rows="3" placeholder={props.description} {...props.field}  />;
@@ -87,8 +90,11 @@ function SettingsInput(props) {
                     return <option key={option.value} value={option.value}>{option.name}</option>
                 })}
             </select>;
+        case "datasource":
+            return <DatasourceInputContainer {...props}/>
         default:
-            console.error("Unknown type for settings field: " + props.type)
+            console.error("Unknown type for settings field: " + props.type);
+            return <input placeholder={props.description} readonly value={"Unknown field type: " + props.type}/>;
     }
 }
 
@@ -100,3 +106,27 @@ Field.propTypes = {
         }.isRequired
     ))
 };
+
+function DatasourceInput(props) {
+    const datasources = props.datasources;
+
+    return <select className="ui fluid dropdown" {...props.field} >
+        <option>{"Select " + props.name + " ..."}</option>
+        {valuesOf(datasources, "id").map(ds => {
+            return <option key={ds.id} value={ds.id}>{ds.props.name + " (" + ds.type + ")"}</option>
+        })}
+    </select>;
+}
+
+DatasourceInput.propTypes = {
+    datasources: Prop.object.isRequired
+};
+
+
+const DatasourceInputContainer = connect(
+    (state) => {
+        return {
+            datasources: state.datasources
+        }
+    }
+)(DatasourceInput);

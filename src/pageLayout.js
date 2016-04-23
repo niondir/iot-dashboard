@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Component} from "react";
-import * as WidgetGrid from "./widgetGrid";
+import WidgetGrid from "./widgets/widgetGrid.ui";
 import * as Nav from "./navigation";
 import $ from "jquery";
 import * as Layouts from "./layouts/layouts.ui";
@@ -26,7 +26,7 @@ export default class Layout extends Component {
                 }
             });
 
-        
+
     }
 
 
@@ -60,14 +60,15 @@ export default class Layout extends Component {
                     </a>
 
                     <Import.TopNavItem/>
+                    <a className="add-widget item">New Widget <i className="dropdown icon"></i></a>
                     <Layouts.TopNavItem/>
                     <DatasourceNavItem/>
-                    <a className="add-widget item">New Widget <i className="dropdown icon"></i></a>
+
                 </div>
             </div>
 
             <div className="ui grid">
-                <WidgetGrid.WidgetGrid/>
+                <WidgetGrid/>
             </div>
             {/*<CounterApp/>*/}
         </div>

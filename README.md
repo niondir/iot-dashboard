@@ -63,12 +63,24 @@ There are several predefined, more and less generic `Widgets` that can be config
 **Datasource Type:** A `Datasource Type` defines how a `Datasource` can fetch data, 
 e.g. a simple REST datasource, or a more sophisticated for specific services like dweet.io, google docs, etc.
 
-* A Datasource provides 2 function:
-    * `fetchNewValues(): [{value}]`
-    * `fetchPastValues(since): [{value}]`
-      * Implementation is optional
-    * `Value` can be any kind of JSON object. 
-        * Widgets can verify if they are able to display given values
+#### Datasources ####
+
+* **DatasourcePlugin:** Can be written by anybody to provide logic that fetches data from anywhere
+* **DatasourceInstance:** Can be created by the user based on any `DatasourcePlugin`. Executes the actual data fetching.
+* **DatasourceState:** Contains properties defined by the user when a `DatasourceInstance` is created  
+ and is updated regularly with data from the `DatasourceInstance`
+* **DatasourceWorker:** Managing the actual updating of the `DatasourceState` based on the `DatasourceInstance` and the current `DatasourceState`
+
+The following needs way more documentation in future, just a quick start:
+
+A `DatasourcePlugin` can provide 2 functions:
+* `fetchNewValues(): [{value}]`
+* `fetchPastValues(since): [{value}]`
+  * Implementation is optional
+* `Value` can be any kind of JSON object. 
+    * Widgets can verify if they are able to display given values
+    
+And a `TYPE_INFO` constant.
 
 ## Coding guidelines ##
 

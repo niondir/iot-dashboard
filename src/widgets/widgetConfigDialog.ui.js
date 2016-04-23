@@ -78,10 +78,12 @@ class WidgetConfigModal extends React.Component {
         });
 
         const fields = settings.map(setting => setting.id);
-        const initialValues = settings.reduce((initialValues, setting) => {
+        let initialValues = settings.reduce((initialValues, setting) => {
             initialValues[setting.id] = setting.defaultValue;
             return initialValues;
-        }, {...props.widgetProps});
+        }, {});
+        // Overwrite with current widget props
+        initialValues = {...initialValues, ...props.widgetProps};
 
         return <ModalDialog id={DIALOG_ID}
                             title={"Configure "+ props.widgetType +" Widget"}
