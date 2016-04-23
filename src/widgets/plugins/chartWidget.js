@@ -6,68 +6,70 @@ import * as c3 from 'c3';
 
 export const TYPE_INFO = {
     type: "chart",
-    defaultProps: {
-        name: "Chart"
-    }
+    settings: [
+        {
+            id: 'datasource',
+            name: 'Datasource',
+            type: 'datasource'
+        }
+    ]
 };
 
 
 export class Widget extends Component {
 
-    constructor(props) {
-        super(props);
-        let i = 1;
-        this.state = {
-            data: [
-                {x: i++, "value": Math.random()*100},
-                {x: i++, "value": Math.random()*100},
-                {x: i++, "value": Math.random()*100},
-                {x: i++, "value": Math.random()*100},
-                {x: i++, "value": Math.random()*100},
-                {x: i++, "value": Math.random()*100},
-                {x: i++, "value": Math.random()*100},
-                {x: i++, "value": Math.random()*100},
-                {x: i++, "value": Math.random()*100},
-                {x: i++, "value": Math.random()*100}
-            ]
-        };
-    }
-
-
     componentDidMount() {
-        this._renderChart(this.state.data);
+        this._createChart();
     }
 
-
-    _renderChart(data) {
-        var donutChart = c3.generate({
-            bindto: '#chart_1',
+    _createChart() {
+        this.chart = c3.generate({
+            bindto: '#chart-' + this.props._state.id,
             size: {
                 //width: 500,
                 height: this.props._state.height * 200 - 77
             },
             data: {
-                json: data,
-                keys: {
-                    value: ["value"]
-                },
-                labels: false,
-                names: {
-                    value: 'Random Values'
-                }
+                json: []
             },
             axis: {
                 x: {
                     //label: "foo"
                 }
             },
+            transition: {
+                duration: 0
+            },
             type: 'spline'
         })
     }
 
+    _renderChart() {
+        if (!this.chart) {
+            return;
+        }
+        const props = this.props;
+        const data = props.getData(this.props.datasource);
+
+        this.chart.load({
+            json: data,
+            //unload: false,
+            keys: {
+                x: "x",
+                value: ["value"]
+            },
+            labels: false,
+            names: {
+                value: 'Random Values'
+            }
+        });
+
+
+    }
+
     render() {
-        this._renderChart(this.state.data);
-        return <div className="" id="chart_1"></div>
+        this._renderChart();
+        return <div className="" id={'chart-' + this.props._state.id}></div>
     }
 }
 

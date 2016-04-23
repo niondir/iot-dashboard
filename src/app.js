@@ -37,25 +37,25 @@ DatasourcePlugins.register(TimeDatasource);
 
 
 
-function importReducerFactory(baseReducer:Function) {
-    return importReducer.bind(this, baseReducer);
+function importReducerFactory(baseReducer:Function, name) {
+    return importReducer.bind(this, baseReducer, name);
 }
 
-function importReducer(baseReducer:Function, state, action) {
+function importReducer(baseReducer:Function, name, state, action) {
     switch (action.type) {
         case DASHBOARD_IMPORT:
-            return action.state.widgets;
+            return action.state[name];
         default:
             return baseReducer(state, action);
     }
 }
 
 let reducer = Redux.combineReducers({
-    widgets: importReducerFactory(Widgets.widgets),
+    widgets: importReducerFactory(Widgets.widgets, "widgets"),
     widgetConfig: WidgetConfig.widgetConfigDialog,
     layouts: Layouts.layouts,
     currentLayout: Layouts.currentLayout,
-    datasources: Datasource.datasources,
+    datasources: importReducerFactory(Datasource.datasources, "datasources"),
     form: formReducer
 });
 

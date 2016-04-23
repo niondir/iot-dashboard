@@ -1,8 +1,20 @@
+
+
+let lastSave = new Date();
+
 export function persistenceMiddleware({getState}) {
     return (next) => (action) => {
+
         const nextState = next(action);
+
+        let now = new Date();
+        if (now.getTime() - lastSave.getTime() < 10000) {
+            return nextState;
+        }
+
         saveToLocalStorage(getState());
         console.log('Saved state ...');
+        lastSave = new Date();
         return nextState;
     }
 }

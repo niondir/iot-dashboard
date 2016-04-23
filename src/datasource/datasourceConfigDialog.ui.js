@@ -16,6 +16,12 @@ export function showDialog() {
     ModalDialog.showModal(DIALOG_ID);
 }
 
+export function unshiftIfNotExists(array:Array, element, isEqual = (a, b) => a.id == b.id) {
+    if (array.find((e) => isEqual(e, element)) == undefined) {
+        array.unshift(element);
+    }
+}
+
 class DatasourceConfigModal extends React.Component {
 
     constructor(props) {
@@ -67,25 +73,30 @@ class DatasourceConfigModal extends React.Component {
         const datasources = DatasourcePlugins.getPlugins();
         const selectedSource = DatasourcePlugins.getPlugin(this.state.selectedType) || {settings: []};
 
-        const settings = [...selectedSource.settings || []];
-        settings.unshift({
-                id: 'name',
-                name: 'Name',
-                type: 'string',
-                defaultValue: ""
-            },
-            {
-                id: 'interval',
-                name: 'Interval',
-                type: 'string',
-                defaultValue: "5"
-            });
+        const settings = [...selectedSource.settings];
+        unshiftIfNotExists(settings, {
+            id: 'interval',
+            name: 'Interval',
+            type: 'string',
+            defaultValue: "5"
+        });
+        unshiftIfNotExists(settings, {
+            id: 'name',
+            name: 'Name',
+            type: 'string',
+            defaultValue: ""
+        });
+
+        
 
         const fields = settings.map(setting => setting.id);
         const initialValues = settings.reduce((initialValues, setting) => {
-            initialValues[setting.id] = setting.defaultValue;
+            if (setting.defaultValue !== undefined) {
+                initialValues[setting.id] = setting.defaultValue;
+            }
             return initialValues;
         }, {interval: 5});
+
 
         // TODO: Add the additional fields (type, name interval) dynamically to the settings array
 

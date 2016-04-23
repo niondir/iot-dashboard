@@ -32,7 +32,6 @@ export function genCrudReducer(actionNames:Array<String>, elementReducer:Functio
                 const elementState = state[id];
                 if (elementState == undefined) {
                     // Do not update what we don't have.
-                    console.log("No element with id ", id, "in state ", state);
                     return state;
                 }
                 const updatedElement = elementReducer(elementState, action);

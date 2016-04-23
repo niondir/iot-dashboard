@@ -10,18 +10,19 @@ export class PluginRegistry {
 
     register(module) {
         console.assert(module.TYPE_INFO, "Missing TYPE_INFO on datasource module. Every module must export TYPE_INFO");
-        this.datasources[module.TYPE_INFO.type] = {
+        const dsPlugin = {
             ...module.TYPE_INFO,
             Datasource: module.Datasource,
-            getOrCreateInstance: (id) => {
-                let instance = this.instances[id];
+            getOrCreateInstance: (dsState) => {
+                let instance = this.instances[dsState.id];
                 if (!instance) {
-                    instance = new module.Datasource();
-                    this.instances[id] = instance;
+                    instance = new module.Datasource(dsState.props);
+                    this.instances[dsState.id] = instance;
                 }
                 return instance;
             }
-        }
+        };
+        this.datasources[module.TYPE_INFO.type] = dsPlugin;
     }
 
     getPlugin(type:String) {

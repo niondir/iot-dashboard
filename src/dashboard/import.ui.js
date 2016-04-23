@@ -34,8 +34,14 @@ export {TopNavItemContainer as TopNavItem}
 export class Modal extends React.Component {
 
 
+    constructor(props) {
+        super(props);
+
+        this.state = {state: {}}
+    }
+
     componentWillReceiveProps(nextProps) {
-        this.refs.data.value = Import.serialize(nextProps.state);
+        //this.refs.data.value = Import.serialize(nextProps.state);
     }
 
     render() {
@@ -45,6 +51,14 @@ export class Modal extends React.Component {
                 className: "ui right black button",
                 label: "Close",
                 onClick: () => true
+            },
+            {
+                className: "ui right black button",
+                label: "Refresh",
+                onClick: () => {
+                   // this.setState({state: this.props.state});
+                    this.refs.data.value = Import.serialize(this.props.state)
+                }
             },
             {
                 className: "ui right labeled icon positive button",
@@ -66,7 +80,7 @@ export class Modal extends React.Component {
                     <form className="ui form">
                         <div className="field">
                             <label>Data</label>
-                            <textarea ref="data" rows="10" defaultValue={Import.serialize(props.state)}></textarea>
+                            <textarea ref="data" rows="10" defaultValue={Import.serialize(this.state.state)}></textarea>
                         </div>
                     </form>
 

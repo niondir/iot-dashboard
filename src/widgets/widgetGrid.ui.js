@@ -26,7 +26,6 @@ class WidgetGrid extends Component {
         let widgetData:Array<object> = this.props.widgets || [];
         // WidgetFrame must be loaded as function, else the grid is not working properly.
         // TODO: Remove unknown widget from state
-        console.log("WidgetData: ", widgetData);
         let widgets = widgetData.map((data) => {
             let widget = WidgetPlugins.getPlugin(data.type);
             if (!widget) {

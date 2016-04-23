@@ -5,130 +5,61 @@ export const TYPE_INFO = {
     name: "Random",
     settings: [
         {
-            id: 'string',
-            name: 'some String w/o description',
-            type: 'string',
-            defaultValue: "Some default value"
+            id: "maxValues",
+            name: "Max Values",
+            description: "Maximum number of values stored",
+            type: "number"
         },
         {
-            id: 'text',
-            name: 'some Text',
-            type: 'text',
-            defaultValue: "Some default value",
-            description: "This is pretty self explanatory..."
+            id: "min",
+            name: "Min Value",
+            type: "number",
+            defaultValue: 0
         },
         {
-            id: 'bool',
-            name: 'some Boolean',
-            type: 'boolean',
-            defaultValue: true,
-            description: "This is pretty self explanatory..."
-        },
-        {
-            id: 'multi',
-            name: 'some Options',
-            type: 'option',
-            description: "This is pretty self explanatory...",
-            defaultValue: "old",
-            options: [
-                {
-                    "name": "0-50",
-                    "value": "young"
-                },
-                {
-                    "name": "51-100",
-                    "value": "old"
-                }
-            ]
-        },
-        {
-            id: 'multi2',
-            name: 'option w/o default',
-            type: 'option',
-            description: "This is pretty self explanatory...",
-            options: [
-                {
-                    "name": "0-50",
-                    "value": "young"
-                },
-                {
-                    "name": "51-100",
-                    "value": "old"
-                }
-            ]
+            id: "max",
+            name: "Max Value",
+            type: "number",
+            defaultValue: 100
         }
-    ],
-    settingsX: {
-        string: {
-            name: 'some String w/o description',
-            type: 'string',
-            defaultValue: "Some default value"
-        },
-        text: {
-            name: 'some Text',
-            type: 'text',
-            defaultValue: "Some default value",
-            description: "This is pretty self explanatory..."
-        },
-        boolean: {
-            name: 'some Boolean',
-            type: 'boolean',
-            defaultValue: true,
-            description: "This is pretty self explanatory..."
-        },
-        multi: {
-            name: 'some Options',
-            type: 'option',
-            description: "This is pretty self explanatory...",
-            defaultValue: "old",
-            options: [
-                {
-                    "name": "0-50",
-                    "value": "young"
-                },
-                {
-                    "name": "51-100",
-                    "value": "old"
-                }
-            ]
-        },
-        multi2: {
-            name: 'option w/o default',
-            type: 'option',
-            description: "This is pretty self explanatory...",
-            options: [
-                {
-                    "name": "0-50",
-                    "value": "young"
-                },
-                {
-                    "name": "51-100",
-                    "value": "old"
-                }
-            ]
-        }
-    }
-    ,
-    defaultProps: {}
+    ]
 };
 
 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 export class Datasource {
 
-    constructor() {
+
+    constructor(props) {
+        this.props = props;
         // Initialize with non random values to demonstrate loading of historic values
-        this.history = [{value: 10}, {value: 20}, {value: 30}, {value: 40}, {value: 50}]
+        this.history = []; // [{value: 10}, {value: 20}, {value: 30}, {value: 40}, {value: 50}]
+        this.x = 0;
     }
 
-    getNewValues() {
-        let newValue = {value: Math.ceil(Math.random() * 100)};
-        this.history.push(newValue);
-        return [newValue]
+    updateProps(props) {
+        this.props = props;
     }
 
-    getPastValues(since) {
-        return [...this.history];
+    getValues() {
+        this.history.push(this.fetchValue());
+
+        const maxValues = Number(this.props.maxValues);
+        while (this.history.length > maxValues) {
+            this.history.shift();
+        }
+
+        return this.history;
     }
 
-
+    fetchValue() {
+        const props = this.props;
+        const min = Number(props.min);
+        const max = Number(props.max);
+        let newValue = {x: this.x++, value: getRandomInt(min, max)};
+        return newValue;
+    }
 }

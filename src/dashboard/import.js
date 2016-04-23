@@ -4,7 +4,8 @@ import {loadEmptyLayout} from '../layouts/layouts'
 
 export function serialize(state) {
     return JSON.stringify({
-        widgets: state.widgets
+        widgets: state.widgets,
+        datasources: state.datasources
     });
 }
 

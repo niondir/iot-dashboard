@@ -14,6 +14,12 @@ export function showDialog() {
     ModalDialog.showModal(DIALOG_ID);
 }
 
+export function unshiftIfNotExists(array:Array, element, isEqual = (a, b) => a.id == b.id) {
+    if (array.find((e) => isEqual(e, element)) == undefined) {
+        array.unshift(element);
+    }
+}
+
 class WidgetConfigModal extends React.Component {
 
     constructor(props) {
@@ -60,17 +66,16 @@ class WidgetConfigModal extends React.Component {
         ];
 
         const props = this.props;
-        const widgets = WidgetPlugins.getPlugins();
         const selectedWidget = WidgetPlugins.getPlugin(this.props.widgetType) || {settings: []};
 
         if (!selectedWidget) {
             return <div>Unknown WidgetType: {this.props.widgetType}</div>
         }
 
-        console.log("selectedWidget", selectedWidget);
         // Add additional fields
         const settings = [...selectedWidget.settings];
-        settings.unshift({
+
+        unshiftIfNotExists(settings, {
             id: 'name',
             name: 'Name',
             type: 'string',
@@ -79,7 +84,9 @@ class WidgetConfigModal extends React.Component {
 
         const fields = settings.map(setting => setting.id);
         let initialValues = settings.reduce((initialValues, setting) => {
-            initialValues[setting.id] = setting.defaultValue;
+            if (setting.defaultValue !== undefined) {
+                initialValues[setting.id] = setting.defaultValue;
+            }
             return initialValues;
         }, {});
         // Overwrite with current widget props

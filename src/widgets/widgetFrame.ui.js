@@ -2,6 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux'
 import * as WidgetConfig from './widgetConfig'
 import WidgetPlugins from './widgetPlugins'
+import {deleteWidget} from './widgets'
 import DatasourcePlugins from '../datasource/datasourcePlugins'
 const Prop = React.PropTypes;
 
@@ -15,12 +16,13 @@ const WidgetFrame = (props) => {
     let widget = WidgetPlugins.getPlugin(widgetState.type);
     console.assert(widget, "No registered widget with type: " + widgetState.type);
 
-    const datasourceResolver = (id) => {
+    const dataResolver = (id) => {
         const ds = props.datasources[id];
         if (!ds) {
-            console.warn("Can not find Datasource with id " + id + " for widget: ", widgetState);
+            console.warn("Can not find Datasource with id " + id + " for widget: ", widgetState, " Returning empty data!");
+            return [];
         }
-        return ds;
+        return [...ds.data];
     };
 
     return (
@@ -45,7 +47,7 @@ const WidgetFrame = (props) => {
                 {React.createElement(widget.widget, {
                     ...widgetState.props,
                     _state: widgetState,
-                    getDatasource: datasourceResolver
+                    getData: dataResolver
                 })}
             </div>
         </div>)

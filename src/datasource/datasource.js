@@ -7,11 +7,14 @@ import * as Uuid from '../util/uuid'
 import {valuesOf} from '../util/collection'
 
 const initialDatasources = {
-    "my-random": {
-        id: "my-random",
+    "initial_random_source": {
+        id: "initial_random_source",
         type: "random",
         props: {
-            name: "Random Datasource"
+            name: "Random Datasource",
+            min: 10,
+            max: 20,
+            maxValues: 20
         }
     }
 };
@@ -33,8 +36,8 @@ export function addDatasource(dsType, props) {
             dsType,
             props
         });
-        const state = getState();
-        DatasourceWorker.initializeWorkers(state.datasources, dispatch);
+        //const state = getState();
+        //DatasourceWorker.initializeWorkers(state.datasources, dispatch);
     }
 }
 
@@ -68,9 +71,16 @@ export function fetchDatasourceData() {
         
         valuesOf(dsStates).forEach(dsState => {
             const dsPlugin = DatasourcePlugins.getPlugin(dsState.type);
-            const dsInstance = dsPlugin.getOrCreateInstance(dsState.id);
-            const newData = dsInstance.getNewValues();
-            dispatch(appendDatasourceData(dsState.id, newData));
+            const dsInstance = dsPlugin.getOrCreateInstance(dsState);
+            const newData = dsInstance.getValues();
+
+            /*
+            if (!dsState.data) {
+                const pastData = dsInstance.getPastValues();
+                dispatch(setDatasourceData(dsState.id, pastData));
+            }*/
+
+            dispatch(setDatasourceData(dsState.id, newData));
         })
     };
 }

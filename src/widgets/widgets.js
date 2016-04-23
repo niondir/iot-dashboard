@@ -5,29 +5,36 @@ import * as WidgetConfig from './widgetConfig'
 import WidgetPlugins from './widgetPlugins'
 import {valuesOf} from '../util/collection'
 import {genCrudReducer} from '../util/reducer'
-import {LOAD_LAYOUT, ADD_WIDGET, UPDATE_WIDGET_PROPS, DELETE_WIDGET, UPDATE_WIDGET_LAYOUT, DASHBOARD_IMPORT} from '../actionNames'
+import {
+    LOAD_LAYOUT,
+    ADD_WIDGET,
+    UPDATE_WIDGET_PROPS,
+    DELETE_WIDGET,
+    UPDATE_WIDGET_LAYOUT,
+    DASHBOARD_IMPORT
+} from '../actionNames'
+
 
 export const initialWidgets = {
-    "initial_time_widget": {
-        type: "time",
-        id: "initial_time_widget",
-        row: 0,
-        col: 0,
-        width: 1,
-        height: 1,
-        props: {name: "Time"}
+    "initial_chart": {
+        "id": "initial_chart",
+        "type": "chart",
+        "name": "chart",
+        "props": {"name": "Random Values", "datasource": "initial_random_source"},
+        "row": 0,
+        "col": 0,
+        "width": 4,
+        "height": 1
     },
-    "initial_text_widget": {
-        type: "text",
-        id: "initial_text_widget",
-        row: 0,
-        col: 1,
-        width: 3,
-        height: 1,
-        props: {
-            name: "Text",
-            text: "This is a text widget"
-        }
+    "initial_text": {
+        "id": "initial_text",
+        "type": "text",
+        "name": "text",
+        "props": {"name": "Random data", "datasource": "initial_random_source"},
+        "row": 0,
+        "col": 4,
+        "width": 2,
+        "height": 2
     }
 };
 

@@ -75,12 +75,14 @@ Field.propTypes = {
 
 
 function SettingsInput(props) {
-
     switch (props.type) {
         case "text":
             return <textarea rows="3" placeholder={props.description} {...props.field}  />;
         case "string":
-            return <input placeholder={props.description} {...props.field}  />;
+            return <input placeholder={props.description} {...props.field} />;
+        case "number":
+            return <input type="number" min={props.min} max={props.max}
+                          placeholder={props.description} {...props.field} />;
         case "boolean":
             return <input type="checkbox" {...props.field} />;
         case "option":
@@ -101,10 +103,13 @@ function SettingsInput(props) {
 Field.propTypes = {
     field: Prop.object.isRequired, // redux-form field info
     description: Prop.string,
-    options: Prop.arrayOf(Prop.shape({
-            value: Prop.string.isRequired
-        }.isRequired
-    ))
+    min: Prop.number, // for number
+    max: Prop.number, // for number
+    options: Prop.arrayOf( // For option
+        Prop.shape({
+                value: Prop.string.isRequired
+            }.isRequired
+        ))
 };
 
 function DatasourceInput(props) {

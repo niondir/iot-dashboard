@@ -8,7 +8,6 @@ const Prop = React.PropTypes;
 export default class ModalDialog extends React.Component {
 
     componentDidMount() {
-        console.log("Mounted Modal: " + this.props.id);
         $('.ui.modal.' + this.props.id)
             .modal({
                 detachable: false,
@@ -20,13 +19,11 @@ export default class ModalDialog extends React.Component {
     }
 
     static showModal(id) {
-        console.log("Show Modal: " + id);
         $('.ui.modal.' + id)
             .modal('show');
     }
 
     static closeModal(id) {
-        console.log("Close Modal: " + id);
         $('.ui.modal.' + id).modal('hide');
     }
 
@@ -52,7 +49,6 @@ export default class ModalDialog extends React.Component {
         });
 
         const props = this.props;
-        console.log("Render Modal: " + this.props.id);
         return <div className={'ui modal ' + this.props.id}>
             <div className="header">
                 {props.title}

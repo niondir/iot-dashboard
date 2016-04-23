@@ -24,13 +24,12 @@ export class Widget extends Component {
 
     render() {
         const props = this.props;
-        const ds = props.getDatasource(this.props.datasource);
+        const data = props.getData(this.props.datasource);
 
-        //console.log("Datasource:", ds);
-        if(!ds) {
-            return <p>Missing datasource: {this.props.datasource}</p>
+        if(!data || data.length == 0) {
+            return <p>No data in datasource: {this.props.datasource}</p>
         }
         
-        return <p>{JSON.stringify(ds.data)}</p>
+        return <p>{JSON.stringify(data)}</p>
     }
 }
