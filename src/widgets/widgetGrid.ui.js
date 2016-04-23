@@ -29,7 +29,7 @@ class WidgetGrid extends Component {
         let widgets = widgetData.map((data) => {
             let widget = WidgetPlugins.getPlugin(data.type);
             if (!widget) {
-                console.warn("No WidgetPlugin for type '" + data.type + "'! Skipping rendering of that widget.");
+                console.warn("No WidgetPlugin for type '" + data.type + "'! Skipping rendering.");
                 return null;
             }
             return WidgetFrame({widget: data, datasources: props.datasources})
@@ -57,7 +57,8 @@ class WidgetGrid extends Component {
 WidgetGrid.propTypes = {
     widgets: Prop.array.isRequired,
     datasources: Prop.object.isRequired,
-    onLayoutChange: Prop.func
+    onLayoutChange: Prop.func,
+    deleteWidget: Prop.func
 };
 
 export default connect(
@@ -71,7 +72,8 @@ export default connect(
         return {
             onLayoutChange: (layout) => {
                 dispatch(Widgets.updateLayout(layout))
-            }
+            },
+            deleteWidget: (id) => dispatch(Widgets.deleteWidget(id))
         };
     }
 )(WidgetGrid);

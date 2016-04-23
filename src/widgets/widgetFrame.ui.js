@@ -19,7 +19,7 @@ const WidgetFrame = (props) => {
     const dataResolver = (id) => {
         const ds = props.datasources[id];
         if (!ds) {
-            console.warn("Can not find Datasource with id " + id + " for widget: ", widgetState, " Returning empty data!");
+            //console.warn("Can not find Datasource with id " + id + " for widget: ", widgetState, " Returning empty data!");
             return [];
         }
 
