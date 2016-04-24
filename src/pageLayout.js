@@ -65,7 +65,7 @@ export default class Layout extends Component {
                     <DatasourceNavItem/>
                     <a className="item" onClick={() => Persistence.clearData()}>
                         <i className="red bomb icon"/>
-                        Wipe Everything!
+                        Reset Everything!
                     </a>
 
                 </div>
