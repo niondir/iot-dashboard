@@ -18,6 +18,17 @@ The **latest development snapshot** is on the `dev` branch.
  [Live Demo Stable](http://demo.iot-dashboard.org/) of the `master` branch.  
  [Live Demo Dev](http://demo.iot-dashboard.org/branch/dev/) of the `dev` branch.
 
+## Motivation ##
+Why just another Dashboard?
+
+I was looking for a Dashboard with the following properties:
+
+- OpenSource with code that I can understand and extend for full customization
+- Running locally/offline without the need of any server, keeping the server optional until I really need one
+- Simple API to write custom widgets and datasources
+- A Reasonable set of default widgets, to be used out of the box
+- Easy to setup and maintain, even for unusual datasources
+
 ## Setup ##
 
 We have just a development setup yet, since there is no need for more :)
