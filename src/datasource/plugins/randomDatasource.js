@@ -52,7 +52,7 @@ export class Datasource {
     getValues() {
         this.history.push(this.fetchValue());
 
-        const maxValues = Number(this.props.maxValues);
+        const maxValues = Number(this.props.maxValues) || 1000;
         while (this.history.length > maxValues) {
             this.history.shift();
         }
