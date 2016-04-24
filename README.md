@@ -45,6 +45,12 @@ Useful to check problems in the Webpack build.
 - Goto: https://webpack.github.io/analyse/
 - Load the generated stats.json
 
+## License ##
+I have not applied any OpenSource license yet.  
+In case you want to use or modify the code or parts of it outside of GitHub, **you have to ask for permissions**.  
+Feel free to fork or modify the code on GitHub or distribute it in any non-commercial way. Contributions are very welcome.
+
+The code will most likely be available under [MPL](https://www.mozilla.org/en-US/MPL/) in future.
 
 ## Documentation ##
 
