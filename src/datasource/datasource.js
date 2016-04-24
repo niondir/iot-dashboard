@@ -1,11 +1,9 @@
 import {assert} from 'chai'
-import * as DatasourceWorker from './datasourceWorker'
 import DatasourcePlugins from './datasourcePlugins'
 import {genCrudReducer} from '../util/reducer'
 import * as Action from '../actionNames'
 import * as Uuid from '../util/uuid'
 import {valuesOf} from '../util/collection'
-import * as DatasourceConfigDialog from './datasourceConfigDialog.ui'
 import * as ModalIds from '../modal/modalDialogIds'
 import * as Modal from '../modal/modalDialog'
 
@@ -111,7 +109,7 @@ export function fetchDatasourceData() {
 
         valuesOf(dsStates).forEach(dsState => {
             const dsPlugin = DatasourcePlugins.getPlugin(dsState.type);
-            const dsInstance = dsPlugin.getOrCreateInstance(dsState);
+            const dsInstance = dsPlugin.getOrCreateInstance(dsState.id);
             const newData = dsInstance.getValues();
 
             /*

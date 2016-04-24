@@ -25,14 +25,6 @@ import DatasourcePlugins from './datasource/datasourcePlugins'
 import * as RandomDatasource from './datasource/plugins/randomDatasource'
 import * as TimeDatasource from './datasource/plugins/timeDatasource'
 
-WidgetPlugins.register(TextWidget);
-WidgetPlugins.register(ChartWidget);
-
-
-DatasourcePlugins.register(RandomDatasource);
-DatasourcePlugins.register(TimeDatasource);
-
-
 function importReducerFactory(baseReducer:Function, name) {
     return importReducer.bind(this, baseReducer, name);
 }
@@ -78,6 +70,15 @@ let store = Redux.createStore(
     ));
 
 const state = store.getState();
+
+
+WidgetPlugins.register(TextWidget);
+WidgetPlugins.register(ChartWidget);
+
+DatasourcePlugins.store = store;
+DatasourcePlugins.register(RandomDatasource);
+DatasourcePlugins.register(TimeDatasource);
+
 cleanupState();
 
 function cleanupState() {

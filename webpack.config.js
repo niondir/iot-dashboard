@@ -24,7 +24,7 @@ module.exports = {
             "react", "react-dom", "react-grid-layout", "react-grid-layout/css/styles.css",
             "redux", "react-redux", "redux-logger", "redux-thunk", "redux-form",
             "semantic-ui-css/semantic", "semantic-ui-css/semantic.css", "jquery", "c3css", "c3", "d3",
-            "form-serialize"
+            "form-serialize", "lodash"
         ]
     },
     output: {
@@ -40,6 +40,7 @@ module.exports = {
         ],
         alias: {
             jquery: path.resolve('./node_modules/jquery'),
+            lodash: path.resolve('./node_modules/lodash'),
             d3: path.resolve('./vendor/d3/d3.js'),
             c3: path.resolve('./vendor/c3/c3.js'),
             c3css: path.resolve('./vendor/c3/c3.css')
@@ -91,7 +92,8 @@ module.exports = {
 
         new webpack.ProvidePlugin({
             $: "jquery",
-            jQuery: "jquery"
+            jQuery: "jquery",
+            "_": "lodash"
         })
 
     ]
