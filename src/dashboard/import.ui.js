@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import * as Import from './import'
-import ModalDialog from '../ui/modal.ui'
+import ModalDialog from '../modal/modalDialog.ui.js'
 const Prop = React.PropTypes;
 
 

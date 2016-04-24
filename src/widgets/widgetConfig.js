@@ -3,6 +3,8 @@ import * as Widgets from "./widgets";
 import WidgetPlugins from "./widgetPlugins";
 import {START_CREATE_WIDGET, START_CONFIGURE_WIDGET} from "../actionNames";
 import {showDialog as showConfigDialog} from "./widgetConfigDialog.ui";
+import * as Modal from '../modal/modalDialog'
+import * as ModalIds from '../modal/modalDialogIds'
 
 const initialState = {
     type: null,
@@ -52,7 +54,7 @@ export function openWidgetCreateDialog(type, defaultProps) {
             widgetType: type,
             widgetProps: defaultProps
         });
-        showConfigDialog();
+        dispatch(Modal.showModal(ModalIds.WIDGET_CONFIG));
     }
 }
 
@@ -67,7 +69,7 @@ export function openWidgetConfigDialog(id) {
             type: START_CONFIGURE_WIDGET,
             widget: widget
         });
-        showConfigDialog();
+        dispatch(Modal.showModal(ModalIds.WIDGET_CONFIG));
     }
 }
 

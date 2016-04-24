@@ -42,7 +42,6 @@ export class Datasource {
         if (this.history.length > 1) {
             this.x = history[history.length - 1].x + 1 || 0;
         }
-
     }
 
     // TODO: We can not edit datasources yet :)

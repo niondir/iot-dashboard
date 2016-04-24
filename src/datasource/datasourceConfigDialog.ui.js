@@ -1,5 +1,5 @@
 import React from 'react'
-import ModalDialog from '../ui/modal.ui'
+import ModalDialog from '../modal/modalDialog.ui.js'
 import * as Datasource from './datasource'
 import DatasourcePlugins from './datasourcePlugins'
 import {connect} from 'react-redux'
@@ -7,10 +7,12 @@ import {valuesOf} from '../util/collection'
 import * as ui from '../ui/elements.ui'
 import SettingsForm from '../ui/settingsForm.ui'
 import {reset} from 'redux-form';
+import * as ModalIds from '../modal/modalDialogIds'
 const Prop = React.PropTypes;
 
-const DIALOG_ID = "datasource-settings-dialog";
+const DIALOG_ID = ModalIds.DATASOURCE_CONFIG;
 const FORM_ID = "datasource-settings-form";
+
 
 export function showDialog() {
     ModalDialog.showModal(DIALOG_ID);
@@ -31,16 +33,39 @@ class DatasourceConfigModal extends React.Component {
         };
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.dialogData.datasource) {
+            let selectedType = nextProps.dialogData.datasource.type;
+            this.state = {
+                selectedType: selectedType
+            };
+        }
+    }
+
     onSubmit(formData, dispatch) {
-        this.props.addDatasource(this.state.selectedType, formData);
+        let id = undefined;
+        if (this._isEditing()) {
+            id = this._getEditingDatasource().id;
+        }
+        this.props.createOrUpdateDatasource(id, this.state.selectedType, formData);
         return true;
     }
 
     resetForm() {
-        this.props.resetForm('datasource-settings');
+        this.props.resetForm(FORM_ID);
     }
 
+    _isEditing() {
+        return !!this.props.dialogData.datasource;
+    }
+
+    _getEditingDatasource() {
+        return this.props.dialogData.datasource;
+    }
+
+
     render() {
+        const props = this.props;
         const actions = [
             {
                 className: "ui right button",
@@ -61,7 +86,7 @@ class DatasourceConfigModal extends React.Component {
             {
                 className: "ui right labeled icon positive button",
                 iconClass: "save icon",
-                label: "Create",
+                label: this._isEditing() ? "Save" : "Create",
                 onClick: () => {
                     const success = this.refs.form.submit();
                     if (success) this.resetForm();
@@ -76,13 +101,6 @@ class DatasourceConfigModal extends React.Component {
         if (selectedSource.settings) {
             settings = [...selectedSource.settings];
         }
-        /*
-        unshiftIfNotExists(settings, {
-            id: 'interval',
-            name: 'Interval',
-            type: 'string',
-            defaultValue: "5"
-        });*/
         unshiftIfNotExists(settings, {
             id: 'name',
             name: 'Name',
@@ -90,21 +108,28 @@ class DatasourceConfigModal extends React.Component {
             defaultValue: ""
         });
 
-        
 
         const fields = settings.map(setting => setting.id);
-        const initialValues = settings.reduce((initialValues, setting) => {
-            if (setting.defaultValue !== undefined) {
-                initialValues[setting.id] = setting.defaultValue;
-            }
-            return initialValues;
-        }, {interval: 5});
-
-
-        // TODO: Add the additional fields (type, name interval) dynamically to the settings array
+        let initialValues = {};
+        if (this._isEditing()) {
+            initialValues = {...this._getEditingDatasource().props}
+        }
+        else {
+            initialValues = settings.reduce((initialValues, setting) => {
+                if (setting.defaultValue !== undefined) {
+                    initialValues[setting.id] = setting.defaultValue;
+                }
+                return initialValues;
+            }, {});
+        }
+        
+        let title = "Create Datasource";
+        if (this._isEditing()) {
+            title = "Edit Datasource";
+        }
 
         return <ModalDialog id={DIALOG_ID}
-                            title="Create Datasource"
+                            title={title}
                             actions={actions}
         >
             <div className="ui one column grid">
@@ -137,19 +162,23 @@ class DatasourceConfigModal extends React.Component {
 }
 
 DatasourceConfigModal.propTypes = {
-    addDatasource: Prop.func.isRequired,
-    resetForm: Prop.func.isRequired
+    createOrUpdateDatasource: Prop.func.isRequired,
+    resetForm: Prop.func.isRequired,
+    dialogData: Prop.object.isRequired
 };
+
 
 export default connect(
     (state) => {
-        return {}
+        return {
+            dialogData: state.modalDialog.data || {}
+        }
     },
     (dispatch) => {
         return {
             resetForm: (id) => dispatch(reset(id)),
-            addDatasource: (type, dsProps) => {
-                dispatch(Datasource.addDatasource(type, dsProps))
+            createOrUpdateDatasource: (id, type, dsProps) => {
+                dispatch(Datasource.createOrUpdateDatasource(id, type, dsProps))
             }
         }
     }

@@ -1,5 +1,6 @@
 import React from "react";
-import ModalDialog from "../ui/modal.ui";
+import ModalDialog from "../modal/modalDialog.ui.js";
+import Modal from "../modal/modalDialog.js";
 import * as Datasource from "./datasource";
 import {connect} from "react-redux";
 import {valuesOf} from "../util/collection";
@@ -18,8 +19,14 @@ const TopNavItem = (props) => {
             <ui.Divider/>
             {
                 valuesOf(props.datasources).map(ds => {
-                    return <ui.LinkItem key={ds.id} onClick={() => {/*Edit*/}}>
-                        <ui.Icon type="delete" size="huge" align="right" onClick={() => props.deleteDatasource(ds.id)}/>
+                    return <ui.LinkItem key={ds.id} onClick={() => { props.editDatasource(ds.id)}}>
+                        <ui.Icon type="delete" size="huge" align="right"
+                                 onClick={(e) => {
+                        e.stopPropagation();
+                           e.preventDefault();
+                        props.deleteDatasource(ds.id);
+                        }}
+                        />
                         {ds.props.name}
                     </ui.LinkItem>
                 })
@@ -30,6 +37,7 @@ const TopNavItem = (props) => {
 
 TopNavItem.propTypes = {
     createDatasource: Prop.func.isRequired,
+    editDatasource: Prop.func.isRequired,
     deleteDatasource: Prop.func.isRequired,
     datasources: Prop.objectOf(
         Prop.shape({
@@ -48,7 +56,8 @@ export default connect(
     },
     (dispatch) => {
         return {
-            createDatasource: () => DatasourceConfigDialog.showDialog(),
+            createDatasource: () => dispatch(Datasource.startCreateDatasource()),
+            editDatasource: (id) => dispatch(Datasource.startEditDatasource(id)),
             deleteDatasource: (id) => dispatch(Datasource.deleteDatasource(id))
         }
     }

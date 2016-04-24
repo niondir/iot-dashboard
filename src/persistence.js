@@ -28,7 +28,7 @@ export function persistenceMiddleware({getState}) {
 }
 
 export function saveToLocalStorage(state) {
-    const {form ,...savableState} = state;
+    const {form, modalDialog ,...savableState} = state;
     window.localStorage.setItem("appState", JSON.stringify(savableState));
 }
 

@@ -40,7 +40,7 @@ export class Datasource {
         };
     };
 
-    getNewValues() {
+    getValues() {
         const now = new Date();
         return [{date: now}]
     }

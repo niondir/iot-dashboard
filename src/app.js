@@ -15,6 +15,7 @@ import * as Widgets from './widgets/widgets'
 import * as WidgetConfig from './widgets/widgetConfig'
 import * as Layouts from './layouts/layouts'
 import * as Datasource from './datasource/datasource'
+import * as Modal from './modal/modalDialog'
 import {DASHBOARD_IMPORT} from './actionNames'
 import WidgetPlugins from './widgets/widgetPlugins'
 import * as TextWidget from './widgets/plugins/textWidget'
@@ -51,7 +52,8 @@ let reducer = Redux.combineReducers({
     layouts: Layouts.layouts,
     currentLayout: Layouts.currentLayout,
     datasources: importReducerFactory(Datasource.datasources, "datasources"),
-    form: formReducer
+    form: formReducer,
+    modalDialog: Modal.modalDialog
 });
 
 

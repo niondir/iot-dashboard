@@ -1,4 +1,4 @@
-import ModalDialog from '../ui/modal.ui'
+import ModalDialog from '../modal/modalDialog.ui.js'
 import {DASHBOARD_IMPORT} from '../actionNames'
 import {loadEmptyLayout} from '../layouts/layouts'
 
