@@ -64,7 +64,7 @@ export class Datasource {
         const props = this.props;
         const min = Number(props.min);
         const max = Number(props.max);
-        let newValue = {x: this.x++, value: getRandomInt(min, max)};
+        let newValue = {x: this.x++, value: getRandomInt(min, max), value2: getRandomInt(min, max)};
         return newValue;
     }
 }

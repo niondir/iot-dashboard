@@ -4,6 +4,7 @@ import * as ui from './elements.ui'
 import {reduxForm, reset} from 'redux-form';
 import {chunk} from '../util/collection'
 import {valuesOf} from '../util/collection'
+import _ from 'lodash'
 const Prop = React.PropTypes;
 
 class SettingsForm extends React.Component {
@@ -81,7 +82,9 @@ function SettingsInput(props) {
             return <textarea rows="3" placeholder={props.description} {...props.field}  />;
         case "string":
             return <input placeholder={props.description} {...props.field} />;
-        case "number":
+        case "json": // TODO: Offer better editor + validation
+            return <textarea rows="3" placeholder={props.description} {...props.field}  />;
+        case "number": // TODO: Validate numbers, distinct between integers and decimals?
             return <input type="number" min={props.min} max={props.max}
                           placeholder={props.description} {...props.field} />;
         case "boolean":
@@ -90,13 +93,15 @@ function SettingsInput(props) {
             return <select className="ui fluid dropdown" {...props.field} >
                 <option>{"Select " + props.name + " ..."}</option>
                 {props.options.map(option => {
-                    return <option key={option.value} value={option.value}>{option.name}</option>
+                    const optionValue = _.isObject(option) ? option.value : option;
+                    const optionName = _.isObject(option) ? option.name : option;
+                    return <option key={optionValue} value={optionValue}>{optionName}</option>
                 })}
             </select>;
         case "datasource":
             return <DatasourceInputContainer {...props}/>
         default:
-            console.error("Unknown type for settings field: " + props.type);
+            console.error("Unknown type for settings field with id '" + props.id + "': " + props.type);
             return <input placeholder={props.description} readonly value={"Unknown field type: " + props.type}/>;
     }
 }
@@ -106,11 +111,16 @@ Field.propTypes = {
     description: Prop.string,
     min: Prop.number, // for number
     max: Prop.number, // for number
-    options: Prop.arrayOf( // For option
-        Prop.shape({
-                value: Prop.string.isRequired
-            }.isRequired
-        ))
+    options: Prop.oneOfType([
+            Prop.arrayOf( // For option
+                Prop.shape({
+                        name: Prop.string,
+                        value: Prop.string.isRequired
+                    }.isRequired
+                )).isRequired,
+            Prop.arrayOf(Prop.string).isRequired
+        ]
+    )
 };
 
 function DatasourceInput(props) {

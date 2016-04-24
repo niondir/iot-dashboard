@@ -42,7 +42,7 @@ export class DataSourcePlugin {
         let instance = this.instances[id];
         if (!instance) {
             const dsState = this.getDatasourceState(id);
-            instance = new this.Datasource(dsState.props);
+            instance = new this.Datasource(dsState.props, dsState.data);
             instance.props = dsState.props;
             this.instances[id] = instance;
         }

@@ -72,6 +72,7 @@ let store = Redux.createStore(
 const state = store.getState();
 
 
+WidgetPlugins.store = store;
 WidgetPlugins.register(TextWidget);
 WidgetPlugins.register(ChartWidget);
 

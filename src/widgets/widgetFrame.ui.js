@@ -13,8 +13,8 @@ const Prop = React.PropTypes;
 const WidgetFrame = (props) => {
     const widgetState = props.widget;
 
-    let widget = WidgetPlugins.getPlugin(widgetState.type);
-    console.assert(widget, "No registered widget with type: " + widgetState.type);
+    let widgetPlugin = WidgetPlugins.getPlugin(widgetState.type);
+    console.assert(widgetPlugin, "No registered widget with type: " + widgetState.type);
 
     const dataResolver = (id) => {
         const ds = props.datasources[id];
@@ -35,7 +35,7 @@ const WidgetFrame = (props) => {
             <div className="ui inverted segment">
                 <div className="ui tiny horizontal right floated inverted list">
                     <ConfigWidgetButton className="right item" widgetState={widgetState}
-                                        visible={(widget.settings ? true : false)} icon="configure"/>
+                                        visible={(widgetPlugin.settings ? true : false)} icon="configure"/>
                     <a className="right item drag">
                         <i className="move icon drag"></i>
                     </a>
@@ -45,11 +45,12 @@ const WidgetFrame = (props) => {
             </div>
 
             <div className="ui segment">
-                {React.createElement(widget.widget, {
-                    ...widgetState.props,
+                {widgetPlugin.getOrCreateWidget(widgetState.id)}
+                {/*React.createElement(widgetPlugin.Widget, {
+                    config: widgetState.props,
                     _state: widgetState,
                     getData: dataResolver
-                })}
+                })*/}
             </div>
         </div>)
 };
