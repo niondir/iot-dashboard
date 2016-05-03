@@ -3,6 +3,7 @@ import {assert} from 'chai'
 export const TYPE_INFO = {
     type: "random",
     name: "Random",
+    description: "A datasource that provides a random value each tick",
     settings: [
         {
             id: "maxValues",

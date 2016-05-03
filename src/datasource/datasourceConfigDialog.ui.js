@@ -96,7 +96,14 @@ class DatasourceConfigModal extends React.Component {
         ];
 
         const datasources = DatasourcePlugins.getPlugins();
-        const selectedSource = DatasourcePlugins.getPlugin(this.state.selectedType) || {settings: []};
+        let selectedSource;
+        if (this.state.selectedType) {
+            selectedSource = DatasourcePlugins.getPlugin(this.state.selectedType);
+        }
+        else {
+            selectedSource = {settings: []};
+        }
+        
         let settings = [];
         if (selectedSource.settings) {
             settings = [...selectedSource.settings];
@@ -122,7 +129,7 @@ class DatasourceConfigModal extends React.Component {
                 return initialValues;
             }, {});
         }
-        
+
         let title = "Create Datasource";
         if (this._isEditing()) {
             title = "Edit Datasource";

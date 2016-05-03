@@ -4,11 +4,16 @@
 Free Dashboard for your Data
 
 A generic dashboard application based on JavaScript, HTML and CSS that runs in modern browsers.
-Allows to arrange and configure widgets.
-A Plugin API will allow easy widget and custom datasource development to keep the dashboard as extensible as possible.
+Allows to arrange and configure widgets to display data from any datasource.
+A Plugin API that allows easy widget and datasource development to keep the dashboard as extensible as possible.
 
-**Not Done Yet** 
-This Project is still in Development and can not be used. Subscribe to get updates.
+Can be used as free alternative to [geckoboard](https://www.geckoboard.com), [kibana](https://www.elastic.co/products/kibana), or [freeboard](https://freeboard.io/). 
+And of course for all other IoT, M2M, Industry 4.0, BigData, whatever dashboards you have to pay for out there.
+
+---
+
+**Not Done Yet**
+This Project is still in Development and can not be used for production. Subscribe to get updates.
 
 The **latest stable version** is on the `master` branch.
 The **latest development snapshot** is on the `dev` branch.
@@ -25,9 +30,10 @@ I was looking for a Dashboard with the following properties:
 
 - OpenSource with code that I can understand and extend for full customization
 - Running locally/offline without the need of any server, keeping the server optional until I really need one
-- Simple API to write custom widgets and datasources
+- Simple API to write custom widgets and datasources to have a good base for community driven development and extensions
 - A Reasonable set of default widgets, to be used out of the box
 - Easy to setup and maintain, even for unusual datasources
+- The possibility to be part of a community that extends the Dashboard for their own needs
 
 ## Setup ##
 

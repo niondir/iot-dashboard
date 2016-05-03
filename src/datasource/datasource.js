@@ -109,6 +109,12 @@ export function fetchDatasourceData() {
 
         _.valuesIn(dsStates).forEach(dsState => {
             const dsPlugin = DatasourcePlugins.getPlugin(dsState.type);
+
+            if (dsPlugin === undefined) {
+                console.warn("Can not fetch data from non existent datasource plugin of type ", dsState.type);
+                return;
+            }
+
             const dsInstance = dsPlugin.getOrCreateInstance(dsState.id);
             const newData = dsInstance.getValues();
 

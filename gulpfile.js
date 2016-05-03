@@ -17,6 +17,7 @@ gulp.task("dev", ['webpack:server', 'watch']);
 gulp.task('watch', () => {
     gulp.watch("src/**/*.html", ["copy:html"]);
     gulp.watch("src/**/*.test.js", ["inject:tests"]);
+    gulp.watch("plugins/**/*", ["copy:plugins"]);
 });
 
 
@@ -99,19 +100,26 @@ gulp.task('clean:dist', function () {
 // Copy Tasks
 ///////////////
 
-gulp.task('copy', ['copy:html', 'copy:css']);
+gulp.task('copy', ['copy:html', 'copy:css', 'copy:plugins']);
 
 gulp.task('copy:html', function () {
     gulp.src('./src/**/*.html')
         .pipe(gulp.dest('./dist'));
 });
+
 gulp.task('copy:css', function () {
     gulp.src('./css/**/*.css')
         .pipe(gulp.dest('./dist'));
 });
+
 gulp.task('copy:vendor', function () {
     gulp.src('./vendor/**/*.*')
         .pipe(gulp.dest('./dist/vendor'));
+});
+
+gulp.task('copy:plugins', function () {
+    gulp.src('./plugins/**/*.*')
+        .pipe(gulp.dest('./dist/plugins'));
 });
 
 
