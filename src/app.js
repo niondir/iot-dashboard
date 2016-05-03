@@ -10,7 +10,6 @@ import 'semantic-ui-css/semantic.css';
 import 'semantic-ui-css/semantic';
 import 'c3css';
 import createLogger from 'redux-logger';
-import thunk from 'redux-thunk'
 import * as Widgets from './widgets/widgets'
 import * as WidgetConfig from './widgets/widgetConfig'
 import * as Layouts from './layouts/layouts'
@@ -24,50 +23,8 @@ import * as DatasourceWorker from './datasource/datasourceWorker'
 import DatasourcePlugins from './datasource/datasourcePlugins'
 import * as RandomDatasource from './datasource/plugins/randomDatasource'
 import * as TimeDatasource from './datasource/plugins/timeDatasource'
+import store from './store'
 
-function importReducerFactory(baseReducer:Function, name) {
-    return importReducer.bind(this, baseReducer, name);
-}
-
-function importReducer(baseReducer:Function, name, state, action) {
-    switch (action.type) {
-        case DASHBOARD_IMPORT:
-            return action.state[name];
-        default:
-            return baseReducer(state, action);
-    }
-}
-
-let reducer = Redux.combineReducers({
-    widgets: importReducerFactory(Widgets.widgets, "widgets"),
-    widgetConfig: WidgetConfig.widgetConfigDialog,
-    layouts: Layouts.layouts,
-    currentLayout: Layouts.currentLayout,
-    datasources: importReducerFactory(Datasource.datasources, "datasources"),
-    form: formReducer,
-    modalDialog: Modal.modalDialog
-});
-
-
-const logger = createLogger({
-    duration: false, // Print the duration of each action?
-    timestamp: true, // Print the timestamp with each action?
-    logErrors: true, // Should the logger catch, log, and re-throw errors?
-    predicate: (getState, action) => {
-        if (action.doNotLog) {
-            return false;
-        }
-        return true;
-    }
-});
-let store = Redux.createStore(
-    reducer,
-    Persist.loadFromLocalStorage(),
-    Redux.applyMiddleware(
-        thunk,
-        Persist.persistenceMiddleware,
-        logger // must be last
-    ));
 
 const state = store.getState();
 
