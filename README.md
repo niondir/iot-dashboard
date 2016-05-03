@@ -1,5 +1,4 @@
-**Master:**  No Tests Yet  
-**Dev:** [![Build Status](https://travis-ci.org/Niondir/iot-dashboard.svg?branch=dev)](https://travis-ci.org/Niondir/iot-dashboard)  
+**Master:**  [![Build Status](https://travis-ci.org/Niondir/iot-dashboard.svg?branch=master)](https://travis-ci.org/Niondir/iot-dashboard) **Dev:** [![Build Status](https://travis-ci.org/Niondir/iot-dashboard.svg?branch=dev)](https://travis-ci.org/Niondir/iot-dashboard)  
 
 # Individual Open Technology - Dashboard
 Free Dashboard for your Data
@@ -18,6 +17,17 @@ The **latest development snapshot** is on the `dev` branch.
 
  [Live Demo Stable](http://demo.iot-dashboard.org/) of the `master` branch.  
  [Live Demo Dev](http://demo.iot-dashboard.org/branch/dev/) of the `dev` branch.
+
+## Motivation ##
+Why just another Dashboard?
+
+I was looking for a Dashboard with the following properties:
+
+- OpenSource with code that I can understand and extend for full customization
+- Running locally/offline without the need of any server, keeping the server optional until I really need one
+- Simple API to write custom widgets and datasources
+- A Reasonable set of default widgets, to be used out of the box
+- Easy to setup and maintain, even for unusual datasources
 
 ## Setup ##
 
@@ -45,6 +55,12 @@ Useful to check problems in the Webpack build.
 - Goto: https://webpack.github.io/analyse/
 - Load the generated stats.json
 
+## License ##
+I have not applied any OpenSource license yet.  
+In case you want to use or modify the code or parts of it outside of GitHub, **you have to ask for permissions**.  
+Feel free to fork or modify the code on GitHub or distribute it in any non-commercial way. Contributions are very welcome.
+
+The code will most likely be available under [MPL](https://www.mozilla.org/en-US/MPL/) in future.
 
 ## Documentation ##
 
