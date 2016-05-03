@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import * as ui from './elements.ui'
 import {reduxForm, reset} from 'redux-form';
 import {chunk} from '../util/collection'
-import {valuesOf} from '../util/collection'
 import _ from 'lodash'
 const Prop = React.PropTypes;
 
@@ -128,8 +127,8 @@ function DatasourceInput(props) {
 
     return <select className="ui fluid dropdown" {...props.field} >
         <option>{"Select " + props.name + " ..."}</option>
-        {valuesOf(datasources, "id").map(ds => {
-            return <option key={ds.id} value={ds.id}>{ds.props.name + " (" + ds.type + ")"}</option>
+        {_.mapKeys(datasources, (ds, id) => {
+            return <option key={id} value={id}>{ds.props.name + " (" + ds.type + ")"}</option>
         })}
     </select>;
 }

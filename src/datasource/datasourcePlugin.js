@@ -1,4 +1,3 @@
-import {valuesOf} from '../util/collection'
 import _ from 'lodash'
 
 /**
@@ -55,7 +54,7 @@ export class DataSourcePlugin {
 
     handleStateChange() {
         const state = this.store.getState();
-        valuesOf(state.datasources).forEach(dsState => this.updateDatasource(dsState))
+        _.valuesIn(state.datasources).forEach(dsState => this.updateDatasource(dsState))
     }
 
     updateDatasource(dsState) {

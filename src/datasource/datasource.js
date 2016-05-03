@@ -3,7 +3,7 @@ import DatasourcePlugins from './datasourcePlugins'
 import {genCrudReducer} from '../util/reducer'
 import * as Action from '../actionNames'
 import * as Uuid from '../util/uuid'
-import {valuesOf} from '../util/collection'
+import _ from 'lodash'
 import * as ModalIds from '../modal/modalDialogIds'
 import * as Modal from '../modal/modalDialog'
 
@@ -107,7 +107,7 @@ export function fetchDatasourceData() {
         const state = getState();
         const dsStates = state.datasources;
 
-        valuesOf(dsStates).forEach(dsState => {
+        _.valuesIn(dsStates).forEach(dsState => {
             const dsPlugin = DatasourcePlugins.getPlugin(dsState.type);
             const dsInstance = dsPlugin.getOrCreateInstance(dsState.id);
             const newData = dsInstance.getValues();

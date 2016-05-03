@@ -3,7 +3,7 @@ import ModalDialog from "../modal/modalDialog.ui.js";
 import Modal from "../modal/modalDialog.js";
 import * as Datasource from "./datasource";
 import {connect} from "react-redux";
-import {valuesOf} from "../util/collection";
+import _ from 'lodash'
 import * as ui from "../ui/elements.ui";
 import {reset} from "redux-form";
 import * as DatasourceConfigDialog from './datasourceConfigDialog.ui'
@@ -18,7 +18,7 @@ const TopNavItem = (props) => {
             <ui.LinkItem icon="plus" onClick={() => {props.createDatasource()}}>Add Datasource</ui.LinkItem>
             <ui.Divider/>
             {
-                valuesOf(props.datasources).map(ds => {
+                _.valuesIn(props.datasources).map(ds => {
                     return <ui.LinkItem key={ds.id} onClick={() => { props.editDatasource(ds.id)}}>
                         <ui.Icon type="delete" size="huge" align="right"
                                  onClick={(e) => {

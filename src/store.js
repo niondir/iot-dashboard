@@ -9,6 +9,11 @@ import * as Modal from './modal/modalDialog'
 import * as Persist from './persistence'
 import {reducer as formReducer} from 'redux-form';
 import * as Action from './actionNames'
+import WidgetPlugins from './widgets/widgetPlugins'
+import DatasourcePlugins from './datasource/datasourcePlugins'
+
+let store;
+
 
 function importReducerFactory(baseReducer:Function, name) {
     return importReducer.bind(this, baseReducer, name);
@@ -23,7 +28,7 @@ function importReducer(baseReducer:Function, name, state, action) {
     }
 }
 
-let reducer = Redux.combineReducers({
+let appReducer = Redux.combineReducers({
     widgets: importReducerFactory(Widgets.widgets, "widgets"),
     widgetConfig: WidgetConfig.widgetConfigDialog,
     layouts: Layouts.layouts,
@@ -33,6 +38,14 @@ let reducer = Redux.combineReducers({
     modalDialog: Modal.modalDialog
 });
 
+const reducer = (state, action) => {
+    if (action.type === Action.CLEAR_STATE) {
+        state = undefined
+    }
+
+    return appReducer(state, action)
+};
+
 
 const logger = createLogger({
     duration: false, // Print the duration of each action?
@@ -40,11 +53,11 @@ const logger = createLogger({
     logErrors: true, // Should the logger catch, log, and re-throw errors?
     predicate: (getState, action) => {
         return !action.doNotLog;
-        
+
     }
 });
 
-export default Redux.createStore(
+store = Redux.createStore(
     reducer,
     Persist.loadFromLocalStorage(),
     Redux.applyMiddleware(
@@ -52,3 +65,14 @@ export default Redux.createStore(
         Persist.persistenceMiddleware,
         logger // must be last
     ));
+
+DatasourcePlugins.store = store;
+WidgetPlugins.store = store;
+
+export function clearState() {
+    return {
+        type: Action.CLEAR_STATE
+    }
+}
+
+export default store;

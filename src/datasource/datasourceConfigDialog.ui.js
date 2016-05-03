@@ -3,7 +3,7 @@ import ModalDialog from '../modal/modalDialog.ui.js'
 import * as Datasource from './datasource'
 import DatasourcePlugins from './datasourcePlugins'
 import {connect} from 'react-redux'
-import {valuesOf} from '../util/collection'
+import _ from 'lodash'
 import * as ui from '../ui/elements.ui'
 import SettingsForm from '../ui/settingsForm.ui'
 import {reset} from 'redux-form';
@@ -141,7 +141,7 @@ class DatasourceConfigModal extends React.Component {
                             {...fields.type}
                         >
                             <option key="none" value="">Select Type...</option>
-                            {valuesOf(datasources).map(source => {
+                            {_.valuesIn(datasources).map(source => {
                                 return <option key={source.type} value={source.type}>{source.name}</option>
                             })}
                         </select>

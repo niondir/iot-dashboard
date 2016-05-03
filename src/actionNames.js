@@ -1,4 +1,6 @@
 
+export const CLEAR_STATE = "CLEAR_STATE"
+
 // Dashboard
 export const DASHBOARD_IMPORT = "DASHBOARD_IMPORT";
 
