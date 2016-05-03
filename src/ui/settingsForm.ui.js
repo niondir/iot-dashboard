@@ -127,7 +127,7 @@ function DatasourceInput(props) {
 
     return <select className="ui fluid dropdown" {...props.field} >
         <option>{"Select " + props.name + " ..."}</option>
-        {_.mapKeys(datasources, (ds, id) => {
+        {_.toPairs(datasources).map(([id, ds]) => {
             return <option key={id} value={id}>{ds.props.name + " (" + ds.type + ")"}</option>
         })}
     </select>;
