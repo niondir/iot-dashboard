@@ -23,7 +23,7 @@ gulp.task('watch', () => {
 /** 
  * Build everything required for a successful deployment
  * */
-gulp.task("build", ['compile']);
+gulp.task("build", ['compile', 'test']);
 
 gulp.task('compile', ['webpack', 'copy']);
 

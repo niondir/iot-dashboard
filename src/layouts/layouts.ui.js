@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {valuesOf} from '../util/collection'
+import _ from 'lodash'
 import * as Layouts from './layouts'
 import * as ui from '../ui/elements.ui'
 const Prop = React.PropTypes;
@@ -41,7 +41,7 @@ TopNavItem.propTypes = {
 
 const TopNavItemContainer = connect((state) => {
         return {
-            layouts: valuesOf(state.layouts),
+            layouts: _.valuesIn(state.layouts),
             currentLayout: state.currentLayout,
             widgets: state.widgets
         }
@@ -78,7 +78,7 @@ SaveInput.propTypes = {
 
 const SaveLayout = connect((state) => {
         return {
-            layouts: valuesOf(state.layouts),
+            layouts: _.valuesIn(state.layouts),
             widgets: state.widgets
         }
     },

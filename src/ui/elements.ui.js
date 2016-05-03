@@ -12,7 +12,11 @@ export const LinkItem = (props) => {
     }
 
     return <a className={"item" + (props.disabled ? " disabled" : "")} href="#"
-              onClick={() => props.onClick(props)}>{icon} {props.children} {props.text}</a>;
+              onClick={(e) =>{
+              e.stopPropagation();
+              e.preventDefault();
+              props.onClick(props);
+              }}>{icon} {props.children} {props.text}</a>;
 };
 
 LinkItem.propTypes = {

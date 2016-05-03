@@ -1,18 +1,15 @@
 import React from "react";
-import ModalDialog from "../ui/modal.ui";
+import ModalDialog from "../modal/modalDialog.ui.js";
 import WidgetPlugins from "./widgetPlugins";
 import * as WidgetConfig from "./widgetConfig";
 import {connect} from "react-redux";
 import SettingsForm from "../ui/settingsForm.ui";
 import {reset} from "redux-form";
+import * as ModalIds from '../modal/modalDialogIds'
 const Prop = React.PropTypes;
 
-const DIALOG_ID = "widget-settings-dialog";
+const DIALOG_ID = ModalIds.WIDGET_CONFIG;
 const FORM_ID = "widget-settings-form";
-
-export function showDialog() {
-    ModalDialog.showModal(DIALOG_ID);
-}
 
 export function unshiftIfNotExists(array:Array, element, isEqual = (a, b) => a.id == b.id) {
     if (array.find((e) => isEqual(e, element)) == undefined) {

@@ -1,10 +1,11 @@
 import {assert} from 'chai'
-import * as DatasourceWorker from './datasourceWorker'
 import DatasourcePlugins from './datasourcePlugins'
 import {genCrudReducer} from '../util/reducer'
 import * as Action from '../actionNames'
 import * as Uuid from '../util/uuid'
-import {valuesOf} from '../util/collection'
+import _ from 'lodash'
+import * as ModalIds from '../modal/modalDialogIds'
+import * as Modal from '../modal/modalDialog'
 
 const initialDatasources = {
     "initial_random_source": {
@@ -19,6 +20,24 @@ const initialDatasources = {
     }
 };
 
+export function createOrUpdateDatasource(id, type, props) {
+    return (dispatch, getState) => {
+        const state = getState();
+
+        const dsState = state.datasources[id];
+
+        if (dsState && dsState.type !== type) {
+            throw new Error("Can not update datasource of type " + dsState.type + " with props of type " + type);
+        }
+        if (dsState) {
+            dispatch(updateDatasourceProps(id, props));
+        }
+        else {
+            dispatch(addDatasource(type, props));
+        }
+    }
+}
+
 
 export function addDatasource(dsType, props) {
     if (!dsType) {
@@ -26,8 +45,6 @@ export function addDatasource(dsType, props) {
         console.warn("props: ", props);
         throw new Error("Can not add Datasource without Type");
     }
-
-    
 
     return function (dispatch, getState) {
         dispatch({
@@ -38,6 +55,27 @@ export function addDatasource(dsType, props) {
         });
         //const state = getState();
         //DatasourceWorker.initializeWorkers(state.datasources, dispatch);
+    }
+}
+
+export function updateDatasourceProps(id, props) {
+    return {
+        type: Action.UPDATE_DATASOURCE,
+        id,
+        props
+    }
+}
+
+export function startCreateDatasource() {
+    return Modal.showModal(ModalIds.DATASOURCE_CONFIG);
+}
+export function startEditDatasource(id) {
+    return function (dispatch, getState) {
+        // TODO: This show dialog stuff should be hanbdles with actions as well. Not as Side effects.
+        //DatasourceConfigDialog.showDialog();
+        const state = getState();
+        const dsState = state.datasources[id];
+        dispatch(Modal.showModal(ModalIds.DATASOURCE_CONFIG, {datasource: dsState}));
     }
 }
 
@@ -68,17 +106,17 @@ export function fetchDatasourceData() {
     return (dispatch, getState) => {
         const state = getState();
         const dsStates = state.datasources;
-        
-        valuesOf(dsStates).forEach(dsState => {
+
+        _.valuesIn(dsStates).forEach(dsState => {
             const dsPlugin = DatasourcePlugins.getPlugin(dsState.type);
-            const dsInstance = dsPlugin.getOrCreateInstance(dsState);
+            const dsInstance = dsPlugin.getOrCreateInstance(dsState.id);
             const newData = dsInstance.getValues();
 
             /*
-            if (!dsState.data) {
-                const pastData = dsInstance.getPastValues();
-                dispatch(setDatasourceData(dsState.id, pastData));
-            }*/
+             if (!dsState.data) {
+             const pastData = dsInstance.getPastValues();
+             dispatch(setDatasourceData(dsState.id, pastData));
+             }*/
             const action = setDatasourceData(dsState.id, newData);
             action.doNotLog = true;
             dispatch(action);
@@ -110,10 +148,15 @@ function datasource(state, action) {
                 data: action.data
             };
         case Action.APPEND_DATASOURCE_DATA:
-            const stateData = state.data ||[];
+            const stateData = state.data || [];
             return {
                 ...state,
                 data: [...stateData, ...action.data]
+            };
+        case Action.UPDATE_DATASOURCE:
+            return {
+                ...state,
+                props: action.props
             };
         default:
             return state;

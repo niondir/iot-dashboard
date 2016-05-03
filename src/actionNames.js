@@ -1,4 +1,6 @@
 
+export const CLEAR_STATE = "CLEAR_STATE"
+
 // Dashboard
 export const DASHBOARD_IMPORT = "DASHBOARD_IMPORT";
 
@@ -25,3 +27,8 @@ export const DELETE_DATASOURCE = "DELETE_DATASOURCE";
 
 export const SET_DATASOURCE_DATA = "SET_DATASOURCE_DATA";
 export const APPEND_DATASOURCE_DATA = "APPEND_DATASOURCE_DATA";
+
+
+// Modal
+export const SHOW_MODAL = "SHOW_MODAL";
+export const HIDE_MODAL = "HIDE_MODAL";

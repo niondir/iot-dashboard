@@ -1,14 +1,4 @@
-export function valuesOf(obj, keyField) : Array {
-    if (!obj) {
-        return []
-    }
-    if (keyField) {
-        return Object.keys(obj).map(key => {
-            return {...obj[key], [keyField]: key}
-        })
-    }
-    return Object.keys(obj).map(key => obj[key])
-}
+import _ from 'lodash'
 
 export function chunk(array:array, chunkSize:number, handle:Function) : Array {
     let i, j, chunk;

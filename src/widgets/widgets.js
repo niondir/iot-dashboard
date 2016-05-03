@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import * as Uuid from '../util/uuid'
 import * as WidgetConfig from './widgetConfig'
 import WidgetPlugins from './widgetPlugins'
-import {valuesOf} from '../util/collection'
+import _ from 'lodash'
 import {genCrudReducer} from '../util/reducer'
 import {
     LOAD_LAYOUT,
@@ -14,27 +14,43 @@ import {
     DASHBOARD_IMPORT
 } from '../actionNames'
 
-
 export const initialWidgets = {
     "initial_chart": {
         "id": "initial_chart",
         "type": "chart",
         "name": "chart",
-        "props": {"name": "Random Values", "datasource": "initial_random_source"},
+        "props": {
+            "name": "Random Values",
+            "datasource": "initial_random_source",
+            "chartType": "area-spline",
+            "dataKeys": "[\"value\"]",
+            "xKey": "x",
+            "names": "{\"value\": \"My Value\"}",
+            "gaugeData": "{\"min\":0,\"max\":100,\"units\":\" %\"}"
+        },
         "row": 0,
         "col": 0,
         "width": 3,
         "height": 1
     },
-    "initial_text": {
-        "id": "initial_text",
-        "type": "text",
-        "name": "text",
-        "props": {"name": "Random data", "datasource": "initial_random_source"},
-        "row": 0,
-        "col": 3,
-        "width": 2,
-        "height": 2
+    "initial_text": {"id": "initial_text", "type": "text", "name": "text", "props": {"name": "Random data", "datasource": "initial_random_source"}, "row": 0, "col": 3, "width": 2, "height": 2},
+    "106913f4-44fb-4f69-ab89-5d5ae857cf3c": {
+        "id": "106913f4-44fb-4f69-ab89-5d5ae857cf3c",
+        "type": "chart",
+        "name": "chart",
+        "props": {
+            "name": "Bars",
+            "datasource": "initial_random_source",
+            "chartType": "spline",
+            "dataKeys": "[\"value\", \"value2\"]",
+            "xKey": "x",
+            "names": "{\"value\": \"My Value\"}",
+            "gaugeData": "{\"min\":0,\"max\":100,\"units\":\" %\"}"
+        },
+        "row": 1,
+        "col": 0,
+        "width": 3,
+        "height": 1
     }
 };
 
@@ -92,7 +108,7 @@ export function widgets(state = initialWidgets, action) {
     state = widgetsCrudReducer(state, action);
     switch (action.type) {
         case UPDATE_WIDGET_LAYOUT:
-            return valuesOf(state)
+            return _.valuesIn(state)
                 .reduce((newState, {id}) => {
                         newState[id] = widget(newState[id], action);
                         return newState;
@@ -155,7 +171,7 @@ function calcNewWidgetPosition(widgets:Object) {
     for (let i = 0; i < 6; i++) {
         colHeights[i] = 0;
     }
-    colHeights = valuesOf(widgets).reduce((prev, curr) => {
+    colHeights = _.valuesIn(widgets).reduce((prev, curr) => {
         prev[curr.col] = prev[curr.col] || 0;
         let currHeight = curr.row + curr.height || 0;
         if (prev[curr.col] < currHeight) {
@@ -166,7 +182,7 @@ function calcNewWidgetPosition(widgets:Object) {
         return prev;
     }, colHeights);
 
-    const heights = valuesOf(colHeights);
+    const heights = _.valuesIn(colHeights);
     const col = Object.keys(colHeights).reduce((a, b) => {
         return Number(colHeights[a] <= colHeights[b] ? a : b);
     });

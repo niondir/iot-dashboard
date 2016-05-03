@@ -1,11 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {valuesOf} from '../util/collection'
-import * as ui from '../ui/elements.ui'
+import * as Modal from './modalDialog'
+import * as ui from '../ui/elements.ui.js'
 const Prop = React.PropTypes;
 
 
-export default class ModalDialog extends React.Component {
+class ModalDialog extends React.Component {
 
     componentDidMount() {
         $('.ui.modal.' + this.props.id)
@@ -26,13 +26,15 @@ export default class ModalDialog extends React.Component {
     static closeModal(id) {
         $('.ui.modal.' + id).modal('hide');
     }
-    
+
     onClick(e, action) {
         if (action.onClick(e)) {
-            ModalDialog.closeModal(this.props.id);
+            // Closing is done externally (by redux)
+            this.props.closeDialog();
+            //ModalDialog.closeModal(this.props.id);
         }
     }
-    
+
 
     render() {
         let key = 0;
@@ -71,5 +73,18 @@ ModalDialog.propTypes = {
         })
     ).isRequired,
     handlePositive: Prop.func,
-    handleDeny: Prop.func
+    handleDeny: Prop.func,
+    closeDialog: Prop.func
 };
+
+export default connect(
+    (state) => {
+        return {}
+    },
+    (dispatch) => {
+        return {
+            closeDialog: () => dispatch(Modal.closeModal())
+        }
+    }
+)
+(ModalDialog)

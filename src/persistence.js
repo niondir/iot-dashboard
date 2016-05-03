@@ -1,5 +1,3 @@
-
-
 let lastSave = new Date();
 
 export function clearData() {
@@ -28,12 +26,22 @@ export function persistenceMiddleware({getState}) {
 }
 
 export function saveToLocalStorage(state) {
-    const {form ,...savableState} = state;
+    if (typeof window === 'undefined') {
+        console.warn("Can not save to local storage in current environment.");
+        return;
+    }
+
+    const {form, modalDialog ,...savableState} = state;
     window.localStorage.setItem("appState", JSON.stringify(savableState));
 }
 
 
 export function loadFromLocalStorage() {
+    if (typeof window === 'undefined') {
+        console.warn("Can not load from local storage in current environment.");
+        return undefined;
+    }
+
     const stateString = window.localStorage.getItem("appState");
     let state = undefined;
     try {

@@ -19,7 +19,7 @@ export class Widget extends Component {
 
     render() {
         const props = this.props;
-        const data = props.getData(this.props.datasource);
+        const data = props.getData(this.props.config.datasource);
 
         if(!data || data.length == 0) {
             return <p>No data</p>

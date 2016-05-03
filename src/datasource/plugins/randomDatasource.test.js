@@ -13,7 +13,7 @@ describe('Random Datasource', function () {
         it("Can get new value", function () {
             let randomSource = new RandomSource.Datasource();
 
-            let values = randomSource.getNewValues();
+            let values = randomSource.getValues();
             
             assert.isArray(values);
             assert.equal(values.length, 1);
@@ -24,20 +24,20 @@ describe('Random Datasource', function () {
         it("Can get all past value", function () {
             let randomSource = new RandomSource.Datasource();
 
-            let newValues = randomSource.getNewValues();
-            let values = randomSource.getPastValues();
+            let newValues = randomSource.getValues();
+            let values = randomSource.getValues();
 
             assert.isArray(values);
-            assert.equal(values.length, 6);
+            assert.equal(values.length, 2);
         });
         it("Can get past values returns new array", function () {
             let randomSource = new RandomSource.Datasource();
 
-            let values = randomSource.getPastValues();
-            let newValues = randomSource.getNewValues();
+            let values = randomSource.getValues();
+            let newValues = randomSource.getValues();
 
             assert.isArray(values);
-            assert.equal(values.length, 5);
+            assert.equal(values.length, 1);
         });
         
     })

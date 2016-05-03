@@ -1,9 +1,21 @@
 import * as Datasource from './datasource'
 import DatasourcePlugins from './datasourcePlugins'
-import {valuesOf} from '../util/collection'
+import store from '../store'
 
-export function initializeWorkers(dsStates, dispatch) {
-    const heartbeat = setInterval(()=> {
-        dispatch(Datasource.fetchDatasourceData());
+let heartbeat;
+
+export function start() {
+    if (heartbeat) {
+        clearInterval(heartbeat);
+    }
+    heartbeat = setInterval(()=> {
+        store.dispatch(Datasource.fetchDatasourceData());
     }, 1000);
+}
+
+export function stop() {
+    if (heartbeat) {
+        clearInterval(heartbeat);
+        heartbeat = null;
+    }
 }

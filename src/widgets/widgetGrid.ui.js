@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as Redux from 'redux';
 import {Component} from 'react';
 import {connect} from 'react-redux'
+import _ from 'lodash'
 import * as Widgets from './widgets'
 import WidgetFrame from './widgetFrame.ui'
 import * as WidgetConfig from './widgetConfig'
@@ -64,7 +65,7 @@ WidgetGrid.propTypes = {
 export default connect(
     (state) => {
         return {
-            widgets: Object.keys(state.widgets).map(id => state.widgets[id]) || [],
+            widgets: _.valuesIn(state.widgets) || [],
             datasources: state.datasources || {}
         }
     },
