@@ -116,7 +116,7 @@ export class Widget extends Component {
                 // Seems not to work with chart.load, so on update props we have to recreate the chart to update
                 names: safeParseJsonObject(config.names),
                 keys: {
-                    //x: config.xKey || undefined,
+                    x: config.xKey || undefined,
                     value: safeParseJsonArray(config.dataKeys)
                 }
             },
@@ -151,9 +151,8 @@ export class Widget extends Component {
         // TODO: Do not take last element, but all new elements ;)
         const lastElement = data.length > 0 ? data[data.length -1] : {};
 
-        //return;
-        // TODO: utilize char.flow to add new values
 
+        /* chart.flow does not work with x axis categories and messes up the x values.
         this.chart.flow({
             json: [lastElement],
             keys: {
@@ -163,8 +162,8 @@ export class Widget extends Component {
             labels: false,
             //to: firstElement[config.xKey],
             duration: 500
-        });
-        return;
+        });     */
+
         this.chart.load({
             json: data,
             keys: {

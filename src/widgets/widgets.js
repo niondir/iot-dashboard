@@ -20,7 +20,15 @@ export const initialWidgets = {
         "id": "initial_chart",
         "type": "chart",
         "name": "chart",
-        "props": {"name": "Random Values", "datasource": "initial_random_source"},
+        "props": {
+            "name": "Random Values",
+            "datasource": "initial_random_source",
+            "chartType": "spline",
+            "dataKeys": "[\"value\"]",
+            "xKey": "x",
+            "names": "{\"value\": \"My Value\"}",
+            "gaugeData": "{\"min\":0,\"max\":100,\"units\":\" %\"}"
+        },
         "row": 0,
         "col": 0,
         "width": 3,
@@ -30,7 +38,10 @@ export const initialWidgets = {
         "id": "initial_text",
         "type": "text",
         "name": "text",
-        "props": {"name": "Random data", "datasource": "initial_random_source"},
+        "props": {
+            "name": "Random data",
+            "datasource": "initial_random_source"
+        },
         "row": 0,
         "col": 3,
         "width": 2,

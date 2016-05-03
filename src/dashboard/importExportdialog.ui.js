@@ -2,36 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux'
 import * as Import from './import'
 import ModalDialog from '../modal/modalDialog.ui.js'
+import * as ModalIds from '../modal/modalDialogIds'
 const Prop = React.PropTypes;
 
-
-const TopNavItem = (props) => {
-    return <div className="ui simple dropdown item">
-        Board
-        <i className="dropdown icon"/>
-        <div className="ui menu">
-            <a className="item" onClick={() => ModalDialog.showModal("dashboard-import-export")}>
-                <i className="folder open outline icon"/>
-                Import / Export
-            </a>
-
-        </div>
-    </div>
-};
-
-TopNavItem.propTypes = {};
-
-const TopNavItemContainer = connect((state) => {
-    return {
-        state: state
-    }
-}, (dispatch) => {
-    return {}
-})(TopNavItem);
-
-export {TopNavItemContainer as TopNavItem}
-
-export class Modal extends React.Component {
+class ImportExportDialog extends React.Component {
 
 
     constructor(props) {
@@ -62,7 +36,7 @@ export class Modal extends React.Component {
     _exportToClipboard() {
         this.refs.data.focus();
         this.refs.data.select();
-        document.execCommand('copy')
+        document.execCommand('copy');
 
         try {
             var successful = document.execCommand('copy');
@@ -92,7 +66,7 @@ export class Modal extends React.Component {
             }
         ];
 
-        return <ModalDialog id="dashboard-import-export"
+        return <ModalDialog id={ModalIds.DASHBOARD_IMPORT_EXPORT}
                             title="Import / Export Dashboard"
                             actions={actions}
         >
@@ -100,7 +74,7 @@ export class Modal extends React.Component {
                 <div className="column">
                     <button className="ui compact labeled icon button" onClick={this._loadData.bind(this)}>
                         <i className="refresh icon"></i>
-                        Refresh Data
+                        Load Data
                     </button>
                     <button className="ui compact labeled icon button" onClick={this._exportToClipboard.bind(this)}>
                         <i className="upload icon"></i>
@@ -126,13 +100,13 @@ export class Modal extends React.Component {
     };
 }
 
-Modal.propTypes = {
+ImportExportDialog.propTypes = {
     state: Prop.object,
     doImport: Prop.func.isRequired
 };
 
 
-const ModalContainer = connect((state) => {
+export default connect((state) => {
     return {
         state: state
     }
@@ -140,6 +114,4 @@ const ModalContainer = connect((state) => {
     return {
         doImport: (state) => dispatch(Import.doImport(state))
     }
-})(Modal);
-
-export {ModalContainer as Modal}
+})(ImportExportDialog);

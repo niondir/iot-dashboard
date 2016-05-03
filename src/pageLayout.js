@@ -5,7 +5,8 @@ import * as Nav from "./navigation"
 import $ from "jquery"
 import * as Layouts from "./layouts/layouts.ui"
 import WidgetConfigDialog from "./widgets/widgetConfigDialog.ui"
-import * as Import from "./dashboard/import.ui"
+import DashboardMenuEntry from "./dashboard/dashboardMenuEntry.ui"
+import ImportExportDialog from "./dashboard/importExportDialog.ui"
 import DatasourceConfigDialog from "./datasource/datasourceConfigDialog.ui"
 import DatasourceNavItem from "./datasource/datasourceNavItem.ui"
 import * as Persistence from './persistence'
@@ -35,7 +36,7 @@ export default class Layout extends Component {
         return <div className="container">
 
             <WidgetConfigDialog/>
-            <Import.Modal/>
+            <ImportExportDialog/>
             <DatasourceConfigDialog/>
 
             <div className="ui flowing basic widgets-menu menu popup">
@@ -59,7 +60,7 @@ export default class Layout extends Component {
                         Dashboard
                     </a>
 
-                    <Import.TopNavItem/>
+                    <DashboardMenuEntry/>
                     <a className="add-widget item">New Widget <i className="dropdown icon"></i></a>
                     <Layouts.TopNavItem/>
                     <DatasourceNavItem/>
