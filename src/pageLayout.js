@@ -6,7 +6,7 @@ import $ from "jquery"
 import * as Layouts from "./layouts/layouts.ui"
 import WidgetConfigDialog from "./widgets/widgetConfigDialog.ui"
 import DashboardMenuEntry from "./dashboard/dashboardMenuEntry.ui"
-import ImportExportDialog from "./dashboard/importExportDialogX.ui.js"
+import ImportExportDialog from "./dashboard/importExportDialog.ui.js"
 import DatasourceConfigDialog from "./datasource/datasourceConfigDialog.ui"
 import DatasourceNavItem from "./datasource/datasourceNavItem.ui"
 import * as Persistence from './persistence'
