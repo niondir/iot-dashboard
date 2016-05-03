@@ -90,7 +90,7 @@ class ImportExportDialog extends React.Component {
                         <div className="field">
                             <label>Data</label>
                             <textarea ref="data" rows="10" onFocus={(e) => e.target.select()}
-                                      placeholder='Click "Refresh Data" to get data for export or paste your data here ...'/>
+                                      placeholder='Click "Load Data" to get data for export or paste your data here ...'/>
                         </div>
                     </form>
 
