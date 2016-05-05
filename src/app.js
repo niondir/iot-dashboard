@@ -17,7 +17,9 @@ import * as TimeDatasource from "./datasource/plugins/timeDatasource";
 import store from "./store";
 import * as Store from "./store";
 import "./pluginApi/freeboardPluginApi";
+import "./pluginApi/pluginApi"
 import $script from 'scriptjs';
+
 
 WidgetPlugins.register(TextWidget);
 WidgetPlugins.register(ChartWidget);
@@ -50,6 +52,7 @@ if (element) {
     }
     catch (e) {
         console.warn("Failed to load dashboard. Asking user to wipe data and retry. The error is printed below...");
+        // TODO: Rendering of error message sux
         console.error(e);
         if (confirm("Failed to load dashboard. Reset all Data?\n\nPress cancel and check the browser console for more details.")) {
             store.dispatch(Store.clearState());

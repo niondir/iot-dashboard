@@ -16,6 +16,7 @@ export class PluginRegistry {
             throw new Error("PluginRegistry has no store. Set the store property before registering modules!");
         }
 
+        console.log("registering plugin: ", module);
         const dsPlugin = new DsPlugin.DataSourcePlugin(module, this._store);
         this.datasources[dsPlugin.type] = dsPlugin;
     }

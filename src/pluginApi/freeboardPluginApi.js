@@ -47,3 +47,5 @@ const freeboardPluginApi = {
 };
 
 window.freeboard = freeboardPluginApi;
+
+export default freeboardPluginApi;

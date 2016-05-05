@@ -7,6 +7,7 @@ var gutil = require('gulp-util');
 
 /**
  * Setup everything for a smooth development
+ * TODO: watch sometimes does not work in parallel to webpack dev server
  */
 gulp.task("dev", ['webpack:server', 'watch']);
 
@@ -14,7 +15,7 @@ gulp.task("dev", ['webpack:server', 'watch']);
 /**
  * Keeps files up to date that are not covered by Webpack
  */
-gulp.task('watch', () => {
+gulp.task('watch', ["copy:html", "inject:tests", "copy:plugins"], () => {
     gulp.watch("src/**/*.html", ["copy:html"]);
     gulp.watch("src/**/*.test.js", ["inject:tests"]);
     gulp.watch("plugins/**/*", ["copy:plugins"]);

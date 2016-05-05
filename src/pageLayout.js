@@ -9,6 +9,8 @@ import DashboardMenuEntry from "./dashboard/dashboardMenuEntry.ui"
 import ImportExportDialog from "./dashboard/importExportDialog.ui.js"
 import DatasourceConfigDialog from "./datasource/datasourceConfigDialog.ui"
 import DatasourceNavItem from "./datasource/datasourceNavItem.ui"
+import PluginNavItem from './pluginApi/pluginNavItem.ui'
+import PluginsDialog from './pluginApi/pluginsDialog.ui'
 import * as Persistence from './persistence'
 
 export default class Layout extends Component {
@@ -38,6 +40,7 @@ export default class Layout extends Component {
             <WidgetConfigDialog/>
             <ImportExportDialog/>
             <DatasourceConfigDialog/>
+            <PluginsDialog/>
 
             <div className="ui flowing basic widgets-menu menu popup">
                 <div className="ui sixteen column relaxed divided grid">
@@ -62,8 +65,9 @@ export default class Layout extends Component {
 
                     <DashboardMenuEntry/>
                     <a className="add-widget item">New Widget <i className="dropdown icon"></i></a>
-                    <Layouts.TopNavItem/>
                     <DatasourceNavItem/>
+                    <PluginNavItem/>
+                    <Layouts.TopNavItem/>
                     <a className="item" onClick={() => Persistence.clearData()}>
                         <i className="red bomb icon"/>
                         Reset Everything!

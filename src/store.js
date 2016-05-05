@@ -52,6 +52,11 @@ const logger = createLogger({
     timestamp: true, // Print the timestamp with each action?
     logErrors: true, // Should the logger catch, log, and re-throw errors?
     predicate: (getState, action) => {
+        let foo = "";
+        if (action.type.startsWith("redux-form")) {
+            return false;
+        }
+
         return !action.doNotLog;
 
     }

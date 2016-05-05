@@ -105,7 +105,7 @@ class DatasourceConfigModal extends React.Component {
         }
         
         let settings = [];
-        if (selectedSource.settings) {
+        if (selectedSource && selectedSource.settings) {
             settings = [...selectedSource.settings];
         }
         unshiftIfNotExists(settings, {
