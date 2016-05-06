@@ -44,6 +44,7 @@ export function initializeExternalPlugins(plugins = []) {
 }
 
 // Add plugin to store and register it in the PluginRegistry
+// TODO: Plugins have to know if they are a Datasource or Widget Plugin
 export function addPlugin(plugin, url = null) {
     console.log("Adding plugin from " + url, plugin);
 
@@ -70,9 +71,10 @@ export function addPlugin(plugin, url = null) {
 
         dispatch({
             type: Action.ADD_PLUGIN,
-            id: Uuid.generate(),
-            pluginType: plugin.TYPE_INFO.type,
-            url
+            id: "datasource/" + plugin.TYPE_INFO.type,
+            typeInfo: plugin.TYPE_INFO,
+            url,
+            pluginType: "datasource"
         });
         DatasourcePlugins.register(plugin);
     }
@@ -92,11 +94,17 @@ export function plugins(state = initialState, action) {
 function plugin(state, action) {
     switch (action.type) {
         case Action.ADD_PLUGIN:
+            if (!action.typeInfo.type) {
+                // TODO: Catch this earlier
+                throw new Error("A Plugin needs a type name.");
+            }
+
             return {
-                id: action.id, // Type as id?
+                id: action.pluginType + "/" + action.typeInfo.type,
                 url: action.url,
-                pluginType: action.pluginType,
-                isDatasource: true
+                typeInfo: action.typeInfo,
+                isDatasource: action.pluginType === "datasource",
+                isWidget:  action.pluginType === "widget"
             };
         default:
             return state;
