@@ -8,7 +8,6 @@ import "semantic-ui-css/semantic";
 import "c3css";
 import * as Widgets from "./widgets/widgets";
 import WidgetPlugins from "./widgets/widgetPlugins";
-import DatasourcePlugins from "./datasource/datasourcePlugins";
 import * as TextWidget from "./widgets/plugins/textWidget";
 import * as ChartWidget from "./widgets/plugins/chartWidget";
 import * as DatasourceWorker from "./datasource/datasourceWorker";
@@ -19,7 +18,6 @@ import * as Store from "./store";
 import * as Plugins from './pluginApi/plugins'
 import "./pluginApi/freeboardPluginApi";
 import "./pluginApi/pluginApi"
-import $script from 'scriptjs';
 
 const state = store.getState();
 // TODO: Load Widget Plugins via PluginAPI

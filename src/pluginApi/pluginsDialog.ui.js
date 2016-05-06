@@ -3,9 +3,9 @@ import ModalDialog from '../modal/modalDialog.ui.js'
 import {connect} from 'react-redux'
 import _ from 'lodash'
 import {reset} from 'redux-form';
+import * as ui from '../ui/elements.ui'
 import * as ModalIds from '../modal/modalDialogIds'
 import * as Modal from '../modal/modalDialog'
-import FreeboardPluginApi from './freeboardPluginApi'
 import * as Plugins from '../pluginApi/plugins'
 const Prop = React.PropTypes;
 
@@ -47,6 +47,7 @@ class PluginsModal extends React.Component {
                             Load Plugin
                         </div>
                     </form>
+                    <ui.Divider/>
 
                 </div>
             </div>

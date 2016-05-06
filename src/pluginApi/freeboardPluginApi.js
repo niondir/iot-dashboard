@@ -1,5 +1,6 @@
 import * as FreeboardDatasource from './freeboardDatasource'
 import * as Plugins from '../pluginApi/plugins'
+import * as PluginApi from './pluginApi'
 import store from '../store'
 
 function mapSettings(settings) {
@@ -17,6 +18,12 @@ function mapSettings(settings) {
 
 const freeboardPluginApi = {
 
+    /**
+     * Method to register a DatasourcePlugin as you would with the IoT-Dashboard API
+     * But supporting the Freeboard syntax
+     * @param plugin A Freeboard Datasource Plugin.
+     * See: https://freeboard.github.io/freeboard/docs/plugin_example.html
+     */
     loadDatasourcePlugin(plugin) {
         console.log("Loading freeboard Plugin: ", plugin);
 
@@ -40,8 +47,7 @@ const freeboardPluginApi = {
             Datasource: FreeboardDatasource.create(newInstance, TYPE_INFO)
         };
 
-        store.dispatch(Plugins.loadPlugin(dsPlugin));
-        
+        PluginApi.registerDatasourcePlugin(dsPlugin.TYPE_INFO, dsPlugin.Datasource);
     }
 
 

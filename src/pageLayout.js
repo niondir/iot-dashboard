@@ -36,11 +36,12 @@ export default class Layout extends Component {
 
     render() {
         return <div className="container">
-
-            <WidgetConfigDialog/>
-            <ImportExportDialog/>
-            <DatasourceConfigDialog/>
-            <PluginsDialog/>
+            <div>
+                <WidgetConfigDialog/>
+                <ImportExportDialog/>
+                <DatasourceConfigDialog/>
+                <PluginsDialog/>
+            </div>
 
             <div className="ui flowing basic widgets-menu menu popup">
                 <div className="ui sixteen column relaxed divided grid">
