@@ -53,8 +53,6 @@ class PluginsModal extends React.Component {
         </ModalDialog>
     };
 }
-// http://localhost:8080/plugins/TestDatasourcePlugin.js
-// http://localhost:8080/plugins/coap/lobaro.coap.plugin.js
 
 export default connect(
     (state) => {
@@ -65,7 +63,7 @@ export default connect(
             closeDialog: () => {
                 dispatch(Modal.closeModal())
             },
-            loadPlugin: (url) => {dispatch(Plugins.loadPlugin(url))}
+            loadPlugin: (url) => {dispatch(Plugins.loadPluginFromUrl(url))}
         }
     }
 )(PluginsModal);

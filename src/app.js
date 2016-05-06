@@ -16,20 +16,20 @@ import * as RandomDatasource from "./datasource/plugins/randomDatasource";
 import * as TimeDatasource from "./datasource/plugins/timeDatasource";
 import store from "./store";
 import * as Store from "./store";
+import * as Plugins from './pluginApi/plugins'
 import "./pluginApi/freeboardPluginApi";
 import "./pluginApi/pluginApi"
 import $script from 'scriptjs';
 
-
+const state = store.getState();
+// TODO: Load Widget Plugins via PluginAPI
 WidgetPlugins.register(TextWidget);
 WidgetPlugins.register(ChartWidget);
 
-DatasourcePlugins.register(RandomDatasource);
-DatasourcePlugins.register(TimeDatasource);
 
-
-
-const state = store.getState();
+store.dispatch(Plugins.loadPlugin(RandomDatasource));
+store.dispatch(Plugins.loadPlugin(TimeDatasource));
+Plugins.initializeExternalPlugins(_.valuesIn(state.plugins));
 
 cleanupState(state);
 

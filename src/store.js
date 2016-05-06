@@ -7,6 +7,7 @@ import * as Layouts from './layouts/layouts'
 import * as Datasource from './datasource/datasource'
 import * as Modal from './modal/modalDialog'
 import * as Persist from './persistence'
+import * as Plugins from './pluginApi/plugins'
 import {reducer as formReducer} from 'redux-form';
 import * as Action from './actionNames'
 import WidgetPlugins from './widgets/widgetPlugins'
@@ -35,7 +36,8 @@ let appReducer = Redux.combineReducers({
     currentLayout: Layouts.currentLayout,
     datasources: importReducerFactory(Datasource.datasources, "datasources"),
     form: formReducer,
-    modalDialog: Modal.modalDialog
+    modalDialog: Modal.modalDialog,
+    plugins: Plugins.plugins
 });
 
 const reducer = (state, action) => {

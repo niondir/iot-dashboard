@@ -1,5 +1,6 @@
-import DatasourcePlugins from '../datasource/datasourcePlugins'
 import * as FreeboardDatasource from './freeboardDatasource'
+import * as Plugins from '../pluginApi/plugins'
+import store from '../store'
 
 function mapSettings(settings) {
     return settings.map(setting => {
@@ -39,8 +40,8 @@ const freeboardPluginApi = {
             Datasource: FreeboardDatasource.create(newInstance, TYPE_INFO)
         };
 
-
-        DatasourcePlugins.register(dsPlugin);
+        store.dispatch(Plugins.loadPlugin(dsPlugin));
+        
     }
 
 
