@@ -8,8 +8,13 @@ const initialState = {
 };
 
 function showModalSideeffect(id) {
-    $('.ui.modal.' + id)
-        .modal('show');
+    const $modal = $('.ui.modal.' + id);
+    $modal.modal('show');
+
+    // This is to update the Browser Scrollbar, at least needed in WebKit
+    const n = document.createTextNode(' ');
+    $modal.append(n);
+    setTimeout(function(){n.parentNode.removeChild(n)}, 0);
 }
 
 function closeModalSideeffect(id) {

@@ -119,7 +119,7 @@ class DatasourcePluginCard extends React.Component {
                 <i className="copy outline icon" onClick={() => {this._copyUrl()}} style={{display:"inline"}}/>
                 <div className="ui large transparent input">
                     <input type="text" ref="url"
-                           readonly
+                           readOnly
                            style={{width: "100%", paddingLeft: 0, paddingRight: 0}}
                            placeholder="Plugin Url ..."
                            defaultValue={dsState.url ? dsState.url : "Packaged"}/>

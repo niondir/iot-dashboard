@@ -18,15 +18,6 @@ class ModalDialog extends React.Component {
             })
     }
 
-    static showModal(id) {
-        $('.ui.modal.' + id)
-            .modal('show');
-    }
-
-    static closeModal(id) {
-        $('.ui.modal.' + id).modal('hide');
-    }
-
     onClick(e, action) {
         if (action.onClick(e)) {
             // Closing is done externally (by redux)
@@ -46,7 +37,7 @@ class ModalDialog extends React.Component {
         });
 
         const props = this.props;
-        return <div className={'ui modal ' + this.props.id}>
+        return <div id={this.props.id} className={'ui modal ' + this.props.id}>
             <div className="header">
                 {props.title}
             </div>

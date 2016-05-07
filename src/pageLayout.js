@@ -35,52 +35,53 @@ export default class Layout extends Component {
 
 
     render() {
-        return <div className="container">
+        return <div>
             <div>
                 <WidgetConfigDialog/>
                 <ImportExportDialog/>
                 <DatasourceConfigDialog/>
                 <PluginsDialog/>
             </div>
-
-            <div className="ui flowing basic widgets-menu menu popup">
-                <div className="ui sixteen column relaxed divided grid">
-                    <div className="column">
-                        <div className="ui link list">
-                            <h4 className="ui header">Simple</h4>
-                            {/* TODO: render nav items based on the widget registry */}
-                            <Nav.AddWidget text="Text" type="text"/>
-                            <Nav.AddWidget text="Chart" type="chart"/>
+            <div className="container">
+                <div className="ui flowing basic widgets-menu menu popup">
+                    <div className="ui sixteen column relaxed divided grid">
+                        <div className="column">
+                            <div className="ui link list">
+                                <h4 className="ui header">Simple</h4>
+                                {/* TODO: render nav items based on the widget registry */}
+                                <Nav.AddWidget text="Text" type="text"/>
+                                <Nav.AddWidget text="Chart" type="chart"/>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
 
-            <div className="ui fixed inverted main menu">
-                <div className="ui container">
-                    <a href="#" className="header item">
-                        {/*<img className="logo" src="assets/images/logo.png"/>*/}
-                        Dashboard
-                    </a>
+                <div className="ui fixed inverted main menu">
+                    <div className="ui container">
+                        <a href="#" className="header item">
+                            {/*<img className="logo" src="assets/images/logo.png"/>*/}
+                            Dashboard
+                        </a>
 
-                    <DashboardMenuEntry/>
-                    <a className="add-widget item">New Widget <i className="dropdown icon"></i></a>
-                    <DatasourceNavItem/>
-                    <PluginNavItem/>
-                    <Layouts.TopNavItem/>
-                    <a className="item" onClick={() => Persistence.clearData()}>
-                        <i className="red bomb icon"/>
-                        Reset Everything!
-                    </a>
+                        <DashboardMenuEntry/>
+                        <a className="add-widget item">New Widget <i className="dropdown icon"></i></a>
+                        <DatasourceNavItem/>
+                        <PluginNavItem/>
+                        <Layouts.TopNavItem/>
+                        <a className="item" onClick={() => Persistence.clearData()}>
+                            <i className="red bomb icon"/>
+                            Reset Everything!
+                        </a>
 
+                    </div>
                 </div>
-            </div>
 
-            <div className="ui grid">
-                <WidgetGrid/>
+                <div className="ui grid">
+                    <WidgetGrid/>
+                </div>
+                {/*<CounterApp/>*/}
             </div>
-            {/*<CounterApp/>*/}
         </div>
     }
 

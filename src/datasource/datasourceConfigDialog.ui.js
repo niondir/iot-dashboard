@@ -13,11 +13,6 @@ const Prop = React.PropTypes;
 const DIALOG_ID = ModalIds.DATASOURCE_CONFIG;
 const FORM_ID = "datasource-settings-form";
 
-
-export function showDialog() {
-    ModalDialog.showModal(DIALOG_ID);
-}
-
 export function unshiftIfNotExists(array:Array, element, isEqual = (a, b) => a.id == b.id) {
     if (array.find((e) => isEqual(e, element)) == undefined) {
         array.unshift(element);
