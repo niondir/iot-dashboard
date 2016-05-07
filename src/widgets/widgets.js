@@ -14,6 +14,9 @@ import {
     DASHBOARD_IMPORT
 } from '../actionNames'
 
+export const HEADER_HEIGHT = 77;
+export const ROW_HEIGHT = 100;
+
 export const initialWidgets = {
     "initial_chart": {
         "id": "initial_chart",
@@ -30,10 +33,24 @@ export const initialWidgets = {
         },
         "row": 0,
         "col": 0,
-        "width": 3,
-        "height": 1
+        "width": 6,
+        "height": 2,
+        "availableHeightPx": 123
     },
-    "initial_text": {"id": "initial_text", "type": "text", "name": "text", "props": {"name": "Random data", "datasource": "initial_random_source"}, "row": 0, "col": 3, "width": 2, "height": 2},
+    "initial_text": {
+        "id": "initial_text",
+        "type": "text",
+        "name": "text",
+        "props": {
+            "name": "Random data",
+            "datasource": "initial_random_source"
+        },
+        "row": 0,
+        "col": 6,
+        "width": 6,
+        "height": 3,
+        "availableHeightPx": 223
+    },
     "106913f4-44fb-4f69-ab89-5d5ae857cf3c": {
         "id": "106913f4-44fb-4f69-ab89-5d5ae857cf3c",
         "type": "chart",
@@ -47,10 +64,11 @@ export const initialWidgets = {
             "names": "{\"value\": \"My Value\"}",
             "gaugeData": "{\"min\":0,\"max\":100,\"units\":\" %\"}"
         },
-        "row": 1,
+        "row": 2,
         "col": 0,
-        "width": 3,
-        "height": 1
+        "width": 6,
+        "height": 2,
+        "availableHeightPx": 123
     }
 };
 
@@ -151,7 +169,8 @@ function widget(state = {}, action) {
                 row: layout.y,
                 col: layout.x,
                 width: layout.w,
-                height: layout.h
+                height: layout.h,
+                availableHeightPx: layout.h * ROW_HEIGHT - HEADER_HEIGHT
             };
         default:
             return state;

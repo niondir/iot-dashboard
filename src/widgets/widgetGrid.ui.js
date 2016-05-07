@@ -40,13 +40,12 @@ class WidgetGrid extends Component {
          _grid={{x: data.col, y: data.row, w: data.width, h: data.height}}
          />);*/
         return (
-            <ResponsiveGrid className="column" cols={12} rowHeight={200}
+            <ResponsiveGrid className="column" rowHeight={Widgets.ROW_HEIGHT}
                             breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}}
-                            cols={{lg: 6, md: 6, sm: 6, xs: 4, xxs: 2}}
+                            cols={{lg: 12, md: 12, sm: 12, xs: 6, xxs: 3}}
                             draggableCancel=".no-drag"
                             draggableHandle=".drag"
                             onLayoutChange={this.onLayoutChange.bind(this)}
-                            style={{padding: "20px"}}
             >
                 {widgets}
             </ResponsiveGrid>

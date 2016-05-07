@@ -109,7 +109,7 @@ export class Widget extends Component {
         this.chart = c3.generate({
             bindto: '#chart-' + props._state.id,
             size: {
-                height: props._state.height * 200 - 77
+                height: props._state.availableHeightPx
             },
             data: {
                 json: data,

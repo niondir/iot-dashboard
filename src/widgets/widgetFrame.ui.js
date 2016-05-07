@@ -28,7 +28,7 @@ const WidgetFrame = (props) => {
 
     return (
         <div className="ui raised segments"
-             style={{margin: 0}}
+             style={{margin: 0, overflow: "hidden"}}
              key={widgetState.id}
              _grid={{x: widgetState.col, y: widgetState.row, w: widgetState.width, h: widgetState.height}}>
 
