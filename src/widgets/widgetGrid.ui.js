@@ -1,18 +1,16 @@
-import * as React from 'react';
-import * as Redux from 'redux';
-import {Component} from 'react';
-import {connect} from 'react-redux'
-import _ from 'lodash'
-import * as Widgets from './widgets'
-import WidgetFrame from './widgetFrame.ui'
-import * as WidgetConfig from './widgetConfig'
-import WidgetPlugins from './widgetPlugins'
-require('react-grid-layout/css/styles.css');
+import * as React from "react";
+import {Component} from "react";
+import {connect} from "react-redux";
+import _ from "lodash";
+import * as Widgets from "./widgets";
+import WidgetFrame from "./widgetFrame.ui";
+import WidgetPlugins from "./widgetPlugins";
+import WidthProvider from "./widthProvider.ui";
+import {Responsive as ResponsiveReactGridLayout} from "react-grid-layout";
 const Prop = React.PropTypes;
-
-import {Responsive as ResponsiveReactGridLayout, WidthProvider}  from 'react-grid-layout';
 const ResponsiveGrid = WidthProvider(ResponsiveReactGridLayout);
 
+require('react-grid-layout/css/styles.css');
 
 class WidgetGrid extends Component {
 
@@ -48,6 +46,7 @@ class WidgetGrid extends Component {
                             draggableCancel=".no-drag"
                             draggableHandle=".drag"
                             onLayoutChange={this.onLayoutChange.bind(this)}
+                            style={{padding: "20px"}}
             >
                 {widgets}
             </ResponsiveGrid>
