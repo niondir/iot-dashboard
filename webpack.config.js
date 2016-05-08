@@ -12,10 +12,14 @@ var paths = {
     ]
 };
 
+var packageJson = require("./package.json");
+
 module.exports = {
     //context: __dirname + "/dist",
     cache: true,
     bail: true, // Fail fast
+    //devtool: '#cheap-module-source-map',
+    devtool: 'source-map',
     entry: {
         app: ["./src/app.js"],
         tests: ['mocha!./src/tests.js'],
@@ -82,7 +86,7 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.optimize.CommonsChunkPlugin( {names:["vendor"],  filename:"vendor.bundle.js", chunks: ["app"]}),
+        new webpack.optimize.CommonsChunkPlugin( {names:["vendor"],  filename:"vendor.bundle.js", chunks: ["app", "tests"]}),
         new ExtractTextPlugin("[name].bundle.css"),
         new webpack.PrefetchPlugin('./src/pageLayout.js'),
         new webpack.PrefetchPlugin(paths.node_modules, 'semantic-ui-css/semantic.css'),

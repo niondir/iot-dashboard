@@ -38,11 +38,23 @@ gulp.task('test',['mocha']);
 //////////////////
 
 var mocha = require('gulp-mocha');
+var mochaPhantomJS = require('gulp-mocha-phantomjs');
 
-gulp.task('mocha', ['webpack', 'inject:tests'], function () {
+gulp.task('mocha', ['mocha:phantomJs'], function () {
+});
+
+// Deprectaed: TODO: Remove
+gulp.task('mocha:nodejs', ['webpack', 'inject:tests'], function () {
     return gulp.src('dist/mocha.bundle.js', {read: false})
-        // gulp-mocha needs filepaths so you can't have any plugins before it 
+        // gulp-mocha needs filepaths so you can't have any plugins before it
         .pipe(mocha({reporter: 'spec'})); // more details with 'spec', more fun with 'nyan'
+});
+
+
+gulp.task('mocha:phantomJs', ['webpack', 'inject:tests'], function () {
+    return gulp
+        .src('dist/tests.html')
+        .pipe(mochaPhantomJS({reporter: 'spec', dump:'test.log'}));
 });
 
 //////////////////

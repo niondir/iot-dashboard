@@ -1,13 +1,16 @@
 
-//import './datasource/datasource'
-
-
 /* inject:tests */
 import './datasource/datasourcePlugins.test.js'
 import './util/collection.test.js'
 import './widgets/widgetPlugins.test.js'
 import './datasource/plugins/randomDatasource.test.js'
 /* endinject */
+
+// In case we run with phantomJS this is needed
+// Waiting for https://github.com/webpack/mocha-loader/pull/27
+if (typeof window !== 'undefined' && window.initMochaPhantomJS) {
+    window.initMochaPhantomJS();
+}
 
 var assert = require('chai').assert;
 describe('Example Array', function() {
