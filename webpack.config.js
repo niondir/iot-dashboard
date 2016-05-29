@@ -55,7 +55,7 @@ module.exports = {
             c3: path.resolve('./vendor/c3/c3' + dotJs),
             c3css: path.resolve('./vendor/c3/c3' + dotCss),
             'react-redux': path.resolve('./node_modules/react-redux/dist/react-redux' + dotJs),
-            'redux-form': path.resolve('./node_modules/redux-form/dist/redux-form' + dotJs),
+            'redux-form': path.resolve('./node_modules/redux-form/dist/redux-form' + dotJs)
 
             // Locading chai.js will fail with webpack because the require is processed
             //'chai': path.resolve('./node_modules/chai/chai.js')
