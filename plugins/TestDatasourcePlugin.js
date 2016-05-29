@@ -5,6 +5,7 @@
         type: "test",
         name: "Test Source",
         description: "Static test value",
+        // dependencies: ["/path/to/some.js"]
         settings: [
             {
                 id: "value",
