@@ -2,7 +2,7 @@
 (function() {
 
     var TYPE_INFO = {
-        type: "test",
+        type: "test-datasource",
         name: "Test Source",
         description: "Static test value",
         // dependencies: ["/path/to/some.js"]

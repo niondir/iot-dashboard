@@ -50,7 +50,6 @@ export function loadFromLocalStorage() {
     catch (e) {
         console.error("Failed to load state from local storage. Data: " + stateString);
     }
-    console.log("Loaded state:");
-    console.log(state);
+    console.log("Loaded state:", state);
     return state !== null ? state : undefined;
 }

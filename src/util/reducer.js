@@ -34,6 +34,7 @@ export function genCrudReducer(actionNames:Array<String>, elementReducer:Functio
                 const elementState = state[id];
                 if (elementState == undefined) {
                     // Do not update what we don't have.
+                    // TODO: Log warning, or document why not.
                     return state;
                 }
                 const updatedElement = elementReducer(elementState, action);

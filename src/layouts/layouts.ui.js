@@ -39,7 +39,7 @@ TopNavItem.propTypes = {
     currentLayout: Prop.object
 };
 
-const TopNavItemContainer = connect((state) => {
+export default connect((state) => {
         return {
             layouts: _.valuesIn(state.layouts),
             currentLayout: state.currentLayout,
@@ -50,8 +50,6 @@ const TopNavItemContainer = connect((state) => {
         return {
         }
     })(TopNavItem);
-
-export {TopNavItemContainer as TopNavItem}
 
 class SaveInput extends React.Component {
     onEnter(e) {

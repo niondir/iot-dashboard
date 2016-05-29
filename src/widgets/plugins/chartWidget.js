@@ -6,6 +6,7 @@ import * as c3 from 'c3';
 
 export const TYPE_INFO = {
     type: "chart",
+    name: "Chart",
     description: "Renders a chart. Will be way more flexible in future.",
     settings: [
         {

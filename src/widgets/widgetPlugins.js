@@ -13,6 +13,28 @@ function dataResolver(store, dsId) {
     return ds.data ? [...ds.data] : [];
 }
 
+class DomWidgetContainer extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            widget : new props._widgetClass(props)
+        };
+    }
+
+    componentDidMount() {
+        this.state.widget.render(this.props, this.refs.container);
+    }
+
+    componentDidUpdate() {
+        this.state.widget.render(this.props, this.refs.container);
+    }
+
+    render() {
+        return <div ref="container">Widget Plugin missing rendering!</div>;
+    }
+}
+
 class PluginRegistry {
 
     constructor() {
@@ -30,6 +52,15 @@ class PluginRegistry {
             return this.instances[id];
         }
 
+        // TODO: check if module.Widget is a react component
+        const rendering = module.TYPE_INFO.rendering || "react";
+
+        let widgetComponent = module.Widget;
+        if (rendering === "dom") {
+            widgetComponent = DomWidgetContainer;
+        }
+
+
         const widget = connect(state => {
                 const widgetState = state.widgets[id];
 
@@ -41,9 +72,9 @@ class PluginRegistry {
                     getData: dataResolver.bind(this, state)
                 }
             }
-        )(module.Widget);
+        )(widgetComponent);
 
-        this.instances[id] = React.createElement(widget);
+        this.instances[id] = React.createElement(widget, {_widgetClass : module.Widget});
         // Should we create here or always outside?
         return this.instances[id];
     }

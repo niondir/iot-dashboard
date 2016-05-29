@@ -20,16 +20,17 @@ import "./pluginApi/freeboardPluginApi";
 import "./pluginApi/pluginApi"
 
 const state = store.getState();
-// TODO: Load Widget Plugins via PluginAPI
-WidgetPlugins.register(TextWidget);
-WidgetPlugins.register(ChartWidget);
 
+store.dispatch(Plugins.loadPlugin(TextWidget));
+store.dispatch(Plugins.loadPlugin(ChartWidget));
 
 store.dispatch(Plugins.loadPlugin(RandomDatasource));
 store.dispatch(Plugins.loadPlugin(TimeDatasource));
-Plugins.initializeExternalPlugins(_.valuesIn(state.plugins));
 
-cleanupState(state);
+store.dispatch(Plugins.initializeExternalPlugins());
+
+// Would delet async loaded widgets that are not known yet.
+//cleanupState(state);
 
 function cleanupState(state) {
     _.valuesIn(state.widgets).forEach((widgetState) => {

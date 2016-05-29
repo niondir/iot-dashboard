@@ -33,7 +33,7 @@ export function create(newInstance, TYPE_INFO) {
             this.data = newData;
         }.bind(this);
 
-
+        // TODO: Maybe no needed anymore when we take care of dependencies elsewhere
         if (TYPE_INFO.dependencies) {
             $script([...TYPE_INFO.dependencies], createNewInstance);
         }

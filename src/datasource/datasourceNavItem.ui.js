@@ -1,12 +1,9 @@
 import React from "react";
-import ModalDialog from "../modal/modalDialog.ui.js";
-import Modal from "../modal/modalDialog.js";
 import * as Datasource from "./datasource";
 import {connect} from "react-redux";
-import _ from 'lodash'
+import _ from "lodash";
 import * as ui from "../ui/elements.ui";
 import {reset} from "redux-form";
-import * as DatasourceConfigDialog from './datasourceConfigDialog.ui'
 const Prop = React.PropTypes;
 
 

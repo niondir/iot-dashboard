@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 
 export const TYPE_INFO = {
     type: "text",
+    name: "Text",
     description: "Display content of a datasource as plain text",
     settings: [
         {

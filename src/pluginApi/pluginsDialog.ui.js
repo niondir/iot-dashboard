@@ -26,6 +26,7 @@ class PluginsModal extends React.Component {
         ];
 
         const datasourceStates = _.valuesIn(props.plugins).filter(ds => ds.isDatasource);
+        const widgetStates = _.valuesIn(props.plugins).filter(ds => ds.isWidget);
 
         return <ModalDialog id={ModalIds.PLUGINS}
                             title="Plugins"
@@ -52,7 +53,7 @@ class PluginsModal extends React.Component {
                     <h4 className="ui dividing header">Datasource Plugins</h4>
                     <DatasourcePluginList datasourceStates={datasourceStates} {...props} />
                     <h4 className="ui dividing header">Widget Plugins</h4>
-                    <p>Comming soon ...</p>
+                    <WidgetPluginList widgetStates={widgetStates} {...props} />
                 </div>
             </div>
         </ModalDialog>
@@ -86,7 +87,17 @@ const DatasourcePluginList = (props) => {
     return <div className="ui five cards">
         {
             props.datasourceStates.map(dsState => {
-                return <DatasourcePluginCard key={dsState.id} datasourceState={dsState} {...props}/>;
+                return <PluginCard key={dsState.id} pluginState={dsState} {...props}/>;
+            })
+        }
+    </div>
+};
+
+const WidgetPluginList = (props) => {
+    return <div className="ui five cards">
+        {
+            props.widgetStates.map(dsState => {
+                return <PluginCard key={dsState.id} pluginState={dsState} {...props}/>;
             })
         }
     </div>
@@ -96,7 +107,7 @@ DatasourcePluginList.propTypes = {
     datasourceStates: Prop.array.isRequired
 };
 
-class DatasourcePluginCard extends React.Component {
+class PluginCard extends React.Component {
 
     _copyUrl() {
         this.refs.url.focus();
@@ -106,7 +117,7 @@ class DatasourcePluginCard extends React.Component {
 
     render() {
         const props = this.props;
-        const dsState = props.datasourceState;
+        const dsState = props.pluginState;
         return <div className="card">
             <div className="content">
                 <div className="header">{dsState.typeInfo.name}</div>
@@ -131,9 +142,9 @@ class DatasourcePluginCard extends React.Component {
             </div>
         </div>
     }
-};
+}
 
-DatasourcePluginCard.propTypes = {
-    datasourceState: Prop.object.isRequired,
+PluginCard.propTypes = {
+    pluginState: Prop.object.isRequired,
     removePlugin: Prop.func.isRequired
 };
