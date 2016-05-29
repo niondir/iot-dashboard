@@ -18,16 +18,54 @@ class DomWidgetContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            widget : new props._widgetClass(props)
+            widget: new props._widgetClass(props)
         };
+    }
+
+    componentWillMount() {
+        if (this.state.widget.componentWillMount) {
+            this.state.widget.componentWillMount();
+        }
     }
 
     componentDidMount() {
         this.state.widget.render(this.props, this.refs.container);
+        if (this.state.widget.componentDidMount) {
+            this.state.widget.componentDidMount();
+        }
     }
 
-    componentDidUpdate() {
+    componentWillReceiveProps(nextProps) {
+        if (this.state.widget.componentWillReceiveProps) {
+            this.state.widget.componentWillReceiveProps(nextProps);
+        }
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.state.widget.shouldComponentUpdate) {
+            return this.state.widget.shouldComponentUpdate(nextProps, nextState);
+        }
+        return true;
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+        if (this.state.widget.componentWillUpdate) {
+            this.state.widget.componentWillUpdate(nextProps, nextState);
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
         this.state.widget.render(this.props, this.refs.container);
+        if (this.state.widget.componentDidUpdate) {
+            this.state.widget.componentDidUpdate(prevProps, prevState);
+        }
+    }
+
+
+    componentWillUnmount() {
+        if (this.state.widget.componentWillUnmount) {
+            this.state.widget.componentWillUnmount();
+        }
     }
 
     render() {
@@ -74,7 +112,7 @@ class PluginRegistry {
             }
         )(widgetComponent);
 
-        this.instances[id] = React.createElement(widget, {_widgetClass : module.Widget});
+        this.instances[id] = React.createElement(widget, {_widgetClass: module.Widget});
         // Should we create here or always outside?
         return this.instances[id];
     }
