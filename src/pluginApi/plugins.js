@@ -6,6 +6,7 @@ import WidgetPlugins from '../widgets/widgetPlugins'
 import $script from 'scriptjs';
 import * as PluginApi from './pluginApi'
 import _  from 'lodash'
+import sandie from 'sandie'
 
 // TODO: Later load all plugins from external URL's ?
 const initialState = {};
@@ -23,9 +24,18 @@ export function loadPluginFromUrl(url) {
                 const dependencies = plugin.TYPE_INFO.dependencies;
                 if (_.isArray(dependencies)) {
                     console.log("Loading Dependencies for Plugin", dependencies);
+
+                    /*sandie([dependencies],
+                        function (deps) {
+                            plugin.deps = deps;
+                            console.log("deps loaded", deps);
+                            dispatch(addPlugin(plugin, url));
+                        }
+                    );  */
+
                     $script(dependencies, () => {
-                        dispatch(addPlugin(plugin, url));
-                    });
+                     dispatch(addPlugin(plugin, url));
+                     });
                 }
                 else {
                     dispatch(addPlugin(plugin, url));
@@ -39,7 +49,7 @@ export function loadPluginFromUrl(url) {
 }
 
 export function initializeExternalPlugins(plugins = []) {
-    return(dispatch, getState) => {
+    return (dispatch, getState) => {
         const state = getState();
         const plugins = _.valuesIn(state.plugins);
 
@@ -51,7 +61,7 @@ export function initializeExternalPlugins(plugins = []) {
 
 function registerPlugin(plugin) {
     const type = plugin.TYPE_INFO.type;
-    if(plugin.Datasource) {
+    if (plugin.Datasource) {
         const dsPlugin = DatasourcePlugins.getPlugin(type);
         if (!dsPlugin) {
             DatasourcePlugins.register(plugin);
@@ -60,7 +70,7 @@ function registerPlugin(plugin) {
             console.warn("Plugin of type " + type + " already loaded:", dsPlugin, ". Tried to load: ", plugin);
         }
     }
-    else if(plugin.Widget) {
+    else if (plugin.Widget) {
         const widgetPlugin = WidgetPlugins.getPlugin(type);
         if (!widgetPlugin) {
             WidgetPlugins.register(plugin);

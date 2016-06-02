@@ -112,7 +112,7 @@ class PluginRegistry {
             }
         )(widgetComponent);
 
-        this.instances[id] = React.createElement(widget, {_widgetClass: module.Widget});
+        this.instances[id] = React.createElement(widget, {_widgetClass: module.Widget, _deps: module.deps});
         // Should we create here or always outside?
         return this.instances[id];
     }

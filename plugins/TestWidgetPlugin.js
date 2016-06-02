@@ -6,7 +6,7 @@
         name: "Test Widget",
         rendering: "dom", // can be: "dom", "string", "react" (TODO: Not all supported yet)
         description: "Just rendering the data as text",
-        // dependencies: ["/path/to/some.js"]
+        dependencies: ["https://code.jquery.com/jquery-2.2.4.min.js"],
         settings: [
             {
                 id: 'datasource',

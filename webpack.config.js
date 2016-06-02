@@ -25,8 +25,8 @@ module.exports = {
     //context: __dirname + "/dist",
     cache: true,
     bail: true, // Fail fast
-    //devtool: '#cheap-module-source-map',
-    devtool: 'eval-cheap-module-source-map',
+    devtool: 'source-map',
+    //devtool: 'eval-cheap-module-source-map',
     entry: {
         app: ["./src/app.js"],
         tests: ['mocha!./src/tests.js'],
@@ -54,6 +54,7 @@ module.exports = {
             d3: path.resolve('./vendor/d3/d3' + dotJs),
             c3: path.resolve('./vendor/c3/c3' + dotJs),
             c3css: path.resolve('./vendor/c3/c3' + dotCss),
+            sandie: path.resolve('./vendor/sandie.js'),
             'react-redux': path.resolve('./node_modules/react-redux/dist/react-redux' + dotJs),
             'redux-form': path.resolve('./node_modules/redux-form/dist/redux-form' + dotJs)
 
