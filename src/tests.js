@@ -1,6 +1,7 @@
 
 /* inject:tests */
 import './datasource/datasourcePlugins.test.js'
+import './pluginApi/uri.test.js'
 import './util/collection.test.js'
 import './widgets/widgetPlugins.test.js'
 import './datasource/plugins/randomDatasource.test.js'
@@ -21,3 +22,4 @@ describe('Example Array', function() {
         });
     });
 });
+

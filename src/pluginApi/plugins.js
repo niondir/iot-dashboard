@@ -1,12 +1,11 @@
-import * as Action from '../actionNames'
-import {genCrudReducer} from '../util/reducer'
-import * as Uuid from '../util/uuid'
-import DatasourcePlugins from '../datasource/datasourcePlugins'
-import WidgetPlugins from '../widgets/widgetPlugins'
-import $script from 'scriptjs';
-import * as PluginApi from './pluginApi'
-import _  from 'lodash'
-import sandie from 'sandie'
+import * as Action from "../actionNames";
+import {genCrudReducer} from "../util/reducer";
+import DatasourcePlugins from "../datasource/datasourcePlugins";
+import WidgetPlugins from "../widgets/widgetPlugins";
+import loadjs from "loadjs";
+import * as PluginApi from "./pluginApi";
+import _ from "lodash";
+import URI from "urijs";
 
 // TODO: Later load all plugins from external URL's ?
 const initialState = {};
@@ -15,27 +14,39 @@ export function loadPlugin(plugin) {
     return addPlugin(plugin);
 }
 
+
 export function loadPluginFromUrl(url) {
+    var uri = URI(url);
     return function (dispatch) {
-        $script([url], () => {
+        loadjs([url], () => {
             if (PluginApi.hasPlugin()) {
                 const plugin = PluginApi.popLoadedPlugin();
 
                 const dependencies = plugin.TYPE_INFO.dependencies;
                 if (_.isArray(dependencies)) {
-                    console.log("Loading Dependencies for Plugin", dependencies);
 
+                    var paths = dependencies.map(dependency => {
+                        return URI(dependency).absoluteTo(url).toString();
+                    });
+
+                    console.log("Loading Dependencies for Plugin", paths);
+
+                    // TODO: Load Plugins into a sandbox / iframe, and pass as "deps" object
+                    // Let's wait for the dependency hell before introducing this.
+                    // Until then we can try to just provide shared libs by the Dashboard, e.g. jQuery, d3, etc.
+                    // That should avoid that people add too many custom libs.
                     /*sandie([dependencies],
-                        function (deps) {
-                            plugin.deps = deps;
-                            console.log("deps loaded", deps);
-                            dispatch(addPlugin(plugin, url));
-                        }
-                    );  */
-
-                    $script(dependencies, () => {
+                     function (deps) {
+                     plugin.deps = deps;
+                     console.log("deps loaded", deps);
                      dispatch(addPlugin(plugin, url));
-                     });
+                     }
+                     );  */
+
+
+                    loadjs(paths, () => {
+                        dispatch(addPlugin(plugin, url));
+                    });
                 }
                 else {
                     dispatch(addPlugin(plugin, url));

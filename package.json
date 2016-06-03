@@ -17,6 +17,7 @@
   "dependencies": {
     "form-serialize": "^0.7.1",
     "jquery": "^2.2.3",
+    "loadjs": "^1.0.4",
     "lodash": "^4.11.1",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
@@ -27,8 +28,8 @@
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1",
     "require-dot-file": "^0.4.0",
-    "scriptjs": "^2.5.8",
-    "semantic-ui-css": "^2.1.8"
+    "semantic-ui-css": "^2.1.8",
+    "urijs": "^1.18.1"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
