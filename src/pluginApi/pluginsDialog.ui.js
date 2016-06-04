@@ -76,6 +76,7 @@ export default connect(
     (dispatch) => {
         return {
             closeDialog: () => dispatch(Modal.closeModal()),
+            // TODO: Render loading indicator while Plugin loads
             loadPlugin: (url) => dispatch(Plugins.loadPluginFromUrl(url)),
             removePlugin: (type) => alert("Sorry not yet ...")
 

@@ -59,7 +59,7 @@ export function loadPluginFromUrl(url) {
     };
 }
 
-export function initializeExternalPlugins(plugins = []) {
+export function initializeExternalPlugins() {
     return (dispatch, getState) => {
         const state = getState();
         const plugins = _.valuesIn(state.plugins);

@@ -5,6 +5,7 @@ import * as Widgets from './widgets/widgets'
 import * as WidgetConfig from './widgets/widgetConfig'
 import * as Layouts from './layouts/layouts'
 import * as Datasource from './datasource/datasource'
+import {importReducerFactory} from './dashboard/import'
 import * as Modal from './modal/modalDialog'
 import * as Persist from './persistence'
 import * as Plugins from './pluginApi/plugins'
@@ -16,18 +17,7 @@ import DatasourcePlugins from './datasource/datasourcePlugins'
 let store;
 
 
-function importReducerFactory(baseReducer:Function, name) {
-    return importReducer.bind(this, baseReducer, name);
-}
 
-function importReducer(baseReducer:Function, name, state, action) {
-    switch (action.type) {
-        case Action.DASHBOARD_IMPORT:
-            return action.state[name];
-        default:
-            return baseReducer(state, action);
-    }
-}
 
 let appReducer = Redux.combineReducers({
     widgets: importReducerFactory(Widgets.widgets, "widgets"),
@@ -37,7 +27,7 @@ let appReducer = Redux.combineReducers({
     datasources: importReducerFactory(Datasource.datasources, "datasources"),
     form: formReducer,
     modalDialog: Modal.modalDialog,
-    plugins: Plugins.plugins
+    plugins: importReducerFactory(Plugins.plugins, "plugins")
 });
 
 const reducer = (state, action) => {
