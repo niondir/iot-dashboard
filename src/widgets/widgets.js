@@ -10,8 +10,7 @@ import {
     ADD_WIDGET,
     UPDATE_WIDGET_PROPS,
     DELETE_WIDGET,
-    UPDATE_WIDGET_LAYOUT,
-    DASHBOARD_IMPORT
+    UPDATE_WIDGET_LAYOUT
 } from '../actionNames'
 
 export const HEADER_HEIGHT = 77;

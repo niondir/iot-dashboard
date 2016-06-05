@@ -5,7 +5,7 @@ import * as Widgets from './widgets/widgets'
 import * as WidgetConfig from './widgets/widgetConfig'
 import * as Layouts from './layouts/layouts'
 import * as Datasource from './datasource/datasource'
-import {importReducerFactory} from './dashboard/import'
+import * as Import from './dashboard/import'
 import * as Modal from './modal/modalDialog'
 import * as Persist from './persistence'
 import * as Plugins from './pluginApi/plugins'
@@ -20,20 +20,22 @@ let store;
 
 
 let appReducer = Redux.combineReducers({
-    widgets: importReducerFactory(Widgets.widgets, "widgets"),
+    widgets: Widgets.widgets,
     widgetConfig: WidgetConfig.widgetConfigDialog,
     layouts: Layouts.layouts,
     currentLayout: Layouts.currentLayout,
-    datasources: importReducerFactory(Datasource.datasources, "datasources"),
+    datasources: Datasource.datasources,
     form: formReducer,
     modalDialog: Modal.modalDialog,
-    plugins: importReducerFactory(Plugins.plugins, "plugins")
+    plugins: Plugins.plugins
 });
 
 const reducer = (state, action) => {
     if (action.type === Action.CLEAR_STATE) {
         state = undefined
     }
+
+    state = Import.importReducer(state, action);
 
     return appReducer(state, action)
 };
