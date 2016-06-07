@@ -28,11 +28,11 @@ Why just another Dashboard?
 
 I was looking for a Dashboard with the following properties:
 
-- OpenSource with code that I can understand and extend for full customization
-- Running locally/offline without the need of any server, keeping the server optional until I really need one
-- Simple API to write custom widgets and datasources, as a solid base for community driven development and extensions
+- OpenSource, royalty free, with code that I can understand and extend for full customization
+- Easy to setup, maintain and extend - even for unusual datasources and widgets
 - A Reasonable set of default widgets, to be used out of the box
-- Easy to setup and maintain, even for unusual datasources
+- Simple API and development setup to write custom widgets and datasources, as a solid base for community driven development and extensions
+- Running locally/offline without the need of any server, keeping the server optional until I really need one
 - Having a community that extends the Dashboard for their own needs
 
 If you find something that comes close to the above requirements, please let me know!
