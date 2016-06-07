@@ -141,7 +141,7 @@ DatasourceInput.propTypes = {
 const DatasourceInputContainer = connect(
     (state) => {
         return {
-            datasources: state.datasources
+            plugins: state.plugins
         }
     }
 )(DatasourceInput);

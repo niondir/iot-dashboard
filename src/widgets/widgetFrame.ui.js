@@ -1,9 +1,8 @@
 import * as React from 'react';
 import {connect} from 'react-redux'
 import * as WidgetConfig from './widgetConfig'
-import WidgetPlugins from './widgetPlugins'
+import * as WidgetPlugins from './widgetPlugins'
 import {deleteWidget} from './widgets'
-import DatasourcePlugins from '../datasource/datasourcePlugins'
 const Prop = React.PropTypes;
 
 /**
@@ -13,18 +12,8 @@ const Prop = React.PropTypes;
 const WidgetFrame = (props) => {
     const widgetState = props.widget;
 
-    let widgetPlugin = WidgetPlugins.getPlugin(widgetState.type);
-    console.assert(widgetPlugin, "No registered widget with type: " + widgetState.type);
-
-    const dataResolver = (id) => {
-        const ds = props.datasources[id];
-        if (!ds) {
-            //console.warn("Can not find Datasource with id " + id + " for widget: ", widgetState, " Returning empty data!");
-            return [];
-        }
-
-        return ds.data ? [...ds.data] : [];
-    };
+    let widgetFactory = WidgetPlugins.pluginRegistry.getPlugin(widgetState.type);
+    console.assert(widgetFactory, "No registered widget factory with type: " + widgetState.type);
 
     return (
         <div className="ui raised segments"
@@ -35,7 +24,7 @@ const WidgetFrame = (props) => {
             <div className="ui inverted segment">
                 <div className="ui tiny horizontal right floated inverted list">
                     <ConfigWidgetButton className="right item" widgetState={widgetState}
-                                        visible={(widgetPlugin.settings ? true : false)} icon="configure"/>
+                                        visible={(props.widgetPlugin.typeInfo.settings ? true : false)} icon="configure"/>
                     <a className="right item drag">
                         <i className="move icon drag"></i>
                     </a>
@@ -45,14 +34,20 @@ const WidgetFrame = (props) => {
             </div>
 
             <div className="ui segment">
-                {widgetPlugin.getOrCreateWidget(widgetState.id)}
-                {/*React.createElement(widgetPlugin.Widget, {
-                    config: widgetState.props,
-                    _state: widgetState,
-                    getData: dataResolver
-                })*/}
+                {widgetFactory.getOrCreateInstance(widgetState.id)}
             </div>
         </div>)
+};
+
+WidgetFrame.propTypes = {
+    widgetPlugin: Prop.objectOf(
+        Prop.shape({
+            typeInfoX: Prop.objectOf(Prop.shape({
+                settings: Prop.object
+            })).isRequired
+        })
+    ).isRequired
+
 };
 
 

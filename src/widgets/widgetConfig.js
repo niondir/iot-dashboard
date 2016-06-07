@@ -16,13 +16,13 @@ const initialState = {
  * Triggered when the user intends to create a widget of a certain type
  */
 export function createWidget(type) {
-    const widget = WidgetPlugins.getPlugin(type);
+    const widgetPlugin = WidgetPlugins.getPlugin(type);
     return (dispatch, getState) => {
-        if (!widget.settings && widget.settings.length > 0) {
-            dispatch(Widgets.addWidget(type, widget.defaultProps));
+        if (!widgetPlugin.typeInfo.settings && widgetPlugin.typeInfo.settings.length > 0) {
+            dispatch(Widgets.addWidget(type));
             return;
         }
-        dispatch(openWidgetCreateDialog(type, widget.defaultProps));
+        dispatch(openWidgetCreateDialog(type));
     }
 }
 
@@ -47,12 +47,11 @@ export function createOrUpdateWidget(id, type, props) {
     }
 }
 
-export function openWidgetCreateDialog(type, defaultProps) {
+export function openWidgetCreateDialog(type) {
     return (dispatch) => {
         dispatch({
             type: START_CREATE_WIDGET,
-            widgetType: type,
-            widgetProps: defaultProps
+            widgetType: type
         });
         dispatch(Modal.showModal(ModalIds.WIDGET_CONFIG));
     }
@@ -81,7 +80,7 @@ export function widgetConfigDialog(state = initialState, action) {
                 type: action.widgetType,
                 id: null,
                 name: action.widgetType,
-                props: action.widgetProps || {}
+                props: {}
             };
         case START_CONFIGURE_WIDGET:
             return {

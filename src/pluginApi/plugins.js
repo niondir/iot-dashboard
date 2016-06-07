@@ -1,14 +1,13 @@
 import * as Action from "../actionNames";
 import {genCrudReducer} from "../util/reducer";
-import DatasourcePlugins from "../datasource/datasourcePlugins";
-import WidgetPlugins from "../widgets/widgetPlugins";
+import * as DatasourcePlugins from "../datasource/datasourcePlugins";
+import * as WidgetPlugins from "../widgets/widgetPlugins";
 import loadjs from "loadjs";
 import * as PluginApi from "./pluginApi";
 import _ from "lodash";
 import URI from "urijs";
 
-// TODO: Later load all plugins from external URL's ?
-const initialState = {};
+
 
 export function loadPlugin(plugin) {
     return addPlugin(plugin);
@@ -16,7 +15,6 @@ export function loadPlugin(plugin) {
 
 
 export function loadPluginFromUrl(url) {
-    var uri = URI(url);
     return function (dispatch) {
         loadjs([url], () => {
             if (PluginApi.hasPlugin()) {
@@ -59,6 +57,20 @@ export function loadPluginFromUrl(url) {
     };
 }
 
+export function unloadPlugin() {
+    return function(dispatch) {
+        DatasourcePlugins
+        dispatch(deletePlugin(type)); 
+    }
+}
+
+function deletePlugin(type) {
+    return {
+        type: Action.DELETE_PLUGIN,
+        pluginType: type
+    }
+}
+
 export function initializeExternalPlugins() {
     return (dispatch, getState) => {
         const state = getState();
@@ -73,18 +85,18 @@ export function initializeExternalPlugins() {
 function registerPlugin(plugin) {
     const type = plugin.TYPE_INFO.type;
     if (plugin.Datasource) {
-        const dsPlugin = DatasourcePlugins.getPlugin(type);
+        const dsPlugin = DatasourcePlugins.pluginRegistry.getPlugin(type);
         if (!dsPlugin) {
-            DatasourcePlugins.register(plugin);
+            DatasourcePlugins.pluginRegistry.register(plugin);
         }
         else {
             console.warn("Plugin of type " + type + " already loaded:", dsPlugin, ". Tried to load: ", plugin);
         }
     }
     else if (plugin.Widget) {
-        const widgetPlugin = WidgetPlugins.getPlugin(type);
+        const widgetPlugin = WidgetPlugins.pluginRegistry.getPlugin(type);
         if (!widgetPlugin) {
-            WidgetPlugins.register(plugin);
+            WidgetPlugins.pluginRegistry.register(plugin);
         }
         else {
             console.warn("Plugin of type " + type + " already loaded:", widgetPlugin, ". Tried to load: ", plugin);
@@ -96,7 +108,6 @@ function registerPlugin(plugin) {
 }
 
 // Add plugin to store and register it in the PluginRegistry
-// TODO: Plugins have to know if they are a Datasource or Widget Plugin
 export function addPlugin(plugin, url = null) {
     console.log("Adding plugin from " + url, plugin);
 
@@ -121,45 +132,15 @@ export function addPlugin(plugin, url = null) {
             pluginType = "widget";
         }
 
+        // TODO: Just put the raw plugin + url here and let the reducer do the logic
         dispatch({
             type: Action.ADD_PLUGIN,
-            id: pluginType + "/" + plugin.TYPE_INFO.type,
+            id: plugin.TYPE_INFO.type, // needed for crud reducer
             typeInfo: plugin.TYPE_INFO,
             url,
             pluginType: pluginType
         });
+        // TODO: Maybe use redux sideeffect and move this call to the reducer
         registerPlugin(plugin);
     }
-}
-
-
-const pluginsCrudReducer = genCrudReducer([Action.ADD_PLUGIN, Action.DELETE_PLUGIN], plugin);
-export function plugins(state = initialState, action) {
-    state = pluginsCrudReducer(state, action);
-    switch (action.type) {
-        default:
-            return state;
-    }
-
-}
-
-function plugin(state, action) {
-    switch (action.type) {
-        case Action.ADD_PLUGIN:
-            if (!action.typeInfo.type) {
-                // TODO: Catch this earlier
-                throw new Error("A Plugin needs a type name.");
-            }
-
-            return {
-                id: action.pluginType + "/" + action.typeInfo.type,
-                url: action.url,
-                typeInfo: action.typeInfo,
-                isDatasource: action.pluginType === "datasource",
-                isWidget: action.pluginType === "widget"
-            };
-        default:
-            return state;
-    }
-
 }

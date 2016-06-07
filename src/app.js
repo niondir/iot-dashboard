@@ -50,12 +50,14 @@ if (element) {
         renderDashboard(element, store);
     }
     catch (e) {
-        console.warn("Failed to load dashboard. Asking user to wipe data and retry. The error is printed below...");
+        console.warn("Failed to load dashboard. Asking user to wipe data and retry. The error will be printed below...");
         // TODO: Rendering of error message sux
-        console.error(e);
         if (confirm("Failed to load dashboard. Reset all Data?\n\nPress cancel and check the browser console for more details.")) {
             store.dispatch(Store.clearState());
             renderDashboard(element, store);
+        }
+        else {
+            throw e;
         }
 
     }

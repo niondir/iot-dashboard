@@ -179,6 +179,7 @@ export class Widget extends Component {
     }
 
     render() {
+        console.log("render chart");
         this._renderChart();
         return <div className="" id={'chart-' + this.props._state.id}></div>
     }

@@ -1,5 +1,5 @@
 import {assert} from 'chai'
-import DatasourcePlugins from './datasourcePlugins'
+import * as DatasourcePlugins from './datasourcePlugins'
 import {genCrudReducer} from '../util/reducer'
 import * as Action from '../actionNames'
 import * as Uuid from '../util/uuid'
@@ -108,14 +108,14 @@ export function fetchDatasourceData() {
         const dsStates = state.datasources;
 
         _.valuesIn(dsStates).forEach(dsState => {
-            const dsPlugin = DatasourcePlugins.getPlugin(dsState.type);
+            const dsFactory = DatasourcePlugins.pluginRegistry.getPlugin(dsState.type);
 
-            if (dsPlugin === undefined) {
+            if (dsFactory === undefined) {
                 console.warn("Can not fetch data from non existent datasource plugin of type ", dsState.type);
                 return;
             }
 
-            const dsInstance = dsPlugin.getOrCreateInstance(dsState.id);
+            const dsInstance = dsFactory.getOrCreateInstance(dsState.id);
             const newData = dsInstance.getValues();
 
             /*
@@ -124,7 +124,7 @@ export function fetchDatasourceData() {
              dispatch(setDatasourceData(dsState.id, pastData));
              }*/
             const action = setDatasourceData(dsState.id, newData);
-            action.doNotLog = true;
+            //action.doNotLog = true;
             dispatch(action);
         })
     };

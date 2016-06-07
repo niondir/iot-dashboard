@@ -11,23 +11,22 @@ import * as Persist from './persistence'
 import * as Plugins from './pluginApi/plugins'
 import {reducer as formReducer} from 'redux-form';
 import * as Action from './actionNames'
-import WidgetPlugins from './widgets/widgetPlugins'
-import DatasourcePlugins from './datasource/datasourcePlugins'
+import * as  WidgetPlugins from './widgets/widgetPlugins'
+import * as DatasourcePlugins from './datasource/datasourcePlugins'
 
 let store;
 
 
-
-
 let appReducer = Redux.combineReducers({
     widgets: Widgets.widgets,
-    widgetConfig: WidgetConfig.widgetConfigDialog,
+    widgetConfig: WidgetConfig.widgetConfigDialog,  // TODO: Still used or replaced by modalDialog
     layouts: Layouts.layouts,
     currentLayout: Layouts.currentLayout,
     datasources: Datasource.datasources,
     form: formReducer,
     modalDialog: Modal.modalDialog,
-    plugins: Plugins.plugins
+    widgetPlugins: WidgetPlugins.widgetPlugins,
+    datasourcePlugins: DatasourcePlugins.datasourcePlugins
 });
 
 const reducer = (state, action) => {
@@ -65,8 +64,8 @@ store = Redux.createStore(
         logger // must be last
     ));
 
-DatasourcePlugins.store = store;
-WidgetPlugins.store = store;
+DatasourcePlugins.pluginRegistry.store = store;
+WidgetPlugins.pluginRegistry.store = store;
 
 export function clearState() {
     return {

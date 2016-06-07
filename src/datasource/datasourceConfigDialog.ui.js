@@ -1,7 +1,6 @@
 import React from 'react'
 import ModalDialog from '../modal/modalDialog.ui.js'
 import * as Datasource from './datasource'
-import DatasourcePlugins from './datasourcePlugins'
 import {connect} from 'react-redux'
 import _ from 'lodash'
 import * as ui from '../ui/elements.ui'
@@ -89,20 +88,20 @@ class DatasourceConfigModal extends React.Component {
                 }
             }
         ];
-
-        const datasources = DatasourcePlugins.getPlugins();
+        
         let selectedSource;
         if (this.state.selectedType) {
-            selectedSource = DatasourcePlugins.getPlugin(this.state.selectedType);
+            selectedSource = props.datasourcePlugins[this.state.selectedType];
+        }
+
+        let settings = [];
+        if (selectedSource && selectedSource.typeInfo.settings) {
+            settings = [...selectedSource.typeInfo.settings];
         }
         else {
-            selectedSource = {settings: []};
+            settings = [];
         }
         
-        let settings = [];
-        if (selectedSource && selectedSource.settings) {
-            settings = [...selectedSource.settings];
-        }
         unshiftIfNotExists(settings, {
             id: 'name',
             name: 'Name',
@@ -143,8 +142,8 @@ class DatasourceConfigModal extends React.Component {
                             {...fields.type}
                         >
                             <option key="none" value="">Select Type...</option>
-                            {_.valuesIn(datasources).map(source => {
-                                return <option key={source.type} value={source.type}>{source.name}</option>
+                            {_.valuesIn(props.datasourcePlugins).map(dsPlugin => {
+                                return <option key={dsPlugin.id} value={dsPlugin.id}>{dsPlugin.typeInfo.name}</option>
                             })}
                         </select>
                     </div>
@@ -166,14 +165,16 @@ class DatasourceConfigModal extends React.Component {
 DatasourceConfigModal.propTypes = {
     createOrUpdateDatasource: Prop.func.isRequired,
     resetForm: Prop.func.isRequired,
-    dialogData: Prop.object.isRequired
+    dialogData: Prop.object.isRequired,
+    datasourcePlugins: Prop.object.isRequired
 };
 
 
 export default connect(
     (state) => {
         return {
-            dialogData: state.modalDialog.data || {}
+            dialogData: state.modalDialog.data || {},
+            datasourcePlugins: state.datasourcePlugins
         }
     },
     (dispatch) => {

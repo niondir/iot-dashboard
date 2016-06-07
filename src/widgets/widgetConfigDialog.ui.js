@@ -62,15 +62,19 @@ class WidgetConfigModal extends React.Component {
             }
         ];
 
-        const props = this.props;
-        const selectedWidget = WidgetPlugins.getPlugin(this.props.widgetType) || {settings: []};
 
-        if (!selectedWidget) {
+        const props = this.props;
+        //const selectedWidgetPlugin = WidgetPlugins.getPlugin(this.props.widgetType) || {settings: []};
+        const selectedWidgetPlugin = this.props.widgetPlugin;
+
+        // TODO: Get typeInfo from selectedWidgetPlugin.typeInfo
+        if (!selectedWidgetPlugin) {
             return <div>Unknown WidgetType: {this.props.widgetType}</div>
         }
 
+
         // Add additional fields
-        const settings = [...selectedWidget.settings];
+        const settings = [...selectedWidgetPlugin.settings];
 
         unshiftIfNotExists(settings, {
             id: 'name',
@@ -95,12 +99,12 @@ class WidgetConfigModal extends React.Component {
         >
             <div className="ui one column grid">
                 <div className="column">
-                    {selectedWidget.description ?
+                    {selectedWidgetPlugin.description ?
 
                             <div className="ui icon message">
                                 <i className="idea icon"/>
                                 <div className="content">
-                                    {selectedWidget.description}
+                                    {selectedWidgetPlugin.description}
                                 </div>
 
                             </div>
@@ -124,7 +128,8 @@ WidgetConfigModal.propTypes = {
     widgetId: Prop.string,
     resetForm: Prop.func.isRequired,  // reset
     widgetType: Prop.string,
-    widgetProps: Prop.object.isRequired
+    widgetProps: Prop.object.isRequired,
+    widgetPlugin: Prop.object
 };
 
 export default connect(
@@ -132,7 +137,8 @@ export default connect(
         return {
             widgetId: state.widgetConfig.id,
             widgetType: state.widgetConfig.type,
-            widgetProps: state.widgetConfig.props
+            widgetProps: state.widgetConfig.props,
+            widgetPlugin: state.widgetPlugins[state.widgetConfig.type]
         }
     },
     (dispatch) => {

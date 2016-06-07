@@ -45,12 +45,12 @@ export function loadFromLocalStorage() {
     const stateString = window.localStorage.getItem("appState");
     let state = undefined;
     try {
-        if (stateString !== undefined) {
+        if (stateString !== undefined && stateString !== "undefined") {
             state = JSON.parse(stateString);
         }
     }
     catch (e) {
-        console.error("Failed to load state from local storage. Data: " + stateString);
+        console.error("Failed to load state from local storage. Data:", stateString, e.message);
     }
     console.log("Loaded state:", state);
     return state !== null ? state : undefined;

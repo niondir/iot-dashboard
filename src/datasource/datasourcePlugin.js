@@ -3,10 +3,11 @@ import _ from 'lodash'
 /**
  * Connects a datasource to the application state
  */
+// TODO: Rename to ...Factory
 export class DataSourcePlugin {
     constructor(module, store) {
         console.assert(module.TYPE_INFO, "Missing TYPE_INFO on datasource module. Every module must export TYPE_INFO");
-        this.typeInfo = module.TYPE_INFO;
+        this._type = module.TYPE_INFO.type;
         this.Datasource = module.Datasource;
 
         this.store = store;
@@ -16,20 +17,8 @@ export class DataSourcePlugin {
         this.unsubscribe = store.subscribe(this.handleStateChange.bind(this));
     }
 
-    getDsState(id) {
-        return this.store.datasources[id];
-    }
-
     get type() {
-        return this.typeInfo.type;
-    }
-
-    get name() {
-        return this.typeInfo.name;
-    }
-
-    get settings() {
-        return this.typeInfo.settings;
+        return this._type;
     }
 
     getDatasourceState(id) {

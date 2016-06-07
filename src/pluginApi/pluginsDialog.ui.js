@@ -25,8 +25,8 @@ class PluginsModal extends React.Component {
             }
         ];
 
-        const datasourceStates = _.valuesIn(props.plugins).filter(ds => ds.isDatasource);
-        const widgetStates = _.valuesIn(props.plugins).filter(ds => ds.isWidget);
+        const datasourcePluginStates = _.valuesIn(props.datasourcePlugins).filter(ds => ds.isDatasource);
+        const widgetPluginStates = _.valuesIn(props.widgetPlugins).filter(ds => ds.isWidget);
 
         return <ModalDialog id={ModalIds.PLUGINS}
                             title="Plugins"
@@ -51,9 +51,9 @@ class PluginsModal extends React.Component {
                         </div>
                     </form>
                     <h4 className="ui dividing header">Datasource Plugins</h4>
-                    <DatasourcePluginList datasourceStates={datasourceStates} {...props} />
+                    <DatasourcePluginList datasourceStates={datasourcePluginStates} {...props} />
                     <h4 className="ui dividing header">Widget Plugins</h4>
-                    <WidgetPluginList widgetStates={widgetStates} {...props} />
+                    <WidgetPluginList widgetStates={widgetPluginStates} {...props} />
                 </div>
             </div>
         </ModalDialog>
@@ -61,7 +61,8 @@ class PluginsModal extends React.Component {
 }
 
 PluginsModal.propTypes = {
-    plugins: Prop.object.isRequired,
+    datasourcePlugins: Prop.object.isRequired,
+    widgetPlugins: Prop.object.isRequired,
     closeDialog: Prop.func.isRequired,
     loadPlugin: Prop.func.isRequired,
     removePlugin: Prop.func.isRequired
@@ -70,7 +71,8 @@ PluginsModal.propTypes = {
 export default connect(
     (state) => {
         return {
-            plugins: state.plugins
+            widgetPlugins: state.widgetPlugins,
+            datasourcePlugins: state.datasourcePlugins
         }
     },
     (dispatch) => {
@@ -78,7 +80,7 @@ export default connect(
             closeDialog: () => dispatch(Modal.closeModal()),
             // TODO: Render loading indicator while Plugin loads
             loadPlugin: (url) => dispatch(Plugins.loadPluginFromUrl(url)),
-            removePlugin: (type) => alert("Sorry not yet ...")
+            removePlugin: (type) => dispatch(Plugins.unloadPlugin(type))
 
         }
     }
@@ -118,13 +120,13 @@ class PluginCard extends React.Component {
 
     render() {
         const props = this.props;
-        const dsState = props.pluginState;
+        const pluginState = props.pluginState;
         return <div className="card">
             <div className="content">
-                <div className="header">{dsState.typeInfo.name}</div>
+                <div className="header">{pluginState.typeInfo.name}</div>
                 <div className="description">
-                    <p>Type: {dsState.typeInfo.type}</p>
-                    <p>{dsState.typeInfo.description ? dsState.typeInfo.description : "No Description."}</p>
+                    <p>Type: {pluginState.typeInfo.type}</p>
+                    <p>{pluginState.typeInfo.description ? pluginState.typeInfo.description : "No Description."}</p>
                 </div>
             </div>
             <div className="extra content">
@@ -134,10 +136,10 @@ class PluginCard extends React.Component {
                            readOnly
                            style={{width: "100%", paddingLeft: 0, paddingRight: 0}}
                            placeholder="Plugin Url ..."
-                           defaultValue={dsState.url ? dsState.url : "Packaged"}/>
+                           defaultValue={pluginState.url ? pluginState.url : "Packaged"}/>
                 </div>
             </div>
-            <div className="ui bottom attached button" onClick={() => props.removePlugin(dsState.id)}>
+            <div className="ui bottom attached button" onClick={() => props.removePlugin(pluginState.id)}>
                 <i className="trash icon"/>
                 Remove
             </div>

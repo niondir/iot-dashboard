@@ -1,36 +1,55 @@
 import * as DsPlugin from './datasourcePlugin'
+import PluginRegistry from '../pluginApi/pluginRegistry'
+import * as Action from "../actionNames";
+import {genCrudReducer} from "../util/reducer";
 
-export class PluginRegistry {
+// TODO: Later load all plugins from external URL's ?
+const initialState = {};
 
+export class DatasourcePluginRegistry extends PluginRegistry {
 
-    constructor() {
-        this.datasources = {};
-    }
-
-    set store(store) {
-        this._store = store;
-    }
-
-    register(module) {
-        if (!this._store === undefined) {
-            throw new Error("PluginRegistry has no store. Set the store property before registering modules!");
-        }
-
-        console.log("registering plugin: ", module);
-        const dsPlugin = new DsPlugin.DataSourcePlugin(module, this._store);
-        this.datasources[dsPlugin.type] = dsPlugin;
-    }
-
-    getPlugin(type:String) {
-        return this.datasources[type];
-    }
-
-
-    getPlugins() {
-        return {...this.datasources};
+    createPluginFromModule(module) {
+        return  new DsPlugin.DataSourcePlugin(module, this.store);
     }
 }
 
 
-const DatasourcePlugins = new PluginRegistry();
-export default DatasourcePlugins;
+export const pluginRegistry = new DatasourcePluginRegistry();
+
+
+const pluginsCrudReducer = genCrudReducer([Action.ADD_PLUGIN, Action.DELETE_PLUGIN], datasourcePlugin);
+export function datasourcePlugins(state = initialState, action) {
+    if (action.pluginType !== 'datasource') {
+        return state;
+    }
+    state = pluginsCrudReducer(state, action);
+    switch (action.type) {
+        default:
+            return state;
+    }
+
+}
+
+function datasourcePlugin(state, action) {
+    switch (action.type) {
+        case Action.ADD_PLUGIN:
+            if (action.pluginType !== 'datasource') {
+                return state;
+            }
+
+            if (!action.typeInfo.type) {
+                // TODO: Catch this earlier
+                throw new Error("A Plugin needs a type name.");
+            }
+
+            return {
+                id: action.typeInfo.type,
+                url: action.url,
+                typeInfo: action.typeInfo,
+                isDatasource: action.pluginType === "datasource",
+                isWidget: action.pluginType === "widget"
+            };
+        default:
+            return state;
+    }
+}

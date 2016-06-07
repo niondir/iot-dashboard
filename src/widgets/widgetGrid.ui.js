@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import _ from "lodash";
 import * as Widgets from "./widgets";
 import WidgetFrame from "./widgetFrame.ui";
-import WidgetPlugins from "./widgetPlugins";
+import * as WidgetPlugins from "./widgetPlugins";
 import WidthProvider from "./widthProvider.ui";
 import {Responsive as ResponsiveReactGridLayout} from "react-grid-layout";
 const Prop = React.PropTypes;
@@ -22,16 +22,17 @@ class WidgetGrid extends Component {
 
     render() {
         const props = this.props;
-        let widgetData:Array<object> = this.props.widgets || [];
-        // WidgetFrame must be loaded as function, else the grid is not working properly.
+        let widgetStates:Array<object> = this.props.widgets;
+       
         // TODO: Remove unknown widget from state
-        let widgets = widgetData.map((data) => {
-            let widget = WidgetPlugins.getPlugin(data.type);
-            if (!widget) {
-                console.warn("No WidgetPlugin for type '" + data.type + "'! Skipping rendering.");
+        let widgets = widgetStates.map((widgetState) => {
+            let widgetPlugin = props.widgetPlugins[widgetState.type];
+            if (!widgetPlugin) {
+                console.warn("No WidgetPlugin for type '" + widgetState.type + "'! Skipping rendering.");
                 return null;
             }
-            return WidgetFrame({widget: data, datasources: props.datasources})
+            // WidgetFrame must be loaded as function, else the grid is not working properly.
+            return WidgetFrame({widget: widgetState, widgetPlugin: widgetPlugin})
         }).filter(frame => frame !== null);
 
         /* //Does NOT work that way:
@@ -56,6 +57,7 @@ class WidgetGrid extends Component {
 WidgetGrid.propTypes = {
     widgets: Prop.array.isRequired,
     datasources: Prop.object.isRequired,
+    widgetPlugins: Prop.object.isRequired,
     onLayoutChange: Prop.func,
     deleteWidget: Prop.func
 };
@@ -64,7 +66,8 @@ export default connect(
     (state) => {
         return {
             widgets: _.valuesIn(state.widgets) || [],
-            datasources: state.datasources || {}
+            datasources: state.datasources || {},
+            widgetPlugins: state.widgetPlugins || {}
         }
     },
     (dispatch) => {
