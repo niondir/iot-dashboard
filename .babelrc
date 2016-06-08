@@ -3,5 +3,9 @@
     "react",
     "es2015"
   ],
-  "plugins": ["transform-object-rest-spread", "transform-flow-strip-types"]
+  "plugins": [
+    "transform-object-rest-spread",
+    "transform-flow-comments"
+    //"transform-flow-strip-types"
+  ]
 }
