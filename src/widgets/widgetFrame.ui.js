@@ -3,7 +3,8 @@ import {connect} from 'react-redux'
 import * as WidgetConfig from './widgetConfig'
 import * as WidgetPlugins from './widgetPlugins'
 import {deleteWidget} from './widgets'
-const Prop = React.PropTypes;
+import * as Widgets from './widgets'
+import {PropTypes as Prop}  from "react";
 
 /**
  * The Dragable Frame of a Widget.
@@ -24,7 +25,8 @@ const WidgetFrame = (props) => {
             <div className="ui inverted segment">
                 <div className="ui tiny horizontal right floated inverted list">
                     <ConfigWidgetButton className="right item" widgetState={widgetState}
-                                        visible={(props.widgetPlugin.typeInfo.settings ? true : false)} icon="configure"/>
+                                        visible={(props.widgetPlugin.typeInfo.settings ? true : false)}
+                                        icon="configure"/>
                     <a className="right item drag">
                         <i className="move icon drag"></i>
                     </a>
@@ -40,14 +42,8 @@ const WidgetFrame = (props) => {
 };
 
 WidgetFrame.propTypes = {
-    widgetPlugin: Prop.objectOf(
-        Prop.shape({
-            typeInfoX: Prop.objectOf(Prop.shape({
-                settings: Prop.object
-            })).isRequired
-        })
-    ).isRequired
-
+    widget: Widgets.widgetPropType.isRequired,
+    widgetPlugin: WidgetPlugins.widgetPluginType.isRequired
 };
 
 
@@ -62,6 +58,14 @@ class WidgetButton extends React.Component {
         </a>
     }
 }
+
+WidgetButton.propTypes = {
+    widgetState: Widgets.widgetPropType.isRequired,
+    icon: Prop.string.isRequired,
+    visible: Prop.bool,
+    className: Prop.string.isRequired,
+    onClick: Prop.func.isRequired
+};
 
 let DeleteWidgetButton = connect(
     (state) => {

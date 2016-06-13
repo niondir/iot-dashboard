@@ -1,25 +1,23 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import {Provider} from "react-redux";
-import Layout from "./pageLayout";
-import _ from "lodash";
-import "semantic-ui-css/semantic.css";
-import "semantic-ui-css/semantic";
-import "c3css";
-import * as Widgets from "./widgets/widgets";
-import WidgetPlugins from "./widgets/widgetPlugins";
-import * as TextWidget from "./widgets/plugins/textWidget";
-import * as ChartWidget from "./widgets/plugins/chartWidget";
-import * as DatasourceWorker from "./datasource/datasourceWorker";
-import * as RandomDatasource from "./datasource/plugins/randomDatasource";
-import * as TimeDatasource from "./datasource/plugins/timeDatasource";
-import store from "./store";
-import * as Store from "./store";
-import * as Plugins from './pluginApi/plugins'
-import "./pluginApi/freeboardPluginApi";
+import _ from "lodash"
+import "semantic-ui-css/semantic.css"
+import "semantic-ui-css/semantic"
+import "c3css"
+import * as ReactDOM from 'react-dom'
+import * as React from 'react'
+import {Provider} from "react-redux"
+import Layout from "./pageLayout"
+import * as Widgets from "./widgets/widgets"
+import * as WidgetPlugins from "./widgets/widgetPlugins"
+import * as TextWidget from "./widgets/plugins/textWidget"
+import * as ChartWidget from "./widgets/plugins/chartWidget"
+import * as DatasourceWorker from "./datasource/datasourceWorker"
+import * as RandomDatasource from "./datasource/plugins/randomDatasource"
+import * as TimeDatasource from "./datasource/plugins/timeDatasource"
+import store from "./store"
+import * as Store from "./store"
+import * as Plugins from "./pluginApi/plugins"
+import "./pluginApi/freeboardPluginApi"
 import "./pluginApi/pluginApi"
-
-const state = store.getState();
 
 store.dispatch(Plugins.loadPlugin(TextWidget));
 store.dispatch(Plugins.loadPlugin(ChartWidget));
@@ -29,12 +27,13 @@ store.dispatch(Plugins.loadPlugin(TimeDatasource));
 
 store.dispatch(Plugins.initializeExternalPlugins());
 
-// Would delet async loaded widgets that are not known yet.
+// Would delete async loaded widgets that are not known yet.
 //cleanupState(state);
 
+//noinspection Eslint
 function cleanupState(state) {
     _.valuesIn(state.widgets).forEach((widgetState) => {
-        let widgetPlugin = WidgetPlugins.getPlugin(widgetState.type);
+        let widgetPlugin = WidgetPlugins.pluginRegistry.getPlugin(widgetState.type);
         if (!widgetPlugin) {
             console.error("No WidgetPlugin for type '" + widgetState.type + "'! Deleting the widget.");
             store.dispatch(Widgets.deleteWidget(widgetState.id));

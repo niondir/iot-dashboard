@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {PropTypes as Prop}  from "react";
 import {connect} from 'react-redux'
 import * as Uuid from '../util/uuid'
 import * as WidgetConfig from './widgetConfig'
@@ -71,6 +72,18 @@ export const initialWidgets = {
     }
 };
 
+
+
+export const widgetPropType = Prop.shape({
+    id: Prop.string.isRequired,
+    col: Prop.number.isRequired,
+    row: Prop.number.isRequired,
+    width: Prop.number.isRequired,
+    height: Prop.number.isRequired,
+    props: Prop.shape({
+        name: Prop.string.isRequired
+    }).isRequired
+});
 
 export function addWidget(widgetType, widgetProps = {}, width = 1, height = 1) {
     return (dispatch, getState) => {

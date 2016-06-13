@@ -124,7 +124,7 @@ export function fetchDatasourceData() {
              dispatch(setDatasourceData(dsState.id, pastData));
              }*/
             const action = setDatasourceData(dsState.id, newData);
-            //action.doNotLog = true;
+            action.doNotLog = true;
             dispatch(action);
         })
     };

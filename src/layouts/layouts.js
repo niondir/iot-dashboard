@@ -116,14 +116,13 @@ export function currentLayout(state = {}, action) {
                 id: action.id
             };
         case DELETE_LAYOUT:
-        {
             if (action.id == state.id) {
                 return {
                     ...state,
                     id: undefined
                 }
             }
-        }
+            return state;
         default:
             return state;
     }

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {Component} from 'react'
-import * as d3 from 'd3';
 import * as c3 from 'c3';
+import {PropTypes as Prop}  from "react";
 
 
 export const TYPE_INFO = {
@@ -179,9 +179,16 @@ export class Widget extends Component {
     }
 
     render() {
-        console.log("render chart");
         this._renderChart();
         return <div className="" id={'chart-' + this.props._state.id}></div>
     }
 }
 
+// TODO: Move to core, for simple reuse
+Widget.propTypes = {
+    config: Prop.object.isRequired,
+    _state: Prop.shape({
+        height: Prop.number.isRequired,
+        id: Prop.string.isRequired
+    }).isRequired
+};

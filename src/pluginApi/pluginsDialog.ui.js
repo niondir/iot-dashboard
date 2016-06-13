@@ -7,7 +7,8 @@ import * as ui from '../ui/elements.ui'
 import * as ModalIds from '../modal/modalDialogIds'
 import * as Modal from '../modal/modalDialog'
 import * as Plugins from '../pluginApi/plugins'
-const Prop = React.PropTypes;
+import * as WidgetsPlugins from '../widgets/widgetPlugins'
+import {PropTypes as Prop}  from "react";
 
 class PluginsModal extends React.Component {
 
@@ -25,8 +26,8 @@ class PluginsModal extends React.Component {
             }
         ];
 
-        const datasourcePluginStates = _.valuesIn(props.datasourcePlugins).filter(ds => ds.isDatasource);
-        const widgetPluginStates = _.valuesIn(props.widgetPlugins).filter(ds => ds.isWidget);
+        const datasourcePluginStates = _.valuesIn(props.datasourcePlugins);
+        const widgetPluginStates = _.valuesIn(props.widgetPlugins);
 
         return <ModalDialog id={ModalIds.PLUGINS}
                             title="Plugins"
@@ -53,11 +54,11 @@ class PluginsModal extends React.Component {
                     <h4 className="ui dividing header">Datasource Plugins</h4>
                     <DatasourcePluginList datasourceStates={datasourcePluginStates} {...props} />
                     <h4 className="ui dividing header">Widget Plugins</h4>
-                    <WidgetPluginList widgetStates={widgetPluginStates} {...props} />
+                    <WidgetPluginList widgetPluginStates={widgetPluginStates} {...props} />
                 </div>
             </div>
         </ModalDialog>
-    };
+    }
 }
 
 PluginsModal.propTypes = {
@@ -96,19 +97,29 @@ const DatasourcePluginList = (props) => {
     </div>
 };
 
+DatasourcePluginList.propTypes = {
+    datasourceStates: Prop.arrayOf(
+        Prop.shape({
+            id: Prop.string.isRequired
+        })
+    ).isRequired
+};
+
+
 const WidgetPluginList = (props) => {
     return <div className="ui five cards">
         {
-            props.widgetStates.map(dsState => {
+            props.widgetPluginStates.map(dsState => {
                 return <PluginCard key={dsState.id} pluginState={dsState} {...props}/>;
             })
         }
     </div>
 };
 
-DatasourcePluginList.propTypes = {
-    datasourceStates: Prop.array.isRequired
+WidgetPluginList.propTypes = {
+    widgetPluginStates: Prop.arrayOf(WidgetsPlugins.widgetPluginType)
 };
+
 
 class PluginCard extends React.Component {
 

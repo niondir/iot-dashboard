@@ -4,8 +4,9 @@ import {connect} from "react-redux";
 import * as WidgetConfig from './widgetConfig'
 import _ from "lodash";
 import * as ui from "../ui/elements.ui";
+import * as WidgetPlugins from './widgetPlugins'
 import {reset} from "redux-form";
-const Prop = React.PropTypes;
+import {PropTypes as Prop}  from "react";
 
 
 const WidgetsNavItem = (props) => {
@@ -17,18 +18,26 @@ const WidgetsNavItem = (props) => {
 
             <ui.Divider/>
             {
-                _.valuesIn(props.plugins).filter(p => p.isWidget).map(widgetPlugin => {
-                    return <AddWidget key={widgetPlugin.id} text={widgetPlugin.typeInfo.name} type={widgetPlugin.typeInfo.type}/>;
+                _.valuesIn(props.widgetPlugins).map(widgetPlugin => {
+                    return <AddWidget key={widgetPlugin.id}
+                                      text={widgetPlugin.typeInfo.name}
+                                      type={widgetPlugin.typeInfo.type}/>;
                 })
             }
         </div>
     </div>;
 };
 
+WidgetsNavItem.propTypes = {
+    widgetPlugins: Prop.objectOf(
+        WidgetPlugins.widgetPluginType
+    )
+};
+
 export default connect(
     (state) => {
         return {
-            plugins: state.plugins
+            widgetPlugins: state.widgetPlugins
         }
     }
 )(WidgetsNavItem);

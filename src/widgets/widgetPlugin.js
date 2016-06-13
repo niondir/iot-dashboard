@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
 import React from 'react'
 import * as _ from 'lodash'
-
+import {PropTypes as Prop}  from "react";
 
 // TODO: Rename to ...Factory
 export default class WidgetPlugin {
@@ -121,3 +121,7 @@ class DomWidgetContainer extends React.Component {
         return <div ref="container">Widget Plugin missing rendering!</div>;
     }
 }
+
+DomWidgetContainer.propTypes = {
+    _widgetClass: Prop.func.isRequired
+};

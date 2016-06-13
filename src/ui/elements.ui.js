@@ -1,5 +1,5 @@
 import * as React from 'react';
-const Prop = React.PropTypes;
+import {PropTypes as Prop}  from "react";
 
 /**
  * This module contains generic UI Elements reuse in the app
@@ -23,7 +23,8 @@ LinkItem.propTypes = {
     onClick: Prop.func.isRequired,
     text: Prop.string,
     icon: Prop.string,
-    disabled: Prop.bool
+    disabled: Prop.bool,
+    children: Prop.any
 };
 
 export const Icon = (props) => {

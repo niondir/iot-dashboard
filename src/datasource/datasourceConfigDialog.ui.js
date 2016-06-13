@@ -7,7 +7,7 @@ import * as ui from '../ui/elements.ui'
 import SettingsForm from '../ui/settingsForm.ui'
 import {reset} from 'redux-form';
 import * as ModalIds from '../modal/modalDialogIds'
-const Prop = React.PropTypes;
+import {PropTypes as Prop}  from "react";
 
 const DIALOG_ID = ModalIds.DATASOURCE_CONFIG;
 const FORM_ID = "datasource-settings-form";
@@ -159,7 +159,7 @@ class DatasourceConfigModal extends React.Component {
                 </div>
             </div>
         </ModalDialog>
-    };
+    }
 }
 
 DatasourceConfigModal.propTypes = {

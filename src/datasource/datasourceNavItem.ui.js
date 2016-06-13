@@ -4,10 +4,10 @@ import {connect} from "react-redux";
 import _ from "lodash";
 import * as ui from "../ui/elements.ui";
 import {reset} from "redux-form";
-const Prop = React.PropTypes;
+import {PropTypes as Prop}  from "react";
 
 
-const TopNavItem = (props) => {
+const DatasourceTopNavItem = (props) => {
     return <div className="ui simple dropdown item">
         Datasources
         <i className="dropdown icon"/>
@@ -32,7 +32,7 @@ const TopNavItem = (props) => {
     </div>
 };
 
-TopNavItem.propTypes = {
+DatasourceTopNavItem.propTypes = {
     createDatasource: Prop.func.isRequired,
     editDatasource: Prop.func.isRequired,
     deleteDatasource: Prop.func.isRequired,
@@ -58,4 +58,4 @@ export default connect(
             deleteDatasource: (id) => dispatch(Datasource.deleteDatasource(id))
         }
     }
-)(TopNavItem);
+)(DatasourceTopNavItem);

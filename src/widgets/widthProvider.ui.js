@@ -45,7 +45,7 @@ export default (ComposedComponent) => {
 
 
             this.setState({width: node.offsetWidth - padLeft - padRight}, cb);
-        };
+        }
 
         render() {
             if (this.props.measureBeforeMount && !this.state.mounted) return <div {...this.props} {...this.state} />;

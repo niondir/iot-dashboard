@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import * as Import from './import'
 import ModalDialog from '../modal/modalDialog.ui.js'
 import * as ModalIds from '../modal/modalDialogIds'
-const Prop = React.PropTypes;
+import {PropTypes as Prop}  from "react";
 
 class ImportExportDialog extends React.Component {
 
@@ -96,7 +96,7 @@ class ImportExportDialog extends React.Component {
                 </div>
             </div>
         </ModalDialog>
-    };
+    }
 }
 
 ImportExportDialog.propTypes = {

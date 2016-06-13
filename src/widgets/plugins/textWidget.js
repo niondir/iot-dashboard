@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Component} from 'react';
-import {connect} from 'react-redux'
+import {PropTypes as Prop}  from "react";
 
 export const TYPE_INFO = {
     type: "text",
@@ -29,3 +29,8 @@ export class Widget extends Component {
         return <p>{JSON.stringify(data)}</p>
     }
 }
+
+// TODO: Move to core, for simple reuse
+Widget.propTypes = {
+    config: Prop.object.isRequired
+};

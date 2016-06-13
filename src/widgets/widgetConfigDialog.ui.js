@@ -1,12 +1,12 @@
 import React from "react";
 import ModalDialog from "../modal/modalDialog.ui.js";
-import WidgetPlugins from "./widgetPlugins";
+import * as WidgetPlugins from "./widgetPlugins";
 import * as WidgetConfig from "./widgetConfig";
 import {connect} from "react-redux";
 import SettingsForm from "../ui/settingsForm.ui";
 import {reset} from "redux-form";
 import * as ModalIds from '../modal/modalDialogIds'
-const Prop = React.PropTypes;
+import {PropTypes as Prop}  from "react";
 
 const DIALOG_ID = ModalIds.WIDGET_CONFIG;
 const FORM_ID = "widget-settings-form";
@@ -33,6 +33,7 @@ class WidgetConfigModal extends React.Component {
     }
 
     render() {
+        const props = this.props;
         const actions = [
             {
                 className: "ui right button",
@@ -62,19 +63,17 @@ class WidgetConfigModal extends React.Component {
             }
         ];
 
-
-        const props = this.props;
         //const selectedWidgetPlugin = WidgetPlugins.getPlugin(this.props.widgetType) || {settings: []};
-        const selectedWidgetPlugin = this.props.widgetPlugin;
+        const selectedWidgetPlugin = props.widgetPlugin;
 
         // TODO: Get typeInfo from selectedWidgetPlugin.typeInfo
         if (!selectedWidgetPlugin) {
-            return <div>Unknown WidgetType: {this.props.widgetType}</div>
+            return <div>Unknown WidgetType: {props.widgetType}</div>
         }
-
+        
 
         // Add additional fields
-        const settings = [...selectedWidgetPlugin.settings];
+        const settings = [...selectedWidgetPlugin.typeInfo.settings];
 
         unshiftIfNotExists(settings, {
             id: 'name',
@@ -121,7 +120,7 @@ class WidgetConfigModal extends React.Component {
                 </div>
             </div>
         </ModalDialog>
-    };
+    }
 }
 
 WidgetConfigModal.propTypes = {
@@ -129,7 +128,7 @@ WidgetConfigModal.propTypes = {
     resetForm: Prop.func.isRequired,  // reset
     widgetType: Prop.string,
     widgetProps: Prop.object.isRequired,
-    widgetPlugin: Prop.object
+    widgetPlugin: WidgetPlugins.widgetPluginType
 };
 
 export default connect(

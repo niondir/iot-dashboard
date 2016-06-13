@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux'
 import * as Modal from './modalDialog'
 import * as ui from '../ui/elements.ui.js'
-const Prop = React.PropTypes;
+import {PropTypes as Prop}  from "react";
 
 
 class ModalDialog extends React.Component {
@@ -77,5 +77,4 @@ export default connect(
             closeDialog: () => dispatch(Modal.closeModal())
         }
     }
-)
-(ModalDialog)
+)(ModalDialog)

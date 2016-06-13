@@ -5,13 +5,17 @@ import {connect} from 'react-redux'
 import {reset} from "redux-form";
 import * as ModalIds from '../modal/modalDialogIds'
 import * as Modal from '../modal/modalDialog'
-const Prop = React.PropTypes;
+import {PropTypes as Prop}  from "react";
 
 
-const TopNavItem = (props) => {
+const PluginsTopNavItem = (props) => {
     return <a className="item" onClick={() => props.showPluginsDialog()}>
         Plugins
     </a>
+};
+
+PluginsTopNavItem.propTypes = {
+    showPluginsDialog: Prop.func.isRequired 
 };
 
 
@@ -26,4 +30,4 @@ export default connect(
             }
         }
     }
-)(TopNavItem);
+)(PluginsTopNavItem);

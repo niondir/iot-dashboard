@@ -7,7 +7,7 @@ import WidgetFrame from "./widgetFrame.ui";
 import * as WidgetPlugins from "./widgetPlugins";
 import WidthProvider from "./widthProvider.ui";
 import {Responsive as ResponsiveReactGridLayout} from "react-grid-layout";
-const Prop = React.PropTypes;
+import {PropTypes as Prop}  from "react";
 const ResponsiveGrid = WidthProvider(ResponsiveReactGridLayout);
 
 require('react-grid-layout/css/styles.css');

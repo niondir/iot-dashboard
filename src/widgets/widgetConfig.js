@@ -1,10 +1,7 @@
-import * as React from "react";
 import * as Widgets from "./widgets";
-import WidgetPlugins from "./widgetPlugins";
 import {START_CREATE_WIDGET, START_CONFIGURE_WIDGET} from "../actionNames";
-import {showDialog as showConfigDialog} from "./widgetConfigDialog.ui";
-import * as Modal from '../modal/modalDialog'
-import * as ModalIds from '../modal/modalDialogIds'
+import * as Modal from "../modal/modalDialog";
+import * as ModalIds from "../modal/modalDialogIds";
 
 const initialState = {
     type: null,
@@ -16,8 +13,9 @@ const initialState = {
  * Triggered when the user intends to create a widget of a certain type
  */
 export function createWidget(type) {
-    const widgetPlugin = WidgetPlugins.getPlugin(type);
     return (dispatch, getState) => {
+        const state = getState();
+        const widgetPlugin = state.widgetPlugins[type];
         if (!widgetPlugin.typeInfo.settings && widgetPlugin.typeInfo.settings.length > 0) {
             dispatch(Widgets.addWidget(type));
             return;
