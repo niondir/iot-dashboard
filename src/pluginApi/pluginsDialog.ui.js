@@ -43,7 +43,7 @@ class PluginsModal extends React.Component {
                             <div className="field">
                                 <input ref="pluginUrl" type="text" name="plugin-url"
                                        placeholder="http://my-page.com/myPlugin.js"
-                                       defaultValue="http://localhost:8080/plugins/TestWidgetPlugin.js"
+                                       defaultValue="plugins/TestWidgetPlugin.js"
                                 />
                             </div>
                         </div>
