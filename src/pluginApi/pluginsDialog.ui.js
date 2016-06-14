@@ -8,6 +8,7 @@ import * as ModalIds from '../modal/modalDialogIds'
 import * as Modal from '../modal/modalDialog'
 import * as Plugins from '../pluginApi/plugins'
 import * as WidgetsPlugins from '../widgets/widgetPlugins'
+import * as DatasourcePlugins from '../datasource/datasourcePlugins'
 import {PropTypes as Prop}  from "react";
 
 class PluginsModal extends React.Component {
@@ -65,8 +66,7 @@ PluginsModal.propTypes = {
     datasourcePlugins: Prop.object.isRequired,
     widgetPlugins: Prop.object.isRequired,
     closeDialog: Prop.func.isRequired,
-    loadPlugin: Prop.func.isRequired,
-    removePlugin: Prop.func.isRequired
+    loadPlugin: Prop.func.isRequired
 };
 
 export default connect(
@@ -80,9 +80,8 @@ export default connect(
         return {
             closeDialog: () => dispatch(Modal.closeModal()),
             // TODO: Render loading indicator while Plugin loads
-            loadPlugin: (url) => dispatch(Plugins.loadPluginFromUrl(url)),
-            removePlugin: (type) => dispatch(Plugins.unloadPlugin(type))
-
+            // maybe build some generic solution for Ajax calls where the state can hold all information to render loading indicators / retry buttons etc...
+            loadPlugin: (url) => dispatch(Plugins.loadPluginFromUrl(url))
         }
     }
 )(PluginsModal);
@@ -91,7 +90,7 @@ const DatasourcePluginList = (props) => {
     return <div className="ui five cards">
         {
             props.datasourceStates.map(dsState => {
-                return <PluginCard key={dsState.id} pluginState={dsState} {...props}/>;
+                return <DatasourcePluginCard key={dsState.id} pluginState={dsState} {...props}/>;
             })
         }
     </div>
@@ -110,7 +109,7 @@ const WidgetPluginList = (props) => {
     return <div className="ui five cards">
         {
             props.widgetPluginStates.map(dsState => {
-                return <PluginCard key={dsState.id} pluginState={dsState} {...props}/>;
+                return <WidgetPluginCard key={dsState.id} pluginState={dsState} {...props}/>;
             })
         }
     </div>
@@ -162,3 +161,25 @@ PluginCard.propTypes = {
     pluginState: Prop.object.isRequired,
     removePlugin: Prop.func.isRequired
 };
+
+const WidgetPluginCard = connect(
+    state => {
+        return {}
+    },
+    dispatch => {
+        return {
+            removePlugin: (type) => dispatch(WidgetsPlugins.unloadPlugin(type))
+        }
+    }
+)(PluginCard);
+
+const DatasourcePluginCard = connect(
+    state => {
+        return {}
+    },
+    dispatch => {
+        return {
+            removePlugin: (type) => dispatch(DatasourcePlugins.unloadPlugin(type))
+        }
+    }
+)(PluginCard);

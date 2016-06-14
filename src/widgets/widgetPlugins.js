@@ -28,12 +28,23 @@ class WidgetPluginRegistry extends PluginRegistry {
 
 export const pluginRegistry = new WidgetPluginRegistry();
 
-
-const pluginsCrudReducer = genCrudReducer([Action.ADD_PLUGIN, Action.DELETE_PLUGIN], widgetPlugin);
-export function widgetPlugins(state = initialState, action) {
-    if (action.pluginType !== 'widget') {
-        return state;
+export function unloadPlugin(type) {
+    return function(dispatch) {
+        //TODO: Unloading plugins is work in progess
+        //DatasourcePlugins
+        dispatch(deletePlugin(type));
     }
+}
+
+function deletePlugin(type) {
+    return {
+        type: Action.DELETE_WIDGET_PLUGIN,
+        id: type
+    }
+}
+
+const pluginsCrudReducer = genCrudReducer([Action.ADD_WIDGET_PLUGIN, Action.DELETE_WIDGET_PLUGIN], widgetPlugin);
+export function widgetPlugins(state = initialState, action) {
 
     state = pluginsCrudReducer(state, action);
     switch (action.type) {
@@ -45,11 +56,7 @@ export function widgetPlugins(state = initialState, action) {
 
 function widgetPlugin(state, action) {
     switch (action.type) {
-        case Action.ADD_PLUGIN:
-            if (action.pluginType !== 'widget') {
-                return state;
-            }
-
+        case Action.ADD_WIDGET_PLUGIN:
             if (!action.typeInfo.type) {
                 // TODO: Catch this earlier
                 throw new Error("A Plugin needs a type name.");

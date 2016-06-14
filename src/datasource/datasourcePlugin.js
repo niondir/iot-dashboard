@@ -15,6 +15,7 @@ export class DataSourcePlugin {
         this.instances = {};
 
         this.unsubscribe = store.subscribe(this.handleStateChange.bind(this));
+        this.disposed = false;
     }
 
     get type() {
@@ -27,6 +28,9 @@ export class DataSourcePlugin {
     }
 
     getOrCreateInstance(id) {
+        if (this.disposed === true) {
+            throw new Error("Try to get or create datasource of destroyed type: " + this.type);
+        }
         let instance = this.instances[id];
         if (!instance) {
             const dsState = this.getDatasourceState(id);
@@ -39,6 +43,22 @@ export class DataSourcePlugin {
 
     getInstance(id) {
         return this.instances[id];
+    }
+
+    dispose() {
+        this.disposed = true;
+        _.valuesIn(this.instances).forEach((instance) => {
+            if (_.isFunction(instance.dispose)) {
+                try {
+                    instance.dispose();
+                }
+                catch (e) {
+                    console.error("Failed to destroy Datasource instance", instance);
+                }
+            }
+        });
+        this.instances = [];
+        this.unsubscribe();
     }
 
     handleStateChange() {
@@ -64,10 +84,4 @@ export class DataSourcePlugin {
             instance.props = newProps;
         }
     }
-
-    dispose() {
-        this.unsubscribe();
-    }
-
-
 }

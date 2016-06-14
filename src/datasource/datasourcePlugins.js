@@ -16,12 +16,24 @@ export class DatasourcePluginRegistry extends PluginRegistry {
 
 export const pluginRegistry = new DatasourcePluginRegistry();
 
-
-const pluginsCrudReducer = genCrudReducer([Action.ADD_PLUGIN, Action.DELETE_PLUGIN], datasourcePlugin);
-export function datasourcePlugins(state = initialState, action) {
-    if (action.pluginType !== 'datasource') {
-        return state;
+export function unloadPlugin(type) {
+    return function(dispatch) {
+        const dsFactory = pluginRegistry.getPlugin(type);
+        dsFactory.dispose();
+        dispatch(deletePlugin(type));
     }
+}
+
+function deletePlugin(type) {
+    return {
+        type: Action.DELETE_DATASOURCE_PLUGIN,
+        id: type
+    }
+}
+
+const pluginsCrudReducer = genCrudReducer([Action.ADD_DATASOURCE_PLUGIN, Action.DELETE_DATASOURCE_PLUGIN], datasourcePlugin);
+export function datasourcePlugins(state = initialState, action) {
+
     state = pluginsCrudReducer(state, action);
     switch (action.type) {
         default:
@@ -32,11 +44,7 @@ export function datasourcePlugins(state = initialState, action) {
 
 function datasourcePlugin(state, action) {
     switch (action.type) {
-        case Action.ADD_PLUGIN:
-            if (action.pluginType !== 'datasource') {
-                return state;
-            }
-
+        case Action.ADD_DATASOURCE_PLUGIN:
             if (!action.typeInfo.type) {
                 // TODO: Catch this earlier
                 throw new Error("A Plugin needs a type name.");

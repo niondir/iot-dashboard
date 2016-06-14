@@ -66,4 +66,9 @@ export class Datasource {
         let newValue = {x: this.x++, value: getRandomInt(min, max), value2: getRandomInt(min, max)};
         return newValue;
     }
+
+    dispose() {
+        this.history = [];
+        console.log("Random Datasource destroyed");
+    }
 }

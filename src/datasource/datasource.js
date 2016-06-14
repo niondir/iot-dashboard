@@ -135,6 +135,16 @@ const datasourceCrudReducer = genCrudReducer([Action.ADD_DATASOURCE, Action.DELE
 export function datasources(state = initialDatasources, action) {
     state = datasourceCrudReducer(state, action);
     switch (action.type) {
+        case Action.DELETE_DATASOURCE_PLUGIN: // Also delete related datasources
+            const toDelete =_.valuesIn(state).filter(dsState => {
+                return dsState.type == action.id
+            });
+            var newState = {...state};
+            toDelete.forEach(dsState => {
+                delete newState[dsState.id];
+            });
+            
+            return newState;
         default:
             return state;
     }

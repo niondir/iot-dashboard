@@ -57,20 +57,9 @@ export function loadPluginFromUrl(url) {
     };
 }
 
-export function unloadPlugin() {
-    return function(dispatch) {
-        //TODO: Unloading plugins is work in progess
-        //DatasourcePlugins
-        dispatch(deletePlugin(type)); 
-    }
-}
 
-function deletePlugin(type) {
-    return {
-        type: Action.DELETE_PLUGIN,
-        pluginType: type
-    }
-}
+
+
 
 export function initializeExternalPlugins() {
     return (dispatch, getState) => {
@@ -125,21 +114,20 @@ export function addPlugin(plugin, url = null) {
             return;
         }
 
-        let pluginType = "unknown";
+        let actionType = "unknown-add-widget-action";
         if (plugin.Datasource !== undefined) {
-            pluginType = "datasource";
+            actionType = Action.ADD_DATASOURCE_PLUGIN;
         }
         if (plugin.Widget !== undefined) {
-            pluginType = "widget";
+            actionType = Action.ADD_WIDGET_PLUGIN;
         }
 
         // TODO: Just put the raw plugin + url here and let the reducer do the logic
         dispatch({
-            type: Action.ADD_PLUGIN,
+            type: actionType,
             id: plugin.TYPE_INFO.type, // needed for crud reducer
             typeInfo: plugin.TYPE_INFO,
-            url,
-            pluginType: pluginType
+            url
         });
         // TODO: Maybe use redux sideeffect and move this call to the reducer
         registerPlugin(plugin);
