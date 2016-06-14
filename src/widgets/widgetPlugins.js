@@ -30,8 +30,8 @@ export const pluginRegistry = new WidgetPluginRegistry();
 
 export function unloadPlugin(type) {
     return function(dispatch) {
-        //TODO: Unloading plugins is work in progess
-        //DatasourcePlugins
+        const widgetPlugin = pluginRegistry.getPlugin(type);
+        widgetPlugin.dispose();
         dispatch(deletePlugin(type));
     }
 }

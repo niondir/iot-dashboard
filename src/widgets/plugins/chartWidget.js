@@ -182,6 +182,13 @@ export class Widget extends Component {
         this._renderChart();
         return <div className="" id={'chart-' + this.props._state.id}></div>
     }
+
+    componentWillUnmount() {
+        console.log("Unmounted Chart Widget");
+    }
+    dispose() {
+        console.log("Disposed Chart Widget");
+    }
 }
 
 // TODO: Move to core, for simple reuse

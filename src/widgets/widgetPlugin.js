@@ -11,6 +11,7 @@ export default class WidgetPlugin {
         this.Widget = module.Widget;
         this.store = store;
         this.instances = {};
+        this.disposed = false;
 
         // only bind the getData function once, so it can be safely used in the connect function 
         this.getData = function (getState, dsId) {
@@ -27,6 +28,10 @@ export default class WidgetPlugin {
     }
 
     getOrCreateInstance(id) {
+        if (this.disposed === true) {
+            throw new Error("Try to get or create widget of destroyed type: " + this.type);
+        }
+
         if (this.instances[id]) {
             return this.instances[id];
         }
@@ -60,6 +65,14 @@ export default class WidgetPlugin {
         // Should we create here or always outside?
         return this.instances[id];
     }
+
+
+    dispose() {
+        this.disposed = true;
+        this.instances = [];
+    }
+
+
 }
 
 class DomWidgetContainer extends React.Component {
