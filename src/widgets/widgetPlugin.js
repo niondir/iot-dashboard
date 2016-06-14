@@ -11,6 +11,15 @@ export default class WidgetPlugin {
         this.Widget = module.Widget;
         this.store = store;
         this.instances = {};
+
+        // only bind the getData function once, so it can be safely used in the connect function 
+        this.getData = function (getState, dsId) {
+            const ds = getState().datasources[dsId];
+            if (!ds) {
+                return [];
+            }
+            return ds.data || [];
+        }.bind(this, this.store.getState);
     }
 
     get type() {
@@ -33,15 +42,6 @@ export default class WidgetPlugin {
 
 
         const widget = connect(state => {
-                let getData = function (dsId) {
-                    // TODO: the Dataasource is held by refference that can be bad!
-                    const ds = state.datasources[dsId];
-                    if (!ds) {
-                        return [];
-                    }
-                    return ds.data || [];
-                };
-
                 // This method will be used as mapStateToProps, leading to a constant "getData()" function per instance
                 // Therefor the update is only called when actual state changes
                 return (state) => {
@@ -50,7 +50,7 @@ export default class WidgetPlugin {
                         config: widgetState.props,
                         _state: widgetState,
                         _datasources: state.datasources,
-                        getData: getData
+                        getData: this.getData
                     }
                 };
             }

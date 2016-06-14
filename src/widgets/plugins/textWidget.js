@@ -19,6 +19,7 @@ export const TYPE_INFO = {
 export class Widget extends Component {
 
     render() {
+        console.log("render")
         const props = this.props;
         const data = props.getData(this.props.config.datasource);
 

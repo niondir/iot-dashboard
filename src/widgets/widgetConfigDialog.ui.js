@@ -68,12 +68,20 @@ class WidgetConfigModal extends React.Component {
 
         // TODO: Get typeInfo from selectedWidgetPlugin.typeInfo
         if (!selectedWidgetPlugin) {
-            return <div>Unknown WidgetType: {props.widgetType}</div>
+            // TODO: Find a better (more generic way) to deal with uninitialized data for modals
+            // TODO: The widgetConfig in the state is a bad idea. Solve this via state.modalDialog.data
+            // This is needed for the very first time the page is rendered and the selected widget type is undefined
+            return <ModalDialog id={DIALOG_ID}
+                                title={"Configure "+ props.widgetType +" Widget"}
+                                actions={actions}
+            >
+                <div>Unknown WidgetType: {props.widgetType}</div>
+            </ModalDialog>
         }
-        
+
 
         // Add additional fields
-        const settings = [...selectedWidgetPlugin.typeInfo.settings];
+        const settings = selectedWidgetPlugin ? [...selectedWidgetPlugin.typeInfo.settings] : [];
 
         unshiftIfNotExists(settings, {
             id: 'name',
@@ -100,13 +108,13 @@ class WidgetConfigModal extends React.Component {
                 <div className="column">
                     {selectedWidgetPlugin.description ?
 
-                            <div className="ui icon message">
-                                <i className="idea icon"/>
-                                <div className="content">
-                                    {selectedWidgetPlugin.description}
-                                </div>
-
+                        <div className="ui icon message">
+                            <i className="idea icon"/>
+                            <div className="content">
+                                {selectedWidgetPlugin.description}
                             </div>
+
+                        </div>
                         : null
                     }
                     <SettingsForm ref="form"

@@ -59,7 +59,8 @@ export function loadPluginFromUrl(url) {
 
 export function unloadPlugin() {
     return function(dispatch) {
-        DatasourcePlugins
+        //TODO: Unloading plugins is work in progess
+        //DatasourcePlugins
         dispatch(deletePlugin(type)); 
     }
 }
