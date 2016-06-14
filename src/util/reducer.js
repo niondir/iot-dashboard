@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 /**
  * Creates an reducer that works on an object where you can create, delete and update properties of type Object.
  * The key of properties always matches the id property of the value object.
@@ -14,9 +16,9 @@
 export function genCrudReducer(actionNames:Array<String>, elementReducer:Function, idProperty = 'id') {
     console.assert(actionNames.length === 2, "ActionNames must contain 2 names for create, delete in that order");
     let [CREATE_ACTION, DELETE_ACTION] = actionNames;
-    console.assert(CREATE_ACTION.includes("ADD") || CREATE_ACTION.includes("CREATE"),
+    console.assert(_.includes(CREATE_ACTION, "ADD") || _.includes(CREATE_ACTION, "CREATE"),
         "The create action name should probably contain ADD or DELETE, but is: " + CREATE_ACTION);
-    console.assert(DELETE_ACTION.includes("DELETE") || DELETE_ACTION.includes("REMOVE"),
+    console.assert(_.includes(DELETE_ACTION, "DELETE") || _.includes(DELETE_ACTION, "REMOVE"),
         "The delete action name should probably contain DELETE or REMOVE, but is: " + DELETE_ACTION);
 
     return function crudReducer(state, action) {
@@ -25,13 +27,14 @@ export function genCrudReducer(actionNames:Array<String>, elementReducer:Functio
             case CREATE_ACTION:
                 return {...state, [id]: elementReducer(undefined, action)};
             case DELETE_ACTION:
-                let  {[id]: deleted, ...newState} = state;
+                let {[id]: deleted, ...newState} = state;
                 return newState;
             default: // Update if we have an id property
-                if(id === undefined) return state;
+                if (id === undefined) return state;
                 const elementState = state[id];
                 if (elementState == undefined) {
                     // Do not update what we don't have.
+                    // TODO: Log warning, or document why not.
                     return state;
                 }
                 const updatedElement = elementReducer(elementState, action);

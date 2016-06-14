@@ -4,10 +4,10 @@ import * as Import from './import'
 import ModalDialog from '../modal/modalDialog.ui'
 import * as Modal from '../modal/modalDialog'
 import * as ModalIds from '../modal/modalDialogIds'
-const Prop = React.PropTypes;
+import {PropTypes as Prop}  from "react";
 
 
-const TopNavItem = (props) => {
+const DashboardTopNavItem = (props) => {
     return <div className="ui simple dropdown item">
         Board
         <i className="dropdown icon"/>
@@ -21,7 +21,7 @@ const TopNavItem = (props) => {
     </div>
 };
 
-TopNavItem.propTypes = {
+DashboardTopNavItem.propTypes = {
     showModal: Prop.func.isRequired
 };
 
@@ -33,5 +33,5 @@ export default connect((state) => {
     return {
         showModal: (id) => dispatch(Modal.showModal(id))
     }
-})(TopNavItem);
+})(DashboardTopNavItem);
 

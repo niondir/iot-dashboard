@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux'
 import * as Modal from './modalDialog'
 import * as ui from '../ui/elements.ui.js'
-const Prop = React.PropTypes;
+import {PropTypes as Prop}  from "react";
 
 
 class ModalDialog extends React.Component {
@@ -16,15 +16,6 @@ class ModalDialog extends React.Component {
                 onApprove: ($element) => false,
                 onDeny: ($element) => false
             })
-    }
-
-    static showModal(id) {
-        $('.ui.modal.' + id)
-            .modal('show');
-    }
-
-    static closeModal(id) {
-        $('.ui.modal.' + id).modal('hide');
     }
 
     onClick(e, action) {
@@ -46,7 +37,7 @@ class ModalDialog extends React.Component {
         });
 
         const props = this.props;
-        return <div className={'ui modal ' + this.props.id}>
+        return <div id={this.props.id} className={'ui modal ' + this.props.id}>
             <div className="header">
                 {props.title}
             </div>
@@ -86,5 +77,4 @@ export default connect(
             closeDialog: () => dispatch(Modal.closeModal())
         }
     }
-)
-(ModalDialog)
+)(ModalDialog)

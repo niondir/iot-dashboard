@@ -1,18 +1,16 @@
-import * as React from 'react';
-import * as Redux from 'redux';
-import {Component} from 'react';
-import {connect} from 'react-redux'
-import _ from 'lodash'
-import * as Widgets from './widgets'
-import WidgetFrame from './widgetFrame.ui'
-import * as WidgetConfig from './widgetConfig'
-import WidgetPlugins from './widgetPlugins'
-require('react-grid-layout/css/styles.css');
-const Prop = React.PropTypes;
-
-import {Responsive as ResponsiveReactGridLayout, WidthProvider}  from 'react-grid-layout';
+import * as React from "react";
+import {Component} from "react";
+import {connect} from "react-redux";
+import _ from "lodash";
+import * as Widgets from "./widgets";
+import WidgetFrame from "./widgetFrame.ui";
+import * as WidgetPlugins from "./widgetPlugins";
+import WidthProvider from "./widthProvider.ui";
+import {Responsive as ResponsiveReactGridLayout} from "react-grid-layout";
+import {PropTypes as Prop}  from "react";
 const ResponsiveGrid = WidthProvider(ResponsiveReactGridLayout);
 
+require('react-grid-layout/css/styles.css');
 
 class WidgetGrid extends Component {
 
@@ -24,16 +22,17 @@ class WidgetGrid extends Component {
 
     render() {
         const props = this.props;
-        let widgetData:Array<object> = this.props.widgets || [];
-        // WidgetFrame must be loaded as function, else the grid is not working properly.
+        let widgetStates:Array<object> = this.props.widgets;
+       
         // TODO: Remove unknown widget from state
-        let widgets = widgetData.map((data) => {
-            let widget = WidgetPlugins.getPlugin(data.type);
-            if (!widget) {
-                console.warn("No WidgetPlugin for type '" + data.type + "'! Skipping rendering.");
+        let widgets = widgetStates.map((widgetState) => {
+            let widgetPlugin = props.widgetPlugins[widgetState.type];
+            if (!widgetPlugin) {
+                console.warn("No WidgetPlugin for type '" + widgetState.type + "'! Skipping rendering.");
                 return null;
             }
-            return WidgetFrame({widget: data, datasources: props.datasources})
+            // WidgetFrame must be loaded as function, else the grid is not working properly.
+            return WidgetFrame({widget: widgetState, widgetPlugin: widgetPlugin})
         }).filter(frame => frame !== null);
 
         /* //Does NOT work that way:
@@ -42,9 +41,9 @@ class WidgetGrid extends Component {
          _grid={{x: data.col, y: data.row, w: data.width, h: data.height}}
          />);*/
         return (
-            <ResponsiveGrid className="column" cols={12} rowHeight={200}
+            <ResponsiveGrid className="column" rowHeight={Widgets.ROW_HEIGHT}
                             breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}}
-                            cols={{lg: 6, md: 6, sm: 6, xs: 4, xxs: 2}}
+                            cols={{lg: 12, md: 12, sm: 12, xs: 6, xxs: 3}}
                             draggableCancel=".no-drag"
                             draggableHandle=".drag"
                             onLayoutChange={this.onLayoutChange.bind(this)}
@@ -58,6 +57,7 @@ class WidgetGrid extends Component {
 WidgetGrid.propTypes = {
     widgets: Prop.array.isRequired,
     datasources: Prop.object.isRequired,
+    widgetPlugins: Prop.object.isRequired,
     onLayoutChange: Prop.func,
     deleteWidget: Prop.func
 };
@@ -66,7 +66,8 @@ export default connect(
     (state) => {
         return {
             widgets: _.valuesIn(state.widgets) || [],
-            datasources: state.datasources || {}
+            datasources: state.datasources || {},
+            widgetPlugins: state.widgetPlugins || {}
         }
     },
     (dispatch) => {

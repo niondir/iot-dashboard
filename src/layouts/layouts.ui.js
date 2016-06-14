@@ -3,13 +3,13 @@ import {connect} from 'react-redux'
 import _ from 'lodash'
 import * as Layouts from './layouts'
 import * as ui from '../ui/elements.ui'
-const Prop = React.PropTypes;
+import {PropTypes as Prop}  from "react";
 
 
 /*TODO: Add remove button next to each loadable layout
  * - Connect with Actions
  * */
-const TopNavItem = (props) => {
+const LayoutsTopNavItem = (props) => {
     return <div className="ui simple dropdown item">
         Layout
         <i className="dropdown icon"/>
@@ -29,7 +29,7 @@ const TopNavItem = (props) => {
     </div>
 };
 
-TopNavItem.propTypes = {
+LayoutsTopNavItem.propTypes = {
     layouts: Prop.arrayOf(
         Prop.shape({
             name: Prop.string
@@ -39,7 +39,7 @@ TopNavItem.propTypes = {
     currentLayout: Prop.object
 };
 
-const TopNavItemContainer = connect((state) => {
+export default connect((state) => {
         return {
             layouts: _.valuesIn(state.layouts),
             currentLayout: state.currentLayout,
@@ -49,9 +49,7 @@ const TopNavItemContainer = connect((state) => {
     (dispatch)=> {
         return {
         }
-    })(TopNavItem);
-
-export {TopNavItemContainer as TopNavItem}
+    })(LayoutsTopNavItem);
 
 class SaveInput extends React.Component {
     onEnter(e) {

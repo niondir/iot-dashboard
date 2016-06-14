@@ -145,9 +145,9 @@ function serialize(form, options) {
 
     // Check for all empty radio buttons and serialize them with key=""
     if (options.empty) {
-        for (var key in radio_store) {
-            if (!radio_store[key]) {
-                result = serializer(result, key, '');
+        for (var k in radio_store) {
+            if (!radio_store[k]) {
+                result = serializer(result, k, '');
             }
         }
     }

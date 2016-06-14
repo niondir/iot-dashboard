@@ -1,5 +1,3 @@
-import {assert} from 'chai'
-
 export const TYPE_INFO = {
     type: "random",
     name: "Random",
@@ -67,5 +65,10 @@ export class Datasource {
         const max = Number(props.max || 100);
         let newValue = {x: this.x++, value: getRandomInt(min, max), value2: getRandomInt(min, max)};
         return newValue;
+    }
+
+    dispose() {
+        this.history = [];
+        console.log("Random Datasource destroyed");
     }
 }

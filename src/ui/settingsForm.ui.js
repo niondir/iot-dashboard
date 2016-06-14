@@ -4,7 +4,7 @@ import * as ui from './elements.ui'
 import {reduxForm, reset} from 'redux-form';
 import {chunk} from '../util/collection'
 import _ from 'lodash'
-const Prop = React.PropTypes;
+import {PropTypes as Prop}  from "react";
 
 class SettingsForm extends React.Component {
 
@@ -105,8 +105,11 @@ function SettingsInput(props) {
     }
 }
 
-Field.propTypes = {
+SettingsInput.propTypes = {
     field: Prop.object.isRequired, // redux-form field info
+    type: Prop.string.isRequired,
+    id: Prop.string.isRequired,
+    name: Prop.string.isRequired,
     description: Prop.string,
     min: Prop.number, // for number
     max: Prop.number, // for number
@@ -122,7 +125,7 @@ Field.propTypes = {
     )
 };
 
-function DatasourceInput(props) {
+const DatasourceInput = (props) => {
     const datasources = props.datasources;
 
     return <select className="ui fluid dropdown" {...props.field} >
@@ -131,10 +134,12 @@ function DatasourceInput(props) {
             return <option key={id} value={id}>{ds.props.name + " (" + ds.type + ")"}</option>
         })}
     </select>;
-}
+};
 
 DatasourceInput.propTypes = {
-    datasources: Prop.object.isRequired
+    datasources: Prop.object.isRequired,
+    field: Prop.object.isRequired,
+    name: Prop.string.isRequired
 };
 
 

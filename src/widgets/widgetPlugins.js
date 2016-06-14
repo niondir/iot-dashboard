@@ -1,73 +1,75 @@
-import {connect} from 'react-redux'
-import React from 'react'
+import WidgetPlugin from './widgetPlugin'
+import PluginRegistry from '../pluginApi/pluginRegistry'
+import * as Action from "../actionNames";
+import {genCrudReducer} from "../util/reducer";
+import {PropTypes as Prop}  from "react";
 
-// state is bound, widgets will only have to provide the dsId which the user configures
-function dataResolver(store, dsId) {
-    const state = store.getState ? store.getState() : store; // little hack for testng
-    const ds = state.datasources[dsId];
-    if (!ds) {
-        //console.warn("Can not find Datasource with id " + id + " for widget: ", widgetState, " Returning empty data!");
-        return [];
+
+// TODO: Later load all plugins from external URL's ?
+const initialState = {};
+
+export const widgetPluginType = Prop.shape({
+    id: Prop.string.isRequired,
+    typeInfo: Prop.shape({
+        type: Prop.string.isRequired,
+        name: Prop.string.isRequired,
+        settings: Prop.array
+    })
+});
+
+
+class WidgetPluginRegistry extends PluginRegistry {
+
+    createPluginFromModule(module) {
+        return new WidgetPlugin(module, this.store);
     }
-
-    return ds.data ? [...ds.data] : [];
 }
 
-class PluginRegistry {
 
-    constructor() {
-        this.widgets = {};
-        this.instances = {};
+export const pluginRegistry = new WidgetPluginRegistry();
+
+export function unloadPlugin(type) {
+    return function(dispatch) {
+        const widgetPlugin = pluginRegistry.getPlugin(type);
+        widgetPlugin.dispose();
+        dispatch(deletePlugin(type));
+    }
+}
+
+function deletePlugin(type) {
+    return {
+        type: Action.DELETE_WIDGET_PLUGIN,
+        id: type
+    }
+}
+
+const pluginsCrudReducer = genCrudReducer([Action.ADD_WIDGET_PLUGIN, Action.DELETE_WIDGET_PLUGIN], widgetPlugin);
+export function widgetPlugins(state = initialState, action) {
+
+    state = pluginsCrudReducer(state, action);
+    switch (action.type) {
+        default:
+            return state;
     }
 
-    set store(store) {
-        this._store = store;
-        this.dataResolver = dataResolver.bind(this, store)
-    }
+}
 
-    getOrCreateWidget(module, id) {
-        if (this.instances[id]) {
-            return this.instances[id];
-        }
-
-        const widget = connect(state => {
-                const widgetState = state.widgets[id];
-
-                return {
-                    config: widgetState.props,
-                    _state: widgetState,
-                    // It is important that the dataResolver does not change, else the component gets updates all the time
-                    //getData: this.dataResolver
-                    getData: dataResolver.bind(this, state)
-                }
+function widgetPlugin(state, action) {
+    switch (action.type) {
+        case Action.ADD_WIDGET_PLUGIN:
+            if (!action.typeInfo.type) {
+                // TODO: Catch this earlier
+                throw new Error("A Plugin needs a type name.");
             }
-        )(module.Widget);
 
-        this.instances[id] = React.createElement(widget);
-        // Should we create here or always outside?
-        return this.instances[id];
-    }
-
-    register(module) {
-        console.assert(module.TYPE_INFO, "Missing TYPE_INFO on widget module. Every module must export TYPE_INFO");
-
-
-        this.widgets[module.TYPE_INFO.type] = {
-            ...module.TYPE_INFO,
-            getOrCreateWidget: this.getOrCreateWidget.bind(this, module)
-            //Widget: moduleWidget
-        }
-    }
-
-    getPlugin(type:String) {
-        return this.widgets[type];
-    }
-
-    getPlugins():Array {
-        return Object.keys(this.widgets).map(key => this.widgets[key]);
+            return {
+                id: action.typeInfo.type,
+                url: action.url,
+                typeInfo: action.typeInfo,
+                isDatasource: action.pluginType === "datasource",
+                isWidget: action.pluginType === "widget"
+            };
+        default:
+            return state;
     }
 }
-
-const WidgetPlugins = new PluginRegistry();
-export default WidgetPlugins;
-

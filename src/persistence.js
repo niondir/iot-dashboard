@@ -31,7 +31,7 @@ export function saveToLocalStorage(state) {
         return;
     }
 
-    const {form, modalDialog ,...savableState} = state;
+    const {form, modalDialog, ...savableState} = state;
     window.localStorage.setItem("appState", JSON.stringify(savableState));
 }
 
@@ -45,12 +45,13 @@ export function loadFromLocalStorage() {
     const stateString = window.localStorage.getItem("appState");
     let state = undefined;
     try {
-        state = JSON.parse(stateString);
+        if (stateString !== undefined && stateString !== "undefined") {
+            state = JSON.parse(stateString);
+        }
     }
     catch (e) {
-        console.error("Failed to load state from local storage. Data: " + stateString);
+        console.error("Failed to load state from local storage. Data:", stateString, e.message);
     }
-    console.log("Loaded state:");
-    console.log(state);
+    console.log("Loaded state:", state);
     return state !== null ? state : undefined;
 }

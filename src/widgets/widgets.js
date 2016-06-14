@@ -1,18 +1,13 @@
 import * as React from 'react';
-import {connect} from 'react-redux'
+import {PropTypes as Prop}  from "react";
 import * as Uuid from '../util/uuid'
 import * as WidgetConfig from './widgetConfig'
-import WidgetPlugins from './widgetPlugins'
 import _ from 'lodash'
 import {genCrudReducer} from '../util/reducer'
-import {
-    LOAD_LAYOUT,
-    ADD_WIDGET,
-    UPDATE_WIDGET_PROPS,
-    DELETE_WIDGET,
-    UPDATE_WIDGET_LAYOUT,
-    DASHBOARD_IMPORT
-} from '../actionNames'
+import * as Action from '../actionNames'
+
+export const HEADER_HEIGHT = 77;
+export const ROW_HEIGHT = 100;
 
 export const initialWidgets = {
     "initial_chart": {
@@ -30,10 +25,24 @@ export const initialWidgets = {
         },
         "row": 0,
         "col": 0,
-        "width": 3,
-        "height": 1
+        "width": 6,
+        "height": 2,
+        "availableHeightPx": 123
     },
-    "initial_text": {"id": "initial_text", "type": "text", "name": "text", "props": {"name": "Random data", "datasource": "initial_random_source"}, "row": 0, "col": 3, "width": 2, "height": 2},
+    "initial_text": {
+        "id": "initial_text",
+        "type": "text",
+        "name": "text",
+        "props": {
+            "name": "Random data",
+            "datasource": "initial_random_source"
+        },
+        "row": 0,
+        "col": 6,
+        "width": 6,
+        "height": 3,
+        "availableHeightPx": 223
+    },
     "106913f4-44fb-4f69-ab89-5d5ae857cf3c": {
         "id": "106913f4-44fb-4f69-ab89-5d5ae857cf3c",
         "type": "chart",
@@ -47,20 +56,33 @@ export const initialWidgets = {
             "names": "{\"value\": \"My Value\"}",
             "gaugeData": "{\"min\":0,\"max\":100,\"units\":\" %\"}"
         },
-        "row": 1,
+        "row": 2,
         "col": 0,
-        "width": 3,
-        "height": 1
+        "width": 6,
+        "height": 2,
+        "availableHeightPx": 123
     }
 };
 
+
+
+export const widgetPropType = Prop.shape({
+    id: Prop.string.isRequired,
+    col: Prop.number.isRequired,
+    row: Prop.number.isRequired,
+    width: Prop.number.isRequired,
+    height: Prop.number.isRequired,
+    props: Prop.shape({
+        name: Prop.string.isRequired
+    }).isRequired
+});
 
 export function addWidget(widgetType, widgetProps = {}, width = 1, height = 1) {
     return (dispatch, getState) => {
         let widgets = getState().widgets;
 
         return dispatch({
-            type: ADD_WIDGET,
+            type: Action.ADD_WIDGET,
             id: Uuid.generate(),
             ...calcNewWidgetPosition(widgets),
             width,
@@ -83,7 +105,7 @@ export function configureWidget(widgetState) {
 
 export function updateWidgetProps(id, widgetProps = {}) {
     return {
-        type: UPDATE_WIDGET_PROPS,
+        type: Action.UPDATE_WIDGET_PROPS,
         id,
         widgetProps
     }
@@ -91,32 +113,42 @@ export function updateWidgetProps(id, widgetProps = {}) {
 
 export function deleteWidget(id) {
     return {
-        type: DELETE_WIDGET,
+        type: Action.DELETE_WIDGET,
         id
     }
 }
 
 export function updateLayout(layout) {
     return {
-        type: UPDATE_WIDGET_LAYOUT,
+        type: Action.UPDATE_WIDGET_LAYOUT,
         layout: layout
     }
 }
 
-const widgetsCrudReducer = genCrudReducer([ADD_WIDGET, DELETE_WIDGET], widget);
+const widgetsCrudReducer = genCrudReducer([Action.ADD_WIDGET, Action.DELETE_WIDGET], widget);
 export function widgets(state = initialWidgets, action) {
     state = widgetsCrudReducer(state, action);
     switch (action.type) {
-        case UPDATE_WIDGET_LAYOUT:
+        case Action.UPDATE_WIDGET_LAYOUT:
             return _.valuesIn(state)
                 .reduce((newState, {id}) => {
                         newState[id] = widget(newState[id], action);
                         return newState;
                     }, {...state}
                 );
-        case LOAD_LAYOUT:
+        case Action.LOAD_LAYOUT:
             console.assert(action.layout.widgets, "Layout is missing Widgets, id: " + action.layout.id);
             return action.layout.widgets || {};
+        case Action.DELETE_WIDGET_PLUGIN: // Also delete related widgets // TODO: Or maybe not when we render an empty box instead
+            const toDelete =_.valuesIn(state).filter(widgetState => {
+                return widgetState.type == action.id
+            });
+            var newState = {...state};
+            toDelete.forEach(widgetState => {
+                delete newState[widgetState.id];
+            });
+
+            return newState;
         default:
             return state;
     }
@@ -124,7 +156,7 @@ export function widgets(state = initialWidgets, action) {
 
 function widget(state = {}, action) {
     switch (action.type) {
-        case ADD_WIDGET:
+        case Action.ADD_WIDGET:
             return {
                 id: action.id,
                 type: action.widgetType,
@@ -135,12 +167,12 @@ function widget(state = {}, action) {
                 width: action.width,
                 height: action.height
             };
-        case UPDATE_WIDGET_PROPS:
+        case Action.UPDATE_WIDGET_PROPS:
             return {
                 ...state,
                 props: action.widgetProps
             };
-        case UPDATE_WIDGET_LAYOUT:
+        case Action.UPDATE_WIDGET_LAYOUT:
             let layout = layoutById(action.layout, state.id);
             if (layout == null) {
                 console.warn("No layout for widget. Skipping update of position. Id: " + state.id);
@@ -151,7 +183,8 @@ function widget(state = {}, action) {
                 row: layout.y,
                 col: layout.x,
                 width: layout.w,
-                height: layout.h
+                height: layout.h,
+                availableHeightPx: layout.h * ROW_HEIGHT - HEADER_HEIGHT
             };
         default:
             return state;

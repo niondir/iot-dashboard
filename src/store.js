@@ -5,43 +5,36 @@ import * as Widgets from './widgets/widgets'
 import * as WidgetConfig from './widgets/widgetConfig'
 import * as Layouts from './layouts/layouts'
 import * as Datasource from './datasource/datasource'
+import * as Import from './dashboard/import'
 import * as Modal from './modal/modalDialog'
 import * as Persist from './persistence'
+import * as Plugins from './pluginApi/plugins'
 import {reducer as formReducer} from 'redux-form';
 import * as Action from './actionNames'
-import WidgetPlugins from './widgets/widgetPlugins'
-import DatasourcePlugins from './datasource/datasourcePlugins'
+import * as  WidgetPlugins from './widgets/widgetPlugins'
+import * as DatasourcePlugins from './datasource/datasourcePlugins'
 
 let store;
 
 
-function importReducerFactory(baseReducer:Function, name) {
-    return importReducer.bind(this, baseReducer, name);
-}
-
-function importReducer(baseReducer:Function, name, state, action) {
-    switch (action.type) {
-        case Action.DASHBOARD_IMPORT:
-            return action.state[name];
-        default:
-            return baseReducer(state, action);
-    }
-}
-
 let appReducer = Redux.combineReducers({
-    widgets: importReducerFactory(Widgets.widgets, "widgets"),
-    widgetConfig: WidgetConfig.widgetConfigDialog,
+    widgets: Widgets.widgets,
+    widgetConfig: WidgetConfig.widgetConfigDialog,  // TODO: Still used or replaced by modalDialog
     layouts: Layouts.layouts,
     currentLayout: Layouts.currentLayout,
-    datasources: importReducerFactory(Datasource.datasources, "datasources"),
+    datasources: Datasource.datasources,
     form: formReducer,
-    modalDialog: Modal.modalDialog
+    modalDialog: Modal.modalDialog,
+    widgetPlugins: WidgetPlugins.widgetPlugins,
+    datasourcePlugins: DatasourcePlugins.datasourcePlugins
 });
 
 const reducer = (state, action) => {
     if (action.type === Action.CLEAR_STATE) {
         state = undefined
     }
+
+    state = Import.importReducer(state, action);
 
     return appReducer(state, action)
 };
@@ -52,6 +45,11 @@ const logger = createLogger({
     timestamp: true, // Print the timestamp with each action?
     logErrors: true, // Should the logger catch, log, and re-throw errors?
     predicate: (getState, action) => {
+        let foo = "";
+        if (action.type.startsWith("redux-form")) {
+            return false;
+        }
+
         return !action.doNotLog;
 
     }
@@ -66,8 +64,8 @@ store = Redux.createStore(
         logger // must be last
     ));
 
-DatasourcePlugins.store = store;
-WidgetPlugins.store = store;
+DatasourcePlugins.pluginRegistry.store = store;
+WidgetPlugins.pluginRegistry.store = store;
 
 export function clearState() {
     return {

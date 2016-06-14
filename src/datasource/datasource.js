@@ -1,5 +1,5 @@
 import {assert} from 'chai'
-import DatasourcePlugins from './datasourcePlugins'
+import * as DatasourcePlugins from './datasourcePlugins'
 import {genCrudReducer} from '../util/reducer'
 import * as Action from '../actionNames'
 import * as Uuid from '../util/uuid'
@@ -108,14 +108,14 @@ export function fetchDatasourceData() {
         const dsStates = state.datasources;
 
         _.valuesIn(dsStates).forEach(dsState => {
-            const dsPlugin = DatasourcePlugins.getPlugin(dsState.type);
+            const dsFactory = DatasourcePlugins.pluginRegistry.getPlugin(dsState.type);
 
-            if (dsPlugin === undefined) {
+            if (dsFactory === undefined) {
                 console.warn("Can not fetch data from non existent datasource plugin of type ", dsState.type);
                 return;
             }
 
-            const dsInstance = dsPlugin.getOrCreateInstance(dsState.id);
+            const dsInstance = dsFactory.getOrCreateInstance(dsState.id);
             const newData = dsInstance.getValues();
 
             /*
@@ -135,6 +135,16 @@ const datasourceCrudReducer = genCrudReducer([Action.ADD_DATASOURCE, Action.DELE
 export function datasources(state = initialDatasources, action) {
     state = datasourceCrudReducer(state, action);
     switch (action.type) {
+        case Action.DELETE_DATASOURCE_PLUGIN: // Also delete related datasources
+            const toDelete =_.valuesIn(state).filter(dsState => {
+                return dsState.type == action.id
+            });
+            var newState = {...state};
+            toDelete.forEach(dsState => {
+                delete newState[dsState.id];
+            });
+            
+            return newState;
         default:
             return state;
     }

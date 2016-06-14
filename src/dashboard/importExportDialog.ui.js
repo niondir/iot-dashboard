@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import * as Import from './import'
 import ModalDialog from '../modal/modalDialog.ui.js'
 import * as ModalIds from '../modal/modalDialogIds'
-const Prop = React.PropTypes;
+import {PropTypes as Prop}  from "react";
 
 class ImportExportDialog extends React.Component {
 
@@ -36,14 +36,13 @@ class ImportExportDialog extends React.Component {
     _exportToClipboard() {
         this.refs.data.focus();
         this.refs.data.select();
-        document.execCommand('copy');
 
         try {
             var successful = document.execCommand('copy');
             var msg = successful ? 'successful' : 'unsuccessful';
             console.log('Copying text command was ' + msg);
         } catch (err) {
-            console.log('Oops, unable to copy');
+            alert('Oops, unable to copy');
         }
     }
 
@@ -97,7 +96,7 @@ class ImportExportDialog extends React.Component {
                 </div>
             </div>
         </ModalDialog>
-    };
+    }
 }
 
 ImportExportDialog.propTypes = {

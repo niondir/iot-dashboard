@@ -7,6 +7,7 @@ var gutil = require('gulp-util');
 
 /**
  * Setup everything for a smooth development
+ * TODO: watch sometimes does not work in parallel to webpack dev server
  */
 gulp.task("dev", ['webpack:server', 'watch']);
 
@@ -14,7 +15,7 @@ gulp.task("dev", ['webpack:server', 'watch']);
 /**
  * Keeps files up to date that are not covered by Webpack
  */
-gulp.task('watch', () => {
+gulp.task('watch', ["copy:html", "inject:tests", "copy:plugins"], () => {
     gulp.watch("src/**/*.html", ["copy:html"]);
     gulp.watch("src/**/*.test.js", ["inject:tests"]);
     gulp.watch("plugins/**/*", ["copy:plugins"]);
@@ -24,7 +25,7 @@ gulp.task('watch', () => {
 /** 
  * Build everything required for a successful deployment
  * */
-gulp.task("build", ['compile', 'test']);
+gulp.task("build", ['compile', 'test', 'lint']);
 
 gulp.task('compile', ['webpack', 'copy']);
 
@@ -37,11 +38,41 @@ gulp.task('test',['mocha']);
 //////////////////
 
 var mocha = require('gulp-mocha');
+var mochaPhantomJS = require('gulp-mocha-phantomjs');
 
-gulp.task('mocha', ['webpack', 'inject:tests'], function () {
+gulp.task('mocha', ['mocha:phantomJs'], function () {
+});
+
+// Deprectaed: TODO: Remove
+gulp.task('mocha:nodejs', ['webpack', 'inject:tests'], function () {
     return gulp.src('dist/mocha.bundle.js', {read: false})
-        // gulp-mocha needs filepaths so you can't have any plugins before it 
+        // gulp-mocha needs filepaths so you can't have any plugins before it
         .pipe(mocha({reporter: 'spec'})); // more details with 'spec', more fun with 'nyan'
+});
+
+
+gulp.task('mocha:phantomJs', ['webpack', 'inject:tests'], function () {
+    return gulp
+        .src('dist/tests.html')
+        .pipe(mochaPhantomJS({reporter: 'spec', dump:'test.log'}));
+});
+
+//////////////////
+// Lint Tasks
+// ///////////////
+const eslint = require('gulp-eslint')
+
+gulp.task('lint', function () {
+    return gulp.src(['src/**/*.js'])
+        // eslint() attaches the lint output to the "eslint" property
+        // of the file object so it can be used by other modules.
+        .pipe(eslint())
+        // eslint.format() outputs the lint results to the console.
+        // Alternatively use eslint.formatEach() (see Docs).
+        .pipe(eslint.format())
+        // To have the process exit with an error code (1) on
+        // lint error, return the stream and pipe to failAfterError last.
+        .pipe(eslint.failAfterError());
 });
 
 //////////////////

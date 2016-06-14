@@ -1,11 +1,12 @@
 import * as React from 'react'
 import {Component} from 'react'
-import * as d3 from 'd3';
 import * as c3 from 'c3';
+import {PropTypes as Prop}  from "react";
 
 
 export const TYPE_INFO = {
     type: "chart",
+    name: "Chart",
     description: "Renders a chart. Will be way more flexible in future.",
     settings: [
         {
@@ -79,6 +80,7 @@ function safeParseJsonObject(string) {
         return {}
     }
 }
+
 function safeParseJsonArray(string) {
     try {
         return JSON.parse(string);
@@ -108,7 +110,7 @@ export class Widget extends Component {
         this.chart = c3.generate({
             bindto: '#chart-' + props._state.id,
             size: {
-                height: props._state.height * 200 - 77
+                height: props._state.availableHeightPx
             },
             data: {
                 json: data,
@@ -116,7 +118,7 @@ export class Widget extends Component {
                 // Seems not to work with chart.load, so on update props we have to recreate the chart to update
                 names: safeParseJsonObject(config.names),
                 keys: {
-                    x: config.xKey || undefined,
+                    x: config.xKey ? config.xKey : undefined,
                     value: safeParseJsonArray(config.dataKeys)
                 }
             },
@@ -149,20 +151,20 @@ export class Widget extends Component {
         const data = props.getData(config.datasource);
 
         // TODO: Do not take last element, but all new elements ;)
-        const lastElement = data.length > 0 ? data[data.length -1] : {};
+        const lastElement = data.length > 0 ? data[data.length - 1] : {};
 
 
         /* chart.flow does not work with x axis categories and messes up the x values.
-        this.chart.flow({
-            json: [lastElement],
-            keys: {
-                //x: "x",//config.xKey || undefined,
-                value: safeParseJsonObject(config.dataKeys)
-            },
-            labels: false,
-            //to: firstElement[config.xKey],
-            duration: 500
-        });     */
+         this.chart.flow({
+         json: [lastElement],
+         keys: {
+         //x: "x",//config.xKey || undefined,
+         value: safeParseJsonObject(config.dataKeys)
+         },
+         labels: false,
+         //to: firstElement[config.xKey],
+         duration: 500
+         });     */
 
         this.chart.load({
             json: data,
@@ -180,5 +182,20 @@ export class Widget extends Component {
         this._renderChart();
         return <div className="" id={'chart-' + this.props._state.id}></div>
     }
+
+    componentWillUnmount() {
+        console.log("Unmounted Chart Widget");
+    }
+    dispose() {
+        console.log("Disposed Chart Widget");
+    }
 }
 
+// TODO: Move to core, for simple reuse
+Widget.propTypes = {
+    config: Prop.object.isRequired,
+    _state: Prop.shape({
+        height: Prop.number.isRequired,
+        id: Prop.string.isRequired
+    }).isRequired
+};

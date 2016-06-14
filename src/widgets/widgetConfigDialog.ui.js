@@ -1,12 +1,12 @@
 import React from "react";
 import ModalDialog from "../modal/modalDialog.ui.js";
-import WidgetPlugins from "./widgetPlugins";
+import * as WidgetPlugins from "./widgetPlugins";
 import * as WidgetConfig from "./widgetConfig";
 import {connect} from "react-redux";
 import SettingsForm from "../ui/settingsForm.ui";
 import {reset} from "redux-form";
 import * as ModalIds from '../modal/modalDialogIds'
-const Prop = React.PropTypes;
+import {PropTypes as Prop}  from "react";
 
 const DIALOG_ID = ModalIds.WIDGET_CONFIG;
 const FORM_ID = "widget-settings-form";
@@ -33,6 +33,7 @@ class WidgetConfigModal extends React.Component {
     }
 
     render() {
+        const props = this.props;
         const actions = [
             {
                 className: "ui right button",
@@ -62,15 +63,25 @@ class WidgetConfigModal extends React.Component {
             }
         ];
 
-        const props = this.props;
-        const selectedWidget = WidgetPlugins.getPlugin(this.props.widgetType) || {settings: []};
+        //const selectedWidgetPlugin = WidgetPlugins.getPlugin(this.props.widgetType) || {settings: []};
+        const selectedWidgetPlugin = props.widgetPlugin;
 
-        if (!selectedWidget) {
-            return <div>Unknown WidgetType: {this.props.widgetType}</div>
+        // TODO: Get typeInfo from selectedWidgetPlugin.typeInfo
+        if (!selectedWidgetPlugin) {
+            // TODO: Find a better (more generic way) to deal with uninitialized data for modals
+            // TODO: The widgetConfig in the state is a bad idea. Solve this via state.modalDialog.data
+            // This is needed for the very first time the page is rendered and the selected widget type is undefined
+            return <ModalDialog id={DIALOG_ID}
+                                title={"Configure "+ props.widgetType +" Widget"}
+                                actions={actions}
+            >
+                <div>Unknown WidgetType: {props.widgetType}</div>
+            </ModalDialog>
         }
 
+
         // Add additional fields
-        const settings = [...selectedWidget.settings];
+        const settings = selectedWidgetPlugin ? [...selectedWidgetPlugin.typeInfo.settings] : [];
 
         unshiftIfNotExists(settings, {
             id: 'name',
@@ -95,15 +106,15 @@ class WidgetConfigModal extends React.Component {
         >
             <div className="ui one column grid">
                 <div className="column">
-                    {selectedWidget.description ?
+                    {selectedWidgetPlugin.description ?
 
-                            <div className="ui icon message">
-                                <i className="idea icon"/>
-                                <div className="content">
-                                    {selectedWidget.description}
-                                </div>
-
+                        <div className="ui icon message">
+                            <i className="idea icon"/>
+                            <div className="content">
+                                {selectedWidgetPlugin.description}
                             </div>
+
+                        </div>
                         : null
                     }
                     <SettingsForm ref="form"
@@ -117,14 +128,15 @@ class WidgetConfigModal extends React.Component {
                 </div>
             </div>
         </ModalDialog>
-    };
+    }
 }
 
 WidgetConfigModal.propTypes = {
     widgetId: Prop.string,
     resetForm: Prop.func.isRequired,  // reset
     widgetType: Prop.string,
-    widgetProps: Prop.object.isRequired
+    widgetProps: Prop.object.isRequired,
+    widgetPlugin: WidgetPlugins.widgetPluginType
 };
 
 export default connect(
@@ -132,7 +144,8 @@ export default connect(
         return {
             widgetId: state.widgetConfig.id,
             widgetType: state.widgetConfig.type,
-            widgetProps: state.widgetConfig.props
+            widgetProps: state.widgetConfig.props,
+            widgetPlugin: state.widgetPlugins[state.widgetConfig.type]
         }
     },
     (dispatch) => {

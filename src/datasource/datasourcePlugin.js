@@ -3,10 +3,11 @@ import _ from 'lodash'
 /**
  * Connects a datasource to the application state
  */
+// TODO: Rename to ...Factory
 export class DataSourcePlugin {
     constructor(module, store) {
         console.assert(module.TYPE_INFO, "Missing TYPE_INFO on datasource module. Every module must export TYPE_INFO");
-        this.typeInfo = module.TYPE_INFO;
+        this._type = module.TYPE_INFO.type;
         this.Datasource = module.Datasource;
 
         this.store = store;
@@ -14,22 +15,11 @@ export class DataSourcePlugin {
         this.instances = {};
 
         this.unsubscribe = store.subscribe(this.handleStateChange.bind(this));
-    }
-
-    getDsState(id) {
-        return this.store.datasources[id];
+        this.disposed = false;
     }
 
     get type() {
-        return this.typeInfo.type;
-    }
-
-    get name() {
-        return this.typeInfo.name;
-    }
-
-    get settings() {
-        return this.typeInfo.settings;
+        return this._type;
     }
 
     getDatasourceState(id) {
@@ -38,6 +28,9 @@ export class DataSourcePlugin {
     }
 
     getOrCreateInstance(id) {
+        if (this.disposed === true) {
+            throw new Error("Try to get or create datasource of destroyed type: " + this.type);
+        }
         let instance = this.instances[id];
         if (!instance) {
             const dsState = this.getDatasourceState(id);
@@ -50,6 +43,22 @@ export class DataSourcePlugin {
 
     getInstance(id) {
         return this.instances[id];
+    }
+
+    dispose() {
+        this.disposed = true;
+        _.valuesIn(this.instances).forEach((instance) => {
+            if (_.isFunction(instance.dispose)) {
+                try {
+                    instance.dispose();
+                }
+                catch (e) {
+                    console.error("Failed to destroy Datasource instance", instance);
+                }
+            }
+        });
+        this.instances = [];
+        this.unsubscribe();
     }
 
     handleStateChange() {
@@ -75,10 +84,4 @@ export class DataSourcePlugin {
             instance.props = newProps;
         }
     }
-
-    dispose() {
-        this.unsubscribe();
-    }
-
-
 }

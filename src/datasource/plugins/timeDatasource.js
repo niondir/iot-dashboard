@@ -38,7 +38,7 @@ export class Datasource {
             seconds: s,
             diem
         };
-    };
+    }
 
     getValues() {
         const now = new Date();

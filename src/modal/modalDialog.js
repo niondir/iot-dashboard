@@ -8,8 +8,22 @@ const initialState = {
 };
 
 function showModalSideeffect(id) {
-    $('.ui.modal.' + id)
-        .modal('show');
+    const $modal = $('.ui.modal.' + id);
+    
+    if (!$modal.length) {
+       throw new Error("Can not find Modal with id", id, $modal); 
+    }
+
+    $modal.modal('show');
+
+    // This is to update the Browser Scrollbar, at least needed in WebKit
+    if (typeof document !== 'undefined') {
+        const n = document.createTextNode(' ');
+        $modal.append(n);
+        setTimeout(function () {
+            n.parentNode.removeChild(n)
+        }, 0);
+    }
 }
 
 function closeModalSideeffect(id) {
