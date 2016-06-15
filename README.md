@@ -72,5 +72,5 @@ The code will most likely be available under [MPL](https://www.mozilla.org/en-US
 
 ## Documentation ##
 
-For documentation see out [Github Wiki](https://github.com/Niondir/iot-dashboard/wiki)
+For documentation see our [Github Wiki](https://github.com/Niondir/iot-dashboard/wiki)
 
