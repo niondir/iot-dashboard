@@ -1,5 +1,7 @@
 import * as React from "react"
 import {Component} from "react"
+import {connect} from 'react-redux'
+import * as Dashboard from './dashboard/dashboard'
 import WidgetGrid from "./widgets/widgetGrid.ui"
 import $ from "jquery"
 import LayoutsNavItem from "./layouts/layouts.ui"
@@ -13,8 +15,20 @@ import PluginNavItem from './pluginApi/pluginNavItem.ui'
 import PluginsDialog from './pluginApi/pluginsDialog.ui'
 import * as Persistence from './persistence'
 
-export default class Layout extends Component {
+export class Layout extends Component {
     render() {
+        const props = this.props;
+
+        if (props.isFullscreen) {
+            return <div>
+                <div className="container">
+                    <div className="ui grid">
+                        <WidgetGrid/>
+                    </div>
+                </div>
+            </div>
+        }
+
         return <div>
             <div>
                 <WidgetConfigDialog/>
@@ -39,6 +53,10 @@ export default class Layout extends Component {
                             <i className="red bomb icon"/>
                             Reset Everything!
                         </a>
+                        <a className="item" onClick={() => props.setFullscreen(!props.isFullscreen)}>
+                            <i className="max icon"/>
+                            Fullscreen
+                        </a>
 
                     </div>
                 </div>
@@ -52,3 +70,16 @@ export default class Layout extends Component {
     }
 
 }
+
+export default connect(
+    state => {
+        return {
+            isFullscreen: state.dashboard.isFullscreen
+        };
+    },
+    dispatch => {
+        return {
+            setFullscreen: (isFullscreen) => dispatch(Dashboard.setFullscreen(isFullscreen))
+        };
+    }
+)(Layout);
