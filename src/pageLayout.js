@@ -1,5 +1,7 @@
 import * as React from "react"
 import {Component} from "react"
+import * as ReactDOM from "react-dom"
+import {PropTypes as Prop}  from "react"
 import {connect} from 'react-redux'
 import * as Dashboard from './dashboard/dashboard'
 import WidgetGrid from "./widgets/widgetGrid.ui"
@@ -16,11 +18,31 @@ import PluginsDialog from './pluginApi/pluginsDialog.ui'
 import * as Persistence from './persistence'
 
 export class Layout extends Component {
+
+    onFullscreenKeyPress(e) {
+        console.log("key pressed", event.keyCode);
+        var intKey = (window.Event) ? e.which : e.keyCode;
+        if (intKey === 27 && this.props.isFullscreen) {
+            this.props.setFullscreen(false);
+        }
+    }
+
+    componentDidMount() {
+        this.onFullscreenKeyPress = this.onFullscreenKeyPress.bind(this);
+        
+        ReactDOM.findDOMNode(this)
+            .offsetParent
+            .addEventListener('keydown', this.onFullscreenKeyPress);
+    }
+
     render() {
         const props = this.props;
 
         if (props.isFullscreen) {
-            return <div>
+            return <div onKeyUp={(event) => this.onFullscreenKeyPress(event)}>
+                <div className="fullscreen-button">
+                    <button class="ui large button" onClick={() => props.setFullscreen(false)}><i className="compress icon"></i></button>
+                </div>
                 <div className="container">
                     <div className="ui grid">
                         <WidgetGrid/>
@@ -54,8 +76,7 @@ export class Layout extends Component {
                             Reset Everything!
                         </a>
                         <a className="item" onClick={() => props.setFullscreen(!props.isFullscreen)}>
-                            <i className="max icon"/>
-                            Fullscreen
+                            <i className="angle double up icon"/> {/*expand*/}
                         </a>
 
                     </div>
@@ -70,6 +91,11 @@ export class Layout extends Component {
     }
 
 }
+
+Layout.propTypes = {
+    setFullscreen: Prop.func.isRequired,
+    isFullscreen: Prop.bool.isRequired
+};
 
 export default connect(
     state => {

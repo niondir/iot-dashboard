@@ -1,4 +1,3 @@
-import {assert} from 'chai'
 import * as DatasourcePlugins from './datasourcePlugins'
 import {genCrudReducer} from '../util/reducer'
 import * as Action from '../actionNames'
