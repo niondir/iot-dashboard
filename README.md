@@ -1,4 +1,5 @@
-**Master:**  [![Build Status](https://travis-ci.org/Niondir/iot-dashboard.svg?branch=master)](https://travis-ci.org/Niondir/iot-dashboard) **Dev:** [![Build Status](https://travis-ci.org/Niondir/iot-dashboard.svg?branch=dev)](https://travis-ci.org/Niondir/iot-dashboard)  
+**Master:**  [![Build Status](https://travis-ci.org/Niondir/iot-dashboard.svg?branch=master)](https://travis-ci.org/Niondir/iot-dashboard) [![Dependencies](https://david-dm.org/niondir/iot-dashboard.svg)](https://david-dm.org/niondir/iot-dashboard)
+**Dev:** [![Build Status](https://travis-ci.org/Niondir/iot-dashboard.svg?branch=dev)](https://travis-ci.org/Niondir/iot-dashboard)  
 
 # Individual Open Technology - Dashboard
 Free Dashboard for your Data
@@ -20,8 +21,8 @@ The **latest development snapshot** is on the `dev` branch.
 
 ## Demo ##
 
- [Live Demo Stable](http://demo.iot-dashboard.org/) of the `master` branch.  
- [Live Demo Dev](http://demo.iot-dashboard.org/branch/dev/) of the `dev` branch.
+* [Live Demo Stable](http://demo.iot-dashboard.org/) of the `master` branch.  
+* [Live Demo Dev](http://demo.iot-dashboard.org/branch/dev/) of the `dev` branch.
 
 ## Motivation ##
 Why just another Dashboard?
