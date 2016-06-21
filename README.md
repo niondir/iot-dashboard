@@ -38,20 +38,35 @@ I was looking for a Dashboard with the following properties:
 ## Setup ##
 
 We have just a development setup yet, since there is no need for more :)
+to keep everything simple all the important tasks are based on scripts in package.json. Use `npm run <script-name>` to run any of them.
+
+### Run the Dashboard locally from source ###
+
+    npm install
+    npm run compile
+    npm start
 
 ### Development ###
 
-Run the Webpack Server with livereload and hot module replacement with:
+For preparation run
 
-    gulp dev
+    npm install
+
+Run the Webpack Server with live-reload and hot module replacement
+
+    npm run dev
   
-Run a second watch task to keep some other files up to date with:
+Run a second watch task to keep some other files up to date (optional)
 
     gulp watch
 
-To generate some deployable code in dist execute:
+To generate some deployable code in dist
 
-    gulp compile
+    npm run compile
+
+To make sure all you changes will survive the CI build
+
+    npm run build
 
 #### Webpack Analysis ####
 

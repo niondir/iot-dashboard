@@ -3,7 +3,7 @@ import {genCrudReducer} from "../util/reducer";
 import * as DatasourcePlugins from "../datasource/datasourcePlugins";
 import * as WidgetPlugins from "../widgets/widgetPlugins";
 import loadjs from "loadjs";
-import * as PluginApi from "./pluginApi";
+import * as PluginCache from "./pluginCache";
 import _ from "lodash";
 import URI from "urijs";
 
@@ -17,8 +17,8 @@ export function loadPlugin(plugin) {
 export function loadPluginFromUrl(url) {
     return function (dispatch) {
         loadjs([url], () => {
-            if (PluginApi.hasPlugin()) {
-                const plugin = PluginApi.popLoadedPlugin();
+            if (PluginCache.hasPlugin()) {
+                const plugin = PluginCache.popLoadedPlugin();
 
                 const dependencies = plugin.TYPE_INFO.dependencies;
                 if (_.isArray(dependencies)) {

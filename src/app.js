@@ -1,7 +1,7 @@
-import _ from "lodash"
-import "semantic-ui-css/semantic.css"
-import "semantic-ui-css/semantic"
-import "c3css"
+import _ from 'lodash'
+import 'semantic-ui-css/semantic.css'
+import 'semantic-ui-css/semantic'
+import 'c3css'
 import * as ReactDOM from 'react-dom'
 import * as React from 'react'
 import {Provider} from "react-redux"
@@ -18,6 +18,8 @@ import * as Store from "./store"
 import * as Plugins from "./pluginApi/plugins"
 import "./pluginApi/freeboardPluginApi"
 import "./pluginApi/pluginApi"
+import "./app.css"
+import "file?name=[name].[ext]!./index.html"
 
 store.dispatch(Plugins.loadPlugin(TextWidget));
 store.dispatch(Plugins.loadPlugin(ChartWidget));

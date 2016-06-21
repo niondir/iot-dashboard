@@ -1,4 +1,6 @@
 
+import "file?name=[name].[ext]!./tests.html"
+
 /* inject:tests */
 import './datasource/datasourcePlugins.test.js'
 import './pluginApi/uri.test.js'

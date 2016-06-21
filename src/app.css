@@ -1,0 +1,10 @@
+/* BEGIN app.css */
+
+.fullscreen-button {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    z-index: 9999;
+}
+
+/* END app.css */
