@@ -22,17 +22,24 @@ const WidgetFrame = (props) => {
              key={widgetState.id}
              _grid={{x: widgetState.col, y: widgetState.row, w: widgetState.width, h: widgetState.height}}>
 
-            <div className="ui inverted segment">
-                <div className="ui tiny horizontal right floated inverted list">
-                    <ConfigWidgetButton className="right item" widgetState={widgetState}
-                                        visible={(props.widgetPlugin.typeInfo.settings ? true : false)}
-                                        icon="configure"/>
-                    <a className="right item drag">
-                        <i className="move icon drag"></i>
-                    </a>
-                    <DeleteWidgetButton className="right floated item" widgetState={widgetState} icon="remove"/>
+            <div className={"ui inverted segment" + (props.isReadOnly ? "" : " drag")}>
+                {props.isReadOnly ? null :
+                    <div className="ui tiny horizontal right floated inverted list">
+
+                        <ConfigWidgetButton className="right item" widgetState={widgetState}
+                                            visible={(props.widgetPlugin.typeInfo.settings ? true : false)}
+                                            icon="configure"/>
+                        {/* <!--<a className="right item drag">
+                         <i className="move icon drag"></i>
+                         </a>*/}
+                        <DeleteWidgetButton className="right floated item" widgetState={widgetState} icon="remove"/>
+
+
+                    </div>
+                }
+                <div className={"ui item top attached" + (props.isReadOnly ? "" : " drag")}>
+                    {widgetState.props.name || "\u00a0"}
                 </div>
-                <div className="ui item top attached">{widgetState.props.name || "\u00a0"}</div>
             </div>
 
             <div className="ui segment">
@@ -43,7 +50,8 @@ const WidgetFrame = (props) => {
 
 WidgetFrame.propTypes = {
     widget: Widgets.widgetPropType.isRequired,
-    widgetPlugin: WidgetPlugins.widgetPluginType.isRequired
+    widgetPlugin: WidgetPlugins.widgetPluginType.isRequired,
+    isReadOnly: Prop.bool.isRequired
 };
 
 

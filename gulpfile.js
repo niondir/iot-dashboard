@@ -14,7 +14,7 @@ gulp.task("dev", ['inject', 'copy', 'webpack:server']);
 /**
  * Keeps files up to date that are not covered by Webpack
  */
-gulp.task('watch', ["inject:tests", "copy:plugins"], () => {
+gulp.task('watch', ["inject:tests", "copy:plugins"], function() {
     gulp.watch("src/**/*.test.js", ["inject:tests"]);
     gulp.watch("plugins/**/*", ["copy:plugins"]);
 });

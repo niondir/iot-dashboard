@@ -12,6 +12,9 @@ const ResponsiveGrid = WidthProvider(ResponsiveReactGridLayout);
 
 require('react-grid-layout/css/styles.css');
 
+const breakpoints =  {lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0};
+const cols =  {lg: 12, md: 12, sm: 12, xs: 6, xxs: 3};
+
 class WidgetGrid extends Component {
 
     onLayoutChange(layout) {
@@ -23,7 +26,7 @@ class WidgetGrid extends Component {
     render() {
         const props = this.props;
         let widgetStates:Array<object> = this.props.widgets;
-       
+
         // TODO: Remove unknown widget from state
         let widgets = widgetStates.map((widgetState) => {
             let widgetPlugin = props.widgetPlugins[widgetState.type];
@@ -32,7 +35,7 @@ class WidgetGrid extends Component {
                 return null;
             }
             // WidgetFrame must be loaded as function, else the grid is not working properly.
-            return WidgetFrame({widget: widgetState, widgetPlugin: widgetPlugin})
+            return WidgetFrame({widget: widgetState, widgetPlugin: widgetPlugin, isReadOnly: props.isReadOnly})
         }).filter(frame => frame !== null);
 
         /* //Does NOT work that way:
@@ -42,8 +45,8 @@ class WidgetGrid extends Component {
          />);*/
         return (
             <ResponsiveGrid className="column" rowHeight={Widgets.ROW_HEIGHT}
-                            breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}}
-                            cols={{lg: 12, md: 12, sm: 12, xs: 6, xxs: 3}}
+                            breakpoints={breakpoints}
+                            cols={cols}
                             draggableCancel=".no-drag"
                             draggableHandle=".drag"
                             onLayoutChange={this.onLayoutChange.bind(this)}
@@ -59,7 +62,8 @@ WidgetGrid.propTypes = {
     datasources: Prop.object.isRequired,
     widgetPlugins: Prop.object.isRequired,
     onLayoutChange: Prop.func,
-    deleteWidget: Prop.func
+    deleteWidget: Prop.func,
+    isReadOnly: Prop.bool.isRequired
 };
 
 export default connect(
@@ -67,7 +71,8 @@ export default connect(
         return {
             widgets: _.valuesIn(state.widgets) || [],
             datasources: state.datasources || {},
-            widgetPlugins: state.widgetPlugins || {}
+            widgetPlugins: state.widgetPlugins || {},
+            isReadOnly: state.dashboard.isReadOnly
         }
     },
     (dispatch) => {
