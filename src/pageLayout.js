@@ -19,6 +19,11 @@ import * as Persistence from './persistence'
 
 export class Layout extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {hover: false};
+    }
+
     onFullscreenKeyPress(e) {
         console.log("key pressed", event.keyCode);
         var intKey = (window.Event) ? e.which : e.keyCode;
@@ -29,7 +34,7 @@ export class Layout extends Component {
 
     componentDidMount() {
         this.onFullscreenKeyPress = this.onFullscreenKeyPress.bind(this);
-        
+
         ReactDOM.findDOMNode(this)
             .offsetParent
             .addEventListener('keydown', this.onFullscreenKeyPress);
@@ -38,20 +43,10 @@ export class Layout extends Component {
     render() {
         const props = this.props;
 
-        if (props.isFullscreen) {
-            return <div onKeyUp={(event) => this.onFullscreenKeyPress(event)}>
-                <div className="fullscreen-button">
-                    <button class="ui large button" onClick={() => props.setFullscreen(false)}><i className="compress icon"></i></button>
-                </div>
-                <div className="container">
-                    <div className="ui grid">
-                        <WidgetGrid/>
-                    </div>
-                </div>
-            </div>
-        }
+        var showMenu = !props.isFullscreen || this.state.hover;
+        console.log("Show Menu:", showMenu, "isfullscreen", props.isFullscreen);
 
-        return <div>
+        return <div onKeyUp={(event) => this.onFullscreenKeyPress(event)}>
             <div>
                 <WidgetConfigDialog/>
                 <ImportExportDialog/>
@@ -59,7 +54,15 @@ export class Layout extends Component {
                 <PluginsDialog/>
             </div>
             <div className="container">
-                <div className="ui fixed inverted main menu">
+                <div className={showMenu ? "" : "menu-trigger"}
+                     onMouseOver={()=> { this.setState({hover:true})}}
+                     onMouseEnter={()=> {this.setState({hover:true})}}
+
+                ></div>
+                <div className={"ui inverted fixed main menu " + (showMenu ? "topnav--visible" : "topnav--hidden")}
+                     onMouseOver={()=> { this.setState({hover:true})}}
+                     onMouseLeave={()=> {this.setState({hover:false})}}
+                >
                     <div className="ui container">
                         <a href="#" className="header item">
                             {/*<img className="logo" src="assets/images/logo.png"/>*/}
@@ -76,10 +79,11 @@ export class Layout extends Component {
                             Reset Everything!
                         </a>
                         <a className="item" onClick={() => props.setFullscreen(!props.isFullscreen)}>
-                            <i className="angle double up icon"/> {/*expand*/}
+                            <i className={ (props.isFullscreen ? "pin" : "angle double up")  + " icon"}/> {/*expand*/}
                         </a>
 
                     </div>
+
                 </div>
 
                 {/* TODO: Use custom classes for everything inside the Grid to make it customizable without breaking semantic-ui */}
