@@ -8,7 +8,6 @@ import _ from "lodash";
 import URI from "urijs";
 
 
-
 export function loadPlugin(plugin) {
     return addPlugin(plugin);
 }
@@ -16,49 +15,50 @@ export function loadPlugin(plugin) {
 
 export function loadPluginFromUrl(url) {
     return function (dispatch) {
-        loadjs([url], () => {
-            if (PluginCache.hasPlugin()) {
-                const plugin = PluginCache.popLoadedPlugin();
-
-                const dependencies = plugin.TYPE_INFO.dependencies;
-                if (_.isArray(dependencies)) {
-
-                    var paths = dependencies.map(dependency => {
-                        return URI(dependency).absoluteTo(url).toString();
-                    });
-
-                    console.log("Loading Dependencies for Plugin", paths);
-
-                    // TODO: Load Plugins into a sandbox / iframe, and pass as "deps" object
-                    // Let's wait for the dependency hell before introducing this.
-                    // Until then we can try to just provide shared libs by the Dashboard, e.g. jQuery, d3, etc.
-                    // That should avoid that people add too many custom libs.
-                    /*sandie([dependencies],
-                     function (deps) {
-                     plugin.deps = deps;
-                     console.log("deps loaded", deps);
-                     dispatch(addPlugin(plugin, url));
-                     }
-                     );  */
-
-
-                    loadjs(paths, () => {
-                        dispatch(addPlugin(plugin, url));
-                    });
-                }
-                else {
-                    dispatch(addPlugin(plugin, url));
-                }
-            }
-            else {
-                console.error("Failed to load Plugin. Make sure it called window.iotDashboardApi.register***Plugin from url " + url);
-            }
-        });
+        loadjs([url], {success: () => onScriptLoaded(url, dispatch)});
     };
 }
 
+function onScriptLoaded(url, dispatch) {
+    if (PluginCache.hasPlugin()) {
+        const plugin = PluginCache.popLoadedPlugin();
+
+        const dependencies = plugin.TYPE_INFO.dependencies;
+        if (_.isArray(dependencies)) {
+
+            var paths = dependencies.map(dependency => {
+                return URI(dependency).absoluteTo(url).toString();
+            });
+
+            console.log("Loading Dependencies for Plugin", paths);
+
+            // TODO: Load Plugins into a sandbox / iframe, and pass as "deps" object
+            // Let's wait for the dependency hell before introducing this.
+            // Until then we can try to just provide shared libs by the Dashboard, e.g. jQuery, d3, etc.
+            // That should avoid that people add too many custom libs.
+            /*sandie([dependencies],
+             function (deps) {
+             plugin.deps = deps;
+             console.log("deps loaded", deps);
+             dispatch(addPlugin(plugin, url));
+             }
+             );  */
 
 
+            loadjs(paths, {
+                success: () => {
+                    dispatch(addPlugin(plugin, url));
+                }
+            });
+        }
+        else {
+            dispatch(addPlugin(plugin, url));
+        }
+    }
+    else {
+        console.error("Failed to load Plugin. Make sure it called window.iotDashboardApi.register***Plugin from url " + url);
+    }
+}
 
 
 export function initializeExternalPlugins() {

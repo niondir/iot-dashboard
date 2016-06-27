@@ -21,6 +21,7 @@ import "./pluginApi/pluginApi"
 import "./app.css"
 import "file?name=[name].[ext]!./index.html"
 
+
 store.dispatch(Plugins.loadPlugin(TextWidget));
 store.dispatch(Plugins.loadPlugin(ChartWidget));
 

@@ -12,6 +12,9 @@ const ResponsiveGrid = WidthProvider(ResponsiveReactGridLayout);
 
 require('react-grid-layout/css/styles.css');
 
+const breakpoints =  {lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0};
+const cols =  {lg: 12, md: 12, sm: 12, xs: 6, xxs: 3};
+
 class WidgetGrid extends Component {
 
     onLayoutChange(layout) {
@@ -42,8 +45,8 @@ class WidgetGrid extends Component {
          />);*/
         return (
             <ResponsiveGrid className="column" rowHeight={Widgets.ROW_HEIGHT}
-                            breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}}
-                            cols={{lg: 12, md: 12, sm: 12, xs: 6, xxs: 3}}
+                            breakpoints={breakpoints}
+                            cols={cols}
                             draggableCancel=".no-drag"
                             draggableHandle=".drag"
                             onLayoutChange={this.onLayoutChange.bind(this)}
