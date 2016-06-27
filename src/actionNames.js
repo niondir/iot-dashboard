@@ -3,7 +3,7 @@ export const CLEAR_STATE = "CLEAR_STATE"
 
 // Dashboard
 export const DASHBOARD_IMPORT = "DASHBOARD_IMPORT";
-export const SET_FULLSCREEN = "SET_FULLSCREEN";
+export const SET_READONLY = "SET_READONLY";
 
 
 // Layouts

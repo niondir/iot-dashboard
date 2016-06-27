@@ -1,30 +1,21 @@
 import * as Action from '../actionNames'
-//import * as Fullscreen from 'screenfull'
 
 export const initialState = {
-    isFullscreen: false
+    isReadOnly: false
 };
 
   
 
-export function setFullscreen(isFullscreen) {
+export function setReadOnly(isReadOnly) {
     return function (dispatch) {
-        dispatch(setFullscreenAction(isFullscreen));
-        /*
-        if (Fullscreen.enabled && isFullscreen) {
-            console.log("requesting fullscreen")
-            Fullscreen.request();
-        }
-        else if (Fullscreen.enabled && isFullscreen) {
-            Fullscreen.exit();
-        }   */
+        dispatch(setReadOnlyAction(isReadOnly));
     }
 }
 
-function setFullscreenAction(isFullscreen) {
+function setReadOnlyAction(isReadOnly) {
     return {
-        type: Action.SET_FULLSCREEN,
-        isFullscreen
+        type: Action.SET_READONLY,
+        isReadOnly
     };
     
 }
@@ -32,10 +23,10 @@ function setFullscreenAction(isFullscreen) {
 
 export function dashboard(state = initialState, action) {
     switch (action.type) {
-        case Action.SET_FULLSCREEN:
+        case Action.SET_READONLY:
             return {
                 ...state,
-                isFullscreen: action.isFullscreen
+                isReadOnly: action.isReadOnly
             };
         default:
             return state;

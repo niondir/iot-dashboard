@@ -24,29 +24,28 @@ export class Layout extends Component {
         this.state = {hover: false};
     }
 
-    onFullscreenKeyPress(e) {
-        console.log("key pressed", event.keyCode);
+    onReadOnlyModeKeyPress(e) {
+        //console.log("key pressed", event.keyCode);
         var intKey = (window.Event) ? e.which : e.keyCode;
-        if (intKey === 27 && this.props.isFullscreen) {
-            this.props.setFullscreen(false);
+        if (intKey === 27) {
+            this.props.setReadOnly(!this.props.isReadOnly);
         }
     }
 
     componentDidMount() {
-        this.onFullscreenKeyPress = this.onFullscreenKeyPress.bind(this);
+        this.onReadOnlyModeKeyPress = this.onReadOnlyModeKeyPress.bind(this);
 
         ReactDOM.findDOMNode(this)
             .offsetParent
-            .addEventListener('keydown', this.onFullscreenKeyPress);
+            .addEventListener('keydown', this.onReadOnlyModeKeyPress);
     }
 
     render() {
         const props = this.props;
 
-        var showMenu = !props.isFullscreen || this.state.hover;
-        console.log("Show Menu:", showMenu, "isfullscreen", props.isFullscreen);
+        var showMenu = !props.isReadOnly || this.state.hover;
 
-        return <div onKeyUp={(event) => this.onFullscreenKeyPress(event)}>
+        return <div onKeyUp={(event) => this.onReadOnlyModeKeyPress(event)}>
             <div>
                 <WidgetConfigDialog/>
                 <ImportExportDialog/>
@@ -78,8 +77,8 @@ export class Layout extends Component {
                             <i className="red bomb icon"/>
                             Reset Everything!
                         </a>
-                        <a className="item" onClick={() => props.setFullscreen(!props.isFullscreen)}>
-                            <i className={ (props.isFullscreen ? "pin" : "angle double up")  + " icon"}/> {/*expand*/}
+                        <a className="item" onClick={() => props.setReadOnly(!props.isReadOnly)}>
+                            <i className={ (props.isReadOnly ? "lock" : "unlock alternate")  + " icon"}/> {/*expand*/}
                         </a>
 
                     </div>
@@ -97,19 +96,19 @@ export class Layout extends Component {
 }
 
 Layout.propTypes = {
-    setFullscreen: Prop.func.isRequired,
-    isFullscreen: Prop.bool.isRequired
+    setReadOnly: Prop.func.isRequired,
+    isReadOnly: Prop.bool.isRequired
 };
 
 export default connect(
     state => {
         return {
-            isFullscreen: state.dashboard.isFullscreen
+            isReadOnly: state.dashboard.isReadOnly
         };
     },
     dispatch => {
         return {
-            setFullscreen: (isFullscreen) => dispatch(Dashboard.setFullscreen(isFullscreen))
+            setReadOnly: (isReadOnly) => dispatch(Dashboard.setReadOnly(isReadOnly))
         };
     }
 )(Layout);

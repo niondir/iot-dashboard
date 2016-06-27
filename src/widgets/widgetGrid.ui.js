@@ -23,7 +23,7 @@ class WidgetGrid extends Component {
     render() {
         const props = this.props;
         let widgetStates:Array<object> = this.props.widgets;
-       
+
         // TODO: Remove unknown widget from state
         let widgets = widgetStates.map((widgetState) => {
             let widgetPlugin = props.widgetPlugins[widgetState.type];
@@ -32,7 +32,7 @@ class WidgetGrid extends Component {
                 return null;
             }
             // WidgetFrame must be loaded as function, else the grid is not working properly.
-            return WidgetFrame({widget: widgetState, widgetPlugin: widgetPlugin})
+            return WidgetFrame({widget: widgetState, widgetPlugin: widgetPlugin, isReadOnly: props.isReadOnly})
         }).filter(frame => frame !== null);
 
         /* //Does NOT work that way:
@@ -59,7 +59,8 @@ WidgetGrid.propTypes = {
     datasources: Prop.object.isRequired,
     widgetPlugins: Prop.object.isRequired,
     onLayoutChange: Prop.func,
-    deleteWidget: Prop.func
+    deleteWidget: Prop.func,
+    isReadOnly: Prop.bool.isRequired
 };
 
 export default connect(
@@ -67,7 +68,8 @@ export default connect(
         return {
             widgets: _.valuesIn(state.widgets) || [],
             datasources: state.datasources || {},
-            widgetPlugins: state.widgetPlugins || {}
+            widgetPlugins: state.widgetPlugins || {},
+            isReadOnly: state.dashboard.isReadOnly
         }
     },
     (dispatch) => {

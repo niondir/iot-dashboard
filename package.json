@@ -31,8 +31,7 @@
     "redux-form": "^5.1.1",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1",
-    "require-dot-file": "^0.4.0",
-    "screenfull": "^3.0.0",
+    "require-dot-file": "^0.4.0"
     "semantic-ui-css": "^2.1.8",
     "urijs": "^1.18.1"
   },
