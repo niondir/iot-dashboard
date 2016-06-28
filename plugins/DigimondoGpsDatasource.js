@@ -98,7 +98,7 @@
 
         return {
             "lat": lat_deg + lat_min / 60 + (lat_10000min / 10000) / 60,
-            "lon": long_deg + long_min / 60 + (long_10000min / 10000) / 60
+            "lng": long_deg + long_min / 60 + (long_10000min / 10000) / 60
         };
     }
 
@@ -122,7 +122,7 @@
             _.forEach(data, function (value) {
 
                 value.gps = payloadToGps(value.payload);
-                console.log("value:", value);
+                //console.log("value:", value);
                 history.push(value);
             })
 
