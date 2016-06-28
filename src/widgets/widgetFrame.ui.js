@@ -26,13 +26,13 @@ const WidgetFrame = (props) => {
                 {props.isReadOnly ? null :
                     <div className="ui tiny horizontal right floated inverted list">
 
-                        <ConfigWidgetButton className="right item" widgetState={widgetState}
+                        <ConfigWidgetButton className="right item no-drag" widgetState={widgetState}
                                             visible={(props.widgetPlugin.typeInfo.settings ? true : false)}
                                             icon="configure"/>
                         {/* <!--<a className="right item drag">
                          <i className="move icon drag"></i>
                          </a>*/}
-                        <DeleteWidgetButton className="right floated item" widgetState={widgetState} icon="remove"/>
+                        <DeleteWidgetButton className="right floated item no-drag" widgetState={widgetState} icon="remove"/>
 
 
                     </div>

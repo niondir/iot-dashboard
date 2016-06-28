@@ -1,4 +1,4 @@
-import _ from 'lodash'
+
 import 'semantic-ui-css/semantic.css'
 import 'semantic-ui-css/semantic'
 import 'c3css'
@@ -16,6 +16,7 @@ import * as TimeDatasource from "./datasource/plugins/timeDatasource"
 import store from "./store"
 import * as Store from "./store"
 import * as Plugins from "./pluginApi/plugins"
+import _ from 'expose?_!lodash'
 import "./pluginApi/freeboardPluginApi"
 import "./pluginApi/pluginApi"
 import 'expose?$!expose?jQuery!jquery'
@@ -24,12 +25,11 @@ import "file?name=[name].[ext]!./index.html"
 
 store.dispatch(Plugins.loadPlugin(TextWidget));
 store.dispatch(Plugins.loadPlugin(ChartWidget));
-
 store.dispatch(Plugins.loadPluginFromUrl("./plugins/GoogleMapsWidget.js"));
-
 
 store.dispatch(Plugins.loadPlugin(RandomDatasource));
 store.dispatch(Plugins.loadPlugin(TimeDatasource));
+store.dispatch(Plugins.loadPluginFromUrl("./plugins/DigimondoGpsDatasource.js"));
 
 store.dispatch(Plugins.initializeExternalPlugins());
 
