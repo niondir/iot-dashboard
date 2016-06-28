@@ -107,6 +107,7 @@
         var history = [];
         var auth = this.props.auth;
         var props = this.props;
+        var self = this;
 
         fetch("https://api.digimondo.io/v1/" +
             this.props.appEui +
@@ -126,11 +127,12 @@
                 value.gps = payloadToGps(value.payload);
                 //console.log("value:", value);
                 history.push(value);
+                self.history = history;
             })
 
         });
 
-        this.history = history;
+
 
         /*
          const maxValues = Number(this.props.maxValues) || 1000;
