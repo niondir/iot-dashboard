@@ -40,7 +40,7 @@
         },
         render: function () {
             var props = this.props;
-            return React.DOM.div({id: 'map-' + props._state.id, style: {height:props._state.availableHeightPx}}, "Hello World!");
+            return React.DOM.div({id: 'map-' + props._state.id, style: {height:"100%"}}, "Hello World!");
         }
     });
 

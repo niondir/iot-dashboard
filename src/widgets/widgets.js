@@ -184,7 +184,8 @@ function widget(state = {}, action) {
                 col: layout.x,
                 width: layout.w,
                 height: layout.h,
-                availableHeightPx: layout.h * ROW_HEIGHT - HEADER_HEIGHT
+                // The 10 px extra seem to be based on a bug in the grid layout ...
+                availableHeightPx: (layout.h * (ROW_HEIGHT + 10)) - HEADER_HEIGHT
             };
         default:
             return state;
