@@ -17,6 +17,27 @@
                 description: "Datasource to get the gps values from"
             },
             {
+                id: 'initLat',
+                name: 'Initial Latitude',
+                type: 'number',
+                defaultValue: 53.472435000000004,
+                description: "Latitude when the map is loaded"
+            },
+            {
+                id: 'initLng',
+                name: 'Initial Longitude',
+                type: 'number',
+                defaultValue: 9.933285,
+                description: "Longitude when the map is loaded"
+            },
+            {
+                id: 'initZoom',
+                name: 'Initial Zoom',
+                type: 'number',
+                defaultValue: 15,
+                description: "Zoom level when the map is loaded"
+            },
+            {
                 id: 'gpsProp',
                 name: 'GPS Property',
                 type: 'string',
@@ -42,10 +63,9 @@
             return {};
         },
         componentDidMount: function () {
-            /* TODO use widget id in element id */
             var map = new google.maps.Map(document.getElementById('map-' + this.props._state.id), {
-                center: {lat: 53.5483402, lng: 9.9656092},
-                zoom: 12
+                center: {lat: this.props.config.initLat, lng: this.props.config.initLng},
+                zoom: Number(this.props.config.initZoom)
             });
             this.setState({map: map})
         },

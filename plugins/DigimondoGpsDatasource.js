@@ -28,6 +28,13 @@
                 type: "string"
             },
             {
+                id: "moteeui",
+                name: "Filter Device EUI",
+                description: "Only parse data from given Device EUI",
+                defaultValue: "fcfca469",
+                type: "string"
+            },
+            {
                 id: "limitToLast",
                 name: "Limit",
                 description: "The amount of most recent Packets to be returned",
@@ -48,13 +55,6 @@
                 defaultValue: 0,
                 type: "number"
             }
-            /*,
-            {
-                id: "maxValues",
-                name: "Max Values",
-                description: "Maximum number of values stored",
-                type: "number"
-            }  */
         ]
     };
 
@@ -103,13 +103,13 @@
     }
 
     function fetchData() {
-        this.history = [];
-        var history = this.history;
+
+        var history = [];
         var auth = this.props.auth;
+        var props = this.props;
 
-
-
-        fetch("https://api.digimondo.io/v1/aaaaaaaabbccddff" +
+        fetch("https://api.digimondo.io/v1/" +
+            this.props.appEui +
             "?auth=" + auth +
             (this.props.limitToLast ? "&limitToLast=" + this.props.limitToLast : "" ) +
             (this.props.offset ? "&offset=" + this.props.offset : "" ) +
@@ -120,7 +120,9 @@
             }).then(function (data) {
 
             _.forEach(data, function (value) {
-
+                if (props.moteeui && value.moteeui !== props.moteeui) {
+                    return;
+                }
                 value.gps = payloadToGps(value.payload);
                 //console.log("value:", value);
                 history.push(value);
@@ -128,11 +130,13 @@
 
         });
 
+        this.history = history;
+
         /*
-        const maxValues = Number(this.props.maxValues) || 1000;
-        while (history.length > maxValues) {
-            this.history.shift();
-        }      */
+         const maxValues = Number(this.props.maxValues) || 1000;
+         while (history.length > maxValues) {
+         this.history.shift();
+         }      */
     }
 
     function Datasource(props, history) {
