@@ -42,7 +42,7 @@ const WidgetFrame = (props) => {
                 </div>
             </div>
 
-            <div className="ui segment">
+            <div className="ui segment" /*style={{height: widgetState.availableHeightPx}}*/>
                 {widgetFactory.getOrCreateInstance(widgetState.id)}
             </div>
         </div>)

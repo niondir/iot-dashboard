@@ -13,6 +13,7 @@ webpackConfig.plugins = [
     new ExtractTextPlugin("[name].bundle.css"),
     new webpack.ProvidePlugin({
         $: "jquery",
+        jQuery: "jquery",
         "_": "lodash",
         "React": "react"
     })

@@ -109,6 +109,7 @@ module.exports = {
 
         new webpack.ProvidePlugin({ // Makes things available in every module without an import
             $: "jquery",
+            jQuery: "jquery",
             "_": "lodash",
             "React": "react"
         })

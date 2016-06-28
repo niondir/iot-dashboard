@@ -77,7 +77,7 @@ export const widgetPropType = Prop.shape({
     }).isRequired
 });
 
-export function addWidget(widgetType, widgetProps = {}, width = 1, height = 1) {
+export function addWidget(widgetType, widgetProps = {}, width = 3, height = 3) {
     return (dispatch, getState) => {
         let widgets = getState().widgets;
 
