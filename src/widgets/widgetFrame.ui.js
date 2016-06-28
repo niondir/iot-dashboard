@@ -32,7 +32,8 @@ const WidgetFrame = (props) => {
                         {/* <!--<a className="right item drag">
                          <i className="move icon drag"></i>
                          </a>*/}
-                        <DeleteWidgetButton className="right floated item no-drag" widgetState={widgetState} icon="remove"/>
+                        <DeleteWidgetButton className="right floated item no-drag" widgetState={widgetState}
+                                            icon="remove"/>
 
 
                     </div>
@@ -42,8 +43,14 @@ const WidgetFrame = (props) => {
                 </div>
             </div>
 
-            <div className="ui segment" style={{height: widgetState.availableHeightPx, padding:"0", border: "red dashed 0px"}}>
-                { widgetFactory ? widgetFactory.getOrCreateInstance(widgetState.id) : <LoadingWidget widget={widgetState}/>}
+            <div className="ui segment"
+                 style={{height: widgetState.availableHeightPx, padding:0, border: "red dashed 0px"}}>
+                {
+                    widgetFactory ?
+                        widgetFactory.getOrCreateInstance(widgetState.id)
+                        :
+                        <LoadingWidget widget={widgetState}/>
+                }
             </div>
         </div>)
 };
@@ -58,7 +65,7 @@ WidgetFrame.propTypes = {
 export default WidgetFrame;
 
 const LoadingWidget = (props) => {
-    return <div className="ui active text loader">Loading {props.widget.type} Widget  ...</div>
+    return <div className="ui active text loader">Loading {props.widget.type} Widget ...</div>
 };
 
 LoadingWidget.propTypes = {
