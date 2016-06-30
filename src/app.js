@@ -23,15 +23,20 @@ import 'expose?$!expose?jQuery!jquery'
 import "./app.css"
 import "file?name=[name].[ext]!./index.html"
 
-store.dispatch(Plugins.loadPlugin(TextWidget));
-store.dispatch(Plugins.loadPlugin(ChartWidget));
-store.dispatch(Plugins.loadPluginFromUrl("./plugins/GoogleMapsWidget.js"));
+function loadInitialPlugins(store) {
 
-store.dispatch(Plugins.loadPlugin(RandomDatasource));
-store.dispatch(Plugins.loadPlugin(TimeDatasource));
-store.dispatch(Plugins.loadPluginFromUrl("./plugins/DigimondoGpsDatasource.js"));
+    store.dispatch(Plugins.loadPlugin(TextWidget));
+    store.dispatch(Plugins.loadPlugin(ChartWidget));
+    store.dispatch(Plugins.loadPluginFromUrl("./plugins/GoogleMapsWidget.js"));
 
-store.dispatch(Plugins.initializeExternalPlugins());
+    store.dispatch(Plugins.loadPlugin(RandomDatasource));
+    store.dispatch(Plugins.loadPlugin(TimeDatasource));
+    store.dispatch(Plugins.loadPluginFromUrl("./plugins/DigimondoGpsDatasource.js"));
+
+    store.dispatch(Plugins.initializeExternalPlugins());
+}
+
+loadInitialPlugins(store);
 
 // Would delete async loaded widgets that are not known yet.
 //cleanupState(state);
@@ -58,6 +63,7 @@ if (element) {
         console.warn("Failed to load dashboard. Asking user to wipe data and retry. The error will be printed below...");
         if (confirm("Failed to load dashboard. Reset all Data?\n\nPress cancel and check the browser console for more details.")) {
             store.dispatch(Store.clearState());
+            loadInitialPlugins(store);
             renderDashboard(element, store);
         }
         else {

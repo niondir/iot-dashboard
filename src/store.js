@@ -9,7 +9,6 @@ import * as Dashboard from './dashboard/dashboard'
 import * as Import from './dashboard/import'
 import * as Modal from './modal/modalDialog'
 import * as Persist from './persistence'
-import * as Plugins from './pluginApi/plugins'
 import {reducer as formReducer} from 'redux-form';
 import * as Action from './actionNames'
 import * as  WidgetPlugins from './widgets/widgetPlugins'
