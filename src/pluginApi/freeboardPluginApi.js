@@ -1,6 +1,6 @@
 import * as FreeboardDatasource from './freeboardDatasource'
 import * as Plugins from '../pluginApi/plugins'
-import * as PluginApi from './pluginApi'
+import * as PluginCache from './pluginCache'
 import store from '../store'
 
 function mapSettings(settings) {
@@ -47,7 +47,7 @@ const freeboardPluginApi = {
             Datasource: FreeboardDatasource.create(newInstance, TYPE_INFO)
         };
 
-        PluginApi.registerDatasourcePlugin(dsPlugin.TYPE_INFO, dsPlugin.Datasource);
+        PluginCache.registerDatasourcePlugin(dsPlugin.TYPE_INFO, dsPlugin.Datasource);
     }
 
 

@@ -7,31 +7,31 @@ var gutil = require('gulp-util');
 
 /**
  * Setup everything for a smooth development
- * TODO: watch sometimes does not work in parallel to webpack dev server
  */
-gulp.task("dev", ['webpack:server', 'watch']);
+gulp.task("dev", ['inject', 'copy', 'webpack:server']);
 
 
 /**
  * Keeps files up to date that are not covered by Webpack
  */
-gulp.task('watch', ["copy:html", "inject:tests", "copy:plugins"], () => {
-    gulp.watch("src/**/*.html", ["copy:html"]);
+gulp.task('watch', ["inject:tests", "copy:plugins"], function() {
     gulp.watch("src/**/*.test.js", ["inject:tests"]);
     gulp.watch("plugins/**/*", ["copy:plugins"]);
 });
 
 
-/** 
- * Build everything required for a successful deployment
+/**
+ * Build everything required for a successful CI build
  * */
 gulp.task("build", ['compile', 'test', 'lint']);
 
-gulp.task('compile', ['webpack', 'copy']);
 
-gulp.task('test',['mocha']);
+/**
+ * Compile all code to /dist
+ * - no tests, no overhead, just what is needed to generate a runnable application
+ * */
+gulp.task('compile', ['copy:plugins', 'webpack:client']);
 
-////////////////////
 
 //////////////////
 // Testing Tasks
@@ -40,27 +40,28 @@ gulp.task('test',['mocha']);
 var mocha = require('gulp-mocha');
 var mochaPhantomJS = require('gulp-mocha-phantomjs');
 
-gulp.task('mocha', ['mocha:phantomJs'], function () {
-});
+gulp.task('test', ['mocha']);
 
-// Deprectaed: TODO: Remove
-gulp.task('mocha:nodejs', ['webpack', 'inject:tests'], function () {
-    return gulp.src('dist/mocha.bundle.js', {read: false})
+gulp.task('mocha', ['mocha:client', 'mocha:server']);
+
+
+gulp.task('mocha:server', ['webpack:servertests'], function () {
+    return gulp.src('dist/servertests.bundle.js', {read: false})
         // gulp-mocha needs filepaths so you can't have any plugins before it
         .pipe(mocha({reporter: 'spec'})); // more details with 'spec', more fun with 'nyan'
 });
 
 
-gulp.task('mocha:phantomJs', ['webpack', 'inject:tests'], function () {
+gulp.task('mocha:client', ['inject:tests', 'webpack:tests'], function () {
     return gulp
         .src('dist/tests.html')
-        .pipe(mochaPhantomJS({reporter: 'spec', dump:'test.log'}));
+        .pipe(mochaPhantomJS({reporter: 'spec', dump: 'test.log'}));
 });
 
 //////////////////
 // Lint Tasks
 // ///////////////
-const eslint = require('gulp-eslint')
+const eslint = require('gulp-eslint');
 
 gulp.task('lint', function () {
     return gulp.src(['src/**/*.js'])
@@ -77,24 +78,42 @@ gulp.task('lint', function () {
 
 //////////////////
 // Compile Tasks
-// ///////////////
+//////////////////
 const babel = require('gulp-babel');
 const webpack = require('webpack');
 
-gulp.task('webpack', ['inject'], function (callback) {
-    var webpackConfig = require('./webpack.config.js');
+const webpackErrorHandler = function (callback, error, stats) {
+    if (error) throw new gutil.PluginError('webpack', error);
+    gutil.log('[webpack]', stats.toString());
 
-    webpack(webpackConfig, function (error, stats) {
-        if (error) throw new gutil.PluginError('webpack', error);
-        gutil.log('[webpack]', stats.toString());
+    callback();
+};
 
-        callback();
-    });
+gulp.task('webpack', ['webpack:client', 'webpack:tests', 'webpack:servertests'], function (callback) {
 });
 
-///////////////
+
+gulp.task('webpack:client', [], function (callback) {
+    var webpackConfig = require('./webpack.config.js');
+
+    webpack(webpackConfig, webpackErrorHandler.bind(this, callback));
+});
+
+gulp.task('webpack:tests', ['inject'], function (callback) {
+    var webpackConfig = require('./webpack.tests.js');
+
+    webpack(webpackConfig, webpackErrorHandler.bind(this, callback));
+});
+
+gulp.task('webpack:servertests', [], function (callback) {
+    var webpackConfig = require('./webpack.servertests.js');
+
+    webpack(webpackConfig, webpackErrorHandler.bind(this, callback));
+});
+
+/////////////////
 // Inject Tasks
-///////////////
+/////////////////
 var inject = require('gulp-inject');
 
 gulp.task('inject', ['inject:tests']);
@@ -131,28 +150,17 @@ gulp.task('clean:dist', function () {
 // Copy Tasks
 ///////////////
 
-gulp.task('copy', ['copy:html', 'copy:css', 'copy:plugins']);
-
-gulp.task('copy:html', function () {
-    gulp.src('./src/**/*.html')
-        .pipe(gulp.dest('./dist'));
-});
-
-gulp.task('copy:css', function () {
-    gulp.src('./css/**/*.css')
-        .pipe(gulp.dest('./dist'));
-});
-
-gulp.task('copy:vendor', function () {
-    gulp.src('./vendor/**/*.*')
-        .pipe(gulp.dest('./dist/vendor'));
-});
+gulp.task('copy', ['copy:plugins']);
 
 gulp.task('copy:plugins', function () {
     gulp.src('./plugins/**/*.*')
         .pipe(gulp.dest('./dist/plugins'));
 });
 
+
+//////////////////////
+// Webpack Dev-Server
+//////////////////////
 
 var WebpackDevServer = require("webpack-dev-server");
 gulp.task("webpack:server", ['copy', 'inject'], function (callback) {

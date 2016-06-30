@@ -4,8 +4,12 @@
   "description": "A generic dashboard application based on JavaScript, HTML and CSS. http://iot-dashboard.org",
   "main": "dist/app.bundle.js",
   "scripts": {
+    "start": "http-server -a localhost -p 8000 -c-1 ./dist",
     "test": "gulp test",
-    "build": "gulp build"
+    "build": "gulp build",
+    "compile": "gulp compile",
+    "dev": "gulp dev",
+    "watch": "gulp watch"
   },
   "repository": {
     "type": "git",
@@ -16,12 +20,12 @@
   "homepage": "https://bitbucket.org/Niondir/data-dash#readme",
   "dependencies": {
     "form-serialize": "^0.7.1",
-    "jquery": "^2.2.3",
-    "loadjs": "^1.0.4",
+    "jquery": "^3.0.0",
+    "loadjs": "^2.1.0",
     "lodash": "^4.11.1",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
-    "react-grid-layout": "^0.11.3",
+    "react-grid-layout": "^0.12.6",
     "react-redux": "^4.4.1",
     "redux": "^3.3.1",
     "redux-form": "^5.1.1",
@@ -48,8 +52,9 @@
     "eslint-plugin-flowtype": "^2.2.7",
     "eslint-plugin-react": "^5.1.1",
     "exports-loader": "^0.6.3",
+    "expose-loader": "^0.7.1",
     "extract-text-webpack-plugin": "^1.0.1",
-    "file-loader": "^0.8.5",
+    "file-loader": "^0.9.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-eslint": "^2.0.0",
@@ -58,6 +63,7 @@
     "gulp-mocha-phantomjs": "^0.11.0",
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.5",
+    "http-server": "^0.9.0",
     "mocha": "^2.5.3",
     "mocha-loader": "^0.7.1",
     "mocha-phantomjs": "^3.6.0",

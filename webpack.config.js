@@ -22,6 +22,7 @@ var dotJs = minify ? ".js" : ".min.js";
 var dotCss = minify ? ".css" : ".min.css";
 
 module.exports = {
+    paths: paths, // No Webpack Feature, but used by other webpack configs in this project!
     //context: __dirname + "/dist",
     cache: true,
     bail: true, // Fail fast
@@ -29,7 +30,6 @@ module.exports = {
     //devtool: 'eval-cheap-module-source-map',
     entry: {
         app: ["./src/app.js"],
-        tests: ['mocha!./src/tests.js'],
         vendor: [
             "react", "react-dom", "react-grid-layout", "react-grid-layout/css/styles.css",
             "redux", "react-redux", "redux-logger", "redux-thunk", "redux-form",
@@ -98,7 +98,7 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.optimize.CommonsChunkPlugin( {names:["vendor"],  filename:"vendor.bundle.js", chunks: ["app", "tests"]}),
+        new webpack.optimize.CommonsChunkPlugin( {names:["vendor"],  filename:"vendor.bundle.js", chunks: ["app"]}),
         new ExtractTextPlugin("[name].bundle.css"),
         new webpack.PrefetchPlugin('./src/pageLayout.js'),
         new webpack.PrefetchPlugin(paths.node_modules, 'semantic-ui-css/semantic.css'),
@@ -107,10 +107,11 @@ module.exports = {
         new webpack.PrefetchPlugin(paths.node_modules, 'react/lib/DOMChildrenOperations.js'),
         new webpack.PrefetchPlugin(paths.node_modules, 'chai/index.js'),
 
-        new webpack.ProvidePlugin({
+        new webpack.ProvidePlugin({ // Makes things available in every module without an import
             $: "jquery",
             jQuery: "jquery",
-            "_": "lodash"
+            "_": "lodash",
+            "React": "react"
         })
 
     ]

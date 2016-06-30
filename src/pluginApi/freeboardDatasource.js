@@ -35,7 +35,7 @@ export function create(newInstance, TYPE_INFO) {
 
         // TODO: Maybe no needed anymore when we take care of dependencies elsewhere
         if (TYPE_INFO.dependencies) {
-            loadjs([...TYPE_INFO.dependencies], createNewInstance);
+            loadjs([...TYPE_INFO.dependencies], {success: createNewInstance});
         }
         else {
             createNewInstance();
