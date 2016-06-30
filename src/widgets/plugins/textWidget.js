@@ -25,8 +25,8 @@ export class Widget extends Component {
         if(!data || data.length == 0) {
             return <p>No data</p>
         }
-        
-        return <p>{JSON.stringify(data)}</p>
+
+        return <div style={{padding: "10px"}}><p>{JSON.stringify(data)}</p></div>
     }
 }
 

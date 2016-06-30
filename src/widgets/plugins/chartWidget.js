@@ -180,7 +180,7 @@ export class Widget extends Component {
 
     render() {
         this._renderChart();
-        return <div className="" id={'chart-' + this.props._state.id}></div>
+        return <div style={{padding: "10px"}}><div className=""  id={'chart-' + this.props._state.id}></div> </div>
     }
 
     componentWillUnmount() {

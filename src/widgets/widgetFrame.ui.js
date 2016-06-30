@@ -13,8 +13,8 @@ import {PropTypes as Prop}  from "react";
 const WidgetFrame = (props) => {
     const widgetState = props.widget;
 
+    // Might be null or undefined!
     let widgetFactory = WidgetPlugins.pluginRegistry.getPlugin(widgetState.type);
-    console.assert(widgetFactory, "No registered widget factory with type: " + widgetState.type);
 
     return (
         <div className="ui raised segments"
@@ -26,13 +26,14 @@ const WidgetFrame = (props) => {
                 {props.isReadOnly ? null :
                     <div className="ui tiny horizontal right floated inverted list">
 
-                        <ConfigWidgetButton className="right item" widgetState={widgetState}
+                        <ConfigWidgetButton className="right item no-drag" widgetState={widgetState}
                                             visible={(props.widgetPlugin.typeInfo.settings ? true : false)}
                                             icon="configure"/>
                         {/* <!--<a className="right item drag">
                          <i className="move icon drag"></i>
                          </a>*/}
-                        <DeleteWidgetButton className="right floated item" widgetState={widgetState} icon="remove"/>
+                        <DeleteWidgetButton className="right floated item no-drag" widgetState={widgetState}
+                                            icon="remove"/>
 
 
                     </div>
@@ -42,8 +43,14 @@ const WidgetFrame = (props) => {
                 </div>
             </div>
 
-            <div className="ui segment">
-                {widgetFactory.getOrCreateInstance(widgetState.id)}
+            <div className="ui segment"
+                 style={{height: widgetState.availableHeightPx, padding:0, border: "red dashed 0px"}}>
+                {
+                    widgetFactory ?
+                        widgetFactory.getOrCreateInstance(widgetState.id)
+                        :
+                        <LoadingWidget widget={widgetState}/>
+                }
             </div>
         </div>)
 };
@@ -56,6 +63,14 @@ WidgetFrame.propTypes = {
 
 
 export default WidgetFrame;
+
+const LoadingWidget = (props) => {
+    return <div className="ui active text loader">Loading {props.widget.type} Widget ...</div>
+};
+
+LoadingWidget.propTypes = {
+    widget: Widgets.widgetPropType.isRequired
+};
 
 class WidgetButton extends React.Component {
     render() {

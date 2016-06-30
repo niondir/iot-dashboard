@@ -1,6 +1,5 @@
 /* BEGIN app.css */
 
-
 .drag {
     cursor: move;
     /*
@@ -12,7 +11,7 @@
 .menu-trigger {
     position: fixed;
     top: 0;
-    height:  11px;
+    height: 11px;
     width: 100%;
     z-index: 1000;
     /*border: red dashed 1px;*/
@@ -20,33 +19,30 @@
 
 .topnav--hidden {
     /*display: none !important;*/
-    min-height:  0 !important;
-    height:  0;
+    min-height: 0 !important;
+    height: 0;
     overflow: hidden;
     -webkit-transition: all 1s, transform 1s;
     transition: all 1s, transform 1s;
 }
 
-
 .topnav--visible {
     min-height: 0 !important;
     height: 40px;
-    overflow: hidden;
-    -webkit-transition: all 0.5s, transform 1s;
-    transition: all 0.5s, transform 1s;
+    overflow: visible;
+/* -webkit-transition: all 0.0s, transform 1s;
+    transition: all 0.0s, transform 1s;  */
 }
 
 .topnav--hidden + .ui.grid {
-    padding-top: 0!important;
+    padding-top: 0 !important;
     -webkit-transition: all 1s, transform 1s;
     transition: padding-top 1s, transform 1s;
 }
 
 .topnav--visible + .ui.grid {
-    -webkit-transition: all 0.5s, transform 1s;
-    transition: padding-top 0.5s, transform 1s;
+    /*-webkit-transition: all 0s, transform 1s;
+    transition: padding-top 0s, transform 1s; */
 }
-
-
 
 /* END app.css */

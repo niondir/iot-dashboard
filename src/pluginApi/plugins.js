@@ -24,7 +24,7 @@ function onScriptLoaded(url, dispatch) {
         const plugin = PluginCache.popLoadedPlugin();
 
         const dependencies = plugin.TYPE_INFO.dependencies;
-        if (_.isArray(dependencies)) {
+        if (_.isArray(dependencies) && dependencies.length !== 0) {
 
             var paths = dependencies.map(dependency => {
                 return URI(dependency).absoluteTo(url).toString();
