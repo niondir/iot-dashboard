@@ -3,7 +3,8 @@ import 'semantic-ui-css/semantic.css'
 import 'semantic-ui-css/semantic'
 import 'c3css'
 import * as ReactDOM from 'react-dom'
-import * as React from 'expose?React!react'
+import * as React from 'react'
+import * as Redux from 'redux'
 import {Provider} from "react-redux"
 import Layout from "./pageLayout"
 import * as Widgets from "./widgets/widgets"
@@ -16,7 +17,7 @@ import * as TimeDatasource from "./datasource/plugins/timeDatasource"
 import store from "./store"
 import * as Store from "./store"
 import * as Plugins from "./pluginApi/plugins"
-import _ from 'expose?_!lodash'
+import * as _ from 'lodash'
 import "./pluginApi/freeboardPluginApi"
 import "./pluginApi/pluginApi"
 import 'expose?$!expose?jQuery!jquery'

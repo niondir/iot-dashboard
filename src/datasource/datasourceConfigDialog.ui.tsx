@@ -88,7 +88,7 @@ class DatasourceConfigModal extends React.Component {
                 }
             }
         ];
-        
+
         let selectedSource;
         if (this.state.selectedType) {
             selectedSource = props.datasourcePlugins[this.state.selectedType];
@@ -101,7 +101,7 @@ class DatasourceConfigModal extends React.Component {
         else {
             settings = [];
         }
-        
+
         unshiftIfNotExists(settings, {
             id: 'name',
             name: 'Name',
@@ -113,7 +113,7 @@ class DatasourceConfigModal extends React.Component {
         const fields = settings.map(setting => setting.id);
         let initialValues = {};
         if (this._isEditing()) {
-            initialValues = {...this._getEditingDatasource().props}
+            initialValues = Object.assign({}, this._getEditingDatasource().props)
         }
         else {
             initialValues = settings.reduce((initialValues, setting) => {

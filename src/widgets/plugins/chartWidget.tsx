@@ -93,6 +93,8 @@ function safeParseJsonArray(string) {
 
 export class Widget extends Component {
 
+    private chart: any;
+    
     componentDidMount() {
         this._createChart(this.props);
     }

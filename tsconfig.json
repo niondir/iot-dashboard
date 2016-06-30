@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "noImplicitAny": false,
+    "removeComments": false,
+    "noEmitOnError": true,
+    "pretty": false,
+    "sourceMap": true,
+    "allowJs": true,
+    "jsx": "react",
+    "rootDir": "./src",
+    "outDir": "./lib"
+  },
+  "awesomeTypescriptLoaderOptions": {
+    /* ... */
+  }
+}

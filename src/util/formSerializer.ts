@@ -158,7 +158,7 @@ function serialize(form, options) {
 function parse_keys(string) {
     var keys = [];
     var prefix = /^([^\[\]]*)/;
-    var children = new RegExp(brackets);
+    var children = brackets;  // Was new RegExp(brackets) - in case it breaks now
     var match = prefix.exec(string);
 
     if (match[1]) {

@@ -49,14 +49,18 @@ module.exports = {
             path.resolve('./dist')
         ],
         alias: {
-            jquery: path.resolve('./node_modules/jquery/dist/jquery' + dotJs),
+            jquery: path.resolve('expose?$!expose?jQuery!./node_modules/jquery/dist/jquery' + dotJs),
             lodash: path.resolve('./node_modules/lodash'),
+
             d3: path.resolve('./vendor/d3/d3' + dotJs),
             c3: path.resolve('./vendor/c3/c3' + dotJs),
             c3css: path.resolve('./vendor/c3/c3' + dotCss),
             sandie: path.resolve('./vendor/sandie.js'),
             'react-redux': path.resolve('./node_modules/react-redux/dist/react-redux' + dotJs),
-            'redux-form': path.resolve('./node_modules/redux-form/dist/redux-form' + dotJs)
+            'redux-form': path.resolve('./node_modules/redux-form/dist/redux-form' + dotJs),
+            // Expose dependencies
+            react: path.resolve('expose?React!react'),
+            lodash: path.resolve('expose?_!lodash')
 
             // Locading chai.js will fail with webpack because the require is processed
             //'chai': path.resolve('./node_modules/chai/chai.js')
@@ -98,7 +102,7 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.optimize.CommonsChunkPlugin( {names:["vendor"],  filename:"vendor.bundle.js", chunks: ["app"]}),
+        new webpack.optimize.CommonsChunkPlugin({names: ["vendor"], filename: "vendor.bundle.js", chunks: ["app"]}),
         new ExtractTextPlugin("[name].bundle.css"),
         new webpack.PrefetchPlugin('./src/pageLayout.js'),
         new webpack.PrefetchPlugin(paths.node_modules, 'semantic-ui-css/semantic.css'),

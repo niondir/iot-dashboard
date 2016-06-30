@@ -9,9 +9,9 @@ const initialState = {
 
 function showModalSideeffect(id) {
     const $modal = $('.ui.modal.' + id);
-    
+
     if (!$modal.length) {
-       throw new Error("Can not find Modal with id", id, $modal); 
+       throw new Error("Can not find Modal with id", id, $modal);
     }
 
     $modal.modal('show');
@@ -78,19 +78,17 @@ export function closeModal() {
 export function modalDialog(state = initialState, action) {
     switch (action.type) {
         case Action.SHOW_MODAL:
-            return {
-                ...state,
+            return Object.assign({}, state, {
                 dialogId: action.dialogId,
                 data: action.data,
                 isVisible: true
-            };
+            });
         case Action.HIDE_MODAL:
-            return {
-                ...state,
+            return Object.assign({}, state, {
                 dialogId: null,
                 data: null,
                 isVisible: false
-            };
+            });
         default:
             return state;
     }

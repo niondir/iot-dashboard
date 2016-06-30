@@ -2,7 +2,7 @@ import * as DatasourcePlugins from './datasourcePlugins'
 import {genCrudReducer} from '../util/reducer'
 import * as Action from '../actionNames'
 import * as Uuid from '../util/uuid'
-import _ from 'lodash'
+import * as _ from 'lodash'
 import * as ModalIds from '../modal/modalDialogIds'
 import * as Modal from '../modal/modalDialog'
 
@@ -146,7 +146,7 @@ export function datasources(state = initialDatasources, action) {
             const toDelete = _.valuesIn(state).filter(dsState => {
                 return dsState.type == action.id
             });
-            var newState = {...state};
+            var newState = Object.assign({}, state);
             toDelete.forEach(dsState => {
                 delete newState[dsState.id];
             });
@@ -166,21 +166,18 @@ function datasource(state, action) {
                 props: action.props
             };
         case Action.SET_DATASOURCE_DATA:
-            return {
-                ...state,
+            return Object.assign({}, state, {
                 data: action.data
-            };
+            });
         case Action.APPEND_DATASOURCE_DATA:
             const stateData = state.data || [];
-            return {
-                ...state,
+            return Object.assign({}, state, {
                 data: [...stateData, ...action.data]
-            };
+            });
         case Action.UPDATE_DATASOURCE:
-            return {
-                ...state,
+            return Object.assign({}, state, {
                 props: action.props
-            };
+            });
         default:
             return state;
     }

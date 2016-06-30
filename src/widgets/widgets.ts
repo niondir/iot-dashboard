@@ -1,8 +1,9 @@
-import * as React from 'react';
-import {PropTypes as Prop}  from "react";
+import * as React from 'react'
+import {PropTypes as Prop}  from "react"
+import * as Redux from 'redux'
 import * as Uuid from '../util/uuid'
 import * as WidgetConfig from './widgetConfig'
-import _ from 'lodash'
+import * as _ from 'lodash'
 import {genCrudReducer} from '../util/reducer'
 import * as Action from '../actionNames'
 
@@ -65,7 +66,6 @@ export const initialWidgets = {
 };
 
 
-
 export const widgetPropType = Prop.shape({
     id: Prop.string.isRequired,
     col: Prop.number.isRequired,
@@ -80,11 +80,13 @@ export const widgetPropType = Prop.shape({
 export function addWidget(widgetType, widgetProps = {}, width = 3, height = 3) {
     return (dispatch, getState) => {
         let widgets = getState().widgets;
+        const widgetPositions = calcNewWidgetPosition(widgets);
 
         return dispatch({
             type: Action.ADD_WIDGET,
             id: Uuid.generate(),
-            ...calcNewWidgetPosition(widgets),
+            col: widgetPositions.col,
+            row: widgetPositions.row,
             width,
             height,
             widgetType,
@@ -111,7 +113,7 @@ export function updateWidgetProps(id, widgetProps = {}) {
     }
 }
 
-export function deleteWidget(id) {
+export function deleteWidget(id): Redux.Action {
     return {
         type: Action.DELETE_WIDGET,
         id
@@ -134,16 +136,16 @@ export function widgets(state = initialWidgets, action) {
                 .reduce((newState, {id}) => {
                         newState[id] = widget(newState[id], action);
                         return newState;
-                    }, {...state}
+                    }, Object.assign({}, state)
                 );
         case Action.LOAD_LAYOUT:
             console.assert(action.layout.widgets, "Layout is missing Widgets, id: " + action.layout.id);
             return action.layout.widgets || {};
         case Action.DELETE_WIDGET_PLUGIN: // Also delete related widgets // TODO: Or maybe not when we render an empty box instead
-            const toDelete =_.valuesIn(state).filter(widgetState => {
+            const toDelete = _.valuesIn(state).filter(widgetState => {
                 return widgetState.type == action.id
             });
-            var newState = {...state};
+            var newState = Object.assign({}, state);
             toDelete.forEach(widgetState => {
                 delete newState[widgetState.id];
             });
@@ -154,7 +156,7 @@ export function widgets(state = initialWidgets, action) {
     }
 }
 
-function widget(state = {}, action) {
+function widget(state: any = {}, action) {
     switch (action.type) {
         case Action.ADD_WIDGET:
             return {
@@ -168,25 +170,21 @@ function widget(state = {}, action) {
                 height: action.height
             };
         case Action.UPDATE_WIDGET_PROPS:
-            return {
-                ...state,
-                props: action.widgetProps
-            };
+            return Object.assign({}, state, {props: action.widgetProps});
         case Action.UPDATE_WIDGET_LAYOUT:
             let layout = layoutById(action.layout, state.id);
             if (layout == null) {
                 console.warn("No layout for widget. Skipping update of position. Id: " + state.id);
                 return state;
             }
-            return {
-                ...state,
+            return Object.assign({}, state, {
                 row: layout.y,
                 col: layout.x,
                 width: layout.w,
                 height: layout.h,
                 // The 10 px extra seem to be based on a bug in the grid layout ...
                 availableHeightPx: (layout.h * (ROW_HEIGHT + 10)) - HEADER_HEIGHT
-            };
+            });
         default:
             return state;
     }
@@ -194,13 +192,13 @@ function widget(state = {}, action) {
 
 // Local functions
 
-function layoutById(layout:Array, id) {
+function layoutById(layout: Array, id) {
     return layout.find((l) => {
         return l.i === id;
     })
 }
 
-function calcNewWidgetPosition(widgets:Object) {
+function calcNewWidgetPosition(widgets: Object) {
     let colHeights = {};
     for (let i = 0; i < 6; i++) {
         colHeights[i] = 0;

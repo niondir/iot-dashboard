@@ -1,6 +1,6 @@
 import * as Redux from 'redux';
-import thunk from 'redux-thunk'
-import createLogger from 'redux-logger';
+import  thunk from 'redux-thunk'
+import * as createLogger from 'redux-logger';
 import * as Widgets from './widgets/widgets'
 import * as WidgetConfig from './widgets/widgetConfig'
 import * as Layouts from './layouts/layouts'
@@ -61,8 +61,8 @@ store = Redux.createStore(
     Persist.loadFromLocalStorage(),
     Redux.applyMiddleware(
         thunk,
-        Persist.persistenceMiddleware,
-        logger // must be last
+        <Redux.Middleware>Persist.persistenceMiddleware,
+        <Redux.Middleware>logger // must be last
     ));
 
 DatasourcePlugins.pluginRegistry.store = store;

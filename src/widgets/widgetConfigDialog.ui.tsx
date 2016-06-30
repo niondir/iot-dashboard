@@ -98,7 +98,7 @@ class WidgetConfigModal extends React.Component {
             return initialValues;
         }, {});
         // Overwrite with current widget props
-        initialValues = {...initialValues, ...props.widgetProps};
+        initialValues = Object.assign({}, initialValues, props.widgetProps);
 
         return <ModalDialog id={DIALOG_ID}
                             title={"Configure "+ props.widgetType +" Widget"}

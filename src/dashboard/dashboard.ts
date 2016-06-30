@@ -4,7 +4,6 @@ export const initialState = {
     isReadOnly: false
 };
 
-  
 
 export function setReadOnly(isReadOnly) {
     return function (dispatch) {
@@ -17,17 +16,16 @@ function setReadOnlyAction(isReadOnly) {
         type: Action.SET_READONLY,
         isReadOnly
     };
-    
+
 }
 
 
 export function dashboard(state = initialState, action) {
     switch (action.type) {
         case Action.SET_READONLY:
-            return {
-                ...state,
+            return Object.assign({}, state, {
                 isReadOnly: action.isReadOnly
-            };
+            });
         default:
             return state;
     }
