@@ -1,4 +1,5 @@
-**Master:**  [![Build Status](https://travis-ci.org/Niondir/iot-dashboard.svg?branch=master)](https://travis-ci.org/Niondir/iot-dashboard) **Dev:** [![Build Status](https://travis-ci.org/Niondir/iot-dashboard.svg?branch=dev)](https://travis-ci.org/Niondir/iot-dashboard)  
+**Master:**  [![Build Status](https://travis-ci.org/Niondir/iot-dashboard.svg?branch=master)](https://travis-ci.org/Niondir/iot-dashboard) [![Dependencies](https://david-dm.org/niondir/iot-dashboard.svg)](https://david-dm.org/niondir/iot-dashboard)  [![Dev-Dependencies](https://david-dm.org/niondir/iot-dashboard/dev-status.svg)](https://david-dm.org/niondir/iot-dashboard#info=devDependencies)  
+**Dev:** [![Build Status](https://travis-ci.org/Niondir/iot-dashboard.svg?branch=dev)](https://travis-ci.org/Niondir/iot-dashboard)  
 
 # Individual Open Technology - Dashboard
 Free Dashboard for your Data
@@ -20,20 +21,22 @@ The **latest development snapshot** is on the `dev` branch.
 
 ## Demo ##
 
- [Live Demo Stable](http://demo.iot-dashboard.org/) of the `master` branch.  
- [Live Demo Dev](http://demo.iot-dashboard.org/branch/dev/) of the `dev` branch.
+* [Live Demo Stable](http://demo.iot-dashboard.org/) of the `master` branch.  
+* [Live Demo Dev](http://demo.iot-dashboard.org/branch/dev/) of the `dev` branch.
 
 ## Motivation ##
 Why just another Dashboard?
 
 I was looking for a Dashboard with the following properties:
 
-- OpenSource with code that I can understand and extend for full customization
-- Running locally/offline without the need of any server, keeping the server optional until I really need one
-- Simple API to write custom widgets and datasources to have a good base for community driven development and extensions
+- OpenSource, royalty free, with code that I can understand and extend for full customization
+- Easy to setup, maintain and extend - even for unusual datasources and widgets
 - A Reasonable set of default widgets, to be used out of the box
-- Easy to setup and maintain, even for unusual datasources
-- The possibility to be part of a community that extends the Dashboard for their own needs
+- Simple API and development setup to write custom widgets and datasources, as a solid base for community driven development and extensions
+- Running locally/offline without the need of any server, keeping the server optional until I really need one
+- Having a community that extends the Dashboard for their own needs
+
+If you find something that comes close to the above requirements, please let me know!
 
 ## Setup ##
 
@@ -85,54 +88,5 @@ The code will most likely be available under [MPL](https://www.mozilla.org/en-US
 
 ## Documentation ##
 
-### Basic Concepts ###
-A basic overview of the concepts and ideas behin the Dashboard.
-
-Not all Concepts are implemented yet. Not implemented concepts might change in future.
-
-**Dashboard:** A `Dashboard` defines `Datasources`, `Widgets` and `Layouts` and can be imported and exported  
-**Layout:** A `Layout` belongs to one `Dashboard` and defines how `Widgets` are arranged  
-**Widget:** A `Widget` can be arranged inside the `Layout` and renders content based on the `WidgetType`, `WidgetProps` and `Datasources`.
-There are several predefined, more and less generic `Widgets` that can be configured and saved as `Widget Blueprints`.  
-**Widget Blueprints:** A `Dashboard` can define `Widget Blueprints` which provides an easy way to compose complex layouts with less widget configuration effort.  
-**Plugins:** Plugins provide the implementations for `Datasources` and `Widgets`  
-**Datasource:** A `Datasource` provides data for `Widgets` on request.  
-**Datasource Type:** A `Datasource Type` defines how a `Datasource` can fetch data, 
-e.g. a simple REST datasource, or a more sophisticated for specific services like dweet.io, google docs, etc.
-
-#### Datasources ####
-
-* **DatasourcePlugin:** Can be written by anybody to provide logic that fetches data from anywhere
-* **DatasourceInstance:** Can be created by the user based on any `DatasourcePlugin`. Executes the actual data fetching.
-* **DatasourceState:** Contains properties defined by the user when a `DatasourceInstance` is created  
- and is updated regularly with data from the `DatasourceInstance`
-* **DatasourceWorker:** Managing the actual updating of the `DatasourceState` based on the `DatasourceInstance` and the current `DatasourceState`
-
-The following needs way more documentation in future, just a quick start:
-
-A `DatasourcePlugin` can provide 2 functions:
-* `fetchNewValues(): [{value}]`
-* `fetchPastValues(since): [{value}]`
-  * Implementation is optional
-* `Value` can be any kind of JSON object. 
-    * Widgets can verify if they are able to display given values
-    
-And a `TYPE_INFO` constant.
-
-## Coding guidelines ##
-
-### Folder Structure ###
-
-* Folders should reflect the business domain not Framework structures 
-* `root` - Globally used stuff & new stuff that can not be sorted in yet
-* `ui` - generic, reusable UI components
-* `util` - generic, reusable functions that helps in certain situations
-* *Everything else* - should match to the Basic Concepts (see above)
-
-### File Naming ###
-
-* `.js` - Business Logic: Actions & Reducers
-* `.ui.js` - React components
-* `.test.js` - Tests, automatically loaded by gulp inject
-
+For documentation see our [Github Wiki](https://github.com/Niondir/iot-dashboard/wiki)
 

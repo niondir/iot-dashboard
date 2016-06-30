@@ -1,8 +1,8 @@
 {
-  "name": "data-dash",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "iot-dashboard",
+  "version": "0.0.1",
+  "description": "A generic dashboard application based on JavaScript, HTML and CSS. http://iot-dashboard.org",
+  "main": "dist/app.bundle.js",
   "scripts": {
     "start": "http-server -a localhost -p 8000 -c-1 ./dist",
     "test": "gulp test",
@@ -16,7 +16,7 @@
     "url": "git+ssh://git@bitbucket.org/Niondir/data-dash.git"
   },
   "author": "Tobias Kaupat",
-  "license": "ISC",
+  "license": "none",
   "homepage": "https://bitbucket.org/Niondir/data-dash#readme",
   "dependencies": {
     "form-serialize": "^0.7.1",
