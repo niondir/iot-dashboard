@@ -1,12 +1,9 @@
-
 import 'semantic-ui-css/semantic.css'
 import 'semantic-ui-css/semantic'
 import 'c3css'
-import * as ReactDOM from 'react-dom'
+
 import * as React from 'react'
-import * as Redux from 'redux'
-import {Provider} from "react-redux"
-import Layout from "./pageLayout"
+import * as Renderer from "./renderer"
 import * as Widgets from "./widgets/widgets"
 import * as WidgetPlugins from "./widgets/widgetPlugins"
 import * as TextWidget from "./widgets/plugins/textWidget"
@@ -30,7 +27,7 @@ interface IWidgetState {
 }
 
 interface IState {
-   widgets: IWidgetState
+    widgets: IWidgetState
 }
 
 
@@ -54,7 +51,7 @@ loadInitialPlugins(store);
 
 //noinspection Eslint
 function cleanupState(state: IState) {
-    _.valuesIn(state.widgets).forEach((widgetState:IWidgetState) => {
+    _.valuesIn(state.widgets).forEach((widgetState: IWidgetState) => {
         let widgetPlugin = WidgetPlugins.pluginRegistry.getPlugin(widgetState.type);
         if (!widgetPlugin) {
             console.error("No WidgetPlugin for type '" + widgetState.type + "'! Deleting the widget.");
@@ -88,11 +85,6 @@ else {
 
 
 function renderDashboard(element, store) {
-    ReactDOM.render(
-        <Provider store={store}>
-            <Layout/>
-        </Provider>,
-        element);
-
+    Renderer.render(element, store);
     DatasourceWorker.start();
 }

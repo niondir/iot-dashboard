@@ -24,12 +24,12 @@ var dotCss = minify ? ".css" : ".min.css";
 module.exports = {
     paths: paths, // No Webpack Feature, but used by other webpack configs in this project!
     //context: __dirname + "/dist",
-    cache: true,
+    cache: false,
     bail: true, // Fail fast
     devtool: 'source-map',
     //devtool: 'eval-cheap-module-source-map',
     entry: {
-        app: ["./src/app.tsx"],
+        app: ["./src/app.ts"],
         vendor: [
             "react", "react-dom", "react-grid-layout", "react-grid-layout/css/styles.css",
             "redux", "react-redux", "redux-logger", "redux-thunk", "redux-form",
@@ -56,9 +56,9 @@ module.exports = {
             'react-redux': path.resolve('./node_modules/react-redux/dist/react-redux' + dotJs),
             'redux-form': path.resolve('./node_modules/redux-form/dist/redux-form' + dotJs),
             // Expose dependencies
-            jquery: path.resolve('./node_modules/jquery/dist/jquery' + dotJs),
-            react: 'react',
-            lodash: 'lodash'
+            jquery: path.resolve('./node_modules/jquery/dist/jquery' + dotJs)
+            //react: 'react',
+            //lodash: 'lodash'
 
             // Locading chai.js will fail with webpack because the require is processed
             //'chai': path.resolve('./node_modules/chai/chai.js')
@@ -66,20 +66,15 @@ module.exports = {
     },
     // resolveLoader: {root: path.join(__dirname, "node_modules")},
     module: {
-        loaders: [ /*
+        loaders: [
             {
              test: /\.js/,
              loader: 'babel?cacheDirectory',
              include: paths.src
              },
             {
-                test: /\.(ts)$/,
-                loader: 'awesome-typescript-loader',
-                include: paths.src
-            },  */
-            {
-                test: /\.ts/,
-                loader: 'awesome-typescript-loader?compiler=jsx-typescript',
+                test: /\.(ts)/,
+                loader: 'awesome-typescript-loader?tsconfig=./src/tsconfig.json',  // ?compiler=jsx-typescript
                 include: paths.src
             },
             {
