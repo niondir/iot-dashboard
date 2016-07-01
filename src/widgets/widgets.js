@@ -113,7 +113,7 @@ export function updateWidgetProps(id, widgetProps = {}) {
     }
 }
 
-export function deleteWidget(id): Redux.Action {
+export function deleteWidget(id) {
     return {
         type: Action.DELETE_WIDGET,
         id
@@ -156,7 +156,7 @@ export function widgets(state = initialWidgets, action) {
     }
 }
 
-function widget(state: any = {}, action) {
+function widget(state = {}, action) {
     switch (action.type) {
         case Action.ADD_WIDGET:
             return {
@@ -192,13 +192,13 @@ function widget(state: any = {}, action) {
 
 // Local functions
 
-function layoutById(layout: Array, id) {
+function layoutById(layout, id) {
     return layout.find((l) => {
         return l.i === id;
     })
 }
 
-function calcNewWidgetPosition(widgets: Object) {
+function calcNewWidgetPosition(widgets) {
     let colHeights = {};
     for (let i = 0; i < 6; i++) {
         colHeights[i] = 0;

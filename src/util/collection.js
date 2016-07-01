@@ -1,5 +1,5 @@
 
-export function chunk(array:Array<any>, chunkSize:number, handle:Function) : Array<any> {
+export function chunk(array, chunkSize, handle) {
     let i, j, chunk;
     let chunkNum = 0;
     let chunks = [];

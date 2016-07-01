@@ -12,7 +12,7 @@ import {PropTypes as Prop}  from "react";
 const DIALOG_ID = ModalIds.DATASOURCE_CONFIG;
 const FORM_ID = "datasource-settings-form";
 
-export function unshiftIfNotExists(array:Array, element, isEqual = (a, b) => a.id == b.id) {
+export function unshiftIfNotExists(array, element, isEqual = (a, b) => a.id == b.id) {
     if (array.find((e) => isEqual(e, element)) == undefined) {
         array.unshift(element);
     }

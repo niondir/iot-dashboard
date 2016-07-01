@@ -24,6 +24,16 @@ import 'expose?$!expose?jQuery!jquery'
 import "./app.css"
 import "file?name=[name].[ext]!./index.html"
 
+interface IWidgetState {
+    id: string
+    type: string
+}
+
+interface IState {
+   widgets: IWidgetState
+}
+
+
 function loadInitialPlugins(store) {
 
     store.dispatch(Plugins.loadPlugin(TextWidget));
@@ -43,8 +53,8 @@ loadInitialPlugins(store);
 //cleanupState(state);
 
 //noinspection Eslint
-function cleanupState(state) {
-    _.valuesIn(state.widgets).forEach((widgetState) => {
+function cleanupState(state: IState) {
+    _.valuesIn(state.widgets).forEach((widgetState:IWidgetState) => {
         let widgetPlugin = WidgetPlugins.pluginRegistry.getPlugin(widgetState.type);
         if (!widgetPlugin) {
             console.error("No WidgetPlugin for type '" + widgetState.type + "'! Deleting the widget.");

@@ -32,7 +32,7 @@ export default (ComposedComponent) => {
             window.removeEventListener('resize', this.onWindowResize);
         }
 
-        onWindowResize(_event:Event, cb:Function) {
+        onWindowResize(_event, cb) {
             const node = ReactDOM.findDOMNode(this);
 
 

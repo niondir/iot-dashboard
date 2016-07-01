@@ -61,8 +61,8 @@ store = Redux.createStore(
     Persist.loadFromLocalStorage(),
     Redux.applyMiddleware(
         thunk,
-        <Redux.Middleware>Persist.persistenceMiddleware,
-        <Redux.Middleware>logger // must be last
+        Persist.persistenceMiddleware,
+        logger // must be last
     ));
 
 DatasourcePlugins.pluginRegistry.store = store;

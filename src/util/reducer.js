@@ -13,7 +13,7 @@ import * as _ from 'lodash'
  * The name of the property to fetch the id from the action. Default: 'id'
  * @returns {crudReducer}
  */
-export function genCrudReducer(actionNames: Array<String>, elementReducer: Function, idProperty = 'id') {
+export function genCrudReducer(actionNames, elementReducer, idProperty = 'id') {
     console.assert(actionNames.length === 2, "ActionNames must contain 2 names for create, delete in that order");
     let [CREATE_ACTION, DELETE_ACTION] = actionNames;
     console.assert(_.includes(CREATE_ACTION, "ADD") || _.includes(CREATE_ACTION, "CREATE"),

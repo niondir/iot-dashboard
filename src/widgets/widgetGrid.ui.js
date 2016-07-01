@@ -25,7 +25,7 @@ class WidgetGrid extends Component {
 
     render() {
         const props = this.props;
-        let widgetStates:Array<object> = this.props.widgets;
+        let widgetStates = this.props.widgets;
 
         // TODO: Remove unknown widget from state
         let widgets = widgetStates.map((widgetState) => {
