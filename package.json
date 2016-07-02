@@ -10,7 +10,8 @@
     "build": "gulp build",
     "compile": "gulp compile",
     "dev": "gulp dev",
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "watch:ts": "tsc --watch"
   },
   "repository": {
     "type": "git",

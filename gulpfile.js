@@ -85,6 +85,13 @@ const babel = require('gulp-babel');
 const webpack = require('webpack');
 const ts = require('gulp-typescript');
 
+/**
+ * TODO: For webpack compilation play around with
+ * declaration: true,
+ * noExternalResolve: true
+
+ */
+
 var tsProject = ts.createProject('./tsconfig.json');
 
 gulp.task('compile:ts', ['copy:css', 'copy:html'], function () {
