@@ -4,11 +4,11 @@
     "main": "src/typings"
   },
   "dependencies": {
-    "lodash": "registry:npm/lodash#4.0.0+20160416211519",
     "react-redux": "registry:npm/react-redux#4.4.0+20160614222153",
     "redux-form": "registry:npm/redux-form#4.0.3+20160310030142"
   },
   "globalDependencies": {
+    "lodash": "registry:dt/lodash#3.10.0+20160619033623",
     "react": "registry:dt/react#0.14.0+20160630100702",
     "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
     "redux": "registry:dt/redux#3.3.1+20160326112656",

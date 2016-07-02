@@ -14,9 +14,11 @@ gulp.task("dev", ['inject', 'copy', 'webpack:server']);
 /**
  * Keeps files up to date that are not covered by Webpack
  */
-gulp.task('watch', ["inject:tests", "copy:plugins"], function() {
+gulp.task('watch', ["inject:tests", "copy"], function () {
     gulp.watch("src/**/*.test.js", ["inject:tests"]);
     gulp.watch("plugins/**/*", ["copy:plugins"]);
+    gulp.watch("src/**/*.html", ["copy:html"]);
+    gulp.watch("src/**/*.css", ["copy:css"]);
 });
 
 
@@ -30,7 +32,7 @@ gulp.task("build", ['compile', 'test', 'lint']);
  * Compile all code to /dist
  * - no tests, no overhead, just what is needed to generate a runnable application
  * */
-gulp.task('compile', ['copy:plugins', 'webpack:client']);
+gulp.task('compile', ['copy:plugins', 'compile:ts', 'webpack:client']);
 
 
 //////////////////
@@ -81,6 +83,16 @@ gulp.task('lint', function () {
 //////////////////
 const babel = require('gulp-babel');
 const webpack = require('webpack');
+const ts = require('gulp-typescript');
+
+var tsProject = ts.createProject('./tsconfig.json');
+
+gulp.task('compile:ts', ['copy:css', 'copy:html'], function () {
+    var tsResult = tsProject.src()
+        .pipe(ts(tsProject));
+
+    return tsResult.js.pipe(gulp.dest('./lib'));
+});
 
 const webpackErrorHandler = function (callback, error, stats) {
     if (error) throw new gutil.PluginError('webpack', error);
@@ -120,7 +132,7 @@ gulp.task('inject', ['inject:tests']);
 
 gulp.task('inject:tests', function () {
     var target = gulp.src('./src/tests.js');
-    // It's not necessary to read the files (will speed up things), we're only after their paths: 
+    // It's not necessary to read the files (will speed up things), we're only after their paths:
     var sources = gulp.src(['./src/**/*.test.js'], {read: false});
 
     return target.pipe(inject(sources, {
@@ -139,18 +151,23 @@ gulp.task('inject:tests', function () {
 ///////////////
 var del = require('del');
 
-gulp.task('clean', ['clean:dist']);
+gulp.task('clean', ['clean:dist', 'clean:lib']);
 
 gulp.task('clean:dist', function () {
     return del([
         'dist/**/*'
     ]);
 });
+gulp.task('clean:lib', function () {
+    return del([
+        'lib/**/*'
+    ]);
+});
 ///////////////
 // Copy Tasks
 ///////////////
 
-gulp.task('copy', ['copy:plugins']);
+gulp.task('copy', ['copy:plugins', 'copy:html', 'copy:css']);
 
 gulp.task('copy:plugins', function () {
     gulp.src('./plugins/**/*.*')
@@ -158,12 +175,22 @@ gulp.task('copy:plugins', function () {
 });
 
 
+gulp.task('copy:css', function () {
+    gulp.src('./src/**/*.css')
+        .pipe(gulp.dest('./lib'));
+});
+
+gulp.task('copy:html', function () {
+    gulp.src('./src/**/*.html')
+        .pipe(gulp.dest('./lib'));
+});
+
 //////////////////////
 // Webpack Dev-Server
 //////////////////////
 
 var WebpackDevServer = require("webpack-dev-server");
-gulp.task("webpack:server", ['copy', 'inject'], function (callback) {
+gulp.task("webpack:server", ['copy', 'inject', 'compile:ts'], function (callback) {
     // Start a webpack-dev-server
     var webpackConfig = require('./webpack.config.js');
     webpackConfig.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");

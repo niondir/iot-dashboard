@@ -3,18 +3,19 @@ import 'semantic-ui-css/semantic'
 import 'c3css'
 
 import * as React from 'react'
-import * as Renderer from "./renderer"
-import * as Widgets from "./widgets/widgets"
-import * as WidgetPlugins from "./widgets/widgetPlugins"
-import * as TextWidget from "./widgets/plugins/textWidget"
-import * as ChartWidget from "./widgets/plugins/chartWidget"
-import * as DatasourceWorker from "./datasource/datasourceWorker"
-import * as RandomDatasource from "./datasource/plugins/randomDatasource"
-import * as TimeDatasource from "./datasource/plugins/timeDatasource"
-import store from "./store"
-import * as Store from "./store"
-import * as Plugins from "./pluginApi/plugins"
 import * as _ from 'lodash'
+import * as Renderer from "./renderer.js"
+import * as Widgets from "./widgets/widgets.js"
+import * as WidgetPlugins from "./widgets/widgetPlugins.js"
+import * as TextWidget from "./widgets/plugins/textWidget.js"
+import * as ChartWidget from "./widgets/plugins/chartWidget.js"
+import * as DatasourceWorker from "./datasource/datasourceWorker.js"
+import * as RandomDatasource from "./datasource/plugins/randomDatasource.js"
+import * as TimeDatasource from "./datasource/plugins/timeDatasource.js"
+import store from "./store.js"
+import * as Store from "./store.js"
+import * as Plugins from "./pluginApi/plugins.js"
+
 import "./pluginApi/freeboardPluginApi"
 import "./pluginApi/pluginApi"
 import 'expose?$!expose?jQuery!jquery'

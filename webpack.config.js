@@ -6,7 +6,10 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 // https://webpack.github.io/docs/build-performance.html
 
 var paths = {
-    src: path.join(__dirname, "src"),
+    src: [
+        path.join(__dirname, "src"),
+        path.join(__dirname, "lib")
+    ],
     vendor: path.join(__dirname, "vendor"),
     node_modules: path.join(__dirname, "node_modules"),
     css: [
@@ -29,7 +32,7 @@ module.exports = {
     devtool: 'source-map',
     //devtool: 'eval-cheap-module-source-map',
     entry: {
-        app: ["./src/app.ts"],
+        app: ["./lib/app.js"],
         vendor: [
             "react", "react-dom", "react-grid-layout", "react-grid-layout/css/styles.css",
             "redux", "react-redux", "redux-logger", "redux-thunk", "redux-form",
@@ -68,15 +71,22 @@ module.exports = {
     module: {
         loaders: [
             {
-             test: /\.js/,
-             loader: 'babel?cacheDirectory',
-             include: paths.src
-             },
-            {
-                test: /\.(ts)/,
-                loader: 'awesome-typescript-loader?tsconfig=./src/tsconfig.json',  // ?compiler=jsx-typescript
+                test: /\.(js|jsx)$/,
+                loader: 'babel?cacheDirectory',
                 include: paths.src
             },
+            { // Does no work... TSC is missing typings - best so far: webpack-typescript
+                test: /\.(ts|tsx)$/,
+                //loader: 'typescript-loader',
+                // loader: 'awesome-typescript-loader',
+                // loader: 'ts-loader',
+                loader: 'webpack-typescript',
+                include: paths.src
+            },
+            /*{
+             test: /\.tsx?$/,
+             loader: 'webpack-typescript'
+             },*/
             {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract("style-loader", "css-loader")
@@ -107,7 +117,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.CommonsChunkPlugin({names: ["vendor"], filename: "vendor.bundle.js", chunks: ["app"]}),
         new ExtractTextPlugin("[name].bundle.css"),
-       // new webpack.PrefetchPlugin('./src/pageLayout.js'),
+        // new webpack.PrefetchPlugin('./src/pageLayout.js'),
         new webpack.PrefetchPlugin(paths.node_modules, 'semantic-ui-css/semantic.css'),
         new webpack.PrefetchPlugin(paths.node_modules, 'react/lib/ReactDOM.js'),
         new webpack.PrefetchPlugin(paths.node_modules, 'react-grid-layout/build/ReactGridLayout.js'),
