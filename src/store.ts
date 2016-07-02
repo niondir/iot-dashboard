@@ -1,20 +1,21 @@
 import * as Redux from 'redux';
 import thunk from 'redux-thunk'
-import createLogger from 'redux-logger';
+import * as createLogger from 'redux-logger';
 import * as Widgets from './widgets/widgets'
-import * as WidgetConfig from './widgets/widgetConfig'
-import * as Layouts from './layouts/layouts'
-import * as Datasource from './datasource/datasource'
-import * as Dashboard from './dashboard/dashboard'
-import * as Import from './dashboard/import'
-import * as Modal from './modal/modalDialog'
-import * as Persist from './persistence'
+import * as WidgetConfig from './widgets/widgetConfig.js'
+import * as Layouts from './layouts/layouts.js'
+import * as Datasource from './datasource/datasource.js'
+import * as Dashboard from './dashboard/dashboard.js'
+import * as Import from './dashboard/import.js'
+import * as Modal from './modal/modalDialog.js'
+import * as Persist from './persistence.js'
 import {reducer as formReducer} from 'redux-form';
-import * as Action from './actionNames'
-import * as  WidgetPlugins from './widgets/widgetPlugins'
-import * as DatasourcePlugins from './datasource/datasourcePlugins'
+import * as Action from './actionNames.js'
+import * as  WidgetPlugins from './widgets/widgetPlugins.js'
+import * as DatasourcePlugins from './datasource/datasourcePlugins.js'
+import * as AppState from './appState.ts'
 
-let store;
+let store : Redux.Store;
 
 
 let appReducer = Redux.combineReducers({
@@ -30,7 +31,7 @@ let appReducer = Redux.combineReducers({
     dashboard: Dashboard.dashboard
 });
 
-const reducer = (state, action) => {
+const reducer = (state:AppState.State, action:AppState.Action) => {
     if (action.type === Action.CLEAR_STATE) {
         state = undefined
     }

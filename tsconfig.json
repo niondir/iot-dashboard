@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es6",
     "moduleResolution": "node",
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "removeComments": false,
     "noEmitOnError": true,
     "pretty": false,
@@ -14,7 +14,8 @@
   },
   "files": [
     "./src/app.ts",
-    "./src/typings/index.d.ts"
+    "./src/typings/index.d.ts",
+    "./src/typings/customs.d.ts"
   ],
   "exclude": [
     "node_modules",

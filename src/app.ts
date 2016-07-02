@@ -5,15 +5,15 @@ import 'c3css'
 import * as React from 'react'
 import * as _ from 'lodash'
 import * as Renderer from "./renderer.js"
-import * as Widgets from "./widgets/widgets.js"
+import * as Widgets from "./widgets/widgets"
 import * as WidgetPlugins from "./widgets/widgetPlugins.js"
 import * as TextWidget from "./widgets/plugins/textWidget.js"
 import * as ChartWidget from "./widgets/plugins/chartWidget.js"
 import * as DatasourceWorker from "./datasource/datasourceWorker.js"
 import * as RandomDatasource from "./datasource/plugins/randomDatasource.js"
 import * as TimeDatasource from "./datasource/plugins/timeDatasource.js"
-import store from "./store.js"
-import * as Store from "./store.js"
+import store from "./store"
+import * as Store from "./store"
 import * as Plugins from "./pluginApi/plugins.js"
 
 import "./pluginApi/freeboardPluginApi"
@@ -32,7 +32,7 @@ interface IState {
 }
 
 
-function loadInitialPlugins(store) {
+function loadInitialPlugins(store:Redux.Store) {
 
     store.dispatch(Plugins.loadPlugin(TextWidget));
     store.dispatch(Plugins.loadPlugin(ChartWidget));
@@ -85,7 +85,7 @@ else {
 }
 
 
-function renderDashboard(element, store) {
+function renderDashboard(element:Element, store:Redux.Store) {
     Renderer.render(element, store);
     DatasourceWorker.start();
 }
