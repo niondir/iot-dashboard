@@ -1,6 +1,6 @@
 import * as Redux from 'redux';
 import thunk from 'redux-thunk'
-import * as createLogger from 'redux-logger';
+import createLogger from 'redux-logger';
 import * as Widgets from './widgets/widgets'
 import * as WidgetConfig from './widgets/widgetConfig.js'
 import * as Layouts from './layouts/layouts.js'
@@ -47,7 +47,6 @@ const logger = createLogger({
     timestamp: true, // Print the timestamp with each action?
     logErrors: true, // Should the logger catch, log, and re-throw errors?
     predicate: (getState, action) => {
-        let foo = "";
         if (action.type.startsWith("redux-form")) {
             return false;
         }
