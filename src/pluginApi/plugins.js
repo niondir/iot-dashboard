@@ -7,7 +7,6 @@ import * as PluginCache from "./pluginCache";
 import * as _ from "lodash";
 import URI from "urijs";
 
-
 export function loadPlugin(plugin) {
     return addPlugin(plugin);
 }

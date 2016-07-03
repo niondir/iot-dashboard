@@ -1,5 +1,3 @@
-//-/ <reference path="typings/index.d.ts" />
-
 import 'semantic-ui-css/semantic.css'
 import 'semantic-ui-css/semantic'
 import 'c3css'
@@ -18,9 +16,11 @@ import store from './store'
 import * as Store from './store'
 import * as Plugins from './pluginApi/plugins.js'
 
+import 'expose?$!expose?jQuery!jquery'
+import 'expose?React!react'
+import 'expose?_!lodash'
 import './pluginApi/freeboardPluginApi'
 import './pluginApi/pluginApi'
-import 'expose?$!expose?jQuery!jquery'
 import './app.css'
 import 'file?name=[name].[ext]!./index.html'
 

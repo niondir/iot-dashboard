@@ -27,7 +27,7 @@ var dotCss = minify ? ".css" : ".min.css";
 module.exports = {
     paths: paths, // No Webpack Feature, but used by other webpack configs in this project!
     //context: __dirname + "/dist",
-    cache: false,
+    cache: true,
     bail: true, // Fail fast
     devtool: 'source-map',
     //devtool: 'eval-cheap-module-source-map',
@@ -59,7 +59,7 @@ module.exports = {
             'react-redux': path.resolve('./node_modules/react-redux/dist/react-redux' + dotJs),
             'redux-form': path.resolve('./node_modules/redux-form/dist/redux-form' + dotJs),
             // Expose dependencies
-            jquery: path.resolve('./node_modules/jquery/dist/jquery' + dotJs)
+            jquery: path.resolve('./node_modules/jquery/dist/jquery' + dotJs),
             //react: 'react',
             //lodash: 'lodash'
 
@@ -70,37 +70,23 @@ module.exports = {
     // resolveLoader: {root: path.join(__dirname, "node_modules")},
     module: {
         loaders: [
-            /*{
-             test: /\.(js|jsx)$/,
-             loader: 'babel?cacheDirectory',
-             include: paths.src
-             },  */
             {
-                test: /\.(js|ts|tsx)$/,
+                test: /\.(js|jsx)$/,
+                loader: 'babel?cacheDirectory',
+                include: paths.src
+            },
+            {
+                test: /\.(ts|tsx)$/,
                 //loader: 'typescript-loader',         // -- FAILS!
                 //loader: 'awesome-typescript-loader', // -- FAILS!
                 loader: 'ts-loader',
                 //loader: 'webpack-typescript',        // -- Needs /// <reference
                 include: paths.src
             },
-            /*{
-             test: /\.tsx?$/,
-             loader: 'webpack-typescript'
-             },*/
             {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract("style-loader", "css-loader")
             },
-            /*{
-             test: /\.css$/,
-             loader: "style-loader!css-loader",
-             include: paths.css
-             },*/
-            /*{
-             test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-             loader: "url-loader?limit=1&mimetype=application/font-woff",
-             include: paths.css
-             },*/
             {
                 test: /\.(ttf|eot|svg|woff(2)?)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 loader: "file-loader?name=fonts/[name].[sha256:hash:base58:10].[ext]",
@@ -117,12 +103,10 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.CommonsChunkPlugin({names: ["vendor"], filename: "vendor.bundle.js", chunks: ["app"]}),
         new ExtractTextPlugin("[name].bundle.css"),
-        // new webpack.PrefetchPlugin('./src/pageLayout.js'),
         new webpack.PrefetchPlugin(paths.node_modules, 'semantic-ui-css/semantic.css'),
         new webpack.PrefetchPlugin(paths.node_modules, 'react/lib/ReactDOM.js'),
         new webpack.PrefetchPlugin(paths.node_modules, 'react-grid-layout/build/ReactGridLayout.js'),
         new webpack.PrefetchPlugin(paths.node_modules, 'react/lib/DOMChildrenOperations.js'),
-        new webpack.PrefetchPlugin(paths.node_modules, 'chai/index.js'),
 
         new webpack.ProvidePlugin({ // Makes things available in every module without an import
             $: "jquery",

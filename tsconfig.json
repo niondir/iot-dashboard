@@ -8,6 +8,7 @@
     "noEmitOnError": true,
     "pretty": false,
     "sourceMap": true,
+    "declaration": false,
     "allowJs": true,
     "jsx": "react",
     "outDir": "./lib",

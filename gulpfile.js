@@ -17,8 +17,6 @@ gulp.task("dev", ['inject', 'copy', 'webpack:server']);
 gulp.task('watch', ["inject:tests", "copy"], function () {
     gulp.watch("src/**/*.test.js", ["inject:tests"]);
     gulp.watch("plugins/**/*", ["copy:plugins"]);
-    gulp.watch("src/**/*.html", ["copy:html"]);
-    gulp.watch("src/**/*.css", ["copy:css"]);
 });
 
 
@@ -89,12 +87,15 @@ const ts = require('gulp-typescript');
  * TODO: For webpack compilation play around with
  * declaration: true,
  * noExternalResolve: true
-
  */
 
 var tsProject = ts.createProject('./tsconfig.json');
 
-gulp.task('compile:ts', ['copy:css', 'copy:html'], function () {
+/**
+ * It's not yet intended to compile the TS code without webpack.
+ * But if someone wants to use parts of the code as library this might get handy.
+ */
+gulp.task('compile:ts', [], function () {
     var tsResult = tsProject.src()
         .pipe(ts(tsProject));
 
@@ -174,22 +175,11 @@ gulp.task('clean:lib', function () {
 // Copy Tasks
 ///////////////
 
-gulp.task('copy', ['copy:plugins', 'copy:html', 'copy:css']);
+gulp.task('copy', ['copy:plugins']);
 
 gulp.task('copy:plugins', function () {
     gulp.src('./plugins/**/*.*')
         .pipe(gulp.dest('./dist/plugins'));
-});
-
-
-gulp.task('copy:css', function () {
-    gulp.src('./src/**/*.css')
-        .pipe(gulp.dest('./lib'));
-});
-
-gulp.task('copy:html', function () {
-    gulp.src('./src/**/*.html')
-        .pipe(gulp.dest('./lib'));
 });
 
 //////////////////////
