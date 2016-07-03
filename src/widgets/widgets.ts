@@ -1,3 +1,5 @@
+//-/ <reference path="../typings/index.d.ts" />
+
 import * as React from 'react'
 import {PropTypes as Prop} from "react"
 import * as Redux from 'redux'

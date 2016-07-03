@@ -32,7 +32,7 @@ gulp.task("build", ['compile', 'test', 'lint']);
  * Compile all code to /dist
  * - no tests, no overhead, just what is needed to generate a runnable application
  * */
-gulp.task('compile', ['copy:plugins', 'compile:ts', 'webpack:client']);
+gulp.task('compile', ['copy:plugins', 'webpack:client']);
 
 
 //////////////////

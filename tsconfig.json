@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es6",
+    "module": "commonjs",
     "moduleResolution": "node",
     "noImplicitAny": true,
     "removeComments": false,
@@ -14,8 +15,7 @@
   },
   "files": [
     "./src/app.ts",
-    "./src/typings/index.d.ts",
-    "./src/typings/customs.d.ts"
+    "./typings/index.d.ts"
   ],
   "exclude": [
     "node_modules",

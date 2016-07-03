@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from 'react'
 import ModalDialog from "../modal/modalDialog.ui.js";
 import * as WidgetPlugins from "./widgetPlugins";
 import * as WidgetConfig from "./widgetConfig";

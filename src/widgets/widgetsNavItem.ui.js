@@ -1,8 +1,8 @@
-import React from "react";
+import * as React from 'react'
 import * as Widgets from "./widgets";
 import {connect} from "react-redux";
 import * as WidgetConfig from './widgetConfig'
-import _ from "lodash";
+import * as _ from 'lodash'
 import * as ui from "../ui/elements.ui";
 import * as WidgetPlugins from './widgetPlugins'
 import {reset} from "redux-form";

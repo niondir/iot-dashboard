@@ -1,7 +1,7 @@
 {
   "name": "iot-dashboard",
   "resolution": {
-    "main": "src/typings"
+    "main": "./typings"
   },
   "dependencies": {
     "react-redux": "registry:npm/react-redux#4.4.0+20160614222153",
@@ -12,6 +12,7 @@
     "react": "registry:dt/react#0.14.0+20160630100702",
     "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
     "redux": "registry:dt/redux#3.3.1+20160326112656",
+    "redux-logger": "registry:dt/redux-logger#2.6.0+20160619033847",
     "redux-thunk": "registry:dt/redux-thunk#2.0.1+20160317120654"
   }
 }

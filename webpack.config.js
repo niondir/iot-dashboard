@@ -32,7 +32,7 @@ module.exports = {
     devtool: 'source-map',
     //devtool: 'eval-cheap-module-source-map',
     entry: {
-        app: ["./lib/app.js"],
+        app: ["./src/app.ts"],
         vendor: [
             "react", "react-dom", "react-grid-layout", "react-grid-layout/css/styles.css",
             "redux", "react-redux", "redux-logger", "redux-thunk", "redux-form",
@@ -70,17 +70,17 @@ module.exports = {
     // resolveLoader: {root: path.join(__dirname, "node_modules")},
     module: {
         loaders: [
+            /*{
+             test: /\.(js|jsx)$/,
+             loader: 'babel?cacheDirectory',
+             include: paths.src
+             },  */
             {
-                test: /\.(js|jsx)$/,
-                loader: 'babel?cacheDirectory',
-                include: paths.src
-            },
-            { // Does no work... TSC is missing typings - best so far: webpack-typescript
-                test: /\.(ts|tsx)$/,
-                //loader: 'typescript-loader',
-                // loader: 'awesome-typescript-loader',
-                // loader: 'ts-loader',
-                loader: 'webpack-typescript',
+                test: /\.(js|ts|tsx)$/,
+                //loader: 'typescript-loader',         // -- FAILS!
+                //loader: 'awesome-typescript-loader', // -- FAILS!
+                loader: 'ts-loader',
+                //loader: 'webpack-typescript',        // -- Needs /// <reference
                 include: paths.src
             },
             /*{

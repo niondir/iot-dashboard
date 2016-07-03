@@ -2,9 +2,9 @@ import * as Action from "../actionNames";
 import {genCrudReducer} from "../util/reducer";
 import * as DatasourcePlugins from "../datasource/datasourcePlugins";
 import * as WidgetPlugins from "../widgets/widgetPlugins";
-import loadjs from "loadjs";
+import * as loadjs from "loadjs";
 import * as PluginCache from "./pluginCache";
-import _ from "lodash";
+import * as _ from "lodash";
 import URI from "urijs";
 
 

@@ -1,7 +1,7 @@
-import React from "react";
+import * as React from 'react'
 import * as Datasource from "./datasource";
 import {connect} from "react-redux";
-import _ from "lodash";
+import * as _ from 'lodash'
 import * as ui from "../ui/elements.ui";
 import {reset} from "redux-form";
 import {PropTypes as Prop}  from "react";

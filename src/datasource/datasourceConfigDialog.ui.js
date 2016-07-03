@@ -1,8 +1,8 @@
-import React from 'react'
+import * as React from 'react'
 import ModalDialog from '../modal/modalDialog.ui.js'
 import * as Datasource from './datasource'
 import {connect} from 'react-redux'
-import _ from 'lodash'
+import * as _ from 'lodash'
 import * as ui from '../ui/elements.ui'
 import SettingsForm from '../ui/settingsForm.ui'
 import {reset} from 'redux-form';

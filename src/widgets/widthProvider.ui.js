@@ -1,7 +1,7 @@
 // @noflow
 // Intentional; Flow can't handle the bind on L20
-import React from "react";
-import ReactDOM from 'react-dom';
+import * as React from 'react'
+import * as ReactDOM from 'react-dom';
 
 /*
  * A simple HOC that provides facility for listening to container resizes.

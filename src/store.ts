@@ -1,6 +1,6 @@
 import * as Redux from 'redux';
 import thunk from 'redux-thunk'
-import createLogger from 'redux-logger';
+import * as createLogger from 'redux-logger';
 import * as Widgets from './widgets/widgets'
 import * as WidgetConfig from './widgets/widgetConfig.js'
 import * as Layouts from './layouts/layouts.js'

@@ -1,26 +1,28 @@
+//-/ <reference path="typings/index.d.ts" />
+
 import 'semantic-ui-css/semantic.css'
 import 'semantic-ui-css/semantic'
 import 'c3css'
 
 import * as React from 'react'
 import * as _ from 'lodash'
-import * as Renderer from "./renderer.js"
-import * as Widgets from "./widgets/widgets"
-import * as WidgetPlugins from "./widgets/widgetPlugins.js"
-import * as TextWidget from "./widgets/plugins/textWidget.js"
-import * as ChartWidget from "./widgets/plugins/chartWidget.js"
-import * as DatasourceWorker from "./datasource/datasourceWorker.js"
-import * as RandomDatasource from "./datasource/plugins/randomDatasource.js"
-import * as TimeDatasource from "./datasource/plugins/timeDatasource.js"
-import store from "./store"
-import * as Store from "./store"
-import * as Plugins from "./pluginApi/plugins.js"
+import * as Renderer from './renderer.js'
+import * as Widgets from './widgets/widgets'
+import * as WidgetPlugins from './widgets/widgetPlugins.js'
+import * as TextWidget from './widgets/plugins/textWidget.js'
+import * as ChartWidget from './widgets/plugins/chartWidget.js'
+import * as DatasourceWorker from './datasource/datasourceWorker.js'
+import * as RandomDatasource from './datasource/plugins/randomDatasource.js'
+import * as TimeDatasource from './datasource/plugins/timeDatasource.js'
+import store from './store'
+import * as Store from './store'
+import * as Plugins from './pluginApi/plugins.js'
 
-import "./pluginApi/freeboardPluginApi"
-import "./pluginApi/pluginApi"
+import './pluginApi/freeboardPluginApi'
+import './pluginApi/pluginApi'
 import 'expose?$!expose?jQuery!jquery'
-import "./app.css"
-import "file?name=[name].[ext]!./index.html"
+import './app.css'
+import 'file?name=[name].[ext]!./index.html'
 
 interface IWidgetState {
     id: string

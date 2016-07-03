@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react'
 import {connect} from 'react-redux'
 import * as Modal from './modalDialog'
 import * as ui from '../ui/elements.ui.js'
