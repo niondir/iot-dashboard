@@ -9,7 +9,6 @@ webpackConfig.entry = {
 };
 
 webpackConfig.plugins = [
-    new webpack.HotModuleReplacementPlugin(),
     new ExtractTextPlugin("[name].bundle.css"),
     new webpack.ProvidePlugin({
         $: "jquery",

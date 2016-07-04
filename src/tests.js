@@ -12,7 +12,11 @@ import './datasource/plugins/randomDatasource.test.js'
 // In case we run with phantomJS this is needed
 // Waiting for https://github.com/webpack/mocha-loader/pull/27
 if (typeof window !== 'undefined' && window.initMochaPhantomJS) {
+    console.log("calling `window.initMochaPhantomJS()`");
     window.initMochaPhantomJS();
+}
+else {
+    console.log("no window found!");
 }
 
 var assert = require('chai').assert;
