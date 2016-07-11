@@ -47,7 +47,7 @@ module.exports = {
         chunkFilename: "chunk.[id].js"
     },
     resolve: {
-        extensions: ["", ".js", ".jsx", ".ts", ".tsx"],
+        extensions: ["", ".js", ".jsx", ".tsx", ".ts"],
         root: [
             path.resolve('./dist')
         ],
@@ -79,7 +79,7 @@ module.exports = {
                 test: /\.(ts|tsx)$/,
                 //loader: 'typescript-loader',         // -- FAILS!
                 //loader: 'awesome-typescript-loader', // -- FAILS!
-                loader: 'ts-loader',
+                loader: 'ts-loader',      // ?compiler=jsx-typescript
                 //loader: 'webpack-typescript',        // -- Needs /// <reference
                 include: paths.src
             },

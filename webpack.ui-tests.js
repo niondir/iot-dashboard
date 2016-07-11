@@ -5,11 +5,10 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var webpackConfig = require('./webpack.config.js');
 
 webpackConfig.entry = {
-    servertests: ['./src/servertests.js']
+    tests: ['mocha!./src/uiTests.js']
 };
 
 webpackConfig.plugins = [
-    new webpack.HotModuleReplacementPlugin(),
     new ExtractTextPlugin("[name].bundle.css"),
     new webpack.ProvidePlugin({
         $: "jquery",

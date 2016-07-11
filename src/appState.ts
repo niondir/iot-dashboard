@@ -1,11 +1,11 @@
 import * as Widgets from './widgets/widgets'
 
 export interface GetState {
-    ():State
+    (): State
 }
 
 export interface Dispatch {
-    (action:Action):State
+    (action: Action): State
 }
 
 export interface Action {
@@ -14,7 +14,7 @@ export interface Action {
 }
 
 export interface State {
-    widgets:Widgets.IWidgetsState
+    widgets: Widgets.IWidgetsState
 }
 
 export default State;

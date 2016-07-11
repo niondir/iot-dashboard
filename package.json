@@ -11,7 +11,11 @@
     "build": "gulp build",
     "compile": "gulp compile",
     "dev": "gulp dev",
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "tsc": "tsc",
+    "gulp": "gulp",
+    "typings": "typings",
+    "mocha": "mocha"
   },
   "repository": {
     "type": "git",
@@ -21,10 +25,12 @@
   "license": "none",
   "homepage": "https://bitbucket.org/Niondir/data-dash#readme",
   "dependencies": {
+    "es6-promise": "^3.2.1",
     "form-serialize": "0.7.1",
     "jquery": "3.0.0",
     "loadjs": "2.1.0",
     "lodash": "4.11.1",
+    "object-assign": "^4.1.0",
     "react": "15.0.0",
     "react-dom": "15.0.0",
     "react-grid-layout": "0.12.6",

@@ -15,7 +15,10 @@ import * as  WidgetPlugins from './widgets/widgetPlugins.js'
 import * as DatasourcePlugins from './datasource/datasourcePlugins.js'
 import * as AppState from './appState.ts'
 
-let store : Redux.Store;
+export type DashboardStore = Redux.Store<AppState.State>;
+
+
+let store: DashboardStore;
 
 
 let appReducer = Redux.combineReducers({
@@ -31,7 +34,7 @@ let appReducer = Redux.combineReducers({
     dashboard: Dashboard.dashboard
 });
 
-const reducer = (state:AppState.State, action:AppState.Action) => {
+const reducer = (state: AppState.State, action: AppState.Action) => {
     if (action.type === Action.CLEAR_STATE) {
         state = undefined
     }
@@ -68,7 +71,7 @@ store = Redux.createStore(
 DatasourcePlugins.pluginRegistry.store = store;
 WidgetPlugins.pluginRegistry.store = store;
 
-export function clearState() {
+export function clearState(): Redux.Action {
     return {
         type: Action.CLEAR_STATE
     }
