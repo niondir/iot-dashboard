@@ -13,7 +13,7 @@
     top: 0;
     height: 11px;
     width: 100%;
-    z-index: 1000;
+    z-index: 1;
     /*border: red dashed 1px;*/
 }
 
@@ -30,8 +30,8 @@
     min-height: 0 !important;
     height: 40px;
     overflow: visible;
-/* -webkit-transition: all 0.0s, transform 1s;
-    transition: all 0.0s, transform 1s;  */
+   -webkit-transition: all 1s, transform 1s;
+    transition: all 1s, transform 1s;
 }
 
 .topnav--hidden + .ui.grid {
