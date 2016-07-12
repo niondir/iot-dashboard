@@ -21,7 +21,7 @@ export type DashboardStore = Redux.Store<AppState.State>;
 let store: DashboardStore;
 
 
-let appReducer = Redux.combineReducers({
+let appReducer: AppState.Reducer = Redux.combineReducers<AppState.State>({
     widgets: Widgets.widgets,
     widgetConfig: WidgetConfig.widgetConfigDialog,  // TODO: Still used or replaced by modalDialog
     layouts: Layouts.layouts,
@@ -34,7 +34,7 @@ let appReducer = Redux.combineReducers({
     dashboard: Dashboard.dashboard
 });
 
-const reducer = (state: AppState.State, action: AppState.Action) => {
+const reducer: AppState.Reducer = (state: AppState.State, action: Redux.Action) => {
     if (action.type === Action.CLEAR_STATE) {
         state = undefined
     }

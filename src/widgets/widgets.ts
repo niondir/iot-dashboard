@@ -1,10 +1,10 @@
-import * as React from 'react'
-import {PropTypes as Prop} from "react"
-import * as Uuid from '../util/uuid.js'
-import * as _ from 'lodash'
-import {genCrudReducer} from '../util/reducer.js'
-import * as Action from '../actionNames.js'
-import * as AppState from '../appState'
+import * as React from "react";
+import {PropTypes as Prop} from "react";
+import * as Uuid from "../util/uuid.js";
+import * as _ from "lodash";
+import {genCrudReducer} from "../util/reducer.js";
+import * as Action from "../actionNames.js";
+import * as AppState from "../appState";
 import objectAssign = require("object-assign");
 
 export const HEADER_HEIGHT = 77;
@@ -102,7 +102,7 @@ export const widgetPropType = Prop.shape({
     }).isRequired
 });
 
-export function addWidget(widgetType: string, widgetProps: any = {}, width: number = 3, height: number = 3) {
+export function addWidget(widgetType: string, widgetProps: any = {}, width: number = 3, height: number = 3): AppState.Action {
     return (dispatch: AppState.Dispatch, getState: AppState.GetState) => {
         let widgets = getState().widgets;
         const widgetPositions = calcNewWidgetPosition(widgets);

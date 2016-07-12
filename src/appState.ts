@@ -1,17 +1,11 @@
+import * as Redux from 'redux'
 import * as Widgets from './widgets/widgets'
 
-export interface GetState {
-    (): State
-}
+export type Dispatch = Redux.Dispatch<State>
+export type GetState = () => State
+export type Action = Redux.ThunkAction<any, State, any> | Redux.Action
+export type Reducer = Redux.Reducer<State>
 
-export interface Dispatch {
-    (action: Action): State
-}
-
-export interface Action {
-    type: string;
-    [others: string]: any;
-}
 
 export interface State {
     widgets: Widgets.IWidgetsState
