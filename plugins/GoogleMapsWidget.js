@@ -50,7 +50,7 @@
     // The API is similar to React but it is actually NOT a react component.
     // On render you get the DOM "element" to renter the content.
     var Widget = React.createClass({
-        getInitialState: function() {
+        getInitialState: function () {
             return {};
         },
         componentDidMount: function () {
@@ -59,6 +59,11 @@
                 zoom: Number(this.props.config.initZoom)
             });
             this.setState({map: map})
+        },
+        componentWillReceiveProps(nextProps) {
+            if (nextProps._state.availableHeightPx != this.props._state.availableHeightPx) {
+                google.maps.event.trigger(this.state.map, 'resize');
+            }
         },
         render: function () {
             var props = this.props;

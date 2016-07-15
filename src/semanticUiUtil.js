@@ -13,7 +13,7 @@ const NumbersToString = {
     12: "twelve"
 };
 
-export function numberToClass(number:Number) {
+export function numberToClass(number) {
     if (!NumbersToString[number]) {
         throw new Error("Can not convert number " + number + " to class name.");
     }

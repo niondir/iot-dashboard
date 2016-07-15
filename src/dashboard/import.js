@@ -26,7 +26,7 @@ function afterImport(dispatch, getState) {
 export function importReducer(state, action) {
     switch (action.type) {
         case Action.DASHBOARD_IMPORT:
-            let newState = {...state, ...action.state};
+            let newState = Object.assign({}, state, action.state);
             console.log("new State:", state, action.state, newState)
             return newState;
         default:

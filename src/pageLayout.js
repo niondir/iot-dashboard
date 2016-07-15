@@ -53,7 +53,7 @@ export class Layout extends Component {
                 <PluginsDialog/>
             </div>
             <div className="container">
-                <div className={showMenu ? "" : "menu-trigger"}
+                <div className={showMenu ? "menu-trigger" : "menu-trigger"}
                      onMouseOver={()=> { this.setState({hover:true})}}
                      onMouseEnter={()=> {this.setState({hover:true})}}
 

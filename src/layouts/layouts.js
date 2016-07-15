@@ -99,10 +99,9 @@ export function layout(state, action) {
                 widgets: action.widgets
             };
         case UPDATE_LAYOUT:
-            return {
-                ...state,
+            return Object.assign({}, state, {
                 widgets: action.widgets
-            };
+            });
         default:
             return state;
     }
@@ -111,16 +110,14 @@ export function layout(state, action) {
 export function currentLayout(state = {}, action) {
     switch (action.type) {
         case SET_CURRENT_LAYOUT:
-            return {
-                ...state,
+            return Object.assign({}, state, {
                 id: action.id
-            };
+            });
         case DELETE_LAYOUT:
             if (action.id == state.id) {
-                return {
-                    ...state,
+                return Object.assign({}, state, {
                     id: undefined
-                }
+                })
             }
             return state;
         default:

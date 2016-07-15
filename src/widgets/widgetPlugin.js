@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import React from 'react'
+import * as React from 'react'
 import * as _ from 'lodash'
 import {PropTypes as Prop}  from "react";
 
@@ -13,7 +13,7 @@ export default class WidgetPlugin {
         this.instances = {};
         this.disposed = false;
 
-        // only bind the getData function once, so it can be safely used in the connect function 
+        // only bind the getData function once, so it can be safely used in the connect function
         this.getData = function (getState, dsId) {
             const ds = getState().datasources[dsId];
             if (!ds) {

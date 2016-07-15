@@ -1,24 +1,27 @@
 import * as Redux from 'redux';
 import thunk from 'redux-thunk'
-import createLogger from 'redux-logger';
+import * as createLogger from 'redux-logger';
 import * as Widgets from './widgets/widgets'
-import * as WidgetConfig from './widgets/widgetConfig'
-import * as Layouts from './layouts/layouts'
-import * as Datasource from './datasource/datasource'
-import * as Dashboard from './dashboard/dashboard'
-import * as Import from './dashboard/import'
-import * as Modal from './modal/modalDialog'
-import * as Persist from './persistence'
-import * as Plugins from './pluginApi/plugins'
+import * as WidgetConfig from './widgets/widgetConfig.js'
+import * as Layouts from './layouts/layouts.js'
+import * as Datasource from './datasource/datasource.js'
+import * as Dashboard from './dashboard/dashboard.js'
+import * as Import from './dashboard/import.js'
+import * as Modal from './modal/modalDialog.js'
+import * as Persist from './persistence.js'
 import {reducer as formReducer} from 'redux-form';
-import * as Action from './actionNames'
-import * as  WidgetPlugins from './widgets/widgetPlugins'
-import * as DatasourcePlugins from './datasource/datasourcePlugins'
+import * as Action from './actionNames.js'
+import * as  WidgetPlugins from './widgets/widgetPlugins.js'
+import * as DatasourcePlugins from './datasource/datasourcePlugins.js'
+import * as AppState from './appState.ts'
 
-let store;
+export type DashboardStore = Redux.Store<AppState.State>;
 
 
-let appReducer = Redux.combineReducers({
+let store: DashboardStore;
+
+
+let appReducer: AppState.Reducer = Redux.combineReducers<AppState.State>({
     widgets: Widgets.widgets,
     widgetConfig: WidgetConfig.widgetConfigDialog,  // TODO: Still used or replaced by modalDialog
     layouts: Layouts.layouts,
@@ -31,7 +34,7 @@ let appReducer = Redux.combineReducers({
     dashboard: Dashboard.dashboard
 });
 
-const reducer = (state, action) => {
+const reducer: AppState.Reducer = (state: AppState.State, action: Redux.Action) => {
     if (action.type === Action.CLEAR_STATE) {
         state = undefined
     }
@@ -47,7 +50,6 @@ const logger = createLogger({
     timestamp: true, // Print the timestamp with each action?
     logErrors: true, // Should the logger catch, log, and re-throw errors?
     predicate: (getState, action) => {
-        let foo = "";
         if (action.type.startsWith("redux-form")) {
             return false;
         }
@@ -69,7 +71,7 @@ store = Redux.createStore(
 DatasourcePlugins.pluginRegistry.store = store;
 WidgetPlugins.pluginRegistry.store = store;
 
-export function clearState() {
+export function clearState(): Redux.Action {
     return {
         type: Action.CLEAR_STATE
     }

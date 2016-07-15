@@ -45,6 +45,7 @@ export class Datasource {
 
     // TODO: We can not edit datasources yet :)
     updateProps(props) {
+        console.log("New Props: " + props);
         this.props = props;
     }
 
@@ -56,7 +57,7 @@ export class Datasource {
             this.history.shift();
         }
 
-        return [...this.history];
+        return this.history;
     }
 
     fetchValue() {

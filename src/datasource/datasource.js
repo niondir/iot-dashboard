@@ -2,7 +2,7 @@ import * as DatasourcePlugins from './datasourcePlugins'
 import {genCrudReducer} from '../util/reducer'
 import * as Action from '../actionNames'
 import * as Uuid from '../util/uuid'
-import _ from 'lodash'
+import * as _ from 'lodash'
 import * as ModalIds from '../modal/modalDialogIds'
 import * as Modal from '../modal/modalDialog'
 
@@ -58,6 +58,8 @@ export function addDatasource(dsType, props) {
 }
 
 export function updateDatasourceProps(id, props) {
+    // TODO: Working on that copy does not work yet. We need to notify the Datasource about updated props!
+    //let propsCopy = {...props};
     return {
         type: Action.UPDATE_DATASOURCE,
         id,
@@ -70,8 +72,6 @@ export function startCreateDatasource() {
 }
 export function startEditDatasource(id) {
     return function (dispatch, getState) {
-        // TODO: This show dialog stuff should be hanbdles with actions as well. Not as Side effects.
-        //DatasourceConfigDialog.showDialog();
         const state = getState();
         const dsState = state.datasources[id];
         dispatch(Modal.showModal(ModalIds.DATASOURCE_CONFIG, {datasource: dsState}));
@@ -115,7 +115,15 @@ export function fetchDatasourceData() {
             }
 
             const dsInstance = dsFactory.getOrCreateInstance(dsState.id);
-            const newData = dsInstance.getValues();
+            let newData = dsInstance.getValues();
+            if (!_.isArray(newData)) {
+                throw new Error("A datasource must return an array on getValues");
+                // TODO: Also check that all elements of the array are objects?
+            }
+            else {
+                // Copy data to make sure we do not work on a reference!
+                newData = [...newData];
+            }
 
             /*
              if (!dsState.data) {
@@ -135,14 +143,14 @@ export function datasources(state = initialDatasources, action) {
     state = datasourceCrudReducer(state, action);
     switch (action.type) {
         case Action.DELETE_DATASOURCE_PLUGIN: // Also delete related datasources
-            const toDelete =_.valuesIn(state).filter(dsState => {
+            const toDelete = _.valuesIn(state).filter(dsState => {
                 return dsState.type == action.id
             });
-            var newState = {...state};
+            var newState = Object.assign({}, state);
             toDelete.forEach(dsState => {
                 delete newState[dsState.id];
             });
-            
+
             return newState;
         default:
             return state;
@@ -158,21 +166,18 @@ function datasource(state, action) {
                 props: action.props
             };
         case Action.SET_DATASOURCE_DATA:
-            return {
-                ...state,
+            return Object.assign({}, state, {
                 data: action.data
-            };
+            });
         case Action.APPEND_DATASOURCE_DATA:
             const stateData = state.data || [];
-            return {
-                ...state,
+            return Object.assign({}, state, {
                 data: [...stateData, ...action.data]
-            };
+            });
         case Action.UPDATE_DATASOURCE:
-            return {
-                ...state,
+            return Object.assign({}, state, {
                 props: action.props
-            };
+            });
         default:
             return state;
     }

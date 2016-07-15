@@ -73,21 +73,19 @@ export function openWidgetConfigDialog(id) {
 export function widgetConfigDialog(state = initialState, action) {
     switch (action.type) {
         case START_CREATE_WIDGET:
-            return {
-                ...state,
+            return Object.assign({}, state, {
                 type: action.widgetType,
                 id: null,
                 name: action.widgetType,
                 props: {}
-            };
+            });
         case START_CONFIGURE_WIDGET:
-            return {
-                ...state,
+            return Object.assign({}, state, {
                 type: action.widget.type,
                 id: action.widget.id,
                 name: action.widget.name,
                 props: action.widget.props
-            };
+            });
         default:
             return state;
     }

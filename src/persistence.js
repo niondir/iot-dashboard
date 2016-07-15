@@ -1,3 +1,4 @@
+
 let lastSave = new Date();
 
 export function clearData() {
@@ -31,7 +32,10 @@ export function saveToLocalStorage(state) {
         return;
     }
 
-    const {form, modalDialog, ...savableState} = state;
+    var savableState = Object.assign({}, state);
+
+    delete savableState.form;
+    delete savableState.modalDialog;
     window.localStorage.setItem("appState", JSON.stringify(savableState));
 }
 

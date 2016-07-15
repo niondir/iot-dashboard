@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Component} from "react";
 import {connect} from "react-redux";
-import _ from "lodash";
+import * as _ from 'lodash'
 import * as Widgets from "./widgets";
 import WidgetFrame from "./widgetFrame.ui";
 import * as WidgetPlugins from "./widgetPlugins";
@@ -25,7 +25,7 @@ class WidgetGrid extends Component {
 
     render() {
         const props = this.props;
-        let widgetStates:Array<object> = this.props.widgets;
+        let widgetStates = this.props.widgets;
 
         // TODO: Remove unknown widget from state
         let widgets = widgetStates.map((widgetState) => {

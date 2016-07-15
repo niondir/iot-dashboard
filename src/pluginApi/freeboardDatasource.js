@@ -1,5 +1,5 @@
 import loadjs from 'loadjs';
-import _ from 'lodash'
+import * as _ from 'lodash'
 
 // **newInstance(settings, newInstanceCallback, updateCallback)** (required) : A function that will be called when a new instance of this plugin is requested.
 // * **settings** : A javascript object with the initial settings set by the user. The names of the properties in the object will correspond to the setting names defined above.

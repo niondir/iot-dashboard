@@ -1,6 +1,4 @@
-import React from "react";
-import _ from "lodash";
-import * as ui from "../ui/elements.ui";
+import * as React from 'react'
 import {connect} from 'react-redux'
 import {reset} from "redux-form";
 import * as ModalIds from '../modal/modalDialogIds'

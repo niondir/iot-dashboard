@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import {connect} from 'react-redux'
-import _ from 'lodash'
+import * as _ from 'lodash'
 import * as Layouts from './layouts'
 import * as ui from '../ui/elements.ui'
 import {PropTypes as Prop}  from "react";
@@ -86,9 +86,6 @@ const SaveLayout = connect((state) => {
                 dispatch(Layouts.addLayout(name, props.widgets))
             }
         }
-    },
-    (stateProps, dispatchProps, ownProps)=> {
-        return {...ownProps, ...stateProps, ...dispatchProps}
     }
 )(SaveInput);
 

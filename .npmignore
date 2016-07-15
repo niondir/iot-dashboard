@@ -1,8 +1,5 @@
-/dist
-/lib
 /node_modules
-/coverage
-
+/typings
 # IntelliJ Project Files
 /.idea
 *.iml

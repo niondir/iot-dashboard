@@ -1,0 +1,23 @@
+{
+  "name": "iot-dashboard",
+  "resolution": {
+    "main": "./typings"
+  },
+  "globalDependencies": {
+    "es6-promise": "registry:dt/es6-promise#0.0.0+20160614011821",
+    "lodash": "registry:dt/lodash#3.10.0+20160619033623",
+    "object-assign": "registry:dt/object-assign#4.0.1+20160316155526",
+    "react": "registry:dt/react#0.14.0+20160630100702",
+    "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
+    "react-redux": "registry:dt/react-redux#4.4.0+20160703120921",
+    "redux": "registry:dt/redux#3.5.2+20160703092728",
+    "redux-form": "registry:dt/redux-form#4.0.3+20160703120921",
+    "redux-logger": "registry:dt/redux-logger#2.6.0+20160619033847",
+    "redux-thunk": "registry:dt/redux-thunk#2.1.0+20160703120921",
+    "urijs": "registry:dt/urijs#1.15.1+20160526132152"
+  },
+  "globalDevDependencies": {
+    "chai": "registry:dt/chai#3.4.0+20160601211834",
+    "mocha": "registry:dt/mocha#2.2.5+20160619032855"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "removeComments": false,
+    "noEmitOnError": true,
+    "pretty": false,
+    "sourceMap": true,
+    "declaration": false,
+    "allowJs": true,
+    "jsx": "react",
+    "outDir": "./lib",
+    "rootDir": "./src"
+  },
+  "files": [
+    "./src/app.ts",
+    "./src/typings/index.d.ts",
+    "./typings/index.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "lib",
+    "plugins",
+    "vendor"
+  ]
+}

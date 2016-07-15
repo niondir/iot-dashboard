@@ -1,6 +1,5 @@
-import _ from 'lodash'
 
-export function chunk(array:array, chunkSize:number, handle:Function) : Array {
+export function chunk(array, chunkSize, handle) {
     let i, j, chunk;
     let chunkNum = 0;
     let chunks = [];

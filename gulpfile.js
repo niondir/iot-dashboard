@@ -14,9 +14,10 @@ gulp.task("dev", ['inject', 'copy', 'webpack:server']);
 /**
  * Keeps files up to date that are not covered by Webpack
  */
-gulp.task('watch', ["inject:tests", "copy:plugins"], function() {
-    gulp.watch("src/**/*.test.js", ["inject:tests"]);
-    gulp.watch("plugins/**/*", ["copy:plugins"]);
+gulp.task('watch', ["inject:tests", "copy"], function () {
+    gulp.watch("src/**/*.test.js", ['inject:tests']);
+    gulp.watch("src/**/*.test.ts", ['inject:tests']);
+    gulp.watch("plugins/**/*", ['copy:plugins']);
 });
 
 
@@ -32,30 +33,74 @@ gulp.task("build", ['compile', 'test', 'lint']);
  * */
 gulp.task('compile', ['copy:plugins', 'webpack:client']);
 
+// TODO: We do not have uiTests yet. All tests are running with node
+// There is some ui test code already but it's considered unstable (should we just delete it for now?)
+gulp.task('test', ['mocha']);
 
 //////////////////
 // Testing Tasks
 //////////////////
 
 var mocha = require('gulp-mocha');
+var istanbul = require('gulp-istanbul');
 var mochaPhantomJS = require('gulp-mocha-phantomjs');
+var remapIstanbul = require('remap-istanbul/lib/gulpRemapIstanbul');
+var istanbulReport = require('gulp-istanbul-report');
 
-gulp.task('test', ['mocha']);
+gulp.task('mocha', ['mocha:tests']);
 
-gulp.task('mocha', ['mocha:client', 'mocha:server']);
+/** Remap coverage report based on sourcemaps - does not work yet
+ * TODO: Remove this task + dependencies when we have coverage reports on TS files correctly mapped
+ * **/
+gulp.task('remap', function () {
+    return gulp.src('./coverage/coverage-final.json')
+        .pipe(remapIstanbul({
+            fail: false
+        }))
+        .pipe(istanbulReport({
+            reporters: [
+                'text-summary',
+                {name: 'lcov', dir: 'coverage/remapped'}
+                //{name: 'html', dir: 'coverage/html/'}
+                //{name: 'text', dir: 'coverage/report.txt'},
+            ]
+        }));
+});
 
-
-gulp.task('mocha:server', ['webpack:servertests'], function () {
-    return gulp.src('dist/servertests.bundle.js', {read: false})
-        // gulp-mocha needs filepaths so you can't have any plugins before it
-        .pipe(mocha({reporter: 'spec'})); // more details with 'spec', more fun with 'nyan'
+gulp.task('report', function () {
+    return gulp.src('./coverage/coverage-final.json')
+        .pipe(istanbulReport({
+            reporters: [
+                'text-summary',
+                //{name: 'lcov', dir: 'coverage'}
+                //{name: 'html', dir: 'coverage/html/'}
+                {name: 'text', dir: 'coverage/report.txt'},
+            ]
+        }));
 });
 
 
-gulp.task('mocha:client', ['inject:tests', 'webpack:tests'], function () {
+gulp.task('mocha:tests', ['webpack:tests'], function () {
+    return gulp.src('dist/tests.bundle.js', {read: false})
+    // gulp-mocha needs filepaths so you can't have any plugins before it
+        .pipe(mocha({reporter: 'spec', dump: 'tests.log'})) // more details with 'spec', more fun with 'nyan'
+        .pipe(istanbul.writeReports({
+            coverageVariable: '__coverage__',
+            reporters: ['json', 'text-summary', 'lcovonly']
+        })).pipe(istanbul.writeReports({
+            coverageVariable: '__coverage__',
+            reporters: ['html'],
+            reportOpts: {
+                html: {dir: 'dist/coverage'}
+            }
+        }));
+});
+
+
+gulp.task('mocha:ui-tests', ['inject:tests', 'webpack:ui-tests'], function () {
     return gulp
-        .src('dist/tests.html')
-        .pipe(mochaPhantomJS({reporter: 'spec', dump: 'test.log'}));
+        .src('dist/uiTests.html')
+        .pipe(mochaPhantomJS({reporter: 'spec', dump: 'ui-tests.log'}));
 });
 
 //////////////////
@@ -63,6 +108,7 @@ gulp.task('mocha:client', ['inject:tests', 'webpack:tests'], function () {
 // ///////////////
 const eslint = require('gulp-eslint');
 
+// TODO: Add tslint for typescript
 gulp.task('lint', function () {
     return gulp.src(['src/**/*.js'])
         // eslint() attaches the lint output to the "eslint" property
@@ -81,6 +127,20 @@ gulp.task('lint', function () {
 //////////////////
 const babel = require('gulp-babel');
 const webpack = require('webpack');
+const ts = require('gulp-typescript');
+
+var tsProject = ts.createProject('./tsconfig.json');
+
+/**
+ * It's not yet intended to compile the TS code without webpack.
+ * But if someone wants to use parts of the code as library this might get handy.
+ */
+gulp.task('compile:ts', [], function () {
+    var tsResult = tsProject.src()
+        .pipe(ts(tsProject));
+
+    return tsResult.js.pipe(gulp.dest('./lib'));
+});
 
 const webpackErrorHandler = function (callback, error, stats) {
     if (error) throw new gutil.PluginError('webpack', error);
@@ -105,8 +165,8 @@ gulp.task('webpack:tests', ['inject'], function (callback) {
     webpack(webpackConfig, webpackErrorHandler.bind(this, callback));
 });
 
-gulp.task('webpack:servertests', [], function (callback) {
-    var webpackConfig = require('./webpack.servertests.js');
+gulp.task('webpack:ui-tests', [], function (callback) {
+    var webpackConfig = require('./webpack.ui-tests.js');
 
     webpack(webpackConfig, webpackErrorHandler.bind(this, callback));
 });
@@ -119,18 +179,18 @@ var inject = require('gulp-inject');
 gulp.task('inject', ['inject:tests']);
 
 gulp.task('inject:tests', function () {
-    var target = gulp.src('./src/tests.js');
-    // It's not necessary to read the files (will speed up things), we're only after their paths: 
-    var sources = gulp.src(['./src/**/*.test.js'], {read: false});
+    var target = gulp.src(['./src/tests.ts', './src/uiTests.js']);
+    // It's not necessary to read the files (will speed up things), we're only after their paths:
+    var sources = gulp.src(['./src/**/*.test.js', './src/**/*.test.ts'], {read: false});
 
     return target.pipe(inject(sources, {
-            relative: true,
-            starttag: '/* inject:tests */',
-            endtag: '/* endinject */',
-            transform: function (filepath, file, i, length) {
-                return "import './" + filepath + "'";
-            }
-        }))
+        relative: true,
+        starttag: '/* inject:tests */',
+        endtag: '/* endinject */',
+        transform: function (filepath, file, i, length) {
+            return "import './" + filepath + "'";
+        }
+    }))
         .pipe(gulp.dest('./src'));
 });
 
@@ -139,11 +199,16 @@ gulp.task('inject:tests', function () {
 ///////////////
 var del = require('del');
 
-gulp.task('clean', ['clean:dist']);
+gulp.task('clean', ['clean:dist', 'clean:lib']);
 
 gulp.task('clean:dist', function () {
     return del([
         'dist/**/*'
+    ]);
+});
+gulp.task('clean:lib', function () {
+    return del([
+        'lib/**/*'
     ]);
 });
 ///////////////
@@ -157,13 +222,12 @@ gulp.task('copy:plugins', function () {
         .pipe(gulp.dest('./dist/plugins'));
 });
 
-
 //////////////////////
 // Webpack Dev-Server
 //////////////////////
 
 var WebpackDevServer = require("webpack-dev-server");
-gulp.task("webpack:server", ['copy', 'inject'], function (callback) {
+gulp.task("webpack:server", ['copy', 'inject', 'compile:ts'], function (callback) {
     // Start a webpack-dev-server
     var webpackConfig = require('./webpack.config.js');
     webpackConfig.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");

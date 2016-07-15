@@ -5,9 +5,10 @@ node_js:
 
 before_script:
   - npm install -g gulp
-  
-script: 
+
+script:
    - npm run build
-  
+
 after_success:
   - bash deploy-github.sh
+  - bash <(curl -s https://codecov.io/bash)

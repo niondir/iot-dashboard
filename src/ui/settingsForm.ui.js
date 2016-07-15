@@ -1,9 +1,9 @@
-import React from 'react';
+import * as React from 'react'
 import {connect} from 'react-redux'
 import * as ui from './elements.ui'
 import {reduxForm, reset} from 'redux-form';
 import {chunk} from '../util/collection'
-import _ from 'lodash'
+import * as _ from 'lodash'
 import {PropTypes as Prop}  from "react";
 
 class SettingsForm extends React.Component {

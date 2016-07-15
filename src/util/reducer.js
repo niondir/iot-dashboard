@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import * as _ from 'lodash'
 
 /**
  * Creates an reducer that works on an object where you can create, delete and update properties of type Object.
@@ -13,7 +13,7 @@ import _ from 'lodash'
  * The name of the property to fetch the id from the action. Default: 'id'
  * @returns {crudReducer}
  */
-export function genCrudReducer(actionNames:Array<String>, elementReducer:Function, idProperty = 'id') {
+export function genCrudReducer(actionNames, elementReducer, idProperty = 'id') {
     console.assert(actionNames.length === 2, "ActionNames must contain 2 names for create, delete in that order");
     let [CREATE_ACTION, DELETE_ACTION] = actionNames;
     console.assert(_.includes(CREATE_ACTION, "ADD") || _.includes(CREATE_ACTION, "CREATE"),
@@ -25,9 +25,10 @@ export function genCrudReducer(actionNames:Array<String>, elementReducer:Functio
         let id = action[idProperty];
         switch (action.type) {
             case CREATE_ACTION:
-                return {...state, [id]: elementReducer(undefined, action)};
+                return Object.assign({}, state, {[id]: elementReducer(undefined, action)});
             case DELETE_ACTION:
-                let {[id]: deleted, ...newState} = state;
+                let newState = Object.assign({}, state);
+                delete newState[id];
                 return newState;
             default: // Update if we have an id property
                 if (id === undefined) return state;
@@ -43,10 +44,9 @@ export function genCrudReducer(actionNames:Array<String>, elementReducer:Functio
                     throw new Error("Reducer must return the original state if they not implement the action. Check action " + action.type + ".");
                 }
 
-                return {
-                    ...state,
+                return Object.assign({}, state, {
                     [id]: updatedElement
-                };
+                });
         }
     }
 }

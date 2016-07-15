@@ -1,10 +1,9 @@
 
-export const CLEAR_STATE = "CLEAR_STATE"
+export const CLEAR_STATE = "CLEAR_STATE";
 
 // Dashboard
 export const DASHBOARD_IMPORT = "DASHBOARD_IMPORT";
 export const SET_READONLY = "SET_READONLY";
-
 
 // Layouts
 export const ADD_LAYOUT = "ADD_LAYOUT";

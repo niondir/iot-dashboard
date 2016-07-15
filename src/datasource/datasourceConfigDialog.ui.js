@@ -1,8 +1,8 @@
-import React from 'react'
+import * as React from 'react'
 import ModalDialog from '../modal/modalDialog.ui.js'
 import * as Datasource from './datasource'
 import {connect} from 'react-redux'
-import _ from 'lodash'
+import * as _ from 'lodash'
 import * as ui from '../ui/elements.ui'
 import SettingsForm from '../ui/settingsForm.ui'
 import {reset} from 'redux-form';
@@ -12,7 +12,7 @@ import {PropTypes as Prop}  from "react";
 const DIALOG_ID = ModalIds.DATASOURCE_CONFIG;
 const FORM_ID = "datasource-settings-form";
 
-export function unshiftIfNotExists(array:Array, element, isEqual = (a, b) => a.id == b.id) {
+export function unshiftIfNotExists(array, element, isEqual = (a, b) => a.id == b.id) {
     if (array.find((e) => isEqual(e, element)) == undefined) {
         array.unshift(element);
     }
@@ -88,7 +88,7 @@ class DatasourceConfigModal extends React.Component {
                 }
             }
         ];
-        
+
         let selectedSource;
         if (this.state.selectedType) {
             selectedSource = props.datasourcePlugins[this.state.selectedType];
@@ -101,7 +101,7 @@ class DatasourceConfigModal extends React.Component {
         else {
             settings = [];
         }
-        
+
         unshiftIfNotExists(settings, {
             id: 'name',
             name: 'Name',
@@ -113,7 +113,7 @@ class DatasourceConfigModal extends React.Component {
         const fields = settings.map(setting => setting.id);
         let initialValues = {};
         if (this._isEditing()) {
-            initialValues = {...this._getEditingDatasource().props}
+            initialValues = Object.assign({}, this._getEditingDatasource().props)
         }
         else {
             initialValues = settings.reduce((initialValues, setting) => {

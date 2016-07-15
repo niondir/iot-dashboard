@@ -31,12 +31,12 @@ export default class PluginRegistry {
         throw new Error("PluginRegistry must implement createPluginFromModule");
     }
 
-    getPlugin(type:String) {
+    getPlugin(type) {
         return this.plugins[type];
     }
 
 
     getPlugins() {
-        return {...this.plugins};
+        return Object.assign({}, this.plugins);
     }
 }
