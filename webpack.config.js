@@ -69,6 +69,8 @@ module.exports = {
     },
     // resolveLoader: {root: path.join(__dirname, "node_modules")},
     module: {
+        preLoaders: [],
+        postLoaders : [],
         loaders: [
             {
                 test: /\.(js|jsx)$/,

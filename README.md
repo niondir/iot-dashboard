@@ -1,5 +1,6 @@
-**Master:**  [![Build Status](https://travis-ci.org/Niondir/iot-dashboard.svg?branch=master)](https://travis-ci.org/Niondir/iot-dashboard) [![Dependencies](https://david-dm.org/niondir/iot-dashboard.svg)](https://david-dm.org/niondir/iot-dashboard)  [![Dev-Dependencies](https://david-dm.org/niondir/iot-dashboard/dev-status.svg)](https://david-dm.org/niondir/iot-dashboard#info=devDependencies)  
-**Dev:** [![Build Status](https://travis-ci.org/Niondir/iot-dashboard.svg?branch=dev)](https://travis-ci.org/Niondir/iot-dashboard)  
+**Master:**  [![Build Status](https://travis-ci.org/Niondir/iot-dashboard.svg?branch=master)](https://travis-ci.org/Niondir/iot-dashboard) [![codecov](https://codecov.io/gh/Niondir/iot-dashboard/branch/master/graph/badge.svg)](https://codecov.io/gh/Niondir/iot-dashboard) [![Dependencies](https://david-dm.org/niondir/iot-dashboard.svg)](https://david-dm.org/niondir/iot-dashboard)  [![Dev-Dependencies](https://david-dm.org/niondir/iot-dashboard/dev-status.svg)](https://david-dm.org/niondir/iot-dashboard#info=devDependencies)
+
+**Dev:** [![Build Status](https://travis-ci.org/Niondir/iot-dashboard.svg?branch=dev)](https://travis-ci.org/Niondir/iot-dashboard)
 
 # Individual Open Technology - Dashboard
 Free Dashboard for your Data
@@ -8,7 +9,7 @@ A generic dashboard application based on JavaScript, HTML and CSS that runs in m
 Allows to arrange and configure widgets to display data from any datasource.
 A Plugin API that allows easy widget and datasource development to keep the dashboard as extensible as possible.
 
-Can be used as free alternative to [geckoboard](https://www.geckoboard.com), [kibana](https://www.elastic.co/products/kibana), or [freeboard](https://freeboard.io/). 
+Can be used as free alternative to [geckoboard](https://www.geckoboard.com), [kibana](https://www.elastic.co/products/kibana), or [freeboard](https://freeboard.io/).
 And of course for all other IoT, M2M, Industry 4.0, BigData, whatever dashboards you have to pay for out there.
 
 ---
@@ -21,7 +22,7 @@ The **latest development snapshot** is on the `dev` branch.
 
 ## Demo ##
 
-* [Live Demo Stable](http://demo.iot-dashboard.org/) of the `master` branch.  
+* [Live Demo Stable](http://demo.iot-dashboard.org/) of the `master` branch.
 * [Live Demo Dev](http://demo.iot-dashboard.org/branch/dev/) of the `dev` branch.
 
 ## Motivation ##
@@ -58,7 +59,7 @@ For preparation run
 Run the Webpack Server with live-reload and hot module replacement
 
     npm run dev
-  
+
 Run a second watch task to keep some other files up to date (optional)
 
     gulp watch
@@ -80,8 +81,8 @@ Useful to check problems in the Webpack build.
 - Load the generated stats.json
 
 ## License ##
-I have not applied any OpenSource license yet.  
-In case you want to use or modify the code or parts of it outside of GitHub, **you have to ask for permissions**.  
+I have not applied any OpenSource license yet.
+In case you want to use or modify the code or parts of it outside of GitHub, **you have to ask for permissions**.
 Feel free to fork or modify the code on GitHub or distribute it in any non-commercial way. Contributions are very welcome.
 
 The code will most likely be available under [MPL](https://www.mozilla.org/en-US/MPL/) in future.

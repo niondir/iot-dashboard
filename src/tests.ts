@@ -8,3 +8,6 @@ import './datasource/plugins/randomDatasource.test.js'
 import './serverRenderer.test.ts'
 /* endinject */
 
+// TODO: instead of inject we could use require.context
+// var testsContext = require.context(".", true, /_test$/);
+// testsContext.keys().forEach(testsContext);

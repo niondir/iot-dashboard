@@ -42,15 +42,58 @@ gulp.task('test', ['mocha']);
 //////////////////
 
 var mocha = require('gulp-mocha');
+var istanbul = require('gulp-istanbul');
 var mochaPhantomJS = require('gulp-mocha-phantomjs');
+var remapIstanbul = require('remap-istanbul/lib/gulpRemapIstanbul');
+var istanbulReport = require('gulp-istanbul-report');
 
 gulp.task('mocha', ['mocha:tests']);
 
+/** Remap coverage report based on sourcemaps - does not work yet
+ * TODO: Remove this task + dependencies when we have coverage reports on TS files correctly mapped
+ * **/
+gulp.task('remap', function () {
+    return gulp.src('./coverage/coverage-final.json')
+        .pipe(remapIstanbul({
+            fail: false
+        }))
+        .pipe(istanbulReport({
+            reporters: [
+                'text-summary',
+                {name: 'lcov', dir: 'coverage/remapped'}
+                //{name: 'html', dir: 'coverage/html/'}
+                //{name: 'text', dir: 'coverage/report.txt'},
+            ]
+        }));
+});
 
-gulp.task('mocha:tests', ['inject:tests', 'webpack:tests'], function () {
+gulp.task('report', function () {
+    return gulp.src('./coverage/coverage-final.json')
+        .pipe(istanbulReport({
+            reporters: [
+                'text-summary',
+                //{name: 'lcov', dir: 'coverage'}
+                //{name: 'html', dir: 'coverage/html/'}
+                {name: 'text', dir: 'coverage/report.txt'},
+            ]
+        }));
+});
+
+
+gulp.task('mocha:tests', ['webpack:tests'], function () {
     return gulp.src('dist/tests.bundle.js', {read: false})
-        // gulp-mocha needs filepaths so you can't have any plugins before it
-        .pipe(mocha({reporter: 'spec', dump: 'tests.log'})); // more details with 'spec', more fun with 'nyan'
+    // gulp-mocha needs filepaths so you can't have any plugins before it
+        .pipe(mocha({reporter: 'spec', dump: 'tests.log'})) // more details with 'spec', more fun with 'nyan'
+        .pipe(istanbul.writeReports({
+            coverageVariable: '__coverage__',
+            reporters: ['json', 'text-summary', 'lcovonly']
+        })).pipe(istanbul.writeReports({
+            coverageVariable: '__coverage__',
+            reporters: ['html'],
+            reportOpts: {
+                html: {dir: 'dist/coverage'}
+            }
+        }));
 });
 
 
@@ -141,13 +184,13 @@ gulp.task('inject:tests', function () {
     var sources = gulp.src(['./src/**/*.test.js', './src/**/*.test.ts'], {read: false});
 
     return target.pipe(inject(sources, {
-            relative: true,
-            starttag: '/* inject:tests */',
-            endtag: '/* endinject */',
-            transform: function (filepath, file, i, length) {
-                return "import './" + filepath + "'";
-            }
-        }))
+        relative: true,
+        starttag: '/* inject:tests */',
+        endtag: '/* endinject */',
+        transform: function (filepath, file, i, length) {
+            return "import './" + filepath + "'";
+        }
+    }))
         .pipe(gulp.dest('./src'));
 });
 
