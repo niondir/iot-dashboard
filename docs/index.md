@@ -1,6 +1,6 @@
 # iot-dashboard Documentation
 
-Overview:
+**Content:**
 
 * Hosting the iot-dashboard
 * Contributing to the dashboard core codebase (this git repo)
