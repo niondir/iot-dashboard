@@ -1,3 +1,5 @@
+# Security
+
 Security should be considered from the very beginning. We like to address some threads and solutions here and explain how they are implemented in the Dashboard.
 
 **In case you have any security concerns feel free to contact us by creating a Github issue.**
