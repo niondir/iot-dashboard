@@ -43,6 +43,7 @@ The TypeInfo is mostly the same for `Datasource` and `Widget`
         type: string // The name of the type - must be unique
         name: string // The user friendly name of the Plugin
         description: string // A userfirnedly descripton that explains the Plugin
+        dependencies: string[] // A list of URL's to load external scripts from. Some scripts like jQuery will be avaliable by default in future
         settings: Setting[] // A list of settings that can be changed by the user when the Plugin is initialized
     }
 
