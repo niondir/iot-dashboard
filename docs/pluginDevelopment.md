@@ -1,3 +1,5 @@
+# Plugin Development
+
 The iot-dashboard is build to provide an easy and flexible API for extensions to cover custom usecases. To get started with Plugin Development you should have a understanding of the Basic Concepts, see: [Wiki Home](https://github.com/Niondir/iot-dashboard/wiki).
 
 
