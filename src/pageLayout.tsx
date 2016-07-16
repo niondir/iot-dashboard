@@ -1,32 +1,41 @@
-import * as React from "react"
-import {Component} from "react"
-import * as ReactDOM from "react-dom"
-import {PropTypes as Prop}  from "react"
-import {connect} from 'react-redux'
-import * as Dashboard from './dashboard/dashboard'
-import WidgetGrid from "./widgets/widgetGrid.ui"
-import $ from "jquery"
-import LayoutsNavItem from "./layouts/layouts.ui"
-import WidgetConfigDialog from "./widgets/widgetConfigDialog.ui"
-import DashboardMenuEntry from "./dashboard/dashboardMenuEntry.ui"
-import ImportExportDialog from "./dashboard/importExportDialog.ui"
-import DatasourceConfigDialog from "./datasource/datasourceConfigDialog.ui"
-import DatasourceNavItem from "./datasource/datasourceNavItem.ui"
-import WidgetsNavItem from "./widgets/widgetsNavItem.ui"
-import PluginNavItem from './pluginApi/pluginNavItem.ui'
-import PluginsDialog from './pluginApi/pluginsDialog.ui'
-import * as Persistence from './persistence'
+import * as React from "react";
+import {Component, KeyboardEvent} from "react";
+import * as ReactDOM from "react-dom";
+import {connect} from "react-redux";
+import * as Dashboard from "./dashboard/dashboard.js";
+import WidgetGrid from "./widgets/widgetGrid.ui.js";
+import LayoutsNavItem from "./layouts/layouts.ui.js";
+import WidgetConfigDialog from "./widgets/widgetConfigDialog.ui.js";
+import DashboardMenuEntry from "./dashboard/dashboardMenuEntry.ui.js";
+import ImportExportDialog from "./dashboard/importExportDialog.ui.js";
+import DatasourceConfigDialog from "./datasource/datasourceConfigDialog.ui.js";
+import DatasourceNavItem from "./datasource/datasourceNavItem.ui.js";
+import WidgetsNavItem from "./widgets/widgetsNavItem.ui.js";
+import PluginNavItem from "./pluginApi/pluginNavItem.ui.js";
+import PluginsDialog from "./pluginApi/pluginsDialog.ui.js";
+import * as Persistence from "./persistence.js";
+import {IConfigState} from "./config";
 
-export class Layout extends Component {
+interface LayoutProps {
+    setReadOnly(readOnly: boolean): void;
+    isReadOnly: boolean;
+    config: IConfigState;
+}
 
-    constructor(props) {
+interface LayoutState {
+    hover: boolean;
+}
+
+export class Layout extends Component<LayoutProps, LayoutState> {
+
+    constructor(props: LayoutProps) {
         super(props);
         this.state = {hover: false};
     }
 
-    onReadOnlyModeKeyPress(e) {
+    onReadOnlyModeKeyPress(e: KeyboardEvent) {
         //console.log("key pressed", event.keyCode);
-        var intKey = (window.Event) ? e.which : e.keyCode;
+        var intKey = (window.event) ? e.which : e.keyCode;
         if (intKey === 27) {
             this.props.setReadOnly(!this.props.isReadOnly);
         }
@@ -35,7 +44,7 @@ export class Layout extends Component {
     componentDidMount() {
         this.onReadOnlyModeKeyPress = this.onReadOnlyModeKeyPress.bind(this);
 
-        ReactDOM.findDOMNode(this)
+        ReactDOM.findDOMNode<any>(this)
             .offsetParent
             .addEventListener('keydown', this.onReadOnlyModeKeyPress);
     }
@@ -80,7 +89,9 @@ export class Layout extends Component {
                         <a className="item" onClick={() => props.setReadOnly(!props.isReadOnly)}>
                             <i className={ (props.isReadOnly ? "lock" : "unlock alternate")  + " icon"}/> {/*expand*/}
                         </a>
-
+                        <div className="header selectable right item">
+                            v{this.props.config.version}&nbsp;{this.props.config.branch}:{this.props.config.revisionShort}
+                        </div>
                     </div>
 
                 </div>
@@ -95,20 +106,16 @@ export class Layout extends Component {
 
 }
 
-Layout.propTypes = {
-    setReadOnly: Prop.func.isRequired,
-    isReadOnly: Prop.bool.isRequired
-};
-
 export default connect(
     state => {
         return {
-            isReadOnly: state.dashboard.isReadOnly
+            isReadOnly: state.dashboard.isReadOnly,
+            config: state.config
         };
     },
     dispatch => {
         return {
-            setReadOnly: (isReadOnly) => dispatch(Dashboard.setReadOnly(isReadOnly))
+            setReadOnly: (isReadOnly: boolean) => dispatch(Dashboard.setReadOnly(isReadOnly))
         };
     }
 )(Layout);

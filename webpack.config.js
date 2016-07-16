@@ -70,7 +70,7 @@ module.exports = {
     // resolveLoader: {root: path.join(__dirname, "node_modules")},
     module: {
         preLoaders: [],
-        postLoaders : [],
+        postLoaders: [],
         loaders: [
             {
                 test: /\.(js|jsx)$/,
@@ -83,6 +83,11 @@ module.exports = {
                 //loader: 'awesome-typescript-loader', // -- FAILS!
                 loader: 'ts-loader',      // ?compiler=jsx-typescript
                 //loader: 'webpack-typescript',        // -- Needs /// <reference
+                include: paths.src
+            },
+            {
+                test: /\.json$/,
+                loader: 'json',
                 include: paths.src
             },
             {
