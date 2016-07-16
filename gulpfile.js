@@ -153,19 +153,19 @@ gulp.task('webpack', ['webpack:client', 'webpack:tests', 'webpack:servertests'],
 });
 
 
-gulp.task('webpack:client', [], function (callback) {
+gulp.task('webpack:client', ['compile:config'], function (callback) {
     var webpackConfig = require('./webpack.config.js');
 
     webpack(webpackConfig, webpackErrorHandler.bind(this, callback));
 });
 
-gulp.task('webpack:tests', ['inject'], function (callback) {
+gulp.task('webpack:tests', ['inject', 'compile:config'], function (callback) {
     var webpackConfig = require('./webpack.tests.js');
 
     webpack(webpackConfig, webpackErrorHandler.bind(this, callback));
 });
 
-gulp.task('webpack:ui-tests', [], function (callback) {
+gulp.task('webpack:ui-tests', ['compile:config'], function (callback) {
     var webpackConfig = require('./webpack.ui-tests.js');
 
     webpack(webpackConfig, webpackErrorHandler.bind(this, callback));
