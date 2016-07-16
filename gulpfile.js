@@ -111,8 +111,8 @@ const eslint = require('gulp-eslint');
 // TODO: Add tslint for typescript
 gulp.task('lint', function () {
     return gulp.src(['src/**/*.js'])
-        // eslint() attaches the lint output to the "eslint" property
-        // of the file object so it can be used by other modules.
+    // eslint() attaches the lint output to the "eslint" property
+    // of the file object so it can be used by other modules.
         .pipe(eslint())
         // eslint.format() outputs the lint results to the console.
         // Alternatively use eslint.formatEach() (see Docs).
@@ -171,9 +171,25 @@ gulp.task('webpack:ui-tests', [], function (callback) {
     webpack(webpackConfig, webpackErrorHandler.bind(this, callback));
 });
 
-/////////////////
-// Inject Tasks
-/////////////////
+var jeditor = require("gulp-json-editor");
+var git = require('git-rev-sync');
+var packageJson = require('./package.json');
+
+gulp.task('compile:config', function () {
+    return gulp.src("./src/config.json")
+        .pipe(jeditor(function (json) {
+            json.version = packageJson.version;
+            json.revision = git.long();
+            json.revisionShort = git.short();
+            json.branch = git.branch();
+            return json;
+        }))
+        .pipe(gulp.dest("./src"));
+});
+
+//////////////////////////////
+// Inject/Modify files Tasks
+//////////////////////////////
 var inject = require('gulp-inject');
 
 gulp.task('inject', ['inject:tests']);

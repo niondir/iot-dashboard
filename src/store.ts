@@ -14,14 +14,15 @@ import * as Action from './actionNames.js'
 import * as  WidgetPlugins from './widgets/widgetPlugins.js'
 import * as DatasourcePlugins from './datasource/datasourcePlugins.js'
 import * as AppState from './appState.ts'
+import * as Config from './config'
 
 export type DashboardStore = Redux.Store<AppState.State>;
 
 
 let store: DashboardStore;
 
-
 let appReducer: AppState.Reducer = Redux.combineReducers<AppState.State>({
+    config: Config.config,
     widgets: Widgets.widgets,
     widgetConfig: WidgetConfig.widgetConfigDialog,  // TODO: Still used or replaced by modalDialog
     layouts: Layouts.layouts,

@@ -14,7 +14,8 @@
     "redux-form": "registry:dt/redux-form#4.0.3+20160703120921",
     "redux-logger": "registry:dt/redux-logger#2.6.0+20160619033847",
     "redux-thunk": "registry:dt/redux-thunk#2.1.0+20160703120921",
-    "urijs": "registry:dt/urijs#1.15.1+20160526132152"
+    "urijs": "registry:dt/urijs#1.15.1+20160526132152",
+    "webpack-env": "registry:dt/webpack-env#1.12.2+20160316155526"
   },
   "globalDevDependencies": {
     "chai": "registry:dt/chai#3.4.0+20160601211834",
