@@ -29,7 +29,7 @@ export function createOrUpdateDatasource(id, type, settings) {
             throw new Error("Can not update datasource of type " + dsState.type + " with props of type " + type);
         }
         if (dsState) {
-            dispatch(updateDatasourceProps(id, settings));
+            dispatch(updateDatasourceSettings(id, settings));
         }
         else {
             dispatch(addDatasource(type, settings));
@@ -57,9 +57,9 @@ export function addDatasource(dsType, settings) {
     }
 }
 
-export function updateDatasourceProps(id, settings) {
-    // TODO: Working on that copy does not work yet. We need to notify the Datasource about updated props!
-    //let propsCopy = {...props};
+export function updateDatasourceSettings(id, settings) {
+    // TODO: Working on that copy does not work yet. We need to notify the Datasource about updated settings!
+    //let settingsCopy = {...settings};
     return {
         type: Action.UPDATE_DATASOURCE,
         id,

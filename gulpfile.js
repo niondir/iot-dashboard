@@ -74,7 +74,7 @@ gulp.task('report', function () {
                 'text-summary',
                 //{name: 'lcov', dir: 'coverage'}
                 //{name: 'html', dir: 'coverage/html/'}
-                {name: 'text', dir: 'coverage/report.txt'},
+                {name: 'text', dir: 'coverage/report.txt'}
             ]
         }));
 });

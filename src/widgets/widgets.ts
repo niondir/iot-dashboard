@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as Redux from "redux";
 import {PropTypes as Prop} from "react";
 import * as Uuid from "../util/uuid.js";
 import * as _ from "lodash";
@@ -24,6 +25,20 @@ export interface IWidgetState {
     width: number;
     height: number;
     availableHeightPx: number;
+}
+
+// Interface combining all widget actions, not all are needed for each action
+interface IWidgetAction extends Redux.Action {
+    type: string;
+    id?: string;
+    widgetType?: string;
+    widgetSettings?: any;
+    row?: number;
+    col?: number;
+    width?: number;
+    height?: number;
+    layouts?: Layout[]; // Layout from react-grid-view
+    layout?: any; // from layout.js
 }
 
 // From react-grid-layout
@@ -107,7 +122,7 @@ export function addWidget(widgetType: string, widgetSettings: any = {}, width: n
         let widgets = getState().widgets;
         const widgetPositions = calcNewWidgetPosition(widgets);
 
-        return dispatch({
+        return dispatch(<IWidgetAction>{
             type: Action.ADD_WIDGET,
             id: Uuid.generate(),
             col: widgetPositions.col,
@@ -120,7 +135,7 @@ export function addWidget(widgetType: string, widgetSettings: any = {}, width: n
     }
 }
 
-export function updateWidgetSettings(id: string, widgetSettings: any = {}) {
+export function updateWidgetSettings(id: string, widgetSettings: any = {}) : IWidgetAction {
     return {
         type: Action.UPDATE_WIDGET_PROPS,
         id,
@@ -128,22 +143,22 @@ export function updateWidgetSettings(id: string, widgetSettings: any = {}) {
     }
 }
 
-export function deleteWidget(id: string) {
+export function deleteWidget(id: string) : IWidgetAction {
     return {
         type: Action.DELETE_WIDGET,
         id
     }
 }
 
-export function updateLayout(layout: Layout) {
+export function updateLayout(layouts: Layout[]) : IWidgetAction {
     return {
         type: Action.UPDATE_WIDGET_LAYOUT,
-        layout: layout
+        layouts: layouts
     }
 }
 
 const widgetsCrudReducer: Function = <Function>genCrudReducer([Action.ADD_WIDGET, Action.DELETE_WIDGET], widget);
-export function widgets(state: IWidgetsState = initialWidgets, action: any): IWidgetsState {
+export function widgets(state: IWidgetsState = initialWidgets, action: IWidgetAction): IWidgetsState {
     state = widgetsCrudReducer(state, action);
     switch (action.type) {
         case Action.UPDATE_WIDGET_LAYOUT:
@@ -175,7 +190,7 @@ function calcAvaliableHeight(heightUnits: number): number {
     return (heightUnits * (ROW_HEIGHT + 10)) - HEADER_HEIGHT;
 }
 
-function widget(state: IWidgetState, action: any): IWidgetState {
+function widget(state: IWidgetState, action: IWidgetAction): IWidgetState {
     switch (action.type) {
         case Action.ADD_WIDGET:
             return {
@@ -190,9 +205,9 @@ function widget(state: IWidgetState, action: any): IWidgetState {
                 availableHeightPx: calcAvaliableHeight(action.height)
             };
         case Action.UPDATE_WIDGET_PROPS:
-            return objectAssign({}, state, {props: action.widgetProps});
+            return objectAssign({}, state, {settings: action.widgetSettings});
         case Action.UPDATE_WIDGET_LAYOUT:
-            let layout = layoutById(action.layout, state.id);
+            let layout = layoutById(action.layouts, state.id);
             if (layout == null) {
                 console.warn("No layout for widget. Skipping update of position. Id: " + state.id);
                 return state;

@@ -113,7 +113,7 @@ class DatasourceConfigModal extends React.Component {
         const fields = settings.map(setting => setting.id);
         let initialValues = {};
         if (this._isEditing()) {
-            initialValues = Object.assign({}, this._getEditingDatasource().props)
+            initialValues = Object.assign({}, this._getEditingDatasource().settings)
         }
         else {
             initialValues = settings.reduce((initialValues, setting) => {
