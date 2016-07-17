@@ -36,7 +36,7 @@
     function Widget(props = {}) {
         var jq = $.noConflict();
         this.render = function (props, element) {
-            const data = props.getData(props.config.datasource);
+            const data = props.getData(props.state.settings.datasource);
 
             let html = "";
             if(!data || data.length == 0) {
@@ -51,8 +51,6 @@
             //$(element).html(html);
             element.innerHTML = html;
         }
-
-
     }
 
     window.iotDashboardApi.registerWidgetPlugin(TYPE_INFO, Widget);

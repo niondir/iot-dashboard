@@ -180,8 +180,8 @@ export default connect(
     (dispatch) => {
         return {
             resetForm: (id) => dispatch(reset(id)),
-            createOrUpdateDatasource: (id, type, dsProps) => {
-                dispatch(Datasource.createOrUpdateDatasource(id, type, dsProps))
+            createOrUpdateDatasource: (id, type, dsSettings) => {
+                dispatch(Datasource.createOrUpdateDatasource(id, type, dsSettings))
             }
         }
     }

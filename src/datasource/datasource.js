@@ -10,7 +10,7 @@ const initialDatasources = {
     "initial_random_source": {
         id: "initial_random_source",
         type: "random",
-        props: {
+        settings: {
             name: "Random",
             min: 10,
             max: 20,
@@ -19,7 +19,7 @@ const initialDatasources = {
     }
 };
 
-export function createOrUpdateDatasource(id, type, props) {
+export function createOrUpdateDatasource(id, type, settings) {
     return (dispatch, getState) => {
         const state = getState();
 
@@ -29,19 +29,19 @@ export function createOrUpdateDatasource(id, type, props) {
             throw new Error("Can not update datasource of type " + dsState.type + " with props of type " + type);
         }
         if (dsState) {
-            dispatch(updateDatasourceProps(id, props));
+            dispatch(updateDatasourceProps(id, settings));
         }
         else {
-            dispatch(addDatasource(type, props));
+            dispatch(addDatasource(type, settings));
         }
     }
 }
 
 
-export function addDatasource(dsType, props) {
+export function addDatasource(dsType, settings) {
     if (!dsType) {
         console.warn("dsType: ", dsType);
-        console.warn("props: ", props);
+        console.warn("settings: ", settings);
         throw new Error("Can not add Datasource without Type");
     }
 
@@ -50,20 +50,20 @@ export function addDatasource(dsType, props) {
             type: Action.ADD_DATASOURCE,
             id: Uuid.generate(),
             dsType,
-            props
+            settings
         });
         //const state = getState();
         //DatasourceWorker.initializeWorkers(state.datasources, dispatch);
     }
 }
 
-export function updateDatasourceProps(id, props) {
+export function updateDatasourceProps(id, settings) {
     // TODO: Working on that copy does not work yet. We need to notify the Datasource about updated props!
     //let propsCopy = {...props};
     return {
         type: Action.UPDATE_DATASOURCE,
         id,
-        props
+        settings
     }
 }
 
@@ -163,7 +163,7 @@ function datasource(state, action) {
             return {
                 id: action.id,
                 type: action.dsType,
-                props: action.props
+                settings: action.settings
             };
         case Action.SET_DATASOURCE_DATA:
             return Object.assign({}, state, {
@@ -176,7 +176,7 @@ function datasource(state, action) {
             });
         case Action.UPDATE_DATASOURCE:
             return Object.assign({}, state, {
-                props: action.props
+                settings: action.settings
             });
         default:
             return state;

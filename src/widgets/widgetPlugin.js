@@ -41,7 +41,7 @@ export default class WidgetPlugin {
         const rendering = widgetPlugin.typeInfo.rendering || "react";
 
         let widgetComponent = this.Widget;
-        if (rendering === "dom") {
+        if (rendering.toLowerCase() === "dom") {
             widgetComponent = DomWidgetContainer;
         }
 
@@ -52,8 +52,9 @@ export default class WidgetPlugin {
                 return (state) => {
                     const widgetState = state.widgets[id];
                     return {
-                        config: widgetState.props,
-                        _state: widgetState,
+                        state: widgetState,
+                        // This is used to trigger re-rendering on Datasource change
+                        // TODO: in future only the datasources the Widget is interested in should trigger re-rendering
                         _datasources: state.datasources,
                         getData: this.getData
                     }

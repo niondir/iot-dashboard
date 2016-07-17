@@ -106,23 +106,24 @@
     function fetchData() {
 
         var history = [];
-        var auth = this.props.auth;
-        var props = this.props;
+        var settings = this.props.state.settings;
+        var auth = settings.auth;
+
         var self = this;
 
         fetch("https://api.digimondo.io/v1/" +
-            this.props.appEui +
+            settings.appEui +
             "?auth=" + auth +
-            (this.props.limitToLast ? "&limitToLast=" + this.props.limitToLast : "" ) +
-            (this.props.offset ? "&offset=" + this.props.offset : "" ) +
-            (this.props.receivedAfter ? "&receivedAfter=" + this.props.receivedAfter : "" ) +
+            (settings.limitToLast ? "&limitToLast=" + settings.limitToLast : "" ) +
+            (settingss.offset ? "&offset=" + settings.offset : "" ) +
+            (settings.receivedAfter ? "&receivedAfter=" + settings.receivedAfter : "" ) +
             "&payloadonly")
             .then(function (response) {
                 return response.json();
             }).then(function (data) {
 
             _.forEach(data, function (value) {
-                if (props.moteeui && value.moteeui !== props.moteeui) {
+                if (settings.moteeui && value.moteeui !== settings.moteeui) {
                     return;
                 }
                 try {
@@ -147,8 +148,8 @@
          }      */
     }
 
-    function Datasource(props, history) {
-
+    function Datasource(props) {
+        var history = props.state.data;
         this.props = props;
 
         this.interval = setInterval(fetchData.bind(this), 2000);

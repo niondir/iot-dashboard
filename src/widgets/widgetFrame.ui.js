@@ -39,7 +39,7 @@ const WidgetFrame = (props) => {
                     </div>
                 }
                 <div className={"ui item top attached" + (props.isReadOnly ? "" : " drag")}>
-                    {widgetState.props.name || "\u00a0"}
+                    {widgetState.settings.name || "\u00a0"}
                 </div>
             </div>
 

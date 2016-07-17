@@ -6,7 +6,7 @@ import * as ModalIds from "../modal/modalDialogIds";
 const initialState = {
     type: null,
     name: null,
-    props: {}
+    settings: {}
 };
 
 /**
@@ -27,7 +27,7 @@ export function createWidget(type) {
 /**
  * Creates or updates an actual widget
  */
-export function createOrUpdateWidget(id, type, props) {
+export function createOrUpdateWidget(id, type, settings) {
     return (dispatch, getState) => {
         const state = getState();
 
@@ -37,10 +37,10 @@ export function createOrUpdateWidget(id, type, props) {
             throw new Error("Can not update widget of type " + widget.type + " with props of type " + type);
         }
         if (widget) {
-            dispatch(Widgets.updateWidgetProps(id, props));
+            dispatch(Widgets.updateWidgetSettings(id, settings));
         }
         else {
-            dispatch(Widgets.addWidget(type, props));
+            dispatch(Widgets.addWidget(type, settings));
         }
     }
 }
@@ -77,14 +77,14 @@ export function widgetConfigDialog(state = initialState, action) {
                 type: action.widgetType,
                 id: null,
                 name: action.widgetType,
-                props: {}
+                settings: {}
             });
         case START_CONFIGURE_WIDGET:
             return Object.assign({}, state, {
                 type: action.widget.type,
                 id: action.widget.id,
                 name: action.widget.name,
-                props: action.widget.props
+                settings: action.widget.settings
             });
         default:
             return state;

@@ -1,4 +1,5 @@
 import * as _ from 'lodash'
+import objectAssign from 'object-assign'
 
 /**
  * Connects a datasource to the application state
@@ -34,8 +35,11 @@ export class DataSourcePlugin {
         let instance = this.instances[id];
         if (!instance) {
             const dsState = this.getDatasourceState(id);
-            instance = new this.Datasource(dsState.props, dsState.data);
-            instance.props = dsState.props;
+            const props = {
+                state: dsState
+            };
+            instance = new this.Datasource(props);
+            instance.props = props;
             this.instances[id] = instance;
         }
         return instance;
@@ -76,10 +80,10 @@ export class DataSourcePlugin {
         }
 
         const oldProps = instance.props;
-        const newProps = dsState.props;
+        const newProps = objectAssign({oldProps, state: dsState});
         if (oldProps !== newProps) {
-            if (_.isFunction(instance.propsWillUpdate)) {
-                instance.propsWillUpdate(newProps);
+            if (_.isFunction(instance.datasourceWillReceiveProps)) {
+                instance.datasourceWillReceiveProps(newProps);
             }
             instance.props = newProps;
         }

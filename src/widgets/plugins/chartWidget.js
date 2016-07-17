@@ -98,19 +98,19 @@ export class Widget extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.config !== this.props.config
-            || nextProps._state.height !== this.props._state.height) {
+        if (nextProps.settings !== this.settings
+            || nextProps.state.height !== this.props.state.height) {
             this._createChart(nextProps);
         }
     }
 
     _createChart(props) {
-        const config = props.config;
+        const config = props.state.settings;
         const data = props.getData(config.datasource);
         this.chart = c3.generate({
-            bindto: '#chart-' + props._state.id,
+            bindto: '#chart-' + props.state.id,
             size: {
-                height: props._state.availableHeightPx
+                height: props.state.availableHeightPx
             },
             data: {
                 json: data,
@@ -147,8 +147,8 @@ export class Widget extends Component {
             return;
         }
         const props = this.props;
-        const config = props.config;
-        const data = props.getData(config.datasource);
+        const settings = props.state.settings;
+        const data = props.getData(settings.datasource);
 
         // TODO: Do not take last element, but all new elements ;)
         const lastElement = data.length > 0 ? data[data.length - 1] : {};
@@ -169,8 +169,8 @@ export class Widget extends Component {
         this.chart.load({
             json: data,
             keys: {
-                x: config.xKey || undefined,
-                value: safeParseJsonObject(config.dataKeys)
+                x: settings.xKey || undefined,
+                value: safeParseJsonObject(settings.dataKeys)
             },
             labels: false
         });
@@ -180,7 +180,7 @@ export class Widget extends Component {
 
     render() {
         this._renderChart();
-        return <div style={{padding: "10px"}}><div className=""  id={'chart-' + this.props._state.id}></div> </div>
+        return <div style={{padding: "10px"}}><div className=""  id={'chart-' + this.props.state.id}></div> </div>
     }
 
     componentWillUnmount() {
@@ -193,8 +193,8 @@ export class Widget extends Component {
 
 // TODO: Move to core, for simple reuse
 Widget.propTypes = {
-    config: Prop.object.isRequired,
-    _state: Prop.shape({
+    getData: Prop.func.isRequired,
+    state: Prop.shape({
         height: Prop.number.isRequired,
         id: Prop.string.isRequired
     }).isRequired

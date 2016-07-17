@@ -32,8 +32,8 @@ function getRandomInt(min, max) {
 export class Datasource {
 
 
-    constructor(props = {}, history) {
-        this.props = props;
+    constructor(props) {
+        var history = props.state.data;
         // Initialize with non random values to demonstrate loading of historic values
         this.history = history || []; // [{value: 10}, {value: 20}, {value: 30}, {value: 40}, {value: 50}]
         this.x = 0;
@@ -43,16 +43,13 @@ export class Datasource {
         }
     }
 
-    // TODO: We can not edit datasources yet :)
-    updateProps(props) {
-        console.log("New Props: " + props);
-        this.props = props;
+    datasourceWillReceiveProps(props) {
     }
 
     getValues() {
         this.history.push(this.fetchValue());
 
-        const maxValues = Number(this.props.maxValues) || 1000;
+        const maxValues = Number(this.props.state.settings.maxValues) || 1000;
         while (this.history.length > maxValues) {
             this.history.shift();
         }
@@ -61,9 +58,9 @@ export class Datasource {
     }
 
     fetchValue() {
-        const props = this.props;
-        const min = Number(props.min || 0);
-        const max = Number(props.max || 100);
+        const settings = this.props.state.settings;
+        const min = Number(settings.min || 0);
+        const max = Number(settings.max || 100);
         let newValue = {x: this.x++, value: getRandomInt(min, max), value2: getRandomInt(min, max)};
         return newValue;
     }

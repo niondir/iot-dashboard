@@ -18,7 +18,7 @@ export interface IWidgetState {
     id: string;
     type: string;
     name: string;
-    props: any;
+    settings: any;
     row: number;
     col: number;
     width: number;
@@ -40,7 +40,7 @@ export const initialWidgets: IWidgetsState = {
         "id": "initial_chart",
         "type": "chart",
         "name": "chart",
-        "props": {
+        "settings": {
             "name": "Random Values",
             "datasource": "initial_random_source",
             "chartType": "area-spline",
@@ -59,7 +59,7 @@ export const initialWidgets: IWidgetsState = {
         "id": "initial_text",
         "type": "text",
         "name": "text",
-        "props": {
+        "settings": {
             "name": "Random data",
             "datasource": "initial_random_source"
         },
@@ -73,7 +73,7 @@ export const initialWidgets: IWidgetsState = {
         "id": "106913f4-44fb-4f69-ab89-5d5ae857cf3c",
         "type": "chart",
         "name": "chart",
-        "props": {
+        "settings": {
             "name": "Bars",
             "datasource": "initial_random_source",
             "chartType": "spline",
@@ -97,12 +97,12 @@ export const widgetPropType = Prop.shape({
     row: Prop.number.isRequired,
     width: Prop.number.isRequired,
     height: Prop.number.isRequired,
-    props: Prop.shape({
+    settings: Prop.shape({
         name: Prop.string.isRequired
     }).isRequired
 });
 
-export function addWidget(widgetType: string, widgetProps: any = {}, width: number = 3, height: number = 3): AppState.Action {
+export function addWidget(widgetType: string, widgetSettings: any = {}, width: number = 3, height: number = 3): AppState.Action {
     return (dispatch: AppState.Dispatch, getState: AppState.GetState) => {
         let widgets = getState().widgets;
         const widgetPositions = calcNewWidgetPosition(widgets);
@@ -115,16 +115,16 @@ export function addWidget(widgetType: string, widgetProps: any = {}, width: numb
             width,
             height,
             widgetType,
-            widgetProps
+            widgetSettings
         });
     }
 }
 
-export function updateWidgetProps(id: string, widgetProps: any = {}) {
+export function updateWidgetSettings(id: string, widgetSettings: any = {}) {
     return {
         type: Action.UPDATE_WIDGET_PROPS,
         id,
-        widgetProps
+        widgetSettings
     }
 }
 
@@ -182,7 +182,7 @@ function widget(state: IWidgetState, action: any): IWidgetState {
                 id: action.id,
                 type: action.widgetType,
                 name: action.widgetType,
-                props: action.widgetProps,
+                settings: action.widgetSettings,
                 row: action.row,
                 col: action.col,
                 width: action.width,
