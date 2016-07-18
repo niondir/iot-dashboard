@@ -27,7 +27,7 @@ const WidgetFrame = (props) => {
                     <div className="ui tiny horizontal right floated inverted list">
 
                         <ConfigWidgetButton className="right item no-drag" widgetState={widgetState}
-                                            visible={(props.widgetPlugin.typeInfo.settings ? true : false)}
+                                            visible={(props.widgetPlugin && props.widgetPlugin.typeInfo.settings ? true : false)}
                                             icon="configure"/>
                         {/* <!--<a className="right item drag">
                          <i className="move icon drag"></i>

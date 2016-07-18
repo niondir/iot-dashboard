@@ -1,17 +1,19 @@
-import {assert} from 'chai'
-import * as RandomSource from './randomDatasource'
+import {assert} from "chai";
+import * as RandomSource from "./randomDatasource";
 
 describe('Random Datasource', function () {
-
+    const props = {state: {settings: {}}};
     it("Can create instance", function () {
-        let randomSource = new RandomSource.Datasource();
+        let randomSource = new RandomSource.Datasource(props);
+        randomSource.props = props; // also done by Dashboard - we should reuse some factory in tests
         assert.isOk(randomSource);
     });
 
-    describe('fetch data', function() {
+    describe('fetch data', function () {
 
         it("Can get new value", function () {
-            let randomSource = new RandomSource.Datasource();
+            let randomSource = new RandomSource.Datasource(props);
+            randomSource.props = props; // also done by Dashboard - we should reuse some factory in tests
 
             let values = randomSource.getValues();
 
@@ -22,7 +24,8 @@ describe('Random Datasource', function () {
         });
 
         it("Can get all past value", function () {
-            let randomSource = new RandomSource.Datasource();
+            let randomSource = new RandomSource.Datasource(props);
+            randomSource.props = props; // also done by Dashboard - we should reuse some factory in tests
 
             let newValues = randomSource.getValues();
             let values = randomSource.getValues();
