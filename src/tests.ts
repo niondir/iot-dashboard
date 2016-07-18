@@ -6,6 +6,7 @@ import './util/collection.test.js'
 import './widgets/widgetPlugins.test.js'
 import './datasource/plugins/randomDatasource.test.js'
 import './serverRenderer.test.ts'
+import './widgets/widgets.test.ts'
 /* endinject */
 
 // TODO: instead of inject we could use require.context

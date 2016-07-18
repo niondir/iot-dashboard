@@ -16,10 +16,10 @@ import * as ChartWidget from './widgets/plugins/chartWidget.js'
 import * as DatasourceWorker from './datasource/datasourceWorker.js'
 import * as RandomDatasource from './datasource/plugins/randomDatasource.js'
 import * as TimeDatasource from './datasource/plugins/timeDatasource.js'
-import store from './store'
 import * as Store from './store'
 import * as Plugins from './pluginApi/plugins.js'
 
+let store = Store.create();
 
 function loadInitialPlugins(store:Store.DashboardStore) {
     store.dispatch(Plugins.loadPlugin(TextWidget));

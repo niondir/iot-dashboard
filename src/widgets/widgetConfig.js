@@ -17,7 +17,7 @@ export function createWidget(type) {
         const state = getState();
         const widgetPlugin = state.widgetPlugins[type];
         if (!widgetPlugin.typeInfo.settings && widgetPlugin.typeInfo.settings.length > 0) {
-            dispatch(Widgets.addWidget(type));
+            dispatch(Widgets.createWidget(type));
             return;
         }
         dispatch(openWidgetCreateDialog(type));
@@ -40,7 +40,7 @@ export function createOrUpdateWidget(id, type, settings) {
             dispatch(Widgets.updateWidgetSettings(id, settings));
         }
         else {
-            dispatch(Widgets.addWidget(type, settings));
+            dispatch(Widgets.createWidget(type, settings));
         }
     }
 }

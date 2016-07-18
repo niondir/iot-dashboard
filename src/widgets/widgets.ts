@@ -117,22 +117,26 @@ export const widgetPropType = Prop.shape({
     }).isRequired
 });
 
-export function addWidget(widgetType: string, widgetSettings: any = {}, width: number = 3, height: number = 3): AppState.Action {
+export function createWidget(widgetType: string, widgetSettings: any = {}): AppState.Action {
     return (dispatch: AppState.Dispatch, getState: AppState.GetState) => {
         let widgets = getState().widgets;
         const widgetPositions = calcNewWidgetPosition(widgets);
 
-        return dispatch(<IWidgetAction>{
-            type: Action.ADD_WIDGET,
-            id: Uuid.generate(),
-            col: widgetPositions.col,
-            row: widgetPositions.row,
-            width,
-            height,
-            widgetType,
-            widgetSettings
-        });
+        return dispatch(addWidget(widgetType, widgetSettings, widgetPositions.row, widgetPositions.col));
     }
+}
+
+export function addWidget(widgetType: string, widgetSettings: any = {}, row: number, col: number, width: number = 3, height: number = 3) : IWidgetAction {
+    return {
+        type: Action.ADD_WIDGET,
+        id: Uuid.generate(),
+        col: col,
+        row: row,
+        width,
+        height,
+        widgetType,
+        widgetSettings
+    };
 }
 
 export function updateWidgetSettings(id: string, widgetSettings: any = {}) : IWidgetAction {
