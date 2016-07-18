@@ -50,6 +50,10 @@ to keep everything simple all the important tasks are based on scripts in packag
     npm run compile
     npm start
 
+* Dashboard: http://localhost:8081/
+* Tests: http://localhost:8081/tests.html
+* Testcoverage: http://localhost:8081/coverage/
+
 ### Development ###
 
 For preparation run
@@ -60,17 +64,22 @@ Run the Webpack Server with live-reload and hot module replacement
 
     npm run dev
 
+Open your browser at: `http://localhost:8080` and for developing tests: `http://localhost:8080/webpack-dev-server/tests.html`
+
 Run a second watch task to keep some other files up to date (optional)
+See `gulpfile.js` -> `watch` task for details.
 
-    gulp watch
-
-To generate some deployable code in dist
-
-    npm run compile
+    npm run watch
 
 To make sure all you changes will survive the CI build
 
     npm run build
+
+To just run the tests (not enough to survive the CI build!)
+
+    npm test
+
+Find the coverage report in `dist/coverage` or while the server is running at `http://localhost:8080/coverage/`
 
 #### Webpack Analysis ####
 

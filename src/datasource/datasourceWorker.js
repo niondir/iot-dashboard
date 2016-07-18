@@ -1,6 +1,6 @@
 import * as Datasource from './datasource'
 import DatasourcePlugins from './datasourcePlugins'
-import store from '../store'
+import * as Store from '../store'
 
 let heartbeat;
 
@@ -9,7 +9,7 @@ export function start() {
         clearInterval(heartbeat);
     }
     heartbeat = setInterval(()=> {
-        store.dispatch(Datasource.fetchDatasourceData());
+        Store.get().dispatch(Datasource.fetchDatasourceData());
     }, 1000);
 }
 

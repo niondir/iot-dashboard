@@ -100,7 +100,6 @@ module.exports = {
     },
     plugins: [
         failPlugin,
-        new webpack.HotModuleReplacementPlugin(),
         new ExtractTextPlugin("[name].bundle.css"),
         new webpack.ProvidePlugin({ // Makes things available in every module without an import
             $: "jquery",

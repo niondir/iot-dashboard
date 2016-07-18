@@ -5,7 +5,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var webpackConfig = require('./webpack.config.js');
 
 webpackConfig.entry = {
-    tests: ['mocha!./src/uiTests.js']
+    "browser-tests": ['mocha!./src/browser-tests.js']
 };
 
 webpackConfig.plugins = [

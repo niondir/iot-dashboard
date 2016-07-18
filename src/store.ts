@@ -16,7 +16,9 @@ import * as DatasourcePlugins from "./datasource/datasourcePlugins.js";
 import * as AppState from "./appState.ts";
 import * as Config from "./config";
 
-export type DashboardStore = Redux.Store<AppState.State>;
+export interface DashboardStore extends Redux.Store<AppState.State> {
+
+}
 
 
 let appReducer: AppState.Reducer = Redux.combineReducers<AppState.State>({
@@ -40,7 +42,7 @@ const reducer: AppState.Reducer = (state: AppState.State, action: Redux.Action) 
 
     state = Import.importReducer(state, action);
 
-    return appReducer(state, action)
+    return appReducer(state, action);
 };
 
 
@@ -58,31 +60,49 @@ const logger = createLogger({
     }
 });
 
-let store: DashboardStore;
+let globalStore: DashboardStore;
 
-export function get() {
-    if (!store) {
-        store = create();
-    }
-
-    return store;
+export function setGlobalStore(store: DashboardStore) {
+    globalStore = store;
 }
 
-export function create(options: any = {log: true}) {
-    /*if (store) {
-     throw new Error("Store already created. Call store.destory() before creating a new one!");
-     }*/
+export function get() {
+    if (!globalStore) {
+        throw new Error("No global store created. Call setGlobalStore(store) before!");
+    }
 
-    let middleware:Redux.Middleware[] = [];
+    return globalStore;
+}
+
+/**
+ * Create a store as empty as possible
+ */
+export function createEmpty(options: any = {log: true}) {
+    return create(<AppState.State>{
+        config: null,
+        widgets: {},
+        datasources: {}
+    }, options);
+}
+
+/**
+ * Create a store with default values
+ */
+export function createDefault(options: any = {log: true}) {
+    return create(undefined, options);
+}
+
+export function create(initialState: AppState.State, options: any = {log: true}): DashboardStore {
+    let middleware: Redux.Middleware[] = [];
     middleware.push(thunk);
     middleware.push(Persist.persistenceMiddleware);
     if (options.log) {
         middleware.push(logger);// must be last
     }
 
-    store = Redux.createStore(
+    let store = Redux.createStore(
         reducer,
-        Persist.loadFromLocalStorage(),
+        initialState,
         Redux.applyMiddleware(...middleware)
     );
 
@@ -90,10 +110,6 @@ export function create(options: any = {log: true}) {
     WidgetPlugins.pluginRegistry.store = store;
 
     return store;
-}
-
-export function destroy() {
-    store = undefined;
 }
 
 export function clearState(): Redux.Action {
