@@ -54,25 +54,26 @@
             return {};
         },
         componentDidMount: function () {
-            var map = new google.maps.Map(document.getElementById('map-' + this.props._state.id), {
-                center: {lat: this.props.config.initLat, lng: this.props.config.initLng},
-                zoom: Number(this.props.config.initZoom)
+            const settings = this.props.state.settings;
+            var map = new google.maps.Map(document.getElementById('map-' + this.props.state.id), {
+                center: {lat:settings.initLat, lng: settings.initLng},
+                zoom: Number(settings.initZoom)
             });
             this.setState({map: map})
         },
         componentWillReceiveProps(nextProps) {
-            if (nextProps._state.availableHeightPx != this.props._state.availableHeightPx) {
+            if (nextProps.state.availableHeightPx != this.props.state.availableHeightPx) {
                 google.maps.event.trigger(this.state.map, 'resize');
             }
         },
         render: function () {
             var props = this.props;
-            const config = props.config;
+            const settings = props.state.settings;
 
-            var data = props.getData(config.datasource);
+            var data = props.getData(settings.datasource);
 
             var gpsPoints = _.map(data, function (value) {
-                return value[config.gpsProp];
+                return value[settings.gpsProp];
             });
 
             var path = new google.maps.Polyline({
@@ -86,7 +87,7 @@
                 path.setMap(this.state.map);
             }
 
-            return React.DOM.div({id: 'map-' + props._state.id, style: {height: "100%"}}, "Hello World!");
+            return React.DOM.div({id: 'map-' + props.state.id, style: {height: "100%"}}, "Hello World!");
         }
     });
 

@@ -16,12 +16,16 @@ import * as ChartWidget from './widgets/plugins/chartWidget.js'
 import * as DatasourceWorker from './datasource/datasourceWorker.js'
 import * as RandomDatasource from './datasource/plugins/randomDatasource.js'
 import * as TimeDatasource from './datasource/plugins/timeDatasource.js'
-import store from './store'
 import * as Store from './store'
 import * as Plugins from './pluginApi/plugins.js'
+import * as Widgets from './widgets/widgets'
+import * as Persist from "./persistence.js";
 
+let initialState = Persist.loadFromLocalStorage();
+let store = Store.create(initialState);
+Store.setGlobalStore(store);
 
-function loadInitialPlugins(store:Store.DashboardStore) {
+function loadInitialPlugins(store: Store.DashboardStore) {
     store.dispatch(Plugins.loadPlugin(TextWidget));
     store.dispatch(Plugins.loadPlugin(ChartWidget));
     store.dispatch(Plugins.loadPluginFromUrl("./plugins/GoogleMapsWidget.js"));
@@ -34,7 +38,6 @@ function loadInitialPlugins(store:Store.DashboardStore) {
 }
 
 loadInitialPlugins(store);
-
 
 let element = document.getElementById('app');
 
@@ -59,7 +62,7 @@ else {
 }
 
 
-function renderDashboard(element:Element, store:Store.DashboardStore) {
+function renderDashboard(element: Element, store: Store.DashboardStore) {
     Renderer.render(element, store);
     DatasourceWorker.start();
 }

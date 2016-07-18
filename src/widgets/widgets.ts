@@ -1,11 +1,12 @@
-import * as React from "react";
-import {PropTypes as Prop} from "react";
-import * as Uuid from "../util/uuid.js";
-import * as _ from "lodash";
-import {genCrudReducer} from "../util/reducer.js";
-import * as Action from "../actionNames.js";
-import * as AppState from "../appState";
-import objectAssign = require("object-assign");
+import * as React from 'react'
+import * as Redux from 'redux'
+import {PropTypes as Prop} from 'react'
+import * as Uuid from '../util/uuid.js'
+import * as _ from 'lodash'
+import {genCrudReducer} from '../util/reducer.js'
+import * as Action from '../actionNames.js'
+import * as AppState from '../appState'
+import objectAssign = require('object-assign')
 
 export const HEADER_HEIGHT = 77;
 export const ROW_HEIGHT = 100;
@@ -14,16 +15,32 @@ export interface IWidgetsState {
     [key: string]: IWidgetState
 }
 
-export interface IWidgetState {
-    id: string;
-    type: string;
-    name: string;
-    props: any;
+export interface IWidgetPosition {
     row: number;
     col: number;
     width: number;
     height: number;
+}
+
+export interface IWidgetState extends IWidgetPosition {
+    id: string;
+    type: string;
+    settings: any;
     availableHeightPx: number;
+}
+
+// Interface combining all widget actions, not all are needed for each action
+interface IWidgetAction extends Redux.Action {
+    type: string;
+    id?: string;
+    widgetType?: string;
+    widgetSettings?: any;
+    row?: number;
+    col?: number;
+    width?: number;
+    height?: number;
+    layouts?: Layout[]; // Layout from react-grid-view
+    layout?: any; // from layout.js
 }
 
 // From react-grid-layout
@@ -39,8 +56,7 @@ export const initialWidgets: IWidgetsState = {
     "initial_chart": {
         "id": "initial_chart",
         "type": "chart",
-        "name": "chart",
-        "props": {
+        "settings": {
             "name": "Random Values",
             "datasource": "initial_random_source",
             "chartType": "area-spline",
@@ -58,8 +74,7 @@ export const initialWidgets: IWidgetsState = {
     "initial_text": {
         "id": "initial_text",
         "type": "text",
-        "name": "text",
-        "props": {
+        "settings": {
             "name": "Random data",
             "datasource": "initial_random_source"
         },
@@ -72,8 +87,7 @@ export const initialWidgets: IWidgetsState = {
     "106913f4-44fb-4f69-ab89-5d5ae857cf3c": {
         "id": "106913f4-44fb-4f69-ab89-5d5ae857cf3c",
         "type": "chart",
-        "name": "chart",
-        "props": {
+        "settings": {
             "name": "Bars",
             "datasource": "initial_random_source",
             "chartType": "spline",
@@ -97,53 +111,89 @@ export const widgetPropType = Prop.shape({
     row: Prop.number.isRequired,
     width: Prop.number.isRequired,
     height: Prop.number.isRequired,
-    props: Prop.shape({
+    settings: Prop.shape({
         name: Prop.string.isRequired
     }).isRequired
 });
 
-export function addWidget(widgetType: string, widgetProps: any = {}, width: number = 3, height: number = 3): AppState.Action {
-    return (dispatch: AppState.Dispatch, getState: AppState.GetState) => {
+/* // TODO: better explicitly create initial state? But when? ...
+export function createInitialWidgets() {
+    return function(dispatch: AppState.Dispatch) {
+        dispatch(addWidget('chart', {
+            "name": "Random Values",
+            "datasource": "initial_random_source",
+            "chartType": "area-spline",
+            "dataKeys": "[\"value\"]",
+            "xKey": "x",
+            "names": "{\"value\": \"My Value\"}",
+            "gaugeData": "{\"min\":0,\"max\":100,\"units\":\" %\"}"
+        }, 0, 0, 6, 2));
+
+        dispatch(addWidget('text', {
+            "name": "Random data",
+            "datasource": "initial_random_source"
+        }, 0, 6, 6, 3));
+
+
+        dispatch(addWidget('text', {
+            "name": "Bars",
+            "datasource": "initial_random_source",
+            "chartType": "spline",
+            "dataKeys": "[\"value\", \"value2\"]",
+            "xKey": "x",
+            "names": "{\"value\": \"My Value\"}",
+            "gaugeData": "{\"min\":0,\"max\":100,\"units\":\" %\"}"
+        }, 2, 0, 6, 2));
+    }
+}
+*/
+
+export function createWidget(widgetType: string, widgetSettings: any): AppState.ThunkAction {
+    return (dispatch: AppState.Dispatch, getState: AppState.GetState) : any => {
         let widgets = getState().widgets;
         const widgetPositions = calcNewWidgetPosition(widgets);
 
-        return dispatch({
-            type: Action.ADD_WIDGET,
-            id: Uuid.generate(),
-            col: widgetPositions.col,
-            row: widgetPositions.row,
-            width,
-            height,
-            widgetType,
-            widgetProps
-        });
+        return dispatch(addWidget(widgetType, widgetSettings, widgetPositions.row, widgetPositions.col));
     }
 }
 
-export function updateWidgetProps(id: string, widgetProps: any = {}) {
+export function addWidget(widgetType: string, widgetSettings: any = {}, row: number, col: number, width: number = 3, height: number = 3) : IWidgetAction {
+    return {
+        type: Action.ADD_WIDGET,
+        id: Uuid.generate(),
+        col: col,
+        row: row,
+        width,
+        height,
+        widgetType,
+        widgetSettings
+    };
+}
+
+export function updateWidgetSettings(id: string, widgetSettings: any) : IWidgetAction {
     return {
         type: Action.UPDATE_WIDGET_PROPS,
         id,
-        widgetProps
+        widgetSettings
     }
 }
 
-export function deleteWidget(id: string) {
+export function deleteWidget(id: string) : IWidgetAction {
     return {
         type: Action.DELETE_WIDGET,
         id
     }
 }
 
-export function updateLayout(layout: Layout) {
+export function updateLayout(layouts: Layout[]) : IWidgetAction {
     return {
         type: Action.UPDATE_WIDGET_LAYOUT,
-        layout: layout
+        layouts: layouts
     }
 }
 
 const widgetsCrudReducer: Function = <Function>genCrudReducer([Action.ADD_WIDGET, Action.DELETE_WIDGET], widget);
-export function widgets(state: IWidgetsState = initialWidgets, action: any): IWidgetsState {
+export function widgets(state: IWidgetsState = initialWidgets, action: IWidgetAction): IWidgetsState {
     state = widgetsCrudReducer(state, action);
     switch (action.type) {
         case Action.UPDATE_WIDGET_LAYOUT:
@@ -172,17 +222,17 @@ export function widgets(state: IWidgetsState = initialWidgets, action: any): IWi
 }
 
 function calcAvaliableHeight(heightUnits: number): number {
+    // The 10 px extra seem to be based on a bug in the grid layout ...
     return (heightUnits * (ROW_HEIGHT + 10)) - HEADER_HEIGHT;
 }
 
-function widget(state: IWidgetState, action: any): IWidgetState {
+function widget(state: IWidgetState, action: IWidgetAction): IWidgetState {
     switch (action.type) {
         case Action.ADD_WIDGET:
             return {
                 id: action.id,
                 type: action.widgetType,
-                name: action.widgetType,
-                props: action.widgetProps,
+                settings: action.widgetSettings,
                 row: action.row,
                 col: action.col,
                 width: action.width,
@@ -190,11 +240,11 @@ function widget(state: IWidgetState, action: any): IWidgetState {
                 availableHeightPx: calcAvaliableHeight(action.height)
             };
         case Action.UPDATE_WIDGET_PROPS:
-            return objectAssign({}, state, {props: action.widgetProps});
+            return objectAssign({}, state, {settings: action.widgetSettings});
         case Action.UPDATE_WIDGET_LAYOUT:
-            let layout = layoutById(action.layout, state.id);
+            let layout = layoutById(action.layouts, state.id);
             if (layout == null) {
-                console.warn("No layout for widget. Skipping update of position. Id: " + state.id);
+                console.warn("No layout for widget. Skipping position update of widget with id: " + state.id);
                 return state;
             }
             return objectAssign({}, state, {
@@ -202,7 +252,6 @@ function widget(state: IWidgetState, action: any): IWidgetState {
                 col: layout.x,
                 width: layout.w,
                 height: layout.h,
-                // The 10 px extra seem to be based on a bug in the grid layout ...
                 availableHeightPx: calcAvaliableHeight(layout.h)
             });
         default:
@@ -218,7 +267,7 @@ function layoutById(layout: Layout[], id: string) {
     });
 }
 
-function calcNewWidgetPosition(widgets: IWidgetsState): {col: number, row: number} {
+export function calcNewWidgetPosition(widgets: {[key: string]: IWidgetPosition}): {col: number, row: number} {
     let colHeights: any = {};
     // TODO: Replace 12 with constant for number of columns
     // This is different on different breaking points...
@@ -242,5 +291,5 @@ function calcNewWidgetPosition(widgets: IWidgetsState): {col: number, row: numbe
         return Number(colHeights[a] <= colHeights[b] ? a : b);
     }, 0);
     //Math.min(...colHeights);
-    return {col: col, row: Math.min(...heights) + 1}
+    return {col: col, row: Math.min(...heights)}
 }

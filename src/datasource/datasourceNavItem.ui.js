@@ -24,7 +24,7 @@ const DatasourceTopNavItem = (props) => {
                         props.deleteDatasource(ds.id);
                         }}
                         />
-                        {ds.props.name}
+                        {ds.settings.name}
                     </ui.LinkItem>
                 })
             }
@@ -40,7 +40,7 @@ DatasourceTopNavItem.propTypes = {
         Prop.shape({
             type: Prop.string.isRequired,
             id: Prop.string.isRequired,
-            props: Prop.object.isRequired
+            settings: Prop.object.isRequired
         })
     ).isRequired
 };

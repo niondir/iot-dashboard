@@ -30,10 +30,12 @@ class WidgetGrid extends Component {
         // TODO: Remove unknown widget from state
         let widgets = widgetStates.map((widgetState) => {
             let widgetPlugin = props.widgetPlugins[widgetState.type];
+            /*
             if (!widgetPlugin) {
+                // TODO: Render widget with error message - currently a loading indicator is displayed and the setting button is hidden
                 console.warn("No WidgetPlugin for type '" + widgetState.type + "'! Skipping rendering.");
                 return null;
-            }
+            } */
             // WidgetFrame must be loaded as function, else the grid is not working properly.
             return WidgetFrame({widget: widgetState, widgetPlugin: widgetPlugin, isReadOnly: props.isReadOnly})
         }).filter(frame => frame !== null);

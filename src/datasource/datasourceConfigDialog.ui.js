@@ -113,7 +113,7 @@ class DatasourceConfigModal extends React.Component {
         const fields = settings.map(setting => setting.id);
         let initialValues = {};
         if (this._isEditing()) {
-            initialValues = Object.assign({}, this._getEditingDatasource().props)
+            initialValues = Object.assign({}, this._getEditingDatasource().settings)
         }
         else {
             initialValues = settings.reduce((initialValues, setting) => {
@@ -180,8 +180,8 @@ export default connect(
     (dispatch) => {
         return {
             resetForm: (id) => dispatch(reset(id)),
-            createOrUpdateDatasource: (id, type, dsProps) => {
-                dispatch(Datasource.createOrUpdateDatasource(id, type, dsProps))
+            createOrUpdateDatasource: (id, type, dsSettings) => {
+                dispatch(Datasource.createOrUpdateDatasource(id, type, dsSettings))
             }
         }
     }

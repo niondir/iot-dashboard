@@ -27,7 +27,7 @@ const WidgetFrame = (props) => {
                     <div className="ui tiny horizontal right floated inverted list">
 
                         <ConfigWidgetButton className="right item no-drag" widgetState={widgetState}
-                                            visible={(props.widgetPlugin.typeInfo.settings ? true : false)}
+                                            visible={(props.widgetPlugin && props.widgetPlugin.typeInfo.settings ? true : false)}
                                             icon="configure"/>
                         {/* <!--<a className="right item drag">
                          <i className="move icon drag"></i>
@@ -39,7 +39,7 @@ const WidgetFrame = (props) => {
                     </div>
                 }
                 <div className={"ui item top attached" + (props.isReadOnly ? "" : " drag")}>
-                    {widgetState.props.name || "\u00a0"}
+                    {widgetState.settings.name || "\u00a0"}
                 </div>
             </div>
 

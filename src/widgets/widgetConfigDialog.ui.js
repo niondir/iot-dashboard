@@ -98,7 +98,7 @@ class WidgetConfigModal extends React.Component {
             return initialValues;
         }, {});
         // Overwrite with current widget props
-        initialValues = Object.assign({}, initialValues, props.widgetProps);
+        initialValues = Object.assign({}, initialValues, props.widgetSettings);
 
         return <ModalDialog id={DIALOG_ID}
                             title={"Configure "+ props.widgetType +" Widget"}
@@ -135,7 +135,7 @@ WidgetConfigModal.propTypes = {
     widgetId: Prop.string,
     resetForm: Prop.func.isRequired,  // reset
     widgetType: Prop.string,
-    widgetProps: Prop.object.isRequired,
+    widgetSettings: Prop.object.isRequired,
     widgetPlugin: WidgetPlugins.widgetPluginType
 };
 
@@ -144,7 +144,7 @@ export default connect(
         return {
             widgetId: state.widgetConfig.id,
             widgetType: state.widgetConfig.type,
-            widgetProps: state.widgetConfig.props,
+            widgetSettings: state.widgetConfig.settings,
             widgetPlugin: state.widgetPlugins[state.widgetConfig.type]
         }
     },

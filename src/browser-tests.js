@@ -8,6 +8,7 @@ import './util/collection.test.js'
 import './widgets/widgetPlugins.test.js'
 import './datasource/plugins/randomDatasource.test.js'
 import './serverRenderer.test.ts'
+import './widgets/widgets.test.ts'
 /* endinject */
 
 // In case we run with phantomJS this is needed
@@ -19,14 +20,3 @@ if (typeof window !== 'undefined' && window.initMochaPhantomJS) {
 else {
     console.log("no window found!");
 }
-
-var assert = require('chai').assert;
-describe('Example Array', function() {
-    describe('#indexOf()', function () {
-        it('should return -1 when the value is not present', function () {
-            assert.equal(-1, [1,2,3].indexOf(5));
-            assert.equal(-1, [1,2,3].indexOf(0));
-        });
-    });
-});
-

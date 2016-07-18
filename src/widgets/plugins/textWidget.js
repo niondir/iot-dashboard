@@ -20,7 +20,7 @@ export class Widget extends Component {
 
     render() {
         const props = this.props;
-        const data = props.getData(this.props.config.datasource);
+        const data = props.getData(props.state.settings.datasource);
 
         if(!data || data.length == 0) {
             return <p>No data</p>
@@ -32,5 +32,9 @@ export class Widget extends Component {
 
 // TODO: Move to core, for simple reuse
 Widget.propTypes = {
-    config: Prop.object.isRequired
+    getData: Prop.func.isRequired,
+    state: Prop.shape({
+        height: Prop.number.isRequired,
+        id: Prop.string.isRequired
+    }).isRequired
 };

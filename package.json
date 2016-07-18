@@ -4,7 +4,7 @@
   "description": "A generic dashboard application based on JavaScript, HTML and CSS. http://iot-dashboard.org",
   "main": "dist/app.bundle.js",
   "scripts": {
-    "start": "http-server -a localhost -p 8000 -c-1 ./dist",
+    "start": "http-server -a localhost -p 8081 -c-1 ./dist",
     "postinstall": "typings install",
     "test": "gulp test",
     "clean": "gulp clean",
@@ -97,6 +97,7 @@
     "url-loader": "0.5.7",
     "webpack": "1.12.14",
     "webpack-dev-server": "1.14.1",
+    "webpack-fail-plugin": "^1.0.4",
     "webpack-typescript": "0.5.6"
   }
 }

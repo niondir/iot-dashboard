@@ -74,7 +74,7 @@ gulp.task('report', function () {
                 'text-summary',
                 //{name: 'lcov', dir: 'coverage'}
                 //{name: 'html', dir: 'coverage/html/'}
-                {name: 'text', dir: 'coverage/report.txt'},
+                {name: 'text', dir: 'coverage/report.txt'}
             ]
         }));
 });
@@ -96,12 +96,12 @@ gulp.task('mocha:tests', ['webpack:tests'], function () {
         }));
 });
 
-
+/*
 gulp.task('mocha:ui-tests', ['inject:tests', 'webpack:ui-tests'], function () {
     return gulp
-        .src('dist/uiTests.html')
+        .src('dist/ui-tests.html')
         .pipe(mochaPhantomJS({reporter: 'spec', dump: 'ui-tests.log'}));
-});
+});*/
 
 //////////////////
 // Lint Tasks
@@ -143,30 +143,35 @@ gulp.task('compile:ts', [], function () {
 });
 
 const webpackErrorHandler = function (callback, error, stats) {
-    if (error) throw new gutil.PluginError('webpack', error);
+    if (error) {
+        //console.log("------------------------------------------------");
+        //console.log("error: ", error);
+        //throw new Error("Failed");
+        throw new gutil.PluginError('webpack', error);
+    }
     gutil.log('[webpack]', stats.toString());
 
     callback();
 };
 
-gulp.task('webpack', ['webpack:client', 'webpack:tests', 'webpack:servertests'], function (callback) {
+gulp.task('webpack', ['webpack:client', 'webpack:tests'], function (callback) {
 });
 
 
-gulp.task('webpack:client', [], function (callback) {
-    var webpackConfig = require('./webpack.config.js');
+gulp.task('webpack:client', ['compile:config'], function (callback) {
+    var webpackConfig = require('./webpack.client.js');
 
     webpack(webpackConfig, webpackErrorHandler.bind(this, callback));
 });
 
-gulp.task('webpack:tests', ['inject'], function (callback) {
+gulp.task('webpack:tests', ['inject', 'compile:config'], function (callback) {
     var webpackConfig = require('./webpack.tests.js');
 
     webpack(webpackConfig, webpackErrorHandler.bind(this, callback));
 });
 
-gulp.task('webpack:ui-tests', [], function (callback) {
-    var webpackConfig = require('./webpack.ui-tests.js');
+gulp.task('webpack:browser-tests', ['inject', 'compile:config'], function (callback) {
+    var webpackConfig = require('./webpack.browser-tests.js');
 
     webpack(webpackConfig, webpackErrorHandler.bind(this, callback));
 });
@@ -195,7 +200,7 @@ var inject = require('gulp-inject');
 gulp.task('inject', ['inject:tests']);
 
 gulp.task('inject:tests', function () {
-    var target = gulp.src(['./src/tests.ts', './src/uiTests.js']);
+    var target = gulp.src(['./src/tests.ts', './src/browser-tests.js']);
     // It's not necessary to read the files (will speed up things), we're only after their paths:
     var sources = gulp.src(['./src/**/*.test.js', './src/**/*.test.ts'], {read: false});
 
@@ -245,8 +250,9 @@ gulp.task('copy:plugins', function () {
 var WebpackDevServer = require("webpack-dev-server");
 gulp.task("webpack:server", ['copy', 'inject', 'compile:ts'], function (callback) {
     // Start a webpack-dev-server
-    var webpackConfig = require('./webpack.config.js');
+    var webpackConfig = require('./webpack.client.js');
     webpackConfig.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
+    webpackConfig.entry["browser-tests"].unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
     webpackConfig.bail = false;
     webpackConfig.devtool = '#cheap-module-source-map';
     var compiler = webpack(webpackConfig);

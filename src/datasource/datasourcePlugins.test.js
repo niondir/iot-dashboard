@@ -1,12 +1,12 @@
 import {assert} from 'chai'
 import * as DatasourcePlugins from './datasourcePlugins'
-import store from '../store'
+import * as Store from '../store'
 
 
 describe('Datasource Plugins', function () {
     describe('#register() && #getPlugin()', function () {
         it("It's possible to register and get back a plugin", function () {
-            DatasourcePlugins.pluginRegistry.store = store;
+            DatasourcePlugins.pluginRegistry.store = Store.create();
             DatasourcePlugins.pluginRegistry.register({
                 TYPE_INFO: {
                     type: 'foo'
