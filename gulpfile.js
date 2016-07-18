@@ -143,18 +143,23 @@ gulp.task('compile:ts', [], function () {
 });
 
 const webpackErrorHandler = function (callback, error, stats) {
-    if (error) throw new gutil.PluginError('webpack', error);
+    if (error) {
+        //console.log("------------------------------------------------");
+        //console.log("error: ", error);
+        //throw new Error("Failed");
+        throw new gutil.PluginError('webpack', error);
+    }
     gutil.log('[webpack]', stats.toString());
 
     callback();
 };
 
-gulp.task('webpack', ['webpack:client', 'webpack:tests', 'webpack:servertests'], function (callback) {
+gulp.task('webpack', ['webpack:client', 'webpack:tests'], function (callback) {
 });
 
 
 gulp.task('webpack:client', ['compile:config'], function (callback) {
-    var webpackConfig = require('./webpack.config.js');
+    var webpackConfig = require('./webpack.client.js');
 
     webpack(webpackConfig, webpackErrorHandler.bind(this, callback));
 });
@@ -245,7 +250,7 @@ gulp.task('copy:plugins', function () {
 var WebpackDevServer = require("webpack-dev-server");
 gulp.task("webpack:server", ['copy', 'inject', 'compile:ts'], function (callback) {
     // Start a webpack-dev-server
-    var webpackConfig = require('./webpack.config.js');
+    var webpackConfig = require('./webpack.client.js');
     webpackConfig.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
     webpackConfig.bail = false;
     webpackConfig.devtool = '#cheap-module-source-map';

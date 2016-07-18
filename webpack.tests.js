@@ -8,18 +8,6 @@ webpackConfig.entry = {
     tests: ['./src/tests.ts']
 };
 
-webpackConfig.plugins = [
-    new webpack.HotModuleReplacementPlugin(),
-    new ExtractTextPlugin("[name].bundle.css"),
-    new webpack.ProvidePlugin({
-        $: "jquery",
-        jQuery: "jquery",
-        "_": "lodash",
-        "React": "react"
-    })
-
-];
-
 webpackConfig.devtool = undefined;
 
 webpackConfig.module.postLoaders.unshift(

@@ -1,6 +1,7 @@
 var path = require("path");
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var failPlugin = require('webpack-fail-plugin');
 
 // TODO: Performance, Use Dll Bundle
 // https://webpack.github.io/docs/build-performance.html
@@ -18,7 +19,6 @@ var paths = {
     ]
 };
 
-//var packageJson = require("./package.json");
 
 var minify = true;
 var dotJs = minify ? ".js" : ".min.js";
@@ -31,15 +31,7 @@ module.exports = {
     bail: true, // Fail fast
     devtool: 'source-map',
     //devtool: 'eval-cheap-module-source-map',
-    entry: {
-        app: ["./src/app.ts"],
-        vendor: [
-            "react", "react-dom", "react-grid-layout", "react-grid-layout/css/styles.css",
-            "redux", "react-redux", "redux-logger", "redux-thunk", "redux-form",
-            "semantic-ui-css/semantic", "semantic-ui-css/semantic.css", "jquery", "c3css", "c3", "d3",
-            "form-serialize", "lodash", "loadjs", "urijs"
-        ]
-    },
+    entry: undefined,
     output: {
         path: path.join(__dirname, "dist"),
         //publicPath: "/",
@@ -107,20 +99,14 @@ module.exports = {
         ]
     },
     plugins: [
+        failPlugin,
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.optimize.CommonsChunkPlugin({names: ["vendor"], filename: "vendor.bundle.js", chunks: ["app"]}),
         new ExtractTextPlugin("[name].bundle.css"),
-        new webpack.PrefetchPlugin(paths.node_modules, 'semantic-ui-css/semantic.css'),
-        new webpack.PrefetchPlugin(paths.node_modules, 'react/lib/ReactDOM.js'),
-        new webpack.PrefetchPlugin(paths.node_modules, 'react-grid-layout/build/ReactGridLayout.js'),
-        new webpack.PrefetchPlugin(paths.node_modules, 'react/lib/DOMChildrenOperations.js'),
-
         new webpack.ProvidePlugin({ // Makes things available in every module without an import
             $: "jquery",
             jQuery: "jquery",
             "_": "lodash",
             "React": "react"
         })
-
     ]
 };
