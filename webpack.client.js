@@ -1,6 +1,7 @@
 var webpack = require("webpack");
 
 var webpackConfig = require('./webpack.config.js');
+var PROD = (process.env.NODE_ENV === 'production');
 
 webpackConfig.entry = {
     app: ["./src/app.ts"],
@@ -20,6 +21,14 @@ webpackConfig.plugins.push(
     new webpack.PrefetchPlugin(webpackConfig.paths.node_modules, 'react/lib/ReactDOM.js'),
     new webpack.PrefetchPlugin(webpackConfig.paths.node_modules, 'react-grid-layout/build/ReactGridLayout.js'),
     new webpack.PrefetchPlugin(webpackConfig.paths.node_modules, 'react/lib/DOMChildrenOperations.js')
+
+    // Size Optimization
+    //new webpack.optimize.OccurrenceOrderPlugin()
+    //new webpack.optimize.DedupePlugin(),
 );
+
+if (PROD) {
+    webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({minimize: true}));
+}
 
 module.exports = webpackConfig;

@@ -5,11 +5,16 @@ var gutil = require('gulp-util');
 // Main Tasks
 ////////////////////
 
+if(!process.env.NODE_ENV) {
+    process.env.NODE_ENV = 'development';
+}
+
+gutil.log("NODE_ENV = '" + process.env.NODE_ENV + "'");
+
 /**
  * Setup everything for a smooth development
  */
-gulp.task("dev", ['inject', 'copy', 'webpack:server']);
-
+gulp.task("dev", ['inject', 'copy', 'webpack:dev-server']);
 
 /**
  * Keeps files up to date that are not covered by Webpack
@@ -36,6 +41,18 @@ gulp.task('compile', ['copy:plugins', 'webpack:client']);
 // TODO: We do not have uiTests yet. All tests are running with node
 // There is some ui test code already but it's considered unstable (should we just delete it for now?)
 gulp.task('test', ['mocha']);
+
+//////////////////
+// Environment
+//////////////////
+
+gulp.task('set-dev-node-env', function() {
+    return process.env.NODE_ENV = 'development';
+});
+
+gulp.task('set-prod-node-env', function() {
+    return process.env.NODE_ENV = 'production';
+});
 
 //////////////////
 // Testing Tasks
@@ -144,8 +161,8 @@ gulp.task('compile:ts', [], function () {
 
 const webpackErrorHandler = function (callback, error, stats) {
     if (error) {
-        //console.log("------------------------------------------------");
-        //console.log("error: ", error);
+        //gutil.log("------------------------------------------------");
+        //gutil.log("error: ", error);
         //throw new Error("Failed");
         throw new gutil.PluginError('webpack', error);
     }
@@ -248,7 +265,7 @@ gulp.task('copy:plugins', function () {
 //////////////////////
 
 var WebpackDevServer = require("webpack-dev-server");
-gulp.task("webpack:server", ['copy', 'inject', 'compile:ts'], function (callback) {
+gulp.task("webpack:dev-server", ['copy', 'inject', 'compile:ts'], function (callback) {
     // Start a webpack-dev-server
     var webpackConfig = require('./webpack.client.js');
     webpackConfig.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
