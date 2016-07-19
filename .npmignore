@@ -1,5 +1,21 @@
 /node_modules
+/plugins
+/sandbox
+/src
 /typings
+/vendor
+
+.babelrc
+.editorconfig
+.eslintrc.json
+.gitignore
+.travis.yml
+deploy-github.sh
+gulpfile.js
+tsconfig.json
+typings.json
+webpack.*.js
+iot-dashboard-*.tgz
 # IntelliJ Project Files
 /.idea
 *.iml
