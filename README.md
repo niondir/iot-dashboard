@@ -46,6 +46,8 @@ to keep everything simple all the important tasks are based on scripts in packag
 
 ### Run the Dashboard locally from source ###
 
+Prerequisite: Download & install [NodeJs](https://nodejs.org)
+
     npm install
     npm run compile
     npm start
