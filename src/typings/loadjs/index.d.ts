@@ -1,5 +1,3 @@
-
-
 declare module "loadjs" {
     interface Options {
         success: () => void;

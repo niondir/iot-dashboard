@@ -1,3 +1,7 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 const gulp = require('gulp');
 var gutil = require('gulp-util');
 
@@ -5,7 +9,7 @@ var gutil = require('gulp-util');
 // Main Tasks
 ////////////////////
 
-if(!process.env.NODE_ENV) {
+if (!process.env.NODE_ENV) {
     process.env.NODE_ENV = 'development';
 }
 
@@ -46,11 +50,11 @@ gulp.task('test', ['mocha']);
 // Environment
 //////////////////
 
-gulp.task('set-dev-node-env', function() {
+gulp.task('set-dev-node-env', function () {
     return process.env.NODE_ENV = 'development';
 });
 
-gulp.task('set-prod-node-env', function() {
+gulp.task('set-prod-node-env', function () {
     return process.env.NODE_ENV = 'production';
 });
 
@@ -100,7 +104,7 @@ gulp.task('report', function () {
 gulp.task('mocha:tests', ['webpack:tests'], function () {
     return gulp.src('dist/tests.bundle.js', {read: false})
     // gulp-mocha needs filepaths so you can't have any plugins before it
-        .pipe(mocha({reporter: 'spec', dump: 'tests.log'})) // more details with 'spec', more fun with 'nyan'
+        .pipe(mocha({reporter: 'spec'})) // more details with 'spec', more fun with 'nyan'
         .pipe(istanbul.writeReports({
             coverageVariable: '__coverage__',
             reporters: ['json', 'text-summary', 'lcovonly']
@@ -113,12 +117,13 @@ gulp.task('mocha:tests', ['webpack:tests'], function () {
         }));
 });
 
+
 /*
-gulp.task('mocha:ui-tests', ['inject:tests', 'webpack:ui-tests'], function () {
-    return gulp
-        .src('dist/ui-tests.html')
-        .pipe(mochaPhantomJS({reporter: 'spec', dump: 'ui-tests.log'}));
-});*/
+ gulp.task('mocha:ui-tests', ['inject:tests', 'webpack:ui-tests'], function () {
+ return gulp
+ .src('dist/ui-tests.html')
+ .pipe(mochaPhantomJS({reporter: 'spec', dump: 'ui-tests.log'}));
+ });*/
 
 //////////////////
 // Lint Tasks

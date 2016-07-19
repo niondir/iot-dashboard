@@ -83,22 +83,17 @@ To just run the tests (not enough to survive the CI build!)
 
 Find the coverage report in `dist/coverage` or while the server is running at `http://localhost:8080/coverage/`
 
-#### Webpack Analysis ####
-
-Useful to check problems in the Webpack build.
-
-- Execute: `webpack --profile --json > stats.json`
-- Goto: https://webpack.github.io/analyse/
-- Load the generated stats.json
-
-## License ##
-I have not applied any OpenSource license yet.
-In case you want to use or modify the code or parts of it outside of GitHub, **you have to ask for permissions**.
-Feel free to fork or modify the code on GitHub or distribute it in any non-commercial way. Contributions are very welcome.
-
-The code will most likely be available under [MPL](https://www.mozilla.org/en-US/MPL/) in future.
-
 ## Documentation ##
 
 Check out the [Documentation](https://github.com/Niondir/iot-dashboard/blob/master/docs/index.md) in `/docs`
 
+## License ##
+The code is available under [Mozilla Public License 2.0](https://www.mozilla.org/en-US/MPL/) (MPL 2.0)
+For more information you might want to read the [FAQ](https://www.mozilla.org/en-US/MPL/2.0/FAQ/).
+
+Contributors have to add a [License Header](https://www.mozilla.org/en-US/MPL/headers/) to new sourcecode files.
+
+This means you can use and modify the code for private propose (personal or inside your organisation)
+Outside of your Organisation you must make modified MPLed code available to your users and comply with all other requirements of the MPL 2.0.
+
+If you need some of the code available under another license, do not hesitate to **contact me**.

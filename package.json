@@ -22,7 +22,7 @@
     "url": "git+ssh://git@bitbucket.org/Niondir/data-dash.git"
   },
   "author": "Tobias Kaupat",
-  "license": "none",
+  "license": "MPL 2.0",
   "homepage": "https://bitbucket.org/Niondir/data-dash#readme",
   "dependencies": {
     "es6-promise": "^3.2.1",
