@@ -94,7 +94,7 @@ export class Layout extends Component<LayoutProps, LayoutState> {
                             <i className={ (props.isReadOnly ? "lock" : "unlock alternate")  + " icon"}/> {/*expand*/}
                         </a>
                         <div className="header selectable right item">
-                            v{this.props.config.version}&nbsp;{this.props.config.branch}:{this.props.config.revisionShort}
+                            v{this.props.config.version}&nbsp;{this.props.config.revisionShort}
                         </div>
                     </div>
 
