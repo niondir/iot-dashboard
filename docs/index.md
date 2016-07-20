@@ -64,3 +64,11 @@ And a `TYPE_INFO` constant.
 * `.js` - Business Logic: Actions & Reducers
 * `.ui.js` - React components
 * `.test.js` - Tests, automatically loaded by gulp inject
+
+# Webpack Analysis
+
+Useful to check problems in the Webpack build.
+
+- Execute: `webpack --profile --json > stats.json`
+- Goto: https://webpack.github.io/analyse/
+- Load the generated stats.json

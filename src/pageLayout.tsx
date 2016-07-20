@@ -1,3 +1,7 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+* License, v. 2.0. If a copy of the MPL was not distributed with this
+* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 import * as React from "react";
 import {Component, KeyboardEvent} from "react";
 import * as ReactDOM from "react-dom";
@@ -90,7 +94,7 @@ export class Layout extends Component<LayoutProps, LayoutState> {
                             <i className={ (props.isReadOnly ? "lock" : "unlock alternate")  + " icon"}/> {/*expand*/}
                         </a>
                         <div className="header selectable right item">
-                            v{this.props.config.version}&nbsp;{this.props.config.branch}:{this.props.config.revisionShort}
+                            v{this.props.config.version}&nbsp;{this.props.config.revisionShort}
                         </div>
                     </div>
 

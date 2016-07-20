@@ -3,11 +3,10 @@ node_js:
   - "node"
 
 
-before_script:
-  - npm install -g gulp
+# before_script:
 
 script:
-   - npm run build
+   - npm run build --production
 
 after_success:
   - bash deploy-github.sh

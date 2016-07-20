@@ -1,11 +1,15 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+* License, v. 2.0. If a copy of the MPL was not distributed with this
+* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 
 import "file?name=[name].[ext]!./tests.html"
 
 /* inject:tests */
 import './datasource/datasourcePlugins.test.js'
 import './pluginApi/uri.test.js'
-import './util/collection.test.js'
 import './widgets/widgetPlugins.test.js'
+import './util/collection.test.js'
 import './datasource/plugins/randomDatasource.test.js'
 import './serverRenderer.test.ts'
 import './widgets/widgets.test.ts'

@@ -6,6 +6,9 @@ var failPlugin = require('webpack-fail-plugin');
 // TODO: Performance, Use Dll Bundle
 // https://webpack.github.io/docs/build-performance.html
 
+var PROD = (process.env.NODE_ENV === 'production');
+
+
 var paths = {
     src: [
         path.join(__dirname, "src"),
@@ -20,9 +23,9 @@ var paths = {
 };
 
 
-var minify = true;
-var dotJs = minify ? ".js" : ".min.js";
-var dotCss = minify ? ".css" : ".min.css";
+var minify = PROD;
+var dotJs = minify ? ".min.js" : ".js";
+var dotCss = minify ? ".min.css" : ".css";
 
 module.exports = {
     paths: paths, // No Webpack Feature, but used by other webpack configs in this project!
@@ -48,10 +51,15 @@ module.exports = {
             c3: path.resolve('./vendor/c3/c3' + dotJs),
             c3css: path.resolve('./vendor/c3/c3' + dotCss),
             sandie: path.resolve('./vendor/sandie.js'),
+            'urijs': path.resolve('./node_modules/urijs/src/URI' + dotJs),
+            'react': path.resolve('./node_modules/react/dist/react' + dotJs),
+            'react-dom': path.resolve('./node_modules/react-dom/dist/react-dom' + dotJs),
+            'react-dom-server': path.resolve('./node_modules/react-dom/dist/react-dom-server' + dotJs),
             'react-redux': path.resolve('./node_modules/react-redux/dist/react-redux' + dotJs),
+            'redux': path.resolve('./node_modules/redux/dist/redux' + dotJs),
             'redux-form': path.resolve('./node_modules/redux-form/dist/redux-form' + dotJs),
             // Expose dependencies
-            jquery: path.resolve('./node_modules/jquery/dist/jquery' + dotJs),
+            jquery: path.resolve('./node_modules/jquery/dist/jquery' + dotJs)
             //react: 'react',
             //lodash: 'lodash'
 

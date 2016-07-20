@@ -1,3 +1,7 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+* License, v. 2.0. If a copy of the MPL was not distributed with this
+* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 import * as Widgets from "./widgets";
 import {START_CREATE_WIDGET, START_CONFIGURE_WIDGET} from "../actionNames";
 import * as Modal from "../modal/modalDialog";

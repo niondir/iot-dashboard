@@ -1,15 +1,25 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 const gulp = require('gulp');
-var gutil = require('gulp-util');
+const gutil = require('gulp-util');
+const sequence = require('gulp-sequence');
 
 ////////////////////
 // Main Tasks
 ////////////////////
 
+if (!process.env.NODE_ENV) {
+    process.env.NODE_ENV = gutil.env.production ? 'production' : 'development';
+}
+
+gutil.log("NODE_ENV = '" + process.env.NODE_ENV + "'");
+
 /**
  * Setup everything for a smooth development
  */
-gulp.task("dev", ['inject', 'copy', 'webpack:server']);
-
+gulp.task("dev", sequence(['inject', 'copy'], 'webpack:dev-server'));
 
 /**
  * Keeps files up to date that are not covered by Webpack
@@ -23,19 +33,33 @@ gulp.task('watch', ["inject:tests", "copy"], function () {
 
 /**
  * Build everything required for a successful CI build
+ * TODO: Due to webpack foo we need to build tests first and than compile the client!
+ * see: https://github.com/webpack/webpack/issues/2787
  * */
-gulp.task("build", ['compile', 'test', 'lint']);
+gulp.task("build", sequence('test', ['compile', 'lint']));
 
 
 /**
  * Compile all code to /dist
  * - no tests, no overhead, just what is needed to generate a runnable application
  * */
-gulp.task('compile', ['copy:plugins', 'webpack:client']);
+gulp.task('compile', sequence('copy:plugins', 'webpack:client'));
 
 // TODO: We do not have uiTests yet. All tests are running with node
 // There is some ui test code already but it's considered unstable (should we just delete it for now?)
 gulp.task('test', ['mocha']);
+
+//////////////////
+// Environment
+//////////////////
+
+gulp.task('set-dev-node-env', function () {
+    return process.env.NODE_ENV = 'development';
+});
+
+gulp.task('set-prod-node-env', function () {
+    return process.env.NODE_ENV = 'production';
+});
 
 //////////////////
 // Testing Tasks
@@ -83,7 +107,7 @@ gulp.task('report', function () {
 gulp.task('mocha:tests', ['webpack:tests'], function () {
     return gulp.src('dist/tests.bundle.js', {read: false})
     // gulp-mocha needs filepaths so you can't have any plugins before it
-        .pipe(mocha({reporter: 'spec', dump: 'tests.log'})) // more details with 'spec', more fun with 'nyan'
+        .pipe(mocha({reporter: 'spec'})) // more details with 'spec', more fun with 'nyan'
         .pipe(istanbul.writeReports({
             coverageVariable: '__coverage__',
             reporters: ['json', 'text-summary', 'lcovonly']
@@ -96,12 +120,13 @@ gulp.task('mocha:tests', ['webpack:tests'], function () {
         }));
 });
 
+
 /*
-gulp.task('mocha:ui-tests', ['inject:tests', 'webpack:ui-tests'], function () {
-    return gulp
-        .src('dist/ui-tests.html')
-        .pipe(mochaPhantomJS({reporter: 'spec', dump: 'ui-tests.log'}));
-});*/
+ gulp.task('mocha:ui-tests', ['inject:tests', 'webpack:ui-tests'], function () {
+ return gulp
+ .src('dist/ui-tests.html')
+ .pipe(mochaPhantomJS({reporter: 'spec', dump: 'ui-tests.log'}));
+ });*/
 
 //////////////////
 // Lint Tasks
@@ -144,8 +169,8 @@ gulp.task('compile:ts', [], function () {
 
 const webpackErrorHandler = function (callback, error, stats) {
     if (error) {
-        //console.log("------------------------------------------------");
-        //console.log("error: ", error);
+        //gutil.log("------------------------------------------------");
+        //gutil.log("error: ", error);
         //throw new Error("Failed");
         throw new gutil.PluginError('webpack', error);
     }
@@ -154,25 +179,20 @@ const webpackErrorHandler = function (callback, error, stats) {
     callback();
 };
 
-gulp.task('webpack', ['webpack:client', 'webpack:tests'], function (callback) {
-});
-
+gulp.task('webpack', sequence('webpack:tests', 'webpack:client'));
 
 gulp.task('webpack:client', ['compile:config'], function (callback) {
     var webpackConfig = require('./webpack.client.js');
-
     webpack(webpackConfig, webpackErrorHandler.bind(this, callback));
 });
 
-gulp.task('webpack:tests', ['inject', 'compile:config'], function (callback) {
+gulp.task('webpack:tests', ['inject:tests', 'compile:config'], function (callback) {
     var webpackConfig = require('./webpack.tests.js');
-
     webpack(webpackConfig, webpackErrorHandler.bind(this, callback));
 });
 
-gulp.task('webpack:browser-tests', ['inject', 'compile:config'], function (callback) {
+gulp.task('webpack:browser-tests', ['inject:tests', 'compile:config'], function (callback) {
     var webpackConfig = require('./webpack.browser-tests.js');
-
     webpack(webpackConfig, webpackErrorHandler.bind(this, callback));
 });
 
@@ -248,7 +268,7 @@ gulp.task('copy:plugins', function () {
 //////////////////////
 
 var WebpackDevServer = require("webpack-dev-server");
-gulp.task("webpack:server", ['copy', 'inject', 'compile:ts'], function (callback) {
+gulp.task("webpack:dev-server", ['copy', 'inject', 'compile:ts'], function (callback) {
     // Start a webpack-dev-server
     var webpackConfig = require('./webpack.client.js');
     webpackConfig.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
