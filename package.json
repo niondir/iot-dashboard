@@ -6,6 +6,7 @@
   "scripts": {
     "start": "http-server -a localhost -p 8081 -c-1 ./dist",
     "test": "gulp test",
+    "prepublish": "npm run clean && NODE_ENV='production' npm run build",
     "clean": "gulp clean",
     "build": "gulp build",
     "compile": "gulp compile",
