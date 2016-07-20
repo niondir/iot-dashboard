@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "A generic dashboard application based on JavaScript, HTML and CSS. http://iot-dashboard.org",
   "main": "dist/app.bundle.js",
+  "bin": {
+    "iot-dashboard": "./bin/iot-dashboard.js"
+  },
   "scripts": {
     "start": "http-server -a localhost -p 8081 -c-1 ./dist",
     "test": "gulp test",
@@ -24,7 +27,17 @@
   "author": "Tobias Kaupat",
   "license": "MPL-2.0",
   "homepage": "http://iot-dashboard.org",
+  "keywords": [
+    "iot",
+    "dashboard",
+    "M2M",
+    "react",
+    "internet of things",
+    "sensor",
+    "monitoring"
+  ],
   "dependencies": {
+    "connect": "^3.4.1",
     "es6-promise": "^3.2.1",
     "form-serialize": "0.7.1",
     "http-server": "0.9.0",
@@ -42,6 +55,7 @@
     "redux-thunk": "2.0.1",
     "require-dot-file": "0.4.0",
     "semantic-ui-css": "2.1.8",
+    "serve-static": "^1.11.1",
     "urijs": "1.18.1"
   },
   "devDependencies": {

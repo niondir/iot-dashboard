@@ -44,9 +44,13 @@ If you find something that comes close to the above requirements, please let me 
 We have just a development setup yet, since there is no need for more :)
 to keep everything simple all the important tasks are based on scripts in package.json. Use `npm run <script-name>` to run any of them.
 
-### Run the Dashboard locally from source ###
-
 Prerequisite: Download & install [NodeJs](https://nodejs.org)
+
+### Install locally ###
+
+    npm install iot-dashboard
+
+### Run the Dashboard locally from source ###
 
     npm install
     npm run compile
