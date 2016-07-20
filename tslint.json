@@ -1,0 +1,29 @@
+{
+  "extends": "tslint:recommended",
+  "rules": {
+    "eofline": false,
+    "interface-name": false,
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-separator",
+      "check-type"
+    ],
+    "trailing-comma": false,
+    "max-line-length": false,
+    "no-consecutive-blank-lines": false,
+    "no-var-requires": false,
+    // could help against merge conflicts
+    "object-literal-sort-keys": false,
+    "one-line": [true, "check-open-brace", "check-whitespace"],
+    "no-reference": false,
+    // Maybe in future
+    "quotemark": false,
+    "semicolon": false,
+    "comment-format": true
+  },
+  "rulesDirectory": [
+  ]
+}

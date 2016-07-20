@@ -1,6 +1,6 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this
-* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 
 /* inject:tests */
@@ -14,5 +14,5 @@ import './widgets/widgets.test.ts'
 /* endinject */
 
 // TODO: instead of inject we could use require.context
-// var testsContext = require.context(".", true, /_test$/);
+// const testsContext = require.context(".", true, /_test$/);
 // testsContext.keys().forEach(testsContext);

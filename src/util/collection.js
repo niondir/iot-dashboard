@@ -6,7 +6,7 @@
 export function chunk(array, chunkSize, handle) {
     let i, j, chunk;
     let chunkNum = 0;
-    let chunks = [];
+    const chunks = [];
 
     if (!array) {
         return chunks;

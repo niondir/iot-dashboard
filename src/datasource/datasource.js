@@ -150,7 +150,7 @@ export function datasources(state = initialDatasources, action) {
             const toDelete = _.valuesIn(state).filter(dsState => {
                 return dsState.type == action.id
             });
-            var newState = Object.assign({}, state);
+            const newState = Object.assign({}, state);
             toDelete.forEach(dsState => {
                 delete newState[dsState.id];
             });

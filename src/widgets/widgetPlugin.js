@@ -41,7 +41,7 @@ export default class WidgetPlugin {
         }
 
         // TODO: check if module.Widget is a react component
-        var widgetPlugin = this.store.getState().widgetPlugins[this.type];
+        const widgetPlugin = this.store.getState().widgetPlugins[this.type];
         const rendering = widgetPlugin.typeInfo.rendering || "react";
 
         let widgetComponent = this.Widget;

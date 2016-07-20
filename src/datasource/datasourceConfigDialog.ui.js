@@ -33,7 +33,7 @@ class DatasourceConfigModal extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.dialogData.datasource) {
-            let selectedType = nextProps.dialogData.datasource.type;
+            const selectedType = nextProps.dialogData.datasource.type;
             this.state = {
                 selectedType: selectedType
             };

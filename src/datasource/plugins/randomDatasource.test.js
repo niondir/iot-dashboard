@@ -8,7 +8,7 @@ import * as RandomSource from "./randomDatasource";
 describe('Random Datasource', function () {
     const props = {state: {settings: {}}};
     it("Can create instance", function () {
-        let randomSource = new RandomSource.Datasource(props);
+        const randomSource = new RandomSource.Datasource(props);
         randomSource.props = props; // also done by Dashboard - we should reuse some factory in tests
         assert.isOk(randomSource);
     });
@@ -16,10 +16,10 @@ describe('Random Datasource', function () {
     describe('fetch data', function () {
 
         it("Can get new value", function () {
-            let randomSource = new RandomSource.Datasource(props);
+            const randomSource = new RandomSource.Datasource(props);
             randomSource.props = props; // also done by Dashboard - we should reuse some factory in tests
 
-            let values = randomSource.getValues();
+            const values = randomSource.getValues();
 
             assert.isArray(values);
             assert.equal(values.length, 1);
@@ -28,11 +28,11 @@ describe('Random Datasource', function () {
         });
 
         it("Can get all past value", function () {
-            let randomSource = new RandomSource.Datasource(props);
+            const randomSource = new RandomSource.Datasource(props);
             randomSource.props = props; // also done by Dashboard - we should reuse some factory in tests
 
-            let newValues = randomSource.getValues();
-            let values = randomSource.getValues();
+            const newValues = randomSource.getValues();
+            const values = randomSource.getValues();
 
             assert.isArray(values);
             assert.equal(values.length, 2);

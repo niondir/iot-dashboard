@@ -19,19 +19,19 @@ import * as _ from 'lodash'
  */
 export function genCrudReducer(actionNames, elementReducer, idProperty = 'id') {
     console.assert(actionNames.length === 2, "ActionNames must contain 2 names for create, delete in that order");
-    let [CREATE_ACTION, DELETE_ACTION] = actionNames;
+    const [CREATE_ACTION, DELETE_ACTION] = actionNames;
     console.assert(_.includes(CREATE_ACTION, "ADD") || _.includes(CREATE_ACTION, "CREATE"),
         "The create action name should probably contain ADD or DELETE, but is: " + CREATE_ACTION);
     console.assert(_.includes(DELETE_ACTION, "DELETE") || _.includes(DELETE_ACTION, "REMOVE"),
         "The delete action name should probably contain DELETE or REMOVE, but is: " + DELETE_ACTION);
 
     return function crudReducer(state, action) {
-        let id = action[idProperty];
+        const id = action[idProperty];
         switch (action.type) {
             case CREATE_ACTION:
                 return Object.assign({}, state, {[id]: elementReducer(undefined, action)});
             case DELETE_ACTION:
-                let newState = Object.assign({}, state);
+                const newState = Object.assign({}, state);
                 delete newState[id];
                 return newState;
             default: // Update if we have an id property

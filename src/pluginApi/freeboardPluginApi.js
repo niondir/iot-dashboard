@@ -31,14 +31,14 @@ const freeboardPluginApi = {
     loadDatasourcePlugin(plugin) {
         console.log("Loading freeboard Plugin: ", plugin);
 
-        let typeName = plugin["type_name"];
-        let displayName = plugin["display_name"];
-        let description = plugin["description"];
-        let externalScripts = plugin["external_scripts"];
-        let settings = plugin["settings"];
-        let newInstance = plugin["newInstance"];
+        const typeName = plugin["type_name"];
+        const displayName = plugin["display_name"];
+        const description = plugin["description"];
+        const externalScripts = plugin["external_scripts"];
+        const settings = plugin["settings"];
+        const newInstance = plugin["newInstance"];
 
-        let TYPE_INFO = {
+        const TYPE_INFO = {
             type: typeName,
             name: displayName,
             description: description,
@@ -46,7 +46,7 @@ const freeboardPluginApi = {
             settings: mapSettings(settings)
         };
 
-        let dsPlugin = {
+        const dsPlugin = {
             TYPE_INFO,
             Datasource: FreeboardDatasource.create(newInstance, TYPE_INFO)
         };

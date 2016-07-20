@@ -15,7 +15,7 @@ describe('Widget Plugins', function () {
                 }
             });
 
-            let plugin = WidgetPlugins.pluginRegistry.getPlugin('foo');
+            const plugin = WidgetPlugins.pluginRegistry.getPlugin('foo');
 
             assert.isOk(plugin);
             assert.equal('foo', plugin.type);

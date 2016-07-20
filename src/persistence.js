@@ -18,7 +18,7 @@ export function persistenceMiddleware({getState}) {
 
         const nextState = next(action);
 
-        let now = new Date();
+        const now = new Date();
         if (now.getTime() - lastSave.getTime() < 10000) {
             return nextState;
         }
@@ -36,7 +36,7 @@ export function saveToLocalStorage(state) {
         return;
     }
 
-    var savableState = Object.assign({}, state);
+    const savableState = Object.assign({}, state);
 
     delete savableState.form;
     delete savableState.modalDialog;

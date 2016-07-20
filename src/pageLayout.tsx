@@ -39,7 +39,7 @@ export class Layout extends Component<LayoutProps, LayoutState> {
 
     onReadOnlyModeKeyPress(e: KeyboardEvent) {
         //console.log("key pressed", event.keyCode);
-        var intKey = (window.event) ? e.which : e.keyCode;
+        const intKey = (window.event) ? e.which : e.keyCode;
         if (intKey === 27) {
             this.props.setReadOnly(!this.props.isReadOnly);
         }
@@ -56,7 +56,7 @@ export class Layout extends Component<LayoutProps, LayoutState> {
     render() {
         const props = this.props;
 
-        var showMenu = !props.isReadOnly || this.state.hover;
+        const showMenu = !props.isReadOnly || this.state.hover;
 
         return <div onKeyUp={(event) => this.onReadOnlyModeKeyPress(event)}>
             <div>

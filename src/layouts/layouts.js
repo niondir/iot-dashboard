@@ -19,7 +19,7 @@ export function addLayout(name, widgets) {
     return (dispatch) => {
 
 
-        let addLayout = dispatch({
+        const addLayout = dispatch({
             type: ADD_LAYOUT,
             id: generateUuid(),
             name,

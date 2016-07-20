@@ -33,7 +33,7 @@ gulp.task('watch', ["inject:tests", "copy"], function () {
 
 /**
  * Build everything required for a successful CI build
- * TODO: Due to webpack foo we need to build tests first and than compile the client!
+ * TODO: Due to webpack foo we need to build tests first and than compile the client! (try webpack-stream?)
  * see: https://github.com/webpack/webpack/issues/2787
  * */
 gulp.task("build", sequence('test', ['compile', 'lint']));
@@ -132,9 +132,12 @@ gulp.task('mocha:tests', ['webpack:tests'], function () {
 // Lint Tasks
 // ///////////////
 const eslint = require('gulp-eslint');
+const tslint = require("gulp-tslint");
 
 // TODO: Add tslint for typescript
-gulp.task('lint', function () {
+gulp.task('lint', ['eslint', 'tslint']);
+
+gulp.task('eslint', function () {
     return gulp.src(['src/**/*.js'])
     // eslint() attaches the lint output to the "eslint" property
     // of the file object so it can be used by other modules.
@@ -146,6 +149,17 @@ gulp.task('lint', function () {
         // lint error, return the stream and pipe to failAfterError last.
         .pipe(eslint.failAfterError());
 });
+
+gulp.task("tslint", () =>
+    gulp.src("src/**/*.ts")
+        .pipe(tslint({
+            formatter: "prose" // prose or verbose
+        }))
+        .pipe(tslint.report({
+            emitError: true,
+            summarizeFailureOutput: true
+        }))
+);
 
 //////////////////
 // Compile Tasks
