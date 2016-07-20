@@ -22,7 +22,7 @@
     "url": "https://github.com/Niondir/iot-dashboard.git"
   },
   "author": "Tobias Kaupat",
-  "license": "MPL 2.0",
+  "license": "MPL-2.0",
   "homepage": "http://iot-dashboard.org",
   "dependencies": {
     "es6-promise": "^3.2.1",
