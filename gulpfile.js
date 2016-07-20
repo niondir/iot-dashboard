@@ -216,22 +216,24 @@ gulp.task('compile:config', function () {
 // Inject/Modify files Tasks
 //////////////////////////////
 var inject = require('gulp-inject');
+var sort = require('gulp-sort');
 
 gulp.task('inject', ['inject:tests']);
 
 gulp.task('inject:tests', function () {
-    var target = gulp.src(['./src/tests.ts', './src/browser-tests.js']);
     // It's not necessary to read the files (will speed up things), we're only after their paths:
-    var sources = gulp.src(['./src/**/*.test.js', './src/**/*.test.ts'], {read: false});
+    var sources = gulp.src(['./src/**/*.test.js', './src/**/*.test.ts'], {read: false})
+        .pipe(sort());
 
-    return target.pipe(inject(sources, {
-        relative: true,
-        starttag: '/* inject:tests */',
-        endtag: '/* endinject */',
-        transform: function (filepath, file, i, length) {
-            return "import './" + filepath + "'";
-        }
-    }))
+    return gulp.src(['./src/tests.ts', './src/browser-tests.js'])
+        .pipe(inject(sources, {
+            relative: true,
+            starttag: '/* inject:tests */',
+            endtag: '/* endinject */',
+            transform: function (filepath, file, i, length) {
+                return "import './" + filepath + "'";
+            }
+        }))
         .pipe(gulp.dest('./src'));
 });
 

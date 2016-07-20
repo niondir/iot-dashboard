@@ -5,11 +5,11 @@
 
 /* inject:tests */
 import './datasource/datasourcePlugins.test.js'
-import './pluginApi/uri.test.js'
-import './widgets/widgetPlugins.test.js'
-import './util/collection.test.js'
 import './datasource/plugins/randomDatasource.test.js'
+import './pluginApi/uri.test.js'
 import './serverRenderer.test.ts'
+import './util/collection.test.js'
+import './widgets/widgetPlugins.test.js'
 import './widgets/widgets.test.ts'
 /* endinject */
 
