@@ -1,3 +1,6 @@
+#!/usr/bin/env node
+
+'use strict';
 var connect = require('connect');
 var serveStatic = require('serve-static');
 

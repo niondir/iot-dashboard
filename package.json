@@ -1,6 +1,6 @@
 {
   "name": "iot-dashboard",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A generic dashboard application based on JavaScript, HTML and CSS. http://iot-dashboard.org",
   "main": "dist/app.bundle.js",
   "bin": {
