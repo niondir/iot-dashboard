@@ -17,9 +17,7 @@ webpackConfig.entry = {
 webpackConfig.plugins.push(
     new webpack.optimize.CommonsChunkPlugin({names: ["vendor"], filename: "vendor.bundle.js", minChunks: Infinity, chunks: ["app", "vendor"]}),
     new webpack.PrefetchPlugin(webpackConfig.paths.node_modules, 'semantic-ui-css/semantic.css'),
-    new webpack.PrefetchPlugin(webpackConfig.paths.node_modules, 'react/lib/ReactDOM.js'),
-    new webpack.PrefetchPlugin(webpackConfig.paths.node_modules, 'react-grid-layout/build/ReactGridLayout.js'),
-    new webpack.PrefetchPlugin(webpackConfig.paths.node_modules, 'react/lib/DOMChildrenOperations.js')
+    new webpack.PrefetchPlugin(webpackConfig.paths.node_modules, 'react-grid-layout/build/ReactGridLayout.js')
 
     // Size Optimization
     //new webpack.optimize.OccurrenceOrderPlugin()
@@ -27,7 +25,8 @@ webpackConfig.plugins.push(
 );
 
 if (PROD) {
-    webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({minimize: true}));
+    // TODO: this takes ages, we start with just using minified dependencies in prod.
+    //webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({minimize: true, include: webpackConfig.paths.src}));
 
 } else {
     webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
