@@ -55,7 +55,7 @@ Start the dashboard server
 
     iot-dashboard
 
-Open your browser at `http://localhost:8081`
+Open your browser at http://localhost:8081
 
 ### Run the Dashboard locally from source ###
 
