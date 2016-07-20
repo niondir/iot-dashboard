@@ -73,6 +73,7 @@
     "gulp-json-editor": "^2.2.1",
     "gulp-mocha": "2.2.0",
     "gulp-mocha-phantomjs": "0.11.0",
+    "gulp-sequence": "^0.4.5",
     "gulp-typescript": "2.13.6",
     "gulp-util": "3.0.7",
     "gulp-watch": "4.3.5",

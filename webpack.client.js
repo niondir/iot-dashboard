@@ -15,7 +15,6 @@ webpackConfig.entry = {
 };
 
 webpackConfig.plugins.push(
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.CommonsChunkPlugin({names: ["vendor"], filename: "vendor.bundle.js", minChunks: Infinity, chunks: ["app", "vendor"]}),
     new webpack.PrefetchPlugin(webpackConfig.paths.node_modules, 'semantic-ui-css/semantic.css'),
     new webpack.PrefetchPlugin(webpackConfig.paths.node_modules, 'react/lib/ReactDOM.js'),
@@ -29,6 +28,9 @@ webpackConfig.plugins.push(
 
 if (PROD) {
     webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({minimize: true}));
+
+} else {
+    webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
 }
 
 module.exports = webpackConfig;

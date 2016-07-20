@@ -3,7 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 const gulp = require('gulp');
-var gutil = require('gulp-util');
+const gutil = require('gulp-util');
+const sequence = require('gulp-sequence');
 
 ////////////////////
 // Main Tasks
@@ -18,7 +19,7 @@ gutil.log("NODE_ENV = '" + process.env.NODE_ENV + "'");
 /**
  * Setup everything for a smooth development
  */
-gulp.task("dev", ['inject', 'copy', 'webpack:dev-server']);
+gulp.task("dev", sequence(['inject', 'copy'], 'webpack:dev-server'));
 
 /**
  * Keeps files up to date that are not covered by Webpack
@@ -32,15 +33,17 @@ gulp.task('watch', ["inject:tests", "copy"], function () {
 
 /**
  * Build everything required for a successful CI build
+ * TODO: Due to webpack foo we need to build tests first and than compile the client!
+ * see: https://github.com/webpack/webpack/issues/2787
  * */
-gulp.task("build", ['compile', 'test', 'lint']);
+gulp.task("build", sequence('test', ['compile', 'lint']));
 
 
 /**
  * Compile all code to /dist
  * - no tests, no overhead, just what is needed to generate a runnable application
  * */
-gulp.task('compile', ['copy:plugins', 'webpack:client']);
+gulp.task('compile', sequence('copy:plugins', 'webpack:client'));
 
 // TODO: We do not have uiTests yet. All tests are running with node
 // There is some ui test code already but it's considered unstable (should we just delete it for now?)
@@ -176,25 +179,20 @@ const webpackErrorHandler = function (callback, error, stats) {
     callback();
 };
 
-gulp.task('webpack', ['webpack:client', 'webpack:tests'], function (callback) {
-});
-
+gulp.task('webpack', sequence('webpack:tests', 'webpack:client'));
 
 gulp.task('webpack:client', ['compile:config'], function (callback) {
     var webpackConfig = require('./webpack.client.js');
-
     webpack(webpackConfig, webpackErrorHandler.bind(this, callback));
 });
 
-gulp.task('webpack:tests', ['inject', 'compile:config'], function (callback) {
+gulp.task('webpack:tests', ['inject:tests', 'compile:config'], function (callback) {
     var webpackConfig = require('./webpack.tests.js');
-
     webpack(webpackConfig, webpackErrorHandler.bind(this, callback));
 });
 
-gulp.task('webpack:browser-tests', ['inject', 'compile:config'], function (callback) {
+gulp.task('webpack:browser-tests', ['inject:tests', 'compile:config'], function (callback) {
     var webpackConfig = require('./webpack.browser-tests.js');
-
     webpack(webpackConfig, webpackErrorHandler.bind(this, callback));
 });
 
