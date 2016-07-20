@@ -11,7 +11,7 @@ const sequence = require('gulp-sequence');
 ////////////////////
 
 if (!process.env.NODE_ENV) {
-    process.env.NODE_ENV = 'development';
+    process.env.NODE_ENV = gutil.env.production ? 'production' : 'development';
 }
 
 gutil.log("NODE_ENV = '" + process.env.NODE_ENV + "'");

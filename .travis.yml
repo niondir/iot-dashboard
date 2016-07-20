@@ -6,7 +6,7 @@ node_js:
 # before_script:
 
 script:
-   - NODE_ENV='production' npm run build
+   - npm run build --production
 
 after_success:
   - bash deploy-github.sh
