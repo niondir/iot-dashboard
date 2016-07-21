@@ -5,6 +5,7 @@
 const gulp = require('gulp');
 const gutil = require('gulp-util');
 const sequence = require('gulp-sequence');
+const open = require('open');
 
 ////////////////////
 // Main Tasks
@@ -257,7 +258,13 @@ gulp.task("webpack:dev-server", ['copy', 'inject', 'compile:ts'], function (call
     webpackConfig.entry["browser-tests"].unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
     webpackConfig.bail = false;
     webpackConfig.devtool = '#cheap-module-source-map';
-    var compiler = webpack(webpackConfig);
+    var compiler = webpack(webpackConfig, function(err, stats) {
+        if(err) throw new gutil.PluginError("webpack", err);
+
+        open("http://localhost:8080");
+        open("http://localhost:8080/webpack-dev-server/tests.html");
+        callback();
+    });
 
     new WebpackDevServer(compiler, {
         // server and middleware options

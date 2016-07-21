@@ -69,9 +69,7 @@ function widgetPlugin(state, action) {
             return {
                 id: action.typeInfo.type,
                 url: action.url,
-                typeInfo: action.typeInfo,
-                isDatasource: action.pluginType === "datasource",
-                isWidget: action.pluginType === "widget"
+                typeInfo: action.typeInfo
             };
         default:
             return state;
