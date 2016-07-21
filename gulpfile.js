@@ -67,41 +67,8 @@ gulp.task('set-prod-node-env', function () {
 
 var mocha = require('gulp-mocha');
 var istanbul = require('gulp-istanbul');
-var mochaPhantomJS = require('gulp-mocha-phantomjs');
-var remapIstanbul = require('remap-istanbul/lib/gulpRemapIstanbul');
-var istanbulReport = require('gulp-istanbul-report');
 
 gulp.task('mocha', ['mocha:tests']);
-
-/** Remap coverage report based on sourcemaps - does not work yet
- * TODO: Remove this task + dependencies when we have coverage reports on TS files correctly mapped
- * **/
-gulp.task('remap', function () {
-    return gulp.src('./coverage/coverage-final.json')
-        .pipe(remapIstanbul({
-            fail: false
-        }))
-        .pipe(istanbulReport({
-            reporters: [
-                'text-summary',
-                {name: 'lcov', dir: 'coverage/remapped'}
-                //{name: 'html', dir: 'coverage/html/'}
-                //{name: 'text', dir: 'coverage/report.txt'},
-            ]
-        }));
-});
-
-gulp.task('report', function () {
-    return gulp.src('./coverage/coverage-final.json')
-        .pipe(istanbulReport({
-            reporters: [
-                'text-summary',
-                //{name: 'lcov', dir: 'coverage'}
-                //{name: 'html', dir: 'coverage/html/'}
-                {name: 'text', dir: 'coverage/report.txt'}
-            ]
-        }));
-});
 
 
 gulp.task('mocha:tests', ['webpack:tests'], function () {
@@ -164,7 +131,6 @@ gulp.task("tslint", () =>
 //////////////////
 // Compile Tasks
 //////////////////
-const babel = require('gulp-babel');
 const webpack = require('webpack');
 const ts = require('gulp-typescript');
 
