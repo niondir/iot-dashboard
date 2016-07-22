@@ -263,7 +263,6 @@ gulp.task("webpack:dev-server", ['copy', 'inject', 'compile:ts'], function (call
 
         open("http://localhost:8080");
         open("http://localhost:8080/webpack-dev-server/tests.html");
-        callback();
     });
 
     new WebpackDevServer(compiler, {

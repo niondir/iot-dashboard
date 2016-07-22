@@ -23,7 +23,7 @@ When a script is loaded by the browser it has to register the defined Plugin on 
 Since the plugin is loaded in global namespace it should be wrapped into a javascript module:
 
     (function(window) {
-        // Your plugin code. Declaring variables will not pullute the global namespace.
+        // Your plugin code. Declaring variables will not pollute the global namespace.
         var TYPE_INFO = { /* Type info for the plugin*/ }
         var Plugin = function() { /* Code that defines the plugin behaviour */}
 
@@ -37,6 +37,18 @@ As you can see each plugin contains two parts. The `TYPE_INFO` and the Implement
 ## TypeInfo
 
 The TypeInfo is mostly the same for `Datasource` and `Widget`. Additional properties for Datasources or Widgets are described below.
+
+A good start for a typeInfo would be:
+
+    var TYPE_INFO = {
+        type: "my-awesome-plugin",
+        name: "My Awesome Plugin",
+        description: "This plugin does awesome stuff!",
+        dependencies: [],
+        settings: []
+    }
+
+The full specification looks like:
 
     interface TypeInfo {
         type: string // The name of the type - must be unique
