@@ -18,7 +18,7 @@ const WidgetFrame = (props) => {
     const widgetState = props.widget;
 
     // Might be null or undefined!
-    let widgetFactory = WidgetPlugins.pluginRegistry.getPlugin(widgetState.type);
+    const widgetFactory = WidgetPlugins.pluginRegistry.getPlugin(widgetState.type);
 
     return (
         <div className="ui raised segments"
@@ -78,7 +78,7 @@ LoadingWidget.propTypes = {
 
 class WidgetButton extends React.Component {
     render() {
-        let data = this.props.widgetState;
+        const data = this.props.widgetState;
         return <a className={this.props.className + (this.props.visible !== false ? "" : " hidden transition")}
                   onClick={() => this.props.onClick(data)}>
             <i className={this.props.icon + " icon"}></i>
@@ -94,7 +94,7 @@ WidgetButton.propTypes = {
     onClick: Prop.func.isRequired
 };
 
-let DeleteWidgetButton = connect(
+const DeleteWidgetButton = connect(
     (state) => {
         return {}
     },
@@ -107,7 +107,7 @@ let DeleteWidgetButton = connect(
     }
 )(WidgetButton);
 
-let ConfigWidgetButton = connect(
+const ConfigWidgetButton = connect(
     (state) => {
         return {}
     },

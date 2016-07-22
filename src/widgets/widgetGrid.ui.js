@@ -29,11 +29,11 @@ class WidgetGrid extends Component {
 
     render() {
         const props = this.props;
-        let widgetStates = this.props.widgets;
+        const widgetStates = this.props.widgets;
 
         // TODO: Remove unknown widget from state
-        let widgets = widgetStates.map((widgetState) => {
-            let widgetPlugin = props.widgetPlugins[widgetState.type];
+        const widgets = widgetStates.map((widgetState) => {
+            const widgetPlugin = props.widgetPlugins[widgetState.type];
             /*
             if (!widgetPlugin) {
                 // TODO: Render widget with error message - currently a loading indicator is displayed and the setting button is hidden

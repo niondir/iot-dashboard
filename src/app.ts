@@ -1,6 +1,6 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this
-* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import 'semantic-ui-css/semantic.css'
 import 'semantic-ui-css/semantic'
@@ -22,12 +22,11 @@ import * as RandomDatasource from './datasource/plugins/randomDatasource.js'
 import * as TimeDatasource from './datasource/plugins/timeDatasource.js'
 import * as Store from './store'
 import * as Plugins from './pluginApi/plugins.js'
-import * as Widgets from './widgets/widgets'
 import * as Persist from "./persistence.js";
 
-let initialState = Persist.loadFromLocalStorage();
-let store = Store.create(initialState);
-Store.setGlobalStore(store);
+const initialState = Persist.loadFromLocalStorage();
+const dashboardStore = Store.create(initialState);
+Store.setGlobalStore(dashboardStore);
 
 function loadInitialPlugins(store: Store.DashboardStore) {
     store.dispatch(Plugins.loadPlugin(TextWidget));
@@ -41,20 +40,20 @@ function loadInitialPlugins(store: Store.DashboardStore) {
     store.dispatch(Plugins.initializeExternalPlugins());
 }
 
-loadInitialPlugins(store);
+loadInitialPlugins(dashboardStore);
 
-let element = document.getElementById('app');
+const appElement = document.getElementById('app');
 
-if (element) {
+if (appElement) {
     try {
-        renderDashboard(element, store);
+        renderDashboard(appElement, dashboardStore);
     }
     catch (e) {
         console.warn("Failed to load dashboard. Asking user to wipe data and retry. The error will be printed below...");
         if (confirm("Failed to load dashboard. Reset all Data?\n\nPress cancel and check the browser console for more details.")) {
-            store.dispatch(Store.clearState());
-            loadInitialPlugins(store);
-            renderDashboard(element, store);
+            dashboardStore.dispatch(Store.clearState());
+            loadInitialPlugins(dashboardStore);
+            renderDashboard(appElement, dashboardStore);
         }
         else {
             throw e;

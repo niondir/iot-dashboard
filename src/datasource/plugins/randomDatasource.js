@@ -37,7 +37,7 @@ export class Datasource {
 
 
     constructor(props) {
-        var history = props.state.data;
+        const history = props.state.data;
         // Initialize with non random values to demonstrate loading of historic values
         this.history = history || []; // [{value: 10}, {value: 20}, {value: 30}, {value: 40}, {value: 50}]
         this.x = 0;
@@ -65,7 +65,7 @@ export class Datasource {
         const settings = this.props.state.settings;
         const min = Number(settings.min || 0);
         const max = Number(settings.max || 100);
-        let newValue = {x: this.x++, value: getRandomInt(min, max), value2: getRandomInt(min, max)};
+        const newValue = {x: this.x++, value: getRandomInt(min, max), value2: getRandomInt(min, max)};
         return newValue;
     }
 

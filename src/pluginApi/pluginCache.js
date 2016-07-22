@@ -15,7 +15,7 @@ let pluginCache = null;
 
 
 export function popLoadedPlugin() {
-    let plugin = pluginCache;
+    const plugin = pluginCache;
     pluginCache = null;
     return plugin;
 }

@@ -95,7 +95,7 @@ const SaveLayout = connect((state) => {
 
 class MyLayoutItem extends React.Component {
     render() {
-        let props = this.props;
+        const props = this.props;
 
         let indexIconClass = null;
         if (props.currentLayout.id == props.layout.id) {

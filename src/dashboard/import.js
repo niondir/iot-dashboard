@@ -30,7 +30,7 @@ function afterImport(dispatch, getState) {
 export function importReducer(state, action) {
     switch (action.type) {
         case Action.DASHBOARD_IMPORT:
-            let newState = Object.assign({}, state, action.state);
+            const newState = Object.assign({}, state, action.state);
             console.log("new State:", state, action.state, newState)
             return newState;
         default:
@@ -48,7 +48,7 @@ export function deserialize(data) {
 }
 
 export function doImport(data) {
-    let state = deserialize(data);
+    const state = deserialize(data);
     return function (dispatch, getState) {
         // Bad hack to force the grid layout to update correctly
         dispatch(loadEmptyLayout());

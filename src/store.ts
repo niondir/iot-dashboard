@@ -1,6 +1,6 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this
-* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import * as Redux from "redux";
 import thunk from "redux-thunk";
@@ -25,7 +25,7 @@ export interface DashboardStore extends Redux.Store<AppState.State> {
 }
 
 
-let appReducer: AppState.Reducer = Redux.combineReducers<AppState.State>({
+const appReducer: AppState.Reducer = Redux.combineReducers<AppState.State>({
     config: Config.config,
     widgets: Widgets.widgets,
     widgetConfig: WidgetConfig.widgetConfigDialog,  // TODO: Still used or replaced by modalDialog
@@ -97,14 +97,14 @@ export function createDefault(options: any = {log: true}) {
 }
 
 export function create(initialState: AppState.State, options: any = {log: true}): DashboardStore {
-    let middleware: Redux.Middleware[] = [];
+    const middleware: Redux.Middleware[] = [];
     middleware.push(thunk);
     middleware.push(Persist.persistenceMiddleware);
     if (options.log) {
-        middleware.push(logger);// must be last
+        middleware.push(logger); // must be last
     }
 
-    let store = Redux.createStore(
+    const store = Redux.createStore(
         reducer,
         initialState,
         Redux.applyMiddleware(...middleware)

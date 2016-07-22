@@ -5,6 +5,7 @@
 const gulp = require('gulp');
 const gutil = require('gulp-util');
 const sequence = require('gulp-sequence');
+const open = require('open');
 
 ////////////////////
 // Main Tasks
@@ -33,7 +34,7 @@ gulp.task('watch', ["inject:tests", "copy"], function () {
 
 /**
  * Build everything required for a successful CI build
- * TODO: Due to webpack foo we need to build tests first and than compile the client!
+ * TODO: Due to webpack foo we need to build tests first and than compile the client! (try webpack-stream?)
  * see: https://github.com/webpack/webpack/issues/2787
  * */
 gulp.task("build", sequence('test', ['compile', 'lint']));
@@ -67,41 +68,8 @@ gulp.task('set-prod-node-env', function () {
 
 var mocha = require('gulp-mocha');
 var istanbul = require('gulp-istanbul');
-var mochaPhantomJS = require('gulp-mocha-phantomjs');
-var remapIstanbul = require('remap-istanbul/lib/gulpRemapIstanbul');
-var istanbulReport = require('gulp-istanbul-report');
 
 gulp.task('mocha', ['mocha:tests']);
-
-/** Remap coverage report based on sourcemaps - does not work yet
- * TODO: Remove this task + dependencies when we have coverage reports on TS files correctly mapped
- * **/
-gulp.task('remap', function () {
-    return gulp.src('./coverage/coverage-final.json')
-        .pipe(remapIstanbul({
-            fail: false
-        }))
-        .pipe(istanbulReport({
-            reporters: [
-                'text-summary',
-                {name: 'lcov', dir: 'coverage/remapped'}
-                //{name: 'html', dir: 'coverage/html/'}
-                //{name: 'text', dir: 'coverage/report.txt'},
-            ]
-        }));
-});
-
-gulp.task('report', function () {
-    return gulp.src('./coverage/coverage-final.json')
-        .pipe(istanbulReport({
-            reporters: [
-                'text-summary',
-                //{name: 'lcov', dir: 'coverage'}
-                //{name: 'html', dir: 'coverage/html/'}
-                {name: 'text', dir: 'coverage/report.txt'}
-            ]
-        }));
-});
 
 
 gulp.task('mocha:tests', ['webpack:tests'], function () {
@@ -132,9 +100,12 @@ gulp.task('mocha:tests', ['webpack:tests'], function () {
 // Lint Tasks
 // ///////////////
 const eslint = require('gulp-eslint');
+const tslint = require("gulp-tslint");
 
 // TODO: Add tslint for typescript
-gulp.task('lint', function () {
+gulp.task('lint', ['eslint', 'tslint']);
+
+gulp.task('eslint', function () {
     return gulp.src(['src/**/*.js'])
     // eslint() attaches the lint output to the "eslint" property
     // of the file object so it can be used by other modules.
@@ -147,10 +118,20 @@ gulp.task('lint', function () {
         .pipe(eslint.failAfterError());
 });
 
+gulp.task("tslint", () =>
+    gulp.src("src/**/*.ts")
+        .pipe(tslint({
+            formatter: "prose" // prose or verbose
+        }))
+        .pipe(tslint.report({
+            emitError: true,
+            summarizeFailureOutput: true
+        }))
+);
+
 //////////////////
 // Compile Tasks
 //////////////////
-const babel = require('gulp-babel');
 const webpack = require('webpack');
 const ts = require('gulp-typescript');
 
@@ -216,22 +197,24 @@ gulp.task('compile:config', function () {
 // Inject/Modify files Tasks
 //////////////////////////////
 var inject = require('gulp-inject');
+var sort = require('gulp-sort');
 
 gulp.task('inject', ['inject:tests']);
 
 gulp.task('inject:tests', function () {
-    var target = gulp.src(['./src/tests.ts', './src/browser-tests.js']);
     // It's not necessary to read the files (will speed up things), we're only after their paths:
-    var sources = gulp.src(['./src/**/*.test.js', './src/**/*.test.ts'], {read: false});
+    var sources = gulp.src(['./src/**/*.test.js', './src/**/*.test.ts'], {read: false})
+        .pipe(sort());
 
-    return target.pipe(inject(sources, {
-        relative: true,
-        starttag: '/* inject:tests */',
-        endtag: '/* endinject */',
-        transform: function (filepath, file, i, length) {
-            return "import './" + filepath + "'";
-        }
-    }))
+    return gulp.src(['./src/tests.ts', './src/browser-tests.js'])
+        .pipe(inject(sources, {
+            relative: true,
+            starttag: '/* inject:tests */',
+            endtag: '/* endinject */',
+            transform: function (filepath, file, i, length) {
+                return "import './" + filepath + "'";
+            }
+        }))
         .pipe(gulp.dest('./src'));
 });
 
@@ -275,7 +258,13 @@ gulp.task("webpack:dev-server", ['copy', 'inject', 'compile:ts'], function (call
     webpackConfig.entry["browser-tests"].unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
     webpackConfig.bail = false;
     webpackConfig.devtool = '#cheap-module-source-map';
-    var compiler = webpack(webpackConfig);
+    var compiler = webpack(webpackConfig, function(err, stats) {
+        if(err) throw new gutil.PluginError("webpack", err);
+
+        open("http://localhost:8080");
+        open("http://localhost:8080/webpack-dev-server/tests.html");
+        callback();
+    });
 
     new WebpackDevServer(compiler, {
         // server and middleware options

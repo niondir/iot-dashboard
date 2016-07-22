@@ -32,7 +32,7 @@ LinkItem.propTypes = {
 };
 
 export const Icon = (props) => {
-    let classes = [];
+    const classes = [];
     classes.push(props.type);
     if (props.align === 'right') {
         classes.push('right floated');

@@ -28,12 +28,12 @@ export function create(newInstance, TYPE_INFO) {
             this.instance.onSettingsChanged(newProps)
         }.bind(this);
 
-        let newInstanceCallback = function (instance) {
+        const newInstanceCallback = function (instance) {
             this.instance = instance;
             instance.updateNow();
         }.bind(this);
 
-        let updateCallback = function (newData) {
+        const updateCallback = function (newData) {
             this.data = newData;
         }.bind(this);
 

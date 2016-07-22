@@ -17,7 +17,7 @@ describe('Datasource Plugins', function () {
                 }
             });
 
-            let plugin = DatasourcePlugins.pluginRegistry.getPlugin('foo');
+            const plugin = DatasourcePlugins.pluginRegistry.getPlugin('foo');
 
             assert.isOk(plugin);
             assert.equal('foo', plugin.type);

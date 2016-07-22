@@ -29,6 +29,11 @@
       "windows"
     ],
     "no-case-declarations": "off",
+    "one-var": ["error", {
+      "initialized": "never"
+    }],
+    "no-var": "error",
+    "prefer-const": "error",
     // To be considdered:
     "no-unused-vars": "off",
     "no-console": "off",

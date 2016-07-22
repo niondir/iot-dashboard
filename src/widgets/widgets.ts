@@ -1,15 +1,14 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this
-* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import * as React from 'react'
-import * as Redux from 'redux'
-import {PropTypes as Prop} from 'react'
-import * as Uuid from '../util/uuid.js'
-import * as _ from 'lodash'
-import {genCrudReducer} from '../util/reducer.js'
-import * as Action from '../actionNames.js'
-import * as AppState from '../appState'
+import {PropTypes as Prop} from "react";
+import * as Redux from "redux";
+import * as Uuid from "../util/uuid.js";
+import * as _ from "lodash";
+import {genCrudReducer} from "../util/reducer.js";
+import * as Action from "../actionNames.js";
+import * as AppState from "../appState";
 import objectAssign = require('object-assign')
 
 export const HEADER_HEIGHT = 77;
@@ -121,47 +120,47 @@ export const widgetPropType = Prop.shape({
 });
 
 /* // TODO: better explicitly create initial state? But when? ...
-export function createInitialWidgets() {
-    return function(dispatch: AppState.Dispatch) {
-        dispatch(addWidget('chart', {
-            "name": "Random Values",
-            "datasource": "initial_random_source",
-            "chartType": "area-spline",
-            "dataKeys": "[\"value\"]",
-            "xKey": "x",
-            "names": "{\"value\": \"My Value\"}",
-            "gaugeData": "{\"min\":0,\"max\":100,\"units\":\" %\"}"
-        }, 0, 0, 6, 2));
+ export function createInitialWidgets() {
+ return function(dispatch: AppState.Dispatch) {
+ dispatch(addWidget('chart', {
+ "name": "Random Values",
+ "datasource": "initial_random_source",
+ "chartType": "area-spline",
+ "dataKeys": "[\"value\"]",
+ "xKey": "x",
+ "names": "{\"value\": \"My Value\"}",
+ "gaugeData": "{\"min\":0,\"max\":100,\"units\":\" %\"}"
+ }, 0, 0, 6, 2));
 
-        dispatch(addWidget('text', {
-            "name": "Random data",
-            "datasource": "initial_random_source"
-        }, 0, 6, 6, 3));
+ dispatch(addWidget('text', {
+ "name": "Random data",
+ "datasource": "initial_random_source"
+ }, 0, 6, 6, 3));
 
 
-        dispatch(addWidget('text', {
-            "name": "Bars",
-            "datasource": "initial_random_source",
-            "chartType": "spline",
-            "dataKeys": "[\"value\", \"value2\"]",
-            "xKey": "x",
-            "names": "{\"value\": \"My Value\"}",
-            "gaugeData": "{\"min\":0,\"max\":100,\"units\":\" %\"}"
-        }, 2, 0, 6, 2));
-    }
-}
-*/
+ dispatch(addWidget('text', {
+ "name": "Bars",
+ "datasource": "initial_random_source",
+ "chartType": "spline",
+ "dataKeys": "[\"value\", \"value2\"]",
+ "xKey": "x",
+ "names": "{\"value\": \"My Value\"}",
+ "gaugeData": "{\"min\":0,\"max\":100,\"units\":\" %\"}"
+ }, 2, 0, 6, 2));
+ }
+ }
+ */
 
 export function createWidget(widgetType: string, widgetSettings: any): AppState.ThunkAction {
-    return (dispatch: AppState.Dispatch, getState: AppState.GetState) : any => {
-        let widgets = getState().widgets;
+    return (dispatch: AppState.Dispatch, getState: AppState.GetState): any => {
+        const widgets = getState().widgets;
         const widgetPositions = calcNewWidgetPosition(widgets);
 
         return dispatch(addWidget(widgetType, widgetSettings, widgetPositions.row, widgetPositions.col));
     }
 }
 
-export function addWidget(widgetType: string, widgetSettings: any = {}, row: number, col: number, width: number = 3, height: number = 3) : IWidgetAction {
+export function addWidget(widgetType: string, widgetSettings: any = {}, row: number, col: number, width: number = 3, height: number = 3): IWidgetAction {
     return {
         type: Action.ADD_WIDGET,
         id: Uuid.generate(),
@@ -174,7 +173,7 @@ export function addWidget(widgetType: string, widgetSettings: any = {}, row: num
     };
 }
 
-export function updateWidgetSettings(id: string, widgetSettings: any) : IWidgetAction {
+export function updateWidgetSettings(id: string, widgetSettings: any): IWidgetAction {
     return {
         type: Action.UPDATE_WIDGET_PROPS,
         id,
@@ -182,14 +181,14 @@ export function updateWidgetSettings(id: string, widgetSettings: any) : IWidgetA
     }
 }
 
-export function deleteWidget(id: string) : IWidgetAction {
+export function deleteWidget(id: string): IWidgetAction {
     return {
         type: Action.DELETE_WIDGET,
         id
     }
 }
 
-export function updateLayout(layouts: Layout[]) : IWidgetAction {
+export function updateLayout(layouts: Layout[]): IWidgetAction {
     return {
         type: Action.UPDATE_WIDGET_LAYOUT,
         layouts: layouts
@@ -212,9 +211,9 @@ export function widgets(state: IWidgetsState = initialWidgets, action: IWidgetAc
             return action.layout.widgets || {};
         case Action.DELETE_WIDGET_PLUGIN: // Also delete related widgets // TODO: Or maybe not when we render an empty box instead
             const toDelete = _.valuesIn<IWidgetState>(state).filter(widgetState => {
-                return widgetState.type == action.id
+                return widgetState.type === action.id
             });
-            var newState = objectAssign({}, state);
+            const newState = objectAssign({}, state);
             toDelete.forEach(widgetState => {
                 delete newState[widgetState.id];
             });
@@ -246,7 +245,7 @@ function widget(state: IWidgetState, action: IWidgetAction): IWidgetState {
         case Action.UPDATE_WIDGET_PROPS:
             return objectAssign({}, state, {settings: action.widgetSettings});
         case Action.UPDATE_WIDGET_LAYOUT:
-            let layout = layoutById(action.layouts, state.id);
+            const layout = layoutById(action.layouts, state.id);
             if (layout == null) {
                 console.warn("No layout for widget. Skipping position update of widget with id: " + state.id);
                 return state;
@@ -280,7 +279,7 @@ export function calcNewWidgetPosition(widgets: {[key: string]: IWidgetPosition})
     }
     colHeights = _.valuesIn<IWidgetState>(widgets).reduce((prev, curr) => {
         prev[curr.col] = prev[curr.col] || 0;
-        let currHeight = curr.row + curr.height || 0;
+        const currHeight = curr.row + curr.height || 0;
         if (prev[curr.col] < currHeight) {
             for (let i = curr.col; i < curr.col + curr.width; i++) {
                 prev[i] = currHeight;

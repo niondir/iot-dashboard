@@ -28,7 +28,7 @@ function onScriptLoaded(url, dispatch) {
         const dependencies = plugin.TYPE_INFO.dependencies;
         if (_.isArray(dependencies) && dependencies.length !== 0) {
 
-            var paths = dependencies.map(dependency => {
+            const paths = dependencies.map(dependency => {
                 return URI(dependency).absoluteTo(url).toString();
             });
 

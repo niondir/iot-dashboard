@@ -22,6 +22,8 @@ The **latest development snapshot** is on the `dev` branch.
 
 ## Demo ##
 
+Online:
+
 * [Live Demo Stable](http://demo.iot-dashboard.org/) of the `master` branch.
 * [Live Demo Dev](http://demo.iot-dashboard.org/branch/dev/) of the `dev` branch.
 
@@ -41,12 +43,21 @@ If you find something that comes close to the above requirements, please let me 
 
 ## Setup ##
 
-We have just a development setup yet, since there is no need for more :)
-to keep everything simple all the important tasks are based on scripts in package.json. Use `npm run <script-name>` to run any of them.
+Prerequisite: Download & install [NodeJs](https://nodejs.org)
+
+### Install from npm ###
+
+Install the Dashboard
+
+    npm install -g iot-dashboard
+
+Start the dashboard server
+
+    iot-dashboard
+
+Open your browser at http://localhost:8081
 
 ### Run the Dashboard locally from source ###
-
-Prerequisite: Download & install [NodeJs](https://nodejs.org)
 
     npm install
     npm run compile
@@ -57,6 +68,8 @@ Prerequisite: Download & install [NodeJs](https://nodejs.org)
 * Testcoverage: http://localhost:8081/coverage/
 
 ### Development ###
+
+To keep everything simple all important tasks are based on scripts in package.json. Use `npm run <script-name>` to run any of them.
 
 For preparation run
 

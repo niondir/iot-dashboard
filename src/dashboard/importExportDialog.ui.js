@@ -42,8 +42,8 @@ class ImportExportDialog extends React.Component {
         this.refs.data.select();
 
         try {
-            var successful = document.execCommand('copy');
-            var msg = successful ? 'successful' : 'unsuccessful';
+            const successful = document.execCommand('copy');
+            const msg = successful ? 'successful' : 'unsuccessful';
             console.log('Copying text command was ' + msg);
         } catch (err) {
             alert('Oops, unable to copy');
@@ -51,7 +51,7 @@ class ImportExportDialog extends React.Component {
     }
 
     render() {
-        let props = this.props;
+        const props = this.props;
         const actions = [
             {
                 className: "ui right black button",

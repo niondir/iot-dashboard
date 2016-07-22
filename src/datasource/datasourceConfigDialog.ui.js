@@ -33,7 +33,7 @@ class DatasourceConfigModal extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.dialogData.datasource) {
-            let selectedType = nextProps.dialogData.datasource.type;
+            const selectedType = nextProps.dialogData.datasource.type;
             this.state = {
                 selectedType: selectedType
             };
@@ -93,14 +93,14 @@ class DatasourceConfigModal extends React.Component {
             }
         ];
 
-        let selectedSource;
+        let selectedDsPluginState;
         if (this.state.selectedType) {
-            selectedSource = props.datasourcePlugins[this.state.selectedType];
+            selectedDsPluginState = props.datasourcePlugins[this.state.selectedType];
         }
 
         let settings = [];
-        if (selectedSource && selectedSource.typeInfo.settings) {
-            settings = [...selectedSource.typeInfo.settings];
+        if (selectedDsPluginState && selectedDsPluginState.typeInfo.settings) {
+            settings = [...selectedDsPluginState.typeInfo.settings];
         }
         else {
             settings = [];
@@ -139,6 +139,17 @@ class DatasourceConfigModal extends React.Component {
         >
             <div className="ui one column grid">
                 <div className="column">
+                    {selectedDsPluginState && selectedDsPluginState.typeInfo.description ?
+
+                        <div className="ui icon message">
+                            <i className="idea icon"/>
+                            <div className="content">
+                                {selectedDsPluginState.typeInfo.description}
+                            </div>
+
+                        </div>
+                        : null
+                    }
                     <div className="field">
                         <label>Type</label>
                         <select className="ui fluid dropdown" name="type" value={this.state.selectedType}
