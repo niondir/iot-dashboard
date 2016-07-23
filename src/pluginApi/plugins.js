@@ -5,7 +5,7 @@
 import * as Action from "../actionNames";
 import * as DatasourcePlugins from "../datasource/datasourcePlugins";
 import * as WidgetPlugins from "../widgets/widgetPlugins";
-import loadjs from "loadjs";
+import scriptloader from '../util/scriptLoader';
 import * as PluginCache from "./pluginCache";
 import * as _ from "lodash";
 import URI from "urijs";
@@ -17,12 +17,14 @@ export function loadPlugin(plugin) {
 
 export function loadPluginFromUrl(url) {
     return function (dispatch) {
-        loadjs([url], {success: () => onScriptLoaded(url, dispatch)});
+        scriptloader.loadScript([url], {success: () => onScriptLoaded(url, dispatch)});
     };
 }
 
 function onScriptLoaded(url, dispatch) {
     if (PluginCache.hasPlugin()) {
+        // TODO: use a reference to the pluginCache and only bind that instance to the window object while the script is loaded
+        // TODO: The scriploader can ensure that only one script is loaded at a time
         const plugin = PluginCache.popLoadedPlugin();
 
         const dependencies = plugin.TYPE_INFO.dependencies;
@@ -47,7 +49,7 @@ function onScriptLoaded(url, dispatch) {
              );  */
 
 
-            loadjs(paths, {
+            scriptloader.loadScript(paths, {
                 success: () => {
                     dispatch(addPlugin(plugin, url));
                 }

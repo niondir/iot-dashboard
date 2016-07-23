@@ -2,7 +2,7 @@
 * License, v. 2.0. If a copy of the MPL was not distributed with this
 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import loadjs from 'loadjs';
+import scriptloader from '../util/scriptLoader';
 import * as _ from 'lodash'
 
 // **newInstance(settings, newInstanceCallback, updateCallback)** (required) : A function that will be called when a new instance of this plugin is requested.
@@ -39,7 +39,7 @@ export function create(newInstance, TYPE_INFO) {
 
         // TODO: Maybe no needed anymore when we take care of dependencies elsewhere
         if (TYPE_INFO.dependencies) {
-            loadjs([...TYPE_INFO.dependencies], {success: createNewInstance});
+            scriptloader.loadScript([...TYPE_INFO.dependencies], {success: createNewInstance});
         }
         else {
             createNewInstance();

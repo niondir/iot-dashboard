@@ -2,10 +2,10 @@
 
 **Content:**
 
-* Hosting the iot-dashboard
-* Contributing to the dashboard core codebase (this git repo)
-* Basic Concepts & Architecture
-* Coding Guidelines
+* [Hosting the iot-dashboard](#hosting-the-iot-dashboard)
+* [Contributing](#Contributing) to the dashboard core codebase (this git repo)
+* [Basic Concepts & Architecture](#basic-concepts-&-architecture)
+* [Coding Guidelines](#coding-guidelines)
 * [Plugin Development](pluginDevelopment.md)
 * [Security](security.md) related topics
 
@@ -55,7 +55,10 @@ And a `TYPE_INFO` constant.
 # Coding Guidelines
 
 Eslint and tslint is in place and must be followed to get successful CI builds.
+
 New code must be tested, unittests can be provided next to the code folder as `<filename>.test.ts`, they will be executed automatically during build.
+Read the redux guide about [writing tests](http://redux.js.org/docs/recipes/WritingTests.html).
+
 
 ## Folder Structure
 

@@ -4,7 +4,7 @@
 
 /**
  * When a Plugin is loaded via the UI, an action is called to do so.
- * The action will load an external script, containing the plugin code, which calles one of the API methods here.
+ * The action will load an external script, containing the plugin code, which calls one of the API methods here.
  * By calling the API method the plugin is put to the pluginCache where it can be fetched by the application to initialize it
  *
  * The application can not call the Plugin since it could (and should) be wrapped into a module.

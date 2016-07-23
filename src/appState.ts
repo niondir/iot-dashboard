@@ -19,6 +19,7 @@ export type Reducer = Redux.Reducer<State>
 export interface State {
     config: Config.IConfigState
     widgets: Widgets.IWidgetsState
+    datasources: any
     datasourcePlugins: DatasourcePlugins.IDatasourcePluginsState
 }
 

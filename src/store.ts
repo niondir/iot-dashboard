@@ -79,19 +79,22 @@ export function get() {
     return globalStore;
 }
 
-export const emptyState = <AppState.State>{
-    config: null,
-    widgets: {},
-    datasources: {},
-    datasourcePlugins: {}
-};
+export function emptyState() {
+    return <AppState.State>{
+        config: null,
+        widgets: {},
+        datasources: {},
+        datasourcePlugins: {}
+    }
+}
 
 /**
  * Create a store as empty as possible
  */
 export function createEmpty(options: any = {log: true}) {
-    return create(emptyState, options);
+    return create(emptyState(), options);
 }
+
 
 /**
  * Create a store with default values
@@ -100,6 +103,10 @@ export function createDefault(options: any = {log: true}) {
     return create(undefined, options);
 }
 
+
+/**
+ * Create a store and execute all side-effects to have a consistent app
+ */
 export function create(initialState?: AppState.State, options: any = {log: true}): DashboardStore {
     const middleware: Redux.Middleware[] = [];
     middleware.push(thunk);
