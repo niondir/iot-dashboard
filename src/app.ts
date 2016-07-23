@@ -36,8 +36,6 @@ function loadInitialPlugins(store: Store.DashboardStore) {
     store.dispatch(Plugins.loadPlugin(RandomDatasource));
     store.dispatch(Plugins.loadPlugin(TimeDatasource));
     store.dispatch(Plugins.loadPluginFromUrl("./plugins/DigimondoGpsDatasource.js"));
-
-    store.dispatch(Plugins.initializeExternalPlugins());
 }
 
 loadInitialPlugins(dashboardStore);

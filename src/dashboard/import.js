@@ -19,7 +19,8 @@ export function serialize(state) {
     return JSON.stringify({
         widgets: state.widgets,
         datasources: state.datasources,
-        plugins: state.plugins
+        datasourcePlugins: state.datasourcePlugins,
+        widgetPlugins: state.widgetPlugins
     });
 }
 

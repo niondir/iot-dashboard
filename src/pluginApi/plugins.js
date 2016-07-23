@@ -1,6 +1,6 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this
-* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import * as Action from "../actionNames";
 import * as DatasourcePlugins from "../datasource/datasourcePlugins";
@@ -66,7 +66,8 @@ function onScriptLoaded(url, dispatch) {
 export function initializeExternalPlugins() {
     return (dispatch, getState) => {
         const state = getState();
-        const plugins = _.valuesIn(state.plugins);
+        const plugins = _.valuesIn(state.datasourcePlugins)
+            .concat(_.valuesIn(state.widgetPlugins))
 
         plugins.filter(pluginState => !_.isEmpty(pluginState.url)).forEach(plugin => {
             dispatch(loadPluginFromUrl(plugin.url));
@@ -74,6 +75,9 @@ export function initializeExternalPlugins() {
     }
 }
 
+/**
+ * Register a plugin in the plugin registry
+ */
 function registerPlugin(plugin) {
     const type = plugin.TYPE_INFO.type;
     if (plugin.Datasource) {
@@ -105,32 +109,31 @@ export function addPlugin(plugin, url = null) {
 
     return function (dispatch, getState) {
         const state = getState();
-        const plugins = state.plugins;
+        const plugins = _.valuesIn(state.datasourcePlugins).concat(_.valuesIn(state.widgetPlugins));
 
-        const existentPluginState = _.valuesIn(plugins).find(pluginState => {
-            return plugin.TYPE_INFO.type === pluginState.pluginType;
+        const existentPluginState = plugins.find(pluginState => {
+            return plugin.TYPE_INFO.type === pluginState.typeInfo.type;
         });
 
-        if (existentPluginState) {
-            registerPlugin(plugin);
-            return;
+        if (!existentPluginState) {
+            let actionType = "unknown-add-widget-action";
+            if (plugin.Datasource !== undefined) {
+                actionType = Action.ADD_DATASOURCE_PLUGIN;
+            }
+            if (plugin.Widget !== undefined) {
+                actionType = Action.ADD_WIDGET_PLUGIN;
+            }
+
+            // TODO: Just put the raw plugin + url here and let the reducer do the logic
+            dispatch({
+                type: actionType,
+                id: plugin.TYPE_INFO.type, // needed for crud reducer
+                typeInfo: plugin.TYPE_INFO,
+                url
+            });
         }
 
-        let actionType = "unknown-add-widget-action";
-        if (plugin.Datasource !== undefined) {
-            actionType = Action.ADD_DATASOURCE_PLUGIN;
-        }
-        if (plugin.Widget !== undefined) {
-            actionType = Action.ADD_WIDGET_PLUGIN;
-        }
 
-        // TODO: Just put the raw plugin + url here and let the reducer do the logic
-        dispatch({
-            type: actionType,
-            id: plugin.TYPE_INFO.type, // needed for crud reducer
-            typeInfo: plugin.TYPE_INFO,
-            url
-        });
         // TODO: Maybe use redux sideeffect and move this call to the reducer
         registerPlugin(plugin);
     }

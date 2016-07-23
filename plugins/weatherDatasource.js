@@ -25,30 +25,34 @@
     };
 
     var Plugin = function (props) {
-        this.history = props.state.data;
-        this.timer = setupFetchData(props).bind(this);
+        this.history = props.state.data || []; // todo, must always be at least []!
+
+
+        this.setupFetchData = function(props) {
+            var settings = props.state.settings;
+
+            if (this.timer) {
+                clearInterval(this.timer);
+            }
+
+            return setInterval(function () {
+                $.simpleWeather({
+                    location: settings["location"],
+                    woeid: '',
+                    units: getUnits(settings["unitType"]),
+                    success: function (weather) {
+                        this.history.push(weather)
+                    }.bind(this),
+                    error: function (weather) {
+                    }.bind(this)
+                })
+            }, 10000);
+        };
+
+        this.timer = this.setupFetchData(props);
     };
 
-    function setupFetchData(props) {
-        var settings = props.state.settings;
 
-        if (this.timer) {
-            clearInterval(this.timer);
-        }
-
-        return setInterval(function () {
-            $.simpleWeather({
-                location: settings["location"],
-                woeid: '',
-                units: getUnits(settings["unitType"]),
-                success: function (weather) {
-                    this.history.push(weather)
-                }.bind(this),
-                error: function (weather) {
-                }.bind(this)
-            })
-        }, 10000);
-    }
 
     function getUnits(type) {
         switch (type) {
@@ -64,8 +68,9 @@
     }
 
     Plugin.prototype.datasourceWillReceiveProps = function (nextProps) {
-        this.timer = setupFetchData(nextProps).bind(this);
-    }.bind(this);
+        console.log("this", this);
+        this.timer = this.setupFetchData(nextProps);
+    }.bind(Plugin);
 
     Plugin.prototype.getValues = function () {
         this.history = limitHistory(this.history, 100);
@@ -77,6 +82,8 @@
             clearInterval(this.timer);
         }
     }.bind(Plugin);
+
+
 
     window.iotDashboardApi.registerDatasourcePlugin(TYPE_INFO, Plugin)
 })(window);

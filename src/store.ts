@@ -9,6 +9,7 @@ import * as Widgets from "./widgets/widgets";
 import * as WidgetConfig from "./widgets/widgetConfig.js";
 import * as Layouts from "./layouts/layouts.js";
 import * as Datasource from "./datasource/datasource.js";
+import * as Plugins from "./pluginApi/plugins.js";
 import * as Dashboard from "./dashboard/dashboard.js";
 import * as Import from "./dashboard/import.js";
 import * as Modal from "./modal/modalDialog.js";
@@ -78,16 +79,18 @@ export function get() {
     return globalStore;
 }
 
+export const emptyState = <AppState.State>{
+    config: null,
+    widgets: {},
+    datasources: {},
+    datasourcePlugins: {}
+};
+
 /**
  * Create a store as empty as possible
  */
 export function createEmpty(options: any = {log: true}) {
-    return create(<AppState.State>{
-        config: null,
-        widgets: {},
-        datasources: {},
-        datasourcePlugins: {}
-    }, options);
+    return create(emptyState, options);
 }
 
 /**
@@ -113,6 +116,8 @@ export function create(initialState?: AppState.State, options: any = {log: true}
 
     DatasourcePlugins.pluginRegistry.store = store;
     WidgetPlugins.pluginRegistry.store = store;
+
+    store.dispatch(Plugins.initializeExternalPlugins());
 
     return store;
 }
