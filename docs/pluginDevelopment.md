@@ -50,22 +50,21 @@ A good start for a typeInfo would be:
 
 The full specification looks like:
 
-    interface TypeInfo {
+    interface ITypeInfo {
         type: string // The name of the type - must be unique
         name: string // The user friendly name of the Plugin
-        description: string // A userfirnedly descripton that explains the Plugin
-        dependencies: string[] // A list of URL's to load external scripts from. Some scripts like jQuery will be avaliable by default in future
-        settings: Setting[] // A list of settings that can be changed by the user when the Plugin is initialized
+        description: string // A user friendly description that explains the Plugin
+        dependencies: string[] // A list of URL's to load external scripts from. Some scripts like jQuery will be available by default in future
+        settings: ISetting[] // A list of settings that can be changed by the user when the Plugin is initialized
     }
 
-    interface Setting {
-    {
-       id: string // Technical id, used to retreive the value later
-       name: string // User friendly string to describe the value
-       description: string // User friendly desctiption with detail information about the value
-       defaultValue: string // The default value that is preset when a new Plugin is configured, curently must be a string
-       required: true // true when the setting is required
-       type: string // Defines how the setting is rendered, validated and interpreted
+    interface ISetting {
+        id: string // Technical id, used to receive the value later
+        name: string // User friendly string to describe the value
+        description: string // User friendly description with detail information about the value
+        defaultValue: string // The default value that is preset when a new Plugin is configured, currently must be a string
+        required: boolean // true when the setting is required
+        type: string // Defines how the setting is rendered, validated and interpreted
     }
 
 Valid setting `types` are:

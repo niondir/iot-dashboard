@@ -16,7 +16,7 @@ import * as Persist from "./persistence.js";
 import {reducer as formReducer} from "redux-form";
 import * as Action from "./actionNames.js";
 import * as  WidgetPlugins from "./widgets/widgetPlugins.js";
-import * as DatasourcePlugins from "./datasource/datasourcePlugins.js";
+import * as DatasourcePlugins from "./datasource/datasourcePlugins";
 import * as AppState from "./appState.ts";
 import * as Config from "./config";
 
@@ -85,7 +85,8 @@ export function createEmpty(options: any = {log: true}) {
     return create(<AppState.State>{
         config: null,
         widgets: {},
-        datasources: {}
+        datasources: {},
+        datasourcePlugins: {}
     }, options);
 }
 
@@ -96,7 +97,7 @@ export function createDefault(options: any = {log: true}) {
     return create(undefined, options);
 }
 
-export function create(initialState: AppState.State, options: any = {log: true}): DashboardStore {
+export function create(initialState?: AppState.State, options: any = {log: true}): DashboardStore {
     const middleware: Redux.Middleware[] = [];
     middleware.push(thunk);
     middleware.push(Persist.persistenceMiddleware);

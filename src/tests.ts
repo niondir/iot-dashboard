@@ -4,7 +4,7 @@
 
 
 /* inject:tests */
-import './datasource/datasourcePlugins.test.js'
+import './datasource/datasourcePlugins.test.ts'
 import './datasource/plugins/randomDatasource.test.js'
 import './pluginApi/uri.test.js'
 import './serverRenderer.test.ts'
