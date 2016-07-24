@@ -97,14 +97,6 @@ export function setDatasourceData(id, data) {
     }
 }
 
-export function appendDatasourceData(id, data) {
-    return {
-        type: Action.APPEND_DATASOURCE_DATA,
-        id,
-        data
-    }
-}
-
 export function fetchDatasourceData() {
     return (dispatch, getState) => {
         const state = getState();
@@ -167,16 +159,12 @@ function datasource(state, action) {
             return {
                 id: action.id,
                 type: action.dsType,
-                settings: action.settings
+                settings: action.settings,
+                data: []
             };
         case Action.SET_DATASOURCE_DATA:
             return Object.assign({}, state, {
-                data: action.data
-            });
-        case Action.APPEND_DATASOURCE_DATA:
-            const stateData = state.data || [];
-            return Object.assign({}, state, {
-                data: [...stateData, ...action.data]
+                data: action.data || []
             });
         case Action.UPDATE_DATASOURCE:
             return Object.assign({}, state, {

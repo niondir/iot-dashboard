@@ -36,26 +36,29 @@ describe('Datasource Plugins', function () {
      */
     describe("plugin registration", function () {
         it("a external plugin is loaded when it is already in state", function () {
-            // TODO: the test fails on webpack hot reaload sometimes ...
-            const scriptLoaderMock = Sinon.mock(scriptloader);
 
-            // In reality the loadScript yieldsToAsync - but then we to now know how long to wait to verify the plugin
-            // We could introduce some API that tells us when new plugins are added to the registry.
-            scriptLoaderMock.expects("loadScript").once().withArgs(["fake/plugin.js"]).yieldsTo("success");
-
-            // the script will be loaded into the plugin cache during scriptLoader.loadScript()
+            // TYPE_INFO and Datasource is usually created inside the plugin script
             const TYPE_INFO = {type: "ext-ds"};
             const Datasource = function (props: any) {
                 return;
             };
-            pluginCache.registerDatasourcePlugin(TYPE_INFO, Datasource);
 
+            // TODO: the test fails on webpack hot reaload sometimes ...
+            const loadScriptStub = Sinon.stub(scriptloader, "loadScript", function (scripts: string[], options: any) {
+                pluginCache.registerDatasourcePlugin(TYPE_INFO, Datasource);
+
+                // In reality the success function is called async
+                // but then we to now know how long to wait to verify the plugin
+                options.success();
+            });
+            loadScriptStub.withArgs(["fake/plugin.js"]);
 
             const store = Store.create(stateWithExternalDatasource, {log: true});
             const state = store.getState();
             const plugin = DatasourcePlugins.pluginRegistry.getPlugin("ext-ds");
 
-            scriptLoaderMock.verify();
+            assert.isOk(loadScriptStub.calledOnce);
+            assert.isOk(plugin, "The loaded plugin is okay");
             assert.equal(plugin.disposed, false, "The loaded plugin is not disposed");
             assert.deepEqual(plugin.instances, {}, "The loaded plugin has no instances");
             assert.equal(plugin.store, store, "The loaded plugin knows the correct store");

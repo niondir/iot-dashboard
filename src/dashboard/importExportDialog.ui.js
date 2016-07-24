@@ -92,7 +92,7 @@ class ImportExportDialog extends React.Component {
                     <form className="ui form">
                         <div className="field">
                             <label>Data</label>
-                            <textarea ref="data" rows="10" onFocus={(e) => e.target.select()}
+                            <textarea className="monospace" ref="data" rows="10" onFocus={(e) => e.target.select()}
                                       placeholder='Click "Load Data" to get data for export or paste your data here ...'/>
                         </div>
                     </form>

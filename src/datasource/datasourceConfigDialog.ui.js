@@ -110,7 +110,7 @@ class DatasourceConfigModal extends React.Component {
             id: 'name',
             name: 'Name',
             type: 'string',
-            defaultValue: ""
+            defaultValue: selectedDsPluginState ? selectedDsPluginState.typeInfo.name : ""
         });
 
 

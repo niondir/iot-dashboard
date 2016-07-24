@@ -8,6 +8,7 @@
         settings: [
             {
                 id: 'unitType',
+                name: 'Units',
                 type: 'option',
                 defaultValue: 'metric',
                 options: [
@@ -17,6 +18,7 @@
             },
             {
                 id: 'location',
+                name: "Location",
                 type: 'string',
                 description: 'lat/lon, US zip code, or location name for Yahoo! weather API',
                 defaultValue: 'Austin, TX'
@@ -25,64 +27,62 @@
     };
 
     var Plugin = function (props) {
-        this.history = props.state.data || []; // todo, must always be at least []!
+        this.history = props.state.data;
 
-
-        this.setupFetchData = function(props) {
+        this.setupFetchData = function (props) {
             var settings = props.state.settings;
 
             if (this.timer) {
                 clearInterval(this.timer);
             }
-
             return setInterval(function () {
+                console.log("Fetching weather data");
                 $.simpleWeather({
                     location: settings["location"],
                     woeid: '',
                     units: getUnits(settings["unitType"]),
                     success: function (weather) {
-                        this.history.push(weather)
+                        this.history.push(weather);
+                        this.history = limitHistory(this.history, 100);
                     }.bind(this),
                     error: function (weather) {
                     }.bind(this)
                 })
-            }, 10000);
-        };
+            }.bind(this), 5000);
+        }.bind(this);
 
         this.timer = this.setupFetchData(props);
     };
 
 
-
     function getUnits(type) {
         switch (type) {
             case 'metric':
-                return {temp: 'c', distance: 'km', pressure: 'mb', speed: 'kph'}
+                return {temp: 'c', distance: 'km', pressure: 'mb', speed: 'kph'};
             default:
-                return {temp: 'f', distance: 'mi', pressure: 'in', speed: 'mph'}
+                return {temp: 'f', distance: 'mi', pressure: 'in', speed: 'mph'};
         }
     }
 
     function limitHistory(history, count) {
-        return history.slice(Math.max(history.length - count, 1))
+        return history.slice(history.length - count);
     }
 
     Plugin.prototype.datasourceWillReceiveProps = function (nextProps) {
-        console.log("this", this);
-        this.timer = this.setupFetchData(nextProps);
-    }.bind(Plugin);
+        if (this.props.state.settings !== nextProps.state.settings) {
+            this.timer = this.setupFetchData(nextProps);
+        }
+    };
 
     Plugin.prototype.getValues = function () {
-        this.history = limitHistory(this.history, 100);
         return this.history;
-    }.bind(Plugin);
+    };
 
     Plugin.prototype.dispose = function () {
         if (this.timer) {
             clearInterval(this.timer);
         }
-    }.bind(Plugin);
-
+    };
 
 
     window.iotDashboardApi.registerDatasourcePlugin(TYPE_INFO, Plugin)

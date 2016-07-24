@@ -44,6 +44,20 @@ export class DataSourcePlugin {
             };
             instance = new this.Datasource(props);
             instance.props = props;
+
+            // Bind API functions to instance
+            if (_.isFunction(instance.datasourceWillReceiveProps)) {
+                instance.datasourceWillReceiveProps = instance.datasourceWillReceiveProps.bind(instance);
+            }
+            if (_.isFunction(instance.dispose)) {
+                instance.dispose = instance.dispose.bind(instance);
+            }
+            if (_.isFunction(instance.getValues)) {
+                instance.getValues = instance.getValues.bind(instance);
+            } else {
+                console.error("Datasource must implement 'getValues(): any[]' but is missing on " + id);
+            }
+
             this.instances[id] = instance;
         }
         return instance;
