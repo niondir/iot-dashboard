@@ -3,6 +3,7 @@
 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import * as Redux from 'redux'
+import * as Datasource from './datasource/datasource'
 import * as Widgets from './widgets/widgets'
 import * as DatasourcePlugins from './datasource/datasourcePlugins'
 import * as Config from './config'
@@ -11,7 +12,7 @@ export type Dispatch = Redux.Dispatch<State>
 export type GetState = () => State
 export type ThunkAction = Redux.ThunkAction<any, State, any>
 export interface Action extends Redux.Action {
-    [key: string]: any
+    doNotLog?: boolean
 }
 export type AnyAction = ThunkAction | Action
 export type Reducer = Redux.Reducer<State>
@@ -19,7 +20,7 @@ export type Reducer = Redux.Reducer<State>
 export interface State {
     config: Config.IConfigState
     widgets: Widgets.IWidgetsState
-    datasources: any
+    datasources: Datasource.IDatasourcesState
     datasourcePlugins: DatasourcePlugins.IDatasourcePluginsState
 }
 

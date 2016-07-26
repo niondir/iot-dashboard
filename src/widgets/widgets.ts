@@ -7,9 +7,8 @@ import * as Redux from "redux";
 import * as Uuid from "../util/uuid.js";
 import * as _ from "lodash";
 import {genCrudReducer} from "../util/reducer.js";
-import * as Action from "../actionNames.js";
+import * as Action from "../actionNames";
 import * as AppState from "../appState";
-import objectAssign = require('object-assign')
 
 export const HEADER_HEIGHT = 77;
 export const ROW_HEIGHT = 100;
@@ -204,7 +203,7 @@ export function widgets(state: IWidgetsState = initialWidgets, action: IWidgetAc
                 .reduce((newState, {id}) => {
                         newState[id] = widget(newState[id], action);
                         return newState;
-                    }, objectAssign({}, state)
+                    }, _.assign<any, IWidgetsState>({}, state)
                 );
         case Action.LOAD_LAYOUT:
             console.assert(action.layout.widgets, "Layout is missing Widgets, id: " + action.layout.id);
@@ -213,7 +212,7 @@ export function widgets(state: IWidgetsState = initialWidgets, action: IWidgetAc
             const toDelete = _.valuesIn<IWidgetState>(state).filter(widgetState => {
                 return widgetState.type === action.id
             });
-            const newState = objectAssign({}, state);
+            const newState = _.assign<any, IWidgetsState>({}, state);
             toDelete.forEach(widgetState => {
                 delete newState[widgetState.id];
             });
@@ -243,14 +242,14 @@ function widget(state: IWidgetState, action: IWidgetAction): IWidgetState {
                 availableHeightPx: calcAvaliableHeight(action.height)
             };
         case Action.UPDATE_WIDGET_PROPS:
-            return objectAssign({}, state, {settings: action.widgetSettings});
+            return _.assign<any, IWidgetState>({}, state, {settings: action.widgetSettings});
         case Action.UPDATE_WIDGET_LAYOUT:
             const layout = layoutById(action.layouts, state.id);
             if (layout == null) {
                 console.warn("No layout for widget. Skipping position update of widget with id: " + state.id);
                 return state;
             }
-            return objectAssign({}, state, {
+            return _.assign<any, IWidgetState>({}, state, {
                 row: layout.y,
                 col: layout.x,
                 width: layout.w,

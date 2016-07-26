@@ -4,7 +4,7 @@
 
 import * as DsPlugin from './datasourcePlugin.js'
 import PluginRegistry from '../pluginApi/pluginRegistry.js'
-import * as Action from '../actionNames.js';
+import * as Action from '../actionNames';
 import {genCrudReducer} from '../util/reducer.js';
 import * as AppState from '../appState'
 

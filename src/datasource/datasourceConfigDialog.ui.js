@@ -1,6 +1,6 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this
-* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import * as React from 'react'
 import ModalDialog from '../modal/modalDialog.ui.js'
@@ -41,11 +41,13 @@ class DatasourceConfigModal extends React.Component {
     }
 
     onSubmit(formData, dispatch) {
-        let id = undefined;
         if (this._isEditing()) {
-            id = this._getEditingDatasource().id;
+            const id = this._getEditingDatasource().id;
+            this.props.updateDatasource(id, this.state.selectedType, formData);
         }
-        this.props.createOrUpdateDatasource(id, this.state.selectedType, formData);
+        else {
+            this.props.createDatasource(this.state.selectedType, formData);
+        }
         return true;
     }
 
@@ -178,7 +180,8 @@ class DatasourceConfigModal extends React.Component {
 }
 
 DatasourceConfigModal.propTypes = {
-    createOrUpdateDatasource: Prop.func.isRequired,
+    createDatasource: Prop.func.isRequired,
+    updateDatasource: Prop.func.isRequired,
     resetForm: Prop.func.isRequired,
     dialogData: Prop.object.isRequired,
     datasourcePlugins: Prop.object.isRequired
@@ -195,8 +198,11 @@ export default connect(
     (dispatch) => {
         return {
             resetForm: (id) => dispatch(reset(id)),
-            createOrUpdateDatasource: (id, type, dsSettings) => {
-                dispatch(Datasource.createOrUpdateDatasource(id, type, dsSettings))
+            createDatasource: (type, dsSettings) => {
+                dispatch(Datasource.createDatasource(type, dsSettings))
+            },
+            updateDatasource: (id, type, dsSettings) => {
+                dispatch(Datasource.updateDatasource(id, type, dsSettings))
             }
         }
     }

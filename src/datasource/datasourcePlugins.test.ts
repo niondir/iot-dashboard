@@ -23,18 +23,19 @@ stateWithExternalDatasource.datasourcePlugins = {
 
 // TODO: Test Actions, Test Reducer
 describe('Datasource Plugins', function () {
-    /* TODO: Testcases
-     - load state with external plugin
-     -- load from url works (DONE)
-     -- load from url fails
-     - load state with internal plugin
 
-     - register external plugin
-     -- load from url works
-     -- load from url fails
-     - register internal plugin
-     */
     describe("plugin registration", function () {
+        /* TODO: Testcases
+         - load state with external plugin
+         -- load from url works (DONE)
+         -- load from url fails
+         - load state with internal plugin
+
+         - register external plugin
+         -- load from url works
+         -- load from url fails
+         - register internal plugin
+         */
         it("a external plugin is loaded when it is already in state", function () {
 
             // TYPE_INFO and Datasource is usually created inside the plugin script
@@ -53,7 +54,7 @@ describe('Datasource Plugins', function () {
             });
             loadScriptStub.withArgs(["fake/plugin.js"]);
 
-            const store = Store.create(stateWithExternalDatasource, {log: true});
+            const store = Store.create(stateWithExternalDatasource, {log: false});
             const state = store.getState();
             const plugin = DatasourcePlugins.pluginRegistry.getPlugin("ext-ds");
 
@@ -80,6 +81,7 @@ describe('Datasource Plugins', function () {
         it("register internal plugin");
         it("a plugin is marked as defective when the external plugin was not loaded");
     });
+
 
     describe('pluginRegistry #register() && #getPlugin()', function () {
         it("It's possible to register and get back a plugin", function () {

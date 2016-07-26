@@ -5,6 +5,9 @@
         name: 'Weather',
         description: 'Receive Weatherdata from Yahoo!',
         dependencies: ['https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js'],
+        fetchData: {
+            interval: 10000
+        },
         settings: [
             {
                 id: 'unitType',
@@ -27,33 +30,21 @@
     };
 
     var Plugin = function (props) {
-        this.history = props.state.data;
-
-        this.setupFetchData = function (props) {
-            var settings = props.state.settings;
-
-            if (this.timer) {
-                clearInterval(this.timer);
-            }
-            return setInterval(function () {
-                console.log("Fetching weather data");
-                $.simpleWeather({
-                    location: settings["location"],
-                    woeid: '',
-                    units: getUnits(settings["unitType"]),
-                    success: function (weather) {
-                        this.history.push(weather);
-                        this.history = limitHistory(this.history, 100);
-                    }.bind(this),
-                    error: function (weather) {
-                    }.bind(this)
-                })
-            }.bind(this), 5000);
-        }.bind(this);
-
-        this.timer = this.setupFetchData(props);
     };
 
+    function fetchData(fulfill, reject) {
+        $.simpleWeather({
+            location: settings["location"],
+            woeid: '',
+            units: getUnits(settings["unitType"]),
+            success: function (weather) {
+                fulfill([weather]);
+            },
+            error: function (error) {
+                reject(error);
+            }
+        })
+    }
 
     function getUnits(type) {
         switch (type) {
@@ -74,14 +65,7 @@
         }
     };
 
-    Plugin.prototype.getValues = function () {
-        return this.history;
-    };
-
     Plugin.prototype.dispose = function () {
-        if (this.timer) {
-            clearInterval(this.timer);
-        }
     };
 
 

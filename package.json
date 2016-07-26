@@ -87,7 +87,6 @@
     "mocha": "2.5.3",
     "mocha-loader": "0.7.1",
     "nock": "^8.0.0",
-    "object-assign": "^4.1.0",
     "open": "0.0.5",
     "react": "15.0.0",
     "react-dom": "15.0.0",

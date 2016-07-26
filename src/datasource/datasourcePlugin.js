@@ -1,9 +1,8 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this
-* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import * as _ from 'lodash'
-import objectAssign from 'object-assign'
 
 /**
  * Connects a datasource to the application state
@@ -32,38 +31,55 @@ export class DataSourcePlugin {
         return state.datasources[id];
     }
 
+    /**
+     * Better use getInstance or createInstance directly!
+     */
     getOrCreateInstance(id) {
+        if (!this.instances[id]) {
+            return this.createInstance(id)
+        }
+        return this.getInstance(id);
+    }
+
+    createInstance(id) {
         if (this.disposed === true) {
-            throw new Error("Try to get or create datasource of destroyed type: " + this.type);
+            throw new Error("Try to create datasource of destroyed type: " + JSON.stringify({id, type: this.type}));
         }
-        let instance = this.instances[id];
-        if (!instance) {
-            const dsState = this.getDatasourceState(id);
-            const props = {
-                state: dsState
-            };
-            instance = new this.Datasource(props);
-            instance.props = props;
-
-            // Bind API functions to instance
-            if (_.isFunction(instance.datasourceWillReceiveProps)) {
-                instance.datasourceWillReceiveProps = instance.datasourceWillReceiveProps.bind(instance);
-            }
-            if (_.isFunction(instance.dispose)) {
-                instance.dispose = instance.dispose.bind(instance);
-            }
-            if (_.isFunction(instance.getValues)) {
-                instance.getValues = instance.getValues.bind(instance);
-            } else {
-                console.error("Datasource must implement 'getValues(): any[]' but is missing on " + id);
-            }
-
-            this.instances[id] = instance;
+        if (this.instances[id] !== undefined) {
+            throw new Error("Can not create datasource instance. It already exists: " + JSON.stringify({id, type: this.type}));
         }
+
+        const dsState = this.getDatasourceState(id);
+        const props = {
+            state: dsState
+        };
+        const instance = new this.Datasource(props);
+        instance.props = props;
+
+        // Bind API functions to instance
+        if (_.isFunction(instance.datasourceWillReceiveProps)) {
+            instance.datasourceWillReceiveProps = instance.datasourceWillReceiveProps.bind(instance);
+        }
+        if (_.isFunction(instance.dispose)) {
+            instance.dispose = instance.dispose.bind(instance);
+        }
+        if (_.isFunction(instance.getValues)) {
+            instance.getValues = instance.getValues.bind(instance);
+        } else {
+            throw new Error('Datasource must implement "getValues(): any[]" but is missing. ' + JSON.stringify({id, type: this.type}));
+        }
+
+        this.instances[id] = instance;
         return instance;
     }
 
     getInstance(id) {
+        if (this.disposed === true) {
+            throw new Error("Try to get datasource of destroyed type. " + JSON.stringify({id, type: this.type}));
+        }
+        if (!this.instances[id]) {
+            throw new Error("No running instance of datasource. " + JSON.stringify({id, type: this.type}));
+        }
         return this.instances[id];
     }
 
@@ -89,7 +105,7 @@ export class DataSourcePlugin {
     }
 
     updateDatasource(dsState) {
-        const instance = this.getInstance(dsState.id);
+        const instance = this.instances[dsState.id];
         if (!instance) {
             // This is normal to happen when the app starts,
             // since the state already contains the id's before plugin instances are loaded
@@ -98,7 +114,7 @@ export class DataSourcePlugin {
         }
 
         const oldProps = instance.props;
-        const newProps = objectAssign({oldProps, state: dsState});
+        const newProps = _.assign({oldProps, state: dsState});
         if (oldProps !== newProps) {
             if (_.isFunction(instance.datasourceWillReceiveProps)) {
                 instance.datasourceWillReceiveProps(newProps);
