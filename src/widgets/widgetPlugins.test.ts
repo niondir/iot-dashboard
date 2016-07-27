@@ -3,19 +3,24 @@
 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import {assert} from 'chai'
-import * as WidgetPlugins from './widgetPlugins'
+import * as WidgetPlugins from './widgetPlugins.js'
+import * as Store from '../store'
+
 
 
 describe('Widget Plugins', function () {
     describe('#register() && #getWidget()', function () {
         it("It's possible to register and get back a plugin", function () {
-            WidgetPlugins.pluginRegistry.register({
+            const store = Store.emptyState();
+            const pluginRegistry = new WidgetPlugins.WidgetPluginRegistry(store);
+
+            pluginRegistry.register({
                 TYPE_INFO: {
                     type: 'foo'
                 }
             });
 
-            const plugin = WidgetPlugins.pluginRegistry.getPlugin('foo');
+            const plugin = pluginRegistry.getPlugin('foo');
 
             assert.isOk(plugin);
             assert.equal('foo', plugin.type);

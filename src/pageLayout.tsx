@@ -6,7 +6,7 @@ import * as React from "react";
 import {Component, KeyboardEvent} from "react";
 import * as ReactDOM from "react-dom";
 import {connect} from "react-redux";
-import * as Dashboard from "./dashboard/dashboard.js";
+import * as Global from "./dashboard/global.js";
 import WidgetGrid from "./widgets/widgetGrid.ui.js";
 import LayoutsNavItem from "./layouts/layouts.ui.js";
 import WidgetConfigDialog from "./widgets/widgetConfigDialog.ui.js";
@@ -113,13 +113,13 @@ export class Layout extends Component<LayoutProps, LayoutState> {
 export default connect(
     state => {
         return {
-            isReadOnly: state.dashboard.isReadOnly,
+            isReadOnly: state.global.isReadOnly,
             config: state.config
         };
     },
     dispatch => {
         return {
-            setReadOnly: (isReadOnly: boolean) => dispatch(Dashboard.setReadOnly(isReadOnly))
+            setReadOnly: (isReadOnly: boolean) => dispatch(Global.setReadOnly(isReadOnly))
         };
     }
 )(Layout);

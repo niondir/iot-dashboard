@@ -78,7 +78,7 @@ export default connect(
             widgets: _.valuesIn(state.widgets) || [],
             datasources: state.datasources || {},
             widgetPlugins: state.widgetPlugins || {},
-            isReadOnly: state.dashboard.isReadOnly
+            isReadOnly: state.global.isReadOnly
         }
     },
     (dispatch) => {

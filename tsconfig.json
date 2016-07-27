@@ -17,6 +17,7 @@
   "files": [
     "./src/app.ts",
     "./src/tests.ts",
+    "./src/browser-tests.ts",
     "./src/typings/index.d.ts",
     "./typings/index.d.ts"
   ],

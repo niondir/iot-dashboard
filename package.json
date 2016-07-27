@@ -18,6 +18,7 @@
     "lint": "gulp lint",
     "webpack-profile": "webpack --profile --json --config webpack.client.js > stats.json",
     "tsc": "tsc",
+    "tsc:watch": "tsc --watch",
     "gulp": "gulp",
     "typings": "typings",
     "mocha": "mocha"
@@ -100,6 +101,7 @@
     "semantic-ui-css": "2.1.8",
     "sinon": "^1.17.4",
     "source-map-loader": "^0.1.5",
+    "source-map-support": "^0.4.2",
     "style-loader": "0.13.1",
     "ts-jsx-loader": "0.2.1",
     "ts-loader": "0.8.2",

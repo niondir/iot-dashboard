@@ -26,10 +26,10 @@ export interface State {
 
 export interface ITypeInfo {
     type: string // The name of the type - must be unique
-    name: string // The user friendly name of the Plugin
-    description: string // A user friendly description that explains the Plugin
-    dependencies: string[] // A list of URL's to load external scripts from. Some scripts like jQuery will be available by default in future
-    settings: ISetting[] // A list of settings that can be changed by the user when the Plugin is initialized
+    name?: string // The user friendly name of the Plugin
+    description?: string // A user friendly description that explains the Plugin
+    dependencies?: string[] // A list of URL's to load external scripts from. Some scripts like jQuery will be available by default in future
+    settings?: ISetting[] // A list of settings that can be changed by the user when the Plugin is initialized
 }
 
 export interface ISetting {

@@ -8,12 +8,12 @@ import * as Store from '../store'
 
 let heartbeat;
 
-export function start() {
+export function start(store) {
     if (heartbeat) {
         clearInterval(heartbeat);
     }
     heartbeat = setInterval(()=> {
-        Store.get().dispatch(Datasource.fetchDatasourceData());
+        store.dispatch(Datasource.fetchDatasourceData());
     }, 1000);
 }
 

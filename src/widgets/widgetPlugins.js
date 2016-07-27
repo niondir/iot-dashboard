@@ -7,6 +7,7 @@ import PluginRegistry from '../pluginApi/pluginRegistry'
 import * as Action from "../actionNames";
 import {genCrudReducer} from "../util/reducer";
 import {PropTypes as Prop}  from "react";
+import Dashboard from '../dashboard'
 
 
 // TODO: Later load all plugins from external URL's ?
@@ -22,7 +23,11 @@ export const widgetPluginType = Prop.shape({
 });
 
 
-class WidgetPluginRegistry extends PluginRegistry {
+export class WidgetPluginRegistry extends PluginRegistry<any, any, any> {
+
+    constructor(store) {
+       super(store);
+    }
 
     createPluginFromModule(module) {
         return new WidgetPlugin(module, this.store);
@@ -30,11 +35,9 @@ class WidgetPluginRegistry extends PluginRegistry {
 }
 
 
-export const pluginRegistry = new WidgetPluginRegistry();
-
 export function unloadPlugin(type) {
     return function(dispatch) {
-        const widgetPlugin = pluginRegistry.getPlugin(type);
+        const widgetPlugin = Dashboard.getInstance().widgetPluginRegistry.getPlugin(type);
         widgetPlugin.dispose();
         dispatch(deletePlugin(type));
     }

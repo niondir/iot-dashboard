@@ -10,6 +10,7 @@ import * as _ from 'lodash'
 import * as ModalIds from '../modal/modalDialogIds.js'
 import * as Modal from '../modal/modalDialog.js'
 import * as AppState from "../appState";
+import Dashboard from "../dashboard";
 
 const initialDatasources: IDatasourcesState = {
     "initial_random_source": {
@@ -79,11 +80,8 @@ export function addDatasource(dsType: string, settings: any, id: string = Uuid.g
             settings
         });
 
-        const dsFactory = DatasourcePlugins.pluginRegistry.getPlugin(dsType);
+        const dsFactory = Dashboard.getInstance().datasourcePluginRegistry.getPlugin(dsType);
         dsFactory.createInstance(id);
-
-        //const state = getState();
-        //DatasourceWorker.initializeWorkers(state.datasources, dispatch);
     }
 }
 
@@ -129,7 +127,7 @@ export function fetchDatasourceData(): AppState.ThunkAction {
         const dsStates = state.datasources;
 
         _.valuesIn<IDatasourceState>(dsStates).forEach(dsState => {
-            const dsFactory = DatasourcePlugins.pluginRegistry.getPlugin(dsState.type);
+            const dsFactory = Dashboard.getInstance().datasourcePluginRegistry.getPlugin(dsState.type);
 
             if (dsFactory === undefined) {
                 console.warn("Can not fetch data from non existent datasource plugin of type ", dsState.type);

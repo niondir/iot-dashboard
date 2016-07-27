@@ -9,6 +9,7 @@ import * as WidgetPlugins from './widgetPlugins'
 import {deleteWidget} from './widgets'
 import * as Widgets from './widgets'
 import {PropTypes as Prop}  from "react";
+import Dashboard from '../dashboard'
 
 /**
  * The Dragable Frame of a Widget.
@@ -18,7 +19,7 @@ const WidgetFrame = (props) => {
     const widgetState = props.widget;
 
     // Might be null or undefined!
-    const widgetFactory = WidgetPlugins.pluginRegistry.getPlugin(widgetState.type);
+    const widgetFactory = Dashboard.getInstance().widgetPluginRegistry.getPlugin(widgetState.type);
 
     return (
         <div className="ui raised segments"

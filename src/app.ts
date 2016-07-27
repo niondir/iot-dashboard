@@ -22,11 +22,14 @@ import * as RandomDatasource from './datasource/plugins/randomDatasource.js'
 import * as TimeDatasource from './datasource/plugins/timeDatasource.js'
 import * as Store from './store'
 import * as Plugins from './pluginApi/plugins.js'
-import * as Persist from "./persistence.js";
+import * as Persist from "./persistence.js"
+import Dashboard from './dashboard'
+
 
 const initialState = Persist.loadFromLocalStorage();
 const dashboardStore = Store.create(initialState);
-Store.setGlobalStore(dashboardStore);
+const dashboard = new Dashboard(dashboardStore);
+dashboard.init();
 
 function loadInitialPlugins(store: Store.DashboardStore) {
     store.dispatch(Plugins.loadPlugin(TextWidget));
@@ -65,5 +68,5 @@ else {
 
 function renderDashboard(element: Element, store: Store.DashboardStore) {
     Renderer.render(element, store);
-    DatasourceWorker.start();
+    DatasourceWorker.start(store);
 }

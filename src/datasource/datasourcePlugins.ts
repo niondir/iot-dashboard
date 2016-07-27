@@ -2,15 +2,21 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import * as DsPlugin from './datasourcePlugin.js'
-import PluginRegistry from '../pluginApi/pluginRegistry.js'
-import * as Action from '../actionNames';
-import {genCrudReducer} from '../util/reducer.js';
-import * as AppState from '../appState'
+import PluginRegistry, {IPluginModule, IPluginFactory} from "../pluginApi/pluginRegistry";
+import * as Action from "../actionNames";
+import {genCrudReducer} from "../util/reducer.js";
+import * as AppState from "../appState";
+import DataSourcePluginFactory, {IDatasourcePlugin} from "./datasourcePluginFactory";
+import Dashboard from "../dashboard";
 
 const initialState: IDatasourcePluginsState = {};
 
-interface IPluginModule {
+interface IDatasourcePluginModule extends IPluginModule {
+    Datasource: any
+}
+
+
+interface IDatasourcePluginFactory extends IPluginFactory<IDatasourcePlugin> {
 
 }
 
@@ -35,19 +41,19 @@ export interface IDatasourcePluginAction extends AppState.Action {
 }
 
 
-export class DatasourcePluginRegistry extends PluginRegistry {
+export class DatasourcePluginRegistry extends PluginRegistry<IDatasourcePlugin, IDatasourcePluginModule, DataSourcePluginFactory> {
 
-    createPluginFromModule(module: IPluginModule) {
-        return new DsPlugin.DataSourcePlugin(module, this.store);
+    createPluginFromModule(module: IDatasourcePluginModule) {
+        console.assert(_.isObject(module.TYPE_INFO), "Missing TYPE_INFO on datasource module. Every module must export TYPE_INFO");
+        return new DataSourcePluginFactory(module.TYPE_INFO.type, module.Datasource, this.store);
     }
 }
 
 
-export const pluginRegistry = new DatasourcePluginRegistry();
 
 export function unloadPlugin(type: string) {
     return function (dispatch: AppState.Dispatch) {
-        const dsFactory = pluginRegistry.getPlugin(type);
+        const dsFactory = Dashboard.getInstance().datasourcePluginRegistry.getPlugin(type);
         dsFactory.dispose();
         dispatch(deletePlugin(type));
     }

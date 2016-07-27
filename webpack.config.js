@@ -59,6 +59,7 @@ module.exports = {
             'redux': path.resolve('./node_modules/redux/dist/redux' + dotJs),
             'redux-form': path.resolve('./node_modules/redux-form/dist/redux-form' + dotJs),
             'sinon': path.resolve('./node_modules/sinon/pkg/sinon.js'),
+            'source-map-support': path.resolve('./node_modules/source-map-support/browser-source-map-support.js'),
             // Expose dependencies
             jquery: path.resolve('./node_modules/jquery/dist/jquery' + dotJs)
             //react: 'react',
@@ -74,13 +75,13 @@ module.exports = {
         preLoaders: [],
         postLoaders: [],
         loaders: [
-            {
+           /* {
                 test: /\.(js|jsx)$/,
                 loader: 'babel?cacheDirectory',
                 include: paths.src
-            },
+            }, */
             {
-                test: /\.(ts|tsx)$/,
+                test: /\.(js|jsx|ts|tsx)$/,
                 //loader: 'typescript-loader',         // -- FAILS!
                 //loader: 'awesome-typescript-loader', // -- FAILS!
                 loader: 'ts-loader',      // ?compiler=jsx-typescript

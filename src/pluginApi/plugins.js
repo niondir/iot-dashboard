@@ -3,12 +3,12 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import * as Action from "../actionNames";
-import * as DatasourcePlugins from "../datasource/datasourcePlugins";
-import * as WidgetPlugins from "../widgets/widgetPlugins";
-import scriptloader from '../util/scriptLoader';
+import Dashboard from "../dashboard";
+import scriptloader from "../util/scriptLoader";
 import * as PluginCache from "./pluginCache";
 import * as _ from "lodash";
-import URI from "urijs";
+import * as URI from "urijs";
+
 
 export function loadPlugin(plugin) {
     return addPlugin(plugin);
@@ -35,19 +35,6 @@ function onScriptLoaded(url, dispatch) {
             });
 
             console.log("Loading Dependencies for Plugin", paths);
-
-            // TODO: Load Plugins into a sandbox / iframe, and pass as "deps" object
-            // Let's wait for the dependency hell before introducing this.
-            // Until then we can try to just provide shared libs by the Dashboard, e.g. jQuery, d3, etc.
-            // That should avoid that people add too many custom libs.
-            /*sandie([dependencies],
-             function (deps) {
-             plugin.deps = deps;
-             console.log("deps loaded", deps);
-             dispatch(addPlugin(plugin, url));
-             }
-             );  */
-
 
             scriptloader.loadScript(paths, {
                 success: () => {
@@ -81,20 +68,23 @@ export function initializeExternalPlugins() {
  * Register a plugin in the plugin registry
  */
 function registerPlugin(plugin) {
+    // TODO: I do not like that we use some singleton here to register widgets (there are other places as well)
+    const dashboard = Dashboard.getInstance();
+
     const type = plugin.TYPE_INFO.type;
     if (plugin.Datasource) {
-        const dsPlugin = DatasourcePlugins.pluginRegistry.getPlugin(type);
+        const dsPlugin = dashboard.datasourcePluginRegistry.getPlugin(type);
         if (!dsPlugin) {
-            DatasourcePlugins.pluginRegistry.register(plugin);
+            dashboard.datasourcePluginRegistry.register(plugin);
         }
         else {
             console.warn("Plugin of type " + type + " already loaded:", dsPlugin, ". Tried to load: ", plugin);
         }
     }
     else if (plugin.Widget) {
-        const widgetPlugin = WidgetPlugins.pluginRegistry.getPlugin(type);
+        const widgetPlugin = dashboard.widgetPluginRegistry.getPlugin(type);
         if (!widgetPlugin) {
-            WidgetPlugins.pluginRegistry.register(plugin);
+            dashboard.widgetPluginRegistry.register(plugin);
         }
         else {
             console.warn("Plugin of type " + type + " already loaded:", widgetPlugin, ". Tried to load: ", plugin);

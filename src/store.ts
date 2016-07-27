@@ -9,8 +9,7 @@ import * as Widgets from "./widgets/widgets";
 import * as WidgetConfig from "./widgets/widgetConfig.js";
 import * as Layouts from "./layouts/layouts.js";
 import * as Datasource from "./datasource/datasource";
-import * as Plugins from "./pluginApi/plugins.js";
-import * as Dashboard from "./dashboard/dashboard.js";
+import * as Global from "./dashboard/global.js";
 import * as Import from "./dashboard/import.js";
 import * as Modal from "./modal/modalDialog.js";
 import * as Persist from "./persistence.js";
@@ -20,9 +19,11 @@ import * as  WidgetPlugins from "./widgets/widgetPlugins.js";
 import * as DatasourcePlugins from "./datasource/datasourcePlugins";
 import * as AppState from "./appState.ts";
 import * as Config from "./config";
+import Middleware = Redux.Middleware;
+import Dashboard from "./dashboard";
 
 export interface DashboardStore extends Redux.Store<AppState.State> {
-
+    dashboard: Dashboard;
 }
 
 
@@ -37,7 +38,7 @@ const appReducer: AppState.Reducer = Redux.combineReducers<AppState.State>({
     modalDialog: Modal.modalDialog,
     widgetPlugins: WidgetPlugins.widgetPlugins,
     datasourcePlugins: DatasourcePlugins.datasourcePlugins,
-    dashboard: Dashboard.dashboard
+    global: Global.global
 });
 
 const reducer: AppState.Reducer = (state: AppState.State, action: Redux.Action) => {
@@ -65,20 +66,6 @@ const logger = createLogger({
     }
 });
 
-let globalStore: DashboardStore;
-
-export function setGlobalStore(store: DashboardStore) {
-    globalStore = store;
-}
-
-export function get() {
-    if (!globalStore) {
-        throw new Error("No global store created. Call setGlobalStore(store) before!");
-    }
-
-    return globalStore;
-}
-
 export function emptyState() {
     return <AppState.State>{
         config: null,
@@ -99,10 +86,9 @@ export function createEmpty(options: any = {log: true}) {
 /**
  * Create a store with default values
  */
-export function createDefault(options: any = {log: true}) {
+export function createDefault(options: any = {log: true}): DashboardStore {
     return create(undefined, options);
 }
-
 
 /**
  * Create a store and execute all side-effects to have a consistent app
@@ -115,18 +101,11 @@ export function create(initialState?: AppState.State, options: any = {log: true}
         middleware.push(logger); // must be last
     }
 
-    const store = Redux.createStore(
+    return <DashboardStore>Redux.createStore(
         reducer,
         initialState,
         Redux.applyMiddleware(...middleware)
     );
-
-    DatasourcePlugins.pluginRegistry.store = store;
-    WidgetPlugins.pluginRegistry.store = store;
-
-    store.dispatch(Plugins.initializeExternalPlugins());
-
-    return store;
 }
 
 export function clearState(): Redux.Action {

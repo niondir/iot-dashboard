@@ -2,13 +2,18 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import {assert} from 'chai'
-import * as DatasourcePlugins from './datasourcePlugins'
-import * as Store from '../store'
-import * as AppState from '../appState'
-import * as Sinon from 'sinon'
-import scriptloader from '../util/scriptLoader';
-import * as pluginCache from '../pluginApi/pluginCache.js'
+import {assert} from "chai";
+import * as DatasourcePlugins from "./datasourcePlugins";
+import {DatasourcePluginRegistry} from "./datasourcePlugins";
+import * as Store from "../store";
+import * as AppState from "../appState";
+import * as Sinon from "sinon";
+import scriptloader from "../util/scriptLoader";
+import * as pluginCache from "../pluginApi/pluginCache.js";
+import {default as DataSourcePluginFactory} from "./datasourcePluginFactory";
+import Dashboard from "../dashboard";
+import SinonStubStatic = Sinon.SinonStubStatic;
+import SinonStub = Sinon.SinonStub;
 
 const stateWithExternalDatasource: AppState.State = Store.emptyState();
 stateWithExternalDatasource.datasourcePlugins = {
@@ -22,7 +27,7 @@ stateWithExternalDatasource.datasourcePlugins = {
 };
 
 // TODO: Test Actions, Test Reducer
-describe('Datasource Plugins', function () {
+describe('Datasource > DatasourcePlugins', function () {
 
     describe("plugin registration", function () {
         /* TODO: Testcases
@@ -36,7 +41,19 @@ describe('Datasource Plugins', function () {
          -- load from url fails
          - register internal plugin
          */
-        it("a external plugin is loaded when it is already in state", function () {
+
+        let loadScriptStub: SinonStub;
+
+        beforeEach(function () {
+            loadScriptStub = Sinon.stub(scriptloader, "loadScript");
+        });
+
+        afterEach(function () {
+            loadScriptStub.restore()
+        });
+
+
+        it("an external plugin is loaded when it is already in state", function () {
 
             // TYPE_INFO and Datasource is usually created inside the plugin script
             const TYPE_INFO = {type: "ext-ds"};
@@ -44,8 +61,9 @@ describe('Datasource Plugins', function () {
                 return;
             };
 
-            // TODO: the test fails on webpack hot reaload sometimes ...
-            const loadScriptStub = Sinon.stub(scriptloader, "loadScript", function (scripts: string[], options: any) {
+            // Restore
+            loadScriptStub.restore();
+            loadScriptStub = Sinon.stub(scriptloader, "loadScript", function (scripts: string[], options: any) {
                 pluginCache.registerDatasourcePlugin(TYPE_INFO, Datasource);
 
                 // In reality the success function is called async
@@ -56,15 +74,19 @@ describe('Datasource Plugins', function () {
 
             const store = Store.create(stateWithExternalDatasource, {log: false});
             const state = store.getState();
-            const plugin = DatasourcePlugins.pluginRegistry.getPlugin("ext-ds");
+            const dashboard = new Dashboard(store);
+            dashboard.init();
+
+            const plugin: DataSourcePluginFactory = dashboard.datasourcePluginRegistry.getPlugin("ext-ds");
+
 
             assert.isOk(loadScriptStub.calledOnce);
             assert.isOk(plugin, "The loaded plugin is okay");
             assert.equal(plugin.disposed, false, "The loaded plugin is not disposed");
-            assert.deepEqual(plugin.instances, {}, "The loaded plugin has no instances");
-            assert.equal(plugin.store, store, "The loaded plugin knows the correct store");
-            assert.equal(plugin.Datasource, Datasource, "The loaded plugin knows the datasouces");
-            assert.equal(plugin._type, "ext-ds", "The loaded plugin knows the plugin type");
+            assert.deepEqual((<any>plugin)._instances, {}, "The loaded plugin has no instances");
+            assert.equal((<any>plugin)._store, store, "The loaded plugin knows the correct store");
+            assert.equal((<any>plugin)._datasource, Datasource, "The loaded plugin knows the datasouces");
+            assert.equal(plugin.type, "ext-ds", "The loaded plugin knows the plugin type");
 
             assert.deepEqual(state.widgets, {}, "The new state has no widgets");
             assert.deepEqual(state.datasources, {}, "The new state has no datasources");
@@ -85,14 +107,18 @@ describe('Datasource Plugins', function () {
 
     describe('pluginRegistry #register() && #getPlugin()', function () {
         it("It's possible to register and get back a plugin", function () {
-            DatasourcePlugins.pluginRegistry.store = Store.create();
-            DatasourcePlugins.pluginRegistry.register({
+            const registry = new DatasourcePluginRegistry(Store.create());
+
+            registry.register({
                 TYPE_INFO: {
                     type: 'foo'
+                },
+                Datasource: function (props: any) {
+                    return;
                 }
             });
 
-            const plugin = DatasourcePlugins.pluginRegistry.getPlugin('foo');
+            const plugin = registry.getPlugin('foo');
 
             assert.isOk(plugin);
             assert.equal('foo', plugin.type);

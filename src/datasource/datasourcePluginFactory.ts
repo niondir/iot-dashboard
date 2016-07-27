@@ -2,58 +2,75 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import * as _ from 'lodash'
+import * as _ from "lodash";
+import {DashboardStore} from "../store";
+import {IPluginFactory, IPlugin} from "../pluginApi/pluginRegistry";
+import {IDatasourceState} from "./datasource";
+import Unsubscribe = Redux.Unsubscribe;
+
+
+export interface IDatasourcePlugin extends IPlugin {
+    new(props: any): IDatasourcePlugin
+    props: any
+    datasourceWillReceiveProps?: (newProps: any) => void
+    dispose?: () => void
+    getValues(): any[] // TODO: Might get depricated
+}
+
 
 /**
  * Connects a datasource to the application state
  */
-// TODO: Rename to ...Factory
-export class DataSourcePlugin {
-    constructor(module, store) {
-        console.assert(module.TYPE_INFO, "Missing TYPE_INFO on datasource module. Every module must export TYPE_INFO");
-        this._type = module.TYPE_INFO.type;
-        this.Datasource = module.Datasource;
+export default class DataSourcePluginFactory implements IPluginFactory<IDatasourcePlugin> {
 
-        this.store = store;
+    private _instances: {[id: string]: IDatasourcePlugin} = {};
+    private _unsubscribe: Unsubscribe;
+    private _disposed: boolean = false;
 
-        this.instances = {};
-
-        this.unsubscribe = store.subscribe(this.handleStateChange.bind(this));
-        this.disposed = false;
+    // TODO: type datasource plugin constructor?
+    constructor(private _type: string, private _datasource: IDatasourcePlugin, private _store: DashboardStore) {
+        this._unsubscribe = _store.subscribe(this.handleStateChange.bind(this));
     }
 
     get type() {
         return this._type;
     }
 
-    getDatasourceState(id) {
-        const state = this.store.getState();
+    get disposed() {
+        return this._disposed;
+    }
+
+    getDatasourceState(id: string) {
+        const state = this._store.getState();
         return state.datasources[id];
     }
 
     /**
      * Better use getInstance or createInstance directly!
      */
-    getOrCreateInstance(id) {
-        if (!this.instances[id]) {
+    getOrCreateInstance(id: string) {
+        if (!this._instances[id]) {
             return this.createInstance(id)
         }
         return this.getInstance(id);
     }
 
-    createInstance(id) {
-        if (this.disposed === true) {
+    createInstance(id: string): IDatasourcePlugin {
+        if (this._disposed === true) {
             throw new Error("Try to create datasource of destroyed type: " + JSON.stringify({id, type: this.type}));
         }
-        if (this.instances[id] !== undefined) {
-            throw new Error("Can not create datasource instance. It already exists: " + JSON.stringify({id, type: this.type}));
+        if (this._instances[id] !== undefined) {
+            throw new Error("Can not create datasource instance. It already exists: " + JSON.stringify({
+                    id,
+                    type: this.type
+                }));
         }
 
         const dsState = this.getDatasourceState(id);
         const props = {
             state: dsState
         };
-        const instance = new this.Datasource(props);
+        const instance = new this._datasource(props);
         instance.props = props;
 
         // Bind API functions to instance
@@ -66,26 +83,29 @@ export class DataSourcePlugin {
         if (_.isFunction(instance.getValues)) {
             instance.getValues = instance.getValues.bind(instance);
         } else {
-            throw new Error('Datasource must implement "getValues(): any[]" but is missing. ' + JSON.stringify({id, type: this.type}));
+            throw new Error('Datasource must implement "getValues(): any[]" but is missing. ' + JSON.stringify({
+                    id,
+                    type: this.type
+                }));
         }
 
-        this.instances[id] = instance;
+        this._instances[id] = instance;
         return instance;
     }
 
-    getInstance(id) {
-        if (this.disposed === true) {
+    getInstance(id: string) {
+        if (this._disposed === true) {
             throw new Error("Try to get datasource of destroyed type. " + JSON.stringify({id, type: this.type}));
         }
-        if (!this.instances[id]) {
+        if (!this._instances[id]) {
             throw new Error("No running instance of datasource. " + JSON.stringify({id, type: this.type}));
         }
-        return this.instances[id];
+        return this._instances[id];
     }
 
     dispose() {
-        this.disposed = true;
-        _.valuesIn(this.instances).forEach((instance) => {
+        this._disposed = true;
+        _.valuesIn<IDatasourcePlugin>(this._instances).forEach((instance) => {
             if (_.isFunction(instance.dispose)) {
                 try {
                     instance.dispose();
@@ -95,17 +115,17 @@ export class DataSourcePlugin {
                 }
             }
         });
-        this.instances = [];
-        this.unsubscribe();
+        this._instances = {};
+        this._unsubscribe();
     }
 
     handleStateChange() {
-        const state = this.store.getState();
-        _.valuesIn(state.datasources).forEach(dsState => this.updateDatasource(dsState))
+        const state = this._store.getState();
+        _.valuesIn<IDatasourceState>(state.datasources).forEach(dsState => this.updateDatasource(dsState))
     }
 
-    updateDatasource(dsState) {
-        const instance = this.instances[dsState.id];
+    updateDatasource(dsState: IDatasourceState) {
+        const instance = this._instances[dsState.id];
         if (!instance) {
             // This is normal to happen when the app starts,
             // since the state already contains the id's before plugin instances are loaded
