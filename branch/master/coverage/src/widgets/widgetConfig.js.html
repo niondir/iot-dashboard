@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/widgets/widgetConfig.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">src/widgets/</a> widgetConfig.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">56.9% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>33/58</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">44% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>11/25</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">20% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">48.98% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>24/49</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+&nbsp;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.createWidget = createWidget;
+exports.createOrUpdateWidget = createOrUpdateWidget;
+exports.openWidgetCreateDialog = openWidgetCreateDialog;
+exports.openWidgetConfigDialog = openWidgetConfigDialog;
+exports.widgetConfigDialog = widgetConfigDialog;
+&nbsp;
+var _widgets = require("./widgets");
+&nbsp;
+var Widgets = _interopRequireWildcard(_widgets);
+&nbsp;
+var _actionNames = require("../actionNames");
+&nbsp;
+var _modalDialog = require("../modal/modalDialog");
+&nbsp;
+var Modal = _interopRequireWildcard(_modalDialog);
+&nbsp;
+var _modalDialogIds = require("../modal/modalDialogIds");
+&nbsp;
+var ModalIds = _interopRequireWildcard(_modalDialogIds);
+&nbsp;
+function _interopRequireWildcard(obj) { if (obj &amp;&amp; obj.__esModule) { return obj; } else { var newObj = {}; <span class="missing-if-branch" title="else path not taken" >E</span>if (obj != null) { for (var key in obj) { <span class="missing-if-branch" title="else path not taken" >E</span>if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+&nbsp;
+/* This Source Code Form is subject to the terms of the Mozilla Public
+* License, v. 2.0. If a copy of the MPL was not distributed with this
+* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+&nbsp;
+var initialState = {
+    type: null,
+    name: null,
+    settings: {}
+};
+&nbsp;
+/**
+ * Triggered when the user intends to create a widget of a certain type
+ */
+<span class="fstat-no" title="function not covered" >function createWidget(type) {</span>
+<span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >function (dispatch, getState) {</span></span>
+<span class="cstat-no" title="statement not covered" >        var state = getState();</span>
+<span class="cstat-no" title="statement not covered" >        var widgetPlugin = state.widgetPlugins[type];</span>
+<span class="cstat-no" title="statement not covered" >        if (!widgetPlugin.typeInfo.settings &amp;&amp; widgetPlugin.typeInfo.settings.length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >            dispatch(Widgets.createWidget(type));</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        dispatch(openWidgetCreateDialog(type));</span>
+    };
+}
+&nbsp;
+/**
+ * Creates or updates an actual widget
+ */
+<span class="fstat-no" title="function not covered" >function createOrUpdateWidget(id, type, settings) {</span>
+<span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >function (dispatch, getState) {</span></span>
+<span class="cstat-no" title="statement not covered" >        var state = getState();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        var widget = state.widgets[id];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (widget &amp;&amp; widget.type !== type) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error("Can not update widget of type " + widget.type + " with props of type " + type);</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (widget) {</span>
+<span class="cstat-no" title="statement not covered" >            dispatch(Widgets.updateWidgetSettings(id, settings));</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >            dispatch(Widgets.createWidget(type, settings));</span>
+        }
+    };
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function openWidgetCreateDialog(type) {</span>
+<span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >function (dispatch) {</span></span>
+<span class="cstat-no" title="statement not covered" >        dispatch({</span>
+            type: _actionNames.START_CREATE_WIDGET,
+            widgetType: type
+        });
+<span class="cstat-no" title="statement not covered" >        dispatch(Modal.showModal(ModalIds.WIDGET_CONFIG));</span>
+    };
+}
+&nbsp;
+/**
+ * Open the dialog with the settings and values of the given widget
+ */
+<span class="fstat-no" title="function not covered" >function openWidgetConfigDialog(id) {</span>
+<span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >function (dispatch, getState) {</span></span>
+<span class="cstat-no" title="statement not covered" >        var state = getState();</span>
+<span class="cstat-no" title="statement not covered" >        var widget = state.widgets[id];</span>
+<span class="cstat-no" title="statement not covered" >        dispatch({</span>
+            type: _actionNames.START_CONFIGURE_WIDGET,
+            widget: widget
+        });
+<span class="cstat-no" title="statement not covered" >        dispatch(Modal.showModal(ModalIds.WIDGET_CONFIG));</span>
+    };
+}
+&nbsp;
+function widgetConfigDialog() {
+    var state = arguments.length &lt;= 0 || arguments[0] === undefined ? initialState : arguments[0];
+    var action = arguments[1];
+&nbsp;
+    switch (action.type) {
+<span class="branch-0 cbranch-no" title="branch not covered" >        case _actionNames.START_CREATE_WIDGET:</span>
+<span class="cstat-no" title="statement not covered" >            return Object.assign({}, state, {</span>
+                type: action.widgetType,
+                id: null,
+                name: action.widgetType,
+                settings: {}
+            });
+<span class="branch-1 cbranch-no" title="branch not covered" >        case _actionNames.START_CONFIGURE_WIDGET:</span>
+<span class="cstat-no" title="statement not covered" >            return Object.assign({}, state, {</span>
+                type: action.widget.type,
+                id: action.widget.id,
+                name: action.widget.name,
+                settings: action.widget.settings
+            });
+        default:
+            return state;
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jul 28 2016 08:29:52 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

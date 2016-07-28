@@ -1,17 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <script src="vendor.bundle.js?v=1"></script>
-    <link rel="stylesheet" type="text/css" href="vendor.bundle.css?v=1">
-    <link rel="stylesheet" type="text/css" href="app.css?v=1">
-    <title>Dashboard</title>
+    <!--<meta http-equiv="refresh" content="0; url=http://demo.iot-dashboard.org/branch/master/">-->
+    <title>iot-dashboard</title>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+        ga('create', 'UA-4432488-3', 'auto');
+        ga('send', 'pageview');
 
+    </script>
+    <style type="text/css">
+        body, html
+        {
+            margin: 0; padding: 0; height: 100%; overflow: hidden;
+        }
+
+        #content
+        {
+            position:absolute; left: 0; right: 0; bottom: 0; top: 0px;
+        }
+    </style>
 </head>
 <body>
-<div id="app"></div>
-
-<script src="app.bundle.js?v=1"></script>
+<div id="content">
+    <iframe width="100%" height="100%" frameborder="0" src="http://demo.iot-dashboard.org/branch/master/" ></iframe>
+</div>
 </body>
 </html>

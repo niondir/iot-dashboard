@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/util/reducer.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">src/util/</a> reducer.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">65.22% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>45/69</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">46.34% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>19/41</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">85.71% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>6/7</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">93.55% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>29/31</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">299×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">125×</span>
+<span class="cline-any cline-yes">125×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">116×</span>
+<span class="cline-any cline-yes">41×</span>
+<span class="cline-any cline-yes">41×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">40×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+&nbsp;
+var _slicedToArray = function () { <span class="fstat-no" title="function not covered" >function sliceIterator(arr, i) {</span> <span class="cstat-no" title="statement not covered" >var _arr = []; <span class="cstat-no" title="statement not covered" ></span>var _n = true; <span class="cstat-no" title="statement not covered" ></span>var _d = false; <span class="cstat-no" title="statement not covered" ></span>var _e = undefined; <span class="cstat-no" title="statement not covered" ></span>try { <span class="cstat-no" title="statement not covered" >for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { <span class="cstat-no" title="statement not covered" >_arr.push(_s.value); <span class="cstat-no" title="statement not covered" ></span>if (i &amp;&amp; _arr.length === i) <span class="cstat-no" title="statement not covered" >break; </span></span>} </span>} catch (err) { <span class="cstat-no" title="statement not covered" >_d = true; <span class="cstat-no" title="statement not covered" ></span>_e = err; </span>} finally { <span class="cstat-no" title="statement not covered" >try { <span class="cstat-no" title="statement not covered" >if (!_n &amp;&amp; _i["return"]) <span class="cstat-no" title="statement not covered" >_i["return"](); </span></span>} finally { <span class="cstat-no" title="statement not covered" >if (_d) <span class="cstat-no" title="statement not covered" >throw _e; </span></span>} </span>} <span class="cstat-no" title="statement not covered" ></span>return _arr; </span>} return function (arr, i) { <span class="missing-if-branch" title="else path not taken" >E</span>if (Array.isArray(arr)) { return arr; } else <span class="cstat-no" title="statement not covered" >if (Symbol.iterator in Object(arr)) { <span class="cstat-no" title="statement not covered" >return sliceIterator(arr, i); </span>} else { <span class="cstat-no" title="statement not covered" >throw new TypeError("Invalid attempt to destructure non-iterable instance"); </span>} </span>}; }(); /* This Source Code Form is subject to the terms of the Mozilla Public
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         * License, v. 2.0. If a copy of the MPL was not distributed with this
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+&nbsp;
+exports.genCrudReducer = genCrudReducer;
+&nbsp;
+var _lodash = require('lodash');
+&nbsp;
+var _ = _interopRequireWildcard(_lodash);
+&nbsp;
+function _interopRequireWildcard(obj) { <span class="missing-if-branch" title="if path not taken" >I</span>if (obj &amp;&amp; obj.__esModule) { <span class="cstat-no" title="statement not covered" >return obj; </span>} else { var newObj = {}; <span class="missing-if-branch" title="else path not taken" >E</span>if (obj != null) { for (var key in obj) { <span class="missing-if-branch" title="else path not taken" >E</span>if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+&nbsp;
+function _defineProperty(obj, key, value) { <span class="missing-if-branch" title="if path not taken" >I</span>if (key in obj) { <span class="cstat-no" title="statement not covered" >Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); </span>} else { obj[key] = value; } return obj; }
+&nbsp;
+/**
+ * Creates an reducer that works on an object where you can create, delete and update properties of type Object.
+ * The key of properties always matches the id property of the value object.
+ *
+ * @param actionNames
+ * Object with: create, update, delete action names
+ * @param elementReducer
+ * A reducer for a single object that supports the actionNames.create and actionNames.update action.
+ * @param initialState (optional)
+ * @param idProperty
+ * The name of the property to fetch the id from the action. Default: 'id'
+ * @returns {crudReducer}
+ */
+function genCrudReducer(actionNames, elementReducer) {
+    var idProperty = arguments.length &lt;= 2 || <span class="branch-1 cbranch-no" title="branch not covered" >arguments[2] === undefined </span>? 'id' : <span class="branch-1 cbranch-no" title="branch not covered" >arguments[2];</span>
+&nbsp;
+    console.assert(actionNames.length === 2, "ActionNames must contain 2 names for create, delete in that order");
+&nbsp;
+    var _actionNames = _slicedToArray(actionNames, 2);
+&nbsp;
+    var CREATE_ACTION = _actionNames[0];
+    var DELETE_ACTION = _actionNames[1];
+&nbsp;
+    console.assert(_.includes(CREATE_ACTION, "ADD") || <span class="branch-1 cbranch-no" title="branch not covered" >_.includes(CREATE_ACTION, "CREATE"),</span> "The create action name should probably contain ADD or DELETE, but is: " + CREATE_ACTION);
+    console.assert(_.includes(DELETE_ACTION, "DELETE") || <span class="branch-1 cbranch-no" title="branch not covered" >_.includes(DELETE_ACTION, "REMOVE"),</span> "The delete action name should probably contain DELETE or REMOVE, but is: " + DELETE_ACTION);
+&nbsp;
+    return function crudReducer(state, action) {
+        var id = action[idProperty];
+        switch (action.type) {
+            case CREATE_ACTION:
+                return Object.assign({}, state, _defineProperty({}, id, elementReducer(undefined, action)));
+            case DELETE_ACTION:
+                var newState = Object.assign({}, state);
+                delete newState[id];
+                return newState;
+            default:
+                // Update if we have an id property
+                if (id === undefined) return state;
+                var elementState = state[id];
+                if (elementState == undefined) {
+                    // Do not update what we don't have.
+                    // TODO: Log warning, or document why not.
+                    return state;
+                }
+                var updatedElement = elementReducer(elementState, action);
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (updatedElement == undefined) {
+<span class="cstat-no" title="statement not covered" >                    console.error("ElementReducer has some problem: ", elementReducer, " with action: ", action);</span>
+<span class="cstat-no" title="statement not covered" >                    throw new Error("Reducer must return the original state if they not implement the action. Check action " + action.type + ".");</span>
+                }
+&nbsp;
+                return Object.assign({}, state, _defineProperty({}, id, updatedElement));
+        }
+    };
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jul 26 2016 21:18:45 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

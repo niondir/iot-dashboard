@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/actionNames.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">src/</a> actionNames.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>26/26</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>26/26</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+&nbsp;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* This Source Code Form is subject to the terms of the Mozilla Public
+* License, v. 2.0. If a copy of the MPL was not distributed with this
+* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+&nbsp;
+var CLEAR_STATE = exports.CLEAR_STATE = "CLEAR_STATE";
+&nbsp;
+// Dashboard
+var DASHBOARD_IMPORT = exports.DASHBOARD_IMPORT = "DASHBOARD_IMPORT";
+var SET_READONLY = exports.SET_READONLY = "SET_READONLY";
+&nbsp;
+// Layouts
+var ADD_LAYOUT = exports.ADD_LAYOUT = "ADD_LAYOUT";
+var UPDATE_LAYOUT = exports.UPDATE_LAYOUT = "UPDATE_LAYOUT";
+var DELETE_LAYOUT = exports.DELETE_LAYOUT = "DELETE_LAYOUT";
+var LOAD_LAYOUT = exports.LOAD_LAYOUT = "LOAD_LAYOUT";
+var SET_CURRENT_LAYOUT = exports.SET_CURRENT_LAYOUT = "SET_CURRENT_LAYOUT";
+&nbsp;
+// Widgets
+var ADD_WIDGET = exports.ADD_WIDGET = "ADD_WIDGET";
+var UPDATE_WIDGET_PROPS = exports.UPDATE_WIDGET_PROPS = "UPDATE_WIDGET_PROPS";
+var DELETE_WIDGET = exports.DELETE_WIDGET = "DELETE_WIDGET";
+var UPDATE_WIDGET_LAYOUT = exports.UPDATE_WIDGET_LAYOUT = "UPDATE_WIDGET_LAYOUT";
+&nbsp;
+var START_CREATE_WIDGET = exports.START_CREATE_WIDGET = "START_CREATE_WIDGET";
+var START_CONFIGURE_WIDGET = exports.START_CONFIGURE_WIDGET = "START_CONFIGURE_WIDGET";
+&nbsp;
+// Datasources
+var ADD_DATASOURCE = exports.ADD_DATASOURCE = "ADD_DATASOURCE";
+var UPDATE_DATASOURCE = exports.UPDATE_DATASOURCE = "UPDATE_DATASOURCE";
+var DELETE_DATASOURCE = exports.DELETE_DATASOURCE = "DELETE_DATASOURCE";
+&nbsp;
+var SET_DATASOURCE_DATA = exports.SET_DATASOURCE_DATA = "SET_DATASOURCE_DATA";
+var APPEND_DATASOURCE_DATA = exports.APPEND_DATASOURCE_DATA = "APPEND_DATASOURCE_DATA";
+&nbsp;
+// Plugins
+var ADD_WIDGET_PLUGIN = exports.ADD_WIDGET_PLUGIN = "ADD_WIDGET_PLUGIN";
+var ADD_DATASOURCE_PLUGIN = exports.ADD_DATASOURCE_PLUGIN = "ADD_DATASOURCE_PLUGIN";
+var DELETE_WIDGET_PLUGIN = exports.DELETE_WIDGET_PLUGIN = "DELETE_WIDGET_PLUGIN";
+var DELETE_DATASOURCE_PLUGIN = exports.DELETE_DATASOURCE_PLUGIN = "DELETE_DATASOURCE_PLUGIN";
+&nbsp;
+// Modal
+var SHOW_MODAL = exports.SHOW_MODAL = "SHOW_MODAL";
+var HIDE_MODAL = exports.HIDE_MODAL = "HIDE_MODAL";
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jul 28 2016 08:29:52 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

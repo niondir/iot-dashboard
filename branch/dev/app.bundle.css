@@ -1,0 +1,58 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+* License, v. 2.0. If a copy of the MPL was not distributed with this
+* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* BEGIN app.css */
+
+.drag {
+    cursor: move;
+    /*
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    cursor: grab;  */
+}
+
+.selectable {
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+}
+
+.menu-trigger {
+    position: fixed;
+    top: 0;
+    height: 11px;
+    width: 100%;
+    z-index: 1;
+    /*border: red dashed 1px;*/
+}
+
+.topnav--hidden {
+    /*display: none !important;*/
+    min-height: 0 !important;
+    height: 0;
+    overflow: hidden;
+    -webkit-transition: all 1s, transform 1s;
+    transition: all 1s, transform 1s;
+}
+
+.topnav--visible {
+    min-height: 0 !important;
+    height: 40px;
+    overflow: visible;
+   -webkit-transition: all 1s, transform 1s;
+    transition: all 1s, transform 1s;
+}
+
+.topnav--hidden + .ui.grid {
+    padding-top: 0 !important;
+    -webkit-transition: all 1s, transform 1s;
+    transition: padding-top 1s, transform 1s;
+}
+
+.topnav--visible + .ui.grid {
+    /*-webkit-transition: all 0s, transform 1s;
+    transition: padding-top 0s, transform 1s; */
+}
+
+/* END app.css */
