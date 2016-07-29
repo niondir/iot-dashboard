@@ -76,6 +76,12 @@ describe("Datasource > Datasource", function () {
             store.dispatch(Plugins.loadPlugin(DatasourcePlugin));
             store.dispatch(Datasource.createDatasource("test-ds", {}, "ds-id"));
 
+            const pluginFactory = dashboard.datasourcePluginRegistry.getPlugin("test-ds");
+            const plugin = pluginFactory.getInstance("ds-id");
+
+            assert.isOk(plugin, "Datasource plugin is registered in the registry");
+
+
         })
     });
 });

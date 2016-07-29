@@ -206,7 +206,7 @@ gulp.task('inject:tests', function () {
     var sources = gulp.src(['./src/**/*.test.js', './src/**/*.test.ts'], {read: false})
         .pipe(sort());
 
-    return gulp.src(['./src/tests.ts', './src/browser-tests.js'])
+    return gulp.src(['./src/tests.ts', './src/browser-tests.ts'])
         .pipe(inject(sources, {
             relative: true,
             starttag: '/* inject:tests */',
@@ -258,11 +258,13 @@ gulp.task("webpack:dev-server", ['copy', 'inject', 'compile:ts'], function (call
     webpackConfig.entry["browser-tests"].unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
     webpackConfig.bail = false;
     webpackConfig.devtool = '#cheap-module-source-map';
-    var compiler = webpack(webpackConfig, function(err, stats) {
-        if(err) throw new gutil.PluginError("webpack", err);
+    var compiler = webpack(webpackConfig, function (err, stats) {
+        if (err) throw new gutil.PluginError("webpack", err);
 
-        open("http://localhost:8080");
-        open("http://localhost:8080/webpack-dev-server/tests.html");
+        if (!gutil.env['no-browser']) {
+            open("http://localhost:8080");
+            open("http://localhost:8080/webpack-dev-server/tests.html");
+        }
     });
 
     new WebpackDevServer(compiler, {

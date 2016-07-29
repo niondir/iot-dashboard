@@ -1,6 +1,6 @@
 import {DashboardStore} from "./store";
 import {WidgetPluginRegistry} from "./widgets/widgetPlugins.js";
-import {DatasourcePluginRegistry} from "./datasource/datasourcePlugins";
+import DatasourcePluginRegistry from "./datasource/datasourcePluginRegistry";
 import * as Plugins from "./pluginApi/plugins.js";
 
 /**
@@ -17,6 +17,10 @@ export default class Dashboard {
         this._widgetPluginRegistry = new WidgetPluginRegistry(_store);
     }
 
+    static setInstance(dashboard: Dashboard) {
+        Dashboard._instance = dashboard;
+    }
+
     get datasourcePluginRegistry() {
         return this._datasourcePluginRegistry;
     }
@@ -30,9 +34,6 @@ export default class Dashboard {
         this._store.dispatch(Plugins.initializeExternalPlugins());
     }
 
-    static setInstance(dashboard: Dashboard) {
-        Dashboard._instance = dashboard;
-    }
 
     /**
      * We have some code that depends on this global instance of the Dashboard

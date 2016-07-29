@@ -2,23 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import PluginRegistry, {IPluginModule, IPluginFactory} from "../pluginApi/pluginRegistry";
 import * as Action from "../actionNames";
 import {genCrudReducer} from "../util/reducer.js";
 import * as AppState from "../appState";
-import DataSourcePluginFactory, {IDatasourcePlugin} from "./datasourcePluginFactory";
 import Dashboard from "../dashboard";
 
 const initialState: IDatasourcePluginsState = {};
 
-interface IDatasourcePluginModule extends IPluginModule {
-    Datasource: any
-}
-
-
-interface IDatasourcePluginFactory extends IPluginFactory<IDatasourcePlugin> {
-
-}
 
 export interface IDatasourcePluginsState {
     [key: string]: IDatasourcePluginState
@@ -41,13 +31,6 @@ export interface IDatasourcePluginAction extends AppState.Action {
 }
 
 
-export class DatasourcePluginRegistry extends PluginRegistry<IDatasourcePlugin, IDatasourcePluginModule, DataSourcePluginFactory> {
-
-    createPluginFromModule(module: IDatasourcePluginModule) {
-        console.assert(_.isObject(module.TYPE_INFO), "Missing TYPE_INFO on datasource module. Every module must export TYPE_INFO");
-        return new DataSourcePluginFactory(module.TYPE_INFO.type, module.Datasource, this.store);
-    }
-}
 
 
 
@@ -82,7 +65,7 @@ function datasourcePlugin(state: IDatasourcePluginState, action: IDatasourcePlug
         case Action.ADD_DATASOURCE_PLUGIN:
             if (!action.typeInfo.type) {
                 // TODO: Catch this earlier
-                throw new Error("A Plugin needs a type name.");
+                throw new Error("A Plugin needs a type name. Please define TYPE_INFO.type");
             }
 
             return <IDatasourcePluginState>{

@@ -90,13 +90,17 @@ export function createDefault(options: any = {log: true}): DashboardStore {
     return create(undefined, options);
 }
 
+export const testStoreOptions = {log: false, persist: false};
+
 /**
  * Create a store and execute all side-effects to have a consistent app
  */
-export function create(initialState?: AppState.State, options: any = {log: true}): DashboardStore {
+export function create(initialState?: AppState.State, options: any = {log: true, persist: true}): DashboardStore {
     const middleware: Redux.Middleware[] = [];
     middleware.push(thunk);
-    middleware.push(Persist.persistenceMiddleware);
+    if (options.persist) {
+        middleware.push(Persist.persistenceMiddleware);
+    }
     if (options.log) {
         middleware.push(logger); // must be last
     }

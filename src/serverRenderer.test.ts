@@ -10,7 +10,7 @@ import Dashboard from "./dashboard";
 describe('ServerRenderer', function () {
     describe('render initial state', function () {
         it('should return some proper html', function () {
-            const store = Store.createDefault({log: false});
+            const store = Store.createDefault(Store.testStoreOptions);
             const dashboard = new Dashboard(store);
             Dashboard.setInstance(dashboard);
             const html = ServerRenderer.render(store);

@@ -31,6 +31,7 @@ export interface IDatasourceAction extends AppState.Action {
     data?: any[]
     settings?: any
     dsType?: string
+    maxValues?: number
 }
 
 export interface IDatasourcesState {
@@ -121,6 +122,15 @@ export function setDatasourceData(id: string, data: any[]): IDatasourceAction {
     }
 }
 
+export function appendDatasourceData(id: string, data: any[], maxValues: number = 5): IDatasourceAction {
+    return {
+        type: ActionNames.APPEND_DATASOURCE_DATA,
+        id,
+        data,
+        maxValues
+    }
+}
+
 export function fetchDatasourceData(): AppState.ThunkAction {
     return (dispatch, getState) => {
         const state = getState();
@@ -189,6 +199,14 @@ function datasource(state: IDatasourceState, action: IDatasourceAction): IDataso
         case ActionNames.SET_DATASOURCE_DATA:
             return _.assign<any, IDatasourceState>({}, state, {
                 data: action.data || []
+            });
+        case ActionNames.APPEND_DATASOURCE_DATA:
+            let newData = _.clone(state.data).concat(action.data);
+            if (action.maxValues) {
+                newData = newData.slice(newData.length - action.maxValues);
+            }
+            return _.assign<any, IDatasourceState>({}, state, {
+                data: newData
             });
         case ActionNames.UPDATE_DATASOURCE:
             return _.assign<any, IDatasourceState>({}, state, {

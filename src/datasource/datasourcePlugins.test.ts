@@ -4,7 +4,7 @@
 
 import {assert} from "chai";
 import * as DatasourcePlugins from "./datasourcePlugins";
-import {DatasourcePluginRegistry} from "./datasourcePlugins";
+import DatasourcePluginRegistry from "./datasourcePluginRegistry";
 import * as Store from "../store";
 import * as AppState from "../appState";
 import * as Sinon from "sinon";
@@ -12,7 +12,6 @@ import scriptloader from "../util/scriptLoader";
 import * as pluginCache from "../pluginApi/pluginCache.js";
 import {default as DataSourcePluginFactory} from "./datasourcePluginFactory";
 import Dashboard from "../dashboard";
-import SinonStubStatic = Sinon.SinonStubStatic;
 import SinonStub = Sinon.SinonStub;
 
 const stateWithExternalDatasource: AppState.State = Store.emptyState();
@@ -72,7 +71,7 @@ describe('Datasource > DatasourcePlugins', function () {
             });
             loadScriptStub.withArgs(["fake/plugin.js"]);
 
-            const store = Store.create(stateWithExternalDatasource, {log: false});
+            const store = Store.create(stateWithExternalDatasource, Store.testStoreOptions);
             const state = store.getState();
             const dashboard = new Dashboard(store);
             dashboard.init();
@@ -83,7 +82,7 @@ describe('Datasource > DatasourcePlugins', function () {
             assert.isOk(loadScriptStub.calledOnce);
             assert.isOk(plugin, "The loaded plugin is okay");
             assert.equal(plugin.disposed, false, "The loaded plugin is not disposed");
-            assert.deepEqual((<any>plugin)._instances, {}, "The loaded plugin has no instances");
+            assert.deepEqual((<any>plugin)._plugins, {}, "The loaded plugin has no instances");
             assert.equal((<any>plugin)._store, store, "The loaded plugin knows the correct store");
             assert.equal((<any>plugin)._datasource, Datasource, "The loaded plugin knows the datasouces");
             assert.equal(plugin.type, "ext-ds", "The loaded plugin knows the plugin type");

@@ -56,7 +56,7 @@ export function initializeExternalPlugins() {
     return (dispatch, getState) => {
         const state = getState();
         const plugins = _.valuesIn(state.datasourcePlugins)
-            .concat(_.valuesIn(state.widgetPlugins))
+            .concat(_.valuesIn(state.widgetPlugins));
 
         plugins.filter(pluginState => !_.isEmpty(pluginState.url)).forEach(plugin => {
             dispatch(loadPluginFromUrl(plugin.url));

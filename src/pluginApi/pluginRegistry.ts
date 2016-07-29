@@ -32,7 +32,7 @@ export type IdValueMap<T> = {[id: string]: T}
 export default class PluginRegistry<TPlugin extends IPlugin, TPluginModule extends IPluginModule, TPluginFactory extends IPluginFactory<TPlugin>> {
 
     private _plugins: IdValueMap<TPluginFactory> = {};
-    // TODO: make store required
+
     constructor(private _store: DashboardStore) {
         if (!_store) {
             throw new Error("PluginRegistry must be initialized with a Store");

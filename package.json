@@ -99,7 +99,7 @@
     "redux-thunk": "2.0.1",
     "require-dot-file": "0.4.0",
     "semantic-ui-css": "2.1.8",
-    "sinon": "^1.17.4",
+    "sinon": "2.0.0-pre",
     "source-map-loader": "^0.1.5",
     "source-map-support": "^0.4.2",
     "style-loader": "0.13.1",
