@@ -15,6 +15,14 @@ if (!process.env.NODE_ENV) {
     process.env.NODE_ENV = gutil.env.production ? 'production' : 'development';
 }
 
+/**
+ * Needed to end the build when mocha tests are done.
+ * The issue came when I used promises in mocha test the first time.
+ */
+gulp.doneCallback = function (err) {
+    process.exit(err ? 1 : 0);
+};
+
 gutil.log("NODE_ENV = '" + process.env.NODE_ENV + "'");
 
 /**
