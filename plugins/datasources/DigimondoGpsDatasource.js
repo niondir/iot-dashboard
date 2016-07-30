@@ -7,7 +7,7 @@
     // &payloadonly
     // TODO: Make a boolean flag to only receive new values based on "receivedAfter" set to last received value
 
-    var TYPE_INFO = {
+    const TYPE_INFO = {
         type: "digimondo-gps-datasource",
         name: "Digimondo Gps",
         description: "Fetch GPS Locations from the Digimondo API",
@@ -70,8 +70,8 @@
     }
 
     function base64ToHex(str) {
-        for (var i = 0, bin = atob(str.replace(/[ \r\n]+$/, "")), hex = []; i < bin.length; ++i) {
-            var tmp = bin.charCodeAt(i).toString(16);
+        for (let i = 0, bin = atob(str.replace(/[ \r\n]+$/, "")), hex = []; i < bin.length; ++i) {
+            let tmp = bin.charCodeAt(i).toString(16);
             if (tmp.length === 1) tmp = "0" + tmp;
             hex[hex.length] = tmp;
         }
@@ -79,23 +79,23 @@
     }
 
     function payloadToGps(payload) {
-        var hexValue = base64ToHex(payload);
+        const hexValue = base64ToHex(payload);
 
         // ADUcDjcJNybM
         // 8  bits int seqNum
-        var seqNum = parseInt("0x" + hexValue[0]);
+        const seqNum = parseInt("0x" + hexValue[0]);
         // 8  bits int lat_deg
-        var lat_deg = parseInt("0x" + hexValue[1]);
+        const lat_deg = parseInt("0x" + hexValue[1]);
         // 8  bits int lat_min
-        var lat_min = parseInt("0x" + hexValue[2]);
+        const lat_min = parseInt("0x" + hexValue[2]);
         // 16 bits int lat_10000min
-        var lat_10000min = parseInt("0x" + hexValue[3] + hexValue[4]);
+        const lat_10000min = parseInt("0x" + hexValue[3] + hexValue[4]);
         // 8  bits int long_deg
-        var long_deg = parseInt("0x" + hexValue[5]);
+        const long_deg = parseInt("0x" + hexValue[5]);
         // 8  bits int long_min
-        var long_min = parseInt("0x" + hexValue[6]);
+        const long_min = parseInt("0x" + hexValue[6]);
         // 16 bits int long_10000min
-        var long_10000min = parseInt("0x" + hexValue[7] + hexValue[8]);
+        const long_10000min = parseInt("0x" + hexValue[7] + hexValue[8]);
 
         return {
             "lat": lat_deg + lat_min / 60 + (lat_10000min / 10000) / 60,
@@ -105,11 +105,11 @@
 
     function fetchData() {
 
-        var history = [];
-        var settings = this.props.state.settings;
-        var auth = settings.auth;
+        const history = [];
+        const settings = this.props.state.settings;
+        const auth = settings.auth;
 
-        var self = this;
+        const self = this;
 
         fetch("https://api.digimondo.io/v1/" +
             settings.appEui +
@@ -149,7 +149,7 @@
     }
 
     function Datasource(props) {
-        var history = props.state.data;
+        const history = props.state.data;
         this.props = props;
 
         this.interval = setInterval(fetchData.bind(this), 2000);

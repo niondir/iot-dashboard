@@ -1,7 +1,8 @@
 import {DashboardStore} from "./store";
 import {WidgetPluginRegistry} from "./widgets/widgetPlugins.js";
 import DatasourcePluginRegistry, {IDatasourcePluginModule} from "./datasource/datasourcePluginRegistry";
-import * as Plugins from "./pluginApi/plugins.js";
+import * as _ from 'lodash'
+import * as Plugins from "./pluginApi/plugins";
 import * as PluginCache from "./pluginApi/pluginCache";
 import scriptloader from "./util/scriptLoader";
 import * as URI from "urijs";
@@ -51,6 +52,7 @@ export default class Dashboard {
         return this._widgetPluginRegistry;
     }
 
+
     public init() {
         if (this._initialized) {
             throw new Error("Dashboard was already initialized. Can not call init() twice.");
@@ -73,6 +75,11 @@ export default class Dashboard {
             });
         });
 
+    }
+
+    dispose() {
+        this._datasourcePluginRegistry.dispose();
+        // TODO: this._widgetPluginRegistry.dispose();
     }
 
     private onScriptLoaded(url: string) {
@@ -117,8 +124,4 @@ export default class Dashboard {
     }
 
 
-    dispose() {
-        this._datasourcePluginRegistry.dispose();
-        // TODO: this._widgetPluginRegistry.dispose();
-    }
 }

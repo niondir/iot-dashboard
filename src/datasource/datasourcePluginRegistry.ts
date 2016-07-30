@@ -4,7 +4,6 @@ import {IPluginModule} from "../pluginApi/pluginRegistry";
 import {IDatasourcePlugin} from "./datasourcePluginFactory";
 import {DashboardStore} from "../store";
 import {IDatasourceState, appendDatasourceData} from "./datasource";
-import {IDatasourcePluginState} from "./datasourcePlugins";
 
 /**
  * Describes how we expect the plugin module to be
@@ -38,7 +37,7 @@ export default class DatasourcePluginRegistry extends PluginRegistry<IDatasource
         const dsStates = this.store.getState().datasources;
 
         _.valuesIn<IDatasourceState>(dsStates)
-            .filter((dsState) => dsState.type == pluginType)
+            .filter((dsState) => dsState.type === pluginType)
             .forEach((dsState) => {
                 const pluginFactory = this.getPlugin(dsState.type);
                 pluginFactory.createInstance(dsState.id);

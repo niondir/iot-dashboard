@@ -5,11 +5,11 @@
 import * as Action from "../actionNames";
 
 
-export function loadPlugin(plugin) {
+export function loadPlugin(plugin: any) {
     return addPlugin(plugin);
 }
 
-export function setIsLoading(id:string, isLoading:boolean) {
+export function setIsLoading(id: string, isLoading: boolean) {
     return {
         type: Action.PLUGIN_IS_LOADING,
         id,
@@ -17,7 +17,7 @@ export function setIsLoading(id:string, isLoading:boolean) {
     }
 }
 
-export function addPlugin(plugin, url = null) {
+export function addPlugin(plugin: any, url: string = null) {
     console.log("Adding plugin from " + url, plugin);
 
     let actionType = "unknown-add-widget-action";

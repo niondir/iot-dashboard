@@ -14,6 +14,7 @@ import './pluginApi/pluginApi'
 import './app.css'
 import 'file?name=[name].[ext]!./index.html'
 import 'es6-promise'
+import 'react-grid-layout/css/styles.css'
 
 import * as Renderer from './renderer.js'
 import * as DatasourceWorker from './datasource/datasourceWorker.js'

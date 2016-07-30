@@ -2,17 +2,17 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import {assert} from "chai";
-import * as DatasourcePlugins from "./datasourcePlugins";
-import DatasourcePluginRegistry from "./datasourcePluginRegistry";
-import * as Store from "../store";
-import * as AppState from "../appState";
-import * as Sinon from "sinon";
-import scriptloader from "../util/scriptLoader";
-import * as pluginCache from "../pluginApi/pluginCache";
-import {default as DataSourcePluginFactory} from "./datasourcePluginFactory";
-import Dashboard from "../dashboard";
-import SinonStub = Sinon.SinonStub;
+import {assert} from "chai"
+import * as DatasourcePlugins from "./datasourcePlugins"
+import DatasourcePluginRegistry from "./datasourcePluginRegistry"
+import * as Store from "../store"
+import * as AppState from "../appState"
+import * as Sinon from "sinon"
+import scriptloader from "../util/scriptLoader"
+import * as pluginCache from "../pluginApi/pluginCache"
+import {default as DataSourcePluginFactory} from "./datasourcePluginFactory"
+import Dashboard from "../dashboard"
+import SinonStub = Sinon.SinonStub
 
 
 // TODO: Test Actions, Test Reducer
@@ -44,8 +44,6 @@ describe('Datasource > DatasourcePlugins', function () {
          -- load from url fails
          - register internal plugin
          */
-
-
 
 
         it("an external datasource plugin is loaded when it is already in state", function () {

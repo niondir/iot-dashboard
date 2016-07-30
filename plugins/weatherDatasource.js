@@ -1,6 +1,6 @@
 (function (window) {
 
-    var TYPE_INFO = {
+    const TYPE_INFO = {
         type: 'simpleweatherjs',
         name: 'Weather',
         description: 'Receive Weatherdata from Yahoo!',
@@ -29,7 +29,7 @@
         ]
     };
 
-    var Plugin = function (props) {
+    const Plugin = function (props) {
     };
 
     function fetchData(fulfill, reject) {

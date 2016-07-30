@@ -1,10 +1,12 @@
 var path = require("path");
 var webpack = require("webpack");
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var webpackConfig = require('./webpack.config.js');
 
 webpackConfig.entry = {
+	/**
+     * Compiles all tests in a single bundle to be easily executed with mocha
+     */
     tests: ['./src/tests.ts']
 };
 

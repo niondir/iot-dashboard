@@ -6,7 +6,7 @@ import {assert} from "chai";
 import * as Datasource from "./datasource";
 import * as Store from "../store";
 import {DashboardStore} from "../store";
-import * as Plugins from "../pluginApi/plugins.js";
+import * as Plugins from "../pluginApi/plugins";
 import Dashboard from "../dashboard";
 
 describe("Datasource > Datasource", function () {

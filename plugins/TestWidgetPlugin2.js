@@ -1,7 +1,6 @@
+(function () {
 
-(function() {
-
-    var TYPE_INFO = {
+    const TYPE_INFO = {
         type: "test-widget2",
         name: "Test Widget2",
         rendering: "dom", // can be: "dom", "string", "react" (TODO: Not all supported yet)
@@ -34,22 +33,24 @@
     // The API is similar to React but it is actually NOT a react component.
     // On render you get the DOM "element" to renter the content.
     function Widget(props = {}) {
-        var jq = $.noConflict();
+        const jq = $.noConflict();
 
         console.log("2 - d3.version", d3.version);
         this.render = function (props, element) {
             const data = props.getData(props.state.settings.datasource);
 
             let html = "";
-            if(!data || data.length == 0) {
+            if (!data || data.length == 0) {
                 html = "<p>No data</p>"
             }
 
-            var jqueryVersion = "";
+            let jqueryVersion = "";
             try {
                 jqueryVersion = jq.fn.jquery;
-            }catch(e) {}
-            html = "<p>" + jqueryVersion + " - 2 - " + JSON.stringify(data)+ "</p>";
+            } catch (e) {
+                // nothing
+            }
+            html = "<p>" + jqueryVersion + " - 2 - " + JSON.stringify(data) + "</p>";
             //$(element).html(html);
             element.innerHTML = html;
         }

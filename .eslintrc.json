@@ -7,7 +7,7 @@
   "extends": "eslint:recommended",
   "parserOptions": {
     "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
+      "experimentalObjectRestSpread": false,
       "jsx": true
     },
     "sourceType": "module"
@@ -47,6 +47,6 @@
       "off",
       "always"
     ],
-    "react/prop-types": 2
+    "react/prop-types": "off"
   }
 }
