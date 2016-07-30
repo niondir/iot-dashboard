@@ -9,68 +9,15 @@ webpackJsonp([0],[
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	__webpack_require__(2);
-	__webpack_require__(12);
-	__webpack_require__(15);
-	__webpack_require__(17);
-	__webpack_require__(19);
-	__webpack_require__(23);
-	__webpack_require__(24);
-	__webpack_require__(29);
-	__webpack_require__(30);
-	__webpack_require__(32);
-	__webpack_require__(33);
-	var Renderer = __webpack_require__(37);
-	var TextWidget = __webpack_require__(98);
-	var ChartWidget = __webpack_require__(99);
-	var DatasourceWorker = __webpack_require__(102);
-	var RandomDatasource = __webpack_require__(103);
-	var TimeDatasource = __webpack_require__(104);
-	var Store = __webpack_require__(105);
-	var Plugins = __webpack_require__(59);
-	var Persist = __webpack_require__(97);
-	var dashboard_1 = __webpack_require__(55);
-	var initialState = Persist.loadFromLocalStorage();
-	var dashboardStore = Store.create(initialState);
-	var dashboard = new dashboard_1.default(dashboardStore);
-	dashboard.init();
-	function loadInitialPlugins(store) {
-	    store.dispatch(Plugins.loadPlugin(TextWidget));
-	    store.dispatch(Plugins.loadPlugin(ChartWidget));
-	    store.dispatch(Plugins.loadPluginFromUrl("./plugins/GoogleMapsWidget.js"));
-	    store.dispatch(Plugins.loadPlugin(RandomDatasource));
-	    store.dispatch(Plugins.loadPlugin(TimeDatasource));
-	    store.dispatch(Plugins.loadPluginFromUrl("./plugins/DigimondoGpsDatasource.js"));
+	var __cov_QUctk10AFPMMMM4n9s5mSg = (Function('return this'))();
+	if (!__cov_QUctk10AFPMMMM4n9s5mSg.__coverage__) { __cov_QUctk10AFPMMMM4n9s5mSg.__coverage__ = {}; }
+	__cov_QUctk10AFPMMMM4n9s5mSg = __cov_QUctk10AFPMMMM4n9s5mSg.__coverage__;
+	if (!(__cov_QUctk10AFPMMMM4n9s5mSg['/home/travis/build/Niondir/iot-dashboard/src/app.ts'])) {
+	   __cov_QUctk10AFPMMMM4n9s5mSg['/home/travis/build/Niondir/iot-dashboard/src/app.ts'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/app.ts","s":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":1,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":0,"38":0,"39":0,"40":0,"41":0,"42":0,"43":0,"44":0,"45":1,"46":0,"47":0},"b":{"1":[0,0],"2":[0,0]},"f":{"1":0,"2":0},"fnMap":{"1":{"name":"loadInitialPlugins","line":30,"loc":{"start":{"line":30,"column":0},"end":{"line":30,"column":35}}},"2":{"name":"renderDashboard","line":59,"loc":{"start":{"line":59,"column":0},"end":{"line":59,"column":41}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":40}},"2":{"start":{"line":6,"column":0},"end":{"line":6,"column":36}},"3":{"start":{"line":7,"column":0},"end":{"line":7,"column":17}},"4":{"start":{"line":8,"column":0},"end":{"line":8,"column":41}},"5":{"start":{"line":9,"column":0},"end":{"line":9,"column":30}},"6":{"start":{"line":10,"column":0},"end":{"line":10,"column":27}},"7":{"start":{"line":11,"column":0},"end":{"line":11,"column":42}},"8":{"start":{"line":12,"column":0},"end":{"line":12,"column":33}},"9":{"start":{"line":13,"column":0},"end":{"line":13,"column":21}},"10":{"start":{"line":14,"column":0},"end":{"line":14,"column":47}},"11":{"start":{"line":15,"column":0},"end":{"line":15,"column":23}},"12":{"start":{"line":16,"column":0},"end":{"line":16,"column":40}},"13":{"start":{"line":17,"column":0},"end":{"line":17,"column":60}},"14":{"start":{"line":18,"column":0},"end":{"line":18,"column":62}},"15":{"start":{"line":19,"column":0},"end":{"line":19,"column":67}},"16":{"start":{"line":20,"column":0},"end":{"line":20,"column":75}},"17":{"start":{"line":21,"column":0},"end":{"line":21,"column":71}},"18":{"start":{"line":22,"column":0},"end":{"line":22,"column":31}},"19":{"start":{"line":23,"column":0},"end":{"line":23,"column":48}},"20":{"start":{"line":24,"column":0},"end":{"line":24,"column":42}},"21":{"start":{"line":25,"column":0},"end":{"line":25,"column":41}},"22":{"start":{"line":26,"column":0},"end":{"line":26,"column":50}},"23":{"start":{"line":27,"column":0},"end":{"line":27,"column":48}},"24":{"start":{"line":28,"column":0},"end":{"line":28,"column":56}},"25":{"start":{"line":29,"column":0},"end":{"line":29,"column":17}},"26":{"start":{"line":30,"column":0},"end":{"line":37,"column":1}},"27":{"start":{"line":31,"column":4},"end":{"line":31,"column":51}},"28":{"start":{"line":32,"column":4},"end":{"line":32,"column":52}},"29":{"start":{"line":33,"column":4},"end":{"line":33,"column":79}},"30":{"start":{"line":34,"column":4},"end":{"line":34,"column":57}},"31":{"start":{"line":35,"column":4},"end":{"line":35,"column":55}},"32":{"start":{"line":36,"column":4},"end":{"line":36,"column":85}},"33":{"start":{"line":38,"column":0},"end":{"line":38,"column":35}},"34":{"start":{"line":39,"column":0},"end":{"line":39,"column":48}},"35":{"start":{"line":40,"column":0},"end":{"line":58,"column":1}},"36":{"start":{"line":41,"column":4},"end":{"line":54,"column":5}},"37":{"start":{"line":42,"column":8},"end":{"line":42,"column":52}},"38":{"start":{"line":45,"column":8},"end":{"line":45,"column":121}},"39":{"start":{"line":46,"column":8},"end":{"line":53,"column":9}},"40":{"start":{"line":47,"column":12},"end":{"line":47,"column":56}},"41":{"start":{"line":48,"column":12},"end":{"line":48,"column":47}},"42":{"start":{"line":49,"column":12},"end":{"line":49,"column":56}},"43":{"start":{"line":52,"column":12},"end":{"line":52,"column":20}},"44":{"start":{"line":57,"column":4},"end":{"line":57,"column":86}},"45":{"start":{"line":59,"column":0},"end":{"line":62,"column":1}},"46":{"start":{"line":60,"column":4},"end":{"line":60,"column":36}},"47":{"start":{"line":61,"column":4},"end":{"line":61,"column":34}}},"branchMap":{"1":{"line":40,"type":"if","locations":[{"start":{"line":40,"column":0},"end":{"line":40,"column":0}},{"start":{"line":40,"column":0},"end":{"line":40,"column":0}}]},"2":{"line":46,"type":"if","locations":[{"start":{"line":46,"column":8},"end":{"line":46,"column":8}},{"start":{"line":46,"column":8},"end":{"line":46,"column":8}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public"," * License, v. 2.0. If a copy of the MPL was not distributed with this"," * file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","require('semantic-ui-css/semantic.css');","require('semantic-ui-css/semantic');","require('c3css');","require('expose?$!expose?jQuery!jquery');","require('expose?React!react');","require('expose?_!lodash');","require('./pluginApi/freeboardPluginApi');","require('./pluginApi/pluginApi');","require('./app.css');","require('file?name=[name].[ext]!./index.html');","require('es6-promise');","var Renderer = require('./renderer.js');","var TextWidget = require('./widgets/plugins/textWidget.js');","var ChartWidget = require('./widgets/plugins/chartWidget.js');","var DatasourceWorker = require('./datasource/datasourceWorker.js');","var RandomDatasource = require('./datasource/plugins/randomDatasource.js');","var TimeDatasource = require('./datasource/plugins/timeDatasource.js');","var Store = require('./store');","var Plugins = require('./pluginApi/plugins.js');","var Persist = require(\"./persistence.js\");","var dashboard_1 = require('./dashboard');","var initialState = Persist.loadFromLocalStorage();","var dashboardStore = Store.create(initialState);","var dashboard = new dashboard_1.default(dashboardStore);","dashboard.init();","function loadInitialPlugins(store) {","    store.dispatch(Plugins.loadPlugin(TextWidget));","    store.dispatch(Plugins.loadPlugin(ChartWidget));","    store.dispatch(Plugins.loadPluginFromUrl(\"./plugins/GoogleMapsWidget.js\"));","    store.dispatch(Plugins.loadPlugin(RandomDatasource));","    store.dispatch(Plugins.loadPlugin(TimeDatasource));","    store.dispatch(Plugins.loadPluginFromUrl(\"./plugins/DigimondoGpsDatasource.js\"));","}","loadInitialPlugins(dashboardStore);","var appElement = document.getElementById('app');","if (appElement) {","    try {","        renderDashboard(appElement, dashboardStore);","    }","    catch (e) {","        console.warn(\"Failed to load dashboard. Asking user to wipe data and retry. The error will be printed below...\");","        if (confirm(\"Failed to load dashboard. Reset all Data?\\n\\nPress cancel and check the browser console for more details.\")) {","            dashboardStore.dispatch(Store.clearState());","            loadInitialPlugins(dashboardStore);","            renderDashboard(appElement, dashboardStore);","        }","        else {","            throw e;","        }","    }","}","else {","    console.warn(\"Can not get element '#app' from DOM. Okay for headless execution.\");","}","function renderDashboard(element, store) {","    Renderer.render(element, store);","    DatasourceWorker.start(store);","}",""]};
 	}
-	loadInitialPlugins(dashboardStore);
-	var appElement = document.getElementById('app');
-	if (appElement) {
-	    try {
-	        renderDashboard(appElement, dashboardStore);
-	    }
-	    catch (e) {
-	        console.warn("Failed to load dashboard. Asking user to wipe data and retry. The error will be printed below...");
-	        if (confirm("Failed to load dashboard. Reset all Data?\n\nPress cancel and check the browser console for more details.")) {
-	            dashboardStore.dispatch(Store.clearState());
-	            loadInitialPlugins(dashboardStore);
-	            renderDashboard(appElement, dashboardStore);
-	        }
-	        else {
-	            throw e;
-	        }
-	    }
-	}
-	else {
-	    console.warn("Can not get element '#app' from DOM. Okay for headless execution.");
-	}
-	function renderDashboard(element, store) {
-	    Renderer.render(element, store);
-	    DatasourceWorker.start(store);
-	}
+	__cov_QUctk10AFPMMMM4n9s5mSg = __cov_QUctk10AFPMMMM4n9s5mSg['/home/travis/build/Niondir/iot-dashboard/src/app.ts'];
+	__cov_QUctk10AFPMMMM4n9s5mSg.s['1']++;__webpack_require__(2);__cov_QUctk10AFPMMMM4n9s5mSg.s['2']++;__webpack_require__(12);__cov_QUctk10AFPMMMM4n9s5mSg.s['3']++;__webpack_require__(15);__cov_QUctk10AFPMMMM4n9s5mSg.s['4']++;__webpack_require__(17);__cov_QUctk10AFPMMMM4n9s5mSg.s['5']++;__webpack_require__(19);__cov_QUctk10AFPMMMM4n9s5mSg.s['6']++;__webpack_require__(23);__cov_QUctk10AFPMMMM4n9s5mSg.s['7']++;__webpack_require__(24);__cov_QUctk10AFPMMMM4n9s5mSg.s['8']++;__webpack_require__(29);__cov_QUctk10AFPMMMM4n9s5mSg.s['9']++;__webpack_require__(30);__cov_QUctk10AFPMMMM4n9s5mSg.s['10']++;__webpack_require__(32);__cov_QUctk10AFPMMMM4n9s5mSg.s['11']++;__webpack_require__(33);__cov_QUctk10AFPMMMM4n9s5mSg.s['12']++;var Renderer=__webpack_require__(37);__cov_QUctk10AFPMMMM4n9s5mSg.s['13']++;var TextWidget=__webpack_require__(98);__cov_QUctk10AFPMMMM4n9s5mSg.s['14']++;var ChartWidget=__webpack_require__(99);__cov_QUctk10AFPMMMM4n9s5mSg.s['15']++;var DatasourceWorker=__webpack_require__(102);__cov_QUctk10AFPMMMM4n9s5mSg.s['16']++;var RandomDatasource=__webpack_require__(103);__cov_QUctk10AFPMMMM4n9s5mSg.s['17']++;var TimeDatasource=__webpack_require__(104);__cov_QUctk10AFPMMMM4n9s5mSg.s['18']++;var Store=__webpack_require__(105);__cov_QUctk10AFPMMMM4n9s5mSg.s['19']++;var Plugins=__webpack_require__(59);__cov_QUctk10AFPMMMM4n9s5mSg.s['20']++;var Persist=__webpack_require__(97);__cov_QUctk10AFPMMMM4n9s5mSg.s['21']++;var dashboard_1=__webpack_require__(55);__cov_QUctk10AFPMMMM4n9s5mSg.s['22']++;var initialState=Persist.loadFromLocalStorage();__cov_QUctk10AFPMMMM4n9s5mSg.s['23']++;var dashboardStore=Store.create(initialState);__cov_QUctk10AFPMMMM4n9s5mSg.s['24']++;var dashboard=new dashboard_1.default(dashboardStore);__cov_QUctk10AFPMMMM4n9s5mSg.s['25']++;dashboard.init();function loadInitialPlugins(store){__cov_QUctk10AFPMMMM4n9s5mSg.f['1']++;__cov_QUctk10AFPMMMM4n9s5mSg.s['27']++;store.dispatch(Plugins.loadPlugin(TextWidget));__cov_QUctk10AFPMMMM4n9s5mSg.s['28']++;store.dispatch(Plugins.loadPlugin(ChartWidget));__cov_QUctk10AFPMMMM4n9s5mSg.s['29']++;store.dispatch(Plugins.loadPluginFromUrl('./plugins/GoogleMapsWidget.js'));__cov_QUctk10AFPMMMM4n9s5mSg.s['30']++;store.dispatch(Plugins.loadPlugin(RandomDatasource));__cov_QUctk10AFPMMMM4n9s5mSg.s['31']++;store.dispatch(Plugins.loadPlugin(TimeDatasource));__cov_QUctk10AFPMMMM4n9s5mSg.s['32']++;store.dispatch(Plugins.loadPluginFromUrl('./plugins/DigimondoGpsDatasource.js'));}__cov_QUctk10AFPMMMM4n9s5mSg.s['33']++;loadInitialPlugins(dashboardStore);__cov_QUctk10AFPMMMM4n9s5mSg.s['34']++;var appElement=document.getElementById('app');__cov_QUctk10AFPMMMM4n9s5mSg.s['35']++;if(appElement){__cov_QUctk10AFPMMMM4n9s5mSg.b['1'][0]++;__cov_QUctk10AFPMMMM4n9s5mSg.s['36']++;try{__cov_QUctk10AFPMMMM4n9s5mSg.s['37']++;renderDashboard(appElement,dashboardStore);}catch(e){__cov_QUctk10AFPMMMM4n9s5mSg.s['38']++;console.warn('Failed to load dashboard. Asking user to wipe data and retry. The error will be printed below...');__cov_QUctk10AFPMMMM4n9s5mSg.s['39']++;if(confirm('Failed to load dashboard. Reset all Data?\n\nPress cancel and check the browser console for more details.')){__cov_QUctk10AFPMMMM4n9s5mSg.b['2'][0]++;__cov_QUctk10AFPMMMM4n9s5mSg.s['40']++;dashboardStore.dispatch(Store.clearState());__cov_QUctk10AFPMMMM4n9s5mSg.s['41']++;loadInitialPlugins(dashboardStore);__cov_QUctk10AFPMMMM4n9s5mSg.s['42']++;renderDashboard(appElement,dashboardStore);}else{__cov_QUctk10AFPMMMM4n9s5mSg.b['2'][1]++;__cov_QUctk10AFPMMMM4n9s5mSg.s['43']++;throw e;}}}else{__cov_QUctk10AFPMMMM4n9s5mSg.b['1'][1]++;__cov_QUctk10AFPMMMM4n9s5mSg.s['44']++;console.warn('Can not get element \'#app\' from DOM. Okay for headless execution.');}function renderDashboard(element,store){__cov_QUctk10AFPMMMM4n9s5mSg.f['2']++;__cov_QUctk10AFPMMMM4n9s5mSg.s['46']++;Renderer.render(element,store);__cov_QUctk10AFPMMMM4n9s5mSg.s['47']++;DatasourceWorker.start(store);}
 
 
 /***/ },
@@ -123,108 +70,30 @@ webpackJsonp([0],[
 /* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var FreeboardDatasource = __webpack_require__(25);
-	var PluginCache = __webpack_require__(28);
-	function mapSettings(settings) {
-	    return settings.map(function (setting) {
-	        return {
-	            id: setting["name"],
-	            name: setting["display_name"],
-	            description: setting["description"],
-	            type: setting["type"],
-	            defaultValue: setting["default_value"],
-	            required: setting["required"]
-	        };
-	    });
+	var __cov_TVCvuHojtD$Q85lEtS7fHw = (Function('return this'))();
+	if (!__cov_TVCvuHojtD$Q85lEtS7fHw.__coverage__) { __cov_TVCvuHojtD$Q85lEtS7fHw.__coverage__ = {}; }
+	__cov_TVCvuHojtD$Q85lEtS7fHw = __cov_TVCvuHojtD$Q85lEtS7fHw.__coverage__;
+	if (!(__cov_TVCvuHojtD$Q85lEtS7fHw['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/freeboardPluginApi.js'])) {
+	   __cov_TVCvuHojtD$Q85lEtS7fHw['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/freeboardPluginApi.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/pluginApi/freeboardPluginApi.js","s":{"1":0,"2":0,"3":1,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0},"b":{},"f":{"1":0,"2":0,"3":0},"fnMap":{"1":{"name":"mapSettings","line":7,"loc":{"start":{"line":7,"column":0},"end":{"line":7,"column":31}}},"2":{"name":"(anonymous_2)","line":8,"loc":{"start":{"line":8,"column":24},"end":{"line":8,"column":43}}},"3":{"name":"(anonymous_3)","line":26,"loc":{"start":{"line":26,"column":26},"end":{"line":26,"column":44}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":59}},"2":{"start":{"line":6,"column":0},"end":{"line":6,"column":43}},"3":{"start":{"line":7,"column":0},"end":{"line":18,"column":1}},"4":{"start":{"line":8,"column":4},"end":{"line":17,"column":7}},"5":{"start":{"line":9,"column":8},"end":{"line":16,"column":10}},"6":{"start":{"line":19,"column":0},"end":{"line":47,"column":2}},"7":{"start":{"line":27,"column":8},"end":{"line":27,"column":58}},"8":{"start":{"line":28,"column":8},"end":{"line":28,"column":43}},"9":{"start":{"line":29,"column":8},"end":{"line":29,"column":49}},"10":{"start":{"line":30,"column":8},"end":{"line":30,"column":48}},"11":{"start":{"line":31,"column":8},"end":{"line":31,"column":57}},"12":{"start":{"line":32,"column":8},"end":{"line":32,"column":42}},"13":{"start":{"line":33,"column":8},"end":{"line":33,"column":48}},"14":{"start":{"line":34,"column":8},"end":{"line":40,"column":10}},"15":{"start":{"line":41,"column":8},"end":{"line":44,"column":10}},"16":{"start":{"line":45,"column":8},"end":{"line":45,"column":86}},"17":{"start":{"line":48,"column":0},"end":{"line":48,"column":38}},"18":{"start":{"line":49,"column":0},"end":{"line":49,"column":62}},"19":{"start":{"line":50,"column":0},"end":{"line":50,"column":37}}},"branchMap":{},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var FreeboardDatasource = require('./freeboardDatasource');","var PluginCache = require('./pluginCache');","function mapSettings(settings) {","    return settings.map(function (setting) {","        return {","            id: setting[\"name\"],","            name: setting[\"display_name\"],","            description: setting[\"description\"],","            type: setting[\"type\"],","            defaultValue: setting[\"default_value\"],","            required: setting[\"required\"]","        };","    });","}","var freeboardPluginApi = {","    /**","     * Method to register a DatasourcePlugin as you would with the IoT-Dashboard API","     * But supporting the Freeboard syntax","     * @param plugin A Freeboard Datasource Plugin.","     * See: https://freeboard.github.io/freeboard/docs/plugin_example.html","     */","    loadDatasourcePlugin: function (plugin) {","        console.log(\"Loading freeboard Plugin: \", plugin);","        var typeName = plugin[\"type_name\"];","        var displayName = plugin[\"display_name\"];","        var description = plugin[\"description\"];","        var externalScripts = plugin[\"external_scripts\"];","        var settings = plugin[\"settings\"];","        var newInstance = plugin[\"newInstance\"];","        var TYPE_INFO = {","            type: typeName,","            name: displayName,","            description: description,","            dependencies: externalScripts,","            settings: mapSettings(settings)","        };","        var dsPlugin = {","            TYPE_INFO: TYPE_INFO,","            Datasource: FreeboardDatasource.create(newInstance, TYPE_INFO)","        };","        PluginCache.registerDatasourcePlugin(dsPlugin.TYPE_INFO, dsPlugin.Datasource);","    }","};","window.freeboard = freeboardPluginApi;","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = freeboardPluginApi;",""]};
 	}
-	var freeboardPluginApi = {
-	    /**
-	     * Method to register a DatasourcePlugin as you would with the IoT-Dashboard API
-	     * But supporting the Freeboard syntax
-	     * @param plugin A Freeboard Datasource Plugin.
-	     * See: https://freeboard.github.io/freeboard/docs/plugin_example.html
-	     */
-	    loadDatasourcePlugin: function (plugin) {
-	        console.log("Loading freeboard Plugin: ", plugin);
-	        var typeName = plugin["type_name"];
-	        var displayName = plugin["display_name"];
-	        var description = plugin["description"];
-	        var externalScripts = plugin["external_scripts"];
-	        var settings = plugin["settings"];
-	        var newInstance = plugin["newInstance"];
-	        var TYPE_INFO = {
-	            type: typeName,
-	            name: displayName,
-	            description: description,
-	            dependencies: externalScripts,
-	            settings: mapSettings(settings)
-	        };
-	        var dsPlugin = {
-	            TYPE_INFO: TYPE_INFO,
-	            Datasource: FreeboardDatasource.create(newInstance, TYPE_INFO)
-	        };
-	        PluginCache.registerDatasourcePlugin(dsPlugin.TYPE_INFO, dsPlugin.Datasource);
-	    }
-	};
-	window.freeboard = freeboardPluginApi;
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = freeboardPluginApi;
+	__cov_TVCvuHojtD$Q85lEtS7fHw = __cov_TVCvuHojtD$Q85lEtS7fHw['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/freeboardPluginApi.js'];
+	__cov_TVCvuHojtD$Q85lEtS7fHw.s['1']++;var FreeboardDatasource=__webpack_require__(25);__cov_TVCvuHojtD$Q85lEtS7fHw.s['2']++;var PluginCache=__webpack_require__(28);function mapSettings(settings){__cov_TVCvuHojtD$Q85lEtS7fHw.f['1']++;__cov_TVCvuHojtD$Q85lEtS7fHw.s['4']++;return settings.map(function(setting){__cov_TVCvuHojtD$Q85lEtS7fHw.f['2']++;__cov_TVCvuHojtD$Q85lEtS7fHw.s['5']++;return{id:setting['name'],name:setting['display_name'],description:setting['description'],type:setting['type'],defaultValue:setting['default_value'],required:setting['required']};});}__cov_TVCvuHojtD$Q85lEtS7fHw.s['6']++;var freeboardPluginApi={loadDatasourcePlugin:function(plugin){__cov_TVCvuHojtD$Q85lEtS7fHw.f['3']++;__cov_TVCvuHojtD$Q85lEtS7fHw.s['7']++;console.log('Loading freeboard Plugin: ',plugin);__cov_TVCvuHojtD$Q85lEtS7fHw.s['8']++;var typeName=plugin['type_name'];__cov_TVCvuHojtD$Q85lEtS7fHw.s['9']++;var displayName=plugin['display_name'];__cov_TVCvuHojtD$Q85lEtS7fHw.s['10']++;var description=plugin['description'];__cov_TVCvuHojtD$Q85lEtS7fHw.s['11']++;var externalScripts=plugin['external_scripts'];__cov_TVCvuHojtD$Q85lEtS7fHw.s['12']++;var settings=plugin['settings'];__cov_TVCvuHojtD$Q85lEtS7fHw.s['13']++;var newInstance=plugin['newInstance'];__cov_TVCvuHojtD$Q85lEtS7fHw.s['14']++;var TYPE_INFO={type:typeName,name:displayName,description:description,dependencies:externalScripts,settings:mapSettings(settings)};__cov_TVCvuHojtD$Q85lEtS7fHw.s['15']++;var dsPlugin={TYPE_INFO:TYPE_INFO,Datasource:FreeboardDatasource.create(newInstance,TYPE_INFO)};__cov_TVCvuHojtD$Q85lEtS7fHw.s['16']++;PluginCache.registerDatasourcePlugin(dsPlugin.TYPE_INFO,dsPlugin.Datasource);}};__cov_TVCvuHojtD$Q85lEtS7fHw.s['17']++;window.freeboard=freeboardPluginApi;__cov_TVCvuHojtD$Q85lEtS7fHw.s['18']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_TVCvuHojtD$Q85lEtS7fHw.s['19']++;exports.default=freeboardPluginApi;
 
 
 /***/ },
 /* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var scriptLoader_1 = __webpack_require__(26);
-	var _ = __webpack_require__(21);
-	// **newInstance(settings, newInstanceCallback, updateCallback)** (required) : A function that will be called when a new instance of this plugin is requested.
-	// * **settings** : A javascript object with the initial settings set by the user. The names of the properties in the object will correspond to the setting names defined above.
-	// * **newInstanceCallback** : A callback function that you'll call when the new instance of the plugin is ready. This function expects a single argument, which is the new instance of your plugin object.
-	// * **updateCallback** : A callback function that you'll call if and when your datasource has an update for freeboard to recalculate. This function expects a single parameter which is a javascript object with the new, updated data. You should hold on to this reference and call it when needed.
-	function create(newInstance, TYPE_INFO) {
-	    return function FreeboardDatasource(newInstance, props, history) {
-	        if (props === void 0) { props = {}; }
-	        if (history === void 0) { history = []; }
-	        this.instance = null;
-	        this.data = history;
-	        this.getValues = function () {
-	            if (_.isArray(this.data)) {
-	                return this.data;
-	            }
-	            return [this.data];
-	        }.bind(this);
-	        this.updateProps = function (newProps) {
-	            console.log("Updating Datasource props");
-	            this.instance.onSettingsChanged(newProps);
-	        }.bind(this);
-	        var newInstanceCallback = function (instance) {
-	            this.instance = instance;
-	            instance.updateNow();
-	        }.bind(this);
-	        var updateCallback = function (newData) {
-	            this.data = newData;
-	        }.bind(this);
-	        // TODO: Maybe no needed anymore when we take care of dependencies elsewhere
-	        if (TYPE_INFO.dependencies) {
-	            scriptLoader_1.default.loadScript(TYPE_INFO.dependencies.slice(), { success: createNewInstance });
-	        }
-	        else {
-	            createNewInstance();
-	        }
-	        function createNewInstance() {
-	            newInstance(props, newInstanceCallback, updateCallback);
-	        }
-	    }.bind(this, newInstance);
+	var __cov_q0bEOb$QdHUHqFOIIHQLlg = (Function('return this'))();
+	if (!__cov_q0bEOb$QdHUHqFOIIHQLlg.__coverage__) { __cov_q0bEOb$QdHUHqFOIIHQLlg.__coverage__ = {}; }
+	__cov_q0bEOb$QdHUHqFOIIHQLlg = __cov_q0bEOb$QdHUHqFOIIHQLlg.__coverage__;
+	if (!(__cov_q0bEOb$QdHUHqFOIIHQLlg['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/freeboardDatasource.js'])) {
+	   __cov_q0bEOb$QdHUHqFOIIHQLlg['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/freeboardDatasource.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/pluginApi/freeboardDatasource.js","s":{"1":0,"2":0,"3":1,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":1,"27":0,"28":0},"b":{"1":[0,0],"2":[0,0],"3":[0,0],"4":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0},"fnMap":{"1":{"name":"create","line":11,"loc":{"start":{"line":11,"column":0},"end":{"line":11,"column":40}}},"2":{"name":"FreeboardDatasource","line":12,"loc":{"start":{"line":12,"column":11},"end":{"line":12,"column":69}}},"3":{"name":"(anonymous_3)","line":17,"loc":{"start":{"line":17,"column":25},"end":{"line":17,"column":37}}},"4":{"name":"(anonymous_4)","line":23,"loc":{"start":{"line":23,"column":27},"end":{"line":23,"column":47}}},"5":{"name":"(anonymous_5)","line":27,"loc":{"start":{"line":27,"column":34},"end":{"line":27,"column":54}}},"6":{"name":"(anonymous_6)","line":31,"loc":{"start":{"line":31,"column":29},"end":{"line":31,"column":48}}},"7":{"name":"createNewInstance","line":41,"loc":{"start":{"line":41,"column":8},"end":{"line":41,"column":37}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":53}},"2":{"start":{"line":6,"column":0},"end":{"line":6,"column":26}},"3":{"start":{"line":11,"column":0},"end":{"line":45,"column":1}},"4":{"start":{"line":12,"column":4},"end":{"line":44,"column":30}},"5":{"start":{"line":13,"column":8},"end":{"line":13,"column":45}},"6":{"start":{"line":13,"column":32},"end":{"line":13,"column":43}},"7":{"start":{"line":14,"column":8},"end":{"line":14,"column":49}},"8":{"start":{"line":14,"column":34},"end":{"line":14,"column":47}},"9":{"start":{"line":15,"column":8},"end":{"line":15,"column":29}},"10":{"start":{"line":16,"column":8},"end":{"line":16,"column":28}},"11":{"start":{"line":17,"column":8},"end":{"line":22,"column":21}},"12":{"start":{"line":18,"column":12},"end":{"line":20,"column":13}},"13":{"start":{"line":19,"column":16},"end":{"line":19,"column":33}},"14":{"start":{"line":21,"column":12},"end":{"line":21,"column":31}},"15":{"start":{"line":23,"column":8},"end":{"line":26,"column":21}},"16":{"start":{"line":24,"column":12},"end":{"line":24,"column":53}},"17":{"start":{"line":25,"column":12},"end":{"line":25,"column":54}},"18":{"start":{"line":27,"column":8},"end":{"line":30,"column":21}},"19":{"start":{"line":28,"column":12},"end":{"line":28,"column":37}},"20":{"start":{"line":29,"column":12},"end":{"line":29,"column":33}},"21":{"start":{"line":31,"column":8},"end":{"line":33,"column":21}},"22":{"start":{"line":32,"column":12},"end":{"line":32,"column":32}},"23":{"start":{"line":35,"column":8},"end":{"line":40,"column":9}},"24":{"start":{"line":36,"column":12},"end":{"line":36,"column":110}},"25":{"start":{"line":39,"column":12},"end":{"line":39,"column":32}},"26":{"start":{"line":41,"column":8},"end":{"line":43,"column":9}},"27":{"start":{"line":42,"column":12},"end":{"line":42,"column":68}},"28":{"start":{"line":46,"column":0},"end":{"line":46,"column":24}}},"branchMap":{"1":{"line":13,"type":"if","locations":[{"start":{"line":13,"column":8},"end":{"line":13,"column":8}},{"start":{"line":13,"column":8},"end":{"line":13,"column":8}}]},"2":{"line":14,"type":"if","locations":[{"start":{"line":14,"column":8},"end":{"line":14,"column":8}},{"start":{"line":14,"column":8},"end":{"line":14,"column":8}}]},"3":{"line":18,"type":"if","locations":[{"start":{"line":18,"column":12},"end":{"line":18,"column":12}},{"start":{"line":18,"column":12},"end":{"line":18,"column":12}}]},"4":{"line":35,"type":"if","locations":[{"start":{"line":35,"column":8},"end":{"line":35,"column":8}},{"start":{"line":35,"column":8},"end":{"line":35,"column":8}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var scriptLoader_1 = require('../util/scriptLoader');","var _ = require('lodash');","// **newInstance(settings, newInstanceCallback, updateCallback)** (required) : A function that will be called when a new instance of this plugin is requested.","// * **settings** : A javascript object with the initial settings set by the user. The names of the properties in the object will correspond to the setting names defined above.","// * **newInstanceCallback** : A callback function that you'll call when the new instance of the plugin is ready. This function expects a single argument, which is the new instance of your plugin object.","// * **updateCallback** : A callback function that you'll call if and when your datasource has an update for freeboard to recalculate. This function expects a single parameter which is a javascript object with the new, updated data. You should hold on to this reference and call it when needed.","function create(newInstance, TYPE_INFO) {","    return function FreeboardDatasource(newInstance, props, history) {","        if (props === void 0) { props = {}; }","        if (history === void 0) { history = []; }","        this.instance = null;","        this.data = history;","        this.getValues = function () {","            if (_.isArray(this.data)) {","                return this.data;","            }","            return [this.data];","        }.bind(this);","        this.updateProps = function (newProps) {","            console.log(\"Updating Datasource props\");","            this.instance.onSettingsChanged(newProps);","        }.bind(this);","        var newInstanceCallback = function (instance) {","            this.instance = instance;","            instance.updateNow();","        }.bind(this);","        var updateCallback = function (newData) {","            this.data = newData;","        }.bind(this);","        // TODO: Maybe no needed anymore when we take care of dependencies elsewhere","        if (TYPE_INFO.dependencies) {","            scriptLoader_1.default.loadScript(TYPE_INFO.dependencies.slice(), { success: createNewInstance });","        }","        else {","            createNewInstance();","        }","        function createNewInstance() {","            newInstance(props, newInstanceCallback, updateCallback);","        }","    }.bind(this, newInstance);","}","exports.create = create;",""]};
 	}
-	exports.create = create;
+	__cov_q0bEOb$QdHUHqFOIIHQLlg = __cov_q0bEOb$QdHUHqFOIIHQLlg['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/freeboardDatasource.js'];
+	__cov_q0bEOb$QdHUHqFOIIHQLlg.s['1']++;var scriptLoader_1=__webpack_require__(26);__cov_q0bEOb$QdHUHqFOIIHQLlg.s['2']++;var _=__webpack_require__(21);function create(newInstance,TYPE_INFO){__cov_q0bEOb$QdHUHqFOIIHQLlg.f['1']++;__cov_q0bEOb$QdHUHqFOIIHQLlg.s['4']++;return function FreeboardDatasource(newInstance,props,history){__cov_q0bEOb$QdHUHqFOIIHQLlg.f['2']++;__cov_q0bEOb$QdHUHqFOIIHQLlg.s['5']++;if(props===void 0){__cov_q0bEOb$QdHUHqFOIIHQLlg.b['1'][0]++;__cov_q0bEOb$QdHUHqFOIIHQLlg.s['6']++;props={};}else{__cov_q0bEOb$QdHUHqFOIIHQLlg.b['1'][1]++;}__cov_q0bEOb$QdHUHqFOIIHQLlg.s['7']++;if(history===void 0){__cov_q0bEOb$QdHUHqFOIIHQLlg.b['2'][0]++;__cov_q0bEOb$QdHUHqFOIIHQLlg.s['8']++;history=[];}else{__cov_q0bEOb$QdHUHqFOIIHQLlg.b['2'][1]++;}__cov_q0bEOb$QdHUHqFOIIHQLlg.s['9']++;this.instance=null;__cov_q0bEOb$QdHUHqFOIIHQLlg.s['10']++;this.data=history;__cov_q0bEOb$QdHUHqFOIIHQLlg.s['11']++;this.getValues=function(){__cov_q0bEOb$QdHUHqFOIIHQLlg.f['3']++;__cov_q0bEOb$QdHUHqFOIIHQLlg.s['12']++;if(_.isArray(this.data)){__cov_q0bEOb$QdHUHqFOIIHQLlg.b['3'][0]++;__cov_q0bEOb$QdHUHqFOIIHQLlg.s['13']++;return this.data;}else{__cov_q0bEOb$QdHUHqFOIIHQLlg.b['3'][1]++;}__cov_q0bEOb$QdHUHqFOIIHQLlg.s['14']++;return[this.data];}.bind(this);__cov_q0bEOb$QdHUHqFOIIHQLlg.s['15']++;this.updateProps=function(newProps){__cov_q0bEOb$QdHUHqFOIIHQLlg.f['4']++;__cov_q0bEOb$QdHUHqFOIIHQLlg.s['16']++;console.log('Updating Datasource props');__cov_q0bEOb$QdHUHqFOIIHQLlg.s['17']++;this.instance.onSettingsChanged(newProps);}.bind(this);__cov_q0bEOb$QdHUHqFOIIHQLlg.s['18']++;var newInstanceCallback=function(instance){__cov_q0bEOb$QdHUHqFOIIHQLlg.f['5']++;__cov_q0bEOb$QdHUHqFOIIHQLlg.s['19']++;this.instance=instance;__cov_q0bEOb$QdHUHqFOIIHQLlg.s['20']++;instance.updateNow();}.bind(this);__cov_q0bEOb$QdHUHqFOIIHQLlg.s['21']++;var updateCallback=function(newData){__cov_q0bEOb$QdHUHqFOIIHQLlg.f['6']++;__cov_q0bEOb$QdHUHqFOIIHQLlg.s['22']++;this.data=newData;}.bind(this);__cov_q0bEOb$QdHUHqFOIIHQLlg.s['23']++;if(TYPE_INFO.dependencies){__cov_q0bEOb$QdHUHqFOIIHQLlg.b['4'][0]++;__cov_q0bEOb$QdHUHqFOIIHQLlg.s['24']++;scriptLoader_1.default.loadScript(TYPE_INFO.dependencies.slice(),{success:createNewInstance});}else{__cov_q0bEOb$QdHUHqFOIIHQLlg.b['4'][1]++;__cov_q0bEOb$QdHUHqFOIIHQLlg.s['25']++;createNewInstance();}function createNewInstance(){__cov_q0bEOb$QdHUHqFOIIHQLlg.f['7']++;__cov_q0bEOb$QdHUHqFOIIHQLlg.s['27']++;newInstance(props,newInstanceCallback,updateCallback);}}.bind(this,newInstance);}__cov_q0bEOb$QdHUHqFOIIHQLlg.s['28']++;exports.create=create;
 
 
 /***/ },
@@ -232,18 +101,14 @@ webpackJsonp([0],[
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var loadjs = __webpack_require__(27);
-	// This is a class because we can not mock it on module level.
-	var ScriptLoader = (function () {
-	    function ScriptLoader() {
-	    }
-	    ScriptLoader.loadScript = function (paths, options) {
-	        return loadjs(paths, options);
-	    };
-	    return ScriptLoader;
-	}());
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = ScriptLoader;
+	var __cov_zYRSadsw8WZw3EW2aGHvXQ = (Function('return this'))();
+	if (!__cov_zYRSadsw8WZw3EW2aGHvXQ.__coverage__) { __cov_zYRSadsw8WZw3EW2aGHvXQ.__coverage__ = {}; }
+	__cov_zYRSadsw8WZw3EW2aGHvXQ = __cov_zYRSadsw8WZw3EW2aGHvXQ.__coverage__;
+	if (!(__cov_zYRSadsw8WZw3EW2aGHvXQ['/home/travis/build/Niondir/iot-dashboard/src/util/scriptLoader.ts'])) {
+	   __cov_zYRSadsw8WZw3EW2aGHvXQ['/home/travis/build/Niondir/iot-dashboard/src/util/scriptLoader.ts'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/util/scriptLoader.ts","s":{"1":0,"2":0,"3":1,"4":0,"5":0,"6":0,"7":0,"8":0},"b":{},"f":{"1":0,"2":0,"3":0},"fnMap":{"1":{"name":"(anonymous_1)","line":4,"loc":{"start":{"line":4,"column":20},"end":{"line":4,"column":32}}},"2":{"name":"ScriptLoader","line":5,"loc":{"start":{"line":5,"column":4},"end":{"line":5,"column":28}}},"3":{"name":"(anonymous_3)","line":7,"loc":{"start":{"line":7,"column":30},"end":{"line":7,"column":56}}}},"statementMap":{"1":{"start":{"line":2,"column":0},"end":{"line":2,"column":31}},"2":{"start":{"line":4,"column":0},"end":{"line":11,"column":5}},"3":{"start":{"line":5,"column":4},"end":{"line":6,"column":5}},"4":{"start":{"line":7,"column":4},"end":{"line":9,"column":6}},"5":{"start":{"line":8,"column":8},"end":{"line":8,"column":38}},"6":{"start":{"line":10,"column":4},"end":{"line":10,"column":24}},"7":{"start":{"line":12,"column":0},"end":{"line":12,"column":62}},"8":{"start":{"line":13,"column":0},"end":{"line":13,"column":31}}},"branchMap":{},"code":["\"use strict\";","var loadjs = require('loadjs');","// This is a class because we can not mock it on module level.","var ScriptLoader = (function () {","    function ScriptLoader() {","    }","    ScriptLoader.loadScript = function (paths, options) {","        return loadjs(paths, options);","    };","    return ScriptLoader;","}());","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = ScriptLoader;",""]};
+	}
+	__cov_zYRSadsw8WZw3EW2aGHvXQ = __cov_zYRSadsw8WZw3EW2aGHvXQ['/home/travis/build/Niondir/iot-dashboard/src/util/scriptLoader.ts'];
+	__cov_zYRSadsw8WZw3EW2aGHvXQ.s['1']++;var loadjs=__webpack_require__(27);__cov_zYRSadsw8WZw3EW2aGHvXQ.s['2']++;var ScriptLoader=function(){__cov_zYRSadsw8WZw3EW2aGHvXQ.f['1']++;function ScriptLoader(){__cov_zYRSadsw8WZw3EW2aGHvXQ.f['2']++;}__cov_zYRSadsw8WZw3EW2aGHvXQ.s['4']++;ScriptLoader.loadScript=function(paths,options){__cov_zYRSadsw8WZw3EW2aGHvXQ.f['3']++;__cov_zYRSadsw8WZw3EW2aGHvXQ.s['5']++;return loadjs(paths,options);};__cov_zYRSadsw8WZw3EW2aGHvXQ.s['6']++;return ScriptLoader;}();__cov_zYRSadsw8WZw3EW2aGHvXQ.s['7']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_zYRSadsw8WZw3EW2aGHvXQ.s['8']++;exports.default=ScriptLoader;
 
 
 /***/ },
@@ -251,67 +116,30 @@ webpackJsonp([0],[
 /* 28 */
 /***/ function(module, exports) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	/**
-	 * When a Plugin is loaded via the UI, an action is called to do so.
-	 * The action will load an external script, containing the plugin code, which calls one of the API methods here.
-	 * By calling the API method the plugin is put to the pluginCache where it can be fetched by the application to initialize it
-	 *
-	 * The application can not call the Plugin since it could (and should) be wrapped into a module.
-	 * @type {null}
-	 */
-	var pluginCache = null;
-	function popLoadedPlugin() {
-	    var plugin = pluginCache;
-	    pluginCache = null;
-	    return plugin;
+	var __cov_5krW3S$M1H4DoBR_2nyEPQ = (Function('return this'))();
+	if (!__cov_5krW3S$M1H4DoBR_2nyEPQ.__coverage__) { __cov_5krW3S$M1H4DoBR_2nyEPQ.__coverage__ = {}; }
+	__cov_5krW3S$M1H4DoBR_2nyEPQ = __cov_5krW3S$M1H4DoBR_2nyEPQ.__coverage__;
+	if (!(__cov_5krW3S$M1H4DoBR_2nyEPQ['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/pluginCache.ts'])) {
+	   __cov_5krW3S$M1H4DoBR_2nyEPQ['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/pluginCache.ts'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/pluginApi/pluginCache.ts","s":{"1":0,"2":1,"3":0,"4":0,"5":0,"6":0,"7":1,"8":0,"9":0,"10":1,"11":0,"12":0,"13":0,"14":1,"15":0,"16":0,"17":0},"b":{},"f":{"1":0,"2":0,"3":0,"4":0},"fnMap":{"1":{"name":"popLoadedPlugin","line":14,"loc":{"start":{"line":14,"column":0},"end":{"line":14,"column":27}}},"2":{"name":"hasPlugin","line":20,"loc":{"start":{"line":20,"column":0},"end":{"line":20,"column":21}}},"3":{"name":"registerDatasourcePlugin","line":24,"loc":{"start":{"line":24,"column":0},"end":{"line":24,"column":56}}},"4":{"name":"registerWidgetPlugin","line":33,"loc":{"start":{"line":33,"column":0},"end":{"line":33,"column":48}}}},"statementMap":{"1":{"start":{"line":13,"column":0},"end":{"line":13,"column":23}},"2":{"start":{"line":14,"column":0},"end":{"line":18,"column":1}},"3":{"start":{"line":15,"column":4},"end":{"line":15,"column":29}},"4":{"start":{"line":16,"column":4},"end":{"line":16,"column":23}},"5":{"start":{"line":17,"column":4},"end":{"line":17,"column":18}},"6":{"start":{"line":19,"column":0},"end":{"line":19,"column":42}},"7":{"start":{"line":20,"column":0},"end":{"line":22,"column":1}},"8":{"start":{"line":21,"column":4},"end":{"line":21,"column":32}},"9":{"start":{"line":23,"column":0},"end":{"line":23,"column":30}},"10":{"start":{"line":24,"column":0},"end":{"line":30,"column":1}},"11":{"start":{"line":25,"column":4},"end":{"line":25,"column":114}},"12":{"start":{"line":26,"column":4},"end":{"line":29,"column":7}},"13":{"start":{"line":31,"column":0},"end":{"line":31,"column":60}},"14":{"start":{"line":33,"column":0},"end":{"line":39,"column":1}},"15":{"start":{"line":34,"column":4},"end":{"line":34,"column":114}},"16":{"start":{"line":35,"column":4},"end":{"line":38,"column":7}},"17":{"start":{"line":40,"column":0},"end":{"line":40,"column":52}}},"branchMap":{},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","/**"," * When a Plugin is loaded via the UI, an action is called to do so."," * The action will load an external script, containing the plugin code, which calls one of the API methods here."," * By calling the API method the plugin is put to the pluginCache where it can be fetched by the application to initialize it"," *"," * The application can not call the Plugin since it could (and should) be wrapped into a module."," * @type {null}"," */","var pluginCache = null;","function popLoadedPlugin() {","    var plugin = pluginCache;","    pluginCache = null;","    return plugin;","}","exports.popLoadedPlugin = popLoadedPlugin;","function hasPlugin() {","    return pluginCache !== null;","}","exports.hasPlugin = hasPlugin;","function registerDatasourcePlugin(typeInfo, datasource) {","    console.assert(!hasPlugin(), \"Plugin must be finished loading before another can be registered\", pluginCache);","    pluginCache = ({","        TYPE_INFO: typeInfo,","        Datasource: datasource","    });","}","exports.registerDatasourcePlugin = registerDatasourcePlugin;","// TODO: type Widget as soon as it is in typescript","function registerWidgetPlugin(typeInfo, widget) {","    console.assert(!hasPlugin(), \"Plugin must be finished loading before another can be registered\", pluginCache);","    pluginCache = ({","        TYPE_INFO: typeInfo,","        Widget: widget","    });","}","exports.registerWidgetPlugin = registerWidgetPlugin;",""]};
 	}
-	exports.popLoadedPlugin = popLoadedPlugin;
-	function hasPlugin() {
-	    return pluginCache !== null;
-	}
-	exports.hasPlugin = hasPlugin;
-	function registerDatasourcePlugin(typeInfo, datasource) {
-	    console.assert(!hasPlugin(), "Plugin must be finished loading before another can be registered", pluginCache);
-	    pluginCache = ({
-	        TYPE_INFO: typeInfo,
-	        Datasource: datasource
-	    });
-	}
-	exports.registerDatasourcePlugin = registerDatasourcePlugin;
-	// TODO: type Widget as soon as it is in typescript
-	function registerWidgetPlugin(typeInfo, widget) {
-	    console.assert(!hasPlugin(), "Plugin must be finished loading before another can be registered", pluginCache);
-	    pluginCache = ({
-	        TYPE_INFO: typeInfo,
-	        Widget: widget
-	    });
-	}
-	exports.registerWidgetPlugin = registerWidgetPlugin;
+	__cov_5krW3S$M1H4DoBR_2nyEPQ = __cov_5krW3S$M1H4DoBR_2nyEPQ['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/pluginCache.ts'];
+	__cov_5krW3S$M1H4DoBR_2nyEPQ.s['1']++;var pluginCache=null;function popLoadedPlugin(){__cov_5krW3S$M1H4DoBR_2nyEPQ.f['1']++;__cov_5krW3S$M1H4DoBR_2nyEPQ.s['3']++;var plugin=pluginCache;__cov_5krW3S$M1H4DoBR_2nyEPQ.s['4']++;pluginCache=null;__cov_5krW3S$M1H4DoBR_2nyEPQ.s['5']++;return plugin;}__cov_5krW3S$M1H4DoBR_2nyEPQ.s['6']++;exports.popLoadedPlugin=popLoadedPlugin;function hasPlugin(){__cov_5krW3S$M1H4DoBR_2nyEPQ.f['2']++;__cov_5krW3S$M1H4DoBR_2nyEPQ.s['8']++;return pluginCache!==null;}__cov_5krW3S$M1H4DoBR_2nyEPQ.s['9']++;exports.hasPlugin=hasPlugin;function registerDatasourcePlugin(typeInfo,datasource){__cov_5krW3S$M1H4DoBR_2nyEPQ.f['3']++;__cov_5krW3S$M1H4DoBR_2nyEPQ.s['11']++;console.assert(!hasPlugin(),'Plugin must be finished loading before another can be registered',pluginCache);__cov_5krW3S$M1H4DoBR_2nyEPQ.s['12']++;pluginCache={TYPE_INFO:typeInfo,Datasource:datasource};}__cov_5krW3S$M1H4DoBR_2nyEPQ.s['13']++;exports.registerDatasourcePlugin=registerDatasourcePlugin;function registerWidgetPlugin(typeInfo,widget){__cov_5krW3S$M1H4DoBR_2nyEPQ.f['4']++;__cov_5krW3S$M1H4DoBR_2nyEPQ.s['15']++;console.assert(!hasPlugin(),'Plugin must be finished loading before another can be registered',pluginCache);__cov_5krW3S$M1H4DoBR_2nyEPQ.s['16']++;pluginCache={TYPE_INFO:typeInfo,Widget:widget};}__cov_5krW3S$M1H4DoBR_2nyEPQ.s['17']++;exports.registerWidgetPlugin=registerWidgetPlugin;
 
 
 /***/ },
 /* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var PluginCache = __webpack_require__(28);
-	var pluginApi = {
-	    registerDatasourcePlugin: PluginCache.registerDatasourcePlugin,
-	    registerWidgetPlugin: PluginCache.registerWidgetPlugin
-	};
-	// TO be robust during tests in node and server side rendering
-	if (window) {
-	    window.iotDashboardApi = pluginApi;
+	var __cov_Oz3mCTYNGMp$31I9wCFEFw = (Function('return this'))();
+	if (!__cov_Oz3mCTYNGMp$31I9wCFEFw.__coverage__) { __cov_Oz3mCTYNGMp$31I9wCFEFw.__coverage__ = {}; }
+	__cov_Oz3mCTYNGMp$31I9wCFEFw = __cov_Oz3mCTYNGMp$31I9wCFEFw.__coverage__;
+	if (!(__cov_Oz3mCTYNGMp$31I9wCFEFw['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/pluginApi.ts'])) {
+	   __cov_Oz3mCTYNGMp$31I9wCFEFw['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/pluginApi.ts'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/pluginApi/pluginApi.ts","s":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0},"b":{"1":[0,0]},"f":{},"fnMap":{},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":43}},"2":{"start":{"line":6,"column":0},"end":{"line":9,"column":2}},"3":{"start":{"line":11,"column":0},"end":{"line":13,"column":1}},"4":{"start":{"line":12,"column":4},"end":{"line":12,"column":39}},"5":{"start":{"line":14,"column":0},"end":{"line":14,"column":62}},"6":{"start":{"line":15,"column":0},"end":{"line":15,"column":28}}},"branchMap":{"1":{"line":11,"type":"if","locations":[{"start":{"line":11,"column":0},"end":{"line":11,"column":0}},{"start":{"line":11,"column":0},"end":{"line":11,"column":0}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public"," * License, v. 2.0. If a copy of the MPL was not distributed with this"," * file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var PluginCache = require('./pluginCache');","var pluginApi = {","    registerDatasourcePlugin: PluginCache.registerDatasourcePlugin,","    registerWidgetPlugin: PluginCache.registerWidgetPlugin","};","// TO be robust during tests in node and server side rendering","if (window) {","    window.iotDashboardApi = pluginApi;","}","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = pluginApi;",""]};
 	}
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = pluginApi;
+	__cov_Oz3mCTYNGMp$31I9wCFEFw = __cov_Oz3mCTYNGMp$31I9wCFEFw['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/pluginApi.ts'];
+	__cov_Oz3mCTYNGMp$31I9wCFEFw.s['1']++;var PluginCache=__webpack_require__(28);__cov_Oz3mCTYNGMp$31I9wCFEFw.s['2']++;var pluginApi={registerDatasourcePlugin:PluginCache.registerDatasourcePlugin,registerWidgetPlugin:PluginCache.registerWidgetPlugin};__cov_Oz3mCTYNGMp$31I9wCFEFw.s['3']++;if(window){__cov_Oz3mCTYNGMp$31I9wCFEFw.b['1'][0]++;__cov_Oz3mCTYNGMp$31I9wCFEFw.s['4']++;window.iotDashboardApi=pluginApi;}else{__cov_Oz3mCTYNGMp$31I9wCFEFw.b['1'][1]++;}__cov_Oz3mCTYNGMp$31I9wCFEFw.s['5']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_Oz3mCTYNGMp$31I9wCFEFw.s['6']++;exports.default=pluginApi;
 
 
 /***/ },
@@ -335,18 +163,16 @@ webpackJsonp([0],[
 /* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(React) {/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
-	"use strict";
-	var ReactDOM = __webpack_require__(38);
-	var react_redux_1 = __webpack_require__(39);
-	var pageLayout_1 = __webpack_require__(41);
-	function render(element, store) {
-	    ReactDOM.render(React.createElement(react_redux_1.Provider, {store: store}, React.createElement(pageLayout_1.default, null)), element);
+	/* WEBPACK VAR INJECTION */(function(React) {"use strict";
+	var __cov_o3lxDXMgooUNO0qfqUIpkg = (Function('return this'))();
+	if (!__cov_o3lxDXMgooUNO0qfqUIpkg.__coverage__) { __cov_o3lxDXMgooUNO0qfqUIpkg.__coverage__ = {}; }
+	__cov_o3lxDXMgooUNO0qfqUIpkg = __cov_o3lxDXMgooUNO0qfqUIpkg.__coverage__;
+	if (!(__cov_o3lxDXMgooUNO0qfqUIpkg['/home/travis/build/Niondir/iot-dashboard/src/renderer.js'])) {
+	   __cov_o3lxDXMgooUNO0qfqUIpkg['/home/travis/build/Niondir/iot-dashboard/src/renderer.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/renderer.js","s":{"1":0,"2":0,"3":0,"4":1,"5":0,"6":0},"b":{},"f":{"1":0},"fnMap":{"1":{"name":"render","line":8,"loc":{"start":{"line":8,"column":0},"end":{"line":8,"column":32}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":36}},"2":{"start":{"line":6,"column":0},"end":{"line":6,"column":43}},"3":{"start":{"line":7,"column":0},"end":{"line":7,"column":43}},"4":{"start":{"line":8,"column":0},"end":{"line":10,"column":1}},"5":{"start":{"line":9,"column":4},"end":{"line":9,"column":139}},"6":{"start":{"line":11,"column":0},"end":{"line":11,"column":24}}},"branchMap":{},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var ReactDOM = require('react-dom');","var react_redux_1 = require(\"react-redux\");","var pageLayout_1 = require(\"./pageLayout\");","function render(element, store) {","    ReactDOM.render(React.createElement(react_redux_1.Provider, {store: store}, React.createElement(pageLayout_1.default, null)), element);","}","exports.render = render;",""]};
 	}
-	exports.render = render;
-	
+	__cov_o3lxDXMgooUNO0qfqUIpkg = __cov_o3lxDXMgooUNO0qfqUIpkg['/home/travis/build/Niondir/iot-dashboard/src/renderer.js'];
+	__cov_o3lxDXMgooUNO0qfqUIpkg.s['1']++;var ReactDOM=__webpack_require__(38);__cov_o3lxDXMgooUNO0qfqUIpkg.s['2']++;var react_redux_1=__webpack_require__(39);__cov_o3lxDXMgooUNO0qfqUIpkg.s['3']++;var pageLayout_1=__webpack_require__(41);function render(element,store){__cov_o3lxDXMgooUNO0qfqUIpkg.f['1']++;__cov_o3lxDXMgooUNO0qfqUIpkg.s['5']++;ReactDOM.render(React.createElement(react_redux_1.Provider,{store:store},React.createElement(pageLayout_1.default,null)),element);}__cov_o3lxDXMgooUNO0qfqUIpkg.s['6']++;exports.render=render;
+
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ },
@@ -356,1141 +182,211 @@ webpackJsonp([0],[
 /* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var React = __webpack_require__(20);
-	var react_1 = __webpack_require__(20);
-	var ReactDOM = __webpack_require__(38);
-	var react_redux_1 = __webpack_require__(39);
-	var Global = __webpack_require__(42);
-	var widgetGrid_ui_js_1 = __webpack_require__(44);
-	var layouts_ui_js_1 = __webpack_require__(80);
-	var widgetConfigDialog_ui_js_1 = __webpack_require__(83);
-	var dashboardMenuEntry_ui_js_1 = __webpack_require__(88);
-	var importExportDialog_ui_js_1 = __webpack_require__(89);
-	var datasourceConfigDialog_ui_js_1 = __webpack_require__(91);
-	var datasourceNavItem_ui_js_1 = __webpack_require__(92);
-	var widgetsNavItem_ui_js_1 = __webpack_require__(93);
-	var pluginNavItem_ui_js_1 = __webpack_require__(94);
-	var pluginsDialog_ui_js_1 = __webpack_require__(95);
-	var Persistence = __webpack_require__(97);
-	var Layout = (function (_super) {
-	    __extends(Layout, _super);
-	    function Layout(props) {
-	        _super.call(this, props);
-	        this.state = { hover: false };
-	    }
-	    Layout.prototype.onReadOnlyModeKeyPress = function (e) {
-	        //console.log("key pressed", event.keyCode);
-	        var intKey = (window.event) ? e.which : e.keyCode;
-	        if (intKey === 27) {
-	            this.props.setReadOnly(!this.props.isReadOnly);
-	        }
-	    };
-	    Layout.prototype.componentDidMount = function () {
-	        this.onReadOnlyModeKeyPress = this.onReadOnlyModeKeyPress.bind(this);
-	        ReactDOM.findDOMNode(this)
-	            .offsetParent
-	            .addEventListener('keydown', this.onReadOnlyModeKeyPress);
-	    };
-	    Layout.prototype.render = function () {
-	        var _this = this;
-	        var props = this.props;
-	        var showMenu = !props.isReadOnly || this.state.hover;
-	        return React.createElement("div", {onKeyUp: function (event) { return _this.onReadOnlyModeKeyPress(event); }}, React.createElement("div", null, React.createElement(widgetConfigDialog_ui_js_1.default, null), React.createElement(importExportDialog_ui_js_1.default, null), React.createElement(datasourceConfigDialog_ui_js_1.default, null), React.createElement(pluginsDialog_ui_js_1.default, null)), React.createElement("div", {className: "container"}, React.createElement("div", {className: showMenu ? "menu-trigger" : "menu-trigger", onMouseOver: function () { _this.setState({ hover: true }); }, onMouseEnter: function () { _this.setState({ hover: true }); }}), React.createElement("div", {className: "ui inverted fixed main menu " + (showMenu ? "topnav--visible" : "topnav--hidden"), onMouseOver: function () { _this.setState({ hover: true }); }, onMouseLeave: function () { _this.setState({ hover: false }); }}, React.createElement("div", {className: "ui container"}, React.createElement("a", {href: "#", className: "header item"}, "Dashboard"), React.createElement(dashboardMenuEntry_ui_js_1.default, null), React.createElement(widgetsNavItem_ui_js_1.default, null), React.createElement(datasourceNavItem_ui_js_1.default, null), React.createElement(pluginNavItem_ui_js_1.default, null), React.createElement(layouts_ui_js_1.default, null), React.createElement("a", {className: "item", onClick: function () { return Persistence.clearData(); }}, React.createElement("i", {className: "red bomb icon"}), "Reset Everything!"), React.createElement("a", {className: "item", onClick: function () { return props.setReadOnly(!props.isReadOnly); }}, React.createElement("i", {className: (props.isReadOnly ? "lock" : "unlock alternate") + " icon"}), " "), React.createElement("div", {className: "header selectable right item"}, "v", this.props.config.version, " ", this.props.config.revisionShort))), React.createElement("div", {className: "ui grid"}, React.createElement(widgetGrid_ui_js_1.default, null))));
-	    };
-	    return Layout;
-	}(react_1.Component));
-	exports.Layout = Layout;
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = react_redux_1.connect(function (state) {
-	    return {
-	        isReadOnly: state.global.isReadOnly,
-	        config: state.config
-	    };
-	}, function (dispatch) {
-	    return {
-	        setReadOnly: function (isReadOnly) { return dispatch(Global.setReadOnly(isReadOnly)); }
-	    };
-	})(Layout);
+	var __cov_gcVMJ_y9osIbr2sq2ehulA = (Function('return this'))();
+	if (!__cov_gcVMJ_y9osIbr2sq2ehulA.__coverage__) { __cov_gcVMJ_y9osIbr2sq2ehulA.__coverage__ = {}; }
+	__cov_gcVMJ_y9osIbr2sq2ehulA = __cov_gcVMJ_y9osIbr2sq2ehulA.__coverage__;
+	if (!(__cov_gcVMJ_y9osIbr2sq2ehulA['/home/travis/build/Niondir/iot-dashboard/src/pageLayout.tsx'])) {
+	   __cov_gcVMJ_y9osIbr2sq2ehulA['/home/travis/build/Niondir/iot-dashboard/src/pageLayout.tsx'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/pageLayout.tsx","s":{"1":0,"2":0,"3":0,"4":0,"5":1,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":1,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":0,"38":0,"39":0,"40":0,"41":0,"42":0,"43":0,"44":0,"45":0,"46":0,"47":0,"48":0,"49":0,"50":0,"51":0,"52":0,"53":0,"54":0},"b":{"1":[0,0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0],"7":[0,0],"8":[0,0],"9":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0},"fnMap":{"1":{"name":"(anonymous_1)","line":5,"loc":{"start":{"line":5,"column":44},"end":{"line":5,"column":60}}},"2":{"name":"__","line":7,"loc":{"start":{"line":7,"column":4},"end":{"line":7,"column":18}}},"3":{"name":"(anonymous_3)","line":26,"loc":{"start":{"line":26,"column":14},"end":{"line":26,"column":32}}},"4":{"name":"Layout","line":28,"loc":{"start":{"line":28,"column":4},"end":{"line":28,"column":27}}},"5":{"name":"(anonymous_5)","line":32,"loc":{"start":{"line":32,"column":46},"end":{"line":32,"column":59}}},"6":{"name":"(anonymous_6)","line":39,"loc":{"start":{"line":39,"column":41},"end":{"line":39,"column":53}}},"7":{"name":"(anonymous_7)","line":45,"loc":{"start":{"line":45,"column":30},"end":{"line":45,"column":42}}},"8":{"name":"(anonymous_8)","line":49,"loc":{"start":{"line":49,"column":52},"end":{"line":49,"column":69}}},"9":{"name":"(anonymous_9)","line":49,"loc":{"start":{"line":49,"column":553},"end":{"line":49,"column":565}}},"10":{"name":"(anonymous_10)","line":49,"loc":{"start":{"line":49,"column":617},"end":{"line":49,"column":629}}},"11":{"name":"(anonymous_11)","line":49,"loc":{"start":{"line":49,"column":805},"end":{"line":49,"column":817}}},"12":{"name":"(anonymous_12)","line":49,"loc":{"start":{"line":49,"column":869},"end":{"line":49,"column":881}}},"13":{"name":"(anonymous_13)","line":49,"loc":{"start":{"line":49,"column":1403},"end":{"line":49,"column":1415}}},"14":{"name":"(anonymous_14)","line":49,"loc":{"start":{"line":49,"column":1585},"end":{"line":49,"column":1597}}},"15":{"name":"(anonymous_15)","line":55,"loc":{"start":{"line":55,"column":40},"end":{"line":55,"column":57}}},"16":{"name":"(anonymous_16)","line":60,"loc":{"start":{"line":60,"column":3},"end":{"line":60,"column":23}}},"17":{"name":"(anonymous_17)","line":62,"loc":{"start":{"line":62,"column":21},"end":{"line":62,"column":43}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":9,"column":2}},"2":{"start":{"line":6,"column":4},"end":{"line":6,"column":58}},"3":{"start":{"line":6,"column":21},"end":{"line":6,"column":58}},"4":{"start":{"line":6,"column":46},"end":{"line":6,"column":58}},"5":{"start":{"line":7,"column":4},"end":{"line":7,"column":43}},"6":{"start":{"line":7,"column":20},"end":{"line":7,"column":41}},"7":{"start":{"line":8,"column":4},"end":{"line":8,"column":89}},"8":{"start":{"line":10,"column":0},"end":{"line":10,"column":29}},"9":{"start":{"line":11,"column":0},"end":{"line":11,"column":31}},"10":{"start":{"line":12,"column":0},"end":{"line":12,"column":36}},"11":{"start":{"line":13,"column":0},"end":{"line":13,"column":43}},"12":{"start":{"line":14,"column":0},"end":{"line":14,"column":46}},"13":{"start":{"line":15,"column":0},"end":{"line":15,"column":63}},"14":{"start":{"line":16,"column":0},"end":{"line":16,"column":57}},"15":{"start":{"line":17,"column":0},"end":{"line":17,"column":79}},"16":{"start":{"line":18,"column":0},"end":{"line":18,"column":81}},"17":{"start":{"line":19,"column":0},"end":{"line":19,"column":81}},"18":{"start":{"line":20,"column":0},"end":{"line":20,"column":90}},"19":{"start":{"line":21,"column":0},"end":{"line":21,"column":80}},"20":{"start":{"line":22,"column":0},"end":{"line":22,"column":71}},"21":{"start":{"line":23,"column":0},"end":{"line":23,"column":71}},"22":{"start":{"line":24,"column":0},"end":{"line":24,"column":71}},"23":{"start":{"line":25,"column":0},"end":{"line":25,"column":46}},"24":{"start":{"line":26,"column":0},"end":{"line":52,"column":22}},"25":{"start":{"line":27,"column":4},"end":{"line":27,"column":30}},"26":{"start":{"line":28,"column":4},"end":{"line":31,"column":5}},"27":{"start":{"line":29,"column":8},"end":{"line":29,"column":33}},"28":{"start":{"line":30,"column":8},"end":{"line":30,"column":38}},"29":{"start":{"line":32,"column":4},"end":{"line":38,"column":6}},"30":{"start":{"line":34,"column":8},"end":{"line":34,"column":58}},"31":{"start":{"line":35,"column":8},"end":{"line":37,"column":9}},"32":{"start":{"line":36,"column":12},"end":{"line":36,"column":59}},"33":{"start":{"line":39,"column":4},"end":{"line":44,"column":6}},"34":{"start":{"line":40,"column":8},"end":{"line":40,"column":77}},"35":{"start":{"line":41,"column":8},"end":{"line":43,"column":70}},"36":{"start":{"line":45,"column":4},"end":{"line":50,"column":6}},"37":{"start":{"line":46,"column":8},"end":{"line":46,"column":25}},"38":{"start":{"line":47,"column":8},"end":{"line":47,"column":31}},"39":{"start":{"line":48,"column":8},"end":{"line":48,"column":61}},"40":{"start":{"line":49,"column":8},"end":{"line":49,"column":2006}},"41":{"start":{"line":49,"column":71},"end":{"line":49,"column":114}},"42":{"start":{"line":49,"column":567},"end":{"line":49,"column":599}},"43":{"start":{"line":49,"column":631},"end":{"line":49,"column":663}},"44":{"start":{"line":49,"column":819},"end":{"line":49,"column":851}},"45":{"start":{"line":49,"column":883},"end":{"line":49,"column":916}},"46":{"start":{"line":49,"column":1417},"end":{"line":49,"column":1448}},"47":{"start":{"line":49,"column":1599},"end":{"line":49,"column":1643}},"48":{"start":{"line":51,"column":4},"end":{"line":51,"column":18}},"49":{"start":{"line":53,"column":0},"end":{"line":53,"column":24}},"50":{"start":{"line":54,"column":0},"end":{"line":54,"column":62}},"51":{"start":{"line":55,"column":0},"end":{"line":64,"column":11}},"52":{"start":{"line":56,"column":4},"end":{"line":59,"column":6}},"53":{"start":{"line":61,"column":4},"end":{"line":63,"column":6}},"54":{"start":{"line":62,"column":45},"end":{"line":62,"column":93}}},"branchMap":{"1":{"line":5,"type":"binary-expr","locations":[{"start":{"line":5,"column":17},"end":{"line":5,"column":21}},{"start":{"line":5,"column":25},"end":{"line":5,"column":39}},{"start":{"line":5,"column":44},"end":{"line":9,"column":1}}]},"2":{"line":6,"type":"if","locations":[{"start":{"line":6,"column":21},"end":{"line":6,"column":21}},{"start":{"line":6,"column":21},"end":{"line":6,"column":21}}]},"3":{"line":8,"type":"cond-expr","locations":[{"start":{"line":8,"column":31},"end":{"line":8,"column":47}},{"start":{"line":8,"column":51},"end":{"line":8,"column":87}}]},"4":{"line":34,"type":"cond-expr","locations":[{"start":{"line":34,"column":38},"end":{"line":34,"column":45}},{"start":{"line":34,"column":48},"end":{"line":34,"column":57}}]},"5":{"line":35,"type":"if","locations":[{"start":{"line":35,"column":8},"end":{"line":35,"column":8}},{"start":{"line":35,"column":8},"end":{"line":35,"column":8}}]},"6":{"line":48,"type":"binary-expr","locations":[{"start":{"line":48,"column":23},"end":{"line":48,"column":40}},{"start":{"line":48,"column":44},"end":{"line":48,"column":60}}]},"7":{"line":49,"type":"cond-expr","locations":[{"start":{"line":49,"column":507},"end":{"line":49,"column":521}},{"start":{"line":49,"column":524},"end":{"line":49,"column":538}}]},"8":{"line":49,"type":"cond-expr","locations":[{"start":{"line":49,"column":753},"end":{"line":49,"column":770}},{"start":{"line":49,"column":773},"end":{"line":49,"column":789}}]},"9":{"line":49,"type":"cond-expr","locations":[{"start":{"line":49,"column":1705},"end":{"line":49,"column":1711}},{"start":{"line":49,"column":1714},"end":{"line":49,"column":1732}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var __extends = (this && this.__extends) || function (d, b) {","    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];","    function __() { this.constructor = d; }","    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());","};","var React = require(\"react\");","var react_1 = require(\"react\");","var ReactDOM = require(\"react-dom\");","var react_redux_1 = require(\"react-redux\");","var Global = require(\"./dashboard/global.js\");","var widgetGrid_ui_js_1 = require(\"./widgets/widgetGrid.ui.js\");","var layouts_ui_js_1 = require(\"./layouts/layouts.ui.js\");","var widgetConfigDialog_ui_js_1 = require(\"./widgets/widgetConfigDialog.ui.js\");","var dashboardMenuEntry_ui_js_1 = require(\"./dashboard/dashboardMenuEntry.ui.js\");","var importExportDialog_ui_js_1 = require(\"./dashboard/importExportDialog.ui.js\");","var datasourceConfigDialog_ui_js_1 = require(\"./datasource/datasourceConfigDialog.ui.js\");","var datasourceNavItem_ui_js_1 = require(\"./datasource/datasourceNavItem.ui.js\");","var widgetsNavItem_ui_js_1 = require(\"./widgets/widgetsNavItem.ui.js\");","var pluginNavItem_ui_js_1 = require(\"./pluginApi/pluginNavItem.ui.js\");","var pluginsDialog_ui_js_1 = require(\"./pluginApi/pluginsDialog.ui.js\");","var Persistence = require(\"./persistence.js\");","var Layout = (function (_super) {","    __extends(Layout, _super);","    function Layout(props) {","        _super.call(this, props);","        this.state = { hover: false };","    }","    Layout.prototype.onReadOnlyModeKeyPress = function (e) {","        //console.log(\"key pressed\", event.keyCode);","        var intKey = (window.event) ? e.which : e.keyCode;","        if (intKey === 27) {","            this.props.setReadOnly(!this.props.isReadOnly);","        }","    };","    Layout.prototype.componentDidMount = function () {","        this.onReadOnlyModeKeyPress = this.onReadOnlyModeKeyPress.bind(this);","        ReactDOM.findDOMNode(this)","            .offsetParent","            .addEventListener('keydown', this.onReadOnlyModeKeyPress);","    };","    Layout.prototype.render = function () {","        var _this = this;","        var props = this.props;","        var showMenu = !props.isReadOnly || this.state.hover;","        return React.createElement(\"div\", {onKeyUp: function (event) { return _this.onReadOnlyModeKeyPress(event); }}, React.createElement(\"div\", null, React.createElement(widgetConfigDialog_ui_js_1.default, null), React.createElement(importExportDialog_ui_js_1.default, null), React.createElement(datasourceConfigDialog_ui_js_1.default, null), React.createElement(pluginsDialog_ui_js_1.default, null)), React.createElement(\"div\", {className: \"container\"}, React.createElement(\"div\", {className: showMenu ? \"menu-trigger\" : \"menu-trigger\", onMouseOver: function () { _this.setState({ hover: true }); }, onMouseEnter: function () { _this.setState({ hover: true }); }}), React.createElement(\"div\", {className: \"ui inverted fixed main menu \" + (showMenu ? \"topnav--visible\" : \"topnav--hidden\"), onMouseOver: function () { _this.setState({ hover: true }); }, onMouseLeave: function () { _this.setState({ hover: false }); }}, React.createElement(\"div\", {className: \"ui container\"}, React.createElement(\"a\", {href: \"#\", className: \"header item\"}, \"Dashboard\"), React.createElement(dashboardMenuEntry_ui_js_1.default, null), React.createElement(widgetsNavItem_ui_js_1.default, null), React.createElement(datasourceNavItem_ui_js_1.default, null), React.createElement(pluginNavItem_ui_js_1.default, null), React.createElement(layouts_ui_js_1.default, null), React.createElement(\"a\", {className: \"item\", onClick: function () { return Persistence.clearData(); }}, React.createElement(\"i\", {className: \"red bomb icon\"}), \"Reset Everything!\"), React.createElement(\"a\", {className: \"item\", onClick: function () { return props.setReadOnly(!props.isReadOnly); }}, React.createElement(\"i\", {className: (props.isReadOnly ? \"lock\" : \"unlock alternate\") + \" icon\"}), \" \"), React.createElement(\"div\", {className: \"header selectable right item\"}, \"v\", this.props.config.version, \" \", this.props.config.revisionShort))), React.createElement(\"div\", {className: \"ui grid\"}, React.createElement(widgetGrid_ui_js_1.default, null))));","    };","    return Layout;","}(react_1.Component));","exports.Layout = Layout;","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = react_redux_1.connect(function (state) {","    return {","        isReadOnly: state.global.isReadOnly,","        config: state.config","    };","}, function (dispatch) {","    return {","        setReadOnly: function (isReadOnly) { return dispatch(Global.setReadOnly(isReadOnly)); }","    };","})(Layout);",""]};
+	}
+	__cov_gcVMJ_y9osIbr2sq2ehulA = __cov_gcVMJ_y9osIbr2sq2ehulA['/home/travis/build/Niondir/iot-dashboard/src/pageLayout.tsx'];
+	__cov_gcVMJ_y9osIbr2sq2ehulA.s['1']++;var __extends=(__cov_gcVMJ_y9osIbr2sq2ehulA.b['1'][0]++,this)&&(__cov_gcVMJ_y9osIbr2sq2ehulA.b['1'][1]++,this.__extends)||(__cov_gcVMJ_y9osIbr2sq2ehulA.b['1'][2]++,function(d,b){__cov_gcVMJ_y9osIbr2sq2ehulA.f['1']++;__cov_gcVMJ_y9osIbr2sq2ehulA.s['2']++;for(var p in b){__cov_gcVMJ_y9osIbr2sq2ehulA.s['3']++;if(b.hasOwnProperty(p)){__cov_gcVMJ_y9osIbr2sq2ehulA.b['2'][0]++;__cov_gcVMJ_y9osIbr2sq2ehulA.s['4']++;d[p]=b[p];}else{__cov_gcVMJ_y9osIbr2sq2ehulA.b['2'][1]++;}}function __(){__cov_gcVMJ_y9osIbr2sq2ehulA.f['2']++;__cov_gcVMJ_y9osIbr2sq2ehulA.s['6']++;this.constructor=d;}__cov_gcVMJ_y9osIbr2sq2ehulA.s['7']++;d.prototype=b===null?(__cov_gcVMJ_y9osIbr2sq2ehulA.b['3'][0]++,Object.create(b)):(__cov_gcVMJ_y9osIbr2sq2ehulA.b['3'][1]++,(__.prototype=b.prototype,new __()));});__cov_gcVMJ_y9osIbr2sq2ehulA.s['8']++;var React=__webpack_require__(20);__cov_gcVMJ_y9osIbr2sq2ehulA.s['9']++;var react_1=__webpack_require__(20);__cov_gcVMJ_y9osIbr2sq2ehulA.s['10']++;var ReactDOM=__webpack_require__(38);__cov_gcVMJ_y9osIbr2sq2ehulA.s['11']++;var react_redux_1=__webpack_require__(39);__cov_gcVMJ_y9osIbr2sq2ehulA.s['12']++;var Global=__webpack_require__(42);__cov_gcVMJ_y9osIbr2sq2ehulA.s['13']++;var widgetGrid_ui_js_1=__webpack_require__(44);__cov_gcVMJ_y9osIbr2sq2ehulA.s['14']++;var layouts_ui_js_1=__webpack_require__(80);__cov_gcVMJ_y9osIbr2sq2ehulA.s['15']++;var widgetConfigDialog_ui_js_1=__webpack_require__(83);__cov_gcVMJ_y9osIbr2sq2ehulA.s['16']++;var dashboardMenuEntry_ui_js_1=__webpack_require__(88);__cov_gcVMJ_y9osIbr2sq2ehulA.s['17']++;var importExportDialog_ui_js_1=__webpack_require__(89);__cov_gcVMJ_y9osIbr2sq2ehulA.s['18']++;var datasourceConfigDialog_ui_js_1=__webpack_require__(91);__cov_gcVMJ_y9osIbr2sq2ehulA.s['19']++;var datasourceNavItem_ui_js_1=__webpack_require__(92);__cov_gcVMJ_y9osIbr2sq2ehulA.s['20']++;var widgetsNavItem_ui_js_1=__webpack_require__(93);__cov_gcVMJ_y9osIbr2sq2ehulA.s['21']++;var pluginNavItem_ui_js_1=__webpack_require__(94);__cov_gcVMJ_y9osIbr2sq2ehulA.s['22']++;var pluginsDialog_ui_js_1=__webpack_require__(95);__cov_gcVMJ_y9osIbr2sq2ehulA.s['23']++;var Persistence=__webpack_require__(97);__cov_gcVMJ_y9osIbr2sq2ehulA.s['24']++;var Layout=function(_super){__cov_gcVMJ_y9osIbr2sq2ehulA.f['3']++;__cov_gcVMJ_y9osIbr2sq2ehulA.s['25']++;__extends(Layout,_super);function Layout(props){__cov_gcVMJ_y9osIbr2sq2ehulA.f['4']++;__cov_gcVMJ_y9osIbr2sq2ehulA.s['27']++;_super.call(this,props);__cov_gcVMJ_y9osIbr2sq2ehulA.s['28']++;this.state={hover:false};}__cov_gcVMJ_y9osIbr2sq2ehulA.s['29']++;Layout.prototype.onReadOnlyModeKeyPress=function(e){__cov_gcVMJ_y9osIbr2sq2ehulA.f['5']++;__cov_gcVMJ_y9osIbr2sq2ehulA.s['30']++;var intKey=window.event?(__cov_gcVMJ_y9osIbr2sq2ehulA.b['4'][0]++,e.which):(__cov_gcVMJ_y9osIbr2sq2ehulA.b['4'][1]++,e.keyCode);__cov_gcVMJ_y9osIbr2sq2ehulA.s['31']++;if(intKey===27){__cov_gcVMJ_y9osIbr2sq2ehulA.b['5'][0]++;__cov_gcVMJ_y9osIbr2sq2ehulA.s['32']++;this.props.setReadOnly(!this.props.isReadOnly);}else{__cov_gcVMJ_y9osIbr2sq2ehulA.b['5'][1]++;}};__cov_gcVMJ_y9osIbr2sq2ehulA.s['33']++;Layout.prototype.componentDidMount=function(){__cov_gcVMJ_y9osIbr2sq2ehulA.f['6']++;__cov_gcVMJ_y9osIbr2sq2ehulA.s['34']++;this.onReadOnlyModeKeyPress=this.onReadOnlyModeKeyPress.bind(this);__cov_gcVMJ_y9osIbr2sq2ehulA.s['35']++;ReactDOM.findDOMNode(this).offsetParent.addEventListener('keydown',this.onReadOnlyModeKeyPress);};__cov_gcVMJ_y9osIbr2sq2ehulA.s['36']++;Layout.prototype.render=function(){__cov_gcVMJ_y9osIbr2sq2ehulA.f['7']++;__cov_gcVMJ_y9osIbr2sq2ehulA.s['37']++;var _this=this;__cov_gcVMJ_y9osIbr2sq2ehulA.s['38']++;var props=this.props;__cov_gcVMJ_y9osIbr2sq2ehulA.s['39']++;var showMenu=(__cov_gcVMJ_y9osIbr2sq2ehulA.b['6'][0]++,!props.isReadOnly)||(__cov_gcVMJ_y9osIbr2sq2ehulA.b['6'][1]++,this.state.hover);__cov_gcVMJ_y9osIbr2sq2ehulA.s['40']++;return React.createElement('div',{onKeyUp:function(event){__cov_gcVMJ_y9osIbr2sq2ehulA.f['8']++;__cov_gcVMJ_y9osIbr2sq2ehulA.s['41']++;return _this.onReadOnlyModeKeyPress(event);}},React.createElement('div',null,React.createElement(widgetConfigDialog_ui_js_1.default,null),React.createElement(importExportDialog_ui_js_1.default,null),React.createElement(datasourceConfigDialog_ui_js_1.default,null),React.createElement(pluginsDialog_ui_js_1.default,null)),React.createElement('div',{className:'container'},React.createElement('div',{className:showMenu?(__cov_gcVMJ_y9osIbr2sq2ehulA.b['7'][0]++,'menu-trigger'):(__cov_gcVMJ_y9osIbr2sq2ehulA.b['7'][1]++,'menu-trigger'),onMouseOver:function(){__cov_gcVMJ_y9osIbr2sq2ehulA.f['9']++;__cov_gcVMJ_y9osIbr2sq2ehulA.s['42']++;_this.setState({hover:true});},onMouseEnter:function(){__cov_gcVMJ_y9osIbr2sq2ehulA.f['10']++;__cov_gcVMJ_y9osIbr2sq2ehulA.s['43']++;_this.setState({hover:true});}}),React.createElement('div',{className:'ui inverted fixed main menu '+(showMenu?(__cov_gcVMJ_y9osIbr2sq2ehulA.b['8'][0]++,'topnav--visible'):(__cov_gcVMJ_y9osIbr2sq2ehulA.b['8'][1]++,'topnav--hidden')),onMouseOver:function(){__cov_gcVMJ_y9osIbr2sq2ehulA.f['11']++;__cov_gcVMJ_y9osIbr2sq2ehulA.s['44']++;_this.setState({hover:true});},onMouseLeave:function(){__cov_gcVMJ_y9osIbr2sq2ehulA.f['12']++;__cov_gcVMJ_y9osIbr2sq2ehulA.s['45']++;_this.setState({hover:false});}},React.createElement('div',{className:'ui container'},React.createElement('a',{href:'#',className:'header item'},'Dashboard'),React.createElement(dashboardMenuEntry_ui_js_1.default,null),React.createElement(widgetsNavItem_ui_js_1.default,null),React.createElement(datasourceNavItem_ui_js_1.default,null),React.createElement(pluginNavItem_ui_js_1.default,null),React.createElement(layouts_ui_js_1.default,null),React.createElement('a',{className:'item',onClick:function(){__cov_gcVMJ_y9osIbr2sq2ehulA.f['13']++;__cov_gcVMJ_y9osIbr2sq2ehulA.s['46']++;return Persistence.clearData();}},React.createElement('i',{className:'red bomb icon'}),'Reset Everything!'),React.createElement('a',{className:'item',onClick:function(){__cov_gcVMJ_y9osIbr2sq2ehulA.f['14']++;__cov_gcVMJ_y9osIbr2sq2ehulA.s['47']++;return props.setReadOnly(!props.isReadOnly);}},React.createElement('i',{className:(props.isReadOnly?(__cov_gcVMJ_y9osIbr2sq2ehulA.b['9'][0]++,'lock'):(__cov_gcVMJ_y9osIbr2sq2ehulA.b['9'][1]++,'unlock alternate'))+' icon'}),' '),React.createElement('div',{className:'header selectable right item'},'v',this.props.config.version,'\xA0',this.props.config.revisionShort))),React.createElement('div',{className:'ui grid'},React.createElement(widgetGrid_ui_js_1.default,null))));};__cov_gcVMJ_y9osIbr2sq2ehulA.s['48']++;return Layout;}(react_1.Component);__cov_gcVMJ_y9osIbr2sq2ehulA.s['49']++;exports.Layout=Layout;__cov_gcVMJ_y9osIbr2sq2ehulA.s['50']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_gcVMJ_y9osIbr2sq2ehulA.s['51']++;exports.default=react_redux_1.connect(function(state){__cov_gcVMJ_y9osIbr2sq2ehulA.f['15']++;__cov_gcVMJ_y9osIbr2sq2ehulA.s['52']++;return{isReadOnly:state.global.isReadOnly,config:state.config};},function(dispatch){__cov_gcVMJ_y9osIbr2sq2ehulA.f['16']++;__cov_gcVMJ_y9osIbr2sq2ehulA.s['53']++;return{setReadOnly:function(isReadOnly){__cov_gcVMJ_y9osIbr2sq2ehulA.f['17']++;__cov_gcVMJ_y9osIbr2sq2ehulA.s['54']++;return dispatch(Global.setReadOnly(isReadOnly));}};})(Layout);
 
 
 /***/ },
 /* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Action = __webpack_require__(43);
-	exports.initialState = {
-	    isReadOnly: false
-	};
-	function setReadOnly(isReadOnly) {
-	    return function (dispatch) {
-	        dispatch(setReadOnlyAction(isReadOnly));
-	    };
+	var __cov_oTlcg4A0oMYyIUj2r1$zRQ = (Function('return this'))();
+	if (!__cov_oTlcg4A0oMYyIUj2r1$zRQ.__coverage__) { __cov_oTlcg4A0oMYyIUj2r1$zRQ.__coverage__ = {}; }
+	__cov_oTlcg4A0oMYyIUj2r1$zRQ = __cov_oTlcg4A0oMYyIUj2r1$zRQ.__coverage__;
+	if (!(__cov_oTlcg4A0oMYyIUj2r1$zRQ['/home/travis/build/Niondir/iot-dashboard/src/dashboard/global.js'])) {
+	   __cov_oTlcg4A0oMYyIUj2r1$zRQ['/home/travis/build/Niondir/iot-dashboard/src/dashboard/global.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/dashboard/global.js","s":{"1":0,"2":0,"3":1,"4":0,"5":0,"6":0,"7":1,"8":0,"9":1,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0},"b":{"1":[0,0],"2":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0},"fnMap":{"1":{"name":"setReadOnly","line":9,"loc":{"start":{"line":9,"column":0},"end":{"line":9,"column":33}}},"2":{"name":"(anonymous_2)","line":10,"loc":{"start":{"line":10,"column":11},"end":{"line":10,"column":31}}},"3":{"name":"setReadOnlyAction","line":15,"loc":{"start":{"line":15,"column":0},"end":{"line":15,"column":39}}},"4":{"name":"global","line":21,"loc":{"start":{"line":21,"column":0},"end":{"line":21,"column":31}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":39}},"2":{"start":{"line":6,"column":0},"end":{"line":8,"column":2}},"3":{"start":{"line":9,"column":0},"end":{"line":13,"column":1}},"4":{"start":{"line":10,"column":4},"end":{"line":12,"column":6}},"5":{"start":{"line":11,"column":8},"end":{"line":11,"column":48}},"6":{"start":{"line":14,"column":0},"end":{"line":14,"column":34}},"7":{"start":{"line":15,"column":0},"end":{"line":20,"column":1}},"8":{"start":{"line":16,"column":4},"end":{"line":19,"column":6}},"9":{"start":{"line":21,"column":0},"end":{"line":31,"column":1}},"10":{"start":{"line":22,"column":4},"end":{"line":22,"column":59}},"11":{"start":{"line":22,"column":28},"end":{"line":22,"column":57}},"12":{"start":{"line":23,"column":4},"end":{"line":30,"column":5}},"13":{"start":{"line":25,"column":12},"end":{"line":27,"column":15}},"14":{"start":{"line":29,"column":12},"end":{"line":29,"column":25}},"15":{"start":{"line":32,"column":0},"end":{"line":32,"column":24}}},"branchMap":{"1":{"line":22,"type":"if","locations":[{"start":{"line":22,"column":4},"end":{"line":22,"column":4}},{"start":{"line":22,"column":4},"end":{"line":22,"column":4}}]},"2":{"line":23,"type":"switch","locations":[{"start":{"line":24,"column":8},"end":{"line":27,"column":15}},{"start":{"line":28,"column":8},"end":{"line":29,"column":25}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var Action = require('../actionNames');","exports.initialState = {","    isReadOnly: false","};","function setReadOnly(isReadOnly) {","    return function (dispatch) {","        dispatch(setReadOnlyAction(isReadOnly));","    };","}","exports.setReadOnly = setReadOnly;","function setReadOnlyAction(isReadOnly) {","    return {","        type: Action.SET_READONLY,","        isReadOnly: isReadOnly","    };","}","function global(state, action) {","    if (state === void 0) { state = exports.initialState; }","    switch (action.type) {","        case Action.SET_READONLY:","            return Object.assign({}, state, {","                isReadOnly: action.isReadOnly","            });","        default:","            return state;","    }","}","exports.global = global;",""]};
 	}
-	exports.setReadOnly = setReadOnly;
-	function setReadOnlyAction(isReadOnly) {
-	    return {
-	        type: Action.SET_READONLY,
-	        isReadOnly: isReadOnly
-	    };
-	}
-	function global(state, action) {
-	    if (state === void 0) { state = exports.initialState; }
-	    switch (action.type) {
-	        case Action.SET_READONLY:
-	            return Object.assign({}, state, {
-	                isReadOnly: action.isReadOnly
-	            });
-	        default:
-	            return state;
-	    }
-	}
-	exports.global = global;
+	__cov_oTlcg4A0oMYyIUj2r1$zRQ = __cov_oTlcg4A0oMYyIUj2r1$zRQ['/home/travis/build/Niondir/iot-dashboard/src/dashboard/global.js'];
+	__cov_oTlcg4A0oMYyIUj2r1$zRQ.s['1']++;var Action=__webpack_require__(43);__cov_oTlcg4A0oMYyIUj2r1$zRQ.s['2']++;exports.initialState={isReadOnly:false};function setReadOnly(isReadOnly){__cov_oTlcg4A0oMYyIUj2r1$zRQ.f['1']++;__cov_oTlcg4A0oMYyIUj2r1$zRQ.s['4']++;return function(dispatch){__cov_oTlcg4A0oMYyIUj2r1$zRQ.f['2']++;__cov_oTlcg4A0oMYyIUj2r1$zRQ.s['5']++;dispatch(setReadOnlyAction(isReadOnly));};}__cov_oTlcg4A0oMYyIUj2r1$zRQ.s['6']++;exports.setReadOnly=setReadOnly;function setReadOnlyAction(isReadOnly){__cov_oTlcg4A0oMYyIUj2r1$zRQ.f['3']++;__cov_oTlcg4A0oMYyIUj2r1$zRQ.s['8']++;return{type:Action.SET_READONLY,isReadOnly:isReadOnly};}function global(state,action){__cov_oTlcg4A0oMYyIUj2r1$zRQ.f['4']++;__cov_oTlcg4A0oMYyIUj2r1$zRQ.s['10']++;if(state===void 0){__cov_oTlcg4A0oMYyIUj2r1$zRQ.b['1'][0]++;__cov_oTlcg4A0oMYyIUj2r1$zRQ.s['11']++;state=exports.initialState;}else{__cov_oTlcg4A0oMYyIUj2r1$zRQ.b['1'][1]++;}__cov_oTlcg4A0oMYyIUj2r1$zRQ.s['12']++;switch(action.type){case Action.SET_READONLY:__cov_oTlcg4A0oMYyIUj2r1$zRQ.b['2'][0]++;__cov_oTlcg4A0oMYyIUj2r1$zRQ.s['13']++;return Object.assign({},state,{isReadOnly:action.isReadOnly});default:__cov_oTlcg4A0oMYyIUj2r1$zRQ.b['2'][1]++;__cov_oTlcg4A0oMYyIUj2r1$zRQ.s['14']++;return state;}}__cov_oTlcg4A0oMYyIUj2r1$zRQ.s['15']++;exports.global=global;
 
 
 /***/ },
 /* 43 */
 /***/ function(module, exports) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	exports.CLEAR_STATE = "CLEAR_STATE";
-	// Dashboard
-	exports.DASHBOARD_IMPORT = "DASHBOARD_IMPORT";
-	exports.SET_READONLY = "SET_READONLY";
-	// Layouts
-	exports.ADD_LAYOUT = "ADD_LAYOUT";
-	exports.UPDATE_LAYOUT = "UPDATE_LAYOUT";
-	exports.DELETE_LAYOUT = "DELETE_LAYOUT";
-	exports.LOAD_LAYOUT = "LOAD_LAYOUT";
-	exports.SET_CURRENT_LAYOUT = "SET_CURRENT_LAYOUT";
-	// Widgets
-	exports.ADD_WIDGET = "ADD_WIDGET";
-	exports.UPDATE_WIDGET_PROPS = "UPDATE_WIDGET_PROPS";
-	exports.DELETE_WIDGET = "DELETE_WIDGET";
-	exports.UPDATE_WIDGET_LAYOUT = "UPDATE_WIDGET_LAYOUT";
-	exports.START_CREATE_WIDGET = "START_CREATE_WIDGET";
-	exports.START_CONFIGURE_WIDGET = "START_CONFIGURE_WIDGET";
-	// Datasources
-	exports.ADD_DATASOURCE = "ADD_DATASOURCE";
-	exports.UPDATE_DATASOURCE = "UPDATE_DATASOURCE";
-	exports.DELETE_DATASOURCE = "DELETE_DATASOURCE";
-	exports.SET_DATASOURCE_DATA = "SET_DATASOURCE_DATA";
-	exports.APPEND_DATASOURCE_DATA = "APPEND_DATASOURCE_DATA";
-	// Plugins
-	exports.ADD_WIDGET_PLUGIN = "ADD_WIDGET_PLUGIN";
-	exports.ADD_DATASOURCE_PLUGIN = "ADD_DATASOURCE_PLUGIN";
-	exports.DELETE_WIDGET_PLUGIN = "DELETE_WIDGET_PLUGIN";
-	exports.DELETE_DATASOURCE_PLUGIN = "DELETE_DATASOURCE_PLUGIN";
-	// Modal
-	exports.SHOW_MODAL = "SHOW_MODAL";
-	exports.HIDE_MODAL = "HIDE_MODAL";
+	var __cov_gqkqf4ho0SwRiW4Cq$HNYg = (Function('return this'))();
+	if (!__cov_gqkqf4ho0SwRiW4Cq$HNYg.__coverage__) { __cov_gqkqf4ho0SwRiW4Cq$HNYg.__coverage__ = {}; }
+	__cov_gqkqf4ho0SwRiW4Cq$HNYg = __cov_gqkqf4ho0SwRiW4Cq$HNYg.__coverage__;
+	if (!(__cov_gqkqf4ho0SwRiW4Cq$HNYg['/home/travis/build/Niondir/iot-dashboard/src/actionNames.ts'])) {
+	   __cov_gqkqf4ho0SwRiW4Cq$HNYg['/home/travis/build/Niondir/iot-dashboard/src/actionNames.ts'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/actionNames.ts","s":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0},"b":{},"f":{},"fnMap":{},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":36}},"2":{"start":{"line":7,"column":0},"end":{"line":7,"column":46}},"3":{"start":{"line":8,"column":0},"end":{"line":8,"column":38}},"4":{"start":{"line":10,"column":0},"end":{"line":10,"column":34}},"5":{"start":{"line":11,"column":0},"end":{"line":11,"column":40}},"6":{"start":{"line":12,"column":0},"end":{"line":12,"column":40}},"7":{"start":{"line":13,"column":0},"end":{"line":13,"column":36}},"8":{"start":{"line":14,"column":0},"end":{"line":14,"column":50}},"9":{"start":{"line":16,"column":0},"end":{"line":16,"column":34}},"10":{"start":{"line":17,"column":0},"end":{"line":17,"column":52}},"11":{"start":{"line":18,"column":0},"end":{"line":18,"column":40}},"12":{"start":{"line":19,"column":0},"end":{"line":19,"column":54}},"13":{"start":{"line":20,"column":0},"end":{"line":20,"column":52}},"14":{"start":{"line":21,"column":0},"end":{"line":21,"column":58}},"15":{"start":{"line":23,"column":0},"end":{"line":23,"column":42}},"16":{"start":{"line":24,"column":0},"end":{"line":24,"column":48}},"17":{"start":{"line":25,"column":0},"end":{"line":25,"column":48}},"18":{"start":{"line":26,"column":0},"end":{"line":26,"column":52}},"19":{"start":{"line":27,"column":0},"end":{"line":27,"column":58}},"20":{"start":{"line":29,"column":0},"end":{"line":29,"column":48}},"21":{"start":{"line":30,"column":0},"end":{"line":30,"column":56}},"22":{"start":{"line":31,"column":0},"end":{"line":31,"column":54}},"23":{"start":{"line":32,"column":0},"end":{"line":32,"column":62}},"24":{"start":{"line":34,"column":0},"end":{"line":34,"column":34}},"25":{"start":{"line":35,"column":0},"end":{"line":35,"column":34}}},"branchMap":{},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","exports.CLEAR_STATE = \"CLEAR_STATE\";","// Dashboard","exports.DASHBOARD_IMPORT = \"DASHBOARD_IMPORT\";","exports.SET_READONLY = \"SET_READONLY\";","// Layouts","exports.ADD_LAYOUT = \"ADD_LAYOUT\";","exports.UPDATE_LAYOUT = \"UPDATE_LAYOUT\";","exports.DELETE_LAYOUT = \"DELETE_LAYOUT\";","exports.LOAD_LAYOUT = \"LOAD_LAYOUT\";","exports.SET_CURRENT_LAYOUT = \"SET_CURRENT_LAYOUT\";","// Widgets","exports.ADD_WIDGET = \"ADD_WIDGET\";","exports.UPDATE_WIDGET_PROPS = \"UPDATE_WIDGET_PROPS\";","exports.DELETE_WIDGET = \"DELETE_WIDGET\";","exports.UPDATE_WIDGET_LAYOUT = \"UPDATE_WIDGET_LAYOUT\";","exports.START_CREATE_WIDGET = \"START_CREATE_WIDGET\";","exports.START_CONFIGURE_WIDGET = \"START_CONFIGURE_WIDGET\";","// Datasources","exports.ADD_DATASOURCE = \"ADD_DATASOURCE\";","exports.UPDATE_DATASOURCE = \"UPDATE_DATASOURCE\";","exports.DELETE_DATASOURCE = \"DELETE_DATASOURCE\";","exports.SET_DATASOURCE_DATA = \"SET_DATASOURCE_DATA\";","exports.APPEND_DATASOURCE_DATA = \"APPEND_DATASOURCE_DATA\";","// Plugins","exports.ADD_WIDGET_PLUGIN = \"ADD_WIDGET_PLUGIN\";","exports.ADD_DATASOURCE_PLUGIN = \"ADD_DATASOURCE_PLUGIN\";","exports.DELETE_WIDGET_PLUGIN = \"DELETE_WIDGET_PLUGIN\";","exports.DELETE_DATASOURCE_PLUGIN = \"DELETE_DATASOURCE_PLUGIN\";","// Modal","exports.SHOW_MODAL = \"SHOW_MODAL\";","exports.HIDE_MODAL = \"HIDE_MODAL\";",""]};
+	}
+	__cov_gqkqf4ho0SwRiW4Cq$HNYg = __cov_gqkqf4ho0SwRiW4Cq$HNYg['/home/travis/build/Niondir/iot-dashboard/src/actionNames.ts'];
+	__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['1']++;exports.CLEAR_STATE='CLEAR_STATE';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['2']++;exports.DASHBOARD_IMPORT='DASHBOARD_IMPORT';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['3']++;exports.SET_READONLY='SET_READONLY';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['4']++;exports.ADD_LAYOUT='ADD_LAYOUT';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['5']++;exports.UPDATE_LAYOUT='UPDATE_LAYOUT';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['6']++;exports.DELETE_LAYOUT='DELETE_LAYOUT';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['7']++;exports.LOAD_LAYOUT='LOAD_LAYOUT';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['8']++;exports.SET_CURRENT_LAYOUT='SET_CURRENT_LAYOUT';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['9']++;exports.ADD_WIDGET='ADD_WIDGET';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['10']++;exports.UPDATE_WIDGET_PROPS='UPDATE_WIDGET_PROPS';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['11']++;exports.DELETE_WIDGET='DELETE_WIDGET';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['12']++;exports.UPDATE_WIDGET_LAYOUT='UPDATE_WIDGET_LAYOUT';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['13']++;exports.START_CREATE_WIDGET='START_CREATE_WIDGET';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['14']++;exports.START_CONFIGURE_WIDGET='START_CONFIGURE_WIDGET';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['15']++;exports.ADD_DATASOURCE='ADD_DATASOURCE';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['16']++;exports.UPDATE_DATASOURCE='UPDATE_DATASOURCE';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['17']++;exports.DELETE_DATASOURCE='DELETE_DATASOURCE';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['18']++;exports.SET_DATASOURCE_DATA='SET_DATASOURCE_DATA';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['19']++;exports.APPEND_DATASOURCE_DATA='APPEND_DATASOURCE_DATA';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['20']++;exports.ADD_WIDGET_PLUGIN='ADD_WIDGET_PLUGIN';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['21']++;exports.ADD_DATASOURCE_PLUGIN='ADD_DATASOURCE_PLUGIN';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['22']++;exports.DELETE_WIDGET_PLUGIN='DELETE_WIDGET_PLUGIN';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['23']++;exports.DELETE_DATASOURCE_PLUGIN='DELETE_DATASOURCE_PLUGIN';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['24']++;exports.SHOW_MODAL='SHOW_MODAL';__cov_gqkqf4ho0SwRiW4Cq$HNYg.s['25']++;exports.HIDE_MODAL='HIDE_MODAL';
 
 
 /***/ },
 /* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var React = __webpack_require__(20);
-	var react_1 = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(39);
-	var _ = __webpack_require__(21);
-	var Widgets = __webpack_require__(45);
-	var widgetFrame_ui_1 = __webpack_require__(48);
-	var widthProvider_ui_1 = __webpack_require__(64);
-	var react_grid_layout_1 = __webpack_require__(65);
-	var react_2 = __webpack_require__(20);
-	var ResponsiveGrid = widthProvider_ui_1.default(react_grid_layout_1.Responsive);
-	__webpack_require__(78);
-	var breakpoints = { lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 };
-	var cols = { lg: 12, md: 12, sm: 12, xs: 6, xxs: 3 };
-	var WidgetGrid = (function (_super) {
-	    __extends(WidgetGrid, _super);
-	    function WidgetGrid() {
-	        _super.apply(this, arguments);
-	    }
-	    WidgetGrid.prototype.onLayoutChange = function (layout) {
-	        if (this.props.onLayoutChange) {
-	            this.props.onLayoutChange(layout);
-	        }
-	    };
-	    WidgetGrid.prototype.render = function () {
-	        var props = this.props;
-	        var widgetStates = this.props.widgets;
-	        // TODO: Remove unknown widget from state
-	        var widgets = widgetStates.map(function (widgetState) {
-	            var widgetPlugin = props.widgetPlugins[widgetState.type];
-	            /*
-	            if (!widgetPlugin) {
-	                // TODO: Render widget with error message - currently a loading indicator is displayed and the setting button is hidden
-	                console.warn("No WidgetPlugin for type '" + widgetState.type + "'! Skipping rendering.");
-	                return null;
-	            } */
-	            // WidgetFrame must be loaded as function, else the grid is not working properly.
-	            return widgetFrame_ui_1.default({ widget: widgetState, widgetPlugin: widgetPlugin, isReadOnly: props.isReadOnly });
-	        }).filter(function (frame) { return frame !== null; });
-	        /* //Does NOT work that way:
-	         let widgets = widgetData.map((data) => <WidgetFrame {...data}
-	         key={data.id}
-	         _grid={{x: data.col, y: data.row, w: data.width, h: data.height}}
-	         />);*/
-	        return (React.createElement(ResponsiveGrid, {className: "column", rowHeight: Widgets.ROW_HEIGHT, breakpoints: breakpoints, cols: cols, draggableCancel: ".no-drag", draggableHandle: ".drag", onLayoutChange: this.onLayoutChange.bind(this)}, widgets));
-	    };
-	    return WidgetGrid;
-	}(react_1.Component));
-	WidgetGrid.propTypes = {
-	    widgets: react_2.PropTypes.array.isRequired,
-	    datasources: react_2.PropTypes.object.isRequired,
-	    widgetPlugins: react_2.PropTypes.object.isRequired,
-	    onLayoutChange: react_2.PropTypes.func,
-	    deleteWidget: react_2.PropTypes.func,
-	    isReadOnly: react_2.PropTypes.bool.isRequired
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = react_redux_1.connect(function (state) {
-	    return {
-	        widgets: _.valuesIn(state.widgets) || [],
-	        datasources: state.datasources || {},
-	        widgetPlugins: state.widgetPlugins || {},
-	        isReadOnly: state.global.isReadOnly
-	    };
-	}, function (dispatch) {
-	    return {
-	        onLayoutChange: function (layout) {
-	            dispatch(Widgets.updateLayout(layout));
-	        },
-	        deleteWidget: function (id) { return dispatch(Widgets.deleteWidget(id)); }
-	    };
-	})(WidgetGrid);
+	var __cov_Y7lXIKZ4V_ZtCh_gl5dUtg = (Function('return this'))();
+	if (!__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.__coverage__) { __cov_Y7lXIKZ4V_ZtCh_gl5dUtg.__coverage__ = {}; }
+	__cov_Y7lXIKZ4V_ZtCh_gl5dUtg = __cov_Y7lXIKZ4V_ZtCh_gl5dUtg.__coverage__;
+	if (!(__cov_Y7lXIKZ4V_ZtCh_gl5dUtg['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetGrid.ui.js'])) {
+	   __cov_Y7lXIKZ4V_ZtCh_gl5dUtg['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetGrid.ui.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetGrid.ui.js","s":{"1":0,"2":0,"3":0,"4":0,"5":1,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":1,"24":0,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":0,"38":0,"39":0,"40":0,"41":0,"42":0,"43":0},"b":{"1":[0,0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0],"7":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0},"fnMap":{"1":{"name":"(anonymous_1)","line":5,"loc":{"start":{"line":5,"column":44},"end":{"line":5,"column":60}}},"2":{"name":"__","line":7,"loc":{"start":{"line":7,"column":4},"end":{"line":7,"column":18}}},"3":{"name":"(anonymous_3)","line":23,"loc":{"start":{"line":23,"column":18},"end":{"line":23,"column":36}}},"4":{"name":"WidgetGrid","line":25,"loc":{"start":{"line":25,"column":4},"end":{"line":25,"column":26}}},"5":{"name":"(anonymous_5)","line":28,"loc":{"start":{"line":28,"column":42},"end":{"line":28,"column":60}}},"6":{"name":"(anonymous_6)","line":33,"loc":{"start":{"line":33,"column":34},"end":{"line":33,"column":46}}},"7":{"name":"(anonymous_7)","line":37,"loc":{"start":{"line":37,"column":39},"end":{"line":37,"column":62}}},"8":{"name":"(anonymous_8)","line":47,"loc":{"start":{"line":47,"column":18},"end":{"line":47,"column":35}}},"9":{"name":"(anonymous_9)","line":66,"loc":{"start":{"line":66,"column":40},"end":{"line":66,"column":57}}},"10":{"name":"(anonymous_10)","line":73,"loc":{"start":{"line":73,"column":3},"end":{"line":73,"column":23}}},"11":{"name":"(anonymous_11)","line":75,"loc":{"start":{"line":75,"column":24},"end":{"line":75,"column":42}}},"12":{"name":"(anonymous_12)","line":78,"loc":{"start":{"line":78,"column":22},"end":{"line":78,"column":36}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":9,"column":2}},"2":{"start":{"line":6,"column":4},"end":{"line":6,"column":58}},"3":{"start":{"line":6,"column":21},"end":{"line":6,"column":58}},"4":{"start":{"line":6,"column":46},"end":{"line":6,"column":58}},"5":{"start":{"line":7,"column":4},"end":{"line":7,"column":43}},"6":{"start":{"line":7,"column":20},"end":{"line":7,"column":41}},"7":{"start":{"line":8,"column":4},"end":{"line":8,"column":89}},"8":{"start":{"line":10,"column":0},"end":{"line":10,"column":29}},"9":{"start":{"line":11,"column":0},"end":{"line":11,"column":31}},"10":{"start":{"line":12,"column":0},"end":{"line":12,"column":43}},"11":{"start":{"line":13,"column":0},"end":{"line":13,"column":26}},"12":{"start":{"line":14,"column":0},"end":{"line":14,"column":35}},"13":{"start":{"line":15,"column":0},"end":{"line":15,"column":51}},"14":{"start":{"line":16,"column":0},"end":{"line":16,"column":55}},"15":{"start":{"line":17,"column":0},"end":{"line":17,"column":55}},"16":{"start":{"line":18,"column":0},"end":{"line":18,"column":31}},"17":{"start":{"line":19,"column":0},"end":{"line":19,"column":80}},"18":{"start":{"line":20,"column":0},"end":{"line":20,"column":44}},"19":{"start":{"line":21,"column":0},"end":{"line":21,"column":66}},"20":{"start":{"line":22,"column":0},"end":{"line":22,"column":53}},"21":{"start":{"line":23,"column":0},"end":{"line":56,"column":22}},"22":{"start":{"line":24,"column":4},"end":{"line":24,"column":34}},"23":{"start":{"line":25,"column":4},"end":{"line":27,"column":5}},"24":{"start":{"line":26,"column":8},"end":{"line":26,"column":38}},"25":{"start":{"line":28,"column":4},"end":{"line":32,"column":6}},"26":{"start":{"line":29,"column":8},"end":{"line":31,"column":9}},"27":{"start":{"line":30,"column":12},"end":{"line":30,"column":46}},"28":{"start":{"line":33,"column":4},"end":{"line":54,"column":6}},"29":{"start":{"line":34,"column":8},"end":{"line":34,"column":31}},"30":{"start":{"line":35,"column":8},"end":{"line":35,"column":46}},"31":{"start":{"line":37,"column":8},"end":{"line":47,"column":63}},"32":{"start":{"line":38,"column":12},"end":{"line":38,"column":69}},"33":{"start":{"line":46,"column":12},"end":{"line":46,"column":127}},"34":{"start":{"line":47,"column":37},"end":{"line":47,"column":59}},"35":{"start":{"line":53,"column":8},"end":{"line":53,"column":257}},"36":{"start":{"line":55,"column":4},"end":{"line":55,"column":22}},"37":{"start":{"line":57,"column":0},"end":{"line":64,"column":2}},"38":{"start":{"line":65,"column":0},"end":{"line":65,"column":62}},"39":{"start":{"line":66,"column":0},"end":{"line":80,"column":15}},"40":{"start":{"line":67,"column":4},"end":{"line":72,"column":6}},"41":{"start":{"line":74,"column":4},"end":{"line":79,"column":6}},"42":{"start":{"line":76,"column":12},"end":{"line":76,"column":51}},"43":{"start":{"line":78,"column":38},"end":{"line":78,"column":80}}},"branchMap":{"1":{"line":5,"type":"binary-expr","locations":[{"start":{"line":5,"column":17},"end":{"line":5,"column":21}},{"start":{"line":5,"column":25},"end":{"line":5,"column":39}},{"start":{"line":5,"column":44},"end":{"line":9,"column":1}}]},"2":{"line":6,"type":"if","locations":[{"start":{"line":6,"column":21},"end":{"line":6,"column":21}},{"start":{"line":6,"column":21},"end":{"line":6,"column":21}}]},"3":{"line":8,"type":"cond-expr","locations":[{"start":{"line":8,"column":31},"end":{"line":8,"column":47}},{"start":{"line":8,"column":51},"end":{"line":8,"column":87}}]},"4":{"line":29,"type":"if","locations":[{"start":{"line":29,"column":8},"end":{"line":29,"column":8}},{"start":{"line":29,"column":8},"end":{"line":29,"column":8}}]},"5":{"line":68,"type":"binary-expr","locations":[{"start":{"line":68,"column":17},"end":{"line":68,"column":42}},{"start":{"line":68,"column":46},"end":{"line":68,"column":48}}]},"6":{"line":69,"type":"binary-expr","locations":[{"start":{"line":69,"column":21},"end":{"line":69,"column":38}},{"start":{"line":69,"column":42},"end":{"line":69,"column":44}}]},"7":{"line":70,"type":"binary-expr","locations":[{"start":{"line":70,"column":23},"end":{"line":70,"column":42}},{"start":{"line":70,"column":46},"end":{"line":70,"column":48}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var __extends = (this && this.__extends) || function (d, b) {","    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];","    function __() { this.constructor = d; }","    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());","};","var React = require(\"react\");","var react_1 = require(\"react\");","var react_redux_1 = require(\"react-redux\");","var _ = require('lodash');","var Widgets = require(\"./widgets\");","var widgetFrame_ui_1 = require(\"./widgetFrame.ui\");","var widthProvider_ui_1 = require(\"./widthProvider.ui\");","var react_grid_layout_1 = require(\"react-grid-layout\");","var react_2 = require(\"react\");","var ResponsiveGrid = widthProvider_ui_1.default(react_grid_layout_1.Responsive);","require('react-grid-layout/css/styles.css');","var breakpoints = { lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 };","var cols = { lg: 12, md: 12, sm: 12, xs: 6, xxs: 3 };","var WidgetGrid = (function (_super) {","    __extends(WidgetGrid, _super);","    function WidgetGrid() {","        _super.apply(this, arguments);","    }","    WidgetGrid.prototype.onLayoutChange = function (layout) {","        if (this.props.onLayoutChange) {","            this.props.onLayoutChange(layout);","        }","    };","    WidgetGrid.prototype.render = function () {","        var props = this.props;","        var widgetStates = this.props.widgets;","        // TODO: Remove unknown widget from state","        var widgets = widgetStates.map(function (widgetState) {","            var widgetPlugin = props.widgetPlugins[widgetState.type];","            /*","            if (!widgetPlugin) {","                // TODO: Render widget with error message - currently a loading indicator is displayed and the setting button is hidden","                console.warn(\"No WidgetPlugin for type '\" + widgetState.type + \"'! Skipping rendering.\");","                return null;","            } */","            // WidgetFrame must be loaded as function, else the grid is not working properly.","            return widgetFrame_ui_1.default({ widget: widgetState, widgetPlugin: widgetPlugin, isReadOnly: props.isReadOnly });","        }).filter(function (frame) { return frame !== null; });","        /* //Does NOT work that way:","         let widgets = widgetData.map((data) => <WidgetFrame {...data}","         key={data.id}","         _grid={{x: data.col, y: data.row, w: data.width, h: data.height}}","         />);*/","        return (React.createElement(ResponsiveGrid, {className: \"column\", rowHeight: Widgets.ROW_HEIGHT, breakpoints: breakpoints, cols: cols, draggableCancel: \".no-drag\", draggableHandle: \".drag\", onLayoutChange: this.onLayoutChange.bind(this)}, widgets));","    };","    return WidgetGrid;","}(react_1.Component));","WidgetGrid.propTypes = {","    widgets: react_2.PropTypes.array.isRequired,","    datasources: react_2.PropTypes.object.isRequired,","    widgetPlugins: react_2.PropTypes.object.isRequired,","    onLayoutChange: react_2.PropTypes.func,","    deleteWidget: react_2.PropTypes.func,","    isReadOnly: react_2.PropTypes.bool.isRequired","};","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = react_redux_1.connect(function (state) {","    return {","        widgets: _.valuesIn(state.widgets) || [],","        datasources: state.datasources || {},","        widgetPlugins: state.widgetPlugins || {},","        isReadOnly: state.global.isReadOnly","    };","}, function (dispatch) {","    return {","        onLayoutChange: function (layout) {","            dispatch(Widgets.updateLayout(layout));","        },","        deleteWidget: function (id) { return dispatch(Widgets.deleteWidget(id)); }","    };","})(WidgetGrid);",""]};
+	}
+	__cov_Y7lXIKZ4V_ZtCh_gl5dUtg = __cov_Y7lXIKZ4V_ZtCh_gl5dUtg['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetGrid.ui.js'];
+	__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['1']++;var __extends=(__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.b['1'][0]++,this)&&(__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.b['1'][1]++,this.__extends)||(__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.b['1'][2]++,function(d,b){__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.f['1']++;__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['2']++;for(var p in b){__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['3']++;if(b.hasOwnProperty(p)){__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.b['2'][0]++;__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['4']++;d[p]=b[p];}else{__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.b['2'][1]++;}}function __(){__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.f['2']++;__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['6']++;this.constructor=d;}__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['7']++;d.prototype=b===null?(__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.b['3'][0]++,Object.create(b)):(__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.b['3'][1]++,(__.prototype=b.prototype,new __()));});__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['8']++;var React=__webpack_require__(20);__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['9']++;var react_1=__webpack_require__(20);__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['10']++;var react_redux_1=__webpack_require__(39);__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['11']++;var _=__webpack_require__(21);__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['12']++;var Widgets=__webpack_require__(45);__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['13']++;var widgetFrame_ui_1=__webpack_require__(48);__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['14']++;var widthProvider_ui_1=__webpack_require__(64);__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['15']++;var react_grid_layout_1=__webpack_require__(65);__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['16']++;var react_2=__webpack_require__(20);__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['17']++;var ResponsiveGrid=widthProvider_ui_1.default(react_grid_layout_1.Responsive);__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['18']++;__webpack_require__(78);__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['19']++;var breakpoints={lg:1200,md:996,sm:768,xs:480,xxs:0};__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['20']++;var cols={lg:12,md:12,sm:12,xs:6,xxs:3};__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['21']++;var WidgetGrid=function(_super){__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.f['3']++;__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['22']++;__extends(WidgetGrid,_super);function WidgetGrid(){__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.f['4']++;__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['24']++;_super.apply(this,arguments);}__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['25']++;WidgetGrid.prototype.onLayoutChange=function(layout){__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.f['5']++;__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['26']++;if(this.props.onLayoutChange){__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.b['4'][0]++;__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['27']++;this.props.onLayoutChange(layout);}else{__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.b['4'][1]++;}};__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['28']++;WidgetGrid.prototype.render=function(){__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.f['6']++;__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['29']++;var props=this.props;__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['30']++;var widgetStates=this.props.widgets;__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['31']++;var widgets=widgetStates.map(function(widgetState){__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.f['7']++;__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['32']++;var widgetPlugin=props.widgetPlugins[widgetState.type];__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['33']++;return widgetFrame_ui_1.default({widget:widgetState,widgetPlugin:widgetPlugin,isReadOnly:props.isReadOnly});}).filter(function(frame){__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.f['8']++;__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['34']++;return frame!==null;});__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['35']++;return React.createElement(ResponsiveGrid,{className:'column',rowHeight:Widgets.ROW_HEIGHT,breakpoints:breakpoints,cols:cols,draggableCancel:'.no-drag',draggableHandle:'.drag',onLayoutChange:this.onLayoutChange.bind(this)},widgets);};__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['36']++;return WidgetGrid;}(react_1.Component);__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['37']++;WidgetGrid.propTypes={widgets:react_2.PropTypes.array.isRequired,datasources:react_2.PropTypes.object.isRequired,widgetPlugins:react_2.PropTypes.object.isRequired,onLayoutChange:react_2.PropTypes.func,deleteWidget:react_2.PropTypes.func,isReadOnly:react_2.PropTypes.bool.isRequired};__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['38']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['39']++;exports.default=react_redux_1.connect(function(state){__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.f['9']++;__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['40']++;return{widgets:(__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.b['5'][0]++,_.valuesIn(state.widgets))||(__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.b['5'][1]++,[]),datasources:(__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.b['6'][0]++,state.datasources)||(__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.b['6'][1]++,{}),widgetPlugins:(__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.b['7'][0]++,state.widgetPlugins)||(__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.b['7'][1]++,{}),isReadOnly:state.global.isReadOnly};},function(dispatch){__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.f['10']++;__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['41']++;return{onLayoutChange:function(layout){__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.f['11']++;__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['42']++;dispatch(Widgets.updateLayout(layout));},deleteWidget:function(id){__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.f['12']++;__cov_Y7lXIKZ4V_ZtCh_gl5dUtg.s['43']++;return dispatch(Widgets.deleteWidget(id));}};})(WidgetGrid);
 
 
 /***/ },
 /* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var react_1 = __webpack_require__(20);
-	var Uuid = __webpack_require__(46);
-	var _ = __webpack_require__(21);
-	var reducer_js_1 = __webpack_require__(47);
-	var Action = __webpack_require__(43);
-	exports.HEADER_HEIGHT = 77;
-	exports.ROW_HEIGHT = 100;
-	exports.initialWidgets = {
-	    "initial_chart": {
-	        "id": "initial_chart",
-	        "type": "chart",
-	        "settings": {
-	            "name": "Random Values",
-	            "datasource": "initial_random_source",
-	            "chartType": "area-spline",
-	            "dataKeys": "[\"value\"]",
-	            "xKey": "x",
-	            "names": "{\"value\": \"My Value\"}",
-	            "gaugeData": "{\"min\":0,\"max\":100,\"units\":\" %\"}"
-	        },
-	        "row": 0,
-	        "col": 0,
-	        "width": 6,
-	        "height": 2,
-	        "availableHeightPx": 123
-	    },
-	    "initial_text": {
-	        "id": "initial_text",
-	        "type": "text",
-	        "settings": {
-	            "name": "Random data",
-	            "datasource": "initial_random_source"
-	        },
-	        "row": 0,
-	        "col": 6,
-	        "width": 6,
-	        "height": 3,
-	        "availableHeightPx": 223
-	    },
-	    "106913f4-44fb-4f69-ab89-5d5ae857cf3c": {
-	        "id": "106913f4-44fb-4f69-ab89-5d5ae857cf3c",
-	        "type": "chart",
-	        "settings": {
-	            "name": "Bars",
-	            "datasource": "initial_random_source",
-	            "chartType": "spline",
-	            "dataKeys": "[\"value\", \"value2\"]",
-	            "xKey": "x",
-	            "names": "{\"value\": \"My Value\"}",
-	            "gaugeData": "{\"min\":0,\"max\":100,\"units\":\" %\"}"
-	        },
-	        "row": 2,
-	        "col": 0,
-	        "width": 6,
-	        "height": 2,
-	        "availableHeightPx": 123
-	    }
-	};
-	exports.widgetPropType = react_1.PropTypes.shape({
-	    id: react_1.PropTypes.string.isRequired,
-	    col: react_1.PropTypes.number.isRequired,
-	    row: react_1.PropTypes.number.isRequired,
-	    width: react_1.PropTypes.number.isRequired,
-	    height: react_1.PropTypes.number.isRequired,
-	    settings: react_1.PropTypes.shape({
-	        name: react_1.PropTypes.string.isRequired
-	    }).isRequired
-	});
-	/* // TODO: better explicitly create initial state? But when? ...
-	 export function createInitialWidgets() {
-	 return function(dispatch: AppState.Dispatch) {
-	 dispatch(addWidget('chart', {
-	 "name": "Random Values",
-	 "datasource": "initial_random_source",
-	 "chartType": "area-spline",
-	 "dataKeys": "[\"value\"]",
-	 "xKey": "x",
-	 "names": "{\"value\": \"My Value\"}",
-	 "gaugeData": "{\"min\":0,\"max\":100,\"units\":\" %\"}"
-	 }, 0, 0, 6, 2));
-	
-	 dispatch(addWidget('text', {
-	 "name": "Random data",
-	 "datasource": "initial_random_source"
-	 }, 0, 6, 6, 3));
-	
-	
-	 dispatch(addWidget('text', {
-	 "name": "Bars",
-	 "datasource": "initial_random_source",
-	 "chartType": "spline",
-	 "dataKeys": "[\"value\", \"value2\"]",
-	 "xKey": "x",
-	 "names": "{\"value\": \"My Value\"}",
-	 "gaugeData": "{\"min\":0,\"max\":100,\"units\":\" %\"}"
-	 }, 2, 0, 6, 2));
-	 }
-	 }
-	 */
-	function createWidget(widgetType, widgetSettings) {
-	    return function (dispatch, getState) {
-	        var widgets = getState().widgets;
-	        var widgetPositions = calcNewWidgetPosition(widgets);
-	        return dispatch(addWidget(widgetType, widgetSettings, widgetPositions.row, widgetPositions.col));
-	    };
+	var __cov_MnIYiItbiblzraX8GbQqiw = (Function('return this'))();
+	if (!__cov_MnIYiItbiblzraX8GbQqiw.__coverage__) { __cov_MnIYiItbiblzraX8GbQqiw.__coverage__ = {}; }
+	__cov_MnIYiItbiblzraX8GbQqiw = __cov_MnIYiItbiblzraX8GbQqiw.__coverage__;
+	if (!(__cov_MnIYiItbiblzraX8GbQqiw['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgets.ts'])) {
+	   __cov_MnIYiItbiblzraX8GbQqiw['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgets.ts'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/widgets/widgets.ts","s":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":1,"11":0,"12":0,"13":0,"14":0,"15":0,"16":1,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":1,"26":0,"27":0,"28":1,"29":0,"30":0,"31":1,"32":0,"33":0,"34":0,"35":1,"36":0,"37":0,"38":0,"39":0,"40":0,"41":0,"42":0,"43":0,"44":0,"45":0,"46":0,"47":0,"48":0,"49":0,"50":0,"51":0,"52":0,"53":0,"54":1,"55":0,"56":1,"57":0,"58":0,"59":0,"60":0,"61":0,"62":0,"63":0,"64":0,"65":0,"66":1,"67":0,"68":0,"69":1,"70":0,"71":0,"72":0,"73":0,"74":0,"75":0,"76":0,"77":0,"78":0,"79":0,"80":0,"81":0,"82":0,"83":0,"84":0},"b":{"1":[0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0,0,0],"6":[0,0],"7":[0,0,0,0],"8":[0,0],"9":[0,0],"10":[0,0],"11":[0,0],"12":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0},"fnMap":{"1":{"name":"createWidget","line":104,"loc":{"start":{"line":104,"column":0},"end":{"line":104,"column":50}}},"2":{"name":"(anonymous_2)","line":105,"loc":{"start":{"line":105,"column":11},"end":{"line":105,"column":41}}},"3":{"name":"addWidget","line":112,"loc":{"start":{"line":112,"column":0},"end":{"line":112,"column":72}}},"4":{"name":"updateWidgetSettings","line":128,"loc":{"start":{"line":128,"column":0},"end":{"line":128,"column":50}}},"5":{"name":"deleteWidget","line":136,"loc":{"start":{"line":136,"column":0},"end":{"line":136,"column":26}}},"6":{"name":"updateLayout","line":143,"loc":{"start":{"line":143,"column":0},"end":{"line":143,"column":31}}},"7":{"name":"widgets","line":151,"loc":{"start":{"line":151,"column":0},"end":{"line":151,"column":32}}},"8":{"name":"(anonymous_8)","line":157,"loc":{"start":{"line":157,"column":24},"end":{"line":157,"column":48}}},"9":{"name":"(anonymous_9)","line":166,"loc":{"start":{"line":166,"column":52},"end":{"line":166,"column":75}}},"10":{"name":"(anonymous_10)","line":170,"loc":{"start":{"line":170,"column":29},"end":{"line":170,"column":52}}},"11":{"name":"calcAvaliableHeight","line":179,"loc":{"start":{"line":179,"column":0},"end":{"line":179,"column":42}}},"12":{"name":"widget","line":183,"loc":{"start":{"line":183,"column":0},"end":{"line":183,"column":31}}},"13":{"name":"layoutById","line":216,"loc":{"start":{"line":216,"column":0},"end":{"line":216,"column":32}}},"14":{"name":"(anonymous_14)","line":217,"loc":{"start":{"line":217,"column":26},"end":{"line":217,"column":39}}},"15":{"name":"calcNewWidgetPosition","line":221,"loc":{"start":{"line":221,"column":0},"end":{"line":221,"column":40}}},"16":{"name":"(anonymous_16)","line":228,"loc":{"start":{"line":228,"column":44},"end":{"line":228,"column":66}}},"17":{"name":"(anonymous_17)","line":239,"loc":{"start":{"line":239,"column":42},"end":{"line":239,"column":72}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":31}},"2":{"start":{"line":6,"column":0},"end":{"line":6,"column":38}},"3":{"start":{"line":7,"column":0},"end":{"line":7,"column":26}},"4":{"start":{"line":8,"column":0},"end":{"line":8,"column":49}},"5":{"start":{"line":9,"column":0},"end":{"line":9,"column":39}},"6":{"start":{"line":10,"column":0},"end":{"line":10,"column":27}},"7":{"start":{"line":11,"column":0},"end":{"line":11,"column":25}},"8":{"start":{"line":12,"column":0},"end":{"line":62,"column":2}},"9":{"start":{"line":63,"column":0},"end":{"line":72,"column":3}},"10":{"start":{"line":104,"column":0},"end":{"line":110,"column":1}},"11":{"start":{"line":105,"column":4},"end":{"line":109,"column":6}},"12":{"start":{"line":106,"column":8},"end":{"line":106,"column":41}},"13":{"start":{"line":107,"column":8},"end":{"line":107,"column":61}},"14":{"start":{"line":108,"column":8},"end":{"line":108,"column":105}},"15":{"start":{"line":111,"column":0},"end":{"line":111,"column":36}},"16":{"start":{"line":112,"column":0},"end":{"line":126,"column":1}},"17":{"start":{"line":113,"column":4},"end":{"line":113,"column":59}},"18":{"start":{"line":113,"column":37},"end":{"line":113,"column":57}},"19":{"start":{"line":114,"column":4},"end":{"line":114,"column":40}},"20":{"start":{"line":114,"column":28},"end":{"line":114,"column":38}},"21":{"start":{"line":115,"column":4},"end":{"line":115,"column":42}},"22":{"start":{"line":115,"column":29},"end":{"line":115,"column":40}},"23":{"start":{"line":116,"column":4},"end":{"line":125,"column":6}},"24":{"start":{"line":127,"column":0},"end":{"line":127,"column":30}},"25":{"start":{"line":128,"column":0},"end":{"line":134,"column":1}},"26":{"start":{"line":129,"column":4},"end":{"line":133,"column":6}},"27":{"start":{"line":135,"column":0},"end":{"line":135,"column":52}},"28":{"start":{"line":136,"column":0},"end":{"line":141,"column":1}},"29":{"start":{"line":137,"column":4},"end":{"line":140,"column":6}},"30":{"start":{"line":142,"column":0},"end":{"line":142,"column":36}},"31":{"start":{"line":143,"column":0},"end":{"line":148,"column":1}},"32":{"start":{"line":144,"column":4},"end":{"line":147,"column":6}},"33":{"start":{"line":149,"column":0},"end":{"line":149,"column":36}},"34":{"start":{"line":150,"column":0},"end":{"line":150,"column":104}},"35":{"start":{"line":151,"column":0},"end":{"line":177,"column":1}},"36":{"start":{"line":152,"column":4},"end":{"line":152,"column":61}},"37":{"start":{"line":152,"column":28},"end":{"line":152,"column":59}},"38":{"start":{"line":153,"column":4},"end":{"line":153,"column":46}},"39":{"start":{"line":154,"column":4},"end":{"line":176,"column":5}},"40":{"start":{"line":156,"column":12},"end":{"line":161,"column":36}},"41":{"start":{"line":158,"column":16},"end":{"line":158,"column":31}},"42":{"start":{"line":159,"column":16},"end":{"line":159,"column":60}},"43":{"start":{"line":160,"column":16},"end":{"line":160,"column":32}},"44":{"start":{"line":163,"column":12},"end":{"line":163,"column":104}},"45":{"start":{"line":164,"column":12},"end":{"line":164,"column":47}},"46":{"start":{"line":166,"column":12},"end":{"line":168,"column":15}},"47":{"start":{"line":167,"column":16},"end":{"line":167,"column":54}},"48":{"start":{"line":169,"column":12},"end":{"line":169,"column":49}},"49":{"start":{"line":170,"column":12},"end":{"line":172,"column":15}},"50":{"start":{"line":171,"column":16},"end":{"line":171,"column":50}},"51":{"start":{"line":173,"column":12},"end":{"line":173,"column":30}},"52":{"start":{"line":175,"column":12},"end":{"line":175,"column":25}},"53":{"start":{"line":178,"column":0},"end":{"line":178,"column":26}},"54":{"start":{"line":179,"column":0},"end":{"line":182,"column":1}},"55":{"start":{"line":181,"column":4},"end":{"line":181,"column":77}},"56":{"start":{"line":183,"column":0},"end":{"line":214,"column":1}},"57":{"start":{"line":184,"column":4},"end":{"line":213,"column":5}},"58":{"start":{"line":186,"column":12},"end":{"line":195,"column":14}},"59":{"start":{"line":197,"column":12},"end":{"line":197,"column":76}},"60":{"start":{"line":199,"column":12},"end":{"line":199,"column":62}},"61":{"start":{"line":200,"column":12},"end":{"line":203,"column":13}},"62":{"start":{"line":201,"column":16},"end":{"line":201,"column":110}},"63":{"start":{"line":202,"column":16},"end":{"line":202,"column":29}},"64":{"start":{"line":204,"column":12},"end":{"line":210,"column":15}},"65":{"start":{"line":212,"column":12},"end":{"line":212,"column":25}},"66":{"start":{"line":216,"column":0},"end":{"line":220,"column":1}},"67":{"start":{"line":217,"column":4},"end":{"line":219,"column":7}},"68":{"start":{"line":218,"column":8},"end":{"line":218,"column":26}},"69":{"start":{"line":221,"column":0},"end":{"line":244,"column":1}},"70":{"start":{"line":222,"column":4},"end":{"line":222,"column":24}},"71":{"start":{"line":225,"column":4},"end":{"line":227,"column":5}},"72":{"start":{"line":226,"column":8},"end":{"line":226,"column":26}},"73":{"start":{"line":228,"column":4},"end":{"line":237,"column":19}},"74":{"start":{"line":229,"column":8},"end":{"line":229,"column":45}},"75":{"start":{"line":230,"column":8},"end":{"line":230,"column":53}},"76":{"start":{"line":231,"column":8},"end":{"line":235,"column":9}},"77":{"start":{"line":232,"column":12},"end":{"line":234,"column":13}},"78":{"start":{"line":233,"column":16},"end":{"line":233,"column":37}},"79":{"start":{"line":236,"column":8},"end":{"line":236,"column":20}},"80":{"start":{"line":238,"column":4},"end":{"line":238,"column":41}},"81":{"start":{"line":239,"column":4},"end":{"line":241,"column":10}},"82":{"start":{"line":240,"column":8},"end":{"line":240,"column":62}},"83":{"start":{"line":243,"column":4},"end":{"line":243,"column":60}},"84":{"start":{"line":245,"column":0},"end":{"line":245,"column":54}}},"branchMap":{"1":{"line":113,"type":"if","locations":[{"start":{"line":113,"column":4},"end":{"line":113,"column":4}},{"start":{"line":113,"column":4},"end":{"line":113,"column":4}}]},"2":{"line":114,"type":"if","locations":[{"start":{"line":114,"column":4},"end":{"line":114,"column":4}},{"start":{"line":114,"column":4},"end":{"line":114,"column":4}}]},"3":{"line":115,"type":"if","locations":[{"start":{"line":115,"column":4},"end":{"line":115,"column":4}},{"start":{"line":115,"column":4},"end":{"line":115,"column":4}}]},"4":{"line":152,"type":"if","locations":[{"start":{"line":152,"column":4},"end":{"line":152,"column":4}},{"start":{"line":152,"column":4},"end":{"line":152,"column":4}}]},"5":{"line":154,"type":"switch","locations":[{"start":{"line":155,"column":8},"end":{"line":161,"column":36}},{"start":{"line":162,"column":8},"end":{"line":164,"column":47}},{"start":{"line":165,"column":8},"end":{"line":173,"column":30}},{"start":{"line":174,"column":8},"end":{"line":175,"column":25}}]},"6":{"line":164,"type":"binary-expr","locations":[{"start":{"line":164,"column":19},"end":{"line":164,"column":40}},{"start":{"line":164,"column":44},"end":{"line":164,"column":46}}]},"7":{"line":184,"type":"switch","locations":[{"start":{"line":185,"column":8},"end":{"line":195,"column":14}},{"start":{"line":196,"column":8},"end":{"line":197,"column":76}},{"start":{"line":198,"column":8},"end":{"line":210,"column":15}},{"start":{"line":211,"column":8},"end":{"line":212,"column":25}}]},"8":{"line":200,"type":"if","locations":[{"start":{"line":200,"column":12},"end":{"line":200,"column":12}},{"start":{"line":200,"column":12},"end":{"line":200,"column":12}}]},"9":{"line":229,"type":"binary-expr","locations":[{"start":{"line":229,"column":25},"end":{"line":229,"column":39}},{"start":{"line":229,"column":43},"end":{"line":229,"column":44}}]},"10":{"line":230,"type":"binary-expr","locations":[{"start":{"line":230,"column":25},"end":{"line":230,"column":47}},{"start":{"line":230,"column":51},"end":{"line":230,"column":52}}]},"11":{"line":231,"type":"if","locations":[{"start":{"line":231,"column":8},"end":{"line":231,"column":8}},{"start":{"line":231,"column":8},"end":{"line":231,"column":8}}]},"12":{"line":240,"type":"cond-expr","locations":[{"start":{"line":240,"column":55},"end":{"line":240,"column":56}},{"start":{"line":240,"column":59},"end":{"line":240,"column":60}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public"," * License, v. 2.0. If a copy of the MPL was not distributed with this"," * file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var react_1 = require(\"react\");","var Uuid = require(\"../util/uuid.js\");","var _ = require(\"lodash\");","var reducer_js_1 = require(\"../util/reducer.js\");","var Action = require(\"../actionNames\");","exports.HEADER_HEIGHT = 77;","exports.ROW_HEIGHT = 100;","exports.initialWidgets = {","    \"initial_chart\": {","        \"id\": \"initial_chart\",","        \"type\": \"chart\",","        \"settings\": {","            \"name\": \"Random Values\",","            \"datasource\": \"initial_random_source\",","            \"chartType\": \"area-spline\",","            \"dataKeys\": \"[\\\"value\\\"]\",","            \"xKey\": \"x\",","            \"names\": \"{\\\"value\\\": \\\"My Value\\\"}\",","            \"gaugeData\": \"{\\\"min\\\":0,\\\"max\\\":100,\\\"units\\\":\\\" %\\\"}\"","        },","        \"row\": 0,","        \"col\": 0,","        \"width\": 6,","        \"height\": 2,","        \"availableHeightPx\": 123","    },","    \"initial_text\": {","        \"id\": \"initial_text\",","        \"type\": \"text\",","        \"settings\": {","            \"name\": \"Random data\",","            \"datasource\": \"initial_random_source\"","        },","        \"row\": 0,","        \"col\": 6,","        \"width\": 6,","        \"height\": 3,","        \"availableHeightPx\": 223","    },","    \"106913f4-44fb-4f69-ab89-5d5ae857cf3c\": {","        \"id\": \"106913f4-44fb-4f69-ab89-5d5ae857cf3c\",","        \"type\": \"chart\",","        \"settings\": {","            \"name\": \"Bars\",","            \"datasource\": \"initial_random_source\",","            \"chartType\": \"spline\",","            \"dataKeys\": \"[\\\"value\\\", \\\"value2\\\"]\",","            \"xKey\": \"x\",","            \"names\": \"{\\\"value\\\": \\\"My Value\\\"}\",","            \"gaugeData\": \"{\\\"min\\\":0,\\\"max\\\":100,\\\"units\\\":\\\" %\\\"}\"","        },","        \"row\": 2,","        \"col\": 0,","        \"width\": 6,","        \"height\": 2,","        \"availableHeightPx\": 123","    }","};","exports.widgetPropType = react_1.PropTypes.shape({","    id: react_1.PropTypes.string.isRequired,","    col: react_1.PropTypes.number.isRequired,","    row: react_1.PropTypes.number.isRequired,","    width: react_1.PropTypes.number.isRequired,","    height: react_1.PropTypes.number.isRequired,","    settings: react_1.PropTypes.shape({","        name: react_1.PropTypes.string.isRequired","    }).isRequired","});","/* // TODO: better explicitly create initial state? But when? ..."," export function createInitialWidgets() {"," return function(dispatch: AppState.Dispatch) {"," dispatch(addWidget('chart', {"," \"name\": \"Random Values\","," \"datasource\": \"initial_random_source\","," \"chartType\": \"area-spline\","," \"dataKeys\": \"[\\\"value\\\"]\","," \"xKey\": \"x\","," \"names\": \"{\\\"value\\\": \\\"My Value\\\"}\","," \"gaugeData\": \"{\\\"min\\\":0,\\\"max\\\":100,\\\"units\\\":\\\" %\\\"}\""," }, 0, 0, 6, 2));",""," dispatch(addWidget('text', {"," \"name\": \"Random data\","," \"datasource\": \"initial_random_source\""," }, 0, 6, 6, 3));","",""," dispatch(addWidget('text', {"," \"name\": \"Bars\","," \"datasource\": \"initial_random_source\","," \"chartType\": \"spline\","," \"dataKeys\": \"[\\\"value\\\", \\\"value2\\\"]\","," \"xKey\": \"x\","," \"names\": \"{\\\"value\\\": \\\"My Value\\\"}\","," \"gaugeData\": \"{\\\"min\\\":0,\\\"max\\\":100,\\\"units\\\":\\\" %\\\"}\""," }, 2, 0, 6, 2));"," }"," }"," */","function createWidget(widgetType, widgetSettings) {","    return function (dispatch, getState) {","        var widgets = getState().widgets;","        var widgetPositions = calcNewWidgetPosition(widgets);","        return dispatch(addWidget(widgetType, widgetSettings, widgetPositions.row, widgetPositions.col));","    };","}","exports.createWidget = createWidget;","function addWidget(widgetType, widgetSettings, row, col, width, height) {","    if (widgetSettings === void 0) { widgetSettings = {}; }","    if (width === void 0) { width = 3; }","    if (height === void 0) { height = 3; }","    return {","        type: Action.ADD_WIDGET,","        id: Uuid.generate(),","        col: col,","        row: row,","        width: width,","        height: height,","        widgetType: widgetType,","        widgetSettings: widgetSettings","    };","}","exports.addWidget = addWidget;","function updateWidgetSettings(id, widgetSettings) {","    return {","        type: Action.UPDATE_WIDGET_PROPS,","        id: id,","        widgetSettings: widgetSettings","    };","}","exports.updateWidgetSettings = updateWidgetSettings;","function deleteWidget(id) {","    return {","        type: Action.DELETE_WIDGET,","        id: id","    };","}","exports.deleteWidget = deleteWidget;","function updateLayout(layouts) {","    return {","        type: Action.UPDATE_WIDGET_LAYOUT,","        layouts: layouts","    };","}","exports.updateLayout = updateLayout;","var widgetsCrudReducer = reducer_js_1.genCrudReducer([Action.ADD_WIDGET, Action.DELETE_WIDGET], widget);","function widgets(state, action) {","    if (state === void 0) { state = exports.initialWidgets; }","    state = widgetsCrudReducer(state, action);","    switch (action.type) {","        case Action.UPDATE_WIDGET_LAYOUT:","            return _.valuesIn(state)","                .reduce(function (newState, _a) {","                var id = _a.id;","                newState[id] = widget(newState[id], action);","                return newState;","            }, _.assign({}, state));","        case Action.LOAD_LAYOUT:","            console.assert(action.layout.widgets, \"Layout is missing Widgets, id: \" + action.layout.id);","            return action.layout.widgets || {};","        case Action.DELETE_WIDGET_PLUGIN:","            var toDelete = _.valuesIn(state).filter(function (widgetState) {","                return widgetState.type === action.id;","            });","            var newState_1 = _.assign({}, state);","            toDelete.forEach(function (widgetState) {","                delete newState_1[widgetState.id];","            });","            return newState_1;","        default:","            return state;","    }","}","exports.widgets = widgets;","function calcAvaliableHeight(heightUnits) {","    // The 10 px extra seem to be based on a bug in the grid layout ...","    return (heightUnits * (exports.ROW_HEIGHT + 10)) - exports.HEADER_HEIGHT;","}","function widget(state, action) {","    switch (action.type) {","        case Action.ADD_WIDGET:","            return {","                id: action.id,","                type: action.widgetType,","                settings: action.widgetSettings,","                row: action.row,","                col: action.col,","                width: action.width,","                height: action.height,","                availableHeightPx: calcAvaliableHeight(action.height)","            };","        case Action.UPDATE_WIDGET_PROPS:","            return _.assign({}, state, { settings: action.widgetSettings });","        case Action.UPDATE_WIDGET_LAYOUT:","            var layout = layoutById(action.layouts, state.id);","            if (layout == null) {","                console.warn(\"No layout for widget. Skipping position update of widget with id: \" + state.id);","                return state;","            }","            return _.assign({}, state, {","                row: layout.y,","                col: layout.x,","                width: layout.w,","                height: layout.h,","                availableHeightPx: calcAvaliableHeight(layout.h)","            });","        default:","            return state;","    }","}","// Local functions","function layoutById(layout, id) {","    return _.find(layout, function (l) {","        return l.i === id;","    });","}","function calcNewWidgetPosition(widgets) {","    var colHeights = {};","    // TODO: Replace 12 with constant for number of columns","    // This is different on different breaking points...","    for (var i = 0; i < 12; i++) {","        colHeights[i] = 0;","    }","    colHeights = _.valuesIn(widgets).reduce(function (prev, curr) {","        prev[curr.col] = prev[curr.col] || 0;","        var currHeight = curr.row + curr.height || 0;","        if (prev[curr.col] < currHeight) {","            for (var i = curr.col; i < curr.col + curr.width; i++) {","                prev[i] = currHeight;","            }","        }","        return prev;","    }, colHeights);","    var heights = _.valuesIn(colHeights);","    var col = _.keysIn(colHeights).reduce(function (a, b, index, array) {","        return Number(colHeights[a] <= colHeights[b] ? a : b);","    }, 0);","    //Math.min(...colHeights);","    return { col: col, row: Math.min.apply(Math, heights) };","}","exports.calcNewWidgetPosition = calcNewWidgetPosition;",""]};
 	}
-	exports.createWidget = createWidget;
-	function addWidget(widgetType, widgetSettings, row, col, width, height) {
-	    if (widgetSettings === void 0) { widgetSettings = {}; }
-	    if (width === void 0) { width = 3; }
-	    if (height === void 0) { height = 3; }
-	    return {
-	        type: Action.ADD_WIDGET,
-	        id: Uuid.generate(),
-	        col: col,
-	        row: row,
-	        width: width,
-	        height: height,
-	        widgetType: widgetType,
-	        widgetSettings: widgetSettings
-	    };
-	}
-	exports.addWidget = addWidget;
-	function updateWidgetSettings(id, widgetSettings) {
-	    return {
-	        type: Action.UPDATE_WIDGET_PROPS,
-	        id: id,
-	        widgetSettings: widgetSettings
-	    };
-	}
-	exports.updateWidgetSettings = updateWidgetSettings;
-	function deleteWidget(id) {
-	    return {
-	        type: Action.DELETE_WIDGET,
-	        id: id
-	    };
-	}
-	exports.deleteWidget = deleteWidget;
-	function updateLayout(layouts) {
-	    return {
-	        type: Action.UPDATE_WIDGET_LAYOUT,
-	        layouts: layouts
-	    };
-	}
-	exports.updateLayout = updateLayout;
-	var widgetsCrudReducer = reducer_js_1.genCrudReducer([Action.ADD_WIDGET, Action.DELETE_WIDGET], widget);
-	function widgets(state, action) {
-	    if (state === void 0) { state = exports.initialWidgets; }
-	    state = widgetsCrudReducer(state, action);
-	    switch (action.type) {
-	        case Action.UPDATE_WIDGET_LAYOUT:
-	            return _.valuesIn(state)
-	                .reduce(function (newState, _a) {
-	                var id = _a.id;
-	                newState[id] = widget(newState[id], action);
-	                return newState;
-	            }, _.assign({}, state));
-	        case Action.LOAD_LAYOUT:
-	            console.assert(action.layout.widgets, "Layout is missing Widgets, id: " + action.layout.id);
-	            return action.layout.widgets || {};
-	        case Action.DELETE_WIDGET_PLUGIN:
-	            var toDelete = _.valuesIn(state).filter(function (widgetState) {
-	                return widgetState.type === action.id;
-	            });
-	            var newState_1 = _.assign({}, state);
-	            toDelete.forEach(function (widgetState) {
-	                delete newState_1[widgetState.id];
-	            });
-	            return newState_1;
-	        default:
-	            return state;
-	    }
-	}
-	exports.widgets = widgets;
-	function calcAvaliableHeight(heightUnits) {
-	    // The 10 px extra seem to be based on a bug in the grid layout ...
-	    return (heightUnits * (exports.ROW_HEIGHT + 10)) - exports.HEADER_HEIGHT;
-	}
-	function widget(state, action) {
-	    switch (action.type) {
-	        case Action.ADD_WIDGET:
-	            return {
-	                id: action.id,
-	                type: action.widgetType,
-	                settings: action.widgetSettings,
-	                row: action.row,
-	                col: action.col,
-	                width: action.width,
-	                height: action.height,
-	                availableHeightPx: calcAvaliableHeight(action.height)
-	            };
-	        case Action.UPDATE_WIDGET_PROPS:
-	            return _.assign({}, state, { settings: action.widgetSettings });
-	        case Action.UPDATE_WIDGET_LAYOUT:
-	            var layout = layoutById(action.layouts, state.id);
-	            if (layout == null) {
-	                console.warn("No layout for widget. Skipping position update of widget with id: " + state.id);
-	                return state;
-	            }
-	            return _.assign({}, state, {
-	                row: layout.y,
-	                col: layout.x,
-	                width: layout.w,
-	                height: layout.h,
-	                availableHeightPx: calcAvaliableHeight(layout.h)
-	            });
-	        default:
-	            return state;
-	    }
-	}
-	// Local functions
-	function layoutById(layout, id) {
-	    return _.find(layout, function (l) {
-	        return l.i === id;
-	    });
-	}
-	function calcNewWidgetPosition(widgets) {
-	    var colHeights = {};
-	    // TODO: Replace 12 with constant for number of columns
-	    // This is different on different breaking points...
-	    for (var i = 0; i < 12; i++) {
-	        colHeights[i] = 0;
-	    }
-	    colHeights = _.valuesIn(widgets).reduce(function (prev, curr) {
-	        prev[curr.col] = prev[curr.col] || 0;
-	        var currHeight = curr.row + curr.height || 0;
-	        if (prev[curr.col] < currHeight) {
-	            for (var i = curr.col; i < curr.col + curr.width; i++) {
-	                prev[i] = currHeight;
-	            }
-	        }
-	        return prev;
-	    }, colHeights);
-	    var heights = _.valuesIn(colHeights);
-	    var col = _.keysIn(colHeights).reduce(function (a, b, index, array) {
-	        return Number(colHeights[a] <= colHeights[b] ? a : b);
-	    }, 0);
-	    //Math.min(...colHeights);
-	    return { col: col, row: Math.min.apply(Math, heights) };
-	}
-	exports.calcNewWidgetPosition = calcNewWidgetPosition;
+	__cov_MnIYiItbiblzraX8GbQqiw = __cov_MnIYiItbiblzraX8GbQqiw['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgets.ts'];
+	__cov_MnIYiItbiblzraX8GbQqiw.s['1']++;var react_1=__webpack_require__(20);__cov_MnIYiItbiblzraX8GbQqiw.s['2']++;var Uuid=__webpack_require__(46);__cov_MnIYiItbiblzraX8GbQqiw.s['3']++;var _=__webpack_require__(21);__cov_MnIYiItbiblzraX8GbQqiw.s['4']++;var reducer_js_1=__webpack_require__(47);__cov_MnIYiItbiblzraX8GbQqiw.s['5']++;var Action=__webpack_require__(43);__cov_MnIYiItbiblzraX8GbQqiw.s['6']++;exports.HEADER_HEIGHT=77;__cov_MnIYiItbiblzraX8GbQqiw.s['7']++;exports.ROW_HEIGHT=100;__cov_MnIYiItbiblzraX8GbQqiw.s['8']++;exports.initialWidgets={'initial_chart':{'id':'initial_chart','type':'chart','settings':{'name':'Random Values','datasource':'initial_random_source','chartType':'area-spline','dataKeys':'["value"]','xKey':'x','names':'{"value": "My Value"}','gaugeData':'{"min":0,"max":100,"units":" %"}'},'row':0,'col':0,'width':6,'height':2,'availableHeightPx':123},'initial_text':{'id':'initial_text','type':'text','settings':{'name':'Random data','datasource':'initial_random_source'},'row':0,'col':6,'width':6,'height':3,'availableHeightPx':223},'106913f4-44fb-4f69-ab89-5d5ae857cf3c':{'id':'106913f4-44fb-4f69-ab89-5d5ae857cf3c','type':'chart','settings':{'name':'Bars','datasource':'initial_random_source','chartType':'spline','dataKeys':'["value", "value2"]','xKey':'x','names':'{"value": "My Value"}','gaugeData':'{"min":0,"max":100,"units":" %"}'},'row':2,'col':0,'width':6,'height':2,'availableHeightPx':123}};__cov_MnIYiItbiblzraX8GbQqiw.s['9']++;exports.widgetPropType=react_1.PropTypes.shape({id:react_1.PropTypes.string.isRequired,col:react_1.PropTypes.number.isRequired,row:react_1.PropTypes.number.isRequired,width:react_1.PropTypes.number.isRequired,height:react_1.PropTypes.number.isRequired,settings:react_1.PropTypes.shape({name:react_1.PropTypes.string.isRequired}).isRequired});function createWidget(widgetType,widgetSettings){__cov_MnIYiItbiblzraX8GbQqiw.f['1']++;__cov_MnIYiItbiblzraX8GbQqiw.s['11']++;return function(dispatch,getState){__cov_MnIYiItbiblzraX8GbQqiw.f['2']++;__cov_MnIYiItbiblzraX8GbQqiw.s['12']++;var widgets=getState().widgets;__cov_MnIYiItbiblzraX8GbQqiw.s['13']++;var widgetPositions=calcNewWidgetPosition(widgets);__cov_MnIYiItbiblzraX8GbQqiw.s['14']++;return dispatch(addWidget(widgetType,widgetSettings,widgetPositions.row,widgetPositions.col));};}__cov_MnIYiItbiblzraX8GbQqiw.s['15']++;exports.createWidget=createWidget;function addWidget(widgetType,widgetSettings,row,col,width,height){__cov_MnIYiItbiblzraX8GbQqiw.f['3']++;__cov_MnIYiItbiblzraX8GbQqiw.s['17']++;if(widgetSettings===void 0){__cov_MnIYiItbiblzraX8GbQqiw.b['1'][0]++;__cov_MnIYiItbiblzraX8GbQqiw.s['18']++;widgetSettings={};}else{__cov_MnIYiItbiblzraX8GbQqiw.b['1'][1]++;}__cov_MnIYiItbiblzraX8GbQqiw.s['19']++;if(width===void 0){__cov_MnIYiItbiblzraX8GbQqiw.b['2'][0]++;__cov_MnIYiItbiblzraX8GbQqiw.s['20']++;width=3;}else{__cov_MnIYiItbiblzraX8GbQqiw.b['2'][1]++;}__cov_MnIYiItbiblzraX8GbQqiw.s['21']++;if(height===void 0){__cov_MnIYiItbiblzraX8GbQqiw.b['3'][0]++;__cov_MnIYiItbiblzraX8GbQqiw.s['22']++;height=3;}else{__cov_MnIYiItbiblzraX8GbQqiw.b['3'][1]++;}__cov_MnIYiItbiblzraX8GbQqiw.s['23']++;return{type:Action.ADD_WIDGET,id:Uuid.generate(),col:col,row:row,width:width,height:height,widgetType:widgetType,widgetSettings:widgetSettings};}__cov_MnIYiItbiblzraX8GbQqiw.s['24']++;exports.addWidget=addWidget;function updateWidgetSettings(id,widgetSettings){__cov_MnIYiItbiblzraX8GbQqiw.f['4']++;__cov_MnIYiItbiblzraX8GbQqiw.s['26']++;return{type:Action.UPDATE_WIDGET_PROPS,id:id,widgetSettings:widgetSettings};}__cov_MnIYiItbiblzraX8GbQqiw.s['27']++;exports.updateWidgetSettings=updateWidgetSettings;function deleteWidget(id){__cov_MnIYiItbiblzraX8GbQqiw.f['5']++;__cov_MnIYiItbiblzraX8GbQqiw.s['29']++;return{type:Action.DELETE_WIDGET,id:id};}__cov_MnIYiItbiblzraX8GbQqiw.s['30']++;exports.deleteWidget=deleteWidget;function updateLayout(layouts){__cov_MnIYiItbiblzraX8GbQqiw.f['6']++;__cov_MnIYiItbiblzraX8GbQqiw.s['32']++;return{type:Action.UPDATE_WIDGET_LAYOUT,layouts:layouts};}__cov_MnIYiItbiblzraX8GbQqiw.s['33']++;exports.updateLayout=updateLayout;__cov_MnIYiItbiblzraX8GbQqiw.s['34']++;var widgetsCrudReducer=reducer_js_1.genCrudReducer([Action.ADD_WIDGET,Action.DELETE_WIDGET],widget);function widgets(state,action){__cov_MnIYiItbiblzraX8GbQqiw.f['7']++;__cov_MnIYiItbiblzraX8GbQqiw.s['36']++;if(state===void 0){__cov_MnIYiItbiblzraX8GbQqiw.b['4'][0]++;__cov_MnIYiItbiblzraX8GbQqiw.s['37']++;state=exports.initialWidgets;}else{__cov_MnIYiItbiblzraX8GbQqiw.b['4'][1]++;}__cov_MnIYiItbiblzraX8GbQqiw.s['38']++;state=widgetsCrudReducer(state,action);__cov_MnIYiItbiblzraX8GbQqiw.s['39']++;switch(action.type){case Action.UPDATE_WIDGET_LAYOUT:__cov_MnIYiItbiblzraX8GbQqiw.b['5'][0]++;__cov_MnIYiItbiblzraX8GbQqiw.s['40']++;return _.valuesIn(state).reduce(function(newState,_a){__cov_MnIYiItbiblzraX8GbQqiw.f['8']++;__cov_MnIYiItbiblzraX8GbQqiw.s['41']++;var id=_a.id;__cov_MnIYiItbiblzraX8GbQqiw.s['42']++;newState[id]=widget(newState[id],action);__cov_MnIYiItbiblzraX8GbQqiw.s['43']++;return newState;},_.assign({},state));case Action.LOAD_LAYOUT:__cov_MnIYiItbiblzraX8GbQqiw.b['5'][1]++;__cov_MnIYiItbiblzraX8GbQqiw.s['44']++;console.assert(action.layout.widgets,'Layout is missing Widgets, id: '+action.layout.id);__cov_MnIYiItbiblzraX8GbQqiw.s['45']++;return(__cov_MnIYiItbiblzraX8GbQqiw.b['6'][0]++,action.layout.widgets)||(__cov_MnIYiItbiblzraX8GbQqiw.b['6'][1]++,{});case Action.DELETE_WIDGET_PLUGIN:__cov_MnIYiItbiblzraX8GbQqiw.b['5'][2]++;__cov_MnIYiItbiblzraX8GbQqiw.s['46']++;var toDelete=_.valuesIn(state).filter(function(widgetState){__cov_MnIYiItbiblzraX8GbQqiw.f['9']++;__cov_MnIYiItbiblzraX8GbQqiw.s['47']++;return widgetState.type===action.id;});__cov_MnIYiItbiblzraX8GbQqiw.s['48']++;var newState_1=_.assign({},state);__cov_MnIYiItbiblzraX8GbQqiw.s['49']++;toDelete.forEach(function(widgetState){__cov_MnIYiItbiblzraX8GbQqiw.f['10']++;__cov_MnIYiItbiblzraX8GbQqiw.s['50']++;delete newState_1[widgetState.id];});__cov_MnIYiItbiblzraX8GbQqiw.s['51']++;return newState_1;default:__cov_MnIYiItbiblzraX8GbQqiw.b['5'][3]++;__cov_MnIYiItbiblzraX8GbQqiw.s['52']++;return state;}}__cov_MnIYiItbiblzraX8GbQqiw.s['53']++;exports.widgets=widgets;function calcAvaliableHeight(heightUnits){__cov_MnIYiItbiblzraX8GbQqiw.f['11']++;__cov_MnIYiItbiblzraX8GbQqiw.s['55']++;return heightUnits*(exports.ROW_HEIGHT+10)-exports.HEADER_HEIGHT;}function widget(state,action){__cov_MnIYiItbiblzraX8GbQqiw.f['12']++;__cov_MnIYiItbiblzraX8GbQqiw.s['57']++;switch(action.type){case Action.ADD_WIDGET:__cov_MnIYiItbiblzraX8GbQqiw.b['7'][0]++;__cov_MnIYiItbiblzraX8GbQqiw.s['58']++;return{id:action.id,type:action.widgetType,settings:action.widgetSettings,row:action.row,col:action.col,width:action.width,height:action.height,availableHeightPx:calcAvaliableHeight(action.height)};case Action.UPDATE_WIDGET_PROPS:__cov_MnIYiItbiblzraX8GbQqiw.b['7'][1]++;__cov_MnIYiItbiblzraX8GbQqiw.s['59']++;return _.assign({},state,{settings:action.widgetSettings});case Action.UPDATE_WIDGET_LAYOUT:__cov_MnIYiItbiblzraX8GbQqiw.b['7'][2]++;__cov_MnIYiItbiblzraX8GbQqiw.s['60']++;var layout=layoutById(action.layouts,state.id);__cov_MnIYiItbiblzraX8GbQqiw.s['61']++;if(layout==null){__cov_MnIYiItbiblzraX8GbQqiw.b['8'][0]++;__cov_MnIYiItbiblzraX8GbQqiw.s['62']++;console.warn('No layout for widget. Skipping position update of widget with id: '+state.id);__cov_MnIYiItbiblzraX8GbQqiw.s['63']++;return state;}else{__cov_MnIYiItbiblzraX8GbQqiw.b['8'][1]++;}__cov_MnIYiItbiblzraX8GbQqiw.s['64']++;return _.assign({},state,{row:layout.y,col:layout.x,width:layout.w,height:layout.h,availableHeightPx:calcAvaliableHeight(layout.h)});default:__cov_MnIYiItbiblzraX8GbQqiw.b['7'][3]++;__cov_MnIYiItbiblzraX8GbQqiw.s['65']++;return state;}}function layoutById(layout,id){__cov_MnIYiItbiblzraX8GbQqiw.f['13']++;__cov_MnIYiItbiblzraX8GbQqiw.s['67']++;return _.find(layout,function(l){__cov_MnIYiItbiblzraX8GbQqiw.f['14']++;__cov_MnIYiItbiblzraX8GbQqiw.s['68']++;return l.i===id;});}function calcNewWidgetPosition(widgets){__cov_MnIYiItbiblzraX8GbQqiw.f['15']++;__cov_MnIYiItbiblzraX8GbQqiw.s['70']++;var colHeights={};__cov_MnIYiItbiblzraX8GbQqiw.s['71']++;for(var i=0;i<12;i++){__cov_MnIYiItbiblzraX8GbQqiw.s['72']++;colHeights[i]=0;}__cov_MnIYiItbiblzraX8GbQqiw.s['73']++;colHeights=_.valuesIn(widgets).reduce(function(prev,curr){__cov_MnIYiItbiblzraX8GbQqiw.f['16']++;__cov_MnIYiItbiblzraX8GbQqiw.s['74']++;prev[curr.col]=(__cov_MnIYiItbiblzraX8GbQqiw.b['9'][0]++,prev[curr.col])||(__cov_MnIYiItbiblzraX8GbQqiw.b['9'][1]++,0);__cov_MnIYiItbiblzraX8GbQqiw.s['75']++;var currHeight=(__cov_MnIYiItbiblzraX8GbQqiw.b['10'][0]++,curr.row+curr.height)||(__cov_MnIYiItbiblzraX8GbQqiw.b['10'][1]++,0);__cov_MnIYiItbiblzraX8GbQqiw.s['76']++;if(prev[curr.col]<currHeight){__cov_MnIYiItbiblzraX8GbQqiw.b['11'][0]++;__cov_MnIYiItbiblzraX8GbQqiw.s['77']++;for(var i=curr.col;i<curr.col+curr.width;i++){__cov_MnIYiItbiblzraX8GbQqiw.s['78']++;prev[i]=currHeight;}}else{__cov_MnIYiItbiblzraX8GbQqiw.b['11'][1]++;}__cov_MnIYiItbiblzraX8GbQqiw.s['79']++;return prev;},colHeights);__cov_MnIYiItbiblzraX8GbQqiw.s['80']++;var heights=_.valuesIn(colHeights);__cov_MnIYiItbiblzraX8GbQqiw.s['81']++;var col=_.keysIn(colHeights).reduce(function(a,b,index,array){__cov_MnIYiItbiblzraX8GbQqiw.f['17']++;__cov_MnIYiItbiblzraX8GbQqiw.s['82']++;return Number(colHeights[a]<=colHeights[b]?(__cov_MnIYiItbiblzraX8GbQqiw.b['12'][0]++,a):(__cov_MnIYiItbiblzraX8GbQqiw.b['12'][1]++,b));},0);__cov_MnIYiItbiblzraX8GbQqiw.s['83']++;return{col:col,row:Math.min.apply(Math,heights)};}__cov_MnIYiItbiblzraX8GbQqiw.s['84']++;exports.calcNewWidgetPosition=calcNewWidgetPosition;
 
 
 /***/ },
 /* 46 */
 /***/ function(module, exports) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	function generate() {
-	    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-	        var r = Math.random() * 16 | 0;
-	        var v = c == 'x' ? r : (r & 0x3 | 0x8);
-	        return v.toString(16);
-	    });
+	var __cov_KRkCzb04yBnqzQJJYWdzKQ = (Function('return this'))();
+	if (!__cov_KRkCzb04yBnqzQJJYWdzKQ.__coverage__) { __cov_KRkCzb04yBnqzQJJYWdzKQ.__coverage__ = {}; }
+	__cov_KRkCzb04yBnqzQJJYWdzKQ = __cov_KRkCzb04yBnqzQJJYWdzKQ.__coverage__;
+	if (!(__cov_KRkCzb04yBnqzQJJYWdzKQ['/home/travis/build/Niondir/iot-dashboard/src/util/uuid.js'])) {
+	   __cov_KRkCzb04yBnqzQJJYWdzKQ['/home/travis/build/Niondir/iot-dashboard/src/util/uuid.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/util/uuid.js","s":{"1":1,"2":0,"3":0,"4":0,"5":0,"6":0},"b":{"1":[0,0]},"f":{"1":0,"2":0},"fnMap":{"1":{"name":"generate","line":5,"loc":{"start":{"line":5,"column":0},"end":{"line":5,"column":20}}},"2":{"name":"(anonymous_2)","line":6,"loc":{"start":{"line":6,"column":67},"end":{"line":6,"column":80}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":11,"column":1}},"2":{"start":{"line":6,"column":4},"end":{"line":10,"column":7}},"3":{"start":{"line":7,"column":8},"end":{"line":7,"column":39}},"4":{"start":{"line":8,"column":8},"end":{"line":8,"column":47}},"5":{"start":{"line":9,"column":8},"end":{"line":9,"column":30}},"6":{"start":{"line":12,"column":0},"end":{"line":12,"column":28}}},"branchMap":{"1":{"line":8,"type":"cond-expr","locations":[{"start":{"line":8,"column":27},"end":{"line":8,"column":28}},{"start":{"line":8,"column":32},"end":{"line":8,"column":45}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","function generate() {","    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {","        var r = Math.random() * 16 | 0;","        var v = c == 'x' ? r : (r & 0x3 | 0x8);","        return v.toString(16);","    });","}","exports.generate = generate;",""]};
 	}
-	exports.generate = generate;
+	__cov_KRkCzb04yBnqzQJJYWdzKQ = __cov_KRkCzb04yBnqzQJJYWdzKQ['/home/travis/build/Niondir/iot-dashboard/src/util/uuid.js'];
+	function generate(){__cov_KRkCzb04yBnqzQJJYWdzKQ.f['1']++;__cov_KRkCzb04yBnqzQJJYWdzKQ.s['2']++;return'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,function(c){__cov_KRkCzb04yBnqzQJJYWdzKQ.f['2']++;__cov_KRkCzb04yBnqzQJJYWdzKQ.s['3']++;var r=Math.random()*16|0;__cov_KRkCzb04yBnqzQJJYWdzKQ.s['4']++;var v=c=='x'?(__cov_KRkCzb04yBnqzQJJYWdzKQ.b['1'][0]++,r):(__cov_KRkCzb04yBnqzQJJYWdzKQ.b['1'][1]++,r&3|8);__cov_KRkCzb04yBnqzQJJYWdzKQ.s['5']++;return v.toString(16);});}__cov_KRkCzb04yBnqzQJJYWdzKQ.s['6']++;exports.generate=generate;
 
 
 /***/ },
 /* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var _ = __webpack_require__(21);
-	/**
-	 * Creates an reducer that works on an object where you can create, delete and update properties of type Object.
-	 * The key of properties always matches the id property of the value object.
-	 *
-	 * @param actionNames
-	 * Object with: create, update, delete action names
-	 * @param elementReducer
-	 * A reducer for a single object that supports the actionNames.create and actionNames.update action.
-	 * @param initialState (optional)
-	 * @param idProperty
-	 * The name of the property to fetch the id from the action. Default: 'id'
-	 * @returns {crudReducer}
-	 */
-	function genCrudReducer(actionNames, elementReducer, idProperty) {
-	    if (idProperty === void 0) { idProperty = 'id'; }
-	    console.assert(actionNames.length === 2, "ActionNames must contain 2 names for create, delete in that order");
-	    var CREATE_ACTION = actionNames[0], DELETE_ACTION = actionNames[1];
-	    console.assert(_.includes(CREATE_ACTION, "ADD") || _.includes(CREATE_ACTION, "CREATE"), "The create action name should probably contain ADD or DELETE, but is: " + CREATE_ACTION);
-	    console.assert(_.includes(DELETE_ACTION, "DELETE") || _.includes(DELETE_ACTION, "REMOVE"), "The delete action name should probably contain DELETE or REMOVE, but is: " + DELETE_ACTION);
-	    return function crudReducer(state, action) {
-	        var id = action[idProperty];
-	        switch (action.type) {
-	            case CREATE_ACTION:
-	                return Object.assign({}, state, (_a = {}, _a[id] = elementReducer(undefined, action), _a));
-	            case DELETE_ACTION:
-	                var newState = Object.assign({}, state);
-	                delete newState[id];
-	                return newState;
-	            default:
-	                if (id === undefined)
-	                    return state;
-	                var elementState = state[id];
-	                if (elementState == undefined) {
-	                    // Do not update what we don't have.
-	                    // TODO: Log warning, or document why not.
-	                    return state;
-	                }
-	                var updatedElement = elementReducer(elementState, action);
-	                if (updatedElement == undefined) {
-	                    console.error("ElementReducer has some problem: ", elementReducer, " with action: ", action);
-	                    throw new Error("Reducer must return the original state if they not implement the action. Check action " + action.type + ".");
-	                }
-	                return Object.assign({}, state, (_b = {},
-	                    _b[id] = updatedElement,
-	                    _b
-	                ));
-	        }
-	        var _a, _b;
-	    };
+	var __cov_VMeY_V5ZIU3BuY7ZEHS$hg = (Function('return this'))();
+	if (!__cov_VMeY_V5ZIU3BuY7ZEHS$hg.__coverage__) { __cov_VMeY_V5ZIU3BuY7ZEHS$hg.__coverage__ = {}; }
+	__cov_VMeY_V5ZIU3BuY7ZEHS$hg = __cov_VMeY_V5ZIU3BuY7ZEHS$hg.__coverage__;
+	if (!(__cov_VMeY_V5ZIU3BuY7ZEHS$hg['/home/travis/build/Niondir/iot-dashboard/src/util/reducer.js'])) {
+	   __cov_VMeY_V5ZIU3BuY7ZEHS$hg['/home/travis/build/Niondir/iot-dashboard/src/util/reducer.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/util/reducer.js","s":{"1":0,"2":1,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0},"b":{"1":[0,0],"2":[0,0],"3":[0,0],"4":[0,0,0],"5":[0,0],"6":[0,0],"7":[0,0]},"f":{"1":0,"2":0},"fnMap":{"1":{"name":"genCrudReducer","line":19,"loc":{"start":{"line":19,"column":0},"end":{"line":19,"column":65}}},"2":{"name":"crudReducer","line":25,"loc":{"start":{"line":25,"column":11},"end":{"line":25,"column":47}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":26}},"2":{"start":{"line":19,"column":0},"end":{"line":55,"column":1}},"3":{"start":{"line":20,"column":4},"end":{"line":20,"column":53}},"4":{"start":{"line":20,"column":33},"end":{"line":20,"column":51}},"5":{"start":{"line":21,"column":4},"end":{"line":21,"column":114}},"6":{"start":{"line":22,"column":4},"end":{"line":22,"column":71}},"7":{"start":{"line":23,"column":4},"end":{"line":23,"column":182}},"8":{"start":{"line":24,"column":4},"end":{"line":24,"column":188}},"9":{"start":{"line":25,"column":4},"end":{"line":54,"column":6}},"10":{"start":{"line":26,"column":8},"end":{"line":26,"column":36}},"11":{"start":{"line":27,"column":8},"end":{"line":52,"column":9}},"12":{"start":{"line":29,"column":16},"end":{"line":29,"column":107}},"13":{"start":{"line":31,"column":16},"end":{"line":31,"column":56}},"14":{"start":{"line":32,"column":16},"end":{"line":32,"column":36}},"15":{"start":{"line":33,"column":16},"end":{"line":33,"column":32}},"16":{"start":{"line":35,"column":16},"end":{"line":36,"column":33}},"17":{"start":{"line":36,"column":20},"end":{"line":36,"column":33}},"18":{"start":{"line":37,"column":16},"end":{"line":37,"column":45}},"19":{"start":{"line":38,"column":16},"end":{"line":42,"column":17}},"20":{"start":{"line":41,"column":20},"end":{"line":41,"column":33}},"21":{"start":{"line":43,"column":16},"end":{"line":43,"column":74}},"22":{"start":{"line":44,"column":16},"end":{"line":47,"column":17}},"23":{"start":{"line":45,"column":20},"end":{"line":45,"column":113}},"24":{"start":{"line":46,"column":20},"end":{"line":46,"column":146}},"25":{"start":{"line":48,"column":16},"end":{"line":51,"column":19}},"26":{"start":{"line":53,"column":8},"end":{"line":53,"column":19}},"27":{"start":{"line":56,"column":0},"end":{"line":56,"column":40}}},"branchMap":{"1":{"line":20,"type":"if","locations":[{"start":{"line":20,"column":4},"end":{"line":20,"column":4}},{"start":{"line":20,"column":4},"end":{"line":20,"column":4}}]},"2":{"line":23,"type":"binary-expr","locations":[{"start":{"line":23,"column":19},"end":{"line":23,"column":51}},{"start":{"line":23,"column":55},"end":{"line":23,"column":90}}]},"3":{"line":24,"type":"binary-expr","locations":[{"start":{"line":24,"column":19},"end":{"line":24,"column":54}},{"start":{"line":24,"column":58},"end":{"line":24,"column":93}}]},"4":{"line":27,"type":"switch","locations":[{"start":{"line":28,"column":12},"end":{"line":29,"column":107}},{"start":{"line":30,"column":12},"end":{"line":33,"column":32}},{"start":{"line":34,"column":12},"end":{"line":51,"column":19}}]},"5":{"line":35,"type":"if","locations":[{"start":{"line":35,"column":16},"end":{"line":35,"column":16}},{"start":{"line":35,"column":16},"end":{"line":35,"column":16}}]},"6":{"line":38,"type":"if","locations":[{"start":{"line":38,"column":16},"end":{"line":38,"column":16}},{"start":{"line":38,"column":16},"end":{"line":38,"column":16}}]},"7":{"line":44,"type":"if","locations":[{"start":{"line":44,"column":16},"end":{"line":44,"column":16}},{"start":{"line":44,"column":16},"end":{"line":44,"column":16}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var _ = require('lodash');","/**"," * Creates an reducer that works on an object where you can create, delete and update properties of type Object."," * The key of properties always matches the id property of the value object."," *"," * @param actionNames"," * Object with: create, update, delete action names"," * @param elementReducer"," * A reducer for a single object that supports the actionNames.create and actionNames.update action."," * @param initialState (optional)"," * @param idProperty"," * The name of the property to fetch the id from the action. Default: 'id'"," * @returns {crudReducer}"," */","function genCrudReducer(actionNames, elementReducer, idProperty) {","    if (idProperty === void 0) { idProperty = 'id'; }","    console.assert(actionNames.length === 2, \"ActionNames must contain 2 names for create, delete in that order\");","    var CREATE_ACTION = actionNames[0], DELETE_ACTION = actionNames[1];","    console.assert(_.includes(CREATE_ACTION, \"ADD\") || _.includes(CREATE_ACTION, \"CREATE\"), \"The create action name should probably contain ADD or DELETE, but is: \" + CREATE_ACTION);","    console.assert(_.includes(DELETE_ACTION, \"DELETE\") || _.includes(DELETE_ACTION, \"REMOVE\"), \"The delete action name should probably contain DELETE or REMOVE, but is: \" + DELETE_ACTION);","    return function crudReducer(state, action) {","        var id = action[idProperty];","        switch (action.type) {","            case CREATE_ACTION:","                return Object.assign({}, state, (_a = {}, _a[id] = elementReducer(undefined, action), _a));","            case DELETE_ACTION:","                var newState = Object.assign({}, state);","                delete newState[id];","                return newState;","            default:","                if (id === undefined)","                    return state;","                var elementState = state[id];","                if (elementState == undefined) {","                    // Do not update what we don't have.","                    // TODO: Log warning, or document why not.","                    return state;","                }","                var updatedElement = elementReducer(elementState, action);","                if (updatedElement == undefined) {","                    console.error(\"ElementReducer has some problem: \", elementReducer, \" with action: \", action);","                    throw new Error(\"Reducer must return the original state if they not implement the action. Check action \" + action.type + \".\");","                }","                return Object.assign({}, state, (_b = {},","                    _b[id] = updatedElement,","                    _b","                ));","        }","        var _a, _b;","    };","}","exports.genCrudReducer = genCrudReducer;",""]};
 	}
-	exports.genCrudReducer = genCrudReducer;
+	__cov_VMeY_V5ZIU3BuY7ZEHS$hg = __cov_VMeY_V5ZIU3BuY7ZEHS$hg['/home/travis/build/Niondir/iot-dashboard/src/util/reducer.js'];
+	__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['1']++;var _=__webpack_require__(21);function genCrudReducer(actionNames,elementReducer,idProperty){__cov_VMeY_V5ZIU3BuY7ZEHS$hg.f['1']++;__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['3']++;if(idProperty===void 0){__cov_VMeY_V5ZIU3BuY7ZEHS$hg.b['1'][0]++;__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['4']++;idProperty='id';}else{__cov_VMeY_V5ZIU3BuY7ZEHS$hg.b['1'][1]++;}__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['5']++;console.assert(actionNames.length===2,'ActionNames must contain 2 names for create, delete in that order');__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['6']++;var CREATE_ACTION=actionNames[0],DELETE_ACTION=actionNames[1];__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['7']++;console.assert((__cov_VMeY_V5ZIU3BuY7ZEHS$hg.b['2'][0]++,_.includes(CREATE_ACTION,'ADD'))||(__cov_VMeY_V5ZIU3BuY7ZEHS$hg.b['2'][1]++,_.includes(CREATE_ACTION,'CREATE')),'The create action name should probably contain ADD or DELETE, but is: '+CREATE_ACTION);__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['8']++;console.assert((__cov_VMeY_V5ZIU3BuY7ZEHS$hg.b['3'][0]++,_.includes(DELETE_ACTION,'DELETE'))||(__cov_VMeY_V5ZIU3BuY7ZEHS$hg.b['3'][1]++,_.includes(DELETE_ACTION,'REMOVE')),'The delete action name should probably contain DELETE or REMOVE, but is: '+DELETE_ACTION);__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['9']++;return function crudReducer(state,action){__cov_VMeY_V5ZIU3BuY7ZEHS$hg.f['2']++;__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['10']++;var id=action[idProperty];__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['11']++;switch(action.type){case CREATE_ACTION:__cov_VMeY_V5ZIU3BuY7ZEHS$hg.b['4'][0]++;__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['12']++;return Object.assign({},state,(_a={},_a[id]=elementReducer(undefined,action),_a));case DELETE_ACTION:__cov_VMeY_V5ZIU3BuY7ZEHS$hg.b['4'][1]++;__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['13']++;var newState=Object.assign({},state);__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['14']++;delete newState[id];__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['15']++;return newState;default:__cov_VMeY_V5ZIU3BuY7ZEHS$hg.b['4'][2]++;__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['16']++;if(id===undefined){__cov_VMeY_V5ZIU3BuY7ZEHS$hg.b['5'][0]++;__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['17']++;return state;}else{__cov_VMeY_V5ZIU3BuY7ZEHS$hg.b['5'][1]++;}__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['18']++;var elementState=state[id];__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['19']++;if(elementState==undefined){__cov_VMeY_V5ZIU3BuY7ZEHS$hg.b['6'][0]++;__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['20']++;return state;}else{__cov_VMeY_V5ZIU3BuY7ZEHS$hg.b['6'][1]++;}__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['21']++;var updatedElement=elementReducer(elementState,action);__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['22']++;if(updatedElement==undefined){__cov_VMeY_V5ZIU3BuY7ZEHS$hg.b['7'][0]++;__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['23']++;console.error('ElementReducer has some problem: ',elementReducer,' with action: ',action);__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['24']++;throw new Error('Reducer must return the original state if they not implement the action. Check action '+action.type+'.');}else{__cov_VMeY_V5ZIU3BuY7ZEHS$hg.b['7'][1]++;}__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['25']++;return Object.assign({},state,(_b={},_b[id]=updatedElement,_b));}__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['26']++;var _a,_b;};}__cov_VMeY_V5ZIU3BuY7ZEHS$hg.s['27']++;exports.genCrudReducer=genCrudReducer;
 
 
 /***/ },
 /* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(39);
-	var WidgetConfig = __webpack_require__(49);
-	var WidgetPlugins = __webpack_require__(52);
-	var widgets_1 = __webpack_require__(45);
-	var Widgets = __webpack_require__(45);
-	var react_1 = __webpack_require__(20);
-	var dashboard_1 = __webpack_require__(55);
-	/**
-	 * The Dragable Frame of a Widget.
-	 * Contains generic UI controls, shared by all Widgets
-	 */
-	var WidgetFrame = function (props) {
-	    var widgetState = props.widget;
-	    // If the plugin is not in the registry, we assume it's currently loading
-	    var pluginLoaded = dashboard_1.default.getInstance().widgetPluginRegistry.hasPlugin(widgetState.type);
-	    var widgetFactory;
-	    if (pluginLoaded) {
-	        widgetFactory = dashboard_1.default.getInstance().widgetPluginRegistry.getPlugin(widgetState.type);
-	    }
-	    return (React.createElement("div", {className: "ui raised segments", style: { margin: 0, overflow: "hidden" }, key: widgetState.id, _grid: { x: widgetState.col, y: widgetState.row, w: widgetState.width, h: widgetState.height }}, React.createElement("div", {className: "ui inverted segment" + (props.isReadOnly ? "" : " drag")}, props.isReadOnly ? null :
-	        React.createElement("div", {className: "ui tiny horizontal right floated inverted list"}, React.createElement(ConfigWidgetButton, {className: "right item no-drag", widgetState: widgetState, visible: (props.widgetPlugin && props.widgetPlugin.typeInfo.settings ? true : false), icon: "configure"}), React.createElement(DeleteWidgetButton, {className: "right floated item no-drag", widgetState: widgetState, icon: "remove"})), React.createElement("div", {className: "ui item top attached" + (props.isReadOnly ? "" : " drag")}, widgetState.settings.name || "\u00a0")), React.createElement("div", {className: "ui segment", style: { height: widgetState.availableHeightPx, padding: 0, border: "red dashed 0px" }}, pluginLoaded ? widgetFactory.getOrCreateInstance(widgetState.id)
-	        : React.createElement(LoadingWidget, {widget: widgetState}))));
-	};
-	WidgetFrame.propTypes = {
-	    widget: Widgets.widgetPropType.isRequired,
-	    widgetPlugin: WidgetPlugins.widgetPluginType.isRequired,
-	    isReadOnly: react_1.PropTypes.bool.isRequired
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = WidgetFrame;
-	var LoadingWidget = function (props) {
-	    return React.createElement("div", {className: "ui active text loader"}, "Loading ", props.widget.type, " Widget ...");
-	};
-	LoadingWidget.propTypes = {
-	    widget: Widgets.widgetPropType.isRequired
-	};
-	var WidgetButton = (function (_super) {
-	    __extends(WidgetButton, _super);
-	    function WidgetButton() {
-	        _super.apply(this, arguments);
-	    }
-	    WidgetButton.prototype.render = function () {
-	        var _this = this;
-	        var data = this.props.widgetState;
-	        return React.createElement("a", {className: this.props.className + (this.props.visible !== false ? "" : " hidden transition"), onClick: function () { return _this.props.onClick(data); }}, React.createElement("i", {className: this.props.icon + " icon"}));
-	    };
-	    return WidgetButton;
-	}(React.Component));
-	WidgetButton.propTypes = {
-	    widgetState: Widgets.widgetPropType.isRequired,
-	    icon: react_1.PropTypes.string.isRequired,
-	    visible: react_1.PropTypes.bool,
-	    className: react_1.PropTypes.string.isRequired,
-	    onClick: react_1.PropTypes.func.isRequired
-	};
-	var DeleteWidgetButton = react_redux_1.connect(function (state) {
-	    return {};
-	}, function (dispatch) {
-	    return {
-	        onClick: function (widgetState) {
-	            dispatch(widgets_1.deleteWidget(widgetState.id));
-	        }
-	    };
-	})(WidgetButton);
-	var ConfigWidgetButton = react_redux_1.connect(function (state) {
-	    return {};
-	}, function (dispatch) {
-	    return {
-	        onClick: function (widgetState) {
-	            dispatch(WidgetConfig.openWidgetConfigDialog(widgetState.id));
-	        }
-	    };
-	})(WidgetButton);
+	var __cov_GB5bZE8QaH8m6BRWS8nrCA = (Function('return this'))();
+	if (!__cov_GB5bZE8QaH8m6BRWS8nrCA.__coverage__) { __cov_GB5bZE8QaH8m6BRWS8nrCA.__coverage__ = {}; }
+	__cov_GB5bZE8QaH8m6BRWS8nrCA = __cov_GB5bZE8QaH8m6BRWS8nrCA.__coverage__;
+	if (!(__cov_GB5bZE8QaH8m6BRWS8nrCA['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetFrame.ui.js'])) {
+	   __cov_GB5bZE8QaH8m6BRWS8nrCA['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetFrame.ui.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetFrame.ui.js","s":{"1":0,"2":0,"3":0,"4":0,"5":1,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0,"31":1,"32":0,"33":0,"34":0,"35":0,"36":0,"37":0,"38":0,"39":0,"40":0,"41":0,"42":0,"43":0,"44":0,"45":0,"46":0,"47":0},"b":{"1":[0,0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0],"7":[0,0],"8":[0,0],"9":[0,0],"10":[0,0],"11":[0,0],"12":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0},"fnMap":{"1":{"name":"(anonymous_1)","line":5,"loc":{"start":{"line":5,"column":44},"end":{"line":5,"column":60}}},"2":{"name":"__","line":7,"loc":{"start":{"line":7,"column":4},"end":{"line":7,"column":18}}},"3":{"name":"(anonymous_3)","line":22,"loc":{"start":{"line":22,"column":18},"end":{"line":22,"column":35}}},"4":{"name":"(anonymous_4)","line":41,"loc":{"start":{"line":41,"column":20},"end":{"line":41,"column":37}}},"5":{"name":"(anonymous_5)","line":47,"loc":{"start":{"line":47,"column":20},"end":{"line":47,"column":38}}},"6":{"name":"WidgetButton","line":49,"loc":{"start":{"line":49,"column":4},"end":{"line":49,"column":28}}},"7":{"name":"(anonymous_7)","line":52,"loc":{"start":{"line":52,"column":36},"end":{"line":52,"column":48}}},"8":{"name":"(anonymous_8)","line":55,"loc":{"start":{"line":55,"column":144},"end":{"line":55,"column":156}}},"9":{"name":"(anonymous_9)","line":66,"loc":{"start":{"line":66,"column":47},"end":{"line":66,"column":64}}},"10":{"name":"(anonymous_10)","line":68,"loc":{"start":{"line":68,"column":3},"end":{"line":68,"column":23}}},"11":{"name":"(anonymous_11)","line":70,"loc":{"start":{"line":70,"column":17},"end":{"line":70,"column":40}}},"12":{"name":"(anonymous_12)","line":75,"loc":{"start":{"line":75,"column":47},"end":{"line":75,"column":64}}},"13":{"name":"(anonymous_13)","line":77,"loc":{"start":{"line":77,"column":3},"end":{"line":77,"column":23}}},"14":{"name":"(anonymous_14)","line":79,"loc":{"start":{"line":79,"column":17},"end":{"line":79,"column":40}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":9,"column":2}},"2":{"start":{"line":6,"column":4},"end":{"line":6,"column":58}},"3":{"start":{"line":6,"column":21},"end":{"line":6,"column":58}},"4":{"start":{"line":6,"column":46},"end":{"line":6,"column":58}},"5":{"start":{"line":7,"column":4},"end":{"line":7,"column":43}},"6":{"start":{"line":7,"column":20},"end":{"line":7,"column":41}},"7":{"start":{"line":8,"column":4},"end":{"line":8,"column":89}},"8":{"start":{"line":10,"column":0},"end":{"line":10,"column":29}},"9":{"start":{"line":11,"column":0},"end":{"line":11,"column":43}},"10":{"start":{"line":12,"column":0},"end":{"line":12,"column":45}},"11":{"start":{"line":13,"column":0},"end":{"line":13,"column":47}},"12":{"start":{"line":14,"column":0},"end":{"line":14,"column":37}},"13":{"start":{"line":15,"column":0},"end":{"line":15,"column":35}},"14":{"start":{"line":16,"column":0},"end":{"line":16,"column":31}},"15":{"start":{"line":17,"column":0},"end":{"line":17,"column":42}},"16":{"start":{"line":22,"column":0},"end":{"line":33,"column":2}},"17":{"start":{"line":23,"column":4},"end":{"line":23,"column":35}},"18":{"start":{"line":25,"column":4},"end":{"line":25,"column":106}},"19":{"start":{"line":26,"column":4},"end":{"line":26,"column":22}},"20":{"start":{"line":27,"column":4},"end":{"line":29,"column":5}},"21":{"start":{"line":28,"column":8},"end":{"line":28,"column":107}},"22":{"start":{"line":30,"column":4},"end":{"line":32,"column":71}},"23":{"start":{"line":34,"column":0},"end":{"line":38,"column":2}},"24":{"start":{"line":39,"column":0},"end":{"line":39,"column":62}},"25":{"start":{"line":40,"column":0},"end":{"line":40,"column":30}},"26":{"start":{"line":41,"column":0},"end":{"line":43,"column":2}},"27":{"start":{"line":42,"column":4},"end":{"line":42,"column":122}},"28":{"start":{"line":44,"column":0},"end":{"line":46,"column":2}},"29":{"start":{"line":47,"column":0},"end":{"line":58,"column":20}},"30":{"start":{"line":48,"column":4},"end":{"line":48,"column":36}},"31":{"start":{"line":49,"column":4},"end":{"line":51,"column":5}},"32":{"start":{"line":50,"column":8},"end":{"line":50,"column":38}},"33":{"start":{"line":52,"column":4},"end":{"line":56,"column":6}},"34":{"start":{"line":53,"column":8},"end":{"line":53,"column":25}},"35":{"start":{"line":54,"column":8},"end":{"line":54,"column":42}},"36":{"start":{"line":55,"column":8},"end":{"line":55,"column":262}},"37":{"start":{"line":55,"column":158},"end":{"line":55,"column":191}},"38":{"start":{"line":57,"column":4},"end":{"line":57,"column":24}},"39":{"start":{"line":59,"column":0},"end":{"line":65,"column":2}},"40":{"start":{"line":66,"column":0},"end":{"line":74,"column":17}},"41":{"start":{"line":67,"column":4},"end":{"line":67,"column":14}},"42":{"start":{"line":69,"column":4},"end":{"line":73,"column":6}},"43":{"start":{"line":71,"column":12},"end":{"line":71,"column":61}},"44":{"start":{"line":75,"column":0},"end":{"line":83,"column":17}},"45":{"start":{"line":76,"column":4},"end":{"line":76,"column":14}},"46":{"start":{"line":78,"column":4},"end":{"line":82,"column":6}},"47":{"start":{"line":80,"column":12},"end":{"line":80,"column":74}}},"branchMap":{"1":{"line":5,"type":"binary-expr","locations":[{"start":{"line":5,"column":17},"end":{"line":5,"column":21}},{"start":{"line":5,"column":25},"end":{"line":5,"column":39}},{"start":{"line":5,"column":44},"end":{"line":9,"column":1}}]},"2":{"line":6,"type":"if","locations":[{"start":{"line":6,"column":21},"end":{"line":6,"column":21}},{"start":{"line":6,"column":21},"end":{"line":6,"column":21}}]},"3":{"line":8,"type":"cond-expr","locations":[{"start":{"line":8,"column":31},"end":{"line":8,"column":47}},{"start":{"line":8,"column":51},"end":{"line":8,"column":87}}]},"4":{"line":27,"type":"if","locations":[{"start":{"line":27,"column":4},"end":{"line":27,"column":4}},{"start":{"line":27,"column":4},"end":{"line":27,"column":4}}]},"5":{"line":30,"type":"cond-expr","locations":[{"start":{"line":30,"column":316},"end":{"line":30,"column":318}},{"start":{"line":30,"column":321},"end":{"line":30,"column":328}}]},"6":{"line":30,"type":"cond-expr","locations":[{"start":{"line":30,"column":351},"end":{"line":30,"column":355}},{"start":{"line":31,"column":8},"end":{"line":31,"column":430}}]},"7":{"line":31,"type":"cond-expr","locations":[{"start":{"line":31,"column":269},"end":{"line":31,"column":273}},{"start":{"line":31,"column":276},"end":{"line":31,"column":281}}]},"8":{"line":31,"type":"binary-expr","locations":[{"start":{"line":31,"column":208},"end":{"line":31,"column":226}},{"start":{"line":31,"column":230},"end":{"line":31,"column":266}}]},"9":{"line":31,"type":"cond-expr","locations":[{"start":{"line":31,"column":516},"end":{"line":31,"column":518}},{"start":{"line":31,"column":521},"end":{"line":31,"column":528}}]},"10":{"line":31,"type":"binary-expr","locations":[{"start":{"line":31,"column":532},"end":{"line":31,"column":557}},{"start":{"line":31,"column":561},"end":{"line":31,"column":569}}]},"11":{"line":31,"type":"cond-expr","locations":[{"start":{"line":31,"column":730},"end":{"line":31,"column":779}},{"start":{"line":32,"column":10},"end":{"line":32,"column":67}}]},"12":{"line":55,"type":"cond-expr","locations":[{"start":{"line":55,"column":107},"end":{"line":55,"column":109}},{"start":{"line":55,"column":112},"end":{"line":55,"column":132}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public"," * License, v. 2.0. If a copy of the MPL was not distributed with this"," * file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var __extends = (this && this.__extends) || function (d, b) {","    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];","    function __() { this.constructor = d; }","    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());","};","var React = require('react');","var react_redux_1 = require('react-redux');","var WidgetConfig = require('./widgetConfig');","var WidgetPlugins = require('./widgetPlugins');","var widgets_1 = require('./widgets');","var Widgets = require('./widgets');","var react_1 = require(\"react\");","var dashboard_1 = require('../dashboard');","/**"," * The Dragable Frame of a Widget."," * Contains generic UI controls, shared by all Widgets"," */","var WidgetFrame = function (props) {","    var widgetState = props.widget;","    // If the plugin is not in the registry, we assume it's currently loading","    var pluginLoaded = dashboard_1.default.getInstance().widgetPluginRegistry.hasPlugin(widgetState.type);","    var widgetFactory;","    if (pluginLoaded) {","        widgetFactory = dashboard_1.default.getInstance().widgetPluginRegistry.getPlugin(widgetState.type);","    }","    return (React.createElement(\"div\", {className: \"ui raised segments\", style: { margin: 0, overflow: \"hidden\" }, key: widgetState.id, _grid: { x: widgetState.col, y: widgetState.row, w: widgetState.width, h: widgetState.height }}, React.createElement(\"div\", {className: \"ui inverted segment\" + (props.isReadOnly ? \"\" : \" drag\")}, props.isReadOnly ? null :","        React.createElement(\"div\", {className: \"ui tiny horizontal right floated inverted list\"}, React.createElement(ConfigWidgetButton, {className: \"right item no-drag\", widgetState: widgetState, visible: (props.widgetPlugin && props.widgetPlugin.typeInfo.settings ? true : false), icon: \"configure\"}), React.createElement(DeleteWidgetButton, {className: \"right floated item no-drag\", widgetState: widgetState, icon: \"remove\"})), React.createElement(\"div\", {className: \"ui item top attached\" + (props.isReadOnly ? \"\" : \" drag\")}, widgetState.settings.name || \"\\u00a0\")), React.createElement(\"div\", {className: \"ui segment\", style: { height: widgetState.availableHeightPx, padding: 0, border: \"red dashed 0px\" }}, pluginLoaded ? widgetFactory.getOrCreateInstance(widgetState.id)","        : React.createElement(LoadingWidget, {widget: widgetState}))));","};","WidgetFrame.propTypes = {","    widget: Widgets.widgetPropType.isRequired,","    widgetPlugin: WidgetPlugins.widgetPluginType.isRequired,","    isReadOnly: react_1.PropTypes.bool.isRequired","};","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = WidgetFrame;","var LoadingWidget = function (props) {","    return React.createElement(\"div\", {className: \"ui active text loader\"}, \"Loading \", props.widget.type, \" Widget ...\");","};","LoadingWidget.propTypes = {","    widget: Widgets.widgetPropType.isRequired","};","var WidgetButton = (function (_super) {","    __extends(WidgetButton, _super);","    function WidgetButton() {","        _super.apply(this, arguments);","    }","    WidgetButton.prototype.render = function () {","        var _this = this;","        var data = this.props.widgetState;","        return React.createElement(\"a\", {className: this.props.className + (this.props.visible !== false ? \"\" : \" hidden transition\"), onClick: function () { return _this.props.onClick(data); }}, React.createElement(\"i\", {className: this.props.icon + \" icon\"}));","    };","    return WidgetButton;","}(React.Component));","WidgetButton.propTypes = {","    widgetState: Widgets.widgetPropType.isRequired,","    icon: react_1.PropTypes.string.isRequired,","    visible: react_1.PropTypes.bool,","    className: react_1.PropTypes.string.isRequired,","    onClick: react_1.PropTypes.func.isRequired","};","var DeleteWidgetButton = react_redux_1.connect(function (state) {","    return {};","}, function (dispatch) {","    return {","        onClick: function (widgetState) {","            dispatch(widgets_1.deleteWidget(widgetState.id));","        }","    };","})(WidgetButton);","var ConfigWidgetButton = react_redux_1.connect(function (state) {","    return {};","}, function (dispatch) {","    return {","        onClick: function (widgetState) {","            dispatch(WidgetConfig.openWidgetConfigDialog(widgetState.id));","        }","    };","})(WidgetButton);",""]};
+	}
+	__cov_GB5bZE8QaH8m6BRWS8nrCA = __cov_GB5bZE8QaH8m6BRWS8nrCA['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetFrame.ui.js'];
+	__cov_GB5bZE8QaH8m6BRWS8nrCA.s['1']++;var __extends=(__cov_GB5bZE8QaH8m6BRWS8nrCA.b['1'][0]++,this)&&(__cov_GB5bZE8QaH8m6BRWS8nrCA.b['1'][1]++,this.__extends)||(__cov_GB5bZE8QaH8m6BRWS8nrCA.b['1'][2]++,function(d,b){__cov_GB5bZE8QaH8m6BRWS8nrCA.f['1']++;__cov_GB5bZE8QaH8m6BRWS8nrCA.s['2']++;for(var p in b){__cov_GB5bZE8QaH8m6BRWS8nrCA.s['3']++;if(b.hasOwnProperty(p)){__cov_GB5bZE8QaH8m6BRWS8nrCA.b['2'][0]++;__cov_GB5bZE8QaH8m6BRWS8nrCA.s['4']++;d[p]=b[p];}else{__cov_GB5bZE8QaH8m6BRWS8nrCA.b['2'][1]++;}}function __(){__cov_GB5bZE8QaH8m6BRWS8nrCA.f['2']++;__cov_GB5bZE8QaH8m6BRWS8nrCA.s['6']++;this.constructor=d;}__cov_GB5bZE8QaH8m6BRWS8nrCA.s['7']++;d.prototype=b===null?(__cov_GB5bZE8QaH8m6BRWS8nrCA.b['3'][0]++,Object.create(b)):(__cov_GB5bZE8QaH8m6BRWS8nrCA.b['3'][1]++,(__.prototype=b.prototype,new __()));});__cov_GB5bZE8QaH8m6BRWS8nrCA.s['8']++;var React=__webpack_require__(20);__cov_GB5bZE8QaH8m6BRWS8nrCA.s['9']++;var react_redux_1=__webpack_require__(39);__cov_GB5bZE8QaH8m6BRWS8nrCA.s['10']++;var WidgetConfig=__webpack_require__(49);__cov_GB5bZE8QaH8m6BRWS8nrCA.s['11']++;var WidgetPlugins=__webpack_require__(52);__cov_GB5bZE8QaH8m6BRWS8nrCA.s['12']++;var widgets_1=__webpack_require__(45);__cov_GB5bZE8QaH8m6BRWS8nrCA.s['13']++;var Widgets=__webpack_require__(45);__cov_GB5bZE8QaH8m6BRWS8nrCA.s['14']++;var react_1=__webpack_require__(20);__cov_GB5bZE8QaH8m6BRWS8nrCA.s['15']++;var dashboard_1=__webpack_require__(55);__cov_GB5bZE8QaH8m6BRWS8nrCA.s['16']++;var WidgetFrame=function(props){__cov_GB5bZE8QaH8m6BRWS8nrCA.f['3']++;__cov_GB5bZE8QaH8m6BRWS8nrCA.s['17']++;var widgetState=props.widget;__cov_GB5bZE8QaH8m6BRWS8nrCA.s['18']++;var pluginLoaded=dashboard_1.default.getInstance().widgetPluginRegistry.hasPlugin(widgetState.type);__cov_GB5bZE8QaH8m6BRWS8nrCA.s['19']++;var widgetFactory;__cov_GB5bZE8QaH8m6BRWS8nrCA.s['20']++;if(pluginLoaded){__cov_GB5bZE8QaH8m6BRWS8nrCA.b['4'][0]++;__cov_GB5bZE8QaH8m6BRWS8nrCA.s['21']++;widgetFactory=dashboard_1.default.getInstance().widgetPluginRegistry.getPlugin(widgetState.type);}else{__cov_GB5bZE8QaH8m6BRWS8nrCA.b['4'][1]++;}__cov_GB5bZE8QaH8m6BRWS8nrCA.s['22']++;return React.createElement('div',{className:'ui raised segments',style:{margin:0,overflow:'hidden'},key:widgetState.id,_grid:{x:widgetState.col,y:widgetState.row,w:widgetState.width,h:widgetState.height}},React.createElement('div',{className:'ui inverted segment'+(props.isReadOnly?(__cov_GB5bZE8QaH8m6BRWS8nrCA.b['5'][0]++,''):(__cov_GB5bZE8QaH8m6BRWS8nrCA.b['5'][1]++,' drag'))},props.isReadOnly?(__cov_GB5bZE8QaH8m6BRWS8nrCA.b['6'][0]++,null):(__cov_GB5bZE8QaH8m6BRWS8nrCA.b['6'][1]++,React.createElement('div',{className:'ui tiny horizontal right floated inverted list'},React.createElement(ConfigWidgetButton,{className:'right item no-drag',widgetState:widgetState,visible:(__cov_GB5bZE8QaH8m6BRWS8nrCA.b['8'][0]++,props.widgetPlugin)&&(__cov_GB5bZE8QaH8m6BRWS8nrCA.b['8'][1]++,props.widgetPlugin.typeInfo.settings)?(__cov_GB5bZE8QaH8m6BRWS8nrCA.b['7'][0]++,true):(__cov_GB5bZE8QaH8m6BRWS8nrCA.b['7'][1]++,false),icon:'configure'}),React.createElement(DeleteWidgetButton,{className:'right floated item no-drag',widgetState:widgetState,icon:'remove'}))),React.createElement('div',{className:'ui item top attached'+(props.isReadOnly?(__cov_GB5bZE8QaH8m6BRWS8nrCA.b['9'][0]++,''):(__cov_GB5bZE8QaH8m6BRWS8nrCA.b['9'][1]++,' drag'))},(__cov_GB5bZE8QaH8m6BRWS8nrCA.b['10'][0]++,widgetState.settings.name)||(__cov_GB5bZE8QaH8m6BRWS8nrCA.b['10'][1]++,'\xA0'))),React.createElement('div',{className:'ui segment',style:{height:widgetState.availableHeightPx,padding:0,border:'red dashed 0px'}},pluginLoaded?(__cov_GB5bZE8QaH8m6BRWS8nrCA.b['11'][0]++,widgetFactory.getOrCreateInstance(widgetState.id)):(__cov_GB5bZE8QaH8m6BRWS8nrCA.b['11'][1]++,React.createElement(LoadingWidget,{widget:widgetState}))));};__cov_GB5bZE8QaH8m6BRWS8nrCA.s['23']++;WidgetFrame.propTypes={widget:Widgets.widgetPropType.isRequired,widgetPlugin:WidgetPlugins.widgetPluginType.isRequired,isReadOnly:react_1.PropTypes.bool.isRequired};__cov_GB5bZE8QaH8m6BRWS8nrCA.s['24']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_GB5bZE8QaH8m6BRWS8nrCA.s['25']++;exports.default=WidgetFrame;__cov_GB5bZE8QaH8m6BRWS8nrCA.s['26']++;var LoadingWidget=function(props){__cov_GB5bZE8QaH8m6BRWS8nrCA.f['4']++;__cov_GB5bZE8QaH8m6BRWS8nrCA.s['27']++;return React.createElement('div',{className:'ui active text loader'},'Loading ',props.widget.type,' Widget ...');};__cov_GB5bZE8QaH8m6BRWS8nrCA.s['28']++;LoadingWidget.propTypes={widget:Widgets.widgetPropType.isRequired};__cov_GB5bZE8QaH8m6BRWS8nrCA.s['29']++;var WidgetButton=function(_super){__cov_GB5bZE8QaH8m6BRWS8nrCA.f['5']++;__cov_GB5bZE8QaH8m6BRWS8nrCA.s['30']++;__extends(WidgetButton,_super);function WidgetButton(){__cov_GB5bZE8QaH8m6BRWS8nrCA.f['6']++;__cov_GB5bZE8QaH8m6BRWS8nrCA.s['32']++;_super.apply(this,arguments);}__cov_GB5bZE8QaH8m6BRWS8nrCA.s['33']++;WidgetButton.prototype.render=function(){__cov_GB5bZE8QaH8m6BRWS8nrCA.f['7']++;__cov_GB5bZE8QaH8m6BRWS8nrCA.s['34']++;var _this=this;__cov_GB5bZE8QaH8m6BRWS8nrCA.s['35']++;var data=this.props.widgetState;__cov_GB5bZE8QaH8m6BRWS8nrCA.s['36']++;return React.createElement('a',{className:this.props.className+(this.props.visible!==false?(__cov_GB5bZE8QaH8m6BRWS8nrCA.b['12'][0]++,''):(__cov_GB5bZE8QaH8m6BRWS8nrCA.b['12'][1]++,' hidden transition')),onClick:function(){__cov_GB5bZE8QaH8m6BRWS8nrCA.f['8']++;__cov_GB5bZE8QaH8m6BRWS8nrCA.s['37']++;return _this.props.onClick(data);}},React.createElement('i',{className:this.props.icon+' icon'}));};__cov_GB5bZE8QaH8m6BRWS8nrCA.s['38']++;return WidgetButton;}(React.Component);__cov_GB5bZE8QaH8m6BRWS8nrCA.s['39']++;WidgetButton.propTypes={widgetState:Widgets.widgetPropType.isRequired,icon:react_1.PropTypes.string.isRequired,visible:react_1.PropTypes.bool,className:react_1.PropTypes.string.isRequired,onClick:react_1.PropTypes.func.isRequired};__cov_GB5bZE8QaH8m6BRWS8nrCA.s['40']++;var DeleteWidgetButton=react_redux_1.connect(function(state){__cov_GB5bZE8QaH8m6BRWS8nrCA.f['9']++;__cov_GB5bZE8QaH8m6BRWS8nrCA.s['41']++;return{};},function(dispatch){__cov_GB5bZE8QaH8m6BRWS8nrCA.f['10']++;__cov_GB5bZE8QaH8m6BRWS8nrCA.s['42']++;return{onClick:function(widgetState){__cov_GB5bZE8QaH8m6BRWS8nrCA.f['11']++;__cov_GB5bZE8QaH8m6BRWS8nrCA.s['43']++;dispatch(widgets_1.deleteWidget(widgetState.id));}};})(WidgetButton);__cov_GB5bZE8QaH8m6BRWS8nrCA.s['44']++;var ConfigWidgetButton=react_redux_1.connect(function(state){__cov_GB5bZE8QaH8m6BRWS8nrCA.f['12']++;__cov_GB5bZE8QaH8m6BRWS8nrCA.s['45']++;return{};},function(dispatch){__cov_GB5bZE8QaH8m6BRWS8nrCA.f['13']++;__cov_GB5bZE8QaH8m6BRWS8nrCA.s['46']++;return{onClick:function(widgetState){__cov_GB5bZE8QaH8m6BRWS8nrCA.f['14']++;__cov_GB5bZE8QaH8m6BRWS8nrCA.s['47']++;dispatch(WidgetConfig.openWidgetConfigDialog(widgetState.id));}};})(WidgetButton);
 
 
 /***/ },
 /* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Widgets = __webpack_require__(45);
-	var actionNames_1 = __webpack_require__(43);
-	var Modal = __webpack_require__(50);
-	var ModalIds = __webpack_require__(51);
-	var initialState = {
-	    type: null,
-	    name: null,
-	    settings: {}
-	};
-	/**
-	 * Triggered when the user intends to create a widget of a certain type
-	 */
-	function createWidget(type) {
-	    return function (dispatch, getState) {
-	        var state = getState();
-	        var widgetPlugin = state.widgetPlugins[type];
-	        if (!widgetPlugin.typeInfo.settings && widgetPlugin.typeInfo.settings.length > 0) {
-	            dispatch(Widgets.createWidget(type));
-	            return;
-	        }
-	        dispatch(openWidgetCreateDialog(type));
-	    };
+	var __cov_dJIoJo5$iAZdh8NzqwYa0g = (Function('return this'))();
+	if (!__cov_dJIoJo5$iAZdh8NzqwYa0g.__coverage__) { __cov_dJIoJo5$iAZdh8NzqwYa0g.__coverage__ = {}; }
+	__cov_dJIoJo5$iAZdh8NzqwYa0g = __cov_dJIoJo5$iAZdh8NzqwYa0g.__coverage__;
+	if (!(__cov_dJIoJo5$iAZdh8NzqwYa0g['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetConfig.js'])) {
+	   __cov_dJIoJo5$iAZdh8NzqwYa0g['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetConfig.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetConfig.js","s":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":1,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":1,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":1,"26":0,"27":0,"28":0,"29":0,"30":1,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":1,"38":0,"39":0,"40":0,"41":0,"42":0,"43":0,"44":0},"b":{"1":[0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0],"7":[0,0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0},"fnMap":{"1":{"name":"createWidget","line":17,"loc":{"start":{"line":17,"column":0},"end":{"line":17,"column":28}}},"2":{"name":"(anonymous_2)","line":18,"loc":{"start":{"line":18,"column":11},"end":{"line":18,"column":41}}},"3":{"name":"createOrUpdateWidget","line":32,"loc":{"start":{"line":32,"column":0},"end":{"line":32,"column":50}}},"4":{"name":"(anonymous_4)","line":33,"loc":{"start":{"line":33,"column":11},"end":{"line":33,"column":41}}},"5":{"name":"openWidgetCreateDialog","line":48,"loc":{"start":{"line":48,"column":0},"end":{"line":48,"column":38}}},"6":{"name":"(anonymous_6)","line":49,"loc":{"start":{"line":49,"column":11},"end":{"line":49,"column":31}}},"7":{"name":"openWidgetConfigDialog","line":61,"loc":{"start":{"line":61,"column":0},"end":{"line":61,"column":36}}},"8":{"name":"(anonymous_8)","line":62,"loc":{"start":{"line":62,"column":11},"end":{"line":62,"column":41}}},"9":{"name":"widgetConfigDialog","line":73,"loc":{"start":{"line":73,"column":0},"end":{"line":73,"column":43}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":35}},"2":{"start":{"line":6,"column":0},"end":{"line":6,"column":46}},"3":{"start":{"line":7,"column":0},"end":{"line":7,"column":44}},"4":{"start":{"line":8,"column":0},"end":{"line":8,"column":50}},"5":{"start":{"line":9,"column":0},"end":{"line":13,"column":2}},"6":{"start":{"line":17,"column":0},"end":{"line":27,"column":1}},"7":{"start":{"line":18,"column":4},"end":{"line":26,"column":6}},"8":{"start":{"line":19,"column":8},"end":{"line":19,"column":31}},"9":{"start":{"line":20,"column":8},"end":{"line":20,"column":53}},"10":{"start":{"line":21,"column":8},"end":{"line":24,"column":9}},"11":{"start":{"line":22,"column":12},"end":{"line":22,"column":49}},"12":{"start":{"line":23,"column":12},"end":{"line":23,"column":19}},"13":{"start":{"line":25,"column":8},"end":{"line":25,"column":47}},"14":{"start":{"line":28,"column":0},"end":{"line":28,"column":36}},"15":{"start":{"line":32,"column":0},"end":{"line":46,"column":1}},"16":{"start":{"line":33,"column":4},"end":{"line":45,"column":6}},"17":{"start":{"line":34,"column":8},"end":{"line":34,"column":31}},"18":{"start":{"line":35,"column":8},"end":{"line":35,"column":39}},"19":{"start":{"line":36,"column":8},"end":{"line":38,"column":9}},"20":{"start":{"line":37,"column":12},"end":{"line":37,"column":108}},"21":{"start":{"line":39,"column":8},"end":{"line":44,"column":9}},"22":{"start":{"line":40,"column":12},"end":{"line":40,"column":65}},"23":{"start":{"line":43,"column":12},"end":{"line":43,"column":59}},"24":{"start":{"line":47,"column":0},"end":{"line":47,"column":52}},"25":{"start":{"line":48,"column":0},"end":{"line":56,"column":1}},"26":{"start":{"line":49,"column":4},"end":{"line":55,"column":6}},"27":{"start":{"line":50,"column":8},"end":{"line":53,"column":11}},"28":{"start":{"line":54,"column":8},"end":{"line":54,"column":58}},"29":{"start":{"line":57,"column":0},"end":{"line":57,"column":56}},"30":{"start":{"line":61,"column":0},"end":{"line":71,"column":1}},"31":{"start":{"line":62,"column":4},"end":{"line":70,"column":6}},"32":{"start":{"line":63,"column":8},"end":{"line":63,"column":31}},"33":{"start":{"line":64,"column":8},"end":{"line":64,"column":39}},"34":{"start":{"line":65,"column":8},"end":{"line":68,"column":11}},"35":{"start":{"line":69,"column":8},"end":{"line":69,"column":58}},"36":{"start":{"line":72,"column":0},"end":{"line":72,"column":56}},"37":{"start":{"line":73,"column":0},"end":{"line":93,"column":1}},"38":{"start":{"line":74,"column":4},"end":{"line":74,"column":51}},"39":{"start":{"line":74,"column":28},"end":{"line":74,"column":49}},"40":{"start":{"line":75,"column":4},"end":{"line":92,"column":5}},"41":{"start":{"line":77,"column":12},"end":{"line":82,"column":15}},"42":{"start":{"line":84,"column":12},"end":{"line":89,"column":15}},"43":{"start":{"line":91,"column":12},"end":{"line":91,"column":25}},"44":{"start":{"line":94,"column":0},"end":{"line":94,"column":48}}},"branchMap":{"1":{"line":21,"type":"if","locations":[{"start":{"line":21,"column":8},"end":{"line":21,"column":8}},{"start":{"line":21,"column":8},"end":{"line":21,"column":8}}]},"2":{"line":21,"type":"binary-expr","locations":[{"start":{"line":21,"column":12},"end":{"line":21,"column":43}},{"start":{"line":21,"column":47},"end":{"line":21,"column":88}}]},"3":{"line":36,"type":"if","locations":[{"start":{"line":36,"column":8},"end":{"line":36,"column":8}},{"start":{"line":36,"column":8},"end":{"line":36,"column":8}}]},"4":{"line":36,"type":"binary-expr","locations":[{"start":{"line":36,"column":12},"end":{"line":36,"column":18}},{"start":{"line":36,"column":22},"end":{"line":36,"column":42}}]},"5":{"line":39,"type":"if","locations":[{"start":{"line":39,"column":8},"end":{"line":39,"column":8}},{"start":{"line":39,"column":8},"end":{"line":39,"column":8}}]},"6":{"line":74,"type":"if","locations":[{"start":{"line":74,"column":4},"end":{"line":74,"column":4}},{"start":{"line":74,"column":4},"end":{"line":74,"column":4}}]},"7":{"line":75,"type":"switch","locations":[{"start":{"line":76,"column":8},"end":{"line":82,"column":15}},{"start":{"line":83,"column":8},"end":{"line":89,"column":15}},{"start":{"line":90,"column":8},"end":{"line":91,"column":25}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var Widgets = require(\"./widgets\");","var actionNames_1 = require(\"../actionNames\");","var Modal = require(\"../modal/modalDialog\");","var ModalIds = require(\"../modal/modalDialogIds\");","var initialState = {","    type: null,","    name: null,","    settings: {}","};","/**"," * Triggered when the user intends to create a widget of a certain type"," */","function createWidget(type) {","    return function (dispatch, getState) {","        var state = getState();","        var widgetPlugin = state.widgetPlugins[type];","        if (!widgetPlugin.typeInfo.settings && widgetPlugin.typeInfo.settings.length > 0) {","            dispatch(Widgets.createWidget(type));","            return;","        }","        dispatch(openWidgetCreateDialog(type));","    };","}","exports.createWidget = createWidget;","/**"," * Creates or updates an actual widget"," */","function createOrUpdateWidget(id, type, settings) {","    return function (dispatch, getState) {","        var state = getState();","        var widget = state.widgets[id];","        if (widget && widget.type !== type) {","            throw new Error(\"Can not update widget of type \" + widget.type + \" with props of type \" + type);","        }","        if (widget) {","            dispatch(Widgets.updateWidgetSettings(id, settings));","        }","        else {","            dispatch(Widgets.createWidget(type, settings));","        }","    };","}","exports.createOrUpdateWidget = createOrUpdateWidget;","function openWidgetCreateDialog(type) {","    return function (dispatch) {","        dispatch({","            type: actionNames_1.START_CREATE_WIDGET,","            widgetType: type","        });","        dispatch(Modal.showModal(ModalIds.WIDGET_CONFIG));","    };","}","exports.openWidgetCreateDialog = openWidgetCreateDialog;","/**"," * Open the dialog with the settings and values of the given widget"," */","function openWidgetConfigDialog(id) {","    return function (dispatch, getState) {","        var state = getState();","        var widget = state.widgets[id];","        dispatch({","            type: actionNames_1.START_CONFIGURE_WIDGET,","            widget: widget","        });","        dispatch(Modal.showModal(ModalIds.WIDGET_CONFIG));","    };","}","exports.openWidgetConfigDialog = openWidgetConfigDialog;","function widgetConfigDialog(state, action) {","    if (state === void 0) { state = initialState; }","    switch (action.type) {","        case actionNames_1.START_CREATE_WIDGET:","            return Object.assign({}, state, {","                type: action.widgetType,","                id: null,","                name: action.widgetType,","                settings: {}","            });","        case actionNames_1.START_CONFIGURE_WIDGET:","            return Object.assign({}, state, {","                type: action.widget.type,","                id: action.widget.id,","                name: action.widget.name,","                settings: action.widget.settings","            });","        default:","            return state;","    }","}","exports.widgetConfigDialog = widgetConfigDialog;",""]};
 	}
-	exports.createWidget = createWidget;
-	/**
-	 * Creates or updates an actual widget
-	 */
-	function createOrUpdateWidget(id, type, settings) {
-	    return function (dispatch, getState) {
-	        var state = getState();
-	        var widget = state.widgets[id];
-	        if (widget && widget.type !== type) {
-	            throw new Error("Can not update widget of type " + widget.type + " with props of type " + type);
-	        }
-	        if (widget) {
-	            dispatch(Widgets.updateWidgetSettings(id, settings));
-	        }
-	        else {
-	            dispatch(Widgets.createWidget(type, settings));
-	        }
-	    };
-	}
-	exports.createOrUpdateWidget = createOrUpdateWidget;
-	function openWidgetCreateDialog(type) {
-	    return function (dispatch) {
-	        dispatch({
-	            type: actionNames_1.START_CREATE_WIDGET,
-	            widgetType: type
-	        });
-	        dispatch(Modal.showModal(ModalIds.WIDGET_CONFIG));
-	    };
-	}
-	exports.openWidgetCreateDialog = openWidgetCreateDialog;
-	/**
-	 * Open the dialog with the settings and values of the given widget
-	 */
-	function openWidgetConfigDialog(id) {
-	    return function (dispatch, getState) {
-	        var state = getState();
-	        var widget = state.widgets[id];
-	        dispatch({
-	            type: actionNames_1.START_CONFIGURE_WIDGET,
-	            widget: widget
-	        });
-	        dispatch(Modal.showModal(ModalIds.WIDGET_CONFIG));
-	    };
-	}
-	exports.openWidgetConfigDialog = openWidgetConfigDialog;
-	function widgetConfigDialog(state, action) {
-	    if (state === void 0) { state = initialState; }
-	    switch (action.type) {
-	        case actionNames_1.START_CREATE_WIDGET:
-	            return Object.assign({}, state, {
-	                type: action.widgetType,
-	                id: null,
-	                name: action.widgetType,
-	                settings: {}
-	            });
-	        case actionNames_1.START_CONFIGURE_WIDGET:
-	            return Object.assign({}, state, {
-	                type: action.widget.type,
-	                id: action.widget.id,
-	                name: action.widget.name,
-	                settings: action.widget.settings
-	            });
-	        default:
-	            return state;
-	    }
-	}
-	exports.widgetConfigDialog = widgetConfigDialog;
+	__cov_dJIoJo5$iAZdh8NzqwYa0g = __cov_dJIoJo5$iAZdh8NzqwYa0g['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetConfig.js'];
+	__cov_dJIoJo5$iAZdh8NzqwYa0g.s['1']++;var Widgets=__webpack_require__(45);__cov_dJIoJo5$iAZdh8NzqwYa0g.s['2']++;var actionNames_1=__webpack_require__(43);__cov_dJIoJo5$iAZdh8NzqwYa0g.s['3']++;var Modal=__webpack_require__(50);__cov_dJIoJo5$iAZdh8NzqwYa0g.s['4']++;var ModalIds=__webpack_require__(51);__cov_dJIoJo5$iAZdh8NzqwYa0g.s['5']++;var initialState={type:null,name:null,settings:{}};function createWidget(type){__cov_dJIoJo5$iAZdh8NzqwYa0g.f['1']++;__cov_dJIoJo5$iAZdh8NzqwYa0g.s['7']++;return function(dispatch,getState){__cov_dJIoJo5$iAZdh8NzqwYa0g.f['2']++;__cov_dJIoJo5$iAZdh8NzqwYa0g.s['8']++;var state=getState();__cov_dJIoJo5$iAZdh8NzqwYa0g.s['9']++;var widgetPlugin=state.widgetPlugins[type];__cov_dJIoJo5$iAZdh8NzqwYa0g.s['10']++;if((__cov_dJIoJo5$iAZdh8NzqwYa0g.b['2'][0]++,!widgetPlugin.typeInfo.settings)&&(__cov_dJIoJo5$iAZdh8NzqwYa0g.b['2'][1]++,widgetPlugin.typeInfo.settings.length>0)){__cov_dJIoJo5$iAZdh8NzqwYa0g.b['1'][0]++;__cov_dJIoJo5$iAZdh8NzqwYa0g.s['11']++;dispatch(Widgets.createWidget(type));__cov_dJIoJo5$iAZdh8NzqwYa0g.s['12']++;return;}else{__cov_dJIoJo5$iAZdh8NzqwYa0g.b['1'][1]++;}__cov_dJIoJo5$iAZdh8NzqwYa0g.s['13']++;dispatch(openWidgetCreateDialog(type));};}__cov_dJIoJo5$iAZdh8NzqwYa0g.s['14']++;exports.createWidget=createWidget;function createOrUpdateWidget(id,type,settings){__cov_dJIoJo5$iAZdh8NzqwYa0g.f['3']++;__cov_dJIoJo5$iAZdh8NzqwYa0g.s['16']++;return function(dispatch,getState){__cov_dJIoJo5$iAZdh8NzqwYa0g.f['4']++;__cov_dJIoJo5$iAZdh8NzqwYa0g.s['17']++;var state=getState();__cov_dJIoJo5$iAZdh8NzqwYa0g.s['18']++;var widget=state.widgets[id];__cov_dJIoJo5$iAZdh8NzqwYa0g.s['19']++;if((__cov_dJIoJo5$iAZdh8NzqwYa0g.b['4'][0]++,widget)&&(__cov_dJIoJo5$iAZdh8NzqwYa0g.b['4'][1]++,widget.type!==type)){__cov_dJIoJo5$iAZdh8NzqwYa0g.b['3'][0]++;__cov_dJIoJo5$iAZdh8NzqwYa0g.s['20']++;throw new Error('Can not update widget of type '+widget.type+' with props of type '+type);}else{__cov_dJIoJo5$iAZdh8NzqwYa0g.b['3'][1]++;}__cov_dJIoJo5$iAZdh8NzqwYa0g.s['21']++;if(widget){__cov_dJIoJo5$iAZdh8NzqwYa0g.b['5'][0]++;__cov_dJIoJo5$iAZdh8NzqwYa0g.s['22']++;dispatch(Widgets.updateWidgetSettings(id,settings));}else{__cov_dJIoJo5$iAZdh8NzqwYa0g.b['5'][1]++;__cov_dJIoJo5$iAZdh8NzqwYa0g.s['23']++;dispatch(Widgets.createWidget(type,settings));}};}__cov_dJIoJo5$iAZdh8NzqwYa0g.s['24']++;exports.createOrUpdateWidget=createOrUpdateWidget;function openWidgetCreateDialog(type){__cov_dJIoJo5$iAZdh8NzqwYa0g.f['5']++;__cov_dJIoJo5$iAZdh8NzqwYa0g.s['26']++;return function(dispatch){__cov_dJIoJo5$iAZdh8NzqwYa0g.f['6']++;__cov_dJIoJo5$iAZdh8NzqwYa0g.s['27']++;dispatch({type:actionNames_1.START_CREATE_WIDGET,widgetType:type});__cov_dJIoJo5$iAZdh8NzqwYa0g.s['28']++;dispatch(Modal.showModal(ModalIds.WIDGET_CONFIG));};}__cov_dJIoJo5$iAZdh8NzqwYa0g.s['29']++;exports.openWidgetCreateDialog=openWidgetCreateDialog;function openWidgetConfigDialog(id){__cov_dJIoJo5$iAZdh8NzqwYa0g.f['7']++;__cov_dJIoJo5$iAZdh8NzqwYa0g.s['31']++;return function(dispatch,getState){__cov_dJIoJo5$iAZdh8NzqwYa0g.f['8']++;__cov_dJIoJo5$iAZdh8NzqwYa0g.s['32']++;var state=getState();__cov_dJIoJo5$iAZdh8NzqwYa0g.s['33']++;var widget=state.widgets[id];__cov_dJIoJo5$iAZdh8NzqwYa0g.s['34']++;dispatch({type:actionNames_1.START_CONFIGURE_WIDGET,widget:widget});__cov_dJIoJo5$iAZdh8NzqwYa0g.s['35']++;dispatch(Modal.showModal(ModalIds.WIDGET_CONFIG));};}__cov_dJIoJo5$iAZdh8NzqwYa0g.s['36']++;exports.openWidgetConfigDialog=openWidgetConfigDialog;function widgetConfigDialog(state,action){__cov_dJIoJo5$iAZdh8NzqwYa0g.f['9']++;__cov_dJIoJo5$iAZdh8NzqwYa0g.s['38']++;if(state===void 0){__cov_dJIoJo5$iAZdh8NzqwYa0g.b['6'][0]++;__cov_dJIoJo5$iAZdh8NzqwYa0g.s['39']++;state=initialState;}else{__cov_dJIoJo5$iAZdh8NzqwYa0g.b['6'][1]++;}__cov_dJIoJo5$iAZdh8NzqwYa0g.s['40']++;switch(action.type){case actionNames_1.START_CREATE_WIDGET:__cov_dJIoJo5$iAZdh8NzqwYa0g.b['7'][0]++;__cov_dJIoJo5$iAZdh8NzqwYa0g.s['41']++;return Object.assign({},state,{type:action.widgetType,id:null,name:action.widgetType,settings:{}});case actionNames_1.START_CONFIGURE_WIDGET:__cov_dJIoJo5$iAZdh8NzqwYa0g.b['7'][1]++;__cov_dJIoJo5$iAZdh8NzqwYa0g.s['42']++;return Object.assign({},state,{type:action.widget.type,id:action.widget.id,name:action.widget.name,settings:action.widget.settings});default:__cov_dJIoJo5$iAZdh8NzqwYa0g.b['7'][2]++;__cov_dJIoJo5$iAZdh8NzqwYa0g.s['43']++;return state;}}__cov_dJIoJo5$iAZdh8NzqwYa0g.s['44']++;exports.widgetConfigDialog=widgetConfigDialog;
 
 
 /***/ },
 /* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function($) {/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
-	"use strict";
-	var Action = __webpack_require__(43);
-	var initialState = {
-	    dialogId: null,
-	    isVisible: false,
-	    data: {}
-	};
-	function showModalSideeffect(id) {
-	    var $modal = $('.ui.modal.' + id);
-	    if (!$modal.length) {
-	        throw new Error("Can not find Modal with id", id, $modal);
-	    }
-	    $modal.modal('show');
-	    // This is to update the Browser Scrollbar, at least needed in WebKit
-	    if (typeof document !== 'undefined') {
-	        var n_1 = document.createTextNode(' ');
-	        $modal.append(n_1);
-	        setTimeout(function () {
-	            n_1.parentNode.removeChild(n_1);
-	        }, 0);
-	    }
+	/* WEBPACK VAR INJECTION */(function($) {"use strict";
+	var __cov_UILftxv_eGQYCsKgzZq_gg = (Function('return this'))();
+	if (!__cov_UILftxv_eGQYCsKgzZq_gg.__coverage__) { __cov_UILftxv_eGQYCsKgzZq_gg.__coverage__ = {}; }
+	__cov_UILftxv_eGQYCsKgzZq_gg = __cov_UILftxv_eGQYCsKgzZq_gg.__coverage__;
+	if (!(__cov_UILftxv_eGQYCsKgzZq_gg['/home/travis/build/Niondir/iot-dashboard/src/modal/modalDialog.js'])) {
+	   __cov_UILftxv_eGQYCsKgzZq_gg['/home/travis/build/Niondir/iot-dashboard/src/modal/modalDialog.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/modal/modalDialog.js","s":{"1":0,"2":0,"3":1,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":1,"14":0,"15":1,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":1,"26":0,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":1,"35":0,"36":0,"37":0,"38":0,"39":0,"40":0,"41":1,"42":0,"43":0,"44":0,"45":0,"46":0,"47":0,"48":0},"b":{"1":[0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0,0],"7":[0,0],"8":[0,0],"9":[0,0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0},"fnMap":{"1":{"name":"showModalSideeffect","line":11,"loc":{"start":{"line":11,"column":0},"end":{"line":11,"column":33}}},"2":{"name":"(anonymous_2)","line":21,"loc":{"start":{"line":21,"column":19},"end":{"line":21,"column":31}}},"3":{"name":"closeModalSideeffect","line":26,"loc":{"start":{"line":26,"column":0},"end":{"line":26,"column":34}}},"4":{"name":"updateModalVisibility","line":29,"loc":{"start":{"line":29,"column":0},"end":{"line":29,"column":56}}},"5":{"name":"showModal","line":45,"loc":{"start":{"line":45,"column":0},"end":{"line":45,"column":29}}},"6":{"name":"(anonymous_6)","line":47,"loc":{"start":{"line":47,"column":11},"end":{"line":47,"column":41}}},"7":{"name":"closeModal","line":59,"loc":{"start":{"line":59,"column":0},"end":{"line":59,"column":22}}},"8":{"name":"(anonymous_8)","line":60,"loc":{"start":{"line":60,"column":11},"end":{"line":60,"column":41}}},"9":{"name":"modalDialog","line":70,"loc":{"start":{"line":70,"column":0},"end":{"line":70,"column":36}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":39}},"2":{"start":{"line":6,"column":0},"end":{"line":10,"column":2}},"3":{"start":{"line":11,"column":0},"end":{"line":25,"column":1}},"4":{"start":{"line":12,"column":4},"end":{"line":12,"column":38}},"5":{"start":{"line":13,"column":4},"end":{"line":15,"column":5}},"6":{"start":{"line":14,"column":8},"end":{"line":14,"column":66}},"7":{"start":{"line":16,"column":4},"end":{"line":16,"column":25}},"8":{"start":{"line":18,"column":4},"end":{"line":24,"column":5}},"9":{"start":{"line":19,"column":8},"end":{"line":19,"column":47}},"10":{"start":{"line":20,"column":8},"end":{"line":20,"column":27}},"11":{"start":{"line":21,"column":8},"end":{"line":23,"column":14}},"12":{"start":{"line":22,"column":12},"end":{"line":22,"column":44}},"13":{"start":{"line":26,"column":0},"end":{"line":28,"column":1}},"14":{"start":{"line":27,"column":4},"end":{"line":27,"column":39}},"15":{"start":{"line":29,"column":0},"end":{"line":44,"column":1}},"16":{"start":{"line":30,"column":4},"end":{"line":30,"column":47}},"17":{"start":{"line":31,"column":4},"end":{"line":31,"column":45}},"18":{"start":{"line":32,"column":4},"end":{"line":43,"column":5}},"19":{"start":{"line":33,"column":8},"end":{"line":38,"column":9}},"20":{"start":{"line":34,"column":12},"end":{"line":34,"column":54}},"21":{"start":{"line":37,"column":12},"end":{"line":37,"column":56}},"22":{"start":{"line":40,"column":9},"end":{"line":43,"column":5}},"23":{"start":{"line":41,"column":8},"end":{"line":41,"column":52}},"24":{"start":{"line":42,"column":8},"end":{"line":42,"column":50}},"25":{"start":{"line":45,"column":0},"end":{"line":57,"column":1}},"26":{"start":{"line":46,"column":4},"end":{"line":46,"column":39}},"27":{"start":{"line":46,"column":27},"end":{"line":46,"column":37}},"28":{"start":{"line":47,"column":4},"end":{"line":56,"column":6}},"29":{"start":{"line":48,"column":8},"end":{"line":48,"column":37}},"30":{"start":{"line":49,"column":8},"end":{"line":53,"column":11}},"31":{"start":{"line":54,"column":8},"end":{"line":54,"column":36}},"32":{"start":{"line":55,"column":8},"end":{"line":55,"column":55}},"33":{"start":{"line":58,"column":0},"end":{"line":58,"column":30}},"34":{"start":{"line":59,"column":0},"end":{"line":68,"column":1}},"35":{"start":{"line":60,"column":4},"end":{"line":67,"column":6}},"36":{"start":{"line":61,"column":8},"end":{"line":61,"column":37}},"37":{"start":{"line":62,"column":8},"end":{"line":64,"column":11}},"38":{"start":{"line":65,"column":8},"end":{"line":65,"column":36}},"39":{"start":{"line":66,"column":8},"end":{"line":66,"column":55}},"40":{"start":{"line":69,"column":0},"end":{"line":69,"column":32}},"41":{"start":{"line":70,"column":0},"end":{"line":88,"column":1}},"42":{"start":{"line":71,"column":4},"end":{"line":71,"column":51}},"43":{"start":{"line":71,"column":28},"end":{"line":71,"column":49}},"44":{"start":{"line":72,"column":4},"end":{"line":87,"column":5}},"45":{"start":{"line":74,"column":12},"end":{"line":78,"column":15}},"46":{"start":{"line":80,"column":12},"end":{"line":84,"column":15}},"47":{"start":{"line":86,"column":12},"end":{"line":86,"column":25}},"48":{"start":{"line":89,"column":0},"end":{"line":89,"column":34}}},"branchMap":{"1":{"line":13,"type":"if","locations":[{"start":{"line":13,"column":4},"end":{"line":13,"column":4}},{"start":{"line":13,"column":4},"end":{"line":13,"column":4}}]},"2":{"line":18,"type":"if","locations":[{"start":{"line":18,"column":4},"end":{"line":18,"column":4}},{"start":{"line":18,"column":4},"end":{"line":18,"column":4}}]},"3":{"line":32,"type":"if","locations":[{"start":{"line":32,"column":4},"end":{"line":32,"column":4}},{"start":{"line":32,"column":4},"end":{"line":32,"column":4}}]},"4":{"line":33,"type":"if","locations":[{"start":{"line":33,"column":8},"end":{"line":33,"column":8}},{"start":{"line":33,"column":8},"end":{"line":33,"column":8}}]},"5":{"line":40,"type":"if","locations":[{"start":{"line":40,"column":9},"end":{"line":40,"column":9}},{"start":{"line":40,"column":9},"end":{"line":40,"column":9}}]},"6":{"line":40,"type":"binary-expr","locations":[{"start":{"line":40,"column":13},"end":{"line":40,"column":34}},{"start":{"line":40,"column":38},"end":{"line":40,"column":58}},{"start":{"line":40,"column":62},"end":{"line":40,"column":108}}]},"7":{"line":46,"type":"if","locations":[{"start":{"line":46,"column":4},"end":{"line":46,"column":4}},{"start":{"line":46,"column":4},"end":{"line":46,"column":4}}]},"8":{"line":71,"type":"if","locations":[{"start":{"line":71,"column":4},"end":{"line":71,"column":4}},{"start":{"line":71,"column":4},"end":{"line":71,"column":4}}]},"9":{"line":72,"type":"switch","locations":[{"start":{"line":73,"column":8},"end":{"line":78,"column":15}},{"start":{"line":79,"column":8},"end":{"line":84,"column":15}},{"start":{"line":85,"column":8},"end":{"line":86,"column":25}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var Action = require('../actionNames');","var initialState = {","    dialogId: null,","    isVisible: false,","    data: {}","};","function showModalSideeffect(id) {","    var $modal = $('.ui.modal.' + id);","    if (!$modal.length) {","        throw new Error(\"Can not find Modal with id\", id, $modal);","    }","    $modal.modal('show');","    // This is to update the Browser Scrollbar, at least needed in WebKit","    if (typeof document !== 'undefined') {","        var n_1 = document.createTextNode(' ');","        $modal.append(n_1);","        setTimeout(function () {","            n_1.parentNode.removeChild(n_1);","        }, 0);","    }","}","function closeModalSideeffect(id) {","    $('.ui.modal.' + id).modal('hide');","}","function updateModalVisibility(stateAfter, stateBefore) {","    var dialogBefore = stateBefore.modalDialog;","    var dialogAfter = stateAfter.modalDialog;","    if (dialogBefore.isVisible !== dialogAfter.isVisible) {","        if (stateAfter.modalDialog.isVisible) {","            showModalSideeffect(dialogAfter.dialogId);","        }","        else {","            closeModalSideeffect(dialogBefore.dialogId);","        }","    }","    else if (dialogBefore.dialogId && dialogAfter.dialogId && dialogBefore.dialogId !== dialogAfter.dialogId) {","        closeModalSideeffect(dialogBefore.dialogId);","        showModalSideeffect(dialogAfter.dialogId);","    }","}","function showModal(id, data) {","    if (data === void 0) { data = {}; }","    return function (dispatch, getState) {","        var stateBefore = getState();","        dispatch({","            type: Action.SHOW_MODAL,","            dialogId: id,","            data: data","        });","        var stateAfter = getState();","        updateModalVisibility(stateAfter, stateBefore);","    };","}","exports.showModal = showModal;","function closeModal() {","    return function (dispatch, getState) {","        var stateBefore = getState();","        dispatch({","            type: Action.HIDE_MODAL","        });","        var stateAfter = getState();","        updateModalVisibility(stateAfter, stateBefore);","    };","}","exports.closeModal = closeModal;","function modalDialog(state, action) {","    if (state === void 0) { state = initialState; }","    switch (action.type) {","        case Action.SHOW_MODAL:","            return Object.assign({}, state, {","                dialogId: action.dialogId,","                data: action.data,","                isVisible: true","            });","        case Action.HIDE_MODAL:","            return Object.assign({}, state, {","                dialogId: null,","                data: null,","                isVisible: false","            });","        default:","            return state;","    }","}","exports.modalDialog = modalDialog;",""]};
 	}
-	function closeModalSideeffect(id) {
-	    $('.ui.modal.' + id).modal('hide');
-	}
-	function updateModalVisibility(stateAfter, stateBefore) {
-	    var dialogBefore = stateBefore.modalDialog;
-	    var dialogAfter = stateAfter.modalDialog;
-	    if (dialogBefore.isVisible !== dialogAfter.isVisible) {
-	        if (stateAfter.modalDialog.isVisible) {
-	            showModalSideeffect(dialogAfter.dialogId);
-	        }
-	        else {
-	            closeModalSideeffect(dialogBefore.dialogId);
-	        }
-	    }
-	    else if (dialogBefore.dialogId && dialogAfter.dialogId && dialogBefore.dialogId !== dialogAfter.dialogId) {
-	        closeModalSideeffect(dialogBefore.dialogId);
-	        showModalSideeffect(dialogAfter.dialogId);
-	    }
-	}
-	function showModal(id, data) {
-	    if (data === void 0) { data = {}; }
-	    return function (dispatch, getState) {
-	        var stateBefore = getState();
-	        dispatch({
-	            type: Action.SHOW_MODAL,
-	            dialogId: id,
-	            data: data
-	        });
-	        var stateAfter = getState();
-	        updateModalVisibility(stateAfter, stateBefore);
-	    };
-	}
-	exports.showModal = showModal;
-	function closeModal() {
-	    return function (dispatch, getState) {
-	        var stateBefore = getState();
-	        dispatch({
-	            type: Action.HIDE_MODAL
-	        });
-	        var stateAfter = getState();
-	        updateModalVisibility(stateAfter, stateBefore);
-	    };
-	}
-	exports.closeModal = closeModal;
-	function modalDialog(state, action) {
-	    if (state === void 0) { state = initialState; }
-	    switch (action.type) {
-	        case Action.SHOW_MODAL:
-	            return Object.assign({}, state, {
-	                dialogId: action.dialogId,
-	                data: action.data,
-	                isVisible: true
-	            });
-	        case Action.HIDE_MODAL:
-	            return Object.assign({}, state, {
-	                dialogId: null,
-	                data: null,
-	                isVisible: false
-	            });
-	        default:
-	            return state;
-	    }
-	}
-	exports.modalDialog = modalDialog;
-	
+	__cov_UILftxv_eGQYCsKgzZq_gg = __cov_UILftxv_eGQYCsKgzZq_gg['/home/travis/build/Niondir/iot-dashboard/src/modal/modalDialog.js'];
+	__cov_UILftxv_eGQYCsKgzZq_gg.s['1']++;var Action=__webpack_require__(43);__cov_UILftxv_eGQYCsKgzZq_gg.s['2']++;var initialState={dialogId:null,isVisible:false,data:{}};function showModalSideeffect(id){__cov_UILftxv_eGQYCsKgzZq_gg.f['1']++;__cov_UILftxv_eGQYCsKgzZq_gg.s['4']++;var $modal=$('.ui.modal.'+id);__cov_UILftxv_eGQYCsKgzZq_gg.s['5']++;if(!$modal.length){__cov_UILftxv_eGQYCsKgzZq_gg.b['1'][0]++;__cov_UILftxv_eGQYCsKgzZq_gg.s['6']++;throw new Error('Can not find Modal with id',id,$modal);}else{__cov_UILftxv_eGQYCsKgzZq_gg.b['1'][1]++;}__cov_UILftxv_eGQYCsKgzZq_gg.s['7']++;$modal.modal('show');__cov_UILftxv_eGQYCsKgzZq_gg.s['8']++;if(typeof document!=='undefined'){__cov_UILftxv_eGQYCsKgzZq_gg.b['2'][0]++;__cov_UILftxv_eGQYCsKgzZq_gg.s['9']++;var n_1=document.createTextNode(' ');__cov_UILftxv_eGQYCsKgzZq_gg.s['10']++;$modal.append(n_1);__cov_UILftxv_eGQYCsKgzZq_gg.s['11']++;setTimeout(function(){__cov_UILftxv_eGQYCsKgzZq_gg.f['2']++;__cov_UILftxv_eGQYCsKgzZq_gg.s['12']++;n_1.parentNode.removeChild(n_1);},0);}else{__cov_UILftxv_eGQYCsKgzZq_gg.b['2'][1]++;}}function closeModalSideeffect(id){__cov_UILftxv_eGQYCsKgzZq_gg.f['3']++;__cov_UILftxv_eGQYCsKgzZq_gg.s['14']++;$('.ui.modal.'+id).modal('hide');}function updateModalVisibility(stateAfter,stateBefore){__cov_UILftxv_eGQYCsKgzZq_gg.f['4']++;__cov_UILftxv_eGQYCsKgzZq_gg.s['16']++;var dialogBefore=stateBefore.modalDialog;__cov_UILftxv_eGQYCsKgzZq_gg.s['17']++;var dialogAfter=stateAfter.modalDialog;__cov_UILftxv_eGQYCsKgzZq_gg.s['18']++;if(dialogBefore.isVisible!==dialogAfter.isVisible){__cov_UILftxv_eGQYCsKgzZq_gg.b['3'][0]++;__cov_UILftxv_eGQYCsKgzZq_gg.s['19']++;if(stateAfter.modalDialog.isVisible){__cov_UILftxv_eGQYCsKgzZq_gg.b['4'][0]++;__cov_UILftxv_eGQYCsKgzZq_gg.s['20']++;showModalSideeffect(dialogAfter.dialogId);}else{__cov_UILftxv_eGQYCsKgzZq_gg.b['4'][1]++;__cov_UILftxv_eGQYCsKgzZq_gg.s['21']++;closeModalSideeffect(dialogBefore.dialogId);}}else{__cov_UILftxv_eGQYCsKgzZq_gg.b['3'][1]++;__cov_UILftxv_eGQYCsKgzZq_gg.s['22']++;if((__cov_UILftxv_eGQYCsKgzZq_gg.b['6'][0]++,dialogBefore.dialogId)&&(__cov_UILftxv_eGQYCsKgzZq_gg.b['6'][1]++,dialogAfter.dialogId)&&(__cov_UILftxv_eGQYCsKgzZq_gg.b['6'][2]++,dialogBefore.dialogId!==dialogAfter.dialogId)){__cov_UILftxv_eGQYCsKgzZq_gg.b['5'][0]++;__cov_UILftxv_eGQYCsKgzZq_gg.s['23']++;closeModalSideeffect(dialogBefore.dialogId);__cov_UILftxv_eGQYCsKgzZq_gg.s['24']++;showModalSideeffect(dialogAfter.dialogId);}else{__cov_UILftxv_eGQYCsKgzZq_gg.b['5'][1]++;}}}function showModal(id,data){__cov_UILftxv_eGQYCsKgzZq_gg.f['5']++;__cov_UILftxv_eGQYCsKgzZq_gg.s['26']++;if(data===void 0){__cov_UILftxv_eGQYCsKgzZq_gg.b['7'][0]++;__cov_UILftxv_eGQYCsKgzZq_gg.s['27']++;data={};}else{__cov_UILftxv_eGQYCsKgzZq_gg.b['7'][1]++;}__cov_UILftxv_eGQYCsKgzZq_gg.s['28']++;return function(dispatch,getState){__cov_UILftxv_eGQYCsKgzZq_gg.f['6']++;__cov_UILftxv_eGQYCsKgzZq_gg.s['29']++;var stateBefore=getState();__cov_UILftxv_eGQYCsKgzZq_gg.s['30']++;dispatch({type:Action.SHOW_MODAL,dialogId:id,data:data});__cov_UILftxv_eGQYCsKgzZq_gg.s['31']++;var stateAfter=getState();__cov_UILftxv_eGQYCsKgzZq_gg.s['32']++;updateModalVisibility(stateAfter,stateBefore);};}__cov_UILftxv_eGQYCsKgzZq_gg.s['33']++;exports.showModal=showModal;function closeModal(){__cov_UILftxv_eGQYCsKgzZq_gg.f['7']++;__cov_UILftxv_eGQYCsKgzZq_gg.s['35']++;return function(dispatch,getState){__cov_UILftxv_eGQYCsKgzZq_gg.f['8']++;__cov_UILftxv_eGQYCsKgzZq_gg.s['36']++;var stateBefore=getState();__cov_UILftxv_eGQYCsKgzZq_gg.s['37']++;dispatch({type:Action.HIDE_MODAL});__cov_UILftxv_eGQYCsKgzZq_gg.s['38']++;var stateAfter=getState();__cov_UILftxv_eGQYCsKgzZq_gg.s['39']++;updateModalVisibility(stateAfter,stateBefore);};}__cov_UILftxv_eGQYCsKgzZq_gg.s['40']++;exports.closeModal=closeModal;function modalDialog(state,action){__cov_UILftxv_eGQYCsKgzZq_gg.f['9']++;__cov_UILftxv_eGQYCsKgzZq_gg.s['42']++;if(state===void 0){__cov_UILftxv_eGQYCsKgzZq_gg.b['8'][0]++;__cov_UILftxv_eGQYCsKgzZq_gg.s['43']++;state=initialState;}else{__cov_UILftxv_eGQYCsKgzZq_gg.b['8'][1]++;}__cov_UILftxv_eGQYCsKgzZq_gg.s['44']++;switch(action.type){case Action.SHOW_MODAL:__cov_UILftxv_eGQYCsKgzZq_gg.b['9'][0]++;__cov_UILftxv_eGQYCsKgzZq_gg.s['45']++;return Object.assign({},state,{dialogId:action.dialogId,data:action.data,isVisible:true});case Action.HIDE_MODAL:__cov_UILftxv_eGQYCsKgzZq_gg.b['9'][1]++;__cov_UILftxv_eGQYCsKgzZq_gg.s['46']++;return Object.assign({},state,{dialogId:null,data:null,isVisible:false});default:__cov_UILftxv_eGQYCsKgzZq_gg.b['9'][2]++;__cov_UILftxv_eGQYCsKgzZq_gg.s['47']++;return state;}}__cov_UILftxv_eGQYCsKgzZq_gg.s['48']++;exports.modalDialog=modalDialog;
+
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
 /* 51 */
 /***/ function(module, exports) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	exports.DASHBOARD_IMPORT_EXPORT = "dashboard-import-export-dialog";
-	exports.DATASOURCE_CONFIG = "datasource-config-dialog";
-	exports.WIDGET_CONFIG = "widget-config-dialog";
-	exports.PLUGINS = "plugins-dialog";
+	var __cov_GzgVLRO4LJCEiyA44g6S_g = (Function('return this'))();
+	if (!__cov_GzgVLRO4LJCEiyA44g6S_g.__coverage__) { __cov_GzgVLRO4LJCEiyA44g6S_g.__coverage__ = {}; }
+	__cov_GzgVLRO4LJCEiyA44g6S_g = __cov_GzgVLRO4LJCEiyA44g6S_g.__coverage__;
+	if (!(__cov_GzgVLRO4LJCEiyA44g6S_g['/home/travis/build/Niondir/iot-dashboard/src/modal/modalDialogIds.js'])) {
+	   __cov_GzgVLRO4LJCEiyA44g6S_g['/home/travis/build/Niondir/iot-dashboard/src/modal/modalDialogIds.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/modal/modalDialogIds.js","s":{"1":0,"2":0,"3":0,"4":0},"b":{},"f":{},"fnMap":{},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":67}},"2":{"start":{"line":6,"column":0},"end":{"line":6,"column":55}},"3":{"start":{"line":7,"column":0},"end":{"line":7,"column":47}},"4":{"start":{"line":8,"column":0},"end":{"line":8,"column":35}}},"branchMap":{},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","exports.DASHBOARD_IMPORT_EXPORT = \"dashboard-import-export-dialog\";","exports.DATASOURCE_CONFIG = \"datasource-config-dialog\";","exports.WIDGET_CONFIG = \"widget-config-dialog\";","exports.PLUGINS = \"plugins-dialog\";",""]};
+	}
+	__cov_GzgVLRO4LJCEiyA44g6S_g = __cov_GzgVLRO4LJCEiyA44g6S_g['/home/travis/build/Niondir/iot-dashboard/src/modal/modalDialogIds.js'];
+	__cov_GzgVLRO4LJCEiyA44g6S_g.s['1']++;exports.DASHBOARD_IMPORT_EXPORT='dashboard-import-export-dialog';__cov_GzgVLRO4LJCEiyA44g6S_g.s['2']++;exports.DATASOURCE_CONFIG='datasource-config-dialog';__cov_GzgVLRO4LJCEiyA44g6S_g.s['3']++;exports.WIDGET_CONFIG='widget-config-dialog';__cov_GzgVLRO4LJCEiyA44g6S_g.s['4']++;exports.PLUGINS='plugins-dialog';
 
 
 /***/ },
 /* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var widgetPlugin_1 = __webpack_require__(53);
-	var pluginRegistry_1 = __webpack_require__(54);
-	var Action = __webpack_require__(43);
-	var reducer_1 = __webpack_require__(47);
-	var react_1 = __webpack_require__(20);
-	var dashboard_1 = __webpack_require__(55);
-	// TODO: Later load all plugins from external URL's ?
-	var initialState = {};
-	exports.widgetPluginType = react_1.PropTypes.shape({
-	    id: react_1.PropTypes.string.isRequired,
-	    typeInfo: react_1.PropTypes.shape({
-	        type: react_1.PropTypes.string.isRequired,
-	        name: react_1.PropTypes.string.isRequired,
-	        settings: react_1.PropTypes.array
-	    })
-	});
-	var WidgetPluginRegistry = (function (_super) {
-	    __extends(WidgetPluginRegistry, _super);
-	    function WidgetPluginRegistry(store) {
-	        _super.call(this, store);
-	    }
-	    WidgetPluginRegistry.prototype.createPluginFromModule = function (module) {
-	        return new widgetPlugin_1.default(module, this.store);
-	    };
-	    return WidgetPluginRegistry;
-	}(pluginRegistry_1.default));
-	exports.WidgetPluginRegistry = WidgetPluginRegistry;
-	function unloadPlugin(type) {
-	    return function (dispatch) {
-	        var widgetPlugin = dashboard_1.default.getInstance().widgetPluginRegistry.getPlugin(type);
-	        widgetPlugin.dispose();
-	        dispatch(deletePlugin(type));
-	    };
+	var __cov_df$GWKrxVEdSnwldpbjrBw = (Function('return this'))();
+	if (!__cov_df$GWKrxVEdSnwldpbjrBw.__coverage__) { __cov_df$GWKrxVEdSnwldpbjrBw.__coverage__ = {}; }
+	__cov_df$GWKrxVEdSnwldpbjrBw = __cov_df$GWKrxVEdSnwldpbjrBw.__coverage__;
+	if (!(__cov_df$GWKrxVEdSnwldpbjrBw['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetPlugins.js'])) {
+	   __cov_df$GWKrxVEdSnwldpbjrBw['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetPlugins.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetPlugins.js","s":{"1":0,"2":0,"3":0,"4":0,"5":1,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":1,"19":0,"20":0,"21":0,"22":0,"23":0,"24":1,"25":0,"26":0,"27":0,"28":0,"29":0,"30":1,"31":0,"32":0,"33":1,"34":0,"35":0,"36":0,"37":0,"38":0,"39":0,"40":1,"41":0,"42":0,"43":0,"44":0,"45":0},"b":{"1":[0,0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0],"6":[0,0],"7":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0},"fnMap":{"1":{"name":"(anonymous_1)","line":5,"loc":{"start":{"line":5,"column":44},"end":{"line":5,"column":60}}},"2":{"name":"__","line":7,"loc":{"start":{"line":7,"column":4},"end":{"line":7,"column":18}}},"3":{"name":"(anonymous_3)","line":26,"loc":{"start":{"line":26,"column":28},"end":{"line":26,"column":46}}},"4":{"name":"WidgetPluginRegistry","line":28,"loc":{"start":{"line":28,"column":4},"end":{"line":28,"column":41}}},"5":{"name":"(anonymous_5)","line":31,"loc":{"start":{"line":31,"column":60},"end":{"line":31,"column":78}}},"6":{"name":"unloadPlugin","line":37,"loc":{"start":{"line":37,"column":0},"end":{"line":37,"column":28}}},"7":{"name":"(anonymous_7)","line":38,"loc":{"start":{"line":38,"column":11},"end":{"line":38,"column":31}}},"8":{"name":"deletePlugin","line":45,"loc":{"start":{"line":45,"column":0},"end":{"line":45,"column":28}}},"9":{"name":"widgetPlugins","line":52,"loc":{"start":{"line":52,"column":0},"end":{"line":52,"column":38}}},"10":{"name":"widgetPlugin","line":61,"loc":{"start":{"line":61,"column":0},"end":{"line":61,"column":37}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":9,"column":2}},"2":{"start":{"line":6,"column":4},"end":{"line":6,"column":58}},"3":{"start":{"line":6,"column":21},"end":{"line":6,"column":58}},"4":{"start":{"line":6,"column":46},"end":{"line":6,"column":58}},"5":{"start":{"line":7,"column":4},"end":{"line":7,"column":43}},"6":{"start":{"line":7,"column":20},"end":{"line":7,"column":41}},"7":{"start":{"line":8,"column":4},"end":{"line":8,"column":89}},"8":{"start":{"line":10,"column":0},"end":{"line":10,"column":47}},"9":{"start":{"line":11,"column":0},"end":{"line":11,"column":62}},"10":{"start":{"line":12,"column":0},"end":{"line":12,"column":39}},"11":{"start":{"line":13,"column":0},"end":{"line":13,"column":43}},"12":{"start":{"line":14,"column":0},"end":{"line":14,"column":31}},"13":{"start":{"line":15,"column":0},"end":{"line":15,"column":42}},"14":{"start":{"line":17,"column":0},"end":{"line":17,"column":22}},"15":{"start":{"line":18,"column":0},"end":{"line":25,"column":3}},"16":{"start":{"line":26,"column":0},"end":{"line":35,"column":29}},"17":{"start":{"line":27,"column":4},"end":{"line":27,"column":44}},"18":{"start":{"line":28,"column":4},"end":{"line":30,"column":5}},"19":{"start":{"line":29,"column":8},"end":{"line":29,"column":33}},"20":{"start":{"line":31,"column":4},"end":{"line":33,"column":6}},"21":{"start":{"line":32,"column":8},"end":{"line":32,"column":62}},"22":{"start":{"line":34,"column":4},"end":{"line":34,"column":32}},"23":{"start":{"line":36,"column":0},"end":{"line":36,"column":52}},"24":{"start":{"line":37,"column":0},"end":{"line":43,"column":1}},"25":{"start":{"line":38,"column":4},"end":{"line":42,"column":6}},"26":{"start":{"line":39,"column":8},"end":{"line":39,"column":98}},"27":{"start":{"line":40,"column":8},"end":{"line":40,"column":31}},"28":{"start":{"line":41,"column":8},"end":{"line":41,"column":37}},"29":{"start":{"line":44,"column":0},"end":{"line":44,"column":36}},"30":{"start":{"line":45,"column":0},"end":{"line":50,"column":1}},"31":{"start":{"line":46,"column":4},"end":{"line":49,"column":6}},"32":{"start":{"line":51,"column":0},"end":{"line":51,"column":121}},"33":{"start":{"line":52,"column":0},"end":{"line":59,"column":1}},"34":{"start":{"line":53,"column":4},"end":{"line":53,"column":51}},"35":{"start":{"line":53,"column":28},"end":{"line":53,"column":49}},"36":{"start":{"line":54,"column":4},"end":{"line":54,"column":46}},"37":{"start":{"line":55,"column":4},"end":{"line":58,"column":5}},"38":{"start":{"line":57,"column":12},"end":{"line":57,"column":25}},"39":{"start":{"line":60,"column":0},"end":{"line":60,"column":38}},"40":{"start":{"line":61,"column":0},"end":{"line":76,"column":1}},"41":{"start":{"line":62,"column":4},"end":{"line":75,"column":5}},"42":{"start":{"line":64,"column":12},"end":{"line":67,"column":13}},"43":{"start":{"line":66,"column":16},"end":{"line":66,"column":63}},"44":{"start":{"line":68,"column":12},"end":{"line":72,"column":14}},"45":{"start":{"line":74,"column":12},"end":{"line":74,"column":25}}},"branchMap":{"1":{"line":5,"type":"binary-expr","locations":[{"start":{"line":5,"column":17},"end":{"line":5,"column":21}},{"start":{"line":5,"column":25},"end":{"line":5,"column":39}},{"start":{"line":5,"column":44},"end":{"line":9,"column":1}}]},"2":{"line":6,"type":"if","locations":[{"start":{"line":6,"column":21},"end":{"line":6,"column":21}},{"start":{"line":6,"column":21},"end":{"line":6,"column":21}}]},"3":{"line":8,"type":"cond-expr","locations":[{"start":{"line":8,"column":31},"end":{"line":8,"column":47}},{"start":{"line":8,"column":51},"end":{"line":8,"column":87}}]},"4":{"line":53,"type":"if","locations":[{"start":{"line":53,"column":4},"end":{"line":53,"column":4}},{"start":{"line":53,"column":4},"end":{"line":53,"column":4}}]},"5":{"line":55,"type":"switch","locations":[{"start":{"line":56,"column":8},"end":{"line":57,"column":25}}]},"6":{"line":62,"type":"switch","locations":[{"start":{"line":63,"column":8},"end":{"line":72,"column":14}},{"start":{"line":73,"column":8},"end":{"line":74,"column":25}}]},"7":{"line":64,"type":"if","locations":[{"start":{"line":64,"column":12},"end":{"line":64,"column":12}},{"start":{"line":64,"column":12},"end":{"line":64,"column":12}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var __extends = (this && this.__extends) || function (d, b) {","    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];","    function __() { this.constructor = d; }","    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());","};","var widgetPlugin_1 = require('./widgetPlugin');","var pluginRegistry_1 = require('../pluginApi/pluginRegistry');","var Action = require(\"../actionNames\");","var reducer_1 = require(\"../util/reducer\");","var react_1 = require(\"react\");","var dashboard_1 = require('../dashboard');","// TODO: Later load all plugins from external URL's ?","var initialState = {};","exports.widgetPluginType = react_1.PropTypes.shape({","    id: react_1.PropTypes.string.isRequired,","    typeInfo: react_1.PropTypes.shape({","        type: react_1.PropTypes.string.isRequired,","        name: react_1.PropTypes.string.isRequired,","        settings: react_1.PropTypes.array","    })","});","var WidgetPluginRegistry = (function (_super) {","    __extends(WidgetPluginRegistry, _super);","    function WidgetPluginRegistry(store) {","        _super.call(this, store);","    }","    WidgetPluginRegistry.prototype.createPluginFromModule = function (module) {","        return new widgetPlugin_1.default(module, this.store);","    };","    return WidgetPluginRegistry;","}(pluginRegistry_1.default));","exports.WidgetPluginRegistry = WidgetPluginRegistry;","function unloadPlugin(type) {","    return function (dispatch) {","        var widgetPlugin = dashboard_1.default.getInstance().widgetPluginRegistry.getPlugin(type);","        widgetPlugin.dispose();","        dispatch(deletePlugin(type));","    };","}","exports.unloadPlugin = unloadPlugin;","function deletePlugin(type) {","    return {","        type: Action.DELETE_WIDGET_PLUGIN,","        id: type","    };","}","var pluginsCrudReducer = reducer_1.genCrudReducer([Action.ADD_WIDGET_PLUGIN, Action.DELETE_WIDGET_PLUGIN], widgetPlugin);","function widgetPlugins(state, action) {","    if (state === void 0) { state = initialState; }","    state = pluginsCrudReducer(state, action);","    switch (action.type) {","        default:","            return state;","    }","}","exports.widgetPlugins = widgetPlugins;","function widgetPlugin(state, action) {","    switch (action.type) {","        case Action.ADD_WIDGET_PLUGIN:","            if (!action.typeInfo.type) {","                // TODO: Catch this earlier","                throw new Error(\"A Plugin needs a type name.\");","            }","            return {","                id: action.typeInfo.type,","                url: action.url,","                typeInfo: action.typeInfo","            };","        default:","            return state;","    }","}",""]};
 	}
-	exports.unloadPlugin = unloadPlugin;
-	function deletePlugin(type) {
-	    return {
-	        type: Action.DELETE_WIDGET_PLUGIN,
-	        id: type
-	    };
-	}
-	var pluginsCrudReducer = reducer_1.genCrudReducer([Action.ADD_WIDGET_PLUGIN, Action.DELETE_WIDGET_PLUGIN], widgetPlugin);
-	function widgetPlugins(state, action) {
-	    if (state === void 0) { state = initialState; }
-	    state = pluginsCrudReducer(state, action);
-	    switch (action.type) {
-	        default:
-	            return state;
-	    }
-	}
-	exports.widgetPlugins = widgetPlugins;
-	function widgetPlugin(state, action) {
-	    switch (action.type) {
-	        case Action.ADD_WIDGET_PLUGIN:
-	            if (!action.typeInfo.type) {
-	                // TODO: Catch this earlier
-	                throw new Error("A Plugin needs a type name.");
-	            }
-	            return {
-	                id: action.typeInfo.type,
-	                url: action.url,
-	                typeInfo: action.typeInfo
-	            };
-	        default:
-	            return state;
-	    }
-	}
+	__cov_df$GWKrxVEdSnwldpbjrBw = __cov_df$GWKrxVEdSnwldpbjrBw['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetPlugins.js'];
+	__cov_df$GWKrxVEdSnwldpbjrBw.s['1']++;var __extends=(__cov_df$GWKrxVEdSnwldpbjrBw.b['1'][0]++,this)&&(__cov_df$GWKrxVEdSnwldpbjrBw.b['1'][1]++,this.__extends)||(__cov_df$GWKrxVEdSnwldpbjrBw.b['1'][2]++,function(d,b){__cov_df$GWKrxVEdSnwldpbjrBw.f['1']++;__cov_df$GWKrxVEdSnwldpbjrBw.s['2']++;for(var p in b){__cov_df$GWKrxVEdSnwldpbjrBw.s['3']++;if(b.hasOwnProperty(p)){__cov_df$GWKrxVEdSnwldpbjrBw.b['2'][0]++;__cov_df$GWKrxVEdSnwldpbjrBw.s['4']++;d[p]=b[p];}else{__cov_df$GWKrxVEdSnwldpbjrBw.b['2'][1]++;}}function __(){__cov_df$GWKrxVEdSnwldpbjrBw.f['2']++;__cov_df$GWKrxVEdSnwldpbjrBw.s['6']++;this.constructor=d;}__cov_df$GWKrxVEdSnwldpbjrBw.s['7']++;d.prototype=b===null?(__cov_df$GWKrxVEdSnwldpbjrBw.b['3'][0]++,Object.create(b)):(__cov_df$GWKrxVEdSnwldpbjrBw.b['3'][1]++,(__.prototype=b.prototype,new __()));});__cov_df$GWKrxVEdSnwldpbjrBw.s['8']++;var widgetPlugin_1=__webpack_require__(53);__cov_df$GWKrxVEdSnwldpbjrBw.s['9']++;var pluginRegistry_1=__webpack_require__(54);__cov_df$GWKrxVEdSnwldpbjrBw.s['10']++;var Action=__webpack_require__(43);__cov_df$GWKrxVEdSnwldpbjrBw.s['11']++;var reducer_1=__webpack_require__(47);__cov_df$GWKrxVEdSnwldpbjrBw.s['12']++;var react_1=__webpack_require__(20);__cov_df$GWKrxVEdSnwldpbjrBw.s['13']++;var dashboard_1=__webpack_require__(55);__cov_df$GWKrxVEdSnwldpbjrBw.s['14']++;var initialState={};__cov_df$GWKrxVEdSnwldpbjrBw.s['15']++;exports.widgetPluginType=react_1.PropTypes.shape({id:react_1.PropTypes.string.isRequired,typeInfo:react_1.PropTypes.shape({type:react_1.PropTypes.string.isRequired,name:react_1.PropTypes.string.isRequired,settings:react_1.PropTypes.array})});__cov_df$GWKrxVEdSnwldpbjrBw.s['16']++;var WidgetPluginRegistry=function(_super){__cov_df$GWKrxVEdSnwldpbjrBw.f['3']++;__cov_df$GWKrxVEdSnwldpbjrBw.s['17']++;__extends(WidgetPluginRegistry,_super);function WidgetPluginRegistry(store){__cov_df$GWKrxVEdSnwldpbjrBw.f['4']++;__cov_df$GWKrxVEdSnwldpbjrBw.s['19']++;_super.call(this,store);}__cov_df$GWKrxVEdSnwldpbjrBw.s['20']++;WidgetPluginRegistry.prototype.createPluginFromModule=function(module){__cov_df$GWKrxVEdSnwldpbjrBw.f['5']++;__cov_df$GWKrxVEdSnwldpbjrBw.s['21']++;return new widgetPlugin_1.default(module,this.store);};__cov_df$GWKrxVEdSnwldpbjrBw.s['22']++;return WidgetPluginRegistry;}(pluginRegistry_1.default);__cov_df$GWKrxVEdSnwldpbjrBw.s['23']++;exports.WidgetPluginRegistry=WidgetPluginRegistry;function unloadPlugin(type){__cov_df$GWKrxVEdSnwldpbjrBw.f['6']++;__cov_df$GWKrxVEdSnwldpbjrBw.s['25']++;return function(dispatch){__cov_df$GWKrxVEdSnwldpbjrBw.f['7']++;__cov_df$GWKrxVEdSnwldpbjrBw.s['26']++;var widgetPlugin=dashboard_1.default.getInstance().widgetPluginRegistry.getPlugin(type);__cov_df$GWKrxVEdSnwldpbjrBw.s['27']++;widgetPlugin.dispose();__cov_df$GWKrxVEdSnwldpbjrBw.s['28']++;dispatch(deletePlugin(type));};}__cov_df$GWKrxVEdSnwldpbjrBw.s['29']++;exports.unloadPlugin=unloadPlugin;function deletePlugin(type){__cov_df$GWKrxVEdSnwldpbjrBw.f['8']++;__cov_df$GWKrxVEdSnwldpbjrBw.s['31']++;return{type:Action.DELETE_WIDGET_PLUGIN,id:type};}__cov_df$GWKrxVEdSnwldpbjrBw.s['32']++;var pluginsCrudReducer=reducer_1.genCrudReducer([Action.ADD_WIDGET_PLUGIN,Action.DELETE_WIDGET_PLUGIN],widgetPlugin);function widgetPlugins(state,action){__cov_df$GWKrxVEdSnwldpbjrBw.f['9']++;__cov_df$GWKrxVEdSnwldpbjrBw.s['34']++;if(state===void 0){__cov_df$GWKrxVEdSnwldpbjrBw.b['4'][0]++;__cov_df$GWKrxVEdSnwldpbjrBw.s['35']++;state=initialState;}else{__cov_df$GWKrxVEdSnwldpbjrBw.b['4'][1]++;}__cov_df$GWKrxVEdSnwldpbjrBw.s['36']++;state=pluginsCrudReducer(state,action);__cov_df$GWKrxVEdSnwldpbjrBw.s['37']++;switch(action.type){default:__cov_df$GWKrxVEdSnwldpbjrBw.b['5'][0]++;__cov_df$GWKrxVEdSnwldpbjrBw.s['38']++;return state;}}__cov_df$GWKrxVEdSnwldpbjrBw.s['39']++;exports.widgetPlugins=widgetPlugins;function widgetPlugin(state,action){__cov_df$GWKrxVEdSnwldpbjrBw.f['10']++;__cov_df$GWKrxVEdSnwldpbjrBw.s['41']++;switch(action.type){case Action.ADD_WIDGET_PLUGIN:__cov_df$GWKrxVEdSnwldpbjrBw.b['6'][0]++;__cov_df$GWKrxVEdSnwldpbjrBw.s['42']++;if(!action.typeInfo.type){__cov_df$GWKrxVEdSnwldpbjrBw.b['7'][0]++;__cov_df$GWKrxVEdSnwldpbjrBw.s['43']++;throw new Error('A Plugin needs a type name.');}else{__cov_df$GWKrxVEdSnwldpbjrBw.b['7'][1]++;}__cov_df$GWKrxVEdSnwldpbjrBw.s['44']++;return{id:action.typeInfo.type,url:action.url,typeInfo:action.typeInfo};default:__cov_df$GWKrxVEdSnwldpbjrBw.b['6'][1]++;__cov_df$GWKrxVEdSnwldpbjrBw.s['45']++;return state;}}
 
 
 /***/ },
 /* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var react_redux_1 = __webpack_require__(39);
-	var React = __webpack_require__(20);
-	var react_1 = __webpack_require__(20);
-	// TODO: Rename to ...Factory
-	var WidgetPlugin = (function () {
-	    function WidgetPlugin(module, store) {
-	        console.assert(module.TYPE_INFO, "Missing TYPE_INFO on widget module. Every module must export TYPE_INFO");
-	        this._type = module.TYPE_INFO.type;
-	        this.Widget = module.Widget;
-	        this.store = store;
-	        this.instances = {};
-	        this.disposed = false;
-	        // only bind the getData function once, so it can be safely used in the connect function
-	        this.getData = function (getState, dsId) {
-	            var ds = getState().datasources[dsId];
-	            if (!ds) {
-	                return [];
-	            }
-	            return ds.data || [];
-	        }.bind(this, this.store.getState);
-	    }
-	    Object.defineProperty(WidgetPlugin.prototype, "type", {
-	        get: function () {
-	            return this._type;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    WidgetPlugin.prototype.getOrCreateInstance = function (id) {
-	        var _this = this;
-	        if (this.disposed === true) {
-	            throw new Error("Try to get or create widget of destroyed type: " + this.type);
-	        }
-	        if (this.instances[id]) {
-	            return this.instances[id];
-	        }
-	        // TODO: check if module.Widget is a react component
-	        var widgetPlugin = this.store.getState().widgetPlugins[this.type];
-	        var rendering = widgetPlugin.typeInfo.rendering || "react";
-	        var widgetComponent = this.Widget;
-	        if (rendering.toLowerCase() === "dom") {
-	            widgetComponent = DomWidgetContainer;
-	        }
-	        var widget = react_redux_1.connect(function (state) {
-	            // This method will be used as mapStateToProps, leading to a constant "getData()" function per instance
-	            // Therefor the update is only called when actual state changes
-	            return function (state) {
-	                var widgetState = state.widgets[id];
-	                return {
-	                    state: widgetState,
-	                    // This is used to trigger re-rendering on Datasource change
-	                    // TODO: in future only the datasources the Widget is interested in should trigger re-rendering
-	                    _datasources: state.datasources,
-	                    getData: _this.getData
-	                };
-	            };
-	        })(widgetComponent);
-	        this.instances[id] = React.createElement(widget, { _widgetClass: this.Widget });
-	        // Should we create here or always outside?
-	        return this.instances[id];
-	    };
-	    WidgetPlugin.prototype.dispose = function () {
-	        this.disposed = true;
-	        this.instances = [];
-	    };
-	    return WidgetPlugin;
-	}());
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = WidgetPlugin;
-	var DomWidgetContainer = (function (_super) {
-	    __extends(DomWidgetContainer, _super);
-	    function DomWidgetContainer(props) {
-	        _super.call(this, props);
-	        this.state = {
-	            widget: new props._widgetClass(props)
-	        };
-	    }
-	    DomWidgetContainer.prototype.componentWillMount = function () {
-	        if (this.state.widget.componentWillMount) {
-	            this.state.widget.componentWillMount();
-	        }
-	    };
-	    DomWidgetContainer.prototype.componentDidMount = function () {
-	        this.state.widget.render(this.props, this.refs.container);
-	        if (this.state.widget.componentDidMount) {
-	            this.state.widget.componentDidMount();
-	        }
-	    };
-	    DomWidgetContainer.prototype.componentWillReceiveProps = function (nextProps) {
-	        if (this.state.widget.componentWillReceiveProps) {
-	            this.state.widget.componentWillReceiveProps(nextProps);
-	        }
-	    };
-	    DomWidgetContainer.prototype.shouldComponentUpdate = function (nextProps, nextState) {
-	        if (this.state.widget.shouldComponentUpdate) {
-	            return this.state.widget.shouldComponentUpdate(nextProps, nextState);
-	        }
-	        return true;
-	    };
-	    DomWidgetContainer.prototype.componentWillUpdate = function (nextProps, nextState) {
-	        if (this.state.widget.componentWillUpdate) {
-	            this.state.widget.componentWillUpdate(nextProps, nextState);
-	        }
-	    };
-	    DomWidgetContainer.prototype.componentDidUpdate = function (prevProps, prevState) {
-	        this.state.widget.render(this.props, this.refs.container);
-	        if (this.state.widget.componentDidUpdate) {
-	            this.state.widget.componentDidUpdate(prevProps, prevState);
-	        }
-	    };
-	    DomWidgetContainer.prototype.componentWillUnmount = function () {
-	        if (this.state.widget.componentWillUnmount) {
-	            this.state.widget.componentWillUnmount();
-	        }
-	    };
-	    DomWidgetContainer.prototype.render = function () {
-	        return React.createElement("div", {ref: "container"}, "Widget Plugin missing rendering!");
-	    };
-	    return DomWidgetContainer;
-	}(React.Component));
-	DomWidgetContainer.propTypes = {
-	    _widgetClass: react_1.PropTypes.func.isRequired
-	};
+	var __cov_nIt4q5a5MLKmdNe_6D8Tpw = (Function('return this'))();
+	if (!__cov_nIt4q5a5MLKmdNe_6D8Tpw.__coverage__) { __cov_nIt4q5a5MLKmdNe_6D8Tpw.__coverage__ = {}; }
+	__cov_nIt4q5a5MLKmdNe_6D8Tpw = __cov_nIt4q5a5MLKmdNe_6D8Tpw.__coverage__;
+	if (!(__cov_nIt4q5a5MLKmdNe_6D8Tpw['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetPlugin.js'])) {
+	   __cov_nIt4q5a5MLKmdNe_6D8Tpw['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetPlugin.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetPlugin.js","s":{"1":0,"2":0,"3":0,"4":0,"5":1,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":1,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":0,"38":0,"39":0,"40":0,"41":0,"42":0,"43":0,"44":0,"45":0,"46":0,"47":0,"48":0,"49":0,"50":0,"51":1,"52":0,"53":0,"54":0,"55":0,"56":0,"57":0,"58":0,"59":0,"60":0,"61":0,"62":0,"63":0,"64":0,"65":0,"66":0,"67":0,"68":0,"69":0,"70":0,"71":0,"72":0,"73":0,"74":0,"75":0,"76":0,"77":0,"78":0,"79":0,"80":0,"81":0},"b":{"1":[0,0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0],"7":[0,0],"8":[0,0],"9":[0,0],"10":[0,0],"11":[0,0],"12":[0,0],"13":[0,0],"14":[0,0],"15":[0,0],"16":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0},"fnMap":{"1":{"name":"(anonymous_1)","line":5,"loc":{"start":{"line":5,"column":44},"end":{"line":5,"column":60}}},"2":{"name":"__","line":7,"loc":{"start":{"line":7,"column":4},"end":{"line":7,"column":18}}},"3":{"name":"(anonymous_3)","line":14,"loc":{"start":{"line":14,"column":20},"end":{"line":14,"column":32}}},"4":{"name":"WidgetPlugin","line":15,"loc":{"start":{"line":15,"column":4},"end":{"line":15,"column":41}}},"5":{"name":"(anonymous_5)","line":23,"loc":{"start":{"line":23,"column":23},"end":{"line":23,"column":49}}},"6":{"name":"(anonymous_6)","line":32,"loc":{"start":{"line":32,"column":13},"end":{"line":32,"column":25}}},"7":{"name":"(anonymous_7)","line":38,"loc":{"start":{"line":38,"column":49},"end":{"line":38,"column":63}}},"8":{"name":"(anonymous_8)","line":53,"loc":{"start":{"line":53,"column":43},"end":{"line":53,"column":60}}},"9":{"name":"(anonymous_9)","line":56,"loc":{"start":{"line":56,"column":19},"end":{"line":56,"column":36}}},"10":{"name":"(anonymous_10)","line":71,"loc":{"start":{"line":71,"column":37},"end":{"line":71,"column":49}}},"11":{"name":"(anonymous_11)","line":79,"loc":{"start":{"line":79,"column":26},"end":{"line":79,"column":44}}},"12":{"name":"DomWidgetContainer","line":81,"loc":{"start":{"line":81,"column":4},"end":{"line":81,"column":39}}},"13":{"name":"(anonymous_13)","line":87,"loc":{"start":{"line":87,"column":54},"end":{"line":87,"column":66}}},"14":{"name":"(anonymous_14)","line":92,"loc":{"start":{"line":92,"column":53},"end":{"line":92,"column":65}}},"15":{"name":"(anonymous_15)","line":98,"loc":{"start":{"line":98,"column":61},"end":{"line":98,"column":82}}},"16":{"name":"(anonymous_16)","line":103,"loc":{"start":{"line":103,"column":57},"end":{"line":103,"column":89}}},"17":{"name":"(anonymous_17)","line":109,"loc":{"start":{"line":109,"column":55},"end":{"line":109,"column":87}}},"18":{"name":"(anonymous_18)","line":114,"loc":{"start":{"line":114,"column":54},"end":{"line":114,"column":86}}},"19":{"name":"(anonymous_19)","line":120,"loc":{"start":{"line":120,"column":56},"end":{"line":120,"column":68}}},"20":{"name":"(anonymous_20)","line":125,"loc":{"start":{"line":125,"column":42},"end":{"line":125,"column":54}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":9,"column":2}},"2":{"start":{"line":6,"column":4},"end":{"line":6,"column":58}},"3":{"start":{"line":6,"column":21},"end":{"line":6,"column":58}},"4":{"start":{"line":6,"column":46},"end":{"line":6,"column":58}},"5":{"start":{"line":7,"column":4},"end":{"line":7,"column":43}},"6":{"start":{"line":7,"column":20},"end":{"line":7,"column":41}},"7":{"start":{"line":8,"column":4},"end":{"line":8,"column":89}},"8":{"start":{"line":10,"column":0},"end":{"line":10,"column":43}},"9":{"start":{"line":11,"column":0},"end":{"line":11,"column":29}},"10":{"start":{"line":12,"column":0},"end":{"line":12,"column":31}},"11":{"start":{"line":14,"column":0},"end":{"line":76,"column":5}},"12":{"start":{"line":15,"column":4},"end":{"line":30,"column":5}},"13":{"start":{"line":16,"column":8},"end":{"line":16,"column":115}},"14":{"start":{"line":17,"column":8},"end":{"line":17,"column":43}},"15":{"start":{"line":18,"column":8},"end":{"line":18,"column":36}},"16":{"start":{"line":19,"column":8},"end":{"line":19,"column":27}},"17":{"start":{"line":20,"column":8},"end":{"line":20,"column":28}},"18":{"start":{"line":21,"column":8},"end":{"line":21,"column":30}},"19":{"start":{"line":23,"column":8},"end":{"line":29,"column":42}},"20":{"start":{"line":24,"column":12},"end":{"line":24,"column":50}},"21":{"start":{"line":25,"column":12},"end":{"line":27,"column":13}},"22":{"start":{"line":26,"column":16},"end":{"line":26,"column":26}},"23":{"start":{"line":28,"column":12},"end":{"line":28,"column":33}},"24":{"start":{"line":31,"column":4},"end":{"line":37,"column":7}},"25":{"start":{"line":33,"column":12},"end":{"line":33,"column":30}},"26":{"start":{"line":38,"column":4},"end":{"line":70,"column":6}},"27":{"start":{"line":39,"column":8},"end":{"line":39,"column":25}},"28":{"start":{"line":40,"column":8},"end":{"line":42,"column":9}},"29":{"start":{"line":41,"column":12},"end":{"line":41,"column":91}},"30":{"start":{"line":43,"column":8},"end":{"line":45,"column":9}},"31":{"start":{"line":44,"column":12},"end":{"line":44,"column":38}},"32":{"start":{"line":47,"column":8},"end":{"line":47,"column":74}},"33":{"start":{"line":48,"column":8},"end":{"line":48,"column":67}},"34":{"start":{"line":49,"column":8},"end":{"line":49,"column":42}},"35":{"start":{"line":50,"column":8},"end":{"line":52,"column":9}},"36":{"start":{"line":51,"column":12},"end":{"line":51,"column":49}},"37":{"start":{"line":53,"column":8},"end":{"line":66,"column":28}},"38":{"start":{"line":56,"column":12},"end":{"line":65,"column":14}},"39":{"start":{"line":57,"column":16},"end":{"line":57,"column":52}},"40":{"start":{"line":58,"column":16},"end":{"line":64,"column":18}},"41":{"start":{"line":67,"column":8},"end":{"line":67,"column":88}},"42":{"start":{"line":69,"column":8},"end":{"line":69,"column":34}},"43":{"start":{"line":71,"column":4},"end":{"line":74,"column":6}},"44":{"start":{"line":72,"column":8},"end":{"line":72,"column":29}},"45":{"start":{"line":73,"column":8},"end":{"line":73,"column":28}},"46":{"start":{"line":75,"column":4},"end":{"line":75,"column":24}},"47":{"start":{"line":77,"column":0},"end":{"line":77,"column":62}},"48":{"start":{"line":78,"column":0},"end":{"line":78,"column":31}},"49":{"start":{"line":79,"column":0},"end":{"line":129,"column":20}},"50":{"start":{"line":80,"column":4},"end":{"line":80,"column":42}},"51":{"start":{"line":81,"column":4},"end":{"line":86,"column":5}},"52":{"start":{"line":82,"column":8},"end":{"line":82,"column":33}},"53":{"start":{"line":83,"column":8},"end":{"line":85,"column":10}},"54":{"start":{"line":87,"column":4},"end":{"line":91,"column":6}},"55":{"start":{"line":88,"column":8},"end":{"line":90,"column":9}},"56":{"start":{"line":89,"column":12},"end":{"line":89,"column":51}},"57":{"start":{"line":92,"column":4},"end":{"line":97,"column":6}},"58":{"start":{"line":93,"column":8},"end":{"line":93,"column":66}},"59":{"start":{"line":94,"column":8},"end":{"line":96,"column":9}},"60":{"start":{"line":95,"column":12},"end":{"line":95,"column":50}},"61":{"start":{"line":98,"column":4},"end":{"line":102,"column":6}},"62":{"start":{"line":99,"column":8},"end":{"line":101,"column":9}},"63":{"start":{"line":100,"column":12},"end":{"line":100,"column":67}},"64":{"start":{"line":103,"column":4},"end":{"line":108,"column":6}},"65":{"start":{"line":104,"column":8},"end":{"line":106,"column":9}},"66":{"start":{"line":105,"column":12},"end":{"line":105,"column":81}},"67":{"start":{"line":107,"column":8},"end":{"line":107,"column":20}},"68":{"start":{"line":109,"column":4},"end":{"line":113,"column":6}},"69":{"start":{"line":110,"column":8},"end":{"line":112,"column":9}},"70":{"start":{"line":111,"column":12},"end":{"line":111,"column":72}},"71":{"start":{"line":114,"column":4},"end":{"line":119,"column":6}},"72":{"start":{"line":115,"column":8},"end":{"line":115,"column":66}},"73":{"start":{"line":116,"column":8},"end":{"line":118,"column":9}},"74":{"start":{"line":117,"column":12},"end":{"line":117,"column":71}},"75":{"start":{"line":120,"column":4},"end":{"line":124,"column":6}},"76":{"start":{"line":121,"column":8},"end":{"line":123,"column":9}},"77":{"start":{"line":122,"column":12},"end":{"line":122,"column":53}},"78":{"start":{"line":125,"column":4},"end":{"line":127,"column":6}},"79":{"start":{"line":126,"column":8},"end":{"line":126,"column":98}},"80":{"start":{"line":128,"column":4},"end":{"line":128,"column":30}},"81":{"start":{"line":130,"column":0},"end":{"line":132,"column":2}}},"branchMap":{"1":{"line":5,"type":"binary-expr","locations":[{"start":{"line":5,"column":17},"end":{"line":5,"column":21}},{"start":{"line":5,"column":25},"end":{"line":5,"column":39}},{"start":{"line":5,"column":44},"end":{"line":9,"column":1}}]},"2":{"line":6,"type":"if","locations":[{"start":{"line":6,"column":21},"end":{"line":6,"column":21}},{"start":{"line":6,"column":21},"end":{"line":6,"column":21}}]},"3":{"line":8,"type":"cond-expr","locations":[{"start":{"line":8,"column":31},"end":{"line":8,"column":47}},{"start":{"line":8,"column":51},"end":{"line":8,"column":87}}]},"4":{"line":25,"type":"if","locations":[{"start":{"line":25,"column":12},"end":{"line":25,"column":12}},{"start":{"line":25,"column":12},"end":{"line":25,"column":12}}]},"5":{"line":28,"type":"binary-expr","locations":[{"start":{"line":28,"column":19},"end":{"line":28,"column":26}},{"start":{"line":28,"column":30},"end":{"line":28,"column":32}}]},"6":{"line":40,"type":"if","locations":[{"start":{"line":40,"column":8},"end":{"line":40,"column":8}},{"start":{"line":40,"column":8},"end":{"line":40,"column":8}}]},"7":{"line":43,"type":"if","locations":[{"start":{"line":43,"column":8},"end":{"line":43,"column":8}},{"start":{"line":43,"column":8},"end":{"line":43,"column":8}}]},"8":{"line":48,"type":"binary-expr","locations":[{"start":{"line":48,"column":24},"end":{"line":48,"column":55}},{"start":{"line":48,"column":59},"end":{"line":48,"column":66}}]},"9":{"line":50,"type":"if","locations":[{"start":{"line":50,"column":8},"end":{"line":50,"column":8}},{"start":{"line":50,"column":8},"end":{"line":50,"column":8}}]},"10":{"line":88,"type":"if","locations":[{"start":{"line":88,"column":8},"end":{"line":88,"column":8}},{"start":{"line":88,"column":8},"end":{"line":88,"column":8}}]},"11":{"line":94,"type":"if","locations":[{"start":{"line":94,"column":8},"end":{"line":94,"column":8}},{"start":{"line":94,"column":8},"end":{"line":94,"column":8}}]},"12":{"line":99,"type":"if","locations":[{"start":{"line":99,"column":8},"end":{"line":99,"column":8}},{"start":{"line":99,"column":8},"end":{"line":99,"column":8}}]},"13":{"line":104,"type":"if","locations":[{"start":{"line":104,"column":8},"end":{"line":104,"column":8}},{"start":{"line":104,"column":8},"end":{"line":104,"column":8}}]},"14":{"line":110,"type":"if","locations":[{"start":{"line":110,"column":8},"end":{"line":110,"column":8}},{"start":{"line":110,"column":8},"end":{"line":110,"column":8}}]},"15":{"line":116,"type":"if","locations":[{"start":{"line":116,"column":8},"end":{"line":116,"column":8}},{"start":{"line":116,"column":8},"end":{"line":116,"column":8}}]},"16":{"line":121,"type":"if","locations":[{"start":{"line":121,"column":8},"end":{"line":121,"column":8}},{"start":{"line":121,"column":8},"end":{"line":121,"column":8}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var __extends = (this && this.__extends) || function (d, b) {","    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];","    function __() { this.constructor = d; }","    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());","};","var react_redux_1 = require('react-redux');","var React = require('react');","var react_1 = require(\"react\");","// TODO: Rename to ...Factory","var WidgetPlugin = (function () {","    function WidgetPlugin(module, store) {","        console.assert(module.TYPE_INFO, \"Missing TYPE_INFO on widget module. Every module must export TYPE_INFO\");","        this._type = module.TYPE_INFO.type;","        this.Widget = module.Widget;","        this.store = store;","        this.instances = {};","        this.disposed = false;","        // only bind the getData function once, so it can be safely used in the connect function","        this.getData = function (getState, dsId) {","            var ds = getState().datasources[dsId];","            if (!ds) {","                return [];","            }","            return ds.data || [];","        }.bind(this, this.store.getState);","    }","    Object.defineProperty(WidgetPlugin.prototype, \"type\", {","        get: function () {","            return this._type;","        },","        enumerable: true,","        configurable: true","    });","    WidgetPlugin.prototype.getOrCreateInstance = function (id) {","        var _this = this;","        if (this.disposed === true) {","            throw new Error(\"Try to get or create widget of destroyed type: \" + this.type);","        }","        if (this.instances[id]) {","            return this.instances[id];","        }","        // TODO: check if module.Widget is a react component","        var widgetPlugin = this.store.getState().widgetPlugins[this.type];","        var rendering = widgetPlugin.typeInfo.rendering || \"react\";","        var widgetComponent = this.Widget;","        if (rendering.toLowerCase() === \"dom\") {","            widgetComponent = DomWidgetContainer;","        }","        var widget = react_redux_1.connect(function (state) {","            // This method will be used as mapStateToProps, leading to a constant \"getData()\" function per instance","            // Therefor the update is only called when actual state changes","            return function (state) {","                var widgetState = state.widgets[id];","                return {","                    state: widgetState,","                    // This is used to trigger re-rendering on Datasource change","                    // TODO: in future only the datasources the Widget is interested in should trigger re-rendering","                    _datasources: state.datasources,","                    getData: _this.getData","                };","            };","        })(widgetComponent);","        this.instances[id] = React.createElement(widget, { _widgetClass: this.Widget });","        // Should we create here or always outside?","        return this.instances[id];","    };","    WidgetPlugin.prototype.dispose = function () {","        this.disposed = true;","        this.instances = [];","    };","    return WidgetPlugin;","}());","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = WidgetPlugin;","var DomWidgetContainer = (function (_super) {","    __extends(DomWidgetContainer, _super);","    function DomWidgetContainer(props) {","        _super.call(this, props);","        this.state = {","            widget: new props._widgetClass(props)","        };","    }","    DomWidgetContainer.prototype.componentWillMount = function () {","        if (this.state.widget.componentWillMount) {","            this.state.widget.componentWillMount();","        }","    };","    DomWidgetContainer.prototype.componentDidMount = function () {","        this.state.widget.render(this.props, this.refs.container);","        if (this.state.widget.componentDidMount) {","            this.state.widget.componentDidMount();","        }","    };","    DomWidgetContainer.prototype.componentWillReceiveProps = function (nextProps) {","        if (this.state.widget.componentWillReceiveProps) {","            this.state.widget.componentWillReceiveProps(nextProps);","        }","    };","    DomWidgetContainer.prototype.shouldComponentUpdate = function (nextProps, nextState) {","        if (this.state.widget.shouldComponentUpdate) {","            return this.state.widget.shouldComponentUpdate(nextProps, nextState);","        }","        return true;","    };","    DomWidgetContainer.prototype.componentWillUpdate = function (nextProps, nextState) {","        if (this.state.widget.componentWillUpdate) {","            this.state.widget.componentWillUpdate(nextProps, nextState);","        }","    };","    DomWidgetContainer.prototype.componentDidUpdate = function (prevProps, prevState) {","        this.state.widget.render(this.props, this.refs.container);","        if (this.state.widget.componentDidUpdate) {","            this.state.widget.componentDidUpdate(prevProps, prevState);","        }","    };","    DomWidgetContainer.prototype.componentWillUnmount = function () {","        if (this.state.widget.componentWillUnmount) {","            this.state.widget.componentWillUnmount();","        }","    };","    DomWidgetContainer.prototype.render = function () {","        return React.createElement(\"div\", {ref: \"container\"}, \"Widget Plugin missing rendering!\");","    };","    return DomWidgetContainer;","}(React.Component));","DomWidgetContainer.propTypes = {","    _widgetClass: react_1.PropTypes.func.isRequired","};",""]};
+	}
+	__cov_nIt4q5a5MLKmdNe_6D8Tpw = __cov_nIt4q5a5MLKmdNe_6D8Tpw['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetPlugin.js'];
+	__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['1']++;var __extends=(__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['1'][0]++,this)&&(__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['1'][1]++,this.__extends)||(__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['1'][2]++,function(d,b){__cov_nIt4q5a5MLKmdNe_6D8Tpw.f['1']++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['2']++;for(var p in b){__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['3']++;if(b.hasOwnProperty(p)){__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['2'][0]++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['4']++;d[p]=b[p];}else{__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['2'][1]++;}}function __(){__cov_nIt4q5a5MLKmdNe_6D8Tpw.f['2']++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['6']++;this.constructor=d;}__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['7']++;d.prototype=b===null?(__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['3'][0]++,Object.create(b)):(__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['3'][1]++,(__.prototype=b.prototype,new __()));});__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['8']++;var react_redux_1=__webpack_require__(39);__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['9']++;var React=__webpack_require__(20);__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['10']++;var react_1=__webpack_require__(20);__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['11']++;var WidgetPlugin=function(){__cov_nIt4q5a5MLKmdNe_6D8Tpw.f['3']++;function WidgetPlugin(module,store){__cov_nIt4q5a5MLKmdNe_6D8Tpw.f['4']++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['13']++;console.assert(module.TYPE_INFO,'Missing TYPE_INFO on widget module. Every module must export TYPE_INFO');__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['14']++;this._type=module.TYPE_INFO.type;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['15']++;this.Widget=module.Widget;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['16']++;this.store=store;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['17']++;this.instances={};__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['18']++;this.disposed=false;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['19']++;this.getData=function(getState,dsId){__cov_nIt4q5a5MLKmdNe_6D8Tpw.f['5']++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['20']++;var ds=getState().datasources[dsId];__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['21']++;if(!ds){__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['4'][0]++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['22']++;return[];}else{__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['4'][1]++;}__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['23']++;return(__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['5'][0]++,ds.data)||(__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['5'][1]++,[]);}.bind(this,this.store.getState);}__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['24']++;Object.defineProperty(WidgetPlugin.prototype,'type',{get:function(){__cov_nIt4q5a5MLKmdNe_6D8Tpw.f['6']++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['25']++;return this._type;},enumerable:true,configurable:true});__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['26']++;WidgetPlugin.prototype.getOrCreateInstance=function(id){__cov_nIt4q5a5MLKmdNe_6D8Tpw.f['7']++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['27']++;var _this=this;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['28']++;if(this.disposed===true){__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['6'][0]++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['29']++;throw new Error('Try to get or create widget of destroyed type: '+this.type);}else{__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['6'][1]++;}__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['30']++;if(this.instances[id]){__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['7'][0]++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['31']++;return this.instances[id];}else{__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['7'][1]++;}__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['32']++;var widgetPlugin=this.store.getState().widgetPlugins[this.type];__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['33']++;var rendering=(__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['8'][0]++,widgetPlugin.typeInfo.rendering)||(__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['8'][1]++,'react');__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['34']++;var widgetComponent=this.Widget;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['35']++;if(rendering.toLowerCase()==='dom'){__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['9'][0]++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['36']++;widgetComponent=DomWidgetContainer;}else{__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['9'][1]++;}__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['37']++;var widget=react_redux_1.connect(function(state){__cov_nIt4q5a5MLKmdNe_6D8Tpw.f['8']++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['38']++;return function(state){__cov_nIt4q5a5MLKmdNe_6D8Tpw.f['9']++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['39']++;var widgetState=state.widgets[id];__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['40']++;return{state:widgetState,_datasources:state.datasources,getData:_this.getData};};})(widgetComponent);__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['41']++;this.instances[id]=React.createElement(widget,{_widgetClass:this.Widget});__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['42']++;return this.instances[id];};__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['43']++;WidgetPlugin.prototype.dispose=function(){__cov_nIt4q5a5MLKmdNe_6D8Tpw.f['10']++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['44']++;this.disposed=true;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['45']++;this.instances=[];};__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['46']++;return WidgetPlugin;}();__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['47']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['48']++;exports.default=WidgetPlugin;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['49']++;var DomWidgetContainer=function(_super){__cov_nIt4q5a5MLKmdNe_6D8Tpw.f['11']++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['50']++;__extends(DomWidgetContainer,_super);function DomWidgetContainer(props){__cov_nIt4q5a5MLKmdNe_6D8Tpw.f['12']++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['52']++;_super.call(this,props);__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['53']++;this.state={widget:new props._widgetClass(props)};}__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['54']++;DomWidgetContainer.prototype.componentWillMount=function(){__cov_nIt4q5a5MLKmdNe_6D8Tpw.f['13']++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['55']++;if(this.state.widget.componentWillMount){__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['10'][0]++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['56']++;this.state.widget.componentWillMount();}else{__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['10'][1]++;}};__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['57']++;DomWidgetContainer.prototype.componentDidMount=function(){__cov_nIt4q5a5MLKmdNe_6D8Tpw.f['14']++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['58']++;this.state.widget.render(this.props,this.refs.container);__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['59']++;if(this.state.widget.componentDidMount){__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['11'][0]++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['60']++;this.state.widget.componentDidMount();}else{__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['11'][1]++;}};__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['61']++;DomWidgetContainer.prototype.componentWillReceiveProps=function(nextProps){__cov_nIt4q5a5MLKmdNe_6D8Tpw.f['15']++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['62']++;if(this.state.widget.componentWillReceiveProps){__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['12'][0]++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['63']++;this.state.widget.componentWillReceiveProps(nextProps);}else{__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['12'][1]++;}};__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['64']++;DomWidgetContainer.prototype.shouldComponentUpdate=function(nextProps,nextState){__cov_nIt4q5a5MLKmdNe_6D8Tpw.f['16']++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['65']++;if(this.state.widget.shouldComponentUpdate){__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['13'][0]++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['66']++;return this.state.widget.shouldComponentUpdate(nextProps,nextState);}else{__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['13'][1]++;}__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['67']++;return true;};__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['68']++;DomWidgetContainer.prototype.componentWillUpdate=function(nextProps,nextState){__cov_nIt4q5a5MLKmdNe_6D8Tpw.f['17']++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['69']++;if(this.state.widget.componentWillUpdate){__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['14'][0]++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['70']++;this.state.widget.componentWillUpdate(nextProps,nextState);}else{__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['14'][1]++;}};__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['71']++;DomWidgetContainer.prototype.componentDidUpdate=function(prevProps,prevState){__cov_nIt4q5a5MLKmdNe_6D8Tpw.f['18']++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['72']++;this.state.widget.render(this.props,this.refs.container);__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['73']++;if(this.state.widget.componentDidUpdate){__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['15'][0]++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['74']++;this.state.widget.componentDidUpdate(prevProps,prevState);}else{__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['15'][1]++;}};__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['75']++;DomWidgetContainer.prototype.componentWillUnmount=function(){__cov_nIt4q5a5MLKmdNe_6D8Tpw.f['19']++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['76']++;if(this.state.widget.componentWillUnmount){__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['16'][0]++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['77']++;this.state.widget.componentWillUnmount();}else{__cov_nIt4q5a5MLKmdNe_6D8Tpw.b['16'][1]++;}};__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['78']++;DomWidgetContainer.prototype.render=function(){__cov_nIt4q5a5MLKmdNe_6D8Tpw.f['20']++;__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['79']++;return React.createElement('div',{ref:'container'},'Widget Plugin missing rendering!');};__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['80']++;return DomWidgetContainer;}(React.Component);__cov_nIt4q5a5MLKmdNe_6D8Tpw.s['81']++;DomWidgetContainer.propTypes={_widgetClass:react_1.PropTypes.func.isRequired};
 
 
 /***/ },
 /* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var _ = __webpack_require__(21);
-	var PluginRegistry = (function () {
-	    function PluginRegistry(_store) {
-	        this._store = _store;
-	        this._plugins = {};
-	        if (!_store) {
-	            throw new Error("PluginRegistry must be initialized with a Store");
-	        }
-	    }
-	    Object.defineProperty(PluginRegistry.prototype, "store", {
-	        get: function () {
-	            return this._store;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    PluginRegistry.prototype.register = function (module) {
-	        if (!this._store === undefined) {
-	            throw new Error("PluginRegistry has no store. Set the store property before registering modules!");
-	        }
-	        console.assert(module.TYPE_INFO !== undefined, "Missing TYPE_INFO on plugin module. Every module must export TYPE_INFO");
-	        console.assert(module.TYPE_INFO.type !== undefined, "Missing TYPE_INFO.type on plugin TYPE_INFO.");
-	        console.log("registering plugin: ", module);
-	        this._plugins[module.TYPE_INFO.type] = this.createPluginFromModule(module);
-	    };
-	    PluginRegistry.prototype.createPluginFromModule = function (module) {
-	        throw new Error("PluginRegistry must implement createPluginFromModule");
-	    };
-	    PluginRegistry.prototype.hasPlugin = function (type) {
-	        return this._plugins[type] !== undefined;
-	    };
-	    // TODO: rename to getPluginFactory() when also widgets are in TypeScript?
-	    PluginRegistry.prototype.getPlugin = function (type) {
-	        var plugin = this._plugins[type];
-	        if (!plugin) {
-	            throw new Error("Can not find plugin with type '" + type + "' in plugin registry.");
-	        }
-	        return plugin;
-	    };
-	    PluginRegistry.prototype.getPlugins = function () {
-	        return _.assign({}, this._plugins);
-	    };
-	    return PluginRegistry;
-	}());
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = PluginRegistry;
+	var __cov_Qa5jPRuYDy3ulaFyGA8ySQ = (Function('return this'))();
+	if (!__cov_Qa5jPRuYDy3ulaFyGA8ySQ.__coverage__) { __cov_Qa5jPRuYDy3ulaFyGA8ySQ.__coverage__ = {}; }
+	__cov_Qa5jPRuYDy3ulaFyGA8ySQ = __cov_Qa5jPRuYDy3ulaFyGA8ySQ.__coverage__;
+	if (!(__cov_Qa5jPRuYDy3ulaFyGA8ySQ['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/pluginRegistry.ts'])) {
+	   __cov_Qa5jPRuYDy3ulaFyGA8ySQ['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/pluginRegistry.ts'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/pluginApi/pluginRegistry.ts","s":{"1":0,"2":0,"3":1,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0},"b":{"1":[0,0],"2":[0,0],"3":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0},"fnMap":{"1":{"name":"(anonymous_1)","line":6,"loc":{"start":{"line":6,"column":22},"end":{"line":6,"column":34}}},"2":{"name":"PluginRegistry","line":7,"loc":{"start":{"line":7,"column":4},"end":{"line":7,"column":36}}},"3":{"name":"(anonymous_3)","line":15,"loc":{"start":{"line":15,"column":13},"end":{"line":15,"column":25}}},"4":{"name":"(anonymous_4)","line":21,"loc":{"start":{"line":21,"column":40},"end":{"line":21,"column":58}}},"5":{"name":"(anonymous_5)","line":30,"loc":{"start":{"line":30,"column":54},"end":{"line":30,"column":72}}},"6":{"name":"(anonymous_6)","line":33,"loc":{"start":{"line":33,"column":41},"end":{"line":33,"column":57}}},"7":{"name":"(anonymous_7)","line":37,"loc":{"start":{"line":37,"column":41},"end":{"line":37,"column":57}}},"8":{"name":"(anonymous_8)","line":44,"loc":{"start":{"line":44,"column":42},"end":{"line":44,"column":54}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":26}},"2":{"start":{"line":6,"column":0},"end":{"line":48,"column":5}},"3":{"start":{"line":7,"column":4},"end":{"line":13,"column":5}},"4":{"start":{"line":8,"column":8},"end":{"line":8,"column":29}},"5":{"start":{"line":9,"column":8},"end":{"line":9,"column":27}},"6":{"start":{"line":10,"column":8},"end":{"line":12,"column":9}},"7":{"start":{"line":11,"column":12},"end":{"line":11,"column":79}},"8":{"start":{"line":14,"column":4},"end":{"line":20,"column":7}},"9":{"start":{"line":16,"column":12},"end":{"line":16,"column":31}},"10":{"start":{"line":21,"column":4},"end":{"line":29,"column":6}},"11":{"start":{"line":22,"column":8},"end":{"line":24,"column":9}},"12":{"start":{"line":23,"column":12},"end":{"line":23,"column":111}},"13":{"start":{"line":25,"column":8},"end":{"line":25,"column":129}},"14":{"start":{"line":26,"column":8},"end":{"line":26,"column":107}},"15":{"start":{"line":27,"column":8},"end":{"line":27,"column":52}},"16":{"start":{"line":28,"column":8},"end":{"line":28,"column":83}},"17":{"start":{"line":30,"column":4},"end":{"line":32,"column":6}},"18":{"start":{"line":31,"column":8},"end":{"line":31,"column":80}},"19":{"start":{"line":33,"column":4},"end":{"line":35,"column":6}},"20":{"start":{"line":34,"column":8},"end":{"line":34,"column":49}},"21":{"start":{"line":37,"column":4},"end":{"line":43,"column":6}},"22":{"start":{"line":38,"column":8},"end":{"line":38,"column":41}},"23":{"start":{"line":39,"column":8},"end":{"line":41,"column":9}},"24":{"start":{"line":40,"column":12},"end":{"line":40,"column":96}},"25":{"start":{"line":42,"column":8},"end":{"line":42,"column":22}},"26":{"start":{"line":44,"column":4},"end":{"line":46,"column":6}},"27":{"start":{"line":45,"column":8},"end":{"line":45,"column":43}},"28":{"start":{"line":47,"column":4},"end":{"line":47,"column":26}},"29":{"start":{"line":49,"column":0},"end":{"line":49,"column":62}},"30":{"start":{"line":50,"column":0},"end":{"line":50,"column":33}}},"branchMap":{"1":{"line":10,"type":"if","locations":[{"start":{"line":10,"column":8},"end":{"line":10,"column":8}},{"start":{"line":10,"column":8},"end":{"line":10,"column":8}}]},"2":{"line":22,"type":"if","locations":[{"start":{"line":22,"column":8},"end":{"line":22,"column":8}},{"start":{"line":22,"column":8},"end":{"line":22,"column":8}}]},"3":{"line":39,"type":"if","locations":[{"start":{"line":39,"column":8},"end":{"line":39,"column":8}},{"start":{"line":39,"column":8},"end":{"line":39,"column":8}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public"," * License, v. 2.0. If a copy of the MPL was not distributed with this"," * file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var _ = require('lodash');","var PluginRegistry = (function () {","    function PluginRegistry(_store) {","        this._store = _store;","        this._plugins = {};","        if (!_store) {","            throw new Error(\"PluginRegistry must be initialized with a Store\");","        }","    }","    Object.defineProperty(PluginRegistry.prototype, \"store\", {","        get: function () {","            return this._store;","        },","        enumerable: true,","        configurable: true","    });","    PluginRegistry.prototype.register = function (module) {","        if (!this._store === undefined) {","            throw new Error(\"PluginRegistry has no store. Set the store property before registering modules!\");","        }","        console.assert(module.TYPE_INFO !== undefined, \"Missing TYPE_INFO on plugin module. Every module must export TYPE_INFO\");","        console.assert(module.TYPE_INFO.type !== undefined, \"Missing TYPE_INFO.type on plugin TYPE_INFO.\");","        console.log(\"registering plugin: \", module);","        this._plugins[module.TYPE_INFO.type] = this.createPluginFromModule(module);","    };","    PluginRegistry.prototype.createPluginFromModule = function (module) {","        throw new Error(\"PluginRegistry must implement createPluginFromModule\");","    };","    PluginRegistry.prototype.hasPlugin = function (type) {","        return this._plugins[type] !== undefined;","    };","    // TODO: rename to getPluginFactory() when also widgets are in TypeScript?","    PluginRegistry.prototype.getPlugin = function (type) {","        var plugin = this._plugins[type];","        if (!plugin) {","            throw new Error(\"Can not find plugin with type '\" + type + \"' in plugin registry.\");","        }","        return plugin;","    };","    PluginRegistry.prototype.getPlugins = function () {","        return _.assign({}, this._plugins);","    };","    return PluginRegistry;","}());","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = PluginRegistry;",""]};
+	}
+	__cov_Qa5jPRuYDy3ulaFyGA8ySQ = __cov_Qa5jPRuYDy3ulaFyGA8ySQ['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/pluginRegistry.ts'];
+	__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['1']++;var _=__webpack_require__(21);__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['2']++;var PluginRegistry=function(){__cov_Qa5jPRuYDy3ulaFyGA8ySQ.f['1']++;function PluginRegistry(_store){__cov_Qa5jPRuYDy3ulaFyGA8ySQ.f['2']++;__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['4']++;this._store=_store;__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['5']++;this._plugins={};__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['6']++;if(!_store){__cov_Qa5jPRuYDy3ulaFyGA8ySQ.b['1'][0]++;__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['7']++;throw new Error('PluginRegistry must be initialized with a Store');}else{__cov_Qa5jPRuYDy3ulaFyGA8ySQ.b['1'][1]++;}}__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['8']++;Object.defineProperty(PluginRegistry.prototype,'store',{get:function(){__cov_Qa5jPRuYDy3ulaFyGA8ySQ.f['3']++;__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['9']++;return this._store;},enumerable:true,configurable:true});__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['10']++;PluginRegistry.prototype.register=function(module){__cov_Qa5jPRuYDy3ulaFyGA8ySQ.f['4']++;__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['11']++;if(!this._store===undefined){__cov_Qa5jPRuYDy3ulaFyGA8ySQ.b['2'][0]++;__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['12']++;throw new Error('PluginRegistry has no store. Set the store property before registering modules!');}else{__cov_Qa5jPRuYDy3ulaFyGA8ySQ.b['2'][1]++;}__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['13']++;console.assert(module.TYPE_INFO!==undefined,'Missing TYPE_INFO on plugin module. Every module must export TYPE_INFO');__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['14']++;console.assert(module.TYPE_INFO.type!==undefined,'Missing TYPE_INFO.type on plugin TYPE_INFO.');__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['15']++;console.log('registering plugin: ',module);__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['16']++;this._plugins[module.TYPE_INFO.type]=this.createPluginFromModule(module);};__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['17']++;PluginRegistry.prototype.createPluginFromModule=function(module){__cov_Qa5jPRuYDy3ulaFyGA8ySQ.f['5']++;__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['18']++;throw new Error('PluginRegistry must implement createPluginFromModule');};__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['19']++;PluginRegistry.prototype.hasPlugin=function(type){__cov_Qa5jPRuYDy3ulaFyGA8ySQ.f['6']++;__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['20']++;return this._plugins[type]!==undefined;};__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['21']++;PluginRegistry.prototype.getPlugin=function(type){__cov_Qa5jPRuYDy3ulaFyGA8ySQ.f['7']++;__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['22']++;var plugin=this._plugins[type];__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['23']++;if(!plugin){__cov_Qa5jPRuYDy3ulaFyGA8ySQ.b['3'][0]++;__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['24']++;throw new Error('Can not find plugin with type \''+type+'\' in plugin registry.');}else{__cov_Qa5jPRuYDy3ulaFyGA8ySQ.b['3'][1]++;}__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['25']++;return plugin;};__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['26']++;PluginRegistry.prototype.getPlugins=function(){__cov_Qa5jPRuYDy3ulaFyGA8ySQ.f['8']++;__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['27']++;return _.assign({},this._plugins);};__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['28']++;return PluginRegistry;}();__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['29']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_Qa5jPRuYDy3ulaFyGA8ySQ.s['30']++;exports.default=PluginRegistry;
 
 
 /***/ },
@@ -1498,77 +394,14 @@ webpackJsonp([0],[
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var widgetPlugins_js_1 = __webpack_require__(52);
-	var datasourcePluginRegistry_1 = __webpack_require__(56);
-	var Plugins = __webpack_require__(59);
-	/**
-	 * The root of the Dashboard business Logic
-	 * Defines the lifecycle of the Dashboard from creation till disposal
-	 */
-	var Dashboard = (function () {
-	    function Dashboard(_store, _initialDatasourcePlugins) {
-	        this._store = _store;
-	        this._initialDatasourcePlugins = _initialDatasourcePlugins;
-	        this._initialized = false;
-	        this._datasourcePluginRegistry = new datasourcePluginRegistry_1.default(_store);
-	        this._widgetPluginRegistry = new widgetPlugins_js_1.WidgetPluginRegistry(_store);
-	    }
-	    Dashboard.setInstance = function (dashboard) {
-	        Dashboard._instance = dashboard;
-	    };
-	    /**
-	     * We have some code that depends on this global instance of the Dashboard
-	     * This is bad, but better that static references
-	     * we have at least the chance to influence the instance during tests
-	     *
-	     * @returns {Dashboard}
-	     */
-	    Dashboard.getInstance = function () {
-	        if (!Dashboard._instance) {
-	            throw new Error("No global dashboard created. Call setInstance(dashboard) before!");
-	        }
-	        return Dashboard._instance;
-	    };
-	    Object.defineProperty(Dashboard.prototype, "datasourcePluginRegistry", {
-	        get: function () {
-	            return this._datasourcePluginRegistry;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(Dashboard.prototype, "widgetPluginRegistry", {
-	        get: function () {
-	            return this._widgetPluginRegistry;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Dashboard.prototype.init = function () {
-	        var _this = this;
-	        if (this._initialized) {
-	            throw new Error("Dashboard was already initialized. Can not call init() twice.");
-	        }
-	        this._initialized = true;
-	        Dashboard.setInstance(this);
-	        // First load all build-in plugins
-	        if (this._initialDatasourcePlugins) {
-	            this._initialDatasourcePlugins.forEach(function (dsPlugin) {
-	                _this._datasourcePluginRegistry.register(dsPlugin);
-	            });
-	        }
-	        // There might be external plugins that need to be loaded from the web
-	        this._store.dispatch(Plugins.initializeExternalPlugins());
-	        // When all plugins are loaded we can create all known instances for them
-	        this._datasourcePluginRegistry.initializePluginInstances();
-	    };
-	    Dashboard.prototype.dispose = function () {
-	        this._datasourcePluginRegistry.dispose();
-	        // TODO: this._widgetPluginRegistry.dispose();
-	    };
-	    return Dashboard;
-	}());
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = Dashboard;
+	var __cov_CKRo1F54ZiQAF12iY77BAw = (Function('return this'))();
+	if (!__cov_CKRo1F54ZiQAF12iY77BAw.__coverage__) { __cov_CKRo1F54ZiQAF12iY77BAw.__coverage__ = {}; }
+	__cov_CKRo1F54ZiQAF12iY77BAw = __cov_CKRo1F54ZiQAF12iY77BAw.__coverage__;
+	if (!(__cov_CKRo1F54ZiQAF12iY77BAw['/home/travis/build/Niondir/iot-dashboard/src/dashboard.ts'])) {
+	   __cov_CKRo1F54ZiQAF12iY77BAw['/home/travis/build/Niondir/iot-dashboard/src/dashboard.ts'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/dashboard.ts","s":{"1":0,"2":0,"3":0,"4":0,"5":1,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0},"b":{"1":[0,0],"2":[0,0],"3":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0},"fnMap":{"1":{"name":"(anonymous_1)","line":9,"loc":{"start":{"line":9,"column":17},"end":{"line":9,"column":29}}},"2":{"name":"Dashboard","line":10,"loc":{"start":{"line":10,"column":4},"end":{"line":10,"column":58}}},"3":{"name":"(anonymous_3)","line":17,"loc":{"start":{"line":17,"column":28},"end":{"line":17,"column":49}}},"4":{"name":"(anonymous_4)","line":27,"loc":{"start":{"line":27,"column":28},"end":{"line":27,"column":40}}},"5":{"name":"(anonymous_5)","line":34,"loc":{"start":{"line":34,"column":13},"end":{"line":34,"column":25}}},"6":{"name":"(anonymous_6)","line":41,"loc":{"start":{"line":41,"column":13},"end":{"line":41,"column":25}}},"7":{"name":"(anonymous_7)","line":47,"loc":{"start":{"line":47,"column":31},"end":{"line":47,"column":43}}},"8":{"name":"(anonymous_8)","line":56,"loc":{"start":{"line":56,"column":51},"end":{"line":56,"column":71}}},"9":{"name":"(anonymous_9)","line":65,"loc":{"start":{"line":65,"column":34},"end":{"line":65,"column":46}}}},"statementMap":{"1":{"start":{"line":2,"column":0},"end":{"line":2,"column":63}},"2":{"start":{"line":3,"column":0},"end":{"line":3,"column":82}},"3":{"start":{"line":4,"column":0},"end":{"line":4,"column":48}},"4":{"start":{"line":9,"column":0},"end":{"line":70,"column":5}},"5":{"start":{"line":10,"column":4},"end":{"line":16,"column":5}},"6":{"start":{"line":11,"column":8},"end":{"line":11,"column":29}},"7":{"start":{"line":12,"column":8},"end":{"line":12,"column":67}},"8":{"start":{"line":13,"column":8},"end":{"line":13,"column":34}},"9":{"start":{"line":14,"column":8},"end":{"line":14,"column":88}},"10":{"start":{"line":15,"column":8},"end":{"line":15,"column":89}},"11":{"start":{"line":17,"column":4},"end":{"line":19,"column":6}},"12":{"start":{"line":18,"column":8},"end":{"line":18,"column":40}},"13":{"start":{"line":27,"column":4},"end":{"line":32,"column":6}},"14":{"start":{"line":28,"column":8},"end":{"line":30,"column":9}},"15":{"start":{"line":29,"column":12},"end":{"line":29,"column":96}},"16":{"start":{"line":31,"column":8},"end":{"line":31,"column":35}},"17":{"start":{"line":33,"column":4},"end":{"line":39,"column":7}},"18":{"start":{"line":35,"column":12},"end":{"line":35,"column":50}},"19":{"start":{"line":40,"column":4},"end":{"line":46,"column":7}},"20":{"start":{"line":42,"column":12},"end":{"line":42,"column":46}},"21":{"start":{"line":47,"column":4},"end":{"line":64,"column":6}},"22":{"start":{"line":48,"column":8},"end":{"line":48,"column":25}},"23":{"start":{"line":49,"column":8},"end":{"line":51,"column":9}},"24":{"start":{"line":50,"column":12},"end":{"line":50,"column":93}},"25":{"start":{"line":52,"column":8},"end":{"line":52,"column":33}},"26":{"start":{"line":53,"column":8},"end":{"line":53,"column":36}},"27":{"start":{"line":55,"column":8},"end":{"line":59,"column":9}},"28":{"start":{"line":56,"column":12},"end":{"line":58,"column":15}},"29":{"start":{"line":57,"column":16},"end":{"line":57,"column":67}},"30":{"start":{"line":61,"column":8},"end":{"line":61,"column":66}},"31":{"start":{"line":63,"column":8},"end":{"line":63,"column":67}},"32":{"start":{"line":65,"column":4},"end":{"line":68,"column":6}},"33":{"start":{"line":66,"column":8},"end":{"line":66,"column":49}},"34":{"start":{"line":69,"column":4},"end":{"line":69,"column":21}},"35":{"start":{"line":71,"column":0},"end":{"line":71,"column":62}},"36":{"start":{"line":72,"column":0},"end":{"line":72,"column":28}}},"branchMap":{"1":{"line":28,"type":"if","locations":[{"start":{"line":28,"column":8},"end":{"line":28,"column":8}},{"start":{"line":28,"column":8},"end":{"line":28,"column":8}}]},"2":{"line":49,"type":"if","locations":[{"start":{"line":49,"column":8},"end":{"line":49,"column":8}},{"start":{"line":49,"column":8},"end":{"line":49,"column":8}}]},"3":{"line":55,"type":"if","locations":[{"start":{"line":55,"column":8},"end":{"line":55,"column":8}},{"start":{"line":55,"column":8},"end":{"line":55,"column":8}}]}},"code":["\"use strict\";","var widgetPlugins_js_1 = require(\"./widgets/widgetPlugins.js\");","var datasourcePluginRegistry_1 = require(\"./datasource/datasourcePluginRegistry\");","var Plugins = require(\"./pluginApi/plugins.js\");","/**"," * The root of the Dashboard business Logic"," * Defines the lifecycle of the Dashboard from creation till disposal"," */","var Dashboard = (function () {","    function Dashboard(_store, _initialDatasourcePlugins) {","        this._store = _store;","        this._initialDatasourcePlugins = _initialDatasourcePlugins;","        this._initialized = false;","        this._datasourcePluginRegistry = new datasourcePluginRegistry_1.default(_store);","        this._widgetPluginRegistry = new widgetPlugins_js_1.WidgetPluginRegistry(_store);","    }","    Dashboard.setInstance = function (dashboard) {","        Dashboard._instance = dashboard;","    };","    /**","     * We have some code that depends on this global instance of the Dashboard","     * This is bad, but better that static references","     * we have at least the chance to influence the instance during tests","     *","     * @returns {Dashboard}","     */","    Dashboard.getInstance = function () {","        if (!Dashboard._instance) {","            throw new Error(\"No global dashboard created. Call setInstance(dashboard) before!\");","        }","        return Dashboard._instance;","    };","    Object.defineProperty(Dashboard.prototype, \"datasourcePluginRegistry\", {","        get: function () {","            return this._datasourcePluginRegistry;","        },","        enumerable: true,","        configurable: true","    });","    Object.defineProperty(Dashboard.prototype, \"widgetPluginRegistry\", {","        get: function () {","            return this._widgetPluginRegistry;","        },","        enumerable: true,","        configurable: true","    });","    Dashboard.prototype.init = function () {","        var _this = this;","        if (this._initialized) {","            throw new Error(\"Dashboard was already initialized. Can not call init() twice.\");","        }","        this._initialized = true;","        Dashboard.setInstance(this);","        // First load all build-in plugins","        if (this._initialDatasourcePlugins) {","            this._initialDatasourcePlugins.forEach(function (dsPlugin) {","                _this._datasourcePluginRegistry.register(dsPlugin);","            });","        }","        // There might be external plugins that need to be loaded from the web","        this._store.dispatch(Plugins.initializeExternalPlugins());","        // When all plugins are loaded we can create all known instances for them","        this._datasourcePluginRegistry.initializePluginInstances();","    };","    Dashboard.prototype.dispose = function () {","        this._datasourcePluginRegistry.dispose();","        // TODO: this._widgetPluginRegistry.dispose();","    };","    return Dashboard;","}());","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = Dashboard;",""]};
+	}
+	__cov_CKRo1F54ZiQAF12iY77BAw = __cov_CKRo1F54ZiQAF12iY77BAw['/home/travis/build/Niondir/iot-dashboard/src/dashboard.ts'];
+	__cov_CKRo1F54ZiQAF12iY77BAw.s['1']++;var widgetPlugins_js_1=__webpack_require__(52);__cov_CKRo1F54ZiQAF12iY77BAw.s['2']++;var datasourcePluginRegistry_1=__webpack_require__(56);__cov_CKRo1F54ZiQAF12iY77BAw.s['3']++;var Plugins=__webpack_require__(59);__cov_CKRo1F54ZiQAF12iY77BAw.s['4']++;var Dashboard=function(){__cov_CKRo1F54ZiQAF12iY77BAw.f['1']++;function Dashboard(_store,_initialDatasourcePlugins){__cov_CKRo1F54ZiQAF12iY77BAw.f['2']++;__cov_CKRo1F54ZiQAF12iY77BAw.s['6']++;this._store=_store;__cov_CKRo1F54ZiQAF12iY77BAw.s['7']++;this._initialDatasourcePlugins=_initialDatasourcePlugins;__cov_CKRo1F54ZiQAF12iY77BAw.s['8']++;this._initialized=false;__cov_CKRo1F54ZiQAF12iY77BAw.s['9']++;this._datasourcePluginRegistry=new datasourcePluginRegistry_1.default(_store);__cov_CKRo1F54ZiQAF12iY77BAw.s['10']++;this._widgetPluginRegistry=new widgetPlugins_js_1.WidgetPluginRegistry(_store);}__cov_CKRo1F54ZiQAF12iY77BAw.s['11']++;Dashboard.setInstance=function(dashboard){__cov_CKRo1F54ZiQAF12iY77BAw.f['3']++;__cov_CKRo1F54ZiQAF12iY77BAw.s['12']++;Dashboard._instance=dashboard;};__cov_CKRo1F54ZiQAF12iY77BAw.s['13']++;Dashboard.getInstance=function(){__cov_CKRo1F54ZiQAF12iY77BAw.f['4']++;__cov_CKRo1F54ZiQAF12iY77BAw.s['14']++;if(!Dashboard._instance){__cov_CKRo1F54ZiQAF12iY77BAw.b['1'][0]++;__cov_CKRo1F54ZiQAF12iY77BAw.s['15']++;throw new Error('No global dashboard created. Call setInstance(dashboard) before!');}else{__cov_CKRo1F54ZiQAF12iY77BAw.b['1'][1]++;}__cov_CKRo1F54ZiQAF12iY77BAw.s['16']++;return Dashboard._instance;};__cov_CKRo1F54ZiQAF12iY77BAw.s['17']++;Object.defineProperty(Dashboard.prototype,'datasourcePluginRegistry',{get:function(){__cov_CKRo1F54ZiQAF12iY77BAw.f['5']++;__cov_CKRo1F54ZiQAF12iY77BAw.s['18']++;return this._datasourcePluginRegistry;},enumerable:true,configurable:true});__cov_CKRo1F54ZiQAF12iY77BAw.s['19']++;Object.defineProperty(Dashboard.prototype,'widgetPluginRegistry',{get:function(){__cov_CKRo1F54ZiQAF12iY77BAw.f['6']++;__cov_CKRo1F54ZiQAF12iY77BAw.s['20']++;return this._widgetPluginRegistry;},enumerable:true,configurable:true});__cov_CKRo1F54ZiQAF12iY77BAw.s['21']++;Dashboard.prototype.init=function(){__cov_CKRo1F54ZiQAF12iY77BAw.f['7']++;__cov_CKRo1F54ZiQAF12iY77BAw.s['22']++;var _this=this;__cov_CKRo1F54ZiQAF12iY77BAw.s['23']++;if(this._initialized){__cov_CKRo1F54ZiQAF12iY77BAw.b['2'][0]++;__cov_CKRo1F54ZiQAF12iY77BAw.s['24']++;throw new Error('Dashboard was already initialized. Can not call init() twice.');}else{__cov_CKRo1F54ZiQAF12iY77BAw.b['2'][1]++;}__cov_CKRo1F54ZiQAF12iY77BAw.s['25']++;this._initialized=true;__cov_CKRo1F54ZiQAF12iY77BAw.s['26']++;Dashboard.setInstance(this);__cov_CKRo1F54ZiQAF12iY77BAw.s['27']++;if(this._initialDatasourcePlugins){__cov_CKRo1F54ZiQAF12iY77BAw.b['3'][0]++;__cov_CKRo1F54ZiQAF12iY77BAw.s['28']++;this._initialDatasourcePlugins.forEach(function(dsPlugin){__cov_CKRo1F54ZiQAF12iY77BAw.f['8']++;__cov_CKRo1F54ZiQAF12iY77BAw.s['29']++;_this._datasourcePluginRegistry.register(dsPlugin);});}else{__cov_CKRo1F54ZiQAF12iY77BAw.b['3'][1]++;}__cov_CKRo1F54ZiQAF12iY77BAw.s['30']++;this._store.dispatch(Plugins.initializeExternalPlugins());__cov_CKRo1F54ZiQAF12iY77BAw.s['31']++;this._datasourcePluginRegistry.initializePluginInstances();};__cov_CKRo1F54ZiQAF12iY77BAw.s['32']++;Dashboard.prototype.dispose=function(){__cov_CKRo1F54ZiQAF12iY77BAw.f['9']++;__cov_CKRo1F54ZiQAF12iY77BAw.s['33']++;this._datasourcePluginRegistry.dispose();};__cov_CKRo1F54ZiQAF12iY77BAw.s['34']++;return Dashboard;}();__cov_CKRo1F54ZiQAF12iY77BAw.s['35']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_CKRo1F54ZiQAF12iY77BAw.s['36']++;exports.default=Dashboard;
 
 
 /***/ },
@@ -1576,539 +409,60 @@ webpackJsonp([0],[
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(_) {"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var pluginRegistry_1 = __webpack_require__(54);
-	var datasourcePluginFactory_1 = __webpack_require__(57);
-	var datasource_1 = __webpack_require__(58);
-	var DatasourcePluginRegistry = (function (_super) {
-	    __extends(DatasourcePluginRegistry, _super);
-	    function DatasourcePluginRegistry(_store) {
-	        var _this = this;
-	        _super.call(this, _store);
-	        this._fetchPromises = {};
-	        this._disposed = false;
-	        this._fetchIntervalRef = setInterval(function () {
-	            _this.doFetchData();
-	        }, 1000);
-	    }
-	    Object.defineProperty(DatasourcePluginRegistry.prototype, "disposed", {
-	        get: function () {
-	            return this._disposed;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    /**
-	     * Create instances for all plugins that are in the store
-	     */
-	    DatasourcePluginRegistry.prototype.initializePluginInstances = function () {
-	        var _this = this;
-	        var dsStates = this.store.getState().datasources;
-	        _.valuesIn(dsStates).forEach(function (dsState) {
-	            var pluginFactory = _this.getPlugin(dsState.type);
-	            pluginFactory.createInstance(dsState.id);
-	        });
-	    };
-	    DatasourcePluginRegistry.prototype.createPluginFromModule = function (module) {
-	        console.assert(_.isObject(module.TYPE_INFO), "Missing TYPE_INFO on datasource module. Every module must export TYPE_INFO");
-	        return new datasourcePluginFactory_1.default(module.TYPE_INFO.type, module.Datasource, this.store);
-	    };
-	    DatasourcePluginRegistry.prototype.doFetchData = function () {
-	        var _this = this;
-	        var datasourcePluginStates = this.store.getState().datasourcePlugins;
-	        var datasourceStates = this.store.getState().datasources;
-	        // It is important that we only call fetch on Datasources and Plugins that are also in the Store!
-	        // Else you could have ugly side effects when something runs out of sync with the store
-	        _.valuesIn(datasourcePluginStates).forEach(function (dsPluginState) {
-	            var dsPluginFactory = _this.getPlugin(dsPluginState.id);
-	            _.valuesIn(datasourceStates).forEach(function (dsState) {
-	                var dsPlugin = dsPluginFactory.getInstance(dsState.id);
-	                _this.doFetchDataForDatasourceInstance(dsPlugin, dsState);
-	            });
-	        });
-	    };
-	    DatasourcePluginRegistry.prototype.doFetchDataForDatasourceInstance = function (dsInstance, dsState) {
-	        var _this = this;
-	        if (this._fetchPromises[dsState.id]) {
-	            console.warn("Do not fetch data because a fetch is currently running on Datasource", dsState);
-	            return;
-	        }
-	        if (!dsInstance.fetchData) {
-	            console.warn("fetchData(resolve, reject) is not implemented in Datasource ", dsState);
-	            return;
-	        }
-	        var fetchPromise = new Promise(function (resolve, reject) {
-	            dsInstance.fetchData(resolve, reject);
-	            // TODO: Implement a timeout?
-	        });
-	        this._fetchPromises[dsState.id] = fetchPromise;
-	        fetchPromise.then(function (result) {
-	            console.log("_fetchPromises => null");
-	            _this._fetchPromises[dsState.id] = null;
-	            if (!_this._disposed) {
-	                //console.log("fetData plugin finished", dsState, result);
-	                _this.store.dispatch(datasource_1.appendDatasourceData(dsState.id, result));
-	            }
-	            else {
-	                console.error("fetData of disposed plugin finished", dsState, result);
-	            }
-	        }).catch(function () {
-	            _this._fetchPromises[dsState.id] = null;
-	        });
-	    };
-	    DatasourcePluginRegistry.prototype.dispose = function () {
-	        if (!this._disposed) {
-	            this._disposed = true;
-	            clearInterval(this._fetchIntervalRef);
-	            this._fetchIntervalRef = null;
-	        }
-	    };
-	    return DatasourcePluginRegistry;
-	}(pluginRegistry_1.default));
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = DatasourcePluginRegistry;
-	
+	var __cov_$qWrcQ4U4tZdYn9jiakA2g = (Function('return this'))();
+	if (!__cov_$qWrcQ4U4tZdYn9jiakA2g.__coverage__) { __cov_$qWrcQ4U4tZdYn9jiakA2g.__coverage__ = {}; }
+	__cov_$qWrcQ4U4tZdYn9jiakA2g = __cov_$qWrcQ4U4tZdYn9jiakA2g.__coverage__;
+	if (!(__cov_$qWrcQ4U4tZdYn9jiakA2g['/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourcePluginRegistry.ts'])) {
+	   __cov_$qWrcQ4U4tZdYn9jiakA2g['/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourcePluginRegistry.ts'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourcePluginRegistry.ts","s":{"1":0,"2":0,"3":0,"4":0,"5":1,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":1,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":0,"38":0,"39":0,"40":0,"41":0,"42":0,"43":0,"44":0,"45":0,"46":0,"47":0,"48":0,"49":0,"50":0,"51":0,"52":0,"53":0,"54":0,"55":0,"56":0,"57":0,"58":0,"59":0,"60":0,"61":0,"62":0,"63":0,"64":0,"65":0},"b":{"1":[0,0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0],"7":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0},"fnMap":{"1":{"name":"(anonymous_1)","line":2,"loc":{"start":{"line":2,"column":44},"end":{"line":2,"column":60}}},"2":{"name":"__","line":4,"loc":{"start":{"line":4,"column":4},"end":{"line":4,"column":18}}},"3":{"name":"(anonymous_3)","line":10,"loc":{"start":{"line":10,"column":32},"end":{"line":10,"column":50}}},"4":{"name":"DatasourcePluginRegistry","line":12,"loc":{"start":{"line":12,"column":4},"end":{"line":12,"column":46}}},"5":{"name":"(anonymous_5)","line":17,"loc":{"start":{"line":17,"column":45},"end":{"line":17,"column":57}}},"6":{"name":"(anonymous_6)","line":22,"loc":{"start":{"line":22,"column":13},"end":{"line":22,"column":25}}},"7":{"name":"(anonymous_7)","line":31,"loc":{"start":{"line":31,"column":67},"end":{"line":31,"column":79}}},"8":{"name":"(anonymous_8)","line":34,"loc":{"start":{"line":34,"column":37},"end":{"line":34,"column":56}}},"9":{"name":"(anonymous_9)","line":39,"loc":{"start":{"line":39,"column":64},"end":{"line":39,"column":82}}},"10":{"name":"(anonymous_10)","line":43,"loc":{"start":{"line":43,"column":53},"end":{"line":43,"column":65}}},"11":{"name":"(anonymous_11)","line":49,"loc":{"start":{"line":49,"column":51},"end":{"line":49,"column":76}}},"12":{"name":"(anonymous_12)","line":51,"loc":{"start":{"line":51,"column":49},"end":{"line":51,"column":68}}},"13":{"name":"(anonymous_13)","line":57,"loc":{"start":{"line":57,"column":74},"end":{"line":57,"column":105}}},"14":{"name":"(anonymous_14)","line":67,"loc":{"start":{"line":67,"column":39},"end":{"line":67,"column":66}}},"15":{"name":"(anonymous_15)","line":72,"loc":{"start":{"line":72,"column":26},"end":{"line":72,"column":44}}},"16":{"name":"(anonymous_16)","line":82,"loc":{"start":{"line":82,"column":17},"end":{"line":82,"column":29}}},"17":{"name":"(anonymous_17)","line":86,"loc":{"start":{"line":86,"column":49},"end":{"line":86,"column":61}}}},"statementMap":{"1":{"start":{"line":2,"column":0},"end":{"line":6,"column":2}},"2":{"start":{"line":3,"column":4},"end":{"line":3,"column":58}},"3":{"start":{"line":3,"column":21},"end":{"line":3,"column":58}},"4":{"start":{"line":3,"column":46},"end":{"line":3,"column":58}},"5":{"start":{"line":4,"column":4},"end":{"line":4,"column":43}},"6":{"start":{"line":4,"column":20},"end":{"line":4,"column":41}},"7":{"start":{"line":5,"column":4},"end":{"line":5,"column":89}},"8":{"start":{"line":7,"column":0},"end":{"line":7,"column":62}},"9":{"start":{"line":8,"column":0},"end":{"line":8,"column":69}},"10":{"start":{"line":9,"column":0},"end":{"line":9,"column":43}},"11":{"start":{"line":10,"column":0},"end":{"line":94,"column":29}},"12":{"start":{"line":11,"column":4},"end":{"line":11,"column":48}},"13":{"start":{"line":12,"column":4},"end":{"line":20,"column":5}},"14":{"start":{"line":13,"column":8},"end":{"line":13,"column":25}},"15":{"start":{"line":14,"column":8},"end":{"line":14,"column":34}},"16":{"start":{"line":15,"column":8},"end":{"line":15,"column":33}},"17":{"start":{"line":16,"column":8},"end":{"line":16,"column":31}},"18":{"start":{"line":17,"column":8},"end":{"line":19,"column":17}},"19":{"start":{"line":18,"column":12},"end":{"line":18,"column":32}},"20":{"start":{"line":21,"column":4},"end":{"line":27,"column":7}},"21":{"start":{"line":23,"column":12},"end":{"line":23,"column":34}},"22":{"start":{"line":31,"column":4},"end":{"line":38,"column":6}},"23":{"start":{"line":32,"column":8},"end":{"line":32,"column":25}},"24":{"start":{"line":33,"column":8},"end":{"line":33,"column":57}},"25":{"start":{"line":34,"column":8},"end":{"line":37,"column":11}},"26":{"start":{"line":35,"column":12},"end":{"line":35,"column":62}},"27":{"start":{"line":36,"column":12},"end":{"line":36,"column":53}},"28":{"start":{"line":39,"column":4},"end":{"line":42,"column":6}},"29":{"start":{"line":40,"column":8},"end":{"line":40,"column":131}},"30":{"start":{"line":41,"column":8},"end":{"line":41,"column":107}},"31":{"start":{"line":43,"column":4},"end":{"line":56,"column":6}},"32":{"start":{"line":44,"column":8},"end":{"line":44,"column":25}},"33":{"start":{"line":45,"column":8},"end":{"line":45,"column":77}},"34":{"start":{"line":46,"column":8},"end":{"line":46,"column":65}},"35":{"start":{"line":49,"column":8},"end":{"line":55,"column":11}},"36":{"start":{"line":50,"column":12},"end":{"line":50,"column":68}},"37":{"start":{"line":51,"column":12},"end":{"line":54,"column":15}},"38":{"start":{"line":52,"column":16},"end":{"line":52,"column":71}},"39":{"start":{"line":53,"column":16},"end":{"line":53,"column":74}},"40":{"start":{"line":57,"column":4},"end":{"line":85,"column":6}},"41":{"start":{"line":58,"column":8},"end":{"line":58,"column":25}},"42":{"start":{"line":59,"column":8},"end":{"line":62,"column":9}},"43":{"start":{"line":60,"column":12},"end":{"line":60,"column":106}},"44":{"start":{"line":61,"column":12},"end":{"line":61,"column":19}},"45":{"start":{"line":63,"column":8},"end":{"line":66,"column":9}},"46":{"start":{"line":64,"column":12},"end":{"line":64,"column":98}},"47":{"start":{"line":65,"column":12},"end":{"line":65,"column":19}},"48":{"start":{"line":67,"column":8},"end":{"line":70,"column":11}},"49":{"start":{"line":68,"column":12},"end":{"line":68,"column":50}},"50":{"start":{"line":71,"column":8},"end":{"line":71,"column":55}},"51":{"start":{"line":72,"column":8},"end":{"line":84,"column":11}},"52":{"start":{"line":73,"column":12},"end":{"line":73,"column":50}},"53":{"start":{"line":74,"column":12},"end":{"line":74,"column":52}},"54":{"start":{"line":75,"column":12},"end":{"line":81,"column":13}},"55":{"start":{"line":77,"column":16},"end":{"line":77,"column":92}},"56":{"start":{"line":80,"column":16},"end":{"line":80,"column":86}},"57":{"start":{"line":83,"column":12},"end":{"line":83,"column":52}},"58":{"start":{"line":86,"column":4},"end":{"line":92,"column":6}},"59":{"start":{"line":87,"column":8},"end":{"line":91,"column":9}},"60":{"start":{"line":88,"column":12},"end":{"line":88,"column":34}},"61":{"start":{"line":89,"column":12},"end":{"line":89,"column":50}},"62":{"start":{"line":90,"column":12},"end":{"line":90,"column":42}},"63":{"start":{"line":93,"column":4},"end":{"line":93,"column":36}},"64":{"start":{"line":95,"column":0},"end":{"line":95,"column":62}},"65":{"start":{"line":96,"column":0},"end":{"line":96,"column":43}}},"branchMap":{"1":{"line":2,"type":"binary-expr","locations":[{"start":{"line":2,"column":17},"end":{"line":2,"column":21}},{"start":{"line":2,"column":25},"end":{"line":2,"column":39}},{"start":{"line":2,"column":44},"end":{"line":6,"column":1}}]},"2":{"line":3,"type":"if","locations":[{"start":{"line":3,"column":21},"end":{"line":3,"column":21}},{"start":{"line":3,"column":21},"end":{"line":3,"column":21}}]},"3":{"line":5,"type":"cond-expr","locations":[{"start":{"line":5,"column":31},"end":{"line":5,"column":47}},{"start":{"line":5,"column":51},"end":{"line":5,"column":87}}]},"4":{"line":59,"type":"if","locations":[{"start":{"line":59,"column":8},"end":{"line":59,"column":8}},{"start":{"line":59,"column":8},"end":{"line":59,"column":8}}]},"5":{"line":63,"type":"if","locations":[{"start":{"line":63,"column":8},"end":{"line":63,"column":8}},{"start":{"line":63,"column":8},"end":{"line":63,"column":8}}]},"6":{"line":75,"type":"if","locations":[{"start":{"line":75,"column":12},"end":{"line":75,"column":12}},{"start":{"line":75,"column":12},"end":{"line":75,"column":12}}]},"7":{"line":87,"type":"if","locations":[{"start":{"line":87,"column":8},"end":{"line":87,"column":8}},{"start":{"line":87,"column":8},"end":{"line":87,"column":8}}]}},"code":["\"use strict\";","var __extends = (this && this.__extends) || function (d, b) {","    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];","    function __() { this.constructor = d; }","    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());","};","var pluginRegistry_1 = require(\"../pluginApi/pluginRegistry\");","var datasourcePluginFactory_1 = require(\"./datasourcePluginFactory\");","var datasource_1 = require(\"./datasource\");","var DatasourcePluginRegistry = (function (_super) {","    __extends(DatasourcePluginRegistry, _super);","    function DatasourcePluginRegistry(_store) {","        var _this = this;","        _super.call(this, _store);","        this._fetchPromises = {};","        this._disposed = false;","        this._fetchIntervalRef = setInterval(function () {","            _this.doFetchData();","        }, 1000);","    }","    Object.defineProperty(DatasourcePluginRegistry.prototype, \"disposed\", {","        get: function () {","            return this._disposed;","        },","        enumerable: true,","        configurable: true","    });","    /**","     * Create instances for all plugins that are in the store","     */","    DatasourcePluginRegistry.prototype.initializePluginInstances = function () {","        var _this = this;","        var dsStates = this.store.getState().datasources;","        _.valuesIn(dsStates).forEach(function (dsState) {","            var pluginFactory = _this.getPlugin(dsState.type);","            pluginFactory.createInstance(dsState.id);","        });","    };","    DatasourcePluginRegistry.prototype.createPluginFromModule = function (module) {","        console.assert(_.isObject(module.TYPE_INFO), \"Missing TYPE_INFO on datasource module. Every module must export TYPE_INFO\");","        return new datasourcePluginFactory_1.default(module.TYPE_INFO.type, module.Datasource, this.store);","    };","    DatasourcePluginRegistry.prototype.doFetchData = function () {","        var _this = this;","        var datasourcePluginStates = this.store.getState().datasourcePlugins;","        var datasourceStates = this.store.getState().datasources;","        // It is important that we only call fetch on Datasources and Plugins that are also in the Store!","        // Else you could have ugly side effects when something runs out of sync with the store","        _.valuesIn(datasourcePluginStates).forEach(function (dsPluginState) {","            var dsPluginFactory = _this.getPlugin(dsPluginState.id);","            _.valuesIn(datasourceStates).forEach(function (dsState) {","                var dsPlugin = dsPluginFactory.getInstance(dsState.id);","                _this.doFetchDataForDatasourceInstance(dsPlugin, dsState);","            });","        });","    };","    DatasourcePluginRegistry.prototype.doFetchDataForDatasourceInstance = function (dsInstance, dsState) {","        var _this = this;","        if (this._fetchPromises[dsState.id]) {","            console.warn(\"Do not fetch data because a fetch is currently running on Datasource\", dsState);","            return;","        }","        if (!dsInstance.fetchData) {","            console.warn(\"fetchData(resolve, reject) is not implemented in Datasource \", dsState);","            return;","        }","        var fetchPromise = new Promise(function (resolve, reject) {","            dsInstance.fetchData(resolve, reject);","            // TODO: Implement a timeout?","        });","        this._fetchPromises[dsState.id] = fetchPromise;","        fetchPromise.then(function (result) {","            console.log(\"_fetchPromises => null\");","            _this._fetchPromises[dsState.id] = null;","            if (!_this._disposed) {","                //console.log(\"fetData plugin finished\", dsState, result);","                _this.store.dispatch(datasource_1.appendDatasourceData(dsState.id, result));","            }","            else {","                console.error(\"fetData of disposed plugin finished\", dsState, result);","            }","        }).catch(function () {","            _this._fetchPromises[dsState.id] = null;","        });","    };","    DatasourcePluginRegistry.prototype.dispose = function () {","        if (!this._disposed) {","            this._disposed = true;","            clearInterval(this._fetchIntervalRef);","            this._fetchIntervalRef = null;","        }","    };","    return DatasourcePluginRegistry;","}(pluginRegistry_1.default));","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = DatasourcePluginRegistry;",""]};
+	}
+	__cov_$qWrcQ4U4tZdYn9jiakA2g = __cov_$qWrcQ4U4tZdYn9jiakA2g['/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourcePluginRegistry.ts'];
+	__cov_$qWrcQ4U4tZdYn9jiakA2g.s['1']++;var __extends=(__cov_$qWrcQ4U4tZdYn9jiakA2g.b['1'][0]++,this)&&(__cov_$qWrcQ4U4tZdYn9jiakA2g.b['1'][1]++,this.__extends)||(__cov_$qWrcQ4U4tZdYn9jiakA2g.b['1'][2]++,function(d,b){__cov_$qWrcQ4U4tZdYn9jiakA2g.f['1']++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['2']++;for(var p in b){__cov_$qWrcQ4U4tZdYn9jiakA2g.s['3']++;if(b.hasOwnProperty(p)){__cov_$qWrcQ4U4tZdYn9jiakA2g.b['2'][0]++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['4']++;d[p]=b[p];}else{__cov_$qWrcQ4U4tZdYn9jiakA2g.b['2'][1]++;}}function __(){__cov_$qWrcQ4U4tZdYn9jiakA2g.f['2']++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['6']++;this.constructor=d;}__cov_$qWrcQ4U4tZdYn9jiakA2g.s['7']++;d.prototype=b===null?(__cov_$qWrcQ4U4tZdYn9jiakA2g.b['3'][0]++,Object.create(b)):(__cov_$qWrcQ4U4tZdYn9jiakA2g.b['3'][1]++,(__.prototype=b.prototype,new __()));});__cov_$qWrcQ4U4tZdYn9jiakA2g.s['8']++;var pluginRegistry_1=__webpack_require__(54);__cov_$qWrcQ4U4tZdYn9jiakA2g.s['9']++;var datasourcePluginFactory_1=__webpack_require__(57);__cov_$qWrcQ4U4tZdYn9jiakA2g.s['10']++;var datasource_1=__webpack_require__(58);__cov_$qWrcQ4U4tZdYn9jiakA2g.s['11']++;var DatasourcePluginRegistry=function(_super){__cov_$qWrcQ4U4tZdYn9jiakA2g.f['3']++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['12']++;__extends(DatasourcePluginRegistry,_super);function DatasourcePluginRegistry(_store){__cov_$qWrcQ4U4tZdYn9jiakA2g.f['4']++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['14']++;var _this=this;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['15']++;_super.call(this,_store);__cov_$qWrcQ4U4tZdYn9jiakA2g.s['16']++;this._fetchPromises={};__cov_$qWrcQ4U4tZdYn9jiakA2g.s['17']++;this._disposed=false;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['18']++;this._fetchIntervalRef=setInterval(function(){__cov_$qWrcQ4U4tZdYn9jiakA2g.f['5']++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['19']++;_this.doFetchData();},1000);}__cov_$qWrcQ4U4tZdYn9jiakA2g.s['20']++;Object.defineProperty(DatasourcePluginRegistry.prototype,'disposed',{get:function(){__cov_$qWrcQ4U4tZdYn9jiakA2g.f['6']++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['21']++;return this._disposed;},enumerable:true,configurable:true});__cov_$qWrcQ4U4tZdYn9jiakA2g.s['22']++;DatasourcePluginRegistry.prototype.initializePluginInstances=function(){__cov_$qWrcQ4U4tZdYn9jiakA2g.f['7']++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['23']++;var _this=this;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['24']++;var dsStates=this.store.getState().datasources;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['25']++;_.valuesIn(dsStates).forEach(function(dsState){__cov_$qWrcQ4U4tZdYn9jiakA2g.f['8']++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['26']++;var pluginFactory=_this.getPlugin(dsState.type);__cov_$qWrcQ4U4tZdYn9jiakA2g.s['27']++;pluginFactory.createInstance(dsState.id);});};__cov_$qWrcQ4U4tZdYn9jiakA2g.s['28']++;DatasourcePluginRegistry.prototype.createPluginFromModule=function(module){__cov_$qWrcQ4U4tZdYn9jiakA2g.f['9']++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['29']++;console.assert(_.isObject(module.TYPE_INFO),'Missing TYPE_INFO on datasource module. Every module must export TYPE_INFO');__cov_$qWrcQ4U4tZdYn9jiakA2g.s['30']++;return new datasourcePluginFactory_1.default(module.TYPE_INFO.type,module.Datasource,this.store);};__cov_$qWrcQ4U4tZdYn9jiakA2g.s['31']++;DatasourcePluginRegistry.prototype.doFetchData=function(){__cov_$qWrcQ4U4tZdYn9jiakA2g.f['10']++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['32']++;var _this=this;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['33']++;var datasourcePluginStates=this.store.getState().datasourcePlugins;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['34']++;var datasourceStates=this.store.getState().datasources;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['35']++;_.valuesIn(datasourcePluginStates).forEach(function(dsPluginState){__cov_$qWrcQ4U4tZdYn9jiakA2g.f['11']++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['36']++;var dsPluginFactory=_this.getPlugin(dsPluginState.id);__cov_$qWrcQ4U4tZdYn9jiakA2g.s['37']++;_.valuesIn(datasourceStates).forEach(function(dsState){__cov_$qWrcQ4U4tZdYn9jiakA2g.f['12']++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['38']++;var dsPlugin=dsPluginFactory.getInstance(dsState.id);__cov_$qWrcQ4U4tZdYn9jiakA2g.s['39']++;_this.doFetchDataForDatasourceInstance(dsPlugin,dsState);});});};__cov_$qWrcQ4U4tZdYn9jiakA2g.s['40']++;DatasourcePluginRegistry.prototype.doFetchDataForDatasourceInstance=function(dsInstance,dsState){__cov_$qWrcQ4U4tZdYn9jiakA2g.f['13']++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['41']++;var _this=this;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['42']++;if(this._fetchPromises[dsState.id]){__cov_$qWrcQ4U4tZdYn9jiakA2g.b['4'][0]++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['43']++;console.warn('Do not fetch data because a fetch is currently running on Datasource',dsState);__cov_$qWrcQ4U4tZdYn9jiakA2g.s['44']++;return;}else{__cov_$qWrcQ4U4tZdYn9jiakA2g.b['4'][1]++;}__cov_$qWrcQ4U4tZdYn9jiakA2g.s['45']++;if(!dsInstance.fetchData){__cov_$qWrcQ4U4tZdYn9jiakA2g.b['5'][0]++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['46']++;console.warn('fetchData(resolve, reject) is not implemented in Datasource ',dsState);__cov_$qWrcQ4U4tZdYn9jiakA2g.s['47']++;return;}else{__cov_$qWrcQ4U4tZdYn9jiakA2g.b['5'][1]++;}__cov_$qWrcQ4U4tZdYn9jiakA2g.s['48']++;var fetchPromise=new Promise(function(resolve,reject){__cov_$qWrcQ4U4tZdYn9jiakA2g.f['14']++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['49']++;dsInstance.fetchData(resolve,reject);});__cov_$qWrcQ4U4tZdYn9jiakA2g.s['50']++;this._fetchPromises[dsState.id]=fetchPromise;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['51']++;fetchPromise.then(function(result){__cov_$qWrcQ4U4tZdYn9jiakA2g.f['15']++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['52']++;console.log('_fetchPromises => null');__cov_$qWrcQ4U4tZdYn9jiakA2g.s['53']++;_this._fetchPromises[dsState.id]=null;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['54']++;if(!_this._disposed){__cov_$qWrcQ4U4tZdYn9jiakA2g.b['6'][0]++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['55']++;_this.store.dispatch(datasource_1.appendDatasourceData(dsState.id,result));}else{__cov_$qWrcQ4U4tZdYn9jiakA2g.b['6'][1]++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['56']++;console.error('fetData of disposed plugin finished',dsState,result);}}).catch(function(){__cov_$qWrcQ4U4tZdYn9jiakA2g.f['16']++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['57']++;_this._fetchPromises[dsState.id]=null;});};__cov_$qWrcQ4U4tZdYn9jiakA2g.s['58']++;DatasourcePluginRegistry.prototype.dispose=function(){__cov_$qWrcQ4U4tZdYn9jiakA2g.f['17']++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['59']++;if(!this._disposed){__cov_$qWrcQ4U4tZdYn9jiakA2g.b['7'][0]++;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['60']++;this._disposed=true;__cov_$qWrcQ4U4tZdYn9jiakA2g.s['61']++;clearInterval(this._fetchIntervalRef);__cov_$qWrcQ4U4tZdYn9jiakA2g.s['62']++;this._fetchIntervalRef=null;}else{__cov_$qWrcQ4U4tZdYn9jiakA2g.b['7'][1]++;}};__cov_$qWrcQ4U4tZdYn9jiakA2g.s['63']++;return DatasourcePluginRegistry;}(pluginRegistry_1.default);__cov_$qWrcQ4U4tZdYn9jiakA2g.s['64']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_$qWrcQ4U4tZdYn9jiakA2g.s['65']++;exports.default=DatasourcePluginRegistry;
+
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)))
 
 /***/ },
 /* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var _ = __webpack_require__(21);
-	/**
-	 * Connects a datasource to the application state
-	 */
-	var DataSourcePluginFactory = (function () {
-	    function DataSourcePluginFactory(_type, _datasource, _store) {
-	        this._type = _type;
-	        this._datasource = _datasource;
-	        this._store = _store;
-	        this._plugins = {};
-	        this._disposed = false;
-	        this._unsubscribe = _store.subscribe(this.handleStateChange.bind(this));
-	    }
-	    Object.defineProperty(DataSourcePluginFactory.prototype, "type", {
-	        get: function () {
-	            return this._type;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(DataSourcePluginFactory.prototype, "disposed", {
-	        get: function () {
-	            return this._disposed;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    DataSourcePluginFactory.prototype.getDatasourceState = function (id) {
-	        var state = this._store.getState();
-	        var dsState = state.datasources[id];
-	        if (!dsState) {
-	            throw new Error("Can not get state of non existing datasource with id " + id);
-	        }
-	        return dsState;
-	    };
-	    /**
-	     * Better use getInstance or createInstance directly!
-	     */
-	    DataSourcePluginFactory.prototype.getOrCreateInstance = function (id) {
-	        if (!this._plugins[id]) {
-	            return this.createInstance(id);
-	        }
-	        return this.getInstance(id);
-	    };
-	    DataSourcePluginFactory.prototype.createInstance = function (id) {
-	        if (this._disposed === true) {
-	            throw new Error("Try to create datasource of destroyed type: " + JSON.stringify({ id: id, type: this.type }));
-	        }
-	        if (this._plugins[id] !== undefined) {
-	            throw new Error("Can not create datasource instance. It already exists: " + JSON.stringify({
-	                id: id,
-	                type: this.type
-	            }));
-	        }
-	        var dsState = this.getDatasourceState(id);
-	        var props = {
-	            state: dsState
-	        };
-	        var pluginInstance = new this._datasource(props);
-	        pluginInstance.props = props;
-	        // Bind API functions to instance
-	        if (_.isFunction(pluginInstance.datasourceWillReceiveProps)) {
-	            pluginInstance.datasourceWillReceiveProps = pluginInstance.datasourceWillReceiveProps.bind(pluginInstance);
-	        }
-	        if (_.isFunction(pluginInstance.dispose)) {
-	            pluginInstance.dispose = pluginInstance.dispose.bind(pluginInstance);
-	        }
-	        if (_.isFunction(pluginInstance.getValues)) {
-	            pluginInstance.getValues = pluginInstance.getValues.bind(pluginInstance);
-	        }
-	        // TODO: bind (and require?) fetchData()
-	        this._plugins[id] = pluginInstance;
-	        return pluginInstance;
-	    };
-	    DataSourcePluginFactory.prototype.getInstance = function (id) {
-	        if (this._disposed === true) {
-	            throw new Error("Try to get datasource of destroyed type. " + JSON.stringify({ id: id, type: this.type }));
-	        }
-	        if (!this._plugins[id]) {
-	            throw new Error("No running instance of datasource. " + JSON.stringify({ id: id, type: this.type }));
-	        }
-	        return this._plugins[id];
-	    };
-	    DataSourcePluginFactory.prototype.dispose = function () {
-	        this._disposed = true;
-	        _.valuesIn(this._plugins).forEach(function (plugin) {
-	            if (_.isFunction(plugin.dispose)) {
-	                try {
-	                    plugin.dispose();
-	                }
-	                catch (e) {
-	                    console.error("Failed to destroy Datasource instance", plugin);
-	                }
-	            }
-	        });
-	        this._plugins = {};
-	        this._unsubscribe();
-	    };
-	    DataSourcePluginFactory.prototype.handleStateChange = function () {
-	        var _this = this;
-	        var state = this._store.getState();
-	        _.valuesIn(state.datasources).forEach(function (dsState) { return _this.updateDatasource(dsState); });
-	    };
-	    DataSourcePluginFactory.prototype.updateDatasource = function (dsState) {
-	        var plugin = this._plugins[dsState.id];
-	        if (!plugin) {
-	            // This is normal to happen when the app starts,
-	            // since the state already contains the id's before plugin instances are loaded
-	            //console.warn("Can not find Datasource instance with id " + dsState.id + ". Skipping Update!");
-	            return;
-	        }
-	        var oldProps = plugin.props;
-	        var newProps = _.assign({ oldProps: oldProps, state: dsState });
-	        if (oldProps !== newProps) {
-	            if (_.isFunction(plugin.datasourceWillReceiveProps)) {
-	                plugin.datasourceWillReceiveProps(newProps);
-	            }
-	            plugin.props = newProps;
-	        }
-	    };
-	    return DataSourcePluginFactory;
-	}());
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = DataSourcePluginFactory;
+	var __cov_PzdadZzcMslJrXbkOLWMQQ = (Function('return this'))();
+	if (!__cov_PzdadZzcMslJrXbkOLWMQQ.__coverage__) { __cov_PzdadZzcMslJrXbkOLWMQQ.__coverage__ = {}; }
+	__cov_PzdadZzcMslJrXbkOLWMQQ = __cov_PzdadZzcMslJrXbkOLWMQQ.__coverage__;
+	if (!(__cov_PzdadZzcMslJrXbkOLWMQQ['/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourcePluginFactory.ts'])) {
+	   __cov_PzdadZzcMslJrXbkOLWMQQ['/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourcePluginFactory.ts'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourcePluginFactory.ts","s":{"1":0,"2":0,"3":1,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":0,"38":0,"39":0,"40":0,"41":0,"42":0,"43":0,"44":0,"45":0,"46":0,"47":0,"48":0,"49":0,"50":0,"51":0,"52":0,"53":0,"54":0,"55":0,"56":0,"57":0,"58":0,"59":0,"60":0,"61":0,"62":0,"63":0,"64":0,"65":0,"66":0,"67":0,"68":0,"69":0,"70":0,"71":0,"72":0,"73":0},"b":{"1":[0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0],"7":[0,0],"8":[0,0],"9":[0,0],"10":[0,0],"11":[0,0],"12":[0,0],"13":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0},"fnMap":{"1":{"name":"(anonymous_1)","line":9,"loc":{"start":{"line":9,"column":31},"end":{"line":9,"column":43}}},"2":{"name":"DataSourcePluginFactory","line":10,"loc":{"start":{"line":10,"column":4},"end":{"line":10,"column":65}}},"3":{"name":"(anonymous_3)","line":19,"loc":{"start":{"line":19,"column":13},"end":{"line":19,"column":25}}},"4":{"name":"(anonymous_4)","line":26,"loc":{"start":{"line":26,"column":13},"end":{"line":26,"column":25}}},"5":{"name":"(anonymous_5)","line":32,"loc":{"start":{"line":32,"column":59},"end":{"line":32,"column":73}}},"6":{"name":"(anonymous_6)","line":43,"loc":{"start":{"line":43,"column":60},"end":{"line":43,"column":74}}},"7":{"name":"(anonymous_7)","line":49,"loc":{"start":{"line":49,"column":55},"end":{"line":49,"column":69}}},"8":{"name":"(anonymous_8)","line":79,"loc":{"start":{"line":79,"column":52},"end":{"line":79,"column":66}}},"9":{"name":"(anonymous_9)","line":88,"loc":{"start":{"line":88,"column":48},"end":{"line":88,"column":60}}},"10":{"name":"(anonymous_10)","line":90,"loc":{"start":{"line":90,"column":42},"end":{"line":90,"column":60}}},"11":{"name":"(anonymous_11)","line":103,"loc":{"start":{"line":103,"column":58},"end":{"line":103,"column":70}}},"12":{"name":"(anonymous_12)","line":106,"loc":{"start":{"line":106,"column":46},"end":{"line":106,"column":65}}},"13":{"name":"(anonymous_13)","line":108,"loc":{"start":{"line":108,"column":57},"end":{"line":108,"column":76}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":26}},"2":{"start":{"line":9,"column":0},"end":{"line":126,"column":5}},"3":{"start":{"line":10,"column":4},"end":{"line":17,"column":5}},"4":{"start":{"line":11,"column":8},"end":{"line":11,"column":27}},"5":{"start":{"line":12,"column":8},"end":{"line":12,"column":39}},"6":{"start":{"line":13,"column":8},"end":{"line":13,"column":29}},"7":{"start":{"line":14,"column":8},"end":{"line":14,"column":27}},"8":{"start":{"line":15,"column":8},"end":{"line":15,"column":31}},"9":{"start":{"line":16,"column":8},"end":{"line":16,"column":80}},"10":{"start":{"line":18,"column":4},"end":{"line":24,"column":7}},"11":{"start":{"line":20,"column":12},"end":{"line":20,"column":30}},"12":{"start":{"line":25,"column":4},"end":{"line":31,"column":7}},"13":{"start":{"line":27,"column":12},"end":{"line":27,"column":34}},"14":{"start":{"line":32,"column":4},"end":{"line":39,"column":6}},"15":{"start":{"line":33,"column":8},"end":{"line":33,"column":43}},"16":{"start":{"line":34,"column":8},"end":{"line":34,"column":44}},"17":{"start":{"line":35,"column":8},"end":{"line":37,"column":9}},"18":{"start":{"line":36,"column":12},"end":{"line":36,"column":90}},"19":{"start":{"line":38,"column":8},"end":{"line":38,"column":23}},"20":{"start":{"line":43,"column":4},"end":{"line":48,"column":6}},"21":{"start":{"line":44,"column":8},"end":{"line":46,"column":9}},"22":{"start":{"line":45,"column":12},"end":{"line":45,"column":43}},"23":{"start":{"line":47,"column":8},"end":{"line":47,"column":36}},"24":{"start":{"line":49,"column":4},"end":{"line":78,"column":6}},"25":{"start":{"line":50,"column":8},"end":{"line":52,"column":9}},"26":{"start":{"line":51,"column":12},"end":{"line":51,"column":122}},"27":{"start":{"line":53,"column":8},"end":{"line":58,"column":9}},"28":{"start":{"line":54,"column":12},"end":{"line":57,"column":16}},"29":{"start":{"line":59,"column":8},"end":{"line":59,"column":50}},"30":{"start":{"line":60,"column":8},"end":{"line":62,"column":10}},"31":{"start":{"line":63,"column":8},"end":{"line":63,"column":57}},"32":{"start":{"line":64,"column":8},"end":{"line":64,"column":37}},"33":{"start":{"line":66,"column":8},"end":{"line":68,"column":9}},"34":{"start":{"line":67,"column":12},"end":{"line":67,"column":119}},"35":{"start":{"line":69,"column":8},"end":{"line":71,"column":9}},"36":{"start":{"line":70,"column":12},"end":{"line":70,"column":81}},"37":{"start":{"line":72,"column":8},"end":{"line":74,"column":9}},"38":{"start":{"line":73,"column":12},"end":{"line":73,"column":85}},"39":{"start":{"line":76,"column":8},"end":{"line":76,"column":43}},"40":{"start":{"line":77,"column":8},"end":{"line":77,"column":30}},"41":{"start":{"line":79,"column":4},"end":{"line":87,"column":6}},"42":{"start":{"line":80,"column":8},"end":{"line":82,"column":9}},"43":{"start":{"line":81,"column":12},"end":{"line":81,"column":119}},"44":{"start":{"line":83,"column":8},"end":{"line":85,"column":9}},"45":{"start":{"line":84,"column":12},"end":{"line":84,"column":113}},"46":{"start":{"line":86,"column":8},"end":{"line":86,"column":33}},"47":{"start":{"line":88,"column":4},"end":{"line":102,"column":6}},"48":{"start":{"line":89,"column":8},"end":{"line":89,"column":30}},"49":{"start":{"line":90,"column":8},"end":{"line":99,"column":11}},"50":{"start":{"line":91,"column":12},"end":{"line":98,"column":13}},"51":{"start":{"line":92,"column":16},"end":{"line":97,"column":17}},"52":{"start":{"line":93,"column":20},"end":{"line":93,"column":37}},"53":{"start":{"line":96,"column":20},"end":{"line":96,"column":83}},"54":{"start":{"line":100,"column":8},"end":{"line":100,"column":27}},"55":{"start":{"line":101,"column":8},"end":{"line":101,"column":28}},"56":{"start":{"line":103,"column":4},"end":{"line":107,"column":6}},"57":{"start":{"line":104,"column":8},"end":{"line":104,"column":25}},"58":{"start":{"line":105,"column":8},"end":{"line":105,"column":43}},"59":{"start":{"line":106,"column":8},"end":{"line":106,"column":110}},"60":{"start":{"line":106,"column":67},"end":{"line":106,"column":106}},"61":{"start":{"line":108,"column":4},"end":{"line":124,"column":6}},"62":{"start":{"line":109,"column":8},"end":{"line":109,"column":47}},"63":{"start":{"line":110,"column":8},"end":{"line":115,"column":9}},"64":{"start":{"line":114,"column":12},"end":{"line":114,"column":19}},"65":{"start":{"line":116,"column":8},"end":{"line":116,"column":36}},"66":{"start":{"line":117,"column":8},"end":{"line":117,"column":72}},"67":{"start":{"line":118,"column":8},"end":{"line":123,"column":9}},"68":{"start":{"line":119,"column":12},"end":{"line":121,"column":13}},"69":{"start":{"line":120,"column":16},"end":{"line":120,"column":60}},"70":{"start":{"line":122,"column":12},"end":{"line":122,"column":36}},"71":{"start":{"line":125,"column":4},"end":{"line":125,"column":35}},"72":{"start":{"line":127,"column":0},"end":{"line":127,"column":62}},"73":{"start":{"line":128,"column":0},"end":{"line":128,"column":42}}},"branchMap":{"1":{"line":35,"type":"if","locations":[{"start":{"line":35,"column":8},"end":{"line":35,"column":8}},{"start":{"line":35,"column":8},"end":{"line":35,"column":8}}]},"2":{"line":44,"type":"if","locations":[{"start":{"line":44,"column":8},"end":{"line":44,"column":8}},{"start":{"line":44,"column":8},"end":{"line":44,"column":8}}]},"3":{"line":50,"type":"if","locations":[{"start":{"line":50,"column":8},"end":{"line":50,"column":8}},{"start":{"line":50,"column":8},"end":{"line":50,"column":8}}]},"4":{"line":53,"type":"if","locations":[{"start":{"line":53,"column":8},"end":{"line":53,"column":8}},{"start":{"line":53,"column":8},"end":{"line":53,"column":8}}]},"5":{"line":66,"type":"if","locations":[{"start":{"line":66,"column":8},"end":{"line":66,"column":8}},{"start":{"line":66,"column":8},"end":{"line":66,"column":8}}]},"6":{"line":69,"type":"if","locations":[{"start":{"line":69,"column":8},"end":{"line":69,"column":8}},{"start":{"line":69,"column":8},"end":{"line":69,"column":8}}]},"7":{"line":72,"type":"if","locations":[{"start":{"line":72,"column":8},"end":{"line":72,"column":8}},{"start":{"line":72,"column":8},"end":{"line":72,"column":8}}]},"8":{"line":80,"type":"if","locations":[{"start":{"line":80,"column":8},"end":{"line":80,"column":8}},{"start":{"line":80,"column":8},"end":{"line":80,"column":8}}]},"9":{"line":83,"type":"if","locations":[{"start":{"line":83,"column":8},"end":{"line":83,"column":8}},{"start":{"line":83,"column":8},"end":{"line":83,"column":8}}]},"10":{"line":91,"type":"if","locations":[{"start":{"line":91,"column":12},"end":{"line":91,"column":12}},{"start":{"line":91,"column":12},"end":{"line":91,"column":12}}]},"11":{"line":110,"type":"if","locations":[{"start":{"line":110,"column":8},"end":{"line":110,"column":8}},{"start":{"line":110,"column":8},"end":{"line":110,"column":8}}]},"12":{"line":118,"type":"if","locations":[{"start":{"line":118,"column":8},"end":{"line":118,"column":8}},{"start":{"line":118,"column":8},"end":{"line":118,"column":8}}]},"13":{"line":119,"type":"if","locations":[{"start":{"line":119,"column":12},"end":{"line":119,"column":12}},{"start":{"line":119,"column":12},"end":{"line":119,"column":12}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public"," * License, v. 2.0. If a copy of the MPL was not distributed with this"," * file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var _ = require(\"lodash\");","/**"," * Connects a datasource to the application state"," */","var DataSourcePluginFactory = (function () {","    function DataSourcePluginFactory(_type, _datasource, _store) {","        this._type = _type;","        this._datasource = _datasource;","        this._store = _store;","        this._plugins = {};","        this._disposed = false;","        this._unsubscribe = _store.subscribe(this.handleStateChange.bind(this));","    }","    Object.defineProperty(DataSourcePluginFactory.prototype, \"type\", {","        get: function () {","            return this._type;","        },","        enumerable: true,","        configurable: true","    });","    Object.defineProperty(DataSourcePluginFactory.prototype, \"disposed\", {","        get: function () {","            return this._disposed;","        },","        enumerable: true,","        configurable: true","    });","    DataSourcePluginFactory.prototype.getDatasourceState = function (id) {","        var state = this._store.getState();","        var dsState = state.datasources[id];","        if (!dsState) {","            throw new Error(\"Can not get state of non existing datasource with id \" + id);","        }","        return dsState;","    };","    /**","     * Better use getInstance or createInstance directly!","     */","    DataSourcePluginFactory.prototype.getOrCreateInstance = function (id) {","        if (!this._plugins[id]) {","            return this.createInstance(id);","        }","        return this.getInstance(id);","    };","    DataSourcePluginFactory.prototype.createInstance = function (id) {","        if (this._disposed === true) {","            throw new Error(\"Try to create datasource of destroyed type: \" + JSON.stringify({ id: id, type: this.type }));","        }","        if (this._plugins[id] !== undefined) {","            throw new Error(\"Can not create datasource instance. It already exists: \" + JSON.stringify({","                id: id,","                type: this.type","            }));","        }","        var dsState = this.getDatasourceState(id);","        var props = {","            state: dsState","        };","        var pluginInstance = new this._datasource(props);","        pluginInstance.props = props;","        // Bind API functions to instance","        if (_.isFunction(pluginInstance.datasourceWillReceiveProps)) {","            pluginInstance.datasourceWillReceiveProps = pluginInstance.datasourceWillReceiveProps.bind(pluginInstance);","        }","        if (_.isFunction(pluginInstance.dispose)) {","            pluginInstance.dispose = pluginInstance.dispose.bind(pluginInstance);","        }","        if (_.isFunction(pluginInstance.getValues)) {","            pluginInstance.getValues = pluginInstance.getValues.bind(pluginInstance);","        }","        // TODO: bind (and require?) fetchData()","        this._plugins[id] = pluginInstance;","        return pluginInstance;","    };","    DataSourcePluginFactory.prototype.getInstance = function (id) {","        if (this._disposed === true) {","            throw new Error(\"Try to get datasource of destroyed type. \" + JSON.stringify({ id: id, type: this.type }));","        }","        if (!this._plugins[id]) {","            throw new Error(\"No running instance of datasource. \" + JSON.stringify({ id: id, type: this.type }));","        }","        return this._plugins[id];","    };","    DataSourcePluginFactory.prototype.dispose = function () {","        this._disposed = true;","        _.valuesIn(this._plugins).forEach(function (plugin) {","            if (_.isFunction(plugin.dispose)) {","                try {","                    plugin.dispose();","                }","                catch (e) {","                    console.error(\"Failed to destroy Datasource instance\", plugin);","                }","            }","        });","        this._plugins = {};","        this._unsubscribe();","    };","    DataSourcePluginFactory.prototype.handleStateChange = function () {","        var _this = this;","        var state = this._store.getState();","        _.valuesIn(state.datasources).forEach(function (dsState) { return _this.updateDatasource(dsState); });","    };","    DataSourcePluginFactory.prototype.updateDatasource = function (dsState) {","        var plugin = this._plugins[dsState.id];","        if (!plugin) {","            // This is normal to happen when the app starts,","            // since the state already contains the id's before plugin instances are loaded","            //console.warn(\"Can not find Datasource instance with id \" + dsState.id + \". Skipping Update!\");","            return;","        }","        var oldProps = plugin.props;","        var newProps = _.assign({ oldProps: oldProps, state: dsState });","        if (oldProps !== newProps) {","            if (_.isFunction(plugin.datasourceWillReceiveProps)) {","                plugin.datasourceWillReceiveProps(newProps);","            }","            plugin.props = newProps;","        }","    };","    return DataSourcePluginFactory;","}());","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = DataSourcePluginFactory;",""]};
+	}
+	__cov_PzdadZzcMslJrXbkOLWMQQ = __cov_PzdadZzcMslJrXbkOLWMQQ['/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourcePluginFactory.ts'];
+	__cov_PzdadZzcMslJrXbkOLWMQQ.s['1']++;var _=__webpack_require__(21);__cov_PzdadZzcMslJrXbkOLWMQQ.s['2']++;var DataSourcePluginFactory=function(){__cov_PzdadZzcMslJrXbkOLWMQQ.f['1']++;function DataSourcePluginFactory(_type,_datasource,_store){__cov_PzdadZzcMslJrXbkOLWMQQ.f['2']++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['4']++;this._type=_type;__cov_PzdadZzcMslJrXbkOLWMQQ.s['5']++;this._datasource=_datasource;__cov_PzdadZzcMslJrXbkOLWMQQ.s['6']++;this._store=_store;__cov_PzdadZzcMslJrXbkOLWMQQ.s['7']++;this._plugins={};__cov_PzdadZzcMslJrXbkOLWMQQ.s['8']++;this._disposed=false;__cov_PzdadZzcMslJrXbkOLWMQQ.s['9']++;this._unsubscribe=_store.subscribe(this.handleStateChange.bind(this));}__cov_PzdadZzcMslJrXbkOLWMQQ.s['10']++;Object.defineProperty(DataSourcePluginFactory.prototype,'type',{get:function(){__cov_PzdadZzcMslJrXbkOLWMQQ.f['3']++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['11']++;return this._type;},enumerable:true,configurable:true});__cov_PzdadZzcMslJrXbkOLWMQQ.s['12']++;Object.defineProperty(DataSourcePluginFactory.prototype,'disposed',{get:function(){__cov_PzdadZzcMslJrXbkOLWMQQ.f['4']++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['13']++;return this._disposed;},enumerable:true,configurable:true});__cov_PzdadZzcMslJrXbkOLWMQQ.s['14']++;DataSourcePluginFactory.prototype.getDatasourceState=function(id){__cov_PzdadZzcMslJrXbkOLWMQQ.f['5']++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['15']++;var state=this._store.getState();__cov_PzdadZzcMslJrXbkOLWMQQ.s['16']++;var dsState=state.datasources[id];__cov_PzdadZzcMslJrXbkOLWMQQ.s['17']++;if(!dsState){__cov_PzdadZzcMslJrXbkOLWMQQ.b['1'][0]++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['18']++;throw new Error('Can not get state of non existing datasource with id '+id);}else{__cov_PzdadZzcMslJrXbkOLWMQQ.b['1'][1]++;}__cov_PzdadZzcMslJrXbkOLWMQQ.s['19']++;return dsState;};__cov_PzdadZzcMslJrXbkOLWMQQ.s['20']++;DataSourcePluginFactory.prototype.getOrCreateInstance=function(id){__cov_PzdadZzcMslJrXbkOLWMQQ.f['6']++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['21']++;if(!this._plugins[id]){__cov_PzdadZzcMslJrXbkOLWMQQ.b['2'][0]++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['22']++;return this.createInstance(id);}else{__cov_PzdadZzcMslJrXbkOLWMQQ.b['2'][1]++;}__cov_PzdadZzcMslJrXbkOLWMQQ.s['23']++;return this.getInstance(id);};__cov_PzdadZzcMslJrXbkOLWMQQ.s['24']++;DataSourcePluginFactory.prototype.createInstance=function(id){__cov_PzdadZzcMslJrXbkOLWMQQ.f['7']++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['25']++;if(this._disposed===true){__cov_PzdadZzcMslJrXbkOLWMQQ.b['3'][0]++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['26']++;throw new Error('Try to create datasource of destroyed type: '+JSON.stringify({id:id,type:this.type}));}else{__cov_PzdadZzcMslJrXbkOLWMQQ.b['3'][1]++;}__cov_PzdadZzcMslJrXbkOLWMQQ.s['27']++;if(this._plugins[id]!==undefined){__cov_PzdadZzcMslJrXbkOLWMQQ.b['4'][0]++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['28']++;throw new Error('Can not create datasource instance. It already exists: '+JSON.stringify({id:id,type:this.type}));}else{__cov_PzdadZzcMslJrXbkOLWMQQ.b['4'][1]++;}__cov_PzdadZzcMslJrXbkOLWMQQ.s['29']++;var dsState=this.getDatasourceState(id);__cov_PzdadZzcMslJrXbkOLWMQQ.s['30']++;var props={state:dsState};__cov_PzdadZzcMslJrXbkOLWMQQ.s['31']++;var pluginInstance=new this._datasource(props);__cov_PzdadZzcMslJrXbkOLWMQQ.s['32']++;pluginInstance.props=props;__cov_PzdadZzcMslJrXbkOLWMQQ.s['33']++;if(_.isFunction(pluginInstance.datasourceWillReceiveProps)){__cov_PzdadZzcMslJrXbkOLWMQQ.b['5'][0]++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['34']++;pluginInstance.datasourceWillReceiveProps=pluginInstance.datasourceWillReceiveProps.bind(pluginInstance);}else{__cov_PzdadZzcMslJrXbkOLWMQQ.b['5'][1]++;}__cov_PzdadZzcMslJrXbkOLWMQQ.s['35']++;if(_.isFunction(pluginInstance.dispose)){__cov_PzdadZzcMslJrXbkOLWMQQ.b['6'][0]++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['36']++;pluginInstance.dispose=pluginInstance.dispose.bind(pluginInstance);}else{__cov_PzdadZzcMslJrXbkOLWMQQ.b['6'][1]++;}__cov_PzdadZzcMslJrXbkOLWMQQ.s['37']++;if(_.isFunction(pluginInstance.getValues)){__cov_PzdadZzcMslJrXbkOLWMQQ.b['7'][0]++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['38']++;pluginInstance.getValues=pluginInstance.getValues.bind(pluginInstance);}else{__cov_PzdadZzcMslJrXbkOLWMQQ.b['7'][1]++;}__cov_PzdadZzcMslJrXbkOLWMQQ.s['39']++;this._plugins[id]=pluginInstance;__cov_PzdadZzcMslJrXbkOLWMQQ.s['40']++;return pluginInstance;};__cov_PzdadZzcMslJrXbkOLWMQQ.s['41']++;DataSourcePluginFactory.prototype.getInstance=function(id){__cov_PzdadZzcMslJrXbkOLWMQQ.f['8']++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['42']++;if(this._disposed===true){__cov_PzdadZzcMslJrXbkOLWMQQ.b['8'][0]++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['43']++;throw new Error('Try to get datasource of destroyed type. '+JSON.stringify({id:id,type:this.type}));}else{__cov_PzdadZzcMslJrXbkOLWMQQ.b['8'][1]++;}__cov_PzdadZzcMslJrXbkOLWMQQ.s['44']++;if(!this._plugins[id]){__cov_PzdadZzcMslJrXbkOLWMQQ.b['9'][0]++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['45']++;throw new Error('No running instance of datasource. '+JSON.stringify({id:id,type:this.type}));}else{__cov_PzdadZzcMslJrXbkOLWMQQ.b['9'][1]++;}__cov_PzdadZzcMslJrXbkOLWMQQ.s['46']++;return this._plugins[id];};__cov_PzdadZzcMslJrXbkOLWMQQ.s['47']++;DataSourcePluginFactory.prototype.dispose=function(){__cov_PzdadZzcMslJrXbkOLWMQQ.f['9']++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['48']++;this._disposed=true;__cov_PzdadZzcMslJrXbkOLWMQQ.s['49']++;_.valuesIn(this._plugins).forEach(function(plugin){__cov_PzdadZzcMslJrXbkOLWMQQ.f['10']++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['50']++;if(_.isFunction(plugin.dispose)){__cov_PzdadZzcMslJrXbkOLWMQQ.b['10'][0]++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['51']++;try{__cov_PzdadZzcMslJrXbkOLWMQQ.s['52']++;plugin.dispose();}catch(e){__cov_PzdadZzcMslJrXbkOLWMQQ.s['53']++;console.error('Failed to destroy Datasource instance',plugin);}}else{__cov_PzdadZzcMslJrXbkOLWMQQ.b['10'][1]++;}});__cov_PzdadZzcMslJrXbkOLWMQQ.s['54']++;this._plugins={};__cov_PzdadZzcMslJrXbkOLWMQQ.s['55']++;this._unsubscribe();};__cov_PzdadZzcMslJrXbkOLWMQQ.s['56']++;DataSourcePluginFactory.prototype.handleStateChange=function(){__cov_PzdadZzcMslJrXbkOLWMQQ.f['11']++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['57']++;var _this=this;__cov_PzdadZzcMslJrXbkOLWMQQ.s['58']++;var state=this._store.getState();__cov_PzdadZzcMslJrXbkOLWMQQ.s['59']++;_.valuesIn(state.datasources).forEach(function(dsState){__cov_PzdadZzcMslJrXbkOLWMQQ.f['12']++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['60']++;return _this.updateDatasource(dsState);});};__cov_PzdadZzcMslJrXbkOLWMQQ.s['61']++;DataSourcePluginFactory.prototype.updateDatasource=function(dsState){__cov_PzdadZzcMslJrXbkOLWMQQ.f['13']++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['62']++;var plugin=this._plugins[dsState.id];__cov_PzdadZzcMslJrXbkOLWMQQ.s['63']++;if(!plugin){__cov_PzdadZzcMslJrXbkOLWMQQ.b['11'][0]++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['64']++;return;}else{__cov_PzdadZzcMslJrXbkOLWMQQ.b['11'][1]++;}__cov_PzdadZzcMslJrXbkOLWMQQ.s['65']++;var oldProps=plugin.props;__cov_PzdadZzcMslJrXbkOLWMQQ.s['66']++;var newProps=_.assign({oldProps:oldProps,state:dsState});__cov_PzdadZzcMslJrXbkOLWMQQ.s['67']++;if(oldProps!==newProps){__cov_PzdadZzcMslJrXbkOLWMQQ.b['12'][0]++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['68']++;if(_.isFunction(plugin.datasourceWillReceiveProps)){__cov_PzdadZzcMslJrXbkOLWMQQ.b['13'][0]++;__cov_PzdadZzcMslJrXbkOLWMQQ.s['69']++;plugin.datasourceWillReceiveProps(newProps);}else{__cov_PzdadZzcMslJrXbkOLWMQQ.b['13'][1]++;}__cov_PzdadZzcMslJrXbkOLWMQQ.s['70']++;plugin.props=newProps;}else{__cov_PzdadZzcMslJrXbkOLWMQQ.b['12'][1]++;}};__cov_PzdadZzcMslJrXbkOLWMQQ.s['71']++;return DataSourcePluginFactory;}();__cov_PzdadZzcMslJrXbkOLWMQQ.s['72']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_PzdadZzcMslJrXbkOLWMQQ.s['73']++;exports.default=DataSourcePluginFactory;
 
 
 /***/ },
 /* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var reducer_js_1 = __webpack_require__(47);
-	var ActionNames = __webpack_require__(43);
-	var Uuid = __webpack_require__(46);
-	var _ = __webpack_require__(21);
-	var ModalIds = __webpack_require__(51);
-	var Modal = __webpack_require__(50);
-	var dashboard_1 = __webpack_require__(55);
-	var initialDatasources = {
-	    "initial_random_source": {
-	        id: "initial_random_source",
-	        type: "random",
-	        settings: {
-	            name: "Random",
-	            min: 10,
-	            max: 20,
-	            maxValues: 20
-	        },
-	        data: []
-	    }
-	};
-	function createDatasource(type, settings, id) {
-	    if (id === void 0) { id = Uuid.generate(); }
-	    return addDatasource(type, settings, id);
+	var __cov__H8mF_p_UvRihs8MmddwUQ = (Function('return this'))();
+	if (!__cov__H8mF_p_UvRihs8MmddwUQ.__coverage__) { __cov__H8mF_p_UvRihs8MmddwUQ.__coverage__ = {}; }
+	__cov__H8mF_p_UvRihs8MmddwUQ = __cov__H8mF_p_UvRihs8MmddwUQ.__coverage__;
+	if (!(__cov__H8mF_p_UvRihs8MmddwUQ['/home/travis/build/Niondir/iot-dashboard/src/datasource/datasource.ts'])) {
+	   __cov__H8mF_p_UvRihs8MmddwUQ['/home/travis/build/Niondir/iot-dashboard/src/datasource/datasource.ts'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/datasource/datasource.ts","s":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":1,"10":0,"11":0,"12":0,"13":0,"14":1,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":1,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":1,"37":0,"38":0,"39":1,"40":0,"41":0,"42":1,"43":0,"44":0,"45":0,"46":0,"47":0,"48":1,"49":0,"50":0,"51":1,"52":0,"53":0,"54":1,"55":0,"56":0,"57":0,"58":0,"59":1,"60":0,"61":0,"62":0,"63":0,"64":0,"65":0,"66":0,"67":0,"68":0,"69":0,"70":0,"71":0,"72":0,"73":0,"74":0,"75":0,"76":0,"77":0,"78":1,"79":0,"80":0,"81":0,"82":0,"83":0,"84":0,"85":0,"86":0,"87":0,"88":0,"89":0,"90":0,"91":1,"92":0,"93":0,"94":0,"95":0,"96":0,"97":0,"98":0,"99":0,"100":0},"b":{"1":[0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0],"7":[0,0],"8":[0,0],"9":[0,0],"10":[0,0],"11":[0,0,0,0,0],"12":[0,0],"13":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0},"fnMap":{"1":{"name":"createDatasource","line":25,"loc":{"start":{"line":25,"column":0},"end":{"line":25,"column":46}}},"2":{"name":"updateDatasource","line":30,"loc":{"start":{"line":30,"column":0},"end":{"line":30,"column":46}}},"3":{"name":"(anonymous_3)","line":31,"loc":{"start":{"line":31,"column":11},"end":{"line":31,"column":41}}},"4":{"name":"addDatasource","line":44,"loc":{"start":{"line":44,"column":0},"end":{"line":44,"column":45}}},"5":{"name":"(anonymous_5)","line":51,"loc":{"start":{"line":51,"column":11},"end":{"line":51,"column":41}}},"6":{"name":"updateDatasourceSettings","line":63,"loc":{"start":{"line":63,"column":0},"end":{"line":63,"column":48}}},"7":{"name":"startCreateDatasource","line":73,"loc":{"start":{"line":73,"column":0},"end":{"line":73,"column":33}}},"8":{"name":"startEditDatasource","line":77,"loc":{"start":{"line":77,"column":0},"end":{"line":77,"column":33}}},"9":{"name":"(anonymous_9)","line":78,"loc":{"start":{"line":78,"column":11},"end":{"line":78,"column":41}}},"10":{"name":"deleteDatasource","line":85,"loc":{"start":{"line":85,"column":0},"end":{"line":85,"column":30}}},"11":{"name":"setDatasourceData","line":92,"loc":{"start":{"line":92,"column":0},"end":{"line":92,"column":37}}},"12":{"name":"appendDatasourceData","line":100,"loc":{"start":{"line":100,"column":0},"end":{"line":100,"column":51}}},"13":{"name":"fetchDatasourceData","line":110,"loc":{"start":{"line":110,"column":0},"end":{"line":110,"column":31}}},"14":{"name":"(anonymous_14)","line":111,"loc":{"start":{"line":111,"column":11},"end":{"line":111,"column":41}}},"15":{"name":"(anonymous_15)","line":114,"loc":{"start":{"line":114,"column":37},"end":{"line":114,"column":56}}},"16":{"name":"datasources","line":142,"loc":{"start":{"line":142,"column":0},"end":{"line":142,"column":36}}},"17":{"name":"(anonymous_17)","line":147,"loc":{"start":{"line":147,"column":52},"end":{"line":147,"column":71}}},"18":{"name":"(anonymous_18)","line":151,"loc":{"start":{"line":151,"column":29},"end":{"line":151,"column":48}}},"19":{"name":"datasource","line":160,"loc":{"start":{"line":160,"column":0},"end":{"line":160,"column":35}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":49}},"2":{"start":{"line":6,"column":0},"end":{"line":6,"column":44}},"3":{"start":{"line":7,"column":0},"end":{"line":7,"column":38}},"4":{"start":{"line":8,"column":0},"end":{"line":8,"column":26}},"5":{"start":{"line":9,"column":0},"end":{"line":9,"column":53}},"6":{"start":{"line":10,"column":0},"end":{"line":10,"column":47}},"7":{"start":{"line":11,"column":0},"end":{"line":11,"column":42}},"8":{"start":{"line":12,"column":0},"end":{"line":24,"column":2}},"9":{"start":{"line":25,"column":0},"end":{"line":28,"column":1}},"10":{"start":{"line":26,"column":4},"end":{"line":26,"column":48}},"11":{"start":{"line":26,"column":25},"end":{"line":26,"column":46}},"12":{"start":{"line":27,"column":4},"end":{"line":27,"column":45}},"13":{"start":{"line":29,"column":0},"end":{"line":29,"column":44}},"14":{"start":{"line":30,"column":0},"end":{"line":42,"column":1}},"15":{"start":{"line":31,"column":4},"end":{"line":41,"column":6}},"16":{"start":{"line":32,"column":8},"end":{"line":32,"column":31}},"17":{"start":{"line":33,"column":8},"end":{"line":33,"column":44}},"18":{"start":{"line":34,"column":8},"end":{"line":36,"column":9}},"19":{"start":{"line":35,"column":12},"end":{"line":35,"column":116}},"20":{"start":{"line":37,"column":8},"end":{"line":39,"column":9}},"21":{"start":{"line":38,"column":12},"end":{"line":38,"column":122}},"22":{"start":{"line":40,"column":8},"end":{"line":40,"column":57}},"23":{"start":{"line":43,"column":0},"end":{"line":43,"column":44}},"24":{"start":{"line":44,"column":0},"end":{"line":61,"column":1}},"25":{"start":{"line":45,"column":4},"end":{"line":45,"column":48}},"26":{"start":{"line":45,"column":25},"end":{"line":45,"column":46}},"27":{"start":{"line":46,"column":4},"end":{"line":50,"column":5}},"28":{"start":{"line":47,"column":8},"end":{"line":47,"column":41}},"29":{"start":{"line":48,"column":8},"end":{"line":48,"column":45}},"30":{"start":{"line":49,"column":8},"end":{"line":49,"column":63}},"31":{"start":{"line":51,"column":4},"end":{"line":60,"column":6}},"32":{"start":{"line":52,"column":8},"end":{"line":57,"column":11}},"33":{"start":{"line":58,"column":8},"end":{"line":58,"column":101}},"34":{"start":{"line":59,"column":8},"end":{"line":59,"column":37}},"35":{"start":{"line":62,"column":0},"end":{"line":62,"column":38}},"36":{"start":{"line":63,"column":0},"end":{"line":71,"column":1}},"37":{"start":{"line":66,"column":4},"end":{"line":70,"column":6}},"38":{"start":{"line":72,"column":0},"end":{"line":72,"column":60}},"39":{"start":{"line":73,"column":0},"end":{"line":75,"column":1}},"40":{"start":{"line":74,"column":4},"end":{"line":74,"column":55}},"41":{"start":{"line":76,"column":0},"end":{"line":76,"column":54}},"42":{"start":{"line":77,"column":0},"end":{"line":83,"column":1}},"43":{"start":{"line":78,"column":4},"end":{"line":82,"column":6}},"44":{"start":{"line":79,"column":8},"end":{"line":79,"column":31}},"45":{"start":{"line":80,"column":8},"end":{"line":80,"column":44}},"46":{"start":{"line":81,"column":8},"end":{"line":81,"column":87}},"47":{"start":{"line":84,"column":0},"end":{"line":84,"column":50}},"48":{"start":{"line":85,"column":0},"end":{"line":90,"column":1}},"49":{"start":{"line":86,"column":4},"end":{"line":89,"column":6}},"50":{"start":{"line":91,"column":0},"end":{"line":91,"column":44}},"51":{"start":{"line":92,"column":0},"end":{"line":98,"column":1}},"52":{"start":{"line":93,"column":4},"end":{"line":97,"column":6}},"53":{"start":{"line":99,"column":0},"end":{"line":99,"column":46}},"54":{"start":{"line":100,"column":0},"end":{"line":108,"column":1}},"55":{"start":{"line":101,"column":4},"end":{"line":101,"column":48}},"56":{"start":{"line":101,"column":32},"end":{"line":101,"column":46}},"57":{"start":{"line":102,"column":4},"end":{"line":107,"column":6}},"58":{"start":{"line":109,"column":0},"end":{"line":109,"column":52}},"59":{"start":{"line":110,"column":0},"end":{"line":139,"column":1}},"60":{"start":{"line":111,"column":4},"end":{"line":138,"column":6}},"61":{"start":{"line":112,"column":8},"end":{"line":112,"column":31}},"62":{"start":{"line":113,"column":8},"end":{"line":113,"column":41}},"63":{"start":{"line":114,"column":8},"end":{"line":137,"column":11}},"64":{"start":{"line":115,"column":12},"end":{"line":115,"column":111}},"65":{"start":{"line":116,"column":12},"end":{"line":119,"column":13}},"66":{"start":{"line":117,"column":16},"end":{"line":117,"column":110}},"67":{"start":{"line":118,"column":16},"end":{"line":118,"column":23}},"68":{"start":{"line":120,"column":12},"end":{"line":120,"column":71}},"69":{"start":{"line":121,"column":12},"end":{"line":121,"column":49}},"70":{"start":{"line":122,"column":12},"end":{"line":128,"column":13}},"71":{"start":{"line":123,"column":16},"end":{"line":123,"column":82}},"72":{"start":{"line":127,"column":16},"end":{"line":127,"column":42}},"73":{"start":{"line":134,"column":12},"end":{"line":134,"column":64}},"74":{"start":{"line":135,"column":12},"end":{"line":135,"column":35}},"75":{"start":{"line":136,"column":12},"end":{"line":136,"column":29}},"76":{"start":{"line":140,"column":0},"end":{"line":140,"column":50}},"77":{"start":{"line":141,"column":0},"end":{"line":141,"column":129}},"78":{"start":{"line":142,"column":0},"end":{"line":158,"column":1}},"79":{"start":{"line":143,"column":4},"end":{"line":143,"column":57}},"80":{"start":{"line":143,"column":28},"end":{"line":143,"column":55}},"81":{"start":{"line":144,"column":4},"end":{"line":144,"column":49}},"82":{"start":{"line":145,"column":4},"end":{"line":157,"column":5}},"83":{"start":{"line":147,"column":12},"end":{"line":149,"column":15}},"84":{"start":{"line":148,"column":16},"end":{"line":148,"column":50}},"85":{"start":{"line":150,"column":12},"end":{"line":150,"column":49}},"86":{"start":{"line":151,"column":12},"end":{"line":153,"column":15}},"87":{"start":{"line":152,"column":16},"end":{"line":152,"column":46}},"88":{"start":{"line":154,"column":12},"end":{"line":154,"column":30}},"89":{"start":{"line":156,"column":12},"end":{"line":156,"column":25}},"90":{"start":{"line":159,"column":0},"end":{"line":159,"column":34}},"91":{"start":{"line":160,"column":0},"end":{"line":188,"column":1}},"92":{"start":{"line":161,"column":4},"end":{"line":187,"column":5}},"93":{"start":{"line":163,"column":12},"end":{"line":168,"column":14}},"94":{"start":{"line":170,"column":12},"end":{"line":172,"column":15}},"95":{"start":{"line":174,"column":12},"end":{"line":174,"column":66}},"96":{"start":{"line":175,"column":12},"end":{"line":177,"column":13}},"97":{"start":{"line":176,"column":16},"end":{"line":176,"column":75}},"98":{"start":{"line":178,"column":12},"end":{"line":180,"column":15}},"99":{"start":{"line":182,"column":12},"end":{"line":184,"column":15}},"100":{"start":{"line":186,"column":12},"end":{"line":186,"column":25}}},"branchMap":{"1":{"line":26,"type":"if","locations":[{"start":{"line":26,"column":4},"end":{"line":26,"column":4}},{"start":{"line":26,"column":4},"end":{"line":26,"column":4}}]},"2":{"line":34,"type":"if","locations":[{"start":{"line":34,"column":8},"end":{"line":34,"column":8}},{"start":{"line":34,"column":8},"end":{"line":34,"column":8}}]},"3":{"line":37,"type":"if","locations":[{"start":{"line":37,"column":8},"end":{"line":37,"column":8}},{"start":{"line":37,"column":8},"end":{"line":37,"column":8}}]},"4":{"line":45,"type":"if","locations":[{"start":{"line":45,"column":4},"end":{"line":45,"column":4}},{"start":{"line":45,"column":4},"end":{"line":45,"column":4}}]},"5":{"line":46,"type":"if","locations":[{"start":{"line":46,"column":4},"end":{"line":46,"column":4}},{"start":{"line":46,"column":4},"end":{"line":46,"column":4}}]},"6":{"line":101,"type":"if","locations":[{"start":{"line":101,"column":4},"end":{"line":101,"column":4}},{"start":{"line":101,"column":4},"end":{"line":101,"column":4}}]},"7":{"line":116,"type":"if","locations":[{"start":{"line":116,"column":12},"end":{"line":116,"column":12}},{"start":{"line":116,"column":12},"end":{"line":116,"column":12}}]},"8":{"line":122,"type":"if","locations":[{"start":{"line":122,"column":12},"end":{"line":122,"column":12}},{"start":{"line":122,"column":12},"end":{"line":122,"column":12}}]},"9":{"line":143,"type":"if","locations":[{"start":{"line":143,"column":4},"end":{"line":143,"column":4}},{"start":{"line":143,"column":4},"end":{"line":143,"column":4}}]},"10":{"line":145,"type":"switch","locations":[{"start":{"line":146,"column":8},"end":{"line":154,"column":30}},{"start":{"line":155,"column":8},"end":{"line":156,"column":25}}]},"11":{"line":161,"type":"switch","locations":[{"start":{"line":162,"column":8},"end":{"line":168,"column":14}},{"start":{"line":169,"column":8},"end":{"line":172,"column":15}},{"start":{"line":173,"column":8},"end":{"line":180,"column":15}},{"start":{"line":181,"column":8},"end":{"line":184,"column":15}},{"start":{"line":185,"column":8},"end":{"line":186,"column":25}}]},"12":{"line":171,"type":"binary-expr","locations":[{"start":{"line":171,"column":22},"end":{"line":171,"column":33}},{"start":{"line":171,"column":37},"end":{"line":171,"column":39}}]},"13":{"line":175,"type":"if","locations":[{"start":{"line":175,"column":12},"end":{"line":175,"column":12}},{"start":{"line":175,"column":12},"end":{"line":175,"column":12}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public"," * License, v. 2.0. If a copy of the MPL was not distributed with this"," * file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var reducer_js_1 = require(\"../util/reducer.js\");","var ActionNames = require(\"../actionNames\");","var Uuid = require(\"../util/uuid.js\");","var _ = require(\"lodash\");","var ModalIds = require(\"../modal/modalDialogIds.js\");","var Modal = require(\"../modal/modalDialog.js\");","var dashboard_1 = require(\"../dashboard\");","var initialDatasources = {","    \"initial_random_source\": {","        id: \"initial_random_source\",","        type: \"random\",","        settings: {","            name: \"Random\",","            min: 10,","            max: 20,","            maxValues: 20","        },","        data: []","    }","};","function createDatasource(type, settings, id) {","    if (id === void 0) { id = Uuid.generate(); }","    return addDatasource(type, settings, id);","}","exports.createDatasource = createDatasource;","function updateDatasource(id, type, settings) {","    return function (dispatch, getState) {","        var state = getState();","        var dsState = state.datasources[id];","        if (!dsState) {","            throw new Error(\"Failed to update not existing datasource of type '\" + type + \"' with id '\" + id + \"'\");","        }","        if (dsState.type !== type) {","            throw new Error(\"Can not update datasource of type '\" + dsState.type + \"' with props of type '\" + type + \"'\");","        }","        dispatch(updateDatasourceSettings(id, settings));","    };","}","exports.updateDatasource = updateDatasource;","function addDatasource(dsType, settings, id) {","    if (id === void 0) { id = Uuid.generate(); }","    if (!dsType) {","        console.warn(\"dsType: \", dsType);","        console.warn(\"settings: \", settings);","        throw new Error(\"Can not add Datasource without Type\");","    }","    return function (dispatch, getState) {","        dispatch({","            type: ActionNames.ADD_DATASOURCE,","            id: id,","            dsType: dsType,","            settings: settings","        });","        var dsFactory = dashboard_1.default.getInstance().datasourcePluginRegistry.getPlugin(dsType);","        dsFactory.createInstance(id);","    };","}","exports.addDatasource = addDatasource;","function updateDatasourceSettings(id, settings) {","    // TODO: Working on that copy does not work yet. We need to notify the Datasource about updated settings!","    //let settingsCopy = {...settings};","    return {","        type: ActionNames.UPDATE_DATASOURCE,","        id: id,","        settings: settings","    };","}","exports.updateDatasourceSettings = updateDatasourceSettings;","function startCreateDatasource() {","    return Modal.showModal(ModalIds.DATASOURCE_CONFIG);","}","exports.startCreateDatasource = startCreateDatasource;","function startEditDatasource(id) {","    return function (dispatch, getState) {","        var state = getState();","        var dsState = state.datasources[id];","        dispatch(Modal.showModal(ModalIds.DATASOURCE_CONFIG, { datasource: dsState }));","    };","}","exports.startEditDatasource = startEditDatasource;","function deleteDatasource(id) {","    return {","        type: ActionNames.DELETE_DATASOURCE,","        id: id","    };","}","exports.deleteDatasource = deleteDatasource;","function setDatasourceData(id, data) {","    return {","        type: ActionNames.SET_DATASOURCE_DATA,","        id: id,","        data: data","    };","}","exports.setDatasourceData = setDatasourceData;","function appendDatasourceData(id, data, maxValues) {","    if (maxValues === void 0) { maxValues = 5; }","    return {","        type: ActionNames.APPEND_DATASOURCE_DATA,","        id: id,","        data: data,","        maxValues: maxValues","    };","}","exports.appendDatasourceData = appendDatasourceData;","function fetchDatasourceData() {","    return function (dispatch, getState) {","        var state = getState();","        var dsStates = state.datasources;","        _.valuesIn(dsStates).forEach(function (dsState) {","            var dsFactory = dashboard_1.default.getInstance().datasourcePluginRegistry.getPlugin(dsState.type);","            if (dsFactory === undefined) {","                console.warn(\"Can not fetch data from non existent datasource plugin of type \", dsState.type);","                return;","            }","            var dsInstance = dsFactory.getOrCreateInstance(dsState.id);","            var newData = dsInstance.getValues();","            if (!_.isArray(newData)) {","                throw new Error(\"A datasource must return an array on getValues\");","            }","            else {","                // Copy data to make sure we do not work on a reference!","                newData = newData.slice();","            }","            /*","             if (!dsState.data) {","             const pastData = dsInstance.getPastValues();","             dispatch(setDatasourceData(dsState.id, pastData));","             }*/","            var action = setDatasourceData(dsState.id, newData);","            action.doNotLog = true;","            dispatch(action);","        });","    };","}","exports.fetchDatasourceData = fetchDatasourceData;","var datasourceCrudReducer = reducer_js_1.genCrudReducer([ActionNames.ADD_DATASOURCE, ActionNames.DELETE_DATASOURCE], datasource);","function datasources(state, action) {","    if (state === void 0) { state = initialDatasources; }","    state = datasourceCrudReducer(state, action);","    switch (action.type) {","        case ActionNames.DELETE_DATASOURCE_PLUGIN:","            var toDelete = _.valuesIn(state).filter(function (dsState) {","                return dsState.type === action.id;","            });","            var newState_1 = _.assign({}, state);","            toDelete.forEach(function (dsState) {","                delete newState_1[dsState.id];","            });","            return newState_1;","        default:","            return state;","    }","}","exports.datasources = datasources;","function datasource(state, action) {","    switch (action.type) {","        case ActionNames.ADD_DATASOURCE:","            return {","                id: action.id,","                type: action.dsType,","                settings: action.settings,","                data: []","            };","        case ActionNames.SET_DATASOURCE_DATA:","            return _.assign({}, state, {","                data: action.data || []","            });","        case ActionNames.APPEND_DATASOURCE_DATA:","            var newData = _.clone(state.data).concat(action.data);","            if (action.maxValues) {","                newData = newData.slice(newData.length - action.maxValues);","            }","            return _.assign({}, state, {","                data: newData","            });","        case ActionNames.UPDATE_DATASOURCE:","            return _.assign({}, state, {","                settings: action.settings","            });","        default:","            return state;","    }","}",""]};
 	}
-	exports.createDatasource = createDatasource;
-	function updateDatasource(id, type, settings) {
-	    return function (dispatch, getState) {
-	        var state = getState();
-	        var dsState = state.datasources[id];
-	        if (!dsState) {
-	            throw new Error("Failed to update not existing datasource of type '" + type + "' with id '" + id + "'");
-	        }
-	        if (dsState.type !== type) {
-	            throw new Error("Can not update datasource of type '" + dsState.type + "' with props of type '" + type + "'");
-	        }
-	        dispatch(updateDatasourceSettings(id, settings));
-	    };
-	}
-	exports.updateDatasource = updateDatasource;
-	function addDatasource(dsType, settings, id) {
-	    if (id === void 0) { id = Uuid.generate(); }
-	    if (!dsType) {
-	        console.warn("dsType: ", dsType);
-	        console.warn("settings: ", settings);
-	        throw new Error("Can not add Datasource without Type");
-	    }
-	    return function (dispatch, getState) {
-	        dispatch({
-	            type: ActionNames.ADD_DATASOURCE,
-	            id: id,
-	            dsType: dsType,
-	            settings: settings
-	        });
-	        var dsFactory = dashboard_1.default.getInstance().datasourcePluginRegistry.getPlugin(dsType);
-	        dsFactory.createInstance(id);
-	    };
-	}
-	exports.addDatasource = addDatasource;
-	function updateDatasourceSettings(id, settings) {
-	    // TODO: Working on that copy does not work yet. We need to notify the Datasource about updated settings!
-	    //let settingsCopy = {...settings};
-	    return {
-	        type: ActionNames.UPDATE_DATASOURCE,
-	        id: id,
-	        settings: settings
-	    };
-	}
-	exports.updateDatasourceSettings = updateDatasourceSettings;
-	function startCreateDatasource() {
-	    return Modal.showModal(ModalIds.DATASOURCE_CONFIG);
-	}
-	exports.startCreateDatasource = startCreateDatasource;
-	function startEditDatasource(id) {
-	    return function (dispatch, getState) {
-	        var state = getState();
-	        var dsState = state.datasources[id];
-	        dispatch(Modal.showModal(ModalIds.DATASOURCE_CONFIG, { datasource: dsState }));
-	    };
-	}
-	exports.startEditDatasource = startEditDatasource;
-	function deleteDatasource(id) {
-	    return {
-	        type: ActionNames.DELETE_DATASOURCE,
-	        id: id
-	    };
-	}
-	exports.deleteDatasource = deleteDatasource;
-	function setDatasourceData(id, data) {
-	    return {
-	        type: ActionNames.SET_DATASOURCE_DATA,
-	        id: id,
-	        data: data
-	    };
-	}
-	exports.setDatasourceData = setDatasourceData;
-	function appendDatasourceData(id, data, maxValues) {
-	    if (maxValues === void 0) { maxValues = 5; }
-	    return {
-	        type: ActionNames.APPEND_DATASOURCE_DATA,
-	        id: id,
-	        data: data,
-	        maxValues: maxValues
-	    };
-	}
-	exports.appendDatasourceData = appendDatasourceData;
-	function fetchDatasourceData() {
-	    return function (dispatch, getState) {
-	        var state = getState();
-	        var dsStates = state.datasources;
-	        _.valuesIn(dsStates).forEach(function (dsState) {
-	            var dsFactory = dashboard_1.default.getInstance().datasourcePluginRegistry.getPlugin(dsState.type);
-	            if (dsFactory === undefined) {
-	                console.warn("Can not fetch data from non existent datasource plugin of type ", dsState.type);
-	                return;
-	            }
-	            var dsInstance = dsFactory.getOrCreateInstance(dsState.id);
-	            var newData = dsInstance.getValues();
-	            if (!_.isArray(newData)) {
-	                throw new Error("A datasource must return an array on getValues");
-	            }
-	            else {
-	                // Copy data to make sure we do not work on a reference!
-	                newData = newData.slice();
-	            }
-	            /*
-	             if (!dsState.data) {
-	             const pastData = dsInstance.getPastValues();
-	             dispatch(setDatasourceData(dsState.id, pastData));
-	             }*/
-	            var action = setDatasourceData(dsState.id, newData);
-	            action.doNotLog = true;
-	            dispatch(action);
-	        });
-	    };
-	}
-	exports.fetchDatasourceData = fetchDatasourceData;
-	var datasourceCrudReducer = reducer_js_1.genCrudReducer([ActionNames.ADD_DATASOURCE, ActionNames.DELETE_DATASOURCE], datasource);
-	function datasources(state, action) {
-	    if (state === void 0) { state = initialDatasources; }
-	    state = datasourceCrudReducer(state, action);
-	    switch (action.type) {
-	        case ActionNames.DELETE_DATASOURCE_PLUGIN:
-	            var toDelete = _.valuesIn(state).filter(function (dsState) {
-	                return dsState.type === action.id;
-	            });
-	            var newState_1 = _.assign({}, state);
-	            toDelete.forEach(function (dsState) {
-	                delete newState_1[dsState.id];
-	            });
-	            return newState_1;
-	        default:
-	            return state;
-	    }
-	}
-	exports.datasources = datasources;
-	function datasource(state, action) {
-	    switch (action.type) {
-	        case ActionNames.ADD_DATASOURCE:
-	            return {
-	                id: action.id,
-	                type: action.dsType,
-	                settings: action.settings,
-	                data: []
-	            };
-	        case ActionNames.SET_DATASOURCE_DATA:
-	            return _.assign({}, state, {
-	                data: action.data || []
-	            });
-	        case ActionNames.APPEND_DATASOURCE_DATA:
-	            var newData = _.clone(state.data).concat(action.data);
-	            if (action.maxValues) {
-	                newData = newData.slice(newData.length - action.maxValues);
-	            }
-	            return _.assign({}, state, {
-	                data: newData
-	            });
-	        case ActionNames.UPDATE_DATASOURCE:
-	            return _.assign({}, state, {
-	                settings: action.settings
-	            });
-	        default:
-	            return state;
-	    }
-	}
+	__cov__H8mF_p_UvRihs8MmddwUQ = __cov__H8mF_p_UvRihs8MmddwUQ['/home/travis/build/Niondir/iot-dashboard/src/datasource/datasource.ts'];
+	__cov__H8mF_p_UvRihs8MmddwUQ.s['1']++;var reducer_js_1=__webpack_require__(47);__cov__H8mF_p_UvRihs8MmddwUQ.s['2']++;var ActionNames=__webpack_require__(43);__cov__H8mF_p_UvRihs8MmddwUQ.s['3']++;var Uuid=__webpack_require__(46);__cov__H8mF_p_UvRihs8MmddwUQ.s['4']++;var _=__webpack_require__(21);__cov__H8mF_p_UvRihs8MmddwUQ.s['5']++;var ModalIds=__webpack_require__(51);__cov__H8mF_p_UvRihs8MmddwUQ.s['6']++;var Modal=__webpack_require__(50);__cov__H8mF_p_UvRihs8MmddwUQ.s['7']++;var dashboard_1=__webpack_require__(55);__cov__H8mF_p_UvRihs8MmddwUQ.s['8']++;var initialDatasources={'initial_random_source':{id:'initial_random_source',type:'random',settings:{name:'Random',min:10,max:20,maxValues:20},data:[]}};function createDatasource(type,settings,id){__cov__H8mF_p_UvRihs8MmddwUQ.f['1']++;__cov__H8mF_p_UvRihs8MmddwUQ.s['10']++;if(id===void 0){__cov__H8mF_p_UvRihs8MmddwUQ.b['1'][0]++;__cov__H8mF_p_UvRihs8MmddwUQ.s['11']++;id=Uuid.generate();}else{__cov__H8mF_p_UvRihs8MmddwUQ.b['1'][1]++;}__cov__H8mF_p_UvRihs8MmddwUQ.s['12']++;return addDatasource(type,settings,id);}__cov__H8mF_p_UvRihs8MmddwUQ.s['13']++;exports.createDatasource=createDatasource;function updateDatasource(id,type,settings){__cov__H8mF_p_UvRihs8MmddwUQ.f['2']++;__cov__H8mF_p_UvRihs8MmddwUQ.s['15']++;return function(dispatch,getState){__cov__H8mF_p_UvRihs8MmddwUQ.f['3']++;__cov__H8mF_p_UvRihs8MmddwUQ.s['16']++;var state=getState();__cov__H8mF_p_UvRihs8MmddwUQ.s['17']++;var dsState=state.datasources[id];__cov__H8mF_p_UvRihs8MmddwUQ.s['18']++;if(!dsState){__cov__H8mF_p_UvRihs8MmddwUQ.b['2'][0]++;__cov__H8mF_p_UvRihs8MmddwUQ.s['19']++;throw new Error('Failed to update not existing datasource of type \''+type+'\' with id \''+id+'\'');}else{__cov__H8mF_p_UvRihs8MmddwUQ.b['2'][1]++;}__cov__H8mF_p_UvRihs8MmddwUQ.s['20']++;if(dsState.type!==type){__cov__H8mF_p_UvRihs8MmddwUQ.b['3'][0]++;__cov__H8mF_p_UvRihs8MmddwUQ.s['21']++;throw new Error('Can not update datasource of type \''+dsState.type+'\' with props of type \''+type+'\'');}else{__cov__H8mF_p_UvRihs8MmddwUQ.b['3'][1]++;}__cov__H8mF_p_UvRihs8MmddwUQ.s['22']++;dispatch(updateDatasourceSettings(id,settings));};}__cov__H8mF_p_UvRihs8MmddwUQ.s['23']++;exports.updateDatasource=updateDatasource;function addDatasource(dsType,settings,id){__cov__H8mF_p_UvRihs8MmddwUQ.f['4']++;__cov__H8mF_p_UvRihs8MmddwUQ.s['25']++;if(id===void 0){__cov__H8mF_p_UvRihs8MmddwUQ.b['4'][0]++;__cov__H8mF_p_UvRihs8MmddwUQ.s['26']++;id=Uuid.generate();}else{__cov__H8mF_p_UvRihs8MmddwUQ.b['4'][1]++;}__cov__H8mF_p_UvRihs8MmddwUQ.s['27']++;if(!dsType){__cov__H8mF_p_UvRihs8MmddwUQ.b['5'][0]++;__cov__H8mF_p_UvRihs8MmddwUQ.s['28']++;console.warn('dsType: ',dsType);__cov__H8mF_p_UvRihs8MmddwUQ.s['29']++;console.warn('settings: ',settings);__cov__H8mF_p_UvRihs8MmddwUQ.s['30']++;throw new Error('Can not add Datasource without Type');}else{__cov__H8mF_p_UvRihs8MmddwUQ.b['5'][1]++;}__cov__H8mF_p_UvRihs8MmddwUQ.s['31']++;return function(dispatch,getState){__cov__H8mF_p_UvRihs8MmddwUQ.f['5']++;__cov__H8mF_p_UvRihs8MmddwUQ.s['32']++;dispatch({type:ActionNames.ADD_DATASOURCE,id:id,dsType:dsType,settings:settings});__cov__H8mF_p_UvRihs8MmddwUQ.s['33']++;var dsFactory=dashboard_1.default.getInstance().datasourcePluginRegistry.getPlugin(dsType);__cov__H8mF_p_UvRihs8MmddwUQ.s['34']++;dsFactory.createInstance(id);};}__cov__H8mF_p_UvRihs8MmddwUQ.s['35']++;exports.addDatasource=addDatasource;function updateDatasourceSettings(id,settings){__cov__H8mF_p_UvRihs8MmddwUQ.f['6']++;__cov__H8mF_p_UvRihs8MmddwUQ.s['37']++;return{type:ActionNames.UPDATE_DATASOURCE,id:id,settings:settings};}__cov__H8mF_p_UvRihs8MmddwUQ.s['38']++;exports.updateDatasourceSettings=updateDatasourceSettings;function startCreateDatasource(){__cov__H8mF_p_UvRihs8MmddwUQ.f['7']++;__cov__H8mF_p_UvRihs8MmddwUQ.s['40']++;return Modal.showModal(ModalIds.DATASOURCE_CONFIG);}__cov__H8mF_p_UvRihs8MmddwUQ.s['41']++;exports.startCreateDatasource=startCreateDatasource;function startEditDatasource(id){__cov__H8mF_p_UvRihs8MmddwUQ.f['8']++;__cov__H8mF_p_UvRihs8MmddwUQ.s['43']++;return function(dispatch,getState){__cov__H8mF_p_UvRihs8MmddwUQ.f['9']++;__cov__H8mF_p_UvRihs8MmddwUQ.s['44']++;var state=getState();__cov__H8mF_p_UvRihs8MmddwUQ.s['45']++;var dsState=state.datasources[id];__cov__H8mF_p_UvRihs8MmddwUQ.s['46']++;dispatch(Modal.showModal(ModalIds.DATASOURCE_CONFIG,{datasource:dsState}));};}__cov__H8mF_p_UvRihs8MmddwUQ.s['47']++;exports.startEditDatasource=startEditDatasource;function deleteDatasource(id){__cov__H8mF_p_UvRihs8MmddwUQ.f['10']++;__cov__H8mF_p_UvRihs8MmddwUQ.s['49']++;return{type:ActionNames.DELETE_DATASOURCE,id:id};}__cov__H8mF_p_UvRihs8MmddwUQ.s['50']++;exports.deleteDatasource=deleteDatasource;function setDatasourceData(id,data){__cov__H8mF_p_UvRihs8MmddwUQ.f['11']++;__cov__H8mF_p_UvRihs8MmddwUQ.s['52']++;return{type:ActionNames.SET_DATASOURCE_DATA,id:id,data:data};}__cov__H8mF_p_UvRihs8MmddwUQ.s['53']++;exports.setDatasourceData=setDatasourceData;function appendDatasourceData(id,data,maxValues){__cov__H8mF_p_UvRihs8MmddwUQ.f['12']++;__cov__H8mF_p_UvRihs8MmddwUQ.s['55']++;if(maxValues===void 0){__cov__H8mF_p_UvRihs8MmddwUQ.b['6'][0]++;__cov__H8mF_p_UvRihs8MmddwUQ.s['56']++;maxValues=5;}else{__cov__H8mF_p_UvRihs8MmddwUQ.b['6'][1]++;}__cov__H8mF_p_UvRihs8MmddwUQ.s['57']++;return{type:ActionNames.APPEND_DATASOURCE_DATA,id:id,data:data,maxValues:maxValues};}__cov__H8mF_p_UvRihs8MmddwUQ.s['58']++;exports.appendDatasourceData=appendDatasourceData;function fetchDatasourceData(){__cov__H8mF_p_UvRihs8MmddwUQ.f['13']++;__cov__H8mF_p_UvRihs8MmddwUQ.s['60']++;return function(dispatch,getState){__cov__H8mF_p_UvRihs8MmddwUQ.f['14']++;__cov__H8mF_p_UvRihs8MmddwUQ.s['61']++;var state=getState();__cov__H8mF_p_UvRihs8MmddwUQ.s['62']++;var dsStates=state.datasources;__cov__H8mF_p_UvRihs8MmddwUQ.s['63']++;_.valuesIn(dsStates).forEach(function(dsState){__cov__H8mF_p_UvRihs8MmddwUQ.f['15']++;__cov__H8mF_p_UvRihs8MmddwUQ.s['64']++;var dsFactory=dashboard_1.default.getInstance().datasourcePluginRegistry.getPlugin(dsState.type);__cov__H8mF_p_UvRihs8MmddwUQ.s['65']++;if(dsFactory===undefined){__cov__H8mF_p_UvRihs8MmddwUQ.b['7'][0]++;__cov__H8mF_p_UvRihs8MmddwUQ.s['66']++;console.warn('Can not fetch data from non existent datasource plugin of type ',dsState.type);__cov__H8mF_p_UvRihs8MmddwUQ.s['67']++;return;}else{__cov__H8mF_p_UvRihs8MmddwUQ.b['7'][1]++;}__cov__H8mF_p_UvRihs8MmddwUQ.s['68']++;var dsInstance=dsFactory.getOrCreateInstance(dsState.id);__cov__H8mF_p_UvRihs8MmddwUQ.s['69']++;var newData=dsInstance.getValues();__cov__H8mF_p_UvRihs8MmddwUQ.s['70']++;if(!_.isArray(newData)){__cov__H8mF_p_UvRihs8MmddwUQ.b['8'][0]++;__cov__H8mF_p_UvRihs8MmddwUQ.s['71']++;throw new Error('A datasource must return an array on getValues');}else{__cov__H8mF_p_UvRihs8MmddwUQ.b['8'][1]++;__cov__H8mF_p_UvRihs8MmddwUQ.s['72']++;newData=newData.slice();}__cov__H8mF_p_UvRihs8MmddwUQ.s['73']++;var action=setDatasourceData(dsState.id,newData);__cov__H8mF_p_UvRihs8MmddwUQ.s['74']++;action.doNotLog=true;__cov__H8mF_p_UvRihs8MmddwUQ.s['75']++;dispatch(action);});};}__cov__H8mF_p_UvRihs8MmddwUQ.s['76']++;exports.fetchDatasourceData=fetchDatasourceData;__cov__H8mF_p_UvRihs8MmddwUQ.s['77']++;var datasourceCrudReducer=reducer_js_1.genCrudReducer([ActionNames.ADD_DATASOURCE,ActionNames.DELETE_DATASOURCE],datasource);function datasources(state,action){__cov__H8mF_p_UvRihs8MmddwUQ.f['16']++;__cov__H8mF_p_UvRihs8MmddwUQ.s['79']++;if(state===void 0){__cov__H8mF_p_UvRihs8MmddwUQ.b['9'][0]++;__cov__H8mF_p_UvRihs8MmddwUQ.s['80']++;state=initialDatasources;}else{__cov__H8mF_p_UvRihs8MmddwUQ.b['9'][1]++;}__cov__H8mF_p_UvRihs8MmddwUQ.s['81']++;state=datasourceCrudReducer(state,action);__cov__H8mF_p_UvRihs8MmddwUQ.s['82']++;switch(action.type){case ActionNames.DELETE_DATASOURCE_PLUGIN:__cov__H8mF_p_UvRihs8MmddwUQ.b['10'][0]++;__cov__H8mF_p_UvRihs8MmddwUQ.s['83']++;var toDelete=_.valuesIn(state).filter(function(dsState){__cov__H8mF_p_UvRihs8MmddwUQ.f['17']++;__cov__H8mF_p_UvRihs8MmddwUQ.s['84']++;return dsState.type===action.id;});__cov__H8mF_p_UvRihs8MmddwUQ.s['85']++;var newState_1=_.assign({},state);__cov__H8mF_p_UvRihs8MmddwUQ.s['86']++;toDelete.forEach(function(dsState){__cov__H8mF_p_UvRihs8MmddwUQ.f['18']++;__cov__H8mF_p_UvRihs8MmddwUQ.s['87']++;delete newState_1[dsState.id];});__cov__H8mF_p_UvRihs8MmddwUQ.s['88']++;return newState_1;default:__cov__H8mF_p_UvRihs8MmddwUQ.b['10'][1]++;__cov__H8mF_p_UvRihs8MmddwUQ.s['89']++;return state;}}__cov__H8mF_p_UvRihs8MmddwUQ.s['90']++;exports.datasources=datasources;function datasource(state,action){__cov__H8mF_p_UvRihs8MmddwUQ.f['19']++;__cov__H8mF_p_UvRihs8MmddwUQ.s['92']++;switch(action.type){case ActionNames.ADD_DATASOURCE:__cov__H8mF_p_UvRihs8MmddwUQ.b['11'][0]++;__cov__H8mF_p_UvRihs8MmddwUQ.s['93']++;return{id:action.id,type:action.dsType,settings:action.settings,data:[]};case ActionNames.SET_DATASOURCE_DATA:__cov__H8mF_p_UvRihs8MmddwUQ.b['11'][1]++;__cov__H8mF_p_UvRihs8MmddwUQ.s['94']++;return _.assign({},state,{data:(__cov__H8mF_p_UvRihs8MmddwUQ.b['12'][0]++,action.data)||(__cov__H8mF_p_UvRihs8MmddwUQ.b['12'][1]++,[])});case ActionNames.APPEND_DATASOURCE_DATA:__cov__H8mF_p_UvRihs8MmddwUQ.b['11'][2]++;__cov__H8mF_p_UvRihs8MmddwUQ.s['95']++;var newData=_.clone(state.data).concat(action.data);__cov__H8mF_p_UvRihs8MmddwUQ.s['96']++;if(action.maxValues){__cov__H8mF_p_UvRihs8MmddwUQ.b['13'][0]++;__cov__H8mF_p_UvRihs8MmddwUQ.s['97']++;newData=newData.slice(newData.length-action.maxValues);}else{__cov__H8mF_p_UvRihs8MmddwUQ.b['13'][1]++;}__cov__H8mF_p_UvRihs8MmddwUQ.s['98']++;return _.assign({},state,{data:newData});case ActionNames.UPDATE_DATASOURCE:__cov__H8mF_p_UvRihs8MmddwUQ.b['11'][3]++;__cov__H8mF_p_UvRihs8MmddwUQ.s['99']++;return _.assign({},state,{settings:action.settings});default:__cov__H8mF_p_UvRihs8MmddwUQ.b['11'][4]++;__cov__H8mF_p_UvRihs8MmddwUQ.s['100']++;return state;}}
 
 
 /***/ },
 /* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Action = __webpack_require__(43);
-	var dashboard_1 = __webpack_require__(55);
-	var scriptLoader_1 = __webpack_require__(26);
-	var PluginCache = __webpack_require__(28);
-	var _ = __webpack_require__(21);
-	var URI = __webpack_require__(60);
-	function loadPlugin(plugin) {
-	    return addPlugin(plugin);
+	var __cov_5TKq09XdLdOJAjWiiy38Vg = (Function('return this'))();
+	if (!__cov_5TKq09XdLdOJAjWiiy38Vg.__coverage__) { __cov_5TKq09XdLdOJAjWiiy38Vg.__coverage__ = {}; }
+	__cov_5TKq09XdLdOJAjWiiy38Vg = __cov_5TKq09XdLdOJAjWiiy38Vg.__coverage__;
+	if (!(__cov_5TKq09XdLdOJAjWiiy38Vg['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/plugins.js'])) {
+	   __cov_5TKq09XdLdOJAjWiiy38Vg['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/plugins.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/pluginApi/plugins.js","s":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":0,"9":0,"10":1,"11":0,"12":0,"13":0,"14":0,"15":1,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":1,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":1,"36":0,"37":0,"38":0,"39":0,"40":0,"41":0,"42":1,"43":0,"44":0,"45":0,"46":0,"47":0,"48":0,"49":0,"50":0,"51":0,"52":0,"53":0,"54":0,"55":0,"56":0,"57":0,"58":0,"59":0},"b":{"1":[0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0],"7":[0,0],"8":[0,0],"9":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0},"fnMap":{"1":{"name":"loadPlugin","line":11,"loc":{"start":{"line":11,"column":0},"end":{"line":11,"column":28}}},"2":{"name":"loadPluginFromUrl","line":15,"loc":{"start":{"line":15,"column":0},"end":{"line":15,"column":32}}},"3":{"name":"(anonymous_3)","line":16,"loc":{"start":{"line":16,"column":11},"end":{"line":16,"column":31}}},"4":{"name":"(anonymous_4)","line":17,"loc":{"start":{"line":17,"column":60},"end":{"line":17,"column":72}}},"5":{"name":"onScriptLoaded","line":21,"loc":{"start":{"line":21,"column":0},"end":{"line":21,"column":39}}},"6":{"name":"(anonymous_6)","line":28,"loc":{"start":{"line":28,"column":41},"end":{"line":28,"column":63}}},"7":{"name":"(anonymous_7)","line":33,"loc":{"start":{"line":33,"column":25},"end":{"line":33,"column":37}}},"8":{"name":"initializeExternalPlugins","line":46,"loc":{"start":{"line":46,"column":0},"end":{"line":46,"column":37}}},"9":{"name":"(anonymous_9)","line":47,"loc":{"start":{"line":47,"column":11},"end":{"line":47,"column":41}}},"10":{"name":"(anonymous_10)","line":51,"loc":{"start":{"line":51,"column":23},"end":{"line":51,"column":46}}},"11":{"name":"(anonymous_11)","line":51,"loc":{"start":{"line":51,"column":95},"end":{"line":51,"column":113}}},"12":{"name":"registerPlugin","line":60,"loc":{"start":{"line":60,"column":0},"end":{"line":60,"column":32}}},"13":{"name":"addPlugin","line":74,"loc":{"start":{"line":74,"column":0},"end":{"line":74,"column":32}}},"14":{"name":"(anonymous_14)","line":77,"loc":{"start":{"line":77,"column":11},"end":{"line":77,"column":41}}},"15":{"name":"(anonymous_15)","line":80,"loc":{"start":{"line":80,"column":47},"end":{"line":80,"column":70}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":39}},"2":{"start":{"line":6,"column":0},"end":{"line":6,"column":42}},"3":{"start":{"line":7,"column":0},"end":{"line":7,"column":53}},"4":{"start":{"line":8,"column":0},"end":{"line":8,"column":43}},"5":{"start":{"line":9,"column":0},"end":{"line":9,"column":26}},"6":{"start":{"line":10,"column":0},"end":{"line":10,"column":27}},"7":{"start":{"line":11,"column":0},"end":{"line":13,"column":1}},"8":{"start":{"line":12,"column":4},"end":{"line":12,"column":29}},"9":{"start":{"line":14,"column":0},"end":{"line":14,"column":32}},"10":{"start":{"line":15,"column":0},"end":{"line":19,"column":1}},"11":{"start":{"line":16,"column":4},"end":{"line":18,"column":6}},"12":{"start":{"line":17,"column":8},"end":{"line":17,"column":117}},"13":{"start":{"line":17,"column":74},"end":{"line":17,"column":111}},"14":{"start":{"line":20,"column":0},"end":{"line":20,"column":46}},"15":{"start":{"line":21,"column":0},"end":{"line":45,"column":1}},"16":{"start":{"line":22,"column":4},"end":{"line":44,"column":5}},"17":{"start":{"line":25,"column":8},"end":{"line":25,"column":53}},"18":{"start":{"line":26,"column":8},"end":{"line":26,"column":59}},"19":{"start":{"line":27,"column":8},"end":{"line":40,"column":9}},"20":{"start":{"line":28,"column":12},"end":{"line":30,"column":15}},"21":{"start":{"line":29,"column":16},"end":{"line":29,"column":66}},"22":{"start":{"line":31,"column":12},"end":{"line":31,"column":66}},"23":{"start":{"line":32,"column":12},"end":{"line":36,"column":15}},"24":{"start":{"line":34,"column":20},"end":{"line":34,"column":55}},"25":{"start":{"line":39,"column":12},"end":{"line":39,"column":47}},"26":{"start":{"line":43,"column":8},"end":{"line":43,"column":125}},"27":{"start":{"line":46,"column":0},"end":{"line":55,"column":1}},"28":{"start":{"line":47,"column":4},"end":{"line":54,"column":6}},"29":{"start":{"line":48,"column":8},"end":{"line":48,"column":31}},"30":{"start":{"line":49,"column":8},"end":{"line":50,"column":53}},"31":{"start":{"line":51,"column":8},"end":{"line":53,"column":11}},"32":{"start":{"line":51,"column":48},"end":{"line":51,"column":83}},"33":{"start":{"line":52,"column":12},"end":{"line":52,"column":52}},"34":{"start":{"line":56,"column":0},"end":{"line":56,"column":62}},"35":{"start":{"line":60,"column":0},"end":{"line":72,"column":1}},"36":{"start":{"line":62,"column":4},"end":{"line":62,"column":54}},"37":{"start":{"line":63,"column":4},"end":{"line":71,"column":5}},"38":{"start":{"line":64,"column":8},"end":{"line":64,"column":60}},"39":{"start":{"line":66,"column":9},"end":{"line":71,"column":5}},"40":{"start":{"line":67,"column":8},"end":{"line":67,"column":56}},"41":{"start":{"line":70,"column":8},"end":{"line":70,"column":85}},"42":{"start":{"line":74,"column":0},"end":{"line":102,"column":1}},"43":{"start":{"line":75,"column":4},"end":{"line":75,"column":39}},"44":{"start":{"line":75,"column":26},"end":{"line":75,"column":37}},"45":{"start":{"line":76,"column":4},"end":{"line":76,"column":53}},"46":{"start":{"line":77,"column":4},"end":{"line":101,"column":6}},"47":{"start":{"line":78,"column":8},"end":{"line":78,"column":31}},"48":{"start":{"line":79,"column":8},"end":{"line":79,"column":98}},"49":{"start":{"line":80,"column":8},"end":{"line":82,"column":11}},"50":{"start":{"line":81,"column":12},"end":{"line":81,"column":71}},"51":{"start":{"line":83,"column":8},"end":{"line":98,"column":9}},"52":{"start":{"line":84,"column":12},"end":{"line":84,"column":57}},"53":{"start":{"line":85,"column":12},"end":{"line":87,"column":13}},"54":{"start":{"line":86,"column":16},"end":{"line":86,"column":58}},"55":{"start":{"line":88,"column":12},"end":{"line":90,"column":13}},"56":{"start":{"line":89,"column":16},"end":{"line":89,"column":54}},"57":{"start":{"line":92,"column":12},"end":{"line":97,"column":15}},"58":{"start":{"line":100,"column":8},"end":{"line":100,"column":31}},"59":{"start":{"line":103,"column":0},"end":{"line":103,"column":30}}},"branchMap":{"1":{"line":22,"type":"if","locations":[{"start":{"line":22,"column":4},"end":{"line":22,"column":4}},{"start":{"line":22,"column":4},"end":{"line":22,"column":4}}]},"2":{"line":27,"type":"if","locations":[{"start":{"line":27,"column":8},"end":{"line":27,"column":8}},{"start":{"line":27,"column":8},"end":{"line":27,"column":8}}]},"3":{"line":27,"type":"binary-expr","locations":[{"start":{"line":27,"column":12},"end":{"line":27,"column":35}},{"start":{"line":27,"column":39},"end":{"line":27,"column":64}}]},"4":{"line":63,"type":"if","locations":[{"start":{"line":63,"column":4},"end":{"line":63,"column":4}},{"start":{"line":63,"column":4},"end":{"line":63,"column":4}}]},"5":{"line":66,"type":"if","locations":[{"start":{"line":66,"column":9},"end":{"line":66,"column":9}},{"start":{"line":66,"column":9},"end":{"line":66,"column":9}}]},"6":{"line":75,"type":"if","locations":[{"start":{"line":75,"column":4},"end":{"line":75,"column":4}},{"start":{"line":75,"column":4},"end":{"line":75,"column":4}}]},"7":{"line":83,"type":"if","locations":[{"start":{"line":83,"column":8},"end":{"line":83,"column":8}},{"start":{"line":83,"column":8},"end":{"line":83,"column":8}}]},"8":{"line":85,"type":"if","locations":[{"start":{"line":85,"column":12},"end":{"line":85,"column":12}},{"start":{"line":85,"column":12},"end":{"line":85,"column":12}}]},"9":{"line":88,"type":"if","locations":[{"start":{"line":88,"column":12},"end":{"line":88,"column":12}},{"start":{"line":88,"column":12},"end":{"line":88,"column":12}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public"," * License, v. 2.0. If a copy of the MPL was not distributed with this"," * file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var Action = require(\"../actionNames\");","var dashboard_1 = require(\"../dashboard\");","var scriptLoader_1 = require(\"../util/scriptLoader\");","var PluginCache = require(\"./pluginCache\");","var _ = require(\"lodash\");","var URI = require(\"urijs\");","function loadPlugin(plugin) {","    return addPlugin(plugin);","}","exports.loadPlugin = loadPlugin;","function loadPluginFromUrl(url) {","    return function (dispatch) {","        scriptLoader_1.default.loadScript([url], { success: function () { return onScriptLoaded(url, dispatch); } });","    };","}","exports.loadPluginFromUrl = loadPluginFromUrl;","function onScriptLoaded(url, dispatch) {","    if (PluginCache.hasPlugin()) {","        // TODO: use a reference to the pluginCache and only bind that instance to the window object while the script is loaded","        // TODO: The scriploader can ensure that only one script is loaded at a time","        var plugin_1 = PluginCache.popLoadedPlugin();","        var dependencies = plugin_1.TYPE_INFO.dependencies;","        if (_.isArray(dependencies) && dependencies.length !== 0) {","            var paths = dependencies.map(function (dependency) {","                return URI(dependency).absoluteTo(url).toString();","            });","            console.log(\"Loading Dependencies for Plugin\", paths);","            scriptLoader_1.default.loadScript(paths, {","                success: function () {","                    dispatch(addPlugin(plugin_1, url));","                }","            });","        }","        else {","            dispatch(addPlugin(plugin_1, url));","        }","    }","    else {","        console.error(\"Failed to load Plugin. Make sure it called window.iotDashboardApi.register***Plugin from url \" + url);","    }","}","function initializeExternalPlugins() {","    return function (dispatch, getState) {","        var state = getState();","        var plugins = _.valuesIn(state.datasourcePlugins)","            .concat(_.valuesIn(state.widgetPlugins));","        plugins.filter(function (pluginState) { return !_.isEmpty(pluginState.url); }).forEach(function (plugin) {","            dispatch(loadPluginFromUrl(plugin.url));","        });","    };","}","exports.initializeExternalPlugins = initializeExternalPlugins;","/**"," * Register a plugin in the plugin registry"," */","function registerPlugin(plugin) {","    // TODO: I do not like that we use some singleton here to register widgets (there are other places as well)","    var dashboard = dashboard_1.default.getInstance();","    if (plugin.Datasource) {","        dashboard.datasourcePluginRegistry.register(plugin);","    }","    else if (plugin.Widget) {","        dashboard.widgetPluginRegistry.register(plugin);","    }","    else {","        throw new Error(\"Plugin neither defines a Datasource nor a Widget.\", plugin);","    }","}","// Add plugin to store and register it in the PluginRegistry","function addPlugin(plugin, url) {","    if (url === void 0) { url = null; }","    console.log(\"Adding plugin from \" + url, plugin);","    return function (dispatch, getState) {","        var state = getState();","        var plugins = _.valuesIn(state.datasourcePlugins).concat(_.valuesIn(state.widgetPlugins));","        var existentPluginState = plugins.find(function (pluginState) {","            return plugin.TYPE_INFO.type === pluginState.typeInfo.type;","        });","        if (!existentPluginState) {","            var actionType = \"unknown-add-widget-action\";","            if (plugin.Datasource !== undefined) {","                actionType = Action.ADD_DATASOURCE_PLUGIN;","            }","            if (plugin.Widget !== undefined) {","                actionType = Action.ADD_WIDGET_PLUGIN;","            }","            // TODO: Just put the raw plugin + url here and let the reducer do the logic","            dispatch({","                type: actionType,","                id: plugin.TYPE_INFO.type,","                typeInfo: plugin.TYPE_INFO,","                url: url","            });","        }","        // TODO: Maybe use redux sideeffect and move this call to the reducer","        registerPlugin(plugin);","    };","}","exports.addPlugin = addPlugin;",""]};
 	}
-	exports.loadPlugin = loadPlugin;
-	function loadPluginFromUrl(url) {
-	    return function (dispatch) {
-	        scriptLoader_1.default.loadScript([url], { success: function () { return onScriptLoaded(url, dispatch); } });
-	    };
-	}
-	exports.loadPluginFromUrl = loadPluginFromUrl;
-	function onScriptLoaded(url, dispatch) {
-	    if (PluginCache.hasPlugin()) {
-	        // TODO: use a reference to the pluginCache and only bind that instance to the window object while the script is loaded
-	        // TODO: The scriploader can ensure that only one script is loaded at a time
-	        var plugin_1 = PluginCache.popLoadedPlugin();
-	        var dependencies = plugin_1.TYPE_INFO.dependencies;
-	        if (_.isArray(dependencies) && dependencies.length !== 0) {
-	            var paths = dependencies.map(function (dependency) {
-	                return URI(dependency).absoluteTo(url).toString();
-	            });
-	            console.log("Loading Dependencies for Plugin", paths);
-	            scriptLoader_1.default.loadScript(paths, {
-	                success: function () {
-	                    dispatch(addPlugin(plugin_1, url));
-	                }
-	            });
-	        }
-	        else {
-	            dispatch(addPlugin(plugin_1, url));
-	        }
-	    }
-	    else {
-	        console.error("Failed to load Plugin. Make sure it called window.iotDashboardApi.register***Plugin from url " + url);
-	    }
-	}
-	function initializeExternalPlugins() {
-	    return function (dispatch, getState) {
-	        var state = getState();
-	        var plugins = _.valuesIn(state.datasourcePlugins)
-	            .concat(_.valuesIn(state.widgetPlugins));
-	        plugins.filter(function (pluginState) { return !_.isEmpty(pluginState.url); }).forEach(function (plugin) {
-	            dispatch(loadPluginFromUrl(plugin.url));
-	        });
-	    };
-	}
-	exports.initializeExternalPlugins = initializeExternalPlugins;
-	/**
-	 * Register a plugin in the plugin registry
-	 */
-	function registerPlugin(plugin) {
-	    // TODO: I do not like that we use some singleton here to register widgets (there are other places as well)
-	    var dashboard = dashboard_1.default.getInstance();
-	    if (plugin.Datasource) {
-	        dashboard.datasourcePluginRegistry.register(plugin);
-	    }
-	    else if (plugin.Widget) {
-	        dashboard.widgetPluginRegistry.register(plugin);
-	    }
-	    else {
-	        throw new Error("Plugin neither defines a Datasource nor a Widget.", plugin);
-	    }
-	}
-	// Add plugin to store and register it in the PluginRegistry
-	function addPlugin(plugin, url) {
-	    if (url === void 0) { url = null; }
-	    console.log("Adding plugin from " + url, plugin);
-	    return function (dispatch, getState) {
-	        var state = getState();
-	        var plugins = _.valuesIn(state.datasourcePlugins).concat(_.valuesIn(state.widgetPlugins));
-	        var existentPluginState = plugins.find(function (pluginState) {
-	            return plugin.TYPE_INFO.type === pluginState.typeInfo.type;
-	        });
-	        if (!existentPluginState) {
-	            var actionType = "unknown-add-widget-action";
-	            if (plugin.Datasource !== undefined) {
-	                actionType = Action.ADD_DATASOURCE_PLUGIN;
-	            }
-	            if (plugin.Widget !== undefined) {
-	                actionType = Action.ADD_WIDGET_PLUGIN;
-	            }
-	            // TODO: Just put the raw plugin + url here and let the reducer do the logic
-	            dispatch({
-	                type: actionType,
-	                id: plugin.TYPE_INFO.type,
-	                typeInfo: plugin.TYPE_INFO,
-	                url: url
-	            });
-	        }
-	        // TODO: Maybe use redux sideeffect and move this call to the reducer
-	        registerPlugin(plugin);
-	    };
-	}
-	exports.addPlugin = addPlugin;
+	__cov_5TKq09XdLdOJAjWiiy38Vg = __cov_5TKq09XdLdOJAjWiiy38Vg['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/plugins.js'];
+	__cov_5TKq09XdLdOJAjWiiy38Vg.s['1']++;var Action=__webpack_require__(43);__cov_5TKq09XdLdOJAjWiiy38Vg.s['2']++;var dashboard_1=__webpack_require__(55);__cov_5TKq09XdLdOJAjWiiy38Vg.s['3']++;var scriptLoader_1=__webpack_require__(26);__cov_5TKq09XdLdOJAjWiiy38Vg.s['4']++;var PluginCache=__webpack_require__(28);__cov_5TKq09XdLdOJAjWiiy38Vg.s['5']++;var _=__webpack_require__(21);__cov_5TKq09XdLdOJAjWiiy38Vg.s['6']++;var URI=__webpack_require__(60);function loadPlugin(plugin){__cov_5TKq09XdLdOJAjWiiy38Vg.f['1']++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['8']++;return addPlugin(plugin);}__cov_5TKq09XdLdOJAjWiiy38Vg.s['9']++;exports.loadPlugin=loadPlugin;function loadPluginFromUrl(url){__cov_5TKq09XdLdOJAjWiiy38Vg.f['2']++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['11']++;return function(dispatch){__cov_5TKq09XdLdOJAjWiiy38Vg.f['3']++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['12']++;scriptLoader_1.default.loadScript([url],{success:function(){__cov_5TKq09XdLdOJAjWiiy38Vg.f['4']++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['13']++;return onScriptLoaded(url,dispatch);}});};}__cov_5TKq09XdLdOJAjWiiy38Vg.s['14']++;exports.loadPluginFromUrl=loadPluginFromUrl;function onScriptLoaded(url,dispatch){__cov_5TKq09XdLdOJAjWiiy38Vg.f['5']++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['16']++;if(PluginCache.hasPlugin()){__cov_5TKq09XdLdOJAjWiiy38Vg.b['1'][0]++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['17']++;var plugin_1=PluginCache.popLoadedPlugin();__cov_5TKq09XdLdOJAjWiiy38Vg.s['18']++;var dependencies=plugin_1.TYPE_INFO.dependencies;__cov_5TKq09XdLdOJAjWiiy38Vg.s['19']++;if((__cov_5TKq09XdLdOJAjWiiy38Vg.b['3'][0]++,_.isArray(dependencies))&&(__cov_5TKq09XdLdOJAjWiiy38Vg.b['3'][1]++,dependencies.length!==0)){__cov_5TKq09XdLdOJAjWiiy38Vg.b['2'][0]++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['20']++;var paths=dependencies.map(function(dependency){__cov_5TKq09XdLdOJAjWiiy38Vg.f['6']++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['21']++;return URI(dependency).absoluteTo(url).toString();});__cov_5TKq09XdLdOJAjWiiy38Vg.s['22']++;console.log('Loading Dependencies for Plugin',paths);__cov_5TKq09XdLdOJAjWiiy38Vg.s['23']++;scriptLoader_1.default.loadScript(paths,{success:function(){__cov_5TKq09XdLdOJAjWiiy38Vg.f['7']++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['24']++;dispatch(addPlugin(plugin_1,url));}});}else{__cov_5TKq09XdLdOJAjWiiy38Vg.b['2'][1]++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['25']++;dispatch(addPlugin(plugin_1,url));}}else{__cov_5TKq09XdLdOJAjWiiy38Vg.b['1'][1]++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['26']++;console.error('Failed to load Plugin. Make sure it called window.iotDashboardApi.register***Plugin from url '+url);}}function initializeExternalPlugins(){__cov_5TKq09XdLdOJAjWiiy38Vg.f['8']++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['28']++;return function(dispatch,getState){__cov_5TKq09XdLdOJAjWiiy38Vg.f['9']++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['29']++;var state=getState();__cov_5TKq09XdLdOJAjWiiy38Vg.s['30']++;var plugins=_.valuesIn(state.datasourcePlugins).concat(_.valuesIn(state.widgetPlugins));__cov_5TKq09XdLdOJAjWiiy38Vg.s['31']++;plugins.filter(function(pluginState){__cov_5TKq09XdLdOJAjWiiy38Vg.f['10']++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['32']++;return!_.isEmpty(pluginState.url);}).forEach(function(plugin){__cov_5TKq09XdLdOJAjWiiy38Vg.f['11']++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['33']++;dispatch(loadPluginFromUrl(plugin.url));});};}__cov_5TKq09XdLdOJAjWiiy38Vg.s['34']++;exports.initializeExternalPlugins=initializeExternalPlugins;function registerPlugin(plugin){__cov_5TKq09XdLdOJAjWiiy38Vg.f['12']++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['36']++;var dashboard=dashboard_1.default.getInstance();__cov_5TKq09XdLdOJAjWiiy38Vg.s['37']++;if(plugin.Datasource){__cov_5TKq09XdLdOJAjWiiy38Vg.b['4'][0]++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['38']++;dashboard.datasourcePluginRegistry.register(plugin);}else{__cov_5TKq09XdLdOJAjWiiy38Vg.b['4'][1]++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['39']++;if(plugin.Widget){__cov_5TKq09XdLdOJAjWiiy38Vg.b['5'][0]++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['40']++;dashboard.widgetPluginRegistry.register(plugin);}else{__cov_5TKq09XdLdOJAjWiiy38Vg.b['5'][1]++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['41']++;throw new Error('Plugin neither defines a Datasource nor a Widget.',plugin);}}}function addPlugin(plugin,url){__cov_5TKq09XdLdOJAjWiiy38Vg.f['13']++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['43']++;if(url===void 0){__cov_5TKq09XdLdOJAjWiiy38Vg.b['6'][0]++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['44']++;url=null;}else{__cov_5TKq09XdLdOJAjWiiy38Vg.b['6'][1]++;}__cov_5TKq09XdLdOJAjWiiy38Vg.s['45']++;console.log('Adding plugin from '+url,plugin);__cov_5TKq09XdLdOJAjWiiy38Vg.s['46']++;return function(dispatch,getState){__cov_5TKq09XdLdOJAjWiiy38Vg.f['14']++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['47']++;var state=getState();__cov_5TKq09XdLdOJAjWiiy38Vg.s['48']++;var plugins=_.valuesIn(state.datasourcePlugins).concat(_.valuesIn(state.widgetPlugins));__cov_5TKq09XdLdOJAjWiiy38Vg.s['49']++;var existentPluginState=plugins.find(function(pluginState){__cov_5TKq09XdLdOJAjWiiy38Vg.f['15']++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['50']++;return plugin.TYPE_INFO.type===pluginState.typeInfo.type;});__cov_5TKq09XdLdOJAjWiiy38Vg.s['51']++;if(!existentPluginState){__cov_5TKq09XdLdOJAjWiiy38Vg.b['7'][0]++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['52']++;var actionType='unknown-add-widget-action';__cov_5TKq09XdLdOJAjWiiy38Vg.s['53']++;if(plugin.Datasource!==undefined){__cov_5TKq09XdLdOJAjWiiy38Vg.b['8'][0]++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['54']++;actionType=Action.ADD_DATASOURCE_PLUGIN;}else{__cov_5TKq09XdLdOJAjWiiy38Vg.b['8'][1]++;}__cov_5TKq09XdLdOJAjWiiy38Vg.s['55']++;if(plugin.Widget!==undefined){__cov_5TKq09XdLdOJAjWiiy38Vg.b['9'][0]++;__cov_5TKq09XdLdOJAjWiiy38Vg.s['56']++;actionType=Action.ADD_WIDGET_PLUGIN;}else{__cov_5TKq09XdLdOJAjWiiy38Vg.b['9'][1]++;}__cov_5TKq09XdLdOJAjWiiy38Vg.s['57']++;dispatch({type:actionType,id:plugin.TYPE_INFO.type,typeInfo:plugin.TYPE_INFO,url:url});}else{__cov_5TKq09XdLdOJAjWiiy38Vg.b['7'][1]++;}__cov_5TKq09XdLdOJAjWiiy38Vg.s['58']++;registerPlugin(plugin);};}__cov_5TKq09XdLdOJAjWiiy38Vg.s['59']++;exports.addPlugin=addPlugin;
 
 
 /***/ },
@@ -2119,74 +473,15 @@ webpackJsonp([0],[
 /* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var __assign = (this && this.__assign) || Object.assign || function(t) {
-	    for (var s, i = 1, n = arguments.length; i < n; i++) {
-	        s = arguments[i];
-	        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-	            t[p] = s[p];
-	    }
-	    return t;
-	};
-	// @noflow
-	// Intentional; Flow can't handle the bind on L20
-	var React = __webpack_require__(20);
-	var ReactDOM = __webpack_require__(38);
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = function (ComposedComponent) {
-	    var WidthProvider = (function (_super) {
-	        __extends(WidthProvider, _super);
-	        function WidthProvider(props) {
-	            _super.call(this, props);
-	            this.state = {
-	                mounted: false,
-	                width: 1280
-	            };
-	        }
-	        WidthProvider.prototype.componentDidMount = function () {
-	            this.setState({ mounted: true });
-	            window.addEventListener('resize', this.onWindowResize.bind(this));
-	            // Call to properly set the breakpoint and resize the elements.
-	            // Note that if you're doing a full-width element, this can get a little wonky if a scrollbar
-	            // appears because of the grid. In that case, fire your own resize event, or set `overflow: scroll` on your body.
-	            this.onWindowResize();
-	        };
-	        WidthProvider.prototype.componentWillUnmount = function () {
-	            window.removeEventListener('resize', this.onWindowResize);
-	        };
-	        WidthProvider.prototype.onWindowResize = function (_event, cb) {
-	            var node = ReactDOM.findDOMNode(this);
-	            var padLeft = window.getComputedStyle(node, null).getPropertyValue('padding-left') || 0;
-	            padLeft = parseInt(padLeft) || 0;
-	            var padRight = window.getComputedStyle(node, null).getPropertyValue('padding-right') || 0;
-	            padRight = parseInt(padRight) || 0;
-	            this.setState({ width: node.offsetWidth - padLeft - padRight }, cb);
-	        };
-	        WidthProvider.prototype.render = function () {
-	            if (this.props.measureBeforeMount && !this.state.mounted)
-	                return React.createElement("div", __assign({}, this.props, this.state));
-	            return React.createElement(ComposedComponent, __assign({}, this.props, this.state));
-	        };
-	        return WidthProvider;
-	    }(React.Component));
-	    WidthProvider.defaultProps = {
-	        measureBeforeMount: false
-	    };
-	    WidthProvider.propTypes = {
-	        // If true, will not render children until mounted. Useful for getting the exact width before
-	        // rendering, to prevent any unsightly resizing.
-	        measureBeforeMount: React.PropTypes.bool
-	    };
-	    return WidthProvider;
-	};
+	var __cov_8XgyMu2D$p4mXhCtW9PAGw = (Function('return this'))();
+	if (!__cov_8XgyMu2D$p4mXhCtW9PAGw.__coverage__) { __cov_8XgyMu2D$p4mXhCtW9PAGw.__coverage__ = {}; }
+	__cov_8XgyMu2D$p4mXhCtW9PAGw = __cov_8XgyMu2D$p4mXhCtW9PAGw.__coverage__;
+	if (!(__cov_8XgyMu2D$p4mXhCtW9PAGw['/home/travis/build/Niondir/iot-dashboard/src/widgets/widthProvider.ui.js'])) {
+	   __cov_8XgyMu2D$p4mXhCtW9PAGw['/home/travis/build/Niondir/iot-dashboard/src/widgets/widthProvider.ui.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/widgets/widthProvider.ui.js","s":{"1":0,"2":0,"3":0,"4":0,"5":1,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":1,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":0,"38":0,"39":0,"40":0,"41":0,"42":0,"43":0,"44":0},"b":{"1":[0,0,0],"2":[0,0],"3":[0,0],"4":[0,0,0,0],"5":[0,0],"6":[0,0],"7":[0,0],"8":[0,0],"9":[0,0],"10":[0,0],"11":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0},"fnMap":{"1":{"name":"(anonymous_1)","line":5,"loc":{"start":{"line":5,"column":44},"end":{"line":5,"column":60}}},"2":{"name":"__","line":7,"loc":{"start":{"line":7,"column":4},"end":{"line":7,"column":18}}},"3":{"name":"(anonymous_3)","line":10,"loc":{"start":{"line":10,"column":59},"end":{"line":10,"column":71}}},"4":{"name":"(anonymous_4)","line":23,"loc":{"start":{"line":23,"column":18},"end":{"line":23,"column":47}}},"5":{"name":"(anonymous_5)","line":24,"loc":{"start":{"line":24,"column":25},"end":{"line":24,"column":43}}},"6":{"name":"WidthProvider","line":26,"loc":{"start":{"line":26,"column":8},"end":{"line":26,"column":38}}},"7":{"name":"(anonymous_7)","line":33,"loc":{"start":{"line":33,"column":52},"end":{"line":33,"column":64}}},"8":{"name":"(anonymous_8)","line":41,"loc":{"start":{"line":41,"column":55},"end":{"line":41,"column":67}}},"9":{"name":"(anonymous_9)","line":44,"loc":{"start":{"line":44,"column":49},"end":{"line":44,"column":71}}},"10":{"name":"(anonymous_10)","line":52,"loc":{"start":{"line":52,"column":41},"end":{"line":52,"column":53}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":9,"column":2}},"2":{"start":{"line":6,"column":4},"end":{"line":6,"column":58}},"3":{"start":{"line":6,"column":21},"end":{"line":6,"column":58}},"4":{"start":{"line":6,"column":46},"end":{"line":6,"column":58}},"5":{"start":{"line":7,"column":4},"end":{"line":7,"column":43}},"6":{"start":{"line":7,"column":20},"end":{"line":7,"column":41}},"7":{"start":{"line":8,"column":4},"end":{"line":8,"column":89}},"8":{"start":{"line":10,"column":0},"end":{"line":17,"column":2}},"9":{"start":{"line":11,"column":4},"end":{"line":15,"column":5}},"10":{"start":{"line":12,"column":8},"end":{"line":12,"column":25}},"11":{"start":{"line":13,"column":8},"end":{"line":14,"column":24}},"12":{"start":{"line":13,"column":25},"end":{"line":14,"column":24}},"13":{"start":{"line":14,"column":12},"end":{"line":14,"column":24}},"14":{"start":{"line":16,"column":4},"end":{"line":16,"column":13}},"15":{"start":{"line":20,"column":0},"end":{"line":20,"column":29}},"16":{"start":{"line":21,"column":0},"end":{"line":21,"column":36}},"17":{"start":{"line":22,"column":0},"end":{"line":22,"column":62}},"18":{"start":{"line":23,"column":0},"end":{"line":68,"column":2}},"19":{"start":{"line":24,"column":4},"end":{"line":58,"column":24}},"20":{"start":{"line":25,"column":8},"end":{"line":25,"column":41}},"21":{"start":{"line":26,"column":8},"end":{"line":32,"column":9}},"22":{"start":{"line":27,"column":12},"end":{"line":27,"column":37}},"23":{"start":{"line":28,"column":12},"end":{"line":31,"column":14}},"24":{"start":{"line":33,"column":8},"end":{"line":40,"column":10}},"25":{"start":{"line":34,"column":12},"end":{"line":34,"column":45}},"26":{"start":{"line":35,"column":12},"end":{"line":35,"column":78}},"27":{"start":{"line":39,"column":12},"end":{"line":39,"column":34}},"28":{"start":{"line":41,"column":8},"end":{"line":43,"column":10}},"29":{"start":{"line":42,"column":12},"end":{"line":42,"column":70}},"30":{"start":{"line":44,"column":8},"end":{"line":51,"column":10}},"31":{"start":{"line":45,"column":12},"end":{"line":45,"column":50}},"32":{"start":{"line":46,"column":12},"end":{"line":46,"column":100}},"33":{"start":{"line":47,"column":12},"end":{"line":47,"column":45}},"34":{"start":{"line":48,"column":12},"end":{"line":48,"column":102}},"35":{"start":{"line":49,"column":12},"end":{"line":49,"column":47}},"36":{"start":{"line":50,"column":12},"end":{"line":50,"column":80}},"37":{"start":{"line":52,"column":8},"end":{"line":56,"column":10}},"38":{"start":{"line":53,"column":12},"end":{"line":54,"column":88}},"39":{"start":{"line":54,"column":16},"end":{"line":54,"column":88}},"40":{"start":{"line":55,"column":12},"end":{"line":55,"column":96}},"41":{"start":{"line":57,"column":8},"end":{"line":57,"column":29}},"42":{"start":{"line":59,"column":4},"end":{"line":61,"column":6}},"43":{"start":{"line":62,"column":4},"end":{"line":66,"column":6}},"44":{"start":{"line":67,"column":4},"end":{"line":67,"column":25}}},"branchMap":{"1":{"line":5,"type":"binary-expr","locations":[{"start":{"line":5,"column":17},"end":{"line":5,"column":21}},{"start":{"line":5,"column":25},"end":{"line":5,"column":39}},{"start":{"line":5,"column":44},"end":{"line":9,"column":1}}]},"2":{"line":6,"type":"if","locations":[{"start":{"line":6,"column":21},"end":{"line":6,"column":21}},{"start":{"line":6,"column":21},"end":{"line":6,"column":21}}]},"3":{"line":8,"type":"cond-expr","locations":[{"start":{"line":8,"column":31},"end":{"line":8,"column":47}},{"start":{"line":8,"column":51},"end":{"line":8,"column":87}}]},"4":{"line":10,"type":"binary-expr","locations":[{"start":{"line":10,"column":16},"end":{"line":10,"column":20}},{"start":{"line":10,"column":24},"end":{"line":10,"column":37}},{"start":{"line":10,"column":42},"end":{"line":10,"column":55}},{"start":{"line":10,"column":59},"end":{"line":17,"column":1}}]},"5":{"line":13,"type":"if","locations":[{"start":{"line":13,"column":25},"end":{"line":13,"column":25}},{"start":{"line":13,"column":25},"end":{"line":13,"column":25}}]},"6":{"line":46,"type":"binary-expr","locations":[{"start":{"line":46,"column":26},"end":{"line":46,"column":94}},{"start":{"line":46,"column":98},"end":{"line":46,"column":99}}]},"7":{"line":47,"type":"binary-expr","locations":[{"start":{"line":47,"column":22},"end":{"line":47,"column":39}},{"start":{"line":47,"column":43},"end":{"line":47,"column":44}}]},"8":{"line":48,"type":"binary-expr","locations":[{"start":{"line":48,"column":27},"end":{"line":48,"column":96}},{"start":{"line":48,"column":100},"end":{"line":48,"column":101}}]},"9":{"line":49,"type":"binary-expr","locations":[{"start":{"line":49,"column":23},"end":{"line":49,"column":41}},{"start":{"line":49,"column":45},"end":{"line":49,"column":46}}]},"10":{"line":53,"type":"if","locations":[{"start":{"line":53,"column":12},"end":{"line":53,"column":12}},{"start":{"line":53,"column":12},"end":{"line":53,"column":12}}]},"11":{"line":53,"type":"binary-expr","locations":[{"start":{"line":53,"column":16},"end":{"line":53,"column":45}},{"start":{"line":53,"column":49},"end":{"line":53,"column":68}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var __extends = (this && this.__extends) || function (d, b) {","    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];","    function __() { this.constructor = d; }","    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());","};","var __assign = (this && this.__assign) || Object.assign || function(t) {","    for (var s, i = 1, n = arguments.length; i < n; i++) {","        s = arguments[i];","        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))","            t[p] = s[p];","    }","    return t;","};","// @noflow","// Intentional; Flow can't handle the bind on L20","var React = require('react');","var ReactDOM = require('react-dom');","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = function (ComposedComponent) {","    var WidthProvider = (function (_super) {","        __extends(WidthProvider, _super);","        function WidthProvider(props) {","            _super.call(this, props);","            this.state = {","                mounted: false,","                width: 1280","            };","        }","        WidthProvider.prototype.componentDidMount = function () {","            this.setState({ mounted: true });","            window.addEventListener('resize', this.onWindowResize.bind(this));","            // Call to properly set the breakpoint and resize the elements.","            // Note that if you're doing a full-width element, this can get a little wonky if a scrollbar","            // appears because of the grid. In that case, fire your own resize event, or set `overflow: scroll` on your body.","            this.onWindowResize();","        };","        WidthProvider.prototype.componentWillUnmount = function () {","            window.removeEventListener('resize', this.onWindowResize);","        };","        WidthProvider.prototype.onWindowResize = function (_event, cb) {","            var node = ReactDOM.findDOMNode(this);","            var padLeft = window.getComputedStyle(node, null).getPropertyValue('padding-left') || 0;","            padLeft = parseInt(padLeft) || 0;","            var padRight = window.getComputedStyle(node, null).getPropertyValue('padding-right') || 0;","            padRight = parseInt(padRight) || 0;","            this.setState({ width: node.offsetWidth - padLeft - padRight }, cb);","        };","        WidthProvider.prototype.render = function () {","            if (this.props.measureBeforeMount && !this.state.mounted)","                return React.createElement(\"div\", __assign({}, this.props, this.state));","            return React.createElement(ComposedComponent, __assign({}, this.props, this.state));","        };","        return WidthProvider;","    }(React.Component));","    WidthProvider.defaultProps = {","        measureBeforeMount: false","    };","    WidthProvider.propTypes = {","        // If true, will not render children until mounted. Useful for getting the exact width before","        // rendering, to prevent any unsightly resizing.","        measureBeforeMount: React.PropTypes.bool","    };","    return WidthProvider;","};",""]};
+	}
+	__cov_8XgyMu2D$p4mXhCtW9PAGw = __cov_8XgyMu2D$p4mXhCtW9PAGw['/home/travis/build/Niondir/iot-dashboard/src/widgets/widthProvider.ui.js'];
+	__cov_8XgyMu2D$p4mXhCtW9PAGw.s['1']++;var __extends=(__cov_8XgyMu2D$p4mXhCtW9PAGw.b['1'][0]++,this)&&(__cov_8XgyMu2D$p4mXhCtW9PAGw.b['1'][1]++,this.__extends)||(__cov_8XgyMu2D$p4mXhCtW9PAGw.b['1'][2]++,function(d,b){__cov_8XgyMu2D$p4mXhCtW9PAGw.f['1']++;__cov_8XgyMu2D$p4mXhCtW9PAGw.s['2']++;for(var p in b){__cov_8XgyMu2D$p4mXhCtW9PAGw.s['3']++;if(b.hasOwnProperty(p)){__cov_8XgyMu2D$p4mXhCtW9PAGw.b['2'][0]++;__cov_8XgyMu2D$p4mXhCtW9PAGw.s['4']++;d[p]=b[p];}else{__cov_8XgyMu2D$p4mXhCtW9PAGw.b['2'][1]++;}}function __(){__cov_8XgyMu2D$p4mXhCtW9PAGw.f['2']++;__cov_8XgyMu2D$p4mXhCtW9PAGw.s['6']++;this.constructor=d;}__cov_8XgyMu2D$p4mXhCtW9PAGw.s['7']++;d.prototype=b===null?(__cov_8XgyMu2D$p4mXhCtW9PAGw.b['3'][0]++,Object.create(b)):(__cov_8XgyMu2D$p4mXhCtW9PAGw.b['3'][1]++,(__.prototype=b.prototype,new __()));});__cov_8XgyMu2D$p4mXhCtW9PAGw.s['8']++;var __assign=(__cov_8XgyMu2D$p4mXhCtW9PAGw.b['4'][0]++,this)&&(__cov_8XgyMu2D$p4mXhCtW9PAGw.b['4'][1]++,this.__assign)||(__cov_8XgyMu2D$p4mXhCtW9PAGw.b['4'][2]++,Object.assign)||(__cov_8XgyMu2D$p4mXhCtW9PAGw.b['4'][3]++,function(t){__cov_8XgyMu2D$p4mXhCtW9PAGw.f['3']++;__cov_8XgyMu2D$p4mXhCtW9PAGw.s['9']++;for(var s,i=1,n=arguments.length;i<n;i++){__cov_8XgyMu2D$p4mXhCtW9PAGw.s['10']++;s=arguments[i];__cov_8XgyMu2D$p4mXhCtW9PAGw.s['11']++;for(var p in s){__cov_8XgyMu2D$p4mXhCtW9PAGw.s['12']++;if(Object.prototype.hasOwnProperty.call(s,p)){__cov_8XgyMu2D$p4mXhCtW9PAGw.b['5'][0]++;__cov_8XgyMu2D$p4mXhCtW9PAGw.s['13']++;t[p]=s[p];}else{__cov_8XgyMu2D$p4mXhCtW9PAGw.b['5'][1]++;}}}__cov_8XgyMu2D$p4mXhCtW9PAGw.s['14']++;return t;});__cov_8XgyMu2D$p4mXhCtW9PAGw.s['15']++;var React=__webpack_require__(20);__cov_8XgyMu2D$p4mXhCtW9PAGw.s['16']++;var ReactDOM=__webpack_require__(38);__cov_8XgyMu2D$p4mXhCtW9PAGw.s['17']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_8XgyMu2D$p4mXhCtW9PAGw.s['18']++;exports.default=function(ComposedComponent){__cov_8XgyMu2D$p4mXhCtW9PAGw.f['4']++;__cov_8XgyMu2D$p4mXhCtW9PAGw.s['19']++;var WidthProvider=function(_super){__cov_8XgyMu2D$p4mXhCtW9PAGw.f['5']++;__cov_8XgyMu2D$p4mXhCtW9PAGw.s['20']++;__extends(WidthProvider,_super);function WidthProvider(props){__cov_8XgyMu2D$p4mXhCtW9PAGw.f['6']++;__cov_8XgyMu2D$p4mXhCtW9PAGw.s['22']++;_super.call(this,props);__cov_8XgyMu2D$p4mXhCtW9PAGw.s['23']++;this.state={mounted:false,width:1280};}__cov_8XgyMu2D$p4mXhCtW9PAGw.s['24']++;WidthProvider.prototype.componentDidMount=function(){__cov_8XgyMu2D$p4mXhCtW9PAGw.f['7']++;__cov_8XgyMu2D$p4mXhCtW9PAGw.s['25']++;this.setState({mounted:true});__cov_8XgyMu2D$p4mXhCtW9PAGw.s['26']++;window.addEventListener('resize',this.onWindowResize.bind(this));__cov_8XgyMu2D$p4mXhCtW9PAGw.s['27']++;this.onWindowResize();};__cov_8XgyMu2D$p4mXhCtW9PAGw.s['28']++;WidthProvider.prototype.componentWillUnmount=function(){__cov_8XgyMu2D$p4mXhCtW9PAGw.f['8']++;__cov_8XgyMu2D$p4mXhCtW9PAGw.s['29']++;window.removeEventListener('resize',this.onWindowResize);};__cov_8XgyMu2D$p4mXhCtW9PAGw.s['30']++;WidthProvider.prototype.onWindowResize=function(_event,cb){__cov_8XgyMu2D$p4mXhCtW9PAGw.f['9']++;__cov_8XgyMu2D$p4mXhCtW9PAGw.s['31']++;var node=ReactDOM.findDOMNode(this);__cov_8XgyMu2D$p4mXhCtW9PAGw.s['32']++;var padLeft=(__cov_8XgyMu2D$p4mXhCtW9PAGw.b['6'][0]++,window.getComputedStyle(node,null).getPropertyValue('padding-left'))||(__cov_8XgyMu2D$p4mXhCtW9PAGw.b['6'][1]++,0);__cov_8XgyMu2D$p4mXhCtW9PAGw.s['33']++;padLeft=(__cov_8XgyMu2D$p4mXhCtW9PAGw.b['7'][0]++,parseInt(padLeft))||(__cov_8XgyMu2D$p4mXhCtW9PAGw.b['7'][1]++,0);__cov_8XgyMu2D$p4mXhCtW9PAGw.s['34']++;var padRight=(__cov_8XgyMu2D$p4mXhCtW9PAGw.b['8'][0]++,window.getComputedStyle(node,null).getPropertyValue('padding-right'))||(__cov_8XgyMu2D$p4mXhCtW9PAGw.b['8'][1]++,0);__cov_8XgyMu2D$p4mXhCtW9PAGw.s['35']++;padRight=(__cov_8XgyMu2D$p4mXhCtW9PAGw.b['9'][0]++,parseInt(padRight))||(__cov_8XgyMu2D$p4mXhCtW9PAGw.b['9'][1]++,0);__cov_8XgyMu2D$p4mXhCtW9PAGw.s['36']++;this.setState({width:node.offsetWidth-padLeft-padRight},cb);};__cov_8XgyMu2D$p4mXhCtW9PAGw.s['37']++;WidthProvider.prototype.render=function(){__cov_8XgyMu2D$p4mXhCtW9PAGw.f['10']++;__cov_8XgyMu2D$p4mXhCtW9PAGw.s['38']++;if((__cov_8XgyMu2D$p4mXhCtW9PAGw.b['11'][0]++,this.props.measureBeforeMount)&&(__cov_8XgyMu2D$p4mXhCtW9PAGw.b['11'][1]++,!this.state.mounted)){__cov_8XgyMu2D$p4mXhCtW9PAGw.b['10'][0]++;__cov_8XgyMu2D$p4mXhCtW9PAGw.s['39']++;return React.createElement('div',__assign({},this.props,this.state));}else{__cov_8XgyMu2D$p4mXhCtW9PAGw.b['10'][1]++;}__cov_8XgyMu2D$p4mXhCtW9PAGw.s['40']++;return React.createElement(ComposedComponent,__assign({},this.props,this.state));};__cov_8XgyMu2D$p4mXhCtW9PAGw.s['41']++;return WidthProvider;}(React.Component);__cov_8XgyMu2D$p4mXhCtW9PAGw.s['42']++;WidthProvider.defaultProps={measureBeforeMount:false};__cov_8XgyMu2D$p4mXhCtW9PAGw.s['43']++;WidthProvider.propTypes={measureBeforeMount:React.PropTypes.bool};__cov_8XgyMu2D$p4mXhCtW9PAGw.s['44']++;return WidthProvider;};
 
 
 /***/ },
@@ -2208,676 +503,92 @@ webpackJsonp([0],[
 /* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(39);
-	var _ = __webpack_require__(21);
-	var Layouts = __webpack_require__(81);
-	var ui = __webpack_require__(82);
-	var react_1 = __webpack_require__(20);
-	/*TODO: Add remove button next to each loadable layout
-	 * - Connect with Actions
-	 * */
-	var LayoutsTopNavItem = function (props) {
-	    return React.createElement("div", {className: "ui simple dropdown item"}, "Layout", React.createElement("i", {className: "dropdown icon"}), React.createElement("div", {className: "ui menu"}, React.createElement(SaveLayout, null), React.createElement(ResetLayoutButton, {text: "Reset Current Layout", icon: "undo"}), React.createElement(SaveLayoutButton, {text: "Save Layout", icon: "save"}), React.createElement("div", {className: "ui divider"}), React.createElement("div", {className: "header"}, "Load Layout"), props.layouts.map(function (layout) {
-	        return React.createElement(LayoutItem, {text: layout.name, icon: "plus", layout: layout, key: layout.id});
-	    })));
-	};
-	LayoutsTopNavItem.propTypes = {
-	    layouts: react_1.PropTypes.arrayOf(react_1.PropTypes.shape({
-	        name: react_1.PropTypes.string
-	    })),
-	    widgets: react_1.PropTypes.object,
-	    currentLayout: react_1.PropTypes.object
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = react_redux_1.connect(function (state) {
-	    return {
-	        layouts: _.valuesIn(state.layouts),
-	        currentLayout: state.currentLayout,
-	        widgets: state.widgets
-	    };
-	}, function (dispatch) {
-	    return {};
-	})(LayoutsTopNavItem);
-	var SaveInput = (function (_super) {
-	    __extends(SaveInput, _super);
-	    function SaveInput() {
-	        _super.apply(this, arguments);
-	    }
-	    SaveInput.prototype.onEnter = function (e) {
-	        if (e.key === 'Enter') {
-	            this.props.onEnter(this.refs.input.value, this.props);
-	            this.refs.input.value = '';
-	        }
-	    };
-	    SaveInput.prototype.render = function () {
-	        return React.createElement("div", {className: "item"}, React.createElement("div", {className: "ui icon input"}, React.createElement("input", {type: "text", placeholder: "Save as...", ref: "input", onKeyPress: this.onEnter.bind(this)}), React.createElement("i", {className: "save icon", onClick: this.onEnter.bind(this), style: { cursor: "pointer", zIndex: 90000 }})));
-	    };
-	    return SaveInput;
-	}(React.Component));
-	SaveInput.propTypes = {
-	    onEnter: react_1.PropTypes.func,
-	    widgets: react_1.PropTypes.object
-	};
-	var SaveLayout = react_redux_1.connect(function (state) {
-	    return {
-	        layouts: _.valuesIn(state.layouts),
-	        widgets: state.widgets
-	    };
-	}, function (dispatch, props) {
-	    return {
-	        onEnter: function (name, props) {
-	            dispatch(Layouts.addLayout(name, props.widgets));
-	        }
-	    };
-	})(SaveInput);
-	var MyLayoutItem = (function (_super) {
-	    __extends(MyLayoutItem, _super);
-	    function MyLayoutItem() {
-	        _super.apply(this, arguments);
-	    }
-	    MyLayoutItem.prototype.render = function () {
-	        var props = this.props;
-	        var indexIconClass = null;
-	        if (props.currentLayout.id == props.layout.id) {
-	            indexIconClass = "tiny selected radio icon";
-	        }
-	        else {
-	            indexIconClass = "tiny radio icon";
-	        }
-	        return React.createElement("a", {className: "item", href: "#", onClick: function () { return props.onClick(props); }}, React.createElement("i", {className: indexIconClass}), React.createElement("i", {className: "right floated remove huge icon", onClick: function (e) {
-	            props.deleteLayout(props);
-	            e.stopPropagation();
-	        }}), " ", props.text);
-	    };
-	    return MyLayoutItem;
-	}(React.Component));
-	MyLayoutItem.propTypes = {
-	    deleteLayout: react_1.PropTypes.func.isRequired,
-	    onClick: react_1.PropTypes.func.isRequired,
-	    layout: react_1.PropTypes.object.isRequired,
-	    currentLayout: react_1.PropTypes.object
-	};
-	var LayoutItem = react_redux_1.connect(function (state) {
-	    return {
-	        currentLayout: state.currentLayout
-	    };
-	}, function (dispatch, props) {
-	    return {
-	        deleteLayout: function (props) { return dispatch(Layouts.deleteLayout(props.layout.id)); },
-	        onClick: function (props) { return dispatch(Layouts.loadLayout(props.layout.id)); }
-	    };
-	})(MyLayoutItem);
-	/*
-	 const ResetLayoutButtonc = (props) => {
-	 return <ui.LinkItem
-	 onClick={this.props.resetLayout.bind(this, this.props)}></ui.LinkItem>
-	 };*/
-	var ResetLayoutButton = react_redux_1.connect(function (state) {
-	    return {
-	        id: state.currentLayout.id,
-	        disabled: !state.currentLayout.id
-	    };
-	}, function (dispatch, props) {
-	    return {
-	        onClick: function (props) { return dispatch(Layouts.loadLayout(props.id)); }
-	    };
-	})(ui.LinkItem);
-	var SaveLayoutButton = react_redux_1.connect(function (state) {
-	    return {
-	        id: state.currentLayout.id,
-	        widgets: state.widgets,
-	        disabled: !state.currentLayout.id
-	    };
-	}, function (dispatch) {
-	    return {
-	        onClick: function (props) { return dispatch(Layouts.updateLayout(props.id, props.widgets)); }
-	    };
-	})(ui.LinkItem);
+	var __cov_hlhHOG_hrqY8jVmt3Q_pug = (Function('return this'))();
+	if (!__cov_hlhHOG_hrqY8jVmt3Q_pug.__coverage__) { __cov_hlhHOG_hrqY8jVmt3Q_pug.__coverage__ = {}; }
+	__cov_hlhHOG_hrqY8jVmt3Q_pug = __cov_hlhHOG_hrqY8jVmt3Q_pug.__coverage__;
+	if (!(__cov_hlhHOG_hrqY8jVmt3Q_pug['/home/travis/build/Niondir/iot-dashboard/src/layouts/layouts.ui.js'])) {
+	   __cov_hlhHOG_hrqY8jVmt3Q_pug['/home/travis/build/Niondir/iot-dashboard/src/layouts/layouts.ui.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/layouts/layouts.ui.js","s":{"1":0,"2":0,"3":0,"4":0,"5":1,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":1,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":0,"38":0,"39":0,"40":1,"41":0,"42":0,"43":0,"44":0,"45":0,"46":0,"47":0,"48":0,"49":0,"50":0,"51":0,"52":0,"53":0,"54":0,"55":0,"56":0,"57":0,"58":0,"59":0,"60":0,"61":0,"62":0,"63":0,"64":0,"65":0,"66":0},"b":{"1":[0,0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0},"fnMap":{"1":{"name":"(anonymous_1)","line":5,"loc":{"start":{"line":5,"column":44},"end":{"line":5,"column":60}}},"2":{"name":"__","line":7,"loc":{"start":{"line":7,"column":4},"end":{"line":7,"column":18}}},"3":{"name":"(anonymous_3)","line":19,"loc":{"start":{"line":19,"column":24},"end":{"line":19,"column":41}}},"4":{"name":"(anonymous_4)","line":20,"loc":{"start":{"line":20,"column":535},"end":{"line":20,"column":553}}},"5":{"name":"(anonymous_5)","line":32,"loc":{"start":{"line":32,"column":40},"end":{"line":32,"column":57}}},"6":{"name":"(anonymous_6)","line":38,"loc":{"start":{"line":38,"column":3},"end":{"line":38,"column":23}}},"7":{"name":"(anonymous_7)","line":41,"loc":{"start":{"line":41,"column":17},"end":{"line":41,"column":35}}},"8":{"name":"SaveInput","line":43,"loc":{"start":{"line":43,"column":4},"end":{"line":43,"column":25}}},"9":{"name":"(anonymous_9)","line":46,"loc":{"start":{"line":46,"column":34},"end":{"line":46,"column":47}}},"10":{"name":"(anonymous_10)","line":52,"loc":{"start":{"line":52,"column":33},"end":{"line":52,"column":45}}},"11":{"name":"(anonymous_11)","line":61,"loc":{"start":{"line":61,"column":39},"end":{"line":61,"column":56}}},"12":{"name":"(anonymous_12)","line":66,"loc":{"start":{"line":66,"column":3},"end":{"line":66,"column":30}}},"13":{"name":"(anonymous_13)","line":68,"loc":{"start":{"line":68,"column":17},"end":{"line":68,"column":40}}},"14":{"name":"(anonymous_14)","line":73,"loc":{"start":{"line":73,"column":20},"end":{"line":73,"column":38}}},"15":{"name":"MyLayoutItem","line":75,"loc":{"start":{"line":75,"column":4},"end":{"line":75,"column":28}}},"16":{"name":"(anonymous_16)","line":78,"loc":{"start":{"line":78,"column":36},"end":{"line":78,"column":48}}},"17":{"name":"(anonymous_17)","line":87,"loc":{"start":{"line":87,"column":80},"end":{"line":87,"column":92}}},"18":{"name":"(anonymous_18)","line":87,"loc":{"start":{"line":87,"column":262},"end":{"line":87,"column":275}}},"19":{"name":"(anonymous_19)","line":100,"loc":{"start":{"line":100,"column":39},"end":{"line":100,"column":56}}},"20":{"name":"(anonymous_20)","line":104,"loc":{"start":{"line":104,"column":3},"end":{"line":104,"column":30}}},"21":{"name":"(anonymous_21)","line":106,"loc":{"start":{"line":106,"column":22},"end":{"line":106,"column":39}}},"22":{"name":"(anonymous_22)","line":107,"loc":{"start":{"line":107,"column":17},"end":{"line":107,"column":34}}},"23":{"name":"(anonymous_23)","line":115,"loc":{"start":{"line":115,"column":46},"end":{"line":115,"column":63}}},"24":{"name":"(anonymous_24)","line":120,"loc":{"start":{"line":120,"column":3},"end":{"line":120,"column":30}}},"25":{"name":"(anonymous_25)","line":122,"loc":{"start":{"line":122,"column":17},"end":{"line":122,"column":34}}},"26":{"name":"(anonymous_26)","line":125,"loc":{"start":{"line":125,"column":45},"end":{"line":125,"column":62}}},"27":{"name":"(anonymous_27)","line":131,"loc":{"start":{"line":131,"column":3},"end":{"line":131,"column":23}}},"28":{"name":"(anonymous_28)","line":133,"loc":{"start":{"line":133,"column":17},"end":{"line":133,"column":34}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":9,"column":2}},"2":{"start":{"line":6,"column":4},"end":{"line":6,"column":58}},"3":{"start":{"line":6,"column":21},"end":{"line":6,"column":58}},"4":{"start":{"line":6,"column":46},"end":{"line":6,"column":58}},"5":{"start":{"line":7,"column":4},"end":{"line":7,"column":43}},"6":{"start":{"line":7,"column":20},"end":{"line":7,"column":41}},"7":{"start":{"line":8,"column":4},"end":{"line":8,"column":89}},"8":{"start":{"line":10,"column":0},"end":{"line":10,"column":29}},"9":{"start":{"line":11,"column":0},"end":{"line":11,"column":43}},"10":{"start":{"line":12,"column":0},"end":{"line":12,"column":26}},"11":{"start":{"line":13,"column":0},"end":{"line":13,"column":35}},"12":{"start":{"line":14,"column":0},"end":{"line":14,"column":38}},"13":{"start":{"line":15,"column":0},"end":{"line":15,"column":31}},"14":{"start":{"line":19,"column":0},"end":{"line":23,"column":2}},"15":{"start":{"line":20,"column":4},"end":{"line":22,"column":9}},"16":{"start":{"line":21,"column":8},"end":{"line":21,"column":114}},"17":{"start":{"line":24,"column":0},"end":{"line":30,"column":2}},"18":{"start":{"line":31,"column":0},"end":{"line":31,"column":62}},"19":{"start":{"line":32,"column":0},"end":{"line":40,"column":22}},"20":{"start":{"line":33,"column":4},"end":{"line":37,"column":6}},"21":{"start":{"line":39,"column":4},"end":{"line":39,"column":14}},"22":{"start":{"line":41,"column":0},"end":{"line":56,"column":20}},"23":{"start":{"line":42,"column":4},"end":{"line":42,"column":33}},"24":{"start":{"line":43,"column":4},"end":{"line":45,"column":5}},"25":{"start":{"line":44,"column":8},"end":{"line":44,"column":38}},"26":{"start":{"line":46,"column":4},"end":{"line":51,"column":6}},"27":{"start":{"line":47,"column":8},"end":{"line":50,"column":9}},"28":{"start":{"line":48,"column":12},"end":{"line":48,"column":66}},"29":{"start":{"line":49,"column":12},"end":{"line":49,"column":39}},"30":{"start":{"line":52,"column":4},"end":{"line":54,"column":6}},"31":{"start":{"line":53,"column":8},"end":{"line":53,"column":376}},"32":{"start":{"line":55,"column":4},"end":{"line":55,"column":21}},"33":{"start":{"line":57,"column":0},"end":{"line":60,"column":2}},"34":{"start":{"line":61,"column":0},"end":{"line":72,"column":14}},"35":{"start":{"line":62,"column":4},"end":{"line":65,"column":6}},"36":{"start":{"line":67,"column":4},"end":{"line":71,"column":6}},"37":{"start":{"line":69,"column":12},"end":{"line":69,"column":61}},"38":{"start":{"line":73,"column":0},"end":{"line":93,"column":20}},"39":{"start":{"line":74,"column":4},"end":{"line":74,"column":36}},"40":{"start":{"line":75,"column":4},"end":{"line":77,"column":5}},"41":{"start":{"line":76,"column":8},"end":{"line":76,"column":38}},"42":{"start":{"line":78,"column":4},"end":{"line":91,"column":6}},"43":{"start":{"line":79,"column":8},"end":{"line":79,"column":31}},"44":{"start":{"line":80,"column":8},"end":{"line":80,"column":34}},"45":{"start":{"line":81,"column":8},"end":{"line":86,"column":9}},"46":{"start":{"line":82,"column":12},"end":{"line":82,"column":56}},"47":{"start":{"line":85,"column":12},"end":{"line":85,"column":47}},"48":{"start":{"line":87,"column":8},"end":{"line":90,"column":30}},"49":{"start":{"line":87,"column":94},"end":{"line":87,"column":122}},"50":{"start":{"line":88,"column":12},"end":{"line":88,"column":38}},"51":{"start":{"line":89,"column":12},"end":{"line":89,"column":32}},"52":{"start":{"line":92,"column":4},"end":{"line":92,"column":24}},"53":{"start":{"line":94,"column":0},"end":{"line":99,"column":2}},"54":{"start":{"line":100,"column":0},"end":{"line":109,"column":17}},"55":{"start":{"line":101,"column":4},"end":{"line":103,"column":6}},"56":{"start":{"line":105,"column":4},"end":{"line":108,"column":6}},"57":{"start":{"line":106,"column":41},"end":{"line":106,"column":96}},"58":{"start":{"line":107,"column":36},"end":{"line":107,"column":89}},"59":{"start":{"line":115,"column":0},"end":{"line":124,"column":16}},"60":{"start":{"line":116,"column":4},"end":{"line":119,"column":6}},"61":{"start":{"line":121,"column":4},"end":{"line":123,"column":6}},"62":{"start":{"line":122,"column":36},"end":{"line":122,"column":82}},"63":{"start":{"line":125,"column":0},"end":{"line":135,"column":16}},"64":{"start":{"line":126,"column":4},"end":{"line":130,"column":6}},"65":{"start":{"line":132,"column":4},"end":{"line":134,"column":6}},"66":{"start":{"line":133,"column":36},"end":{"line":133,"column":99}}},"branchMap":{"1":{"line":5,"type":"binary-expr","locations":[{"start":{"line":5,"column":17},"end":{"line":5,"column":21}},{"start":{"line":5,"column":25},"end":{"line":5,"column":39}},{"start":{"line":5,"column":44},"end":{"line":9,"column":1}}]},"2":{"line":6,"type":"if","locations":[{"start":{"line":6,"column":21},"end":{"line":6,"column":21}},{"start":{"line":6,"column":21},"end":{"line":6,"column":21}}]},"3":{"line":8,"type":"cond-expr","locations":[{"start":{"line":8,"column":31},"end":{"line":8,"column":47}},{"start":{"line":8,"column":51},"end":{"line":8,"column":87}}]},"4":{"line":47,"type":"if","locations":[{"start":{"line":47,"column":8},"end":{"line":47,"column":8}},{"start":{"line":47,"column":8},"end":{"line":47,"column":8}}]},"5":{"line":81,"type":"if","locations":[{"start":{"line":81,"column":8},"end":{"line":81,"column":8}},{"start":{"line":81,"column":8},"end":{"line":81,"column":8}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var __extends = (this && this.__extends) || function (d, b) {","    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];","    function __() { this.constructor = d; }","    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());","};","var React = require('react');","var react_redux_1 = require('react-redux');","var _ = require('lodash');","var Layouts = require('./layouts');","var ui = require('../ui/elements.ui');","var react_1 = require(\"react\");","/*TODO: Add remove button next to each loadable layout"," * - Connect with Actions"," * */","var LayoutsTopNavItem = function (props) {","    return React.createElement(\"div\", {className: \"ui simple dropdown item\"}, \"Layout\", React.createElement(\"i\", {className: \"dropdown icon\"}), React.createElement(\"div\", {className: \"ui menu\"}, React.createElement(SaveLayout, null), React.createElement(ResetLayoutButton, {text: \"Reset Current Layout\", icon: \"undo\"}), React.createElement(SaveLayoutButton, {text: \"Save Layout\", icon: \"save\"}), React.createElement(\"div\", {className: \"ui divider\"}), React.createElement(\"div\", {className: \"header\"}, \"Load Layout\"), props.layouts.map(function (layout) {","        return React.createElement(LayoutItem, {text: layout.name, icon: \"plus\", layout: layout, key: layout.id});","    })));","};","LayoutsTopNavItem.propTypes = {","    layouts: react_1.PropTypes.arrayOf(react_1.PropTypes.shape({","        name: react_1.PropTypes.string","    })),","    widgets: react_1.PropTypes.object,","    currentLayout: react_1.PropTypes.object","};","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = react_redux_1.connect(function (state) {","    return {","        layouts: _.valuesIn(state.layouts),","        currentLayout: state.currentLayout,","        widgets: state.widgets","    };","}, function (dispatch) {","    return {};","})(LayoutsTopNavItem);","var SaveInput = (function (_super) {","    __extends(SaveInput, _super);","    function SaveInput() {","        _super.apply(this, arguments);","    }","    SaveInput.prototype.onEnter = function (e) {","        if (e.key === 'Enter') {","            this.props.onEnter(this.refs.input.value, this.props);","            this.refs.input.value = '';","        }","    };","    SaveInput.prototype.render = function () {","        return React.createElement(\"div\", {className: \"item\"}, React.createElement(\"div\", {className: \"ui icon input\"}, React.createElement(\"input\", {type: \"text\", placeholder: \"Save as...\", ref: \"input\", onKeyPress: this.onEnter.bind(this)}), React.createElement(\"i\", {className: \"save icon\", onClick: this.onEnter.bind(this), style: { cursor: \"pointer\", zIndex: 90000 }})));","    };","    return SaveInput;","}(React.Component));","SaveInput.propTypes = {","    onEnter: react_1.PropTypes.func,","    widgets: react_1.PropTypes.object","};","var SaveLayout = react_redux_1.connect(function (state) {","    return {","        layouts: _.valuesIn(state.layouts),","        widgets: state.widgets","    };","}, function (dispatch, props) {","    return {","        onEnter: function (name, props) {","            dispatch(Layouts.addLayout(name, props.widgets));","        }","    };","})(SaveInput);","var MyLayoutItem = (function (_super) {","    __extends(MyLayoutItem, _super);","    function MyLayoutItem() {","        _super.apply(this, arguments);","    }","    MyLayoutItem.prototype.render = function () {","        var props = this.props;","        var indexIconClass = null;","        if (props.currentLayout.id == props.layout.id) {","            indexIconClass = \"tiny selected radio icon\";","        }","        else {","            indexIconClass = \"tiny radio icon\";","        }","        return React.createElement(\"a\", {className: \"item\", href: \"#\", onClick: function () { return props.onClick(props); }}, React.createElement(\"i\", {className: indexIconClass}), React.createElement(\"i\", {className: \"right floated remove huge icon\", onClick: function (e) {","            props.deleteLayout(props);","            e.stopPropagation();","        }}), \" \", props.text);","    };","    return MyLayoutItem;","}(React.Component));","MyLayoutItem.propTypes = {","    deleteLayout: react_1.PropTypes.func.isRequired,","    onClick: react_1.PropTypes.func.isRequired,","    layout: react_1.PropTypes.object.isRequired,","    currentLayout: react_1.PropTypes.object","};","var LayoutItem = react_redux_1.connect(function (state) {","    return {","        currentLayout: state.currentLayout","    };","}, function (dispatch, props) {","    return {","        deleteLayout: function (props) { return dispatch(Layouts.deleteLayout(props.layout.id)); },","        onClick: function (props) { return dispatch(Layouts.loadLayout(props.layout.id)); }","    };","})(MyLayoutItem);","/*"," const ResetLayoutButtonc = (props) => {"," return <ui.LinkItem"," onClick={this.props.resetLayout.bind(this, this.props)}></ui.LinkItem>"," };*/","var ResetLayoutButton = react_redux_1.connect(function (state) {","    return {","        id: state.currentLayout.id,","        disabled: !state.currentLayout.id","    };","}, function (dispatch, props) {","    return {","        onClick: function (props) { return dispatch(Layouts.loadLayout(props.id)); }","    };","})(ui.LinkItem);","var SaveLayoutButton = react_redux_1.connect(function (state) {","    return {","        id: state.currentLayout.id,","        widgets: state.widgets,","        disabled: !state.currentLayout.id","    };","}, function (dispatch) {","    return {","        onClick: function (props) { return dispatch(Layouts.updateLayout(props.id, props.widgets)); }","    };","})(ui.LinkItem);",""]};
+	}
+	__cov_hlhHOG_hrqY8jVmt3Q_pug = __cov_hlhHOG_hrqY8jVmt3Q_pug['/home/travis/build/Niondir/iot-dashboard/src/layouts/layouts.ui.js'];
+	__cov_hlhHOG_hrqY8jVmt3Q_pug.s['1']++;var __extends=(__cov_hlhHOG_hrqY8jVmt3Q_pug.b['1'][0]++,this)&&(__cov_hlhHOG_hrqY8jVmt3Q_pug.b['1'][1]++,this.__extends)||(__cov_hlhHOG_hrqY8jVmt3Q_pug.b['1'][2]++,function(d,b){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['1']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['2']++;for(var p in b){__cov_hlhHOG_hrqY8jVmt3Q_pug.s['3']++;if(b.hasOwnProperty(p)){__cov_hlhHOG_hrqY8jVmt3Q_pug.b['2'][0]++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['4']++;d[p]=b[p];}else{__cov_hlhHOG_hrqY8jVmt3Q_pug.b['2'][1]++;}}function __(){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['2']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['6']++;this.constructor=d;}__cov_hlhHOG_hrqY8jVmt3Q_pug.s['7']++;d.prototype=b===null?(__cov_hlhHOG_hrqY8jVmt3Q_pug.b['3'][0]++,Object.create(b)):(__cov_hlhHOG_hrqY8jVmt3Q_pug.b['3'][1]++,(__.prototype=b.prototype,new __()));});__cov_hlhHOG_hrqY8jVmt3Q_pug.s['8']++;var React=__webpack_require__(20);__cov_hlhHOG_hrqY8jVmt3Q_pug.s['9']++;var react_redux_1=__webpack_require__(39);__cov_hlhHOG_hrqY8jVmt3Q_pug.s['10']++;var _=__webpack_require__(21);__cov_hlhHOG_hrqY8jVmt3Q_pug.s['11']++;var Layouts=__webpack_require__(81);__cov_hlhHOG_hrqY8jVmt3Q_pug.s['12']++;var ui=__webpack_require__(82);__cov_hlhHOG_hrqY8jVmt3Q_pug.s['13']++;var react_1=__webpack_require__(20);__cov_hlhHOG_hrqY8jVmt3Q_pug.s['14']++;var LayoutsTopNavItem=function(props){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['3']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['15']++;return React.createElement('div',{className:'ui simple dropdown item'},'Layout',React.createElement('i',{className:'dropdown icon'}),React.createElement('div',{className:'ui menu'},React.createElement(SaveLayout,null),React.createElement(ResetLayoutButton,{text:'Reset Current Layout',icon:'undo'}),React.createElement(SaveLayoutButton,{text:'Save Layout',icon:'save'}),React.createElement('div',{className:'ui divider'}),React.createElement('div',{className:'header'},'Load Layout'),props.layouts.map(function(layout){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['4']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['16']++;return React.createElement(LayoutItem,{text:layout.name,icon:'plus',layout:layout,key:layout.id});})));};__cov_hlhHOG_hrqY8jVmt3Q_pug.s['17']++;LayoutsTopNavItem.propTypes={layouts:react_1.PropTypes.arrayOf(react_1.PropTypes.shape({name:react_1.PropTypes.string})),widgets:react_1.PropTypes.object,currentLayout:react_1.PropTypes.object};__cov_hlhHOG_hrqY8jVmt3Q_pug.s['18']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_hlhHOG_hrqY8jVmt3Q_pug.s['19']++;exports.default=react_redux_1.connect(function(state){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['5']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['20']++;return{layouts:_.valuesIn(state.layouts),currentLayout:state.currentLayout,widgets:state.widgets};},function(dispatch){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['6']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['21']++;return{};})(LayoutsTopNavItem);__cov_hlhHOG_hrqY8jVmt3Q_pug.s['22']++;var SaveInput=function(_super){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['7']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['23']++;__extends(SaveInput,_super);function SaveInput(){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['8']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['25']++;_super.apply(this,arguments);}__cov_hlhHOG_hrqY8jVmt3Q_pug.s['26']++;SaveInput.prototype.onEnter=function(e){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['9']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['27']++;if(e.key==='Enter'){__cov_hlhHOG_hrqY8jVmt3Q_pug.b['4'][0]++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['28']++;this.props.onEnter(this.refs.input.value,this.props);__cov_hlhHOG_hrqY8jVmt3Q_pug.s['29']++;this.refs.input.value='';}else{__cov_hlhHOG_hrqY8jVmt3Q_pug.b['4'][1]++;}};__cov_hlhHOG_hrqY8jVmt3Q_pug.s['30']++;SaveInput.prototype.render=function(){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['10']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['31']++;return React.createElement('div',{className:'item'},React.createElement('div',{className:'ui icon input'},React.createElement('input',{type:'text',placeholder:'Save as...',ref:'input',onKeyPress:this.onEnter.bind(this)}),React.createElement('i',{className:'save icon',onClick:this.onEnter.bind(this),style:{cursor:'pointer',zIndex:90000}})));};__cov_hlhHOG_hrqY8jVmt3Q_pug.s['32']++;return SaveInput;}(React.Component);__cov_hlhHOG_hrqY8jVmt3Q_pug.s['33']++;SaveInput.propTypes={onEnter:react_1.PropTypes.func,widgets:react_1.PropTypes.object};__cov_hlhHOG_hrqY8jVmt3Q_pug.s['34']++;var SaveLayout=react_redux_1.connect(function(state){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['11']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['35']++;return{layouts:_.valuesIn(state.layouts),widgets:state.widgets};},function(dispatch,props){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['12']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['36']++;return{onEnter:function(name,props){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['13']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['37']++;dispatch(Layouts.addLayout(name,props.widgets));}};})(SaveInput);__cov_hlhHOG_hrqY8jVmt3Q_pug.s['38']++;var MyLayoutItem=function(_super){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['14']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['39']++;__extends(MyLayoutItem,_super);function MyLayoutItem(){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['15']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['41']++;_super.apply(this,arguments);}__cov_hlhHOG_hrqY8jVmt3Q_pug.s['42']++;MyLayoutItem.prototype.render=function(){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['16']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['43']++;var props=this.props;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['44']++;var indexIconClass=null;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['45']++;if(props.currentLayout.id==props.layout.id){__cov_hlhHOG_hrqY8jVmt3Q_pug.b['5'][0]++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['46']++;indexIconClass='tiny selected radio icon';}else{__cov_hlhHOG_hrqY8jVmt3Q_pug.b['5'][1]++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['47']++;indexIconClass='tiny radio icon';}__cov_hlhHOG_hrqY8jVmt3Q_pug.s['48']++;return React.createElement('a',{className:'item',href:'#',onClick:function(){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['17']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['49']++;return props.onClick(props);}},React.createElement('i',{className:indexIconClass}),React.createElement('i',{className:'right floated remove huge icon',onClick:function(e){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['18']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['50']++;props.deleteLayout(props);__cov_hlhHOG_hrqY8jVmt3Q_pug.s['51']++;e.stopPropagation();}}),' ',props.text);};__cov_hlhHOG_hrqY8jVmt3Q_pug.s['52']++;return MyLayoutItem;}(React.Component);__cov_hlhHOG_hrqY8jVmt3Q_pug.s['53']++;MyLayoutItem.propTypes={deleteLayout:react_1.PropTypes.func.isRequired,onClick:react_1.PropTypes.func.isRequired,layout:react_1.PropTypes.object.isRequired,currentLayout:react_1.PropTypes.object};__cov_hlhHOG_hrqY8jVmt3Q_pug.s['54']++;var LayoutItem=react_redux_1.connect(function(state){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['19']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['55']++;return{currentLayout:state.currentLayout};},function(dispatch,props){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['20']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['56']++;return{deleteLayout:function(props){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['21']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['57']++;return dispatch(Layouts.deleteLayout(props.layout.id));},onClick:function(props){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['22']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['58']++;return dispatch(Layouts.loadLayout(props.layout.id));}};})(MyLayoutItem);__cov_hlhHOG_hrqY8jVmt3Q_pug.s['59']++;var ResetLayoutButton=react_redux_1.connect(function(state){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['23']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['60']++;return{id:state.currentLayout.id,disabled:!state.currentLayout.id};},function(dispatch,props){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['24']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['61']++;return{onClick:function(props){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['25']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['62']++;return dispatch(Layouts.loadLayout(props.id));}};})(ui.LinkItem);__cov_hlhHOG_hrqY8jVmt3Q_pug.s['63']++;var SaveLayoutButton=react_redux_1.connect(function(state){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['26']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['64']++;return{id:state.currentLayout.id,widgets:state.widgets,disabled:!state.currentLayout.id};},function(dispatch){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['27']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['65']++;return{onClick:function(props){__cov_hlhHOG_hrqY8jVmt3Q_pug.f['28']++;__cov_hlhHOG_hrqY8jVmt3Q_pug.s['66']++;return dispatch(Layouts.updateLayout(props.id,props.widgets));}};})(ui.LinkItem);
 
 
 /***/ },
 /* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Widgets = __webpack_require__(45);
-	var uuid_1 = __webpack_require__(46);
-	var reducer_1 = __webpack_require__(47);
-	var actionNames_1 = __webpack_require__(43);
-	var initialLayouts = {
-	    "default": {
-	        id: "default",
-	        name: "Default Layout",
-	        widgets: Widgets.initialWidgets
-	    }
-	};
-	function addLayout(name, widgets) {
-	    return function (dispatch) {
-	        var addLayout = dispatch({
-	            type: actionNames_1.ADD_LAYOUT,
-	            id: uuid_1.generate(),
-	            name: name,
-	            widgets: widgets
-	        });
-	        dispatch(setCurrentLayout(addLayout.id));
-	    };
+	var __cov_wrxcjgBrYiSwOZy8QebbBw = (Function('return this'))();
+	if (!__cov_wrxcjgBrYiSwOZy8QebbBw.__coverage__) { __cov_wrxcjgBrYiSwOZy8QebbBw.__coverage__ = {}; }
+	__cov_wrxcjgBrYiSwOZy8QebbBw = __cov_wrxcjgBrYiSwOZy8QebbBw.__coverage__;
+	if (!(__cov_wrxcjgBrYiSwOZy8QebbBw['/home/travis/build/Niondir/iot-dashboard/src/layouts/layouts.js'])) {
+	   __cov_wrxcjgBrYiSwOZy8QebbBw['/home/travis/build/Niondir/iot-dashboard/src/layouts/layouts.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/layouts/layouts.js","s":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":1,"7":0,"8":0,"9":0,"10":0,"11":1,"12":0,"13":0,"14":1,"15":0,"16":0,"17":1,"18":0,"19":0,"20":1,"21":0,"22":0,"23":1,"24":0,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":1,"36":0,"37":0,"38":0,"39":0,"40":0,"41":0,"42":1,"43":0,"44":0,"45":0,"46":0,"47":0,"48":1,"49":0,"50":0,"51":0,"52":0,"53":0,"54":0,"55":0,"56":0,"57":0},"b":{"1":[0,0],"2":[0,0],"3":[0],"4":[0,0,0],"5":[0,0],"6":[0,0,0],"7":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0},"fnMap":{"1":{"name":"addLayout","line":16,"loc":{"start":{"line":16,"column":0},"end":{"line":16,"column":34}}},"2":{"name":"(anonymous_2)","line":17,"loc":{"start":{"line":17,"column":11},"end":{"line":17,"column":31}}},"3":{"name":"updateLayout","line":28,"loc":{"start":{"line":28,"column":0},"end":{"line":28,"column":35}}},"4":{"name":"deleteLayout","line":36,"loc":{"start":{"line":36,"column":0},"end":{"line":36,"column":26}}},"5":{"name":"setCurrentLayout","line":43,"loc":{"start":{"line":43,"column":0},"end":{"line":43,"column":30}}},"6":{"name":"loadEmptyLayout","line":50,"loc":{"start":{"line":50,"column":0},"end":{"line":50,"column":27}}},"7":{"name":"loadLayout","line":60,"loc":{"start":{"line":60,"column":0},"end":{"line":60,"column":24}}},"8":{"name":"(anonymous_8)","line":61,"loc":{"start":{"line":61,"column":11},"end":{"line":61,"column":41}}},"9":{"name":"(anonymous_9)","line":69,"loc":{"start":{"line":69,"column":19},"end":{"line":69,"column":31}}},"10":{"name":"layouts","line":80,"loc":{"start":{"line":80,"column":0},"end":{"line":80,"column":32}}},"11":{"name":"layout","line":89,"loc":{"start":{"line":89,"column":0},"end":{"line":89,"column":31}}},"12":{"name":"currentLayout","line":106,"loc":{"start":{"line":106,"column":0},"end":{"line":106,"column":38}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":44}},"2":{"start":{"line":6,"column":0},"end":{"line":6,"column":37}},"3":{"start":{"line":7,"column":0},"end":{"line":7,"column":43}},"4":{"start":{"line":8,"column":0},"end":{"line":8,"column":46}},"5":{"start":{"line":9,"column":0},"end":{"line":15,"column":2}},"6":{"start":{"line":16,"column":0},"end":{"line":26,"column":1}},"7":{"start":{"line":17,"column":4},"end":{"line":25,"column":6}},"8":{"start":{"line":18,"column":8},"end":{"line":23,"column":11}},"9":{"start":{"line":24,"column":8},"end":{"line":24,"column":49}},"10":{"start":{"line":27,"column":0},"end":{"line":27,"column":30}},"11":{"start":{"line":28,"column":0},"end":{"line":34,"column":1}},"12":{"start":{"line":29,"column":4},"end":{"line":33,"column":6}},"13":{"start":{"line":35,"column":0},"end":{"line":35,"column":36}},"14":{"start":{"line":36,"column":0},"end":{"line":41,"column":1}},"15":{"start":{"line":37,"column":4},"end":{"line":40,"column":6}},"16":{"start":{"line":42,"column":0},"end":{"line":42,"column":36}},"17":{"start":{"line":43,"column":0},"end":{"line":48,"column":1}},"18":{"start":{"line":44,"column":4},"end":{"line":47,"column":6}},"19":{"start":{"line":49,"column":0},"end":{"line":49,"column":44}},"20":{"start":{"line":50,"column":0},"end":{"line":58,"column":1}},"21":{"start":{"line":51,"column":4},"end":{"line":57,"column":6}},"22":{"start":{"line":59,"column":0},"end":{"line":59,"column":42}},"23":{"start":{"line":60,"column":0},"end":{"line":77,"column":1}},"24":{"start":{"line":61,"column":4},"end":{"line":76,"column":6}},"25":{"start":{"line":62,"column":8},"end":{"line":62,"column":31}},"26":{"start":{"line":63,"column":8},"end":{"line":63,"column":39}},"27":{"start":{"line":65,"column":8},"end":{"line":65,"column":36}},"28":{"start":{"line":66,"column":8},"end":{"line":68,"column":9}},"29":{"start":{"line":67,"column":12},"end":{"line":67,"column":19}},"30":{"start":{"line":69,"column":8},"end":{"line":75,"column":14}},"31":{"start":{"line":70,"column":12},"end":{"line":70,"column":50}},"32":{"start":{"line":71,"column":12},"end":{"line":74,"column":15}},"33":{"start":{"line":78,"column":0},"end":{"line":78,"column":32}},"34":{"start":{"line":79,"column":0},"end":{"line":79,"column":114}},"35":{"start":{"line":80,"column":0},"end":{"line":87,"column":1}},"36":{"start":{"line":81,"column":4},"end":{"line":81,"column":53}},"37":{"start":{"line":81,"column":28},"end":{"line":81,"column":51}},"38":{"start":{"line":82,"column":4},"end":{"line":82,"column":45}},"39":{"start":{"line":83,"column":4},"end":{"line":86,"column":5}},"40":{"start":{"line":85,"column":12},"end":{"line":85,"column":25}},"41":{"start":{"line":88,"column":0},"end":{"line":88,"column":26}},"42":{"start":{"line":89,"column":0},"end":{"line":104,"column":1}},"43":{"start":{"line":90,"column":4},"end":{"line":103,"column":5}},"44":{"start":{"line":92,"column":12},"end":{"line":96,"column":14}},"45":{"start":{"line":98,"column":12},"end":{"line":100,"column":15}},"46":{"start":{"line":102,"column":12},"end":{"line":102,"column":25}},"47":{"start":{"line":105,"column":0},"end":{"line":105,"column":24}},"48":{"start":{"line":106,"column":0},"end":{"line":123,"column":1}},"49":{"start":{"line":107,"column":4},"end":{"line":107,"column":41}},"50":{"start":{"line":107,"column":28},"end":{"line":107,"column":39}},"51":{"start":{"line":108,"column":4},"end":{"line":122,"column":5}},"52":{"start":{"line":110,"column":12},"end":{"line":112,"column":15}},"53":{"start":{"line":114,"column":12},"end":{"line":118,"column":13}},"54":{"start":{"line":115,"column":16},"end":{"line":117,"column":19}},"55":{"start":{"line":119,"column":12},"end":{"line":119,"column":25}},"56":{"start":{"line":121,"column":12},"end":{"line":121,"column":25}},"57":{"start":{"line":124,"column":0},"end":{"line":124,"column":38}}},"branchMap":{"1":{"line":66,"type":"if","locations":[{"start":{"line":66,"column":8},"end":{"line":66,"column":8}},{"start":{"line":66,"column":8},"end":{"line":66,"column":8}}]},"2":{"line":81,"type":"if","locations":[{"start":{"line":81,"column":4},"end":{"line":81,"column":4}},{"start":{"line":81,"column":4},"end":{"line":81,"column":4}}]},"3":{"line":83,"type":"switch","locations":[{"start":{"line":84,"column":8},"end":{"line":85,"column":25}}]},"4":{"line":90,"type":"switch","locations":[{"start":{"line":91,"column":8},"end":{"line":96,"column":14}},{"start":{"line":97,"column":8},"end":{"line":100,"column":15}},{"start":{"line":101,"column":8},"end":{"line":102,"column":25}}]},"5":{"line":107,"type":"if","locations":[{"start":{"line":107,"column":4},"end":{"line":107,"column":4}},{"start":{"line":107,"column":4},"end":{"line":107,"column":4}}]},"6":{"line":108,"type":"switch","locations":[{"start":{"line":109,"column":8},"end":{"line":112,"column":15}},{"start":{"line":113,"column":8},"end":{"line":119,"column":25}},{"start":{"line":120,"column":8},"end":{"line":121,"column":25}}]},"7":{"line":114,"type":"if","locations":[{"start":{"line":114,"column":12},"end":{"line":114,"column":12}},{"start":{"line":114,"column":12},"end":{"line":114,"column":12}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var Widgets = require('../widgets/widgets');","var uuid_1 = require('../util/uuid');","var reducer_1 = require('../util/reducer');","var actionNames_1 = require('../actionNames');","var initialLayouts = {","    \"default\": {","        id: \"default\",","        name: \"Default Layout\",","        widgets: Widgets.initialWidgets","    }","};","function addLayout(name, widgets) {","    return function (dispatch) {","        var addLayout = dispatch({","            type: actionNames_1.ADD_LAYOUT,","            id: uuid_1.generate(),","            name: name,","            widgets: widgets","        });","        dispatch(setCurrentLayout(addLayout.id));","    };","}","exports.addLayout = addLayout;","function updateLayout(id, widgets) {","    return {","        type: actionNames_1.UPDATE_LAYOUT,","        id: id,","        widgets: widgets","    };","}","exports.updateLayout = updateLayout;","function deleteLayout(id) {","    return {","        type: actionNames_1.DELETE_LAYOUT,","        id: id","    };","}","exports.deleteLayout = deleteLayout;","function setCurrentLayout(id) {","    return {","        type: actionNames_1.SET_CURRENT_LAYOUT,","        id: id","    };","}","exports.setCurrentLayout = setCurrentLayout;","function loadEmptyLayout() {","    return {","        type: actionNames_1.LOAD_LAYOUT,","        layout: {","            id: \"empty\",","            widgets: {}","        }","    };","}","exports.loadEmptyLayout = loadEmptyLayout;","function loadLayout(id) {","    return function (dispatch, getState) {","        var state = getState();","        var layout = state.layouts[id];","        // Bad hack to force the grid layout to update correctly","        dispatch(loadEmptyLayout());","        if (!layout) {","            return;","        }","        setTimeout(function () {","            dispatch(setCurrentLayout(layout.id));","            dispatch({","                type: actionNames_1.LOAD_LAYOUT,","                layout: layout","            });","        }, 0);","    };","}","exports.loadLayout = loadLayout;","var layoutCrudReducer = reducer_1.genCrudReducer([actionNames_1.ADD_LAYOUT, actionNames_1.DELETE_LAYOUT], layout);","function layouts(state, action) {","    if (state === void 0) { state = initialLayouts; }","    state = layoutCrudReducer(state, action);","    switch (action.type) {","        default:","            return state;","    }","}","exports.layouts = layouts;","function layout(state, action) {","    switch (action.type) {","        case actionNames_1.ADD_LAYOUT:","            return {","                id: action.id,","                name: action.name,","                widgets: action.widgets","            };","        case actionNames_1.UPDATE_LAYOUT:","            return Object.assign({}, state, {","                widgets: action.widgets","            });","        default:","            return state;","    }","}","exports.layout = layout;","function currentLayout(state, action) {","    if (state === void 0) { state = {}; }","    switch (action.type) {","        case actionNames_1.SET_CURRENT_LAYOUT:","            return Object.assign({}, state, {","                id: action.id","            });","        case actionNames_1.DELETE_LAYOUT:","            if (action.id == state.id) {","                return Object.assign({}, state, {","                    id: undefined","                });","            }","            return state;","        default:","            return state;","    }","}","exports.currentLayout = currentLayout;",""]};
 	}
-	exports.addLayout = addLayout;
-	function updateLayout(id, widgets) {
-	    return {
-	        type: actionNames_1.UPDATE_LAYOUT,
-	        id: id,
-	        widgets: widgets
-	    };
-	}
-	exports.updateLayout = updateLayout;
-	function deleteLayout(id) {
-	    return {
-	        type: actionNames_1.DELETE_LAYOUT,
-	        id: id
-	    };
-	}
-	exports.deleteLayout = deleteLayout;
-	function setCurrentLayout(id) {
-	    return {
-	        type: actionNames_1.SET_CURRENT_LAYOUT,
-	        id: id
-	    };
-	}
-	exports.setCurrentLayout = setCurrentLayout;
-	function loadEmptyLayout() {
-	    return {
-	        type: actionNames_1.LOAD_LAYOUT,
-	        layout: {
-	            id: "empty",
-	            widgets: {}
-	        }
-	    };
-	}
-	exports.loadEmptyLayout = loadEmptyLayout;
-	function loadLayout(id) {
-	    return function (dispatch, getState) {
-	        var state = getState();
-	        var layout = state.layouts[id];
-	        // Bad hack to force the grid layout to update correctly
-	        dispatch(loadEmptyLayout());
-	        if (!layout) {
-	            return;
-	        }
-	        setTimeout(function () {
-	            dispatch(setCurrentLayout(layout.id));
-	            dispatch({
-	                type: actionNames_1.LOAD_LAYOUT,
-	                layout: layout
-	            });
-	        }, 0);
-	    };
-	}
-	exports.loadLayout = loadLayout;
-	var layoutCrudReducer = reducer_1.genCrudReducer([actionNames_1.ADD_LAYOUT, actionNames_1.DELETE_LAYOUT], layout);
-	function layouts(state, action) {
-	    if (state === void 0) { state = initialLayouts; }
-	    state = layoutCrudReducer(state, action);
-	    switch (action.type) {
-	        default:
-	            return state;
-	    }
-	}
-	exports.layouts = layouts;
-	function layout(state, action) {
-	    switch (action.type) {
-	        case actionNames_1.ADD_LAYOUT:
-	            return {
-	                id: action.id,
-	                name: action.name,
-	                widgets: action.widgets
-	            };
-	        case actionNames_1.UPDATE_LAYOUT:
-	            return Object.assign({}, state, {
-	                widgets: action.widgets
-	            });
-	        default:
-	            return state;
-	    }
-	}
-	exports.layout = layout;
-	function currentLayout(state, action) {
-	    if (state === void 0) { state = {}; }
-	    switch (action.type) {
-	        case actionNames_1.SET_CURRENT_LAYOUT:
-	            return Object.assign({}, state, {
-	                id: action.id
-	            });
-	        case actionNames_1.DELETE_LAYOUT:
-	            if (action.id == state.id) {
-	                return Object.assign({}, state, {
-	                    id: undefined
-	                });
-	            }
-	            return state;
-	        default:
-	            return state;
-	    }
-	}
-	exports.currentLayout = currentLayout;
+	__cov_wrxcjgBrYiSwOZy8QebbBw = __cov_wrxcjgBrYiSwOZy8QebbBw['/home/travis/build/Niondir/iot-dashboard/src/layouts/layouts.js'];
+	__cov_wrxcjgBrYiSwOZy8QebbBw.s['1']++;var Widgets=__webpack_require__(45);__cov_wrxcjgBrYiSwOZy8QebbBw.s['2']++;var uuid_1=__webpack_require__(46);__cov_wrxcjgBrYiSwOZy8QebbBw.s['3']++;var reducer_1=__webpack_require__(47);__cov_wrxcjgBrYiSwOZy8QebbBw.s['4']++;var actionNames_1=__webpack_require__(43);__cov_wrxcjgBrYiSwOZy8QebbBw.s['5']++;var initialLayouts={'default':{id:'default',name:'Default Layout',widgets:Widgets.initialWidgets}};function addLayout(name,widgets){__cov_wrxcjgBrYiSwOZy8QebbBw.f['1']++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['7']++;return function(dispatch){__cov_wrxcjgBrYiSwOZy8QebbBw.f['2']++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['8']++;var addLayout=dispatch({type:actionNames_1.ADD_LAYOUT,id:uuid_1.generate(),name:name,widgets:widgets});__cov_wrxcjgBrYiSwOZy8QebbBw.s['9']++;dispatch(setCurrentLayout(addLayout.id));};}__cov_wrxcjgBrYiSwOZy8QebbBw.s['10']++;exports.addLayout=addLayout;function updateLayout(id,widgets){__cov_wrxcjgBrYiSwOZy8QebbBw.f['3']++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['12']++;return{type:actionNames_1.UPDATE_LAYOUT,id:id,widgets:widgets};}__cov_wrxcjgBrYiSwOZy8QebbBw.s['13']++;exports.updateLayout=updateLayout;function deleteLayout(id){__cov_wrxcjgBrYiSwOZy8QebbBw.f['4']++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['15']++;return{type:actionNames_1.DELETE_LAYOUT,id:id};}__cov_wrxcjgBrYiSwOZy8QebbBw.s['16']++;exports.deleteLayout=deleteLayout;function setCurrentLayout(id){__cov_wrxcjgBrYiSwOZy8QebbBw.f['5']++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['18']++;return{type:actionNames_1.SET_CURRENT_LAYOUT,id:id};}__cov_wrxcjgBrYiSwOZy8QebbBw.s['19']++;exports.setCurrentLayout=setCurrentLayout;function loadEmptyLayout(){__cov_wrxcjgBrYiSwOZy8QebbBw.f['6']++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['21']++;return{type:actionNames_1.LOAD_LAYOUT,layout:{id:'empty',widgets:{}}};}__cov_wrxcjgBrYiSwOZy8QebbBw.s['22']++;exports.loadEmptyLayout=loadEmptyLayout;function loadLayout(id){__cov_wrxcjgBrYiSwOZy8QebbBw.f['7']++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['24']++;return function(dispatch,getState){__cov_wrxcjgBrYiSwOZy8QebbBw.f['8']++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['25']++;var state=getState();__cov_wrxcjgBrYiSwOZy8QebbBw.s['26']++;var layout=state.layouts[id];__cov_wrxcjgBrYiSwOZy8QebbBw.s['27']++;dispatch(loadEmptyLayout());__cov_wrxcjgBrYiSwOZy8QebbBw.s['28']++;if(!layout){__cov_wrxcjgBrYiSwOZy8QebbBw.b['1'][0]++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['29']++;return;}else{__cov_wrxcjgBrYiSwOZy8QebbBw.b['1'][1]++;}__cov_wrxcjgBrYiSwOZy8QebbBw.s['30']++;setTimeout(function(){__cov_wrxcjgBrYiSwOZy8QebbBw.f['9']++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['31']++;dispatch(setCurrentLayout(layout.id));__cov_wrxcjgBrYiSwOZy8QebbBw.s['32']++;dispatch({type:actionNames_1.LOAD_LAYOUT,layout:layout});},0);};}__cov_wrxcjgBrYiSwOZy8QebbBw.s['33']++;exports.loadLayout=loadLayout;__cov_wrxcjgBrYiSwOZy8QebbBw.s['34']++;var layoutCrudReducer=reducer_1.genCrudReducer([actionNames_1.ADD_LAYOUT,actionNames_1.DELETE_LAYOUT],layout);function layouts(state,action){__cov_wrxcjgBrYiSwOZy8QebbBw.f['10']++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['36']++;if(state===void 0){__cov_wrxcjgBrYiSwOZy8QebbBw.b['2'][0]++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['37']++;state=initialLayouts;}else{__cov_wrxcjgBrYiSwOZy8QebbBw.b['2'][1]++;}__cov_wrxcjgBrYiSwOZy8QebbBw.s['38']++;state=layoutCrudReducer(state,action);__cov_wrxcjgBrYiSwOZy8QebbBw.s['39']++;switch(action.type){default:__cov_wrxcjgBrYiSwOZy8QebbBw.b['3'][0]++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['40']++;return state;}}__cov_wrxcjgBrYiSwOZy8QebbBw.s['41']++;exports.layouts=layouts;function layout(state,action){__cov_wrxcjgBrYiSwOZy8QebbBw.f['11']++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['43']++;switch(action.type){case actionNames_1.ADD_LAYOUT:__cov_wrxcjgBrYiSwOZy8QebbBw.b['4'][0]++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['44']++;return{id:action.id,name:action.name,widgets:action.widgets};case actionNames_1.UPDATE_LAYOUT:__cov_wrxcjgBrYiSwOZy8QebbBw.b['4'][1]++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['45']++;return Object.assign({},state,{widgets:action.widgets});default:__cov_wrxcjgBrYiSwOZy8QebbBw.b['4'][2]++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['46']++;return state;}}__cov_wrxcjgBrYiSwOZy8QebbBw.s['47']++;exports.layout=layout;function currentLayout(state,action){__cov_wrxcjgBrYiSwOZy8QebbBw.f['12']++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['49']++;if(state===void 0){__cov_wrxcjgBrYiSwOZy8QebbBw.b['5'][0]++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['50']++;state={};}else{__cov_wrxcjgBrYiSwOZy8QebbBw.b['5'][1]++;}__cov_wrxcjgBrYiSwOZy8QebbBw.s['51']++;switch(action.type){case actionNames_1.SET_CURRENT_LAYOUT:__cov_wrxcjgBrYiSwOZy8QebbBw.b['6'][0]++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['52']++;return Object.assign({},state,{id:action.id});case actionNames_1.DELETE_LAYOUT:__cov_wrxcjgBrYiSwOZy8QebbBw.b['6'][1]++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['53']++;if(action.id==state.id){__cov_wrxcjgBrYiSwOZy8QebbBw.b['7'][0]++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['54']++;return Object.assign({},state,{id:undefined});}else{__cov_wrxcjgBrYiSwOZy8QebbBw.b['7'][1]++;}__cov_wrxcjgBrYiSwOZy8QebbBw.s['55']++;return state;default:__cov_wrxcjgBrYiSwOZy8QebbBw.b['6'][2]++;__cov_wrxcjgBrYiSwOZy8QebbBw.s['56']++;return state;}}__cov_wrxcjgBrYiSwOZy8QebbBw.s['57']++;exports.currentLayout=currentLayout;
 
 
 /***/ },
 /* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var __assign = (this && this.__assign) || Object.assign || function(t) {
-	    for (var s, i = 1, n = arguments.length; i < n; i++) {
-	        s = arguments[i];
-	        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-	            t[p] = s[p];
-	    }
-	    return t;
-	};
-	var React = __webpack_require__(20);
-	var react_1 = __webpack_require__(20);
-	/**
-	 * This module contains generic UI Elements reuse in the app
-	 */
-	exports.LinkItem = function (props) {
-	    var icon;
-	    if (props.icon) {
-	        icon = React.createElement("i", {className: props.icon + " icon"});
-	    }
-	    return React.createElement("a", {className: "item" + (props.disabled ? " disabled" : ""), href: "#", onClick: function (e) {
-	        e.stopPropagation();
-	        e.preventDefault();
-	        props.onClick(props);
-	    }}, icon, " ", props.children, " ", props.text);
-	};
-	exports.LinkItem.propTypes = {
-	    onClick: react_1.PropTypes.func.isRequired,
-	    text: react_1.PropTypes.string,
-	    icon: react_1.PropTypes.string,
-	    disabled: react_1.PropTypes.bool,
-	    children: react_1.PropTypes.any
-	};
-	exports.Icon = function (props) {
-	    var classes = [];
-	    classes.push(props.type);
-	    if (props.align === 'right') {
-	        classes.push('right floated');
-	    }
-	    if (props.size !== "normal") {
-	        classes.push(props.size);
-	    }
-	    classes.push('icon');
-	    return React.createElement("i", __assign({}, props, {className: classes.join(" ")}));
-	};
-	exports.Icon.propTypes = {
-	    type: react_1.PropTypes.string.isRequired,
-	    onClick: react_1.PropTypes.func,
-	    align: react_1.PropTypes.oneOf(["left", "right"]),
-	    size: react_1.PropTypes.oneOf(["mini", "tiny", "small", "normal", "large", "huge", "massive"])
-	};
-	exports.Divider = function (props) {
-	    return React.createElement("div", {className: "ui divider"});
-	};
+	var __cov_objFKt14YM3fQS_YdzmYEA = (Function('return this'))();
+	if (!__cov_objFKt14YM3fQS_YdzmYEA.__coverage__) { __cov_objFKt14YM3fQS_YdzmYEA.__coverage__ = {}; }
+	__cov_objFKt14YM3fQS_YdzmYEA = __cov_objFKt14YM3fQS_YdzmYEA.__coverage__;
+	if (!(__cov_objFKt14YM3fQS_YdzmYEA['/home/travis/build/Niondir/iot-dashboard/src/ui/elements.ui.js'])) {
+	   __cov_objFKt14YM3fQS_YdzmYEA['/home/travis/build/Niondir/iot-dashboard/src/ui/elements.ui.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/ui/elements.ui.js","s":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0},"b":{"1":[0,0,0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0},"fnMap":{"1":{"name":"(anonymous_1)","line":5,"loc":{"start":{"line":5,"column":59},"end":{"line":5,"column":71}}},"2":{"name":"(anonymous_2)","line":18,"loc":{"start":{"line":18,"column":19},"end":{"line":18,"column":36}}},"3":{"name":"(anonymous_3)","line":23,"loc":{"start":{"line":23,"column":114},"end":{"line":23,"column":127}}},"4":{"name":"(anonymous_4)","line":36,"loc":{"start":{"line":36,"column":15},"end":{"line":36,"column":32}}},"5":{"name":"(anonymous_5)","line":54,"loc":{"start":{"line":54,"column":18},"end":{"line":54,"column":35}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":12,"column":2}},"2":{"start":{"line":6,"column":4},"end":{"line":10,"column":5}},"3":{"start":{"line":7,"column":8},"end":{"line":7,"column":25}},"4":{"start":{"line":8,"column":8},"end":{"line":9,"column":24}},"5":{"start":{"line":8,"column":25},"end":{"line":9,"column":24}},"6":{"start":{"line":9,"column":12},"end":{"line":9,"column":24}},"7":{"start":{"line":11,"column":4},"end":{"line":11,"column":13}},"8":{"start":{"line":13,"column":0},"end":{"line":13,"column":29}},"9":{"start":{"line":14,"column":0},"end":{"line":14,"column":31}},"10":{"start":{"line":18,"column":0},"end":{"line":28,"column":2}},"11":{"start":{"line":19,"column":4},"end":{"line":19,"column":13}},"12":{"start":{"line":20,"column":4},"end":{"line":22,"column":5}},"13":{"start":{"line":21,"column":8},"end":{"line":21,"column":75}},"14":{"start":{"line":23,"column":4},"end":{"line":27,"column":52}},"15":{"start":{"line":24,"column":8},"end":{"line":24,"column":28}},"16":{"start":{"line":25,"column":8},"end":{"line":25,"column":27}},"17":{"start":{"line":26,"column":8},"end":{"line":26,"column":29}},"18":{"start":{"line":29,"column":0},"end":{"line":35,"column":2}},"19":{"start":{"line":36,"column":0},"end":{"line":47,"column":2}},"20":{"start":{"line":37,"column":4},"end":{"line":37,"column":21}},"21":{"start":{"line":38,"column":4},"end":{"line":38,"column":29}},"22":{"start":{"line":39,"column":4},"end":{"line":41,"column":5}},"23":{"start":{"line":40,"column":8},"end":{"line":40,"column":38}},"24":{"start":{"line":42,"column":4},"end":{"line":44,"column":5}},"25":{"start":{"line":43,"column":8},"end":{"line":43,"column":33}},"26":{"start":{"line":45,"column":4},"end":{"line":45,"column":25}},"27":{"start":{"line":46,"column":4},"end":{"line":46,"column":89}},"28":{"start":{"line":48,"column":0},"end":{"line":53,"column":2}},"29":{"start":{"line":54,"column":0},"end":{"line":56,"column":2}},"30":{"start":{"line":55,"column":4},"end":{"line":55,"column":65}}},"branchMap":{"1":{"line":5,"type":"binary-expr","locations":[{"start":{"line":5,"column":16},"end":{"line":5,"column":20}},{"start":{"line":5,"column":24},"end":{"line":5,"column":37}},{"start":{"line":5,"column":42},"end":{"line":5,"column":55}},{"start":{"line":5,"column":59},"end":{"line":12,"column":1}}]},"2":{"line":8,"type":"if","locations":[{"start":{"line":8,"column":25},"end":{"line":8,"column":25}},{"start":{"line":8,"column":25},"end":{"line":8,"column":25}}]},"3":{"line":20,"type":"if","locations":[{"start":{"line":20,"column":4},"end":{"line":20,"column":4}},{"start":{"line":20,"column":4},"end":{"line":20,"column":4}}]},"4":{"line":23,"type":"cond-expr","locations":[{"start":{"line":23,"column":75},"end":{"line":23,"column":86}},{"start":{"line":23,"column":89},"end":{"line":23,"column":91}}]},"5":{"line":39,"type":"if","locations":[{"start":{"line":39,"column":4},"end":{"line":39,"column":4}},{"start":{"line":39,"column":4},"end":{"line":39,"column":4}}]},"6":{"line":42,"type":"if","locations":[{"start":{"line":42,"column":4},"end":{"line":42,"column":4}},{"start":{"line":42,"column":4},"end":{"line":42,"column":4}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var __assign = (this && this.__assign) || Object.assign || function(t) {","    for (var s, i = 1, n = arguments.length; i < n; i++) {","        s = arguments[i];","        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))","            t[p] = s[p];","    }","    return t;","};","var React = require('react');","var react_1 = require(\"react\");","/**"," * This module contains generic UI Elements reuse in the app"," */","exports.LinkItem = function (props) {","    var icon;","    if (props.icon) {","        icon = React.createElement(\"i\", {className: props.icon + \" icon\"});","    }","    return React.createElement(\"a\", {className: \"item\" + (props.disabled ? \" disabled\" : \"\"), href: \"#\", onClick: function (e) {","        e.stopPropagation();","        e.preventDefault();","        props.onClick(props);","    }}, icon, \" \", props.children, \" \", props.text);","};","exports.LinkItem.propTypes = {","    onClick: react_1.PropTypes.func.isRequired,","    text: react_1.PropTypes.string,","    icon: react_1.PropTypes.string,","    disabled: react_1.PropTypes.bool,","    children: react_1.PropTypes.any","};","exports.Icon = function (props) {","    var classes = [];","    classes.push(props.type);","    if (props.align === 'right') {","        classes.push('right floated');","    }","    if (props.size !== \"normal\") {","        classes.push(props.size);","    }","    classes.push('icon');","    return React.createElement(\"i\", __assign({}, props, {className: classes.join(\" \")}));","};","exports.Icon.propTypes = {","    type: react_1.PropTypes.string.isRequired,","    onClick: react_1.PropTypes.func,","    align: react_1.PropTypes.oneOf([\"left\", \"right\"]),","    size: react_1.PropTypes.oneOf([\"mini\", \"tiny\", \"small\", \"normal\", \"large\", \"huge\", \"massive\"])","};","exports.Divider = function (props) {","    return React.createElement(\"div\", {className: \"ui divider\"});","};",""]};
+	}
+	__cov_objFKt14YM3fQS_YdzmYEA = __cov_objFKt14YM3fQS_YdzmYEA['/home/travis/build/Niondir/iot-dashboard/src/ui/elements.ui.js'];
+	__cov_objFKt14YM3fQS_YdzmYEA.s['1']++;var __assign=(__cov_objFKt14YM3fQS_YdzmYEA.b['1'][0]++,this)&&(__cov_objFKt14YM3fQS_YdzmYEA.b['1'][1]++,this.__assign)||(__cov_objFKt14YM3fQS_YdzmYEA.b['1'][2]++,Object.assign)||(__cov_objFKt14YM3fQS_YdzmYEA.b['1'][3]++,function(t){__cov_objFKt14YM3fQS_YdzmYEA.f['1']++;__cov_objFKt14YM3fQS_YdzmYEA.s['2']++;for(var s,i=1,n=arguments.length;i<n;i++){__cov_objFKt14YM3fQS_YdzmYEA.s['3']++;s=arguments[i];__cov_objFKt14YM3fQS_YdzmYEA.s['4']++;for(var p in s){__cov_objFKt14YM3fQS_YdzmYEA.s['5']++;if(Object.prototype.hasOwnProperty.call(s,p)){__cov_objFKt14YM3fQS_YdzmYEA.b['2'][0]++;__cov_objFKt14YM3fQS_YdzmYEA.s['6']++;t[p]=s[p];}else{__cov_objFKt14YM3fQS_YdzmYEA.b['2'][1]++;}}}__cov_objFKt14YM3fQS_YdzmYEA.s['7']++;return t;});__cov_objFKt14YM3fQS_YdzmYEA.s['8']++;var React=__webpack_require__(20);__cov_objFKt14YM3fQS_YdzmYEA.s['9']++;var react_1=__webpack_require__(20);__cov_objFKt14YM3fQS_YdzmYEA.s['10']++;exports.LinkItem=function(props){__cov_objFKt14YM3fQS_YdzmYEA.f['2']++;__cov_objFKt14YM3fQS_YdzmYEA.s['11']++;var icon;__cov_objFKt14YM3fQS_YdzmYEA.s['12']++;if(props.icon){__cov_objFKt14YM3fQS_YdzmYEA.b['3'][0]++;__cov_objFKt14YM3fQS_YdzmYEA.s['13']++;icon=React.createElement('i',{className:props.icon+' icon'});}else{__cov_objFKt14YM3fQS_YdzmYEA.b['3'][1]++;}__cov_objFKt14YM3fQS_YdzmYEA.s['14']++;return React.createElement('a',{className:'item'+(props.disabled?(__cov_objFKt14YM3fQS_YdzmYEA.b['4'][0]++,' disabled'):(__cov_objFKt14YM3fQS_YdzmYEA.b['4'][1]++,'')),href:'#',onClick:function(e){__cov_objFKt14YM3fQS_YdzmYEA.f['3']++;__cov_objFKt14YM3fQS_YdzmYEA.s['15']++;e.stopPropagation();__cov_objFKt14YM3fQS_YdzmYEA.s['16']++;e.preventDefault();__cov_objFKt14YM3fQS_YdzmYEA.s['17']++;props.onClick(props);}},icon,' ',props.children,' ',props.text);};__cov_objFKt14YM3fQS_YdzmYEA.s['18']++;exports.LinkItem.propTypes={onClick:react_1.PropTypes.func.isRequired,text:react_1.PropTypes.string,icon:react_1.PropTypes.string,disabled:react_1.PropTypes.bool,children:react_1.PropTypes.any};__cov_objFKt14YM3fQS_YdzmYEA.s['19']++;exports.Icon=function(props){__cov_objFKt14YM3fQS_YdzmYEA.f['4']++;__cov_objFKt14YM3fQS_YdzmYEA.s['20']++;var classes=[];__cov_objFKt14YM3fQS_YdzmYEA.s['21']++;classes.push(props.type);__cov_objFKt14YM3fQS_YdzmYEA.s['22']++;if(props.align==='right'){__cov_objFKt14YM3fQS_YdzmYEA.b['5'][0]++;__cov_objFKt14YM3fQS_YdzmYEA.s['23']++;classes.push('right floated');}else{__cov_objFKt14YM3fQS_YdzmYEA.b['5'][1]++;}__cov_objFKt14YM3fQS_YdzmYEA.s['24']++;if(props.size!=='normal'){__cov_objFKt14YM3fQS_YdzmYEA.b['6'][0]++;__cov_objFKt14YM3fQS_YdzmYEA.s['25']++;classes.push(props.size);}else{__cov_objFKt14YM3fQS_YdzmYEA.b['6'][1]++;}__cov_objFKt14YM3fQS_YdzmYEA.s['26']++;classes.push('icon');__cov_objFKt14YM3fQS_YdzmYEA.s['27']++;return React.createElement('i',__assign({},props,{className:classes.join(' ')}));};__cov_objFKt14YM3fQS_YdzmYEA.s['28']++;exports.Icon.propTypes={type:react_1.PropTypes.string.isRequired,onClick:react_1.PropTypes.func,align:react_1.PropTypes.oneOf(['left','right']),size:react_1.PropTypes.oneOf(['mini','tiny','small','normal','large','huge','massive'])};__cov_objFKt14YM3fQS_YdzmYEA.s['29']++;exports.Divider=function(props){__cov_objFKt14YM3fQS_YdzmYEA.f['5']++;__cov_objFKt14YM3fQS_YdzmYEA.s['30']++;return React.createElement('div',{className:'ui divider'});};
 
 
 /***/ },
 /* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var React = __webpack_require__(20);
-	var modalDialog_ui_js_1 = __webpack_require__(84);
-	var WidgetPlugins = __webpack_require__(52);
-	var WidgetConfig = __webpack_require__(49);
-	var react_redux_1 = __webpack_require__(39);
-	var settingsForm_ui_1 = __webpack_require__(85);
-	var redux_form_1 = __webpack_require__(86);
-	var ModalIds = __webpack_require__(51);
-	var react_1 = __webpack_require__(20);
-	var DIALOG_ID = ModalIds.WIDGET_CONFIG;
-	var FORM_ID = "widget-settings-form";
-	function unshiftIfNotExists(array, element, isEqual) {
-	    if (isEqual === void 0) { isEqual = function (a, b) { return a.id == b.id; }; }
-	    if (array.find(function (e) { return isEqual(e, element); }) == undefined) {
-	        array.unshift(element);
-	    }
+	var __cov_2JNH9l8qHBRvtaqODMJKPA = (Function('return this'))();
+	if (!__cov_2JNH9l8qHBRvtaqODMJKPA.__coverage__) { __cov_2JNH9l8qHBRvtaqODMJKPA.__coverage__ = {}; }
+	__cov_2JNH9l8qHBRvtaqODMJKPA = __cov_2JNH9l8qHBRvtaqODMJKPA.__coverage__;
+	if (!(__cov_2JNH9l8qHBRvtaqODMJKPA['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetConfigDialog.ui.js'])) {
+	   __cov_2JNH9l8qHBRvtaqODMJKPA['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetConfigDialog.ui.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetConfigDialog.ui.js","s":{"1":0,"2":0,"3":0,"4":0,"5":1,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":1,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0,"29":1,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":0,"38":0,"39":0,"40":0,"41":0,"42":0,"43":0,"44":0,"45":0,"46":0,"47":0,"48":0,"49":0,"50":0,"51":0,"52":0,"53":0,"54":0,"55":0,"56":0,"57":0,"58":0,"59":0,"60":0,"61":0,"62":0,"63":0,"64":0,"65":0,"66":0,"67":0},"b":{"1":[0,0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0],"7":[0,0],"8":[0,0],"9":[0,0],"10":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0},"fnMap":{"1":{"name":"(anonymous_1)","line":5,"loc":{"start":{"line":5,"column":44},"end":{"line":5,"column":60}}},"2":{"name":"__","line":7,"loc":{"start":{"line":7,"column":4},"end":{"line":7,"column":18}}},"3":{"name":"unshiftIfNotExists","line":21,"loc":{"start":{"line":21,"column":0},"end":{"line":21,"column":53}}},"4":{"name":"(anonymous_4)","line":22,"loc":{"start":{"line":22,"column":40},"end":{"line":22,"column":56}}},"5":{"name":"(anonymous_5)","line":23,"loc":{"start":{"line":23,"column":19},"end":{"line":23,"column":32}}},"6":{"name":"(anonymous_6)","line":28,"loc":{"start":{"line":28,"column":25},"end":{"line":28,"column":43}}},"7":{"name":"WidgetConfigModal","line":30,"loc":{"start":{"line":30,"column":4},"end":{"line":30,"column":38}}},"8":{"name":"(anonymous_8)","line":33,"loc":{"start":{"line":33,"column":43},"end":{"line":33,"column":73}}},"9":{"name":"(anonymous_9)","line":37,"loc":{"start":{"line":37,"column":44},"end":{"line":37,"column":56}}},"10":{"name":"(anonymous_10)","line":40,"loc":{"start":{"line":40,"column":41},"end":{"line":40,"column":53}}},"11":{"name":"(anonymous_11)","line":47,"loc":{"start":{"line":47,"column":25},"end":{"line":47,"column":37}}},"12":{"name":"(anonymous_12)","line":55,"loc":{"start":{"line":55,"column":25},"end":{"line":55,"column":37}}},"13":{"name":"(anonymous_13)","line":64,"loc":{"start":{"line":64,"column":25},"end":{"line":64,"column":37}}},"14":{"name":"(anonymous_14)","line":89,"loc":{"start":{"line":89,"column":34},"end":{"line":89,"column":53}}},"15":{"name":"(anonymous_15)","line":90,"loc":{"start":{"line":90,"column":44},"end":{"line":90,"column":78}}},"16":{"name":"(anonymous_16)","line":112,"loc":{"start":{"line":112,"column":40},"end":{"line":112,"column":57}}},"17":{"name":"(anonymous_17)","line":119,"loc":{"start":{"line":119,"column":3},"end":{"line":119,"column":23}}},"18":{"name":"(anonymous_18)","line":121,"loc":{"start":{"line":121,"column":19},"end":{"line":121,"column":33}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":9,"column":2}},"2":{"start":{"line":6,"column":4},"end":{"line":6,"column":58}},"3":{"start":{"line":6,"column":21},"end":{"line":6,"column":58}},"4":{"start":{"line":6,"column":46},"end":{"line":6,"column":58}},"5":{"start":{"line":7,"column":4},"end":{"line":7,"column":43}},"6":{"start":{"line":7,"column":20},"end":{"line":7,"column":41}},"7":{"start":{"line":8,"column":4},"end":{"line":8,"column":89}},"8":{"start":{"line":10,"column":0},"end":{"line":10,"column":29}},"9":{"start":{"line":11,"column":0},"end":{"line":11,"column":64}},"10":{"start":{"line":12,"column":0},"end":{"line":12,"column":47}},"11":{"start":{"line":13,"column":0},"end":{"line":13,"column":45}},"12":{"start":{"line":14,"column":0},"end":{"line":14,"column":43}},"13":{"start":{"line":15,"column":0},"end":{"line":15,"column":57}},"14":{"start":{"line":16,"column":0},"end":{"line":16,"column":41}},"15":{"start":{"line":17,"column":0},"end":{"line":17,"column":50}},"16":{"start":{"line":18,"column":0},"end":{"line":18,"column":31}},"17":{"start":{"line":19,"column":0},"end":{"line":19,"column":39}},"18":{"start":{"line":20,"column":0},"end":{"line":20,"column":37}},"19":{"start":{"line":21,"column":0},"end":{"line":26,"column":1}},"20":{"start":{"line":22,"column":4},"end":{"line":22,"column":83}},"21":{"start":{"line":22,"column":30},"end":{"line":22,"column":81}},"22":{"start":{"line":22,"column":58},"end":{"line":22,"column":78}},"23":{"start":{"line":23,"column":4},"end":{"line":25,"column":5}},"24":{"start":{"line":23,"column":34},"end":{"line":23,"column":61}},"25":{"start":{"line":24,"column":8},"end":{"line":24,"column":31}},"26":{"start":{"line":27,"column":0},"end":{"line":27,"column":48}},"27":{"start":{"line":28,"column":0},"end":{"line":103,"column":20}},"28":{"start":{"line":29,"column":4},"end":{"line":29,"column":41}},"29":{"start":{"line":30,"column":4},"end":{"line":32,"column":5}},"30":{"start":{"line":31,"column":8},"end":{"line":31,"column":33}},"31":{"start":{"line":33,"column":4},"end":{"line":36,"column":6}},"32":{"start":{"line":34,"column":8},"end":{"line":34,"column":106}},"33":{"start":{"line":35,"column":8},"end":{"line":35,"column":20}},"34":{"start":{"line":37,"column":4},"end":{"line":39,"column":6}},"35":{"start":{"line":38,"column":8},"end":{"line":38,"column":38}},"36":{"start":{"line":40,"column":4},"end":{"line":101,"column":6}},"37":{"start":{"line":41,"column":8},"end":{"line":41,"column":25}},"38":{"start":{"line":42,"column":8},"end":{"line":42,"column":31}},"39":{"start":{"line":43,"column":8},"end":{"line":71,"column":10}},"40":{"start":{"line":48,"column":20},"end":{"line":48,"column":38}},"41":{"start":{"line":49,"column":20},"end":{"line":49,"column":33}},"42":{"start":{"line":56,"column":20},"end":{"line":56,"column":38}},"43":{"start":{"line":57,"column":20},"end":{"line":57,"column":32}},"44":{"start":{"line":65,"column":20},"end":{"line":65,"column":59}},"45":{"start":{"line":66,"column":20},"end":{"line":67,"column":42}},"46":{"start":{"line":67,"column":24},"end":{"line":67,"column":42}},"47":{"start":{"line":68,"column":20},"end":{"line":68,"column":35}},"48":{"start":{"line":73,"column":8},"end":{"line":73,"column":54}},"49":{"start":{"line":75,"column":8},"end":{"line":80,"column":9}},"50":{"start":{"line":79,"column":12},"end":{"line":79,"column":231}},"51":{"start":{"line":82,"column":8},"end":{"line":82,"column":98}},"52":{"start":{"line":83,"column":8},"end":{"line":88,"column":11}},"53":{"start":{"line":89,"column":8},"end":{"line":89,"column":77}},"54":{"start":{"line":89,"column":55},"end":{"line":89,"column":73}},"55":{"start":{"line":90,"column":8},"end":{"line":95,"column":15}},"56":{"start":{"line":91,"column":12},"end":{"line":93,"column":13}},"57":{"start":{"line":92,"column":16},"end":{"line":92,"column":65}},"58":{"start":{"line":94,"column":12},"end":{"line":94,"column":33}},"59":{"start":{"line":97,"column":8},"end":{"line":97,"column":79}},"60":{"start":{"line":98,"column":8},"end":{"line":100,"column":210}},"61":{"start":{"line":102,"column":4},"end":{"line":102,"column":29}},"62":{"start":{"line":104,"column":0},"end":{"line":110,"column":2}},"63":{"start":{"line":111,"column":0},"end":{"line":111,"column":62}},"64":{"start":{"line":112,"column":0},"end":{"line":123,"column":22}},"65":{"start":{"line":113,"column":4},"end":{"line":118,"column":6}},"66":{"start":{"line":120,"column":4},"end":{"line":122,"column":6}},"67":{"start":{"line":121,"column":35},"end":{"line":121,"column":75}}},"branchMap":{"1":{"line":5,"type":"binary-expr","locations":[{"start":{"line":5,"column":17},"end":{"line":5,"column":21}},{"start":{"line":5,"column":25},"end":{"line":5,"column":39}},{"start":{"line":5,"column":44},"end":{"line":9,"column":1}}]},"2":{"line":6,"type":"if","locations":[{"start":{"line":6,"column":21},"end":{"line":6,"column":21}},{"start":{"line":6,"column":21},"end":{"line":6,"column":21}}]},"3":{"line":8,"type":"cond-expr","locations":[{"start":{"line":8,"column":31},"end":{"line":8,"column":47}},{"start":{"line":8,"column":51},"end":{"line":8,"column":87}}]},"4":{"line":22,"type":"if","locations":[{"start":{"line":22,"column":4},"end":{"line":22,"column":4}},{"start":{"line":22,"column":4},"end":{"line":22,"column":4}}]},"5":{"line":23,"type":"if","locations":[{"start":{"line":23,"column":4},"end":{"line":23,"column":4}},{"start":{"line":23,"column":4},"end":{"line":23,"column":4}}]},"6":{"line":66,"type":"if","locations":[{"start":{"line":66,"column":20},"end":{"line":66,"column":20}},{"start":{"line":66,"column":20},"end":{"line":66,"column":20}}]},"7":{"line":75,"type":"if","locations":[{"start":{"line":75,"column":8},"end":{"line":75,"column":8}},{"start":{"line":75,"column":8},"end":{"line":75,"column":8}}]},"8":{"line":82,"type":"cond-expr","locations":[{"start":{"line":82,"column":46},"end":{"line":82,"column":92}},{"start":{"line":82,"column":95},"end":{"line":82,"column":97}}]},"9":{"line":91,"type":"if","locations":[{"start":{"line":91,"column":12},"end":{"line":91,"column":12}},{"start":{"line":91,"column":12},"end":{"line":91,"column":12}}]},"10":{"line":98,"type":"cond-expr","locations":[{"start":{"line":99,"column":12},"end":{"line":99,"column":208}},{"start":{"line":100,"column":14},"end":{"line":100,"column":18}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var __extends = (this && this.__extends) || function (d, b) {","    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];","    function __() { this.constructor = d; }","    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());","};","var React = require('react');","var modalDialog_ui_js_1 = require(\"../modal/modalDialog.ui.js\");","var WidgetPlugins = require(\"./widgetPlugins\");","var WidgetConfig = require(\"./widgetConfig\");","var react_redux_1 = require(\"react-redux\");","var settingsForm_ui_1 = require(\"../ui/settingsForm.ui\");","var redux_form_1 = require(\"redux-form\");","var ModalIds = require('../modal/modalDialogIds');","var react_1 = require(\"react\");","var DIALOG_ID = ModalIds.WIDGET_CONFIG;","var FORM_ID = \"widget-settings-form\";","function unshiftIfNotExists(array, element, isEqual) {","    if (isEqual === void 0) { isEqual = function (a, b) { return a.id == b.id; }; }","    if (array.find(function (e) { return isEqual(e, element); }) == undefined) {","        array.unshift(element);","    }","}","exports.unshiftIfNotExists = unshiftIfNotExists;","var WidgetConfigModal = (function (_super) {","    __extends(WidgetConfigModal, _super);","    function WidgetConfigModal(props) {","        _super.call(this, props);","    }","    WidgetConfigModal.prototype.onSubmit = function (formData, dispatch) {","        dispatch(WidgetConfig.createOrUpdateWidget(this.props.widgetId, this.props.widgetType, formData));","        return true;","    };","    WidgetConfigModal.prototype.resetForm = function () {","        this.props.resetForm(FORM_ID);","    };","    WidgetConfigModal.prototype.render = function () {","        var _this = this;","        var props = this.props;","        var actions = [","            {","                className: \"ui right button\",","                label: \"Reset\",","                onClick: function () {","                    _this.resetForm();","                    return false;","                }","            },","            {","                className: \"ui right red button\",","                label: \"Cancel\",","                onClick: function () {","                    _this.resetForm();","                    return true;","                }","            },","            {","                className: \"ui right labeled icon positive button\",","                iconClass: \"save icon\",","                label: \"Save\",","                onClick: function () {","                    var success = _this.refs.form.submit();","                    if (success)","                        _this.resetForm();","                    return success;","                }","            }","        ];","        //const selectedWidgetPlugin = WidgetPlugins.getPlugin(this.props.widgetType) || {settings: []};","        var selectedWidgetPlugin = props.widgetPlugin;","        // TODO: Get typeInfo from selectedWidgetPlugin.typeInfo","        if (!selectedWidgetPlugin) {","            // TODO: Find a better (more generic way) to deal with uninitialized data for modals","            // TODO: The widgetConfig in the state is a bad idea. Solve this via state.modalDialog.data","            // This is needed for the very first time the page is rendered and the selected widget type is undefined","            return React.createElement(modalDialog_ui_js_1.default, {id: DIALOG_ID, title: \"Configure \" + props.widgetType + \" Widget\", actions: actions}, React.createElement(\"div\", null, \"Unknown WidgetType: \", props.widgetType));","        }","        // Add additional fields","        var settings = selectedWidgetPlugin ? selectedWidgetPlugin.typeInfo.settings.slice() : [];","        unshiftIfNotExists(settings, {","            id: 'name',","            name: 'Name',","            type: 'string',","            defaultValue: \"\"","        });","        var fields = settings.map(function (setting) { return setting.id; });","        var initialValues = settings.reduce(function (initialValues, setting) {","            if (setting.defaultValue !== undefined) {","                initialValues[setting.id] = setting.defaultValue;","            }","            return initialValues;","        }, {});","        // Overwrite with current widget props","        initialValues = Object.assign({}, initialValues, props.widgetSettings);","        return React.createElement(modalDialog_ui_js_1.default, {id: DIALOG_ID, title: \"Configure \" + props.widgetType + \" Widget\", actions: actions}, React.createElement(\"div\", {className: \"ui one column grid\"}, React.createElement(\"div\", {className: \"column\"}, selectedWidgetPlugin.description ?","            React.createElement(\"div\", {className: \"ui icon message\"}, React.createElement(\"i\", {className: \"idea icon\"}), React.createElement(\"div\", {className: \"content\"}, selectedWidgetPlugin.description))","            : null, React.createElement(settingsForm_ui_1.default, {ref: \"form\", form: FORM_ID, settings: settings, onSubmit: this.onSubmit.bind(this), fields: fields.slice(), initialValues: initialValues}))));","    };","    return WidgetConfigModal;","}(React.Component));","WidgetConfigModal.propTypes = {","    widgetId: react_1.PropTypes.string,","    resetForm: react_1.PropTypes.func.isRequired,","    widgetType: react_1.PropTypes.string,","    widgetSettings: react_1.PropTypes.object.isRequired,","    widgetPlugin: WidgetPlugins.widgetPluginType","};","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = react_redux_1.connect(function (state) {","    return {","        widgetId: state.widgetConfig.id,","        widgetType: state.widgetConfig.type,","        widgetSettings: state.widgetConfig.settings,","        widgetPlugin: state.widgetPlugins[state.widgetConfig.type]","    };","}, function (dispatch) {","    return {","        resetForm: function (id) { return dispatch(redux_form_1.reset(id)); }","    };","})(WidgetConfigModal);",""]};
 	}
-	exports.unshiftIfNotExists = unshiftIfNotExists;
-	var WidgetConfigModal = (function (_super) {
-	    __extends(WidgetConfigModal, _super);
-	    function WidgetConfigModal(props) {
-	        _super.call(this, props);
-	    }
-	    WidgetConfigModal.prototype.onSubmit = function (formData, dispatch) {
-	        dispatch(WidgetConfig.createOrUpdateWidget(this.props.widgetId, this.props.widgetType, formData));
-	        return true;
-	    };
-	    WidgetConfigModal.prototype.resetForm = function () {
-	        this.props.resetForm(FORM_ID);
-	    };
-	    WidgetConfigModal.prototype.render = function () {
-	        var _this = this;
-	        var props = this.props;
-	        var actions = [
-	            {
-	                className: "ui right button",
-	                label: "Reset",
-	                onClick: function () {
-	                    _this.resetForm();
-	                    return false;
-	                }
-	            },
-	            {
-	                className: "ui right red button",
-	                label: "Cancel",
-	                onClick: function () {
-	                    _this.resetForm();
-	                    return true;
-	                }
-	            },
-	            {
-	                className: "ui right labeled icon positive button",
-	                iconClass: "save icon",
-	                label: "Save",
-	                onClick: function () {
-	                    var success = _this.refs.form.submit();
-	                    if (success)
-	                        _this.resetForm();
-	                    return success;
-	                }
-	            }
-	        ];
-	        //const selectedWidgetPlugin = WidgetPlugins.getPlugin(this.props.widgetType) || {settings: []};
-	        var selectedWidgetPlugin = props.widgetPlugin;
-	        // TODO: Get typeInfo from selectedWidgetPlugin.typeInfo
-	        if (!selectedWidgetPlugin) {
-	            // TODO: Find a better (more generic way) to deal with uninitialized data for modals
-	            // TODO: The widgetConfig in the state is a bad idea. Solve this via state.modalDialog.data
-	            // This is needed for the very first time the page is rendered and the selected widget type is undefined
-	            return React.createElement(modalDialog_ui_js_1.default, {id: DIALOG_ID, title: "Configure " + props.widgetType + " Widget", actions: actions}, React.createElement("div", null, "Unknown WidgetType: ", props.widgetType));
-	        }
-	        // Add additional fields
-	        var settings = selectedWidgetPlugin ? selectedWidgetPlugin.typeInfo.settings.slice() : [];
-	        unshiftIfNotExists(settings, {
-	            id: 'name',
-	            name: 'Name',
-	            type: 'string',
-	            defaultValue: ""
-	        });
-	        var fields = settings.map(function (setting) { return setting.id; });
-	        var initialValues = settings.reduce(function (initialValues, setting) {
-	            if (setting.defaultValue !== undefined) {
-	                initialValues[setting.id] = setting.defaultValue;
-	            }
-	            return initialValues;
-	        }, {});
-	        // Overwrite with current widget props
-	        initialValues = Object.assign({}, initialValues, props.widgetSettings);
-	        return React.createElement(modalDialog_ui_js_1.default, {id: DIALOG_ID, title: "Configure " + props.widgetType + " Widget", actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, selectedWidgetPlugin.description ?
-	            React.createElement("div", {className: "ui icon message"}, React.createElement("i", {className: "idea icon"}), React.createElement("div", {className: "content"}, selectedWidgetPlugin.description))
-	            : null, React.createElement(settingsForm_ui_1.default, {ref: "form", form: FORM_ID, settings: settings, onSubmit: this.onSubmit.bind(this), fields: fields.slice(), initialValues: initialValues}))));
-	    };
-	    return WidgetConfigModal;
-	}(React.Component));
-	WidgetConfigModal.propTypes = {
-	    widgetId: react_1.PropTypes.string,
-	    resetForm: react_1.PropTypes.func.isRequired,
-	    widgetType: react_1.PropTypes.string,
-	    widgetSettings: react_1.PropTypes.object.isRequired,
-	    widgetPlugin: WidgetPlugins.widgetPluginType
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = react_redux_1.connect(function (state) {
-	    return {
-	        widgetId: state.widgetConfig.id,
-	        widgetType: state.widgetConfig.type,
-	        widgetSettings: state.widgetConfig.settings,
-	        widgetPlugin: state.widgetPlugins[state.widgetConfig.type]
-	    };
-	}, function (dispatch) {
-	    return {
-	        resetForm: function (id) { return dispatch(redux_form_1.reset(id)); }
-	    };
-	})(WidgetConfigModal);
+	__cov_2JNH9l8qHBRvtaqODMJKPA = __cov_2JNH9l8qHBRvtaqODMJKPA['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetConfigDialog.ui.js'];
+	__cov_2JNH9l8qHBRvtaqODMJKPA.s['1']++;var __extends=(__cov_2JNH9l8qHBRvtaqODMJKPA.b['1'][0]++,this)&&(__cov_2JNH9l8qHBRvtaqODMJKPA.b['1'][1]++,this.__extends)||(__cov_2JNH9l8qHBRvtaqODMJKPA.b['1'][2]++,function(d,b){__cov_2JNH9l8qHBRvtaqODMJKPA.f['1']++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['2']++;for(var p in b){__cov_2JNH9l8qHBRvtaqODMJKPA.s['3']++;if(b.hasOwnProperty(p)){__cov_2JNH9l8qHBRvtaqODMJKPA.b['2'][0]++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['4']++;d[p]=b[p];}else{__cov_2JNH9l8qHBRvtaqODMJKPA.b['2'][1]++;}}function __(){__cov_2JNH9l8qHBRvtaqODMJKPA.f['2']++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['6']++;this.constructor=d;}__cov_2JNH9l8qHBRvtaqODMJKPA.s['7']++;d.prototype=b===null?(__cov_2JNH9l8qHBRvtaqODMJKPA.b['3'][0]++,Object.create(b)):(__cov_2JNH9l8qHBRvtaqODMJKPA.b['3'][1]++,(__.prototype=b.prototype,new __()));});__cov_2JNH9l8qHBRvtaqODMJKPA.s['8']++;var React=__webpack_require__(20);__cov_2JNH9l8qHBRvtaqODMJKPA.s['9']++;var modalDialog_ui_js_1=__webpack_require__(84);__cov_2JNH9l8qHBRvtaqODMJKPA.s['10']++;var WidgetPlugins=__webpack_require__(52);__cov_2JNH9l8qHBRvtaqODMJKPA.s['11']++;var WidgetConfig=__webpack_require__(49);__cov_2JNH9l8qHBRvtaqODMJKPA.s['12']++;var react_redux_1=__webpack_require__(39);__cov_2JNH9l8qHBRvtaqODMJKPA.s['13']++;var settingsForm_ui_1=__webpack_require__(85);__cov_2JNH9l8qHBRvtaqODMJKPA.s['14']++;var redux_form_1=__webpack_require__(86);__cov_2JNH9l8qHBRvtaqODMJKPA.s['15']++;var ModalIds=__webpack_require__(51);__cov_2JNH9l8qHBRvtaqODMJKPA.s['16']++;var react_1=__webpack_require__(20);__cov_2JNH9l8qHBRvtaqODMJKPA.s['17']++;var DIALOG_ID=ModalIds.WIDGET_CONFIG;__cov_2JNH9l8qHBRvtaqODMJKPA.s['18']++;var FORM_ID='widget-settings-form';function unshiftIfNotExists(array,element,isEqual){__cov_2JNH9l8qHBRvtaqODMJKPA.f['3']++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['20']++;if(isEqual===void 0){__cov_2JNH9l8qHBRvtaqODMJKPA.b['4'][0]++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['21']++;isEqual=function(a,b){__cov_2JNH9l8qHBRvtaqODMJKPA.f['4']++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['22']++;return a.id==b.id;};}else{__cov_2JNH9l8qHBRvtaqODMJKPA.b['4'][1]++;}__cov_2JNH9l8qHBRvtaqODMJKPA.s['23']++;if(array.find(function(e){__cov_2JNH9l8qHBRvtaqODMJKPA.f['5']++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['24']++;return isEqual(e,element);})==undefined){__cov_2JNH9l8qHBRvtaqODMJKPA.b['5'][0]++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['25']++;array.unshift(element);}else{__cov_2JNH9l8qHBRvtaqODMJKPA.b['5'][1]++;}}__cov_2JNH9l8qHBRvtaqODMJKPA.s['26']++;exports.unshiftIfNotExists=unshiftIfNotExists;__cov_2JNH9l8qHBRvtaqODMJKPA.s['27']++;var WidgetConfigModal=function(_super){__cov_2JNH9l8qHBRvtaqODMJKPA.f['6']++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['28']++;__extends(WidgetConfigModal,_super);function WidgetConfigModal(props){__cov_2JNH9l8qHBRvtaqODMJKPA.f['7']++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['30']++;_super.call(this,props);}__cov_2JNH9l8qHBRvtaqODMJKPA.s['31']++;WidgetConfigModal.prototype.onSubmit=function(formData,dispatch){__cov_2JNH9l8qHBRvtaqODMJKPA.f['8']++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['32']++;dispatch(WidgetConfig.createOrUpdateWidget(this.props.widgetId,this.props.widgetType,formData));__cov_2JNH9l8qHBRvtaqODMJKPA.s['33']++;return true;};__cov_2JNH9l8qHBRvtaqODMJKPA.s['34']++;WidgetConfigModal.prototype.resetForm=function(){__cov_2JNH9l8qHBRvtaqODMJKPA.f['9']++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['35']++;this.props.resetForm(FORM_ID);};__cov_2JNH9l8qHBRvtaqODMJKPA.s['36']++;WidgetConfigModal.prototype.render=function(){__cov_2JNH9l8qHBRvtaqODMJKPA.f['10']++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['37']++;var _this=this;__cov_2JNH9l8qHBRvtaqODMJKPA.s['38']++;var props=this.props;__cov_2JNH9l8qHBRvtaqODMJKPA.s['39']++;var actions=[{className:'ui right button',label:'Reset',onClick:function(){__cov_2JNH9l8qHBRvtaqODMJKPA.f['11']++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['40']++;_this.resetForm();__cov_2JNH9l8qHBRvtaqODMJKPA.s['41']++;return false;}},{className:'ui right red button',label:'Cancel',onClick:function(){__cov_2JNH9l8qHBRvtaqODMJKPA.f['12']++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['42']++;_this.resetForm();__cov_2JNH9l8qHBRvtaqODMJKPA.s['43']++;return true;}},{className:'ui right labeled icon positive button',iconClass:'save icon',label:'Save',onClick:function(){__cov_2JNH9l8qHBRvtaqODMJKPA.f['13']++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['44']++;var success=_this.refs.form.submit();__cov_2JNH9l8qHBRvtaqODMJKPA.s['45']++;if(success){__cov_2JNH9l8qHBRvtaqODMJKPA.b['6'][0]++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['46']++;_this.resetForm();}else{__cov_2JNH9l8qHBRvtaqODMJKPA.b['6'][1]++;}__cov_2JNH9l8qHBRvtaqODMJKPA.s['47']++;return success;}}];__cov_2JNH9l8qHBRvtaqODMJKPA.s['48']++;var selectedWidgetPlugin=props.widgetPlugin;__cov_2JNH9l8qHBRvtaqODMJKPA.s['49']++;if(!selectedWidgetPlugin){__cov_2JNH9l8qHBRvtaqODMJKPA.b['7'][0]++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['50']++;return React.createElement(modalDialog_ui_js_1.default,{id:DIALOG_ID,title:'Configure '+props.widgetType+' Widget',actions:actions},React.createElement('div',null,'Unknown WidgetType: ',props.widgetType));}else{__cov_2JNH9l8qHBRvtaqODMJKPA.b['7'][1]++;}__cov_2JNH9l8qHBRvtaqODMJKPA.s['51']++;var settings=selectedWidgetPlugin?(__cov_2JNH9l8qHBRvtaqODMJKPA.b['8'][0]++,selectedWidgetPlugin.typeInfo.settings.slice()):(__cov_2JNH9l8qHBRvtaqODMJKPA.b['8'][1]++,[]);__cov_2JNH9l8qHBRvtaqODMJKPA.s['52']++;unshiftIfNotExists(settings,{id:'name',name:'Name',type:'string',defaultValue:''});__cov_2JNH9l8qHBRvtaqODMJKPA.s['53']++;var fields=settings.map(function(setting){__cov_2JNH9l8qHBRvtaqODMJKPA.f['14']++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['54']++;return setting.id;});__cov_2JNH9l8qHBRvtaqODMJKPA.s['55']++;var initialValues=settings.reduce(function(initialValues,setting){__cov_2JNH9l8qHBRvtaqODMJKPA.f['15']++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['56']++;if(setting.defaultValue!==undefined){__cov_2JNH9l8qHBRvtaqODMJKPA.b['9'][0]++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['57']++;initialValues[setting.id]=setting.defaultValue;}else{__cov_2JNH9l8qHBRvtaqODMJKPA.b['9'][1]++;}__cov_2JNH9l8qHBRvtaqODMJKPA.s['58']++;return initialValues;},{});__cov_2JNH9l8qHBRvtaqODMJKPA.s['59']++;initialValues=Object.assign({},initialValues,props.widgetSettings);__cov_2JNH9l8qHBRvtaqODMJKPA.s['60']++;return React.createElement(modalDialog_ui_js_1.default,{id:DIALOG_ID,title:'Configure '+props.widgetType+' Widget',actions:actions},React.createElement('div',{className:'ui one column grid'},React.createElement('div',{className:'column'},selectedWidgetPlugin.description?(__cov_2JNH9l8qHBRvtaqODMJKPA.b['10'][0]++,React.createElement('div',{className:'ui icon message'},React.createElement('i',{className:'idea icon'}),React.createElement('div',{className:'content'},selectedWidgetPlugin.description))):(__cov_2JNH9l8qHBRvtaqODMJKPA.b['10'][1]++,null),React.createElement(settingsForm_ui_1.default,{ref:'form',form:FORM_ID,settings:settings,onSubmit:this.onSubmit.bind(this),fields:fields.slice(),initialValues:initialValues}))));};__cov_2JNH9l8qHBRvtaqODMJKPA.s['61']++;return WidgetConfigModal;}(React.Component);__cov_2JNH9l8qHBRvtaqODMJKPA.s['62']++;WidgetConfigModal.propTypes={widgetId:react_1.PropTypes.string,resetForm:react_1.PropTypes.func.isRequired,widgetType:react_1.PropTypes.string,widgetSettings:react_1.PropTypes.object.isRequired,widgetPlugin:WidgetPlugins.widgetPluginType};__cov_2JNH9l8qHBRvtaqODMJKPA.s['63']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_2JNH9l8qHBRvtaqODMJKPA.s['64']++;exports.default=react_redux_1.connect(function(state){__cov_2JNH9l8qHBRvtaqODMJKPA.f['16']++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['65']++;return{widgetId:state.widgetConfig.id,widgetType:state.widgetConfig.type,widgetSettings:state.widgetConfig.settings,widgetPlugin:state.widgetPlugins[state.widgetConfig.type]};},function(dispatch){__cov_2JNH9l8qHBRvtaqODMJKPA.f['17']++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['66']++;return{resetForm:function(id){__cov_2JNH9l8qHBRvtaqODMJKPA.f['18']++;__cov_2JNH9l8qHBRvtaqODMJKPA.s['67']++;return dispatch(redux_form_1.reset(id));}};})(WidgetConfigModal);
 
 
 /***/ },
 /* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function($) {/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(39);
-	var Modal = __webpack_require__(50);
-	var react_1 = __webpack_require__(20);
-	var ModalDialog = (function (_super) {
-	    __extends(ModalDialog, _super);
-	    function ModalDialog() {
-	        _super.apply(this, arguments);
-	    }
-	    ModalDialog.prototype.componentDidMount = function () {
-	        $('.ui.modal.' + this.props.id)
-	            .modal({
-	            detachable: false,
-	            closable: false,
-	            observeChanges: true,
-	            onApprove: function ($element) { return false; },
-	            onDeny: function ($element) { return false; }
-	        });
-	    };
-	    ModalDialog.prototype.onClick = function (e, action) {
-	        if (action.onClick(e)) {
-	            // Closing is done externally (by redux)
-	            this.props.closeDialog();
-	        }
-	    };
-	    ModalDialog.prototype.render = function () {
-	        var _this = this;
-	        var key = 0;
-	        var actions = this.props.actions.map(function (action) {
-	            return React.createElement("div", {key: key++, className: action.className, onClick: function (e) { return _this.onClick(e, action); }}, action.label, action.iconClass ? React.createElement("i", {className: action.iconClass}) : null);
-	        });
-	        var props = this.props;
-	        return React.createElement("div", {id: this.props.id, className: 'ui modal ' + this.props.id}, React.createElement("div", {className: "header"}, props.title), React.createElement("div", {className: "content"}, props.children), React.createElement("div", {className: "actions"}, actions));
-	    };
-	    return ModalDialog;
-	}(React.Component));
-	ModalDialog.propTypes = {
-	    children: React.PropTypes.element.isRequired,
-	    title: react_1.PropTypes.string.isRequired,
-	    id: react_1.PropTypes.string.isRequired,
-	    actions: react_1.PropTypes.arrayOf(react_1.PropTypes.shape({
-	        className: react_1.PropTypes.string.isRequired,
-	        iconClass: react_1.PropTypes.string,
-	        label: react_1.PropTypes.string.isRequired,
-	        onClick: react_1.PropTypes.func.isRequired
-	    })).isRequired,
-	    handlePositive: react_1.PropTypes.func,
-	    handleDeny: react_1.PropTypes.func,
-	    closeDialog: react_1.PropTypes.func
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = react_redux_1.connect(function (state) {
-	    return {};
-	}, function (dispatch) {
-	    return {
-	        closeDialog: function () { return dispatch(Modal.closeModal()); }
-	    };
-	})(ModalDialog);
-	
+	/* WEBPACK VAR INJECTION */(function($) {"use strict";
+	var __cov_fVDkWXb5c_Iypf_K0JxbHQ = (Function('return this'))();
+	if (!__cov_fVDkWXb5c_Iypf_K0JxbHQ.__coverage__) { __cov_fVDkWXb5c_Iypf_K0JxbHQ.__coverage__ = {}; }
+	__cov_fVDkWXb5c_Iypf_K0JxbHQ = __cov_fVDkWXb5c_Iypf_K0JxbHQ.__coverage__;
+	if (!(__cov_fVDkWXb5c_Iypf_K0JxbHQ['/home/travis/build/Niondir/iot-dashboard/src/modal/modalDialog.ui.js'])) {
+	   __cov_fVDkWXb5c_Iypf_K0JxbHQ['/home/travis/build/Niondir/iot-dashboard/src/modal/modalDialog.ui.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/modal/modalDialog.ui.js","s":{"1":0,"2":0,"3":0,"4":0,"5":1,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":1,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":0},"b":{"1":[0,0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0},"fnMap":{"1":{"name":"(anonymous_1)","line":5,"loc":{"start":{"line":5,"column":44},"end":{"line":5,"column":60}}},"2":{"name":"__","line":7,"loc":{"start":{"line":7,"column":4},"end":{"line":7,"column":18}}},"3":{"name":"(anonymous_3)","line":14,"loc":{"start":{"line":14,"column":19},"end":{"line":14,"column":37}}},"4":{"name":"ModalDialog","line":16,"loc":{"start":{"line":16,"column":4},"end":{"line":16,"column":27}}},"5":{"name":"(anonymous_5)","line":19,"loc":{"start":{"line":19,"column":46},"end":{"line":19,"column":58}}},"6":{"name":"(anonymous_6)","line":25,"loc":{"start":{"line":25,"column":23},"end":{"line":25,"column":43}}},"7":{"name":"(anonymous_7)","line":26,"loc":{"start":{"line":26,"column":20},"end":{"line":26,"column":40}}},"8":{"name":"(anonymous_8)","line":29,"loc":{"start":{"line":29,"column":36},"end":{"line":29,"column":57}}},"9":{"name":"(anonymous_9)","line":35,"loc":{"start":{"line":35,"column":35},"end":{"line":35,"column":47}}},"10":{"name":"(anonymous_10)","line":38,"loc":{"start":{"line":38,"column":45},"end":{"line":38,"column":63}}},"11":{"name":"(anonymous_11)","line":39,"loc":{"start":{"line":39,"column":97},"end":{"line":39,"column":110}}},"12":{"name":"(anonymous_12)","line":61,"loc":{"start":{"line":61,"column":40},"end":{"line":61,"column":57}}},"13":{"name":"(anonymous_13)","line":63,"loc":{"start":{"line":63,"column":3},"end":{"line":63,"column":23}}},"14":{"name":"(anonymous_14)","line":65,"loc":{"start":{"line":65,"column":21},"end":{"line":65,"column":33}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":9,"column":2}},"2":{"start":{"line":6,"column":4},"end":{"line":6,"column":58}},"3":{"start":{"line":6,"column":21},"end":{"line":6,"column":58}},"4":{"start":{"line":6,"column":46},"end":{"line":6,"column":58}},"5":{"start":{"line":7,"column":4},"end":{"line":7,"column":43}},"6":{"start":{"line":7,"column":20},"end":{"line":7,"column":41}},"7":{"start":{"line":8,"column":4},"end":{"line":8,"column":89}},"8":{"start":{"line":10,"column":0},"end":{"line":10,"column":29}},"9":{"start":{"line":11,"column":0},"end":{"line":11,"column":43}},"10":{"start":{"line":12,"column":0},"end":{"line":12,"column":37}},"11":{"start":{"line":13,"column":0},"end":{"line":13,"column":31}},"12":{"start":{"line":14,"column":0},"end":{"line":45,"column":20}},"13":{"start":{"line":15,"column":4},"end":{"line":15,"column":35}},"14":{"start":{"line":16,"column":4},"end":{"line":18,"column":5}},"15":{"start":{"line":17,"column":8},"end":{"line":17,"column":38}},"16":{"start":{"line":19,"column":4},"end":{"line":28,"column":6}},"17":{"start":{"line":20,"column":8},"end":{"line":27,"column":11}},"18":{"start":{"line":25,"column":45},"end":{"line":25,"column":58}},"19":{"start":{"line":26,"column":42},"end":{"line":26,"column":55}},"20":{"start":{"line":29,"column":4},"end":{"line":34,"column":6}},"21":{"start":{"line":30,"column":8},"end":{"line":33,"column":9}},"22":{"start":{"line":32,"column":12},"end":{"line":32,"column":37}},"23":{"start":{"line":35,"column":4},"end":{"line":43,"column":6}},"24":{"start":{"line":36,"column":8},"end":{"line":36,"column":25}},"25":{"start":{"line":37,"column":8},"end":{"line":37,"column":20}},"26":{"start":{"line":38,"column":8},"end":{"line":40,"column":11}},"27":{"start":{"line":39,"column":12},"end":{"line":39,"column":246}},"28":{"start":{"line":39,"column":112},"end":{"line":39,"column":144}},"29":{"start":{"line":41,"column":8},"end":{"line":41,"column":31}},"30":{"start":{"line":42,"column":8},"end":{"line":42,"column":296}},"31":{"start":{"line":44,"column":4},"end":{"line":44,"column":23}},"32":{"start":{"line":46,"column":0},"end":{"line":59,"column":2}},"33":{"start":{"line":60,"column":0},"end":{"line":60,"column":62}},"34":{"start":{"line":61,"column":0},"end":{"line":67,"column":16}},"35":{"start":{"line":62,"column":4},"end":{"line":62,"column":14}},"36":{"start":{"line":64,"column":4},"end":{"line":66,"column":6}},"37":{"start":{"line":65,"column":35},"end":{"line":65,"column":71}}},"branchMap":{"1":{"line":5,"type":"binary-expr","locations":[{"start":{"line":5,"column":17},"end":{"line":5,"column":21}},{"start":{"line":5,"column":25},"end":{"line":5,"column":39}},{"start":{"line":5,"column":44},"end":{"line":9,"column":1}}]},"2":{"line":6,"type":"if","locations":[{"start":{"line":6,"column":21},"end":{"line":6,"column":21}},{"start":{"line":6,"column":21},"end":{"line":6,"column":21}}]},"3":{"line":8,"type":"cond-expr","locations":[{"start":{"line":8,"column":31},"end":{"line":8,"column":47}},{"start":{"line":8,"column":51},"end":{"line":8,"column":87}}]},"4":{"line":30,"type":"if","locations":[{"start":{"line":30,"column":8},"end":{"line":30,"column":8}},{"start":{"line":30,"column":8},"end":{"line":30,"column":8}}]},"5":{"line":39,"type":"cond-expr","locations":[{"start":{"line":39,"column":182},"end":{"line":39,"column":237}},{"start":{"line":39,"column":240},"end":{"line":39,"column":244}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var __extends = (this && this.__extends) || function (d, b) {","    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];","    function __() { this.constructor = d; }","    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());","};","var React = require('react');","var react_redux_1 = require('react-redux');","var Modal = require('./modalDialog');","var react_1 = require(\"react\");","var ModalDialog = (function (_super) {","    __extends(ModalDialog, _super);","    function ModalDialog() {","        _super.apply(this, arguments);","    }","    ModalDialog.prototype.componentDidMount = function () {","        $('.ui.modal.' + this.props.id)","            .modal({","            detachable: false,","            closable: false,","            observeChanges: true,","            onApprove: function ($element) { return false; },","            onDeny: function ($element) { return false; }","        });","    };","    ModalDialog.prototype.onClick = function (e, action) {","        if (action.onClick(e)) {","            // Closing is done externally (by redux)","            this.props.closeDialog();","        }","    };","    ModalDialog.prototype.render = function () {","        var _this = this;","        var key = 0;","        var actions = this.props.actions.map(function (action) {","            return React.createElement(\"div\", {key: key++, className: action.className, onClick: function (e) { return _this.onClick(e, action); }}, action.label, action.iconClass ? React.createElement(\"i\", {className: action.iconClass}) : null);","        });","        var props = this.props;","        return React.createElement(\"div\", {id: this.props.id, className: 'ui modal ' + this.props.id}, React.createElement(\"div\", {className: \"header\"}, props.title), React.createElement(\"div\", {className: \"content\"}, props.children), React.createElement(\"div\", {className: \"actions\"}, actions));","    };","    return ModalDialog;","}(React.Component));","ModalDialog.propTypes = {","    children: React.PropTypes.element.isRequired,","    title: react_1.PropTypes.string.isRequired,","    id: react_1.PropTypes.string.isRequired,","    actions: react_1.PropTypes.arrayOf(react_1.PropTypes.shape({","        className: react_1.PropTypes.string.isRequired,","        iconClass: react_1.PropTypes.string,","        label: react_1.PropTypes.string.isRequired,","        onClick: react_1.PropTypes.func.isRequired","    })).isRequired,","    handlePositive: react_1.PropTypes.func,","    handleDeny: react_1.PropTypes.func,","    closeDialog: react_1.PropTypes.func","};","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = react_redux_1.connect(function (state) {","    return {};","}, function (dispatch) {","    return {","        closeDialog: function () { return dispatch(Modal.closeModal()); }","    };","})(ModalDialog);",""]};
+	}
+	__cov_fVDkWXb5c_Iypf_K0JxbHQ = __cov_fVDkWXb5c_Iypf_K0JxbHQ['/home/travis/build/Niondir/iot-dashboard/src/modal/modalDialog.ui.js'];
+	__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['1']++;var __extends=(__cov_fVDkWXb5c_Iypf_K0JxbHQ.b['1'][0]++,this)&&(__cov_fVDkWXb5c_Iypf_K0JxbHQ.b['1'][1]++,this.__extends)||(__cov_fVDkWXb5c_Iypf_K0JxbHQ.b['1'][2]++,function(d,b){__cov_fVDkWXb5c_Iypf_K0JxbHQ.f['1']++;__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['2']++;for(var p in b){__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['3']++;if(b.hasOwnProperty(p)){__cov_fVDkWXb5c_Iypf_K0JxbHQ.b['2'][0]++;__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['4']++;d[p]=b[p];}else{__cov_fVDkWXb5c_Iypf_K0JxbHQ.b['2'][1]++;}}function __(){__cov_fVDkWXb5c_Iypf_K0JxbHQ.f['2']++;__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['6']++;this.constructor=d;}__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['7']++;d.prototype=b===null?(__cov_fVDkWXb5c_Iypf_K0JxbHQ.b['3'][0]++,Object.create(b)):(__cov_fVDkWXb5c_Iypf_K0JxbHQ.b['3'][1]++,(__.prototype=b.prototype,new __()));});__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['8']++;var React=__webpack_require__(20);__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['9']++;var react_redux_1=__webpack_require__(39);__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['10']++;var Modal=__webpack_require__(50);__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['11']++;var react_1=__webpack_require__(20);__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['12']++;var ModalDialog=function(_super){__cov_fVDkWXb5c_Iypf_K0JxbHQ.f['3']++;__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['13']++;__extends(ModalDialog,_super);function ModalDialog(){__cov_fVDkWXb5c_Iypf_K0JxbHQ.f['4']++;__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['15']++;_super.apply(this,arguments);}__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['16']++;ModalDialog.prototype.componentDidMount=function(){__cov_fVDkWXb5c_Iypf_K0JxbHQ.f['5']++;__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['17']++;$('.ui.modal.'+this.props.id).modal({detachable:false,closable:false,observeChanges:true,onApprove:function($element){__cov_fVDkWXb5c_Iypf_K0JxbHQ.f['6']++;__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['18']++;return false;},onDeny:function($element){__cov_fVDkWXb5c_Iypf_K0JxbHQ.f['7']++;__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['19']++;return false;}});};__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['20']++;ModalDialog.prototype.onClick=function(e,action){__cov_fVDkWXb5c_Iypf_K0JxbHQ.f['8']++;__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['21']++;if(action.onClick(e)){__cov_fVDkWXb5c_Iypf_K0JxbHQ.b['4'][0]++;__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['22']++;this.props.closeDialog();}else{__cov_fVDkWXb5c_Iypf_K0JxbHQ.b['4'][1]++;}};__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['23']++;ModalDialog.prototype.render=function(){__cov_fVDkWXb5c_Iypf_K0JxbHQ.f['9']++;__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['24']++;var _this=this;__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['25']++;var key=0;__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['26']++;var actions=this.props.actions.map(function(action){__cov_fVDkWXb5c_Iypf_K0JxbHQ.f['10']++;__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['27']++;return React.createElement('div',{key:key++,className:action.className,onClick:function(e){__cov_fVDkWXb5c_Iypf_K0JxbHQ.f['11']++;__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['28']++;return _this.onClick(e,action);}},action.label,action.iconClass?(__cov_fVDkWXb5c_Iypf_K0JxbHQ.b['5'][0]++,React.createElement('i',{className:action.iconClass})):(__cov_fVDkWXb5c_Iypf_K0JxbHQ.b['5'][1]++,null));});__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['29']++;var props=this.props;__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['30']++;return React.createElement('div',{id:this.props.id,className:'ui modal '+this.props.id},React.createElement('div',{className:'header'},props.title),React.createElement('div',{className:'content'},props.children),React.createElement('div',{className:'actions'},actions));};__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['31']++;return ModalDialog;}(React.Component);__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['32']++;ModalDialog.propTypes={children:React.PropTypes.element.isRequired,title:react_1.PropTypes.string.isRequired,id:react_1.PropTypes.string.isRequired,actions:react_1.PropTypes.arrayOf(react_1.PropTypes.shape({className:react_1.PropTypes.string.isRequired,iconClass:react_1.PropTypes.string,label:react_1.PropTypes.string.isRequired,onClick:react_1.PropTypes.func.isRequired})).isRequired,handlePositive:react_1.PropTypes.func,handleDeny:react_1.PropTypes.func,closeDialog:react_1.PropTypes.func};__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['33']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['34']++;exports.default=react_redux_1.connect(function(state){__cov_fVDkWXb5c_Iypf_K0JxbHQ.f['12']++;__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['35']++;return{};},function(dispatch){__cov_fVDkWXb5c_Iypf_K0JxbHQ.f['13']++;__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['36']++;return{closeDialog:function(){__cov_fVDkWXb5c_Iypf_K0JxbHQ.f['14']++;__cov_fVDkWXb5c_Iypf_K0JxbHQ.s['37']++;return dispatch(Modal.closeModal());}};})(ModalDialog);
+
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
 /* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function($) {/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var __assign = (this && this.__assign) || Object.assign || function(t) {
-	    for (var s, i = 1, n = arguments.length; i < n; i++) {
-	        s = arguments[i];
-	        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-	            t[p] = s[p];
-	    }
-	    return t;
-	};
-	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(39);
-	var ui = __webpack_require__(82);
-	var redux_form_1 = __webpack_require__(86);
-	var collection_1 = __webpack_require__(87);
-	var _ = __webpack_require__(21);
-	var react_1 = __webpack_require__(20);
-	var SettingsForm = (function (_super) {
-	    __extends(SettingsForm, _super);
-	    function SettingsForm() {
-	        _super.apply(this, arguments);
-	    }
-	    SettingsForm.prototype.componentDidMount = function () {
-	        this._initSemanticUi();
-	    };
-	    SettingsForm.prototype.componentDidUpdate = function () {
-	        this._initSemanticUi();
-	    };
-	    SettingsForm.prototype._initSemanticUi = function () {
-	        $('.icon.help.circle')
-	            .popup({
-	            position: "top left",
-	            offset: -10
-	        });
-	        $('.ui.checkbox')
-	            .checkbox();
-	    };
-	    SettingsForm.prototype.render = function () {
-	        var props = this.props;
-	        var fields = props.fields;
-	        return React.createElement("form", {className: "ui form"}, collection_1.chunk(this.props.settings, 1).map(function (chunk) {
-	            return React.createElement("div", {key: chunk[0].id, className: "field"}, chunk.map(function (setting) {
-	                return React.createElement(Field, __assign({key: setting.id}, setting, {field: fields[setting.id]}));
-	            }));
-	        }));
-	    };
-	    return SettingsForm;
-	}(React.Component));
-	SettingsForm.propTypes = {
-	    settings: react_1.PropTypes.arrayOf(react_1.PropTypes.shape({
-	        id: react_1.PropTypes.string.isRequired,
-	        type: react_1.PropTypes.string.isRequired,
-	        name: react_1.PropTypes.string.isRequired
-	    })).isRequired
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = redux_form_1.reduxForm({})(SettingsForm);
-	function Field(props) {
-	    return React.createElement("div", {className: "field"}, React.createElement("label", null, props.name, props.description && props.type !== 'boolean' ?
-	        React.createElement(ui.Icon, {type: "help circle", "data-content": props.description}) : null), React.createElement(SettingsInput, __assign({}, props)));
+	/* WEBPACK VAR INJECTION */(function($) {"use strict";
+	var __cov_SpO89fwETTiZB1M82GIUAA = (Function('return this'))();
+	if (!__cov_SpO89fwETTiZB1M82GIUAA.__coverage__) { __cov_SpO89fwETTiZB1M82GIUAA.__coverage__ = {}; }
+	__cov_SpO89fwETTiZB1M82GIUAA = __cov_SpO89fwETTiZB1M82GIUAA.__coverage__;
+	if (!(__cov_SpO89fwETTiZB1M82GIUAA['/home/travis/build/Niondir/iot-dashboard/src/ui/settingsForm.ui.js'])) {
+	   __cov_SpO89fwETTiZB1M82GIUAA['/home/travis/build/Niondir/iot-dashboard/src/ui/settingsForm.ui.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/ui/settingsForm.ui.js","s":{"1":0,"2":0,"3":0,"4":0,"5":1,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":1,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":0,"38":0,"39":0,"40":0,"41":0,"42":0,"43":1,"44":0,"45":0,"46":1,"47":0,"48":0,"49":0,"50":0,"51":0,"52":0,"53":0,"54":0,"55":0,"56":0,"57":0,"58":0,"59":0,"60":0,"61":0,"62":0,"63":0,"64":0,"65":0,"66":0,"67":0,"68":0},"b":{"1":[0,0,0],"2":[0,0],"3":[0,0],"4":[0,0,0,0],"5":[0,0],"6":[0,0],"7":[0,0],"8":[0,0,0,0,0,0,0,0],"9":[0,0],"10":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0},"fnMap":{"1":{"name":"(anonymous_1)","line":5,"loc":{"start":{"line":5,"column":44},"end":{"line":5,"column":60}}},"2":{"name":"__","line":7,"loc":{"start":{"line":7,"column":4},"end":{"line":7,"column":18}}},"3":{"name":"(anonymous_3)","line":10,"loc":{"start":{"line":10,"column":59},"end":{"line":10,"column":71}}},"4":{"name":"(anonymous_4)","line":25,"loc":{"start":{"line":25,"column":20},"end":{"line":25,"column":38}}},"5":{"name":"SettingsForm","line":27,"loc":{"start":{"line":27,"column":4},"end":{"line":27,"column":28}}},"6":{"name":"(anonymous_6)","line":30,"loc":{"start":{"line":30,"column":47},"end":{"line":30,"column":59}}},"7":{"name":"(anonymous_7)","line":33,"loc":{"start":{"line":33,"column":48},"end":{"line":33,"column":60}}},"8":{"name":"(anonymous_8)","line":36,"loc":{"start":{"line":36,"column":45},"end":{"line":36,"column":57}}},"9":{"name":"(anonymous_9)","line":45,"loc":{"start":{"line":45,"column":36},"end":{"line":45,"column":48}}},"10":{"name":"(anonymous_10)","line":48,"loc":{"start":{"line":48,"column":114},"end":{"line":48,"column":131}}},"11":{"name":"(anonymous_11)","line":49,"loc":{"start":{"line":49,"column":96},"end":{"line":49,"column":115}}},"12":{"name":"Field","line":65,"loc":{"start":{"line":65,"column":0},"end":{"line":65,"column":22}}},"13":{"name":"SettingsInput","line":75,"loc":{"start":{"line":75,"column":0},"end":{"line":75,"column":30}}},"14":{"name":"(anonymous_14)","line":88,"loc":{"start":{"line":88,"column":194},"end":{"line":88,"column":212}}},"15":{"name":"(anonymous_15)","line":117,"loc":{"start":{"line":117,"column":22},"end":{"line":117,"column":39}}},"16":{"name":"(anonymous_16)","line":119,"loc":{"start":{"line":119,"column":195},"end":{"line":119,"column":209}}},"17":{"name":"(anonymous_17)","line":129,"loc":{"start":{"line":129,"column":53},"end":{"line":129,"column":70}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":9,"column":2}},"2":{"start":{"line":6,"column":4},"end":{"line":6,"column":58}},"3":{"start":{"line":6,"column":21},"end":{"line":6,"column":58}},"4":{"start":{"line":6,"column":46},"end":{"line":6,"column":58}},"5":{"start":{"line":7,"column":4},"end":{"line":7,"column":43}},"6":{"start":{"line":7,"column":20},"end":{"line":7,"column":41}},"7":{"start":{"line":8,"column":4},"end":{"line":8,"column":89}},"8":{"start":{"line":10,"column":0},"end":{"line":17,"column":2}},"9":{"start":{"line":11,"column":4},"end":{"line":15,"column":5}},"10":{"start":{"line":12,"column":8},"end":{"line":12,"column":25}},"11":{"start":{"line":13,"column":8},"end":{"line":14,"column":24}},"12":{"start":{"line":13,"column":25},"end":{"line":14,"column":24}},"13":{"start":{"line":14,"column":12},"end":{"line":14,"column":24}},"14":{"start":{"line":16,"column":4},"end":{"line":16,"column":13}},"15":{"start":{"line":18,"column":0},"end":{"line":18,"column":29}},"16":{"start":{"line":19,"column":0},"end":{"line":19,"column":43}},"17":{"start":{"line":20,"column":0},"end":{"line":20,"column":34}},"18":{"start":{"line":21,"column":0},"end":{"line":21,"column":41}},"19":{"start":{"line":22,"column":0},"end":{"line":22,"column":49}},"20":{"start":{"line":23,"column":0},"end":{"line":23,"column":26}},"21":{"start":{"line":24,"column":0},"end":{"line":24,"column":31}},"22":{"start":{"line":25,"column":0},"end":{"line":55,"column":20}},"23":{"start":{"line":26,"column":4},"end":{"line":26,"column":36}},"24":{"start":{"line":27,"column":4},"end":{"line":29,"column":5}},"25":{"start":{"line":28,"column":8},"end":{"line":28,"column":38}},"26":{"start":{"line":30,"column":4},"end":{"line":32,"column":6}},"27":{"start":{"line":31,"column":8},"end":{"line":31,"column":31}},"28":{"start":{"line":33,"column":4},"end":{"line":35,"column":6}},"29":{"start":{"line":34,"column":8},"end":{"line":34,"column":31}},"30":{"start":{"line":36,"column":4},"end":{"line":44,"column":6}},"31":{"start":{"line":37,"column":8},"end":{"line":41,"column":11}},"32":{"start":{"line":42,"column":8},"end":{"line":43,"column":24}},"33":{"start":{"line":45,"column":4},"end":{"line":53,"column":6}},"34":{"start":{"line":46,"column":8},"end":{"line":46,"column":31}},"35":{"start":{"line":47,"column":8},"end":{"line":47,"column":34}},"36":{"start":{"line":48,"column":8},"end":{"line":52,"column":12}},"37":{"start":{"line":49,"column":12},"end":{"line":51,"column":16}},"38":{"start":{"line":50,"column":16},"end":{"line":50,"column":117}},"39":{"start":{"line":54,"column":4},"end":{"line":54,"column":24}},"40":{"start":{"line":56,"column":0},"end":{"line":62,"column":2}},"41":{"start":{"line":63,"column":0},"end":{"line":63,"column":62}},"42":{"start":{"line":64,"column":0},"end":{"line":64,"column":59}},"43":{"start":{"line":65,"column":0},"end":{"line":68,"column":1}},"44":{"start":{"line":66,"column":4},"end":{"line":67,"column":161}},"45":{"start":{"line":69,"column":0},"end":{"line":74,"column":2}},"46":{"start":{"line":75,"column":0},"end":{"line":99,"column":1}},"47":{"start":{"line":76,"column":4},"end":{"line":98,"column":5}},"48":{"start":{"line":78,"column":12},"end":{"line":78,"column":119}},"49":{"start":{"line":80,"column":12},"end":{"line":80,"column":105}},"50":{"start":{"line":82,"column":12},"end":{"line":82,"column":119}},"51":{"start":{"line":84,"column":12},"end":{"line":84,"column":153}},"52":{"start":{"line":86,"column":12},"end":{"line":86,"column":91}},"53":{"start":{"line":88,"column":12},"end":{"line":92,"column":16}},"54":{"start":{"line":89,"column":16},"end":{"line":89,"column":77}},"55":{"start":{"line":90,"column":16},"end":{"line":90,"column":75}},"56":{"start":{"line":91,"column":16},"end":{"line":91,"column":105}},"57":{"start":{"line":94,"column":12},"end":{"line":94,"column":86}},"58":{"start":{"line":96,"column":12},"end":{"line":96,"column":103}},"59":{"start":{"line":97,"column":12},"end":{"line":97,"column":142}},"60":{"start":{"line":100,"column":0},"end":{"line":116,"column":2}},"61":{"start":{"line":117,"column":0},"end":{"line":123,"column":2}},"62":{"start":{"line":118,"column":4},"end":{"line":118,"column":40}},"63":{"start":{"line":119,"column":4},"end":{"line":122,"column":8}},"64":{"start":{"line":120,"column":8},"end":{"line":120,"column":35}},"65":{"start":{"line":121,"column":8},"end":{"line":121,"column":108}},"66":{"start":{"line":124,"column":0},"end":{"line":128,"column":2}},"67":{"start":{"line":129,"column":0},"end":{"line":133,"column":20}},"68":{"start":{"line":130,"column":4},"end":{"line":132,"column":6}}},"branchMap":{"1":{"line":5,"type":"binary-expr","locations":[{"start":{"line":5,"column":17},"end":{"line":5,"column":21}},{"start":{"line":5,"column":25},"end":{"line":5,"column":39}},{"start":{"line":5,"column":44},"end":{"line":9,"column":1}}]},"2":{"line":6,"type":"if","locations":[{"start":{"line":6,"column":21},"end":{"line":6,"column":21}},{"start":{"line":6,"column":21},"end":{"line":6,"column":21}}]},"3":{"line":8,"type":"cond-expr","locations":[{"start":{"line":8,"column":31},"end":{"line":8,"column":47}},{"start":{"line":8,"column":51},"end":{"line":8,"column":87}}]},"4":{"line":10,"type":"binary-expr","locations":[{"start":{"line":10,"column":16},"end":{"line":10,"column":20}},{"start":{"line":10,"column":24},"end":{"line":10,"column":37}},{"start":{"line":10,"column":42},"end":{"line":10,"column":55}},{"start":{"line":10,"column":59},"end":{"line":17,"column":1}}]},"5":{"line":13,"type":"if","locations":[{"start":{"line":13,"column":25},"end":{"line":13,"column":25}},{"start":{"line":13,"column":25},"end":{"line":13,"column":25}}]},"6":{"line":66,"type":"cond-expr","locations":[{"start":{"line":67,"column":8},"end":{"line":67,"column":94}},{"start":{"line":67,"column":97},"end":{"line":67,"column":101}}]},"7":{"line":66,"type":"binary-expr","locations":[{"start":{"line":66,"column":107},"end":{"line":66,"column":124}},{"start":{"line":66,"column":128},"end":{"line":66,"column":152}}]},"8":{"line":76,"type":"switch","locations":[{"start":{"line":77,"column":8},"end":{"line":78,"column":119}},{"start":{"line":79,"column":8},"end":{"line":80,"column":105}},{"start":{"line":81,"column":8},"end":{"line":82,"column":119}},{"start":{"line":83,"column":8},"end":{"line":84,"column":153}},{"start":{"line":85,"column":8},"end":{"line":86,"column":91}},{"start":{"line":87,"column":8},"end":{"line":92,"column":16}},{"start":{"line":93,"column":8},"end":{"line":94,"column":86}},{"start":{"line":95,"column":8},"end":{"line":97,"column":142}}]},"9":{"line":89,"type":"cond-expr","locations":[{"start":{"line":89,"column":55},"end":{"line":89,"column":67}},{"start":{"line":89,"column":70},"end":{"line":89,"column":76}}]},"10":{"line":90,"type":"cond-expr","locations":[{"start":{"line":90,"column":54},"end":{"line":90,"column":65}},{"start":{"line":90,"column":68},"end":{"line":90,"column":74}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var __extends = (this && this.__extends) || function (d, b) {","    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];","    function __() { this.constructor = d; }","    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());","};","var __assign = (this && this.__assign) || Object.assign || function(t) {","    for (var s, i = 1, n = arguments.length; i < n; i++) {","        s = arguments[i];","        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))","            t[p] = s[p];","    }","    return t;","};","var React = require('react');","var react_redux_1 = require('react-redux');","var ui = require('./elements.ui');","var redux_form_1 = require('redux-form');","var collection_1 = require('../util/collection');","var _ = require('lodash');","var react_1 = require(\"react\");","var SettingsForm = (function (_super) {","    __extends(SettingsForm, _super);","    function SettingsForm() {","        _super.apply(this, arguments);","    }","    SettingsForm.prototype.componentDidMount = function () {","        this._initSemanticUi();","    };","    SettingsForm.prototype.componentDidUpdate = function () {","        this._initSemanticUi();","    };","    SettingsForm.prototype._initSemanticUi = function () {","        $('.icon.help.circle')","            .popup({","            position: \"top left\",","            offset: -10","        });","        $('.ui.checkbox')","            .checkbox();","    };","    SettingsForm.prototype.render = function () {","        var props = this.props;","        var fields = props.fields;","        return React.createElement(\"form\", {className: \"ui form\"}, collection_1.chunk(this.props.settings, 1).map(function (chunk) {","            return React.createElement(\"div\", {key: chunk[0].id, className: \"field\"}, chunk.map(function (setting) {","                return React.createElement(Field, __assign({key: setting.id}, setting, {field: fields[setting.id]}));","            }));","        }));","    };","    return SettingsForm;","}(React.Component));","SettingsForm.propTypes = {","    settings: react_1.PropTypes.arrayOf(react_1.PropTypes.shape({","        id: react_1.PropTypes.string.isRequired,","        type: react_1.PropTypes.string.isRequired,","        name: react_1.PropTypes.string.isRequired","    })).isRequired","};","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = redux_form_1.reduxForm({})(SettingsForm);","function Field(props) {","    return React.createElement(\"div\", {className: \"field\"}, React.createElement(\"label\", null, props.name, props.description && props.type !== 'boolean' ?","        React.createElement(ui.Icon, {type: \"help circle\", \"data-content\": props.description}) : null), React.createElement(SettingsInput, __assign({}, props)));","}","Field.propTypes = {","    field: react_1.PropTypes.object.isRequired,","    name: react_1.PropTypes.string.isRequired,","    type: react_1.PropTypes.string.isRequired,","    description: react_1.PropTypes.string","};","function SettingsInput(props) {","    switch (props.type) {","        case \"text\":","            return React.createElement(\"textarea\", __assign({rows: \"3\", placeholder: props.description}, props.field));","        case \"string\":","            return React.createElement(\"input\", __assign({placeholder: props.description}, props.field));","        case \"json\":","            return React.createElement(\"textarea\", __assign({rows: \"3\", placeholder: props.description}, props.field));","        case \"number\":","            return React.createElement(\"input\", __assign({type: \"number\", min: props.min, max: props.max, placeholder: props.description}, props.field));","        case \"boolean\":","            return React.createElement(\"input\", __assign({type: \"checkbox\"}, props.field));","        case \"option\":","            return React.createElement(\"select\", __assign({className: \"ui fluid dropdown\"}, props.field), React.createElement(\"option\", null, \"Select \" + props.name + \" ...\"), props.options.map(function (option) {","                var optionValue = _.isObject(option) ? option.value : option;","                var optionName = _.isObject(option) ? option.name : option;","                return React.createElement(\"option\", {key: optionValue, value: optionValue}, optionName);","            }));","        case \"datasource\":","            return React.createElement(DatasourceInputContainer, __assign({}, props));","        default:","            console.error(\"Unknown type for settings field with id '\" + props.id + \"': \" + props.type);","            return React.createElement(\"input\", {placeholder: props.description, readonly: true, value: \"Unknown field type: \" + props.type});","    }","}","SettingsInput.propTypes = {","    field: react_1.PropTypes.object.isRequired,","    type: react_1.PropTypes.string.isRequired,","    id: react_1.PropTypes.string.isRequired,","    name: react_1.PropTypes.string.isRequired,","    description: react_1.PropTypes.string,","    min: react_1.PropTypes.number,","    max: react_1.PropTypes.number,","    options: react_1.PropTypes.oneOfType([","        react_1.PropTypes.arrayOf(// For option","        react_1.PropTypes.shape({","            name: react_1.PropTypes.string,","            value: react_1.PropTypes.string.isRequired","        }.isRequired)).isRequired,","        react_1.PropTypes.arrayOf(react_1.PropTypes.string).isRequired","    ])","};","var DatasourceInput = function (props) {","    var datasources = props.datasources;","    return React.createElement(\"select\", __assign({className: \"ui fluid dropdown\"}, props.field), React.createElement(\"option\", null, \"Select \" + props.name + \" ...\"), _.toPairs(datasources).map(function (_a) {","        var id = _a[0], ds = _a[1];","        return React.createElement(\"option\", {key: id, value: id}, ds.settings.name + \" (\" + ds.type + \")\");","    }));","};","DatasourceInput.propTypes = {","    datasources: react_1.PropTypes.object.isRequired,","    field: react_1.PropTypes.object.isRequired,","    name: react_1.PropTypes.string.isRequired","};","var DatasourceInputContainer = react_redux_1.connect(function (state) {","    return {","        datasources: state.datasources","    };","})(DatasourceInput);",""]};
 	}
-	Field.propTypes = {
-	    field: react_1.PropTypes.object.isRequired,
-	    name: react_1.PropTypes.string.isRequired,
-	    type: react_1.PropTypes.string.isRequired,
-	    description: react_1.PropTypes.string
-	};
-	function SettingsInput(props) {
-	    switch (props.type) {
-	        case "text":
-	            return React.createElement("textarea", __assign({rows: "3", placeholder: props.description}, props.field));
-	        case "string":
-	            return React.createElement("input", __assign({placeholder: props.description}, props.field));
-	        case "json":
-	            return React.createElement("textarea", __assign({rows: "3", placeholder: props.description}, props.field));
-	        case "number":
-	            return React.createElement("input", __assign({type: "number", min: props.min, max: props.max, placeholder: props.description}, props.field));
-	        case "boolean":
-	            return React.createElement("input", __assign({type: "checkbox"}, props.field));
-	        case "option":
-	            return React.createElement("select", __assign({className: "ui fluid dropdown"}, props.field), React.createElement("option", null, "Select " + props.name + " ..."), props.options.map(function (option) {
-	                var optionValue = _.isObject(option) ? option.value : option;
-	                var optionName = _.isObject(option) ? option.name : option;
-	                return React.createElement("option", {key: optionValue, value: optionValue}, optionName);
-	            }));
-	        case "datasource":
-	            return React.createElement(DatasourceInputContainer, __assign({}, props));
-	        default:
-	            console.error("Unknown type for settings field with id '" + props.id + "': " + props.type);
-	            return React.createElement("input", {placeholder: props.description, readonly: true, value: "Unknown field type: " + props.type});
-	    }
-	}
-	SettingsInput.propTypes = {
-	    field: react_1.PropTypes.object.isRequired,
-	    type: react_1.PropTypes.string.isRequired,
-	    id: react_1.PropTypes.string.isRequired,
-	    name: react_1.PropTypes.string.isRequired,
-	    description: react_1.PropTypes.string,
-	    min: react_1.PropTypes.number,
-	    max: react_1.PropTypes.number,
-	    options: react_1.PropTypes.oneOfType([
-	        react_1.PropTypes.arrayOf(// For option
-	        react_1.PropTypes.shape({
-	            name: react_1.PropTypes.string,
-	            value: react_1.PropTypes.string.isRequired
-	        }.isRequired)).isRequired,
-	        react_1.PropTypes.arrayOf(react_1.PropTypes.string).isRequired
-	    ])
-	};
-	var DatasourceInput = function (props) {
-	    var datasources = props.datasources;
-	    return React.createElement("select", __assign({className: "ui fluid dropdown"}, props.field), React.createElement("option", null, "Select " + props.name + " ..."), _.toPairs(datasources).map(function (_a) {
-	        var id = _a[0], ds = _a[1];
-	        return React.createElement("option", {key: id, value: id}, ds.settings.name + " (" + ds.type + ")");
-	    }));
-	};
-	DatasourceInput.propTypes = {
-	    datasources: react_1.PropTypes.object.isRequired,
-	    field: react_1.PropTypes.object.isRequired,
-	    name: react_1.PropTypes.string.isRequired
-	};
-	var DatasourceInputContainer = react_redux_1.connect(function (state) {
-	    return {
-	        datasources: state.datasources
-	    };
-	})(DatasourceInput);
-	
+	__cov_SpO89fwETTiZB1M82GIUAA = __cov_SpO89fwETTiZB1M82GIUAA['/home/travis/build/Niondir/iot-dashboard/src/ui/settingsForm.ui.js'];
+	__cov_SpO89fwETTiZB1M82GIUAA.s['1']++;var __extends=(__cov_SpO89fwETTiZB1M82GIUAA.b['1'][0]++,this)&&(__cov_SpO89fwETTiZB1M82GIUAA.b['1'][1]++,this.__extends)||(__cov_SpO89fwETTiZB1M82GIUAA.b['1'][2]++,function(d,b){__cov_SpO89fwETTiZB1M82GIUAA.f['1']++;__cov_SpO89fwETTiZB1M82GIUAA.s['2']++;for(var p in b){__cov_SpO89fwETTiZB1M82GIUAA.s['3']++;if(b.hasOwnProperty(p)){__cov_SpO89fwETTiZB1M82GIUAA.b['2'][0]++;__cov_SpO89fwETTiZB1M82GIUAA.s['4']++;d[p]=b[p];}else{__cov_SpO89fwETTiZB1M82GIUAA.b['2'][1]++;}}function __(){__cov_SpO89fwETTiZB1M82GIUAA.f['2']++;__cov_SpO89fwETTiZB1M82GIUAA.s['6']++;this.constructor=d;}__cov_SpO89fwETTiZB1M82GIUAA.s['7']++;d.prototype=b===null?(__cov_SpO89fwETTiZB1M82GIUAA.b['3'][0]++,Object.create(b)):(__cov_SpO89fwETTiZB1M82GIUAA.b['3'][1]++,(__.prototype=b.prototype,new __()));});__cov_SpO89fwETTiZB1M82GIUAA.s['8']++;var __assign=(__cov_SpO89fwETTiZB1M82GIUAA.b['4'][0]++,this)&&(__cov_SpO89fwETTiZB1M82GIUAA.b['4'][1]++,this.__assign)||(__cov_SpO89fwETTiZB1M82GIUAA.b['4'][2]++,Object.assign)||(__cov_SpO89fwETTiZB1M82GIUAA.b['4'][3]++,function(t){__cov_SpO89fwETTiZB1M82GIUAA.f['3']++;__cov_SpO89fwETTiZB1M82GIUAA.s['9']++;for(var s,i=1,n=arguments.length;i<n;i++){__cov_SpO89fwETTiZB1M82GIUAA.s['10']++;s=arguments[i];__cov_SpO89fwETTiZB1M82GIUAA.s['11']++;for(var p in s){__cov_SpO89fwETTiZB1M82GIUAA.s['12']++;if(Object.prototype.hasOwnProperty.call(s,p)){__cov_SpO89fwETTiZB1M82GIUAA.b['5'][0]++;__cov_SpO89fwETTiZB1M82GIUAA.s['13']++;t[p]=s[p];}else{__cov_SpO89fwETTiZB1M82GIUAA.b['5'][1]++;}}}__cov_SpO89fwETTiZB1M82GIUAA.s['14']++;return t;});__cov_SpO89fwETTiZB1M82GIUAA.s['15']++;var React=__webpack_require__(20);__cov_SpO89fwETTiZB1M82GIUAA.s['16']++;var react_redux_1=__webpack_require__(39);__cov_SpO89fwETTiZB1M82GIUAA.s['17']++;var ui=__webpack_require__(82);__cov_SpO89fwETTiZB1M82GIUAA.s['18']++;var redux_form_1=__webpack_require__(86);__cov_SpO89fwETTiZB1M82GIUAA.s['19']++;var collection_1=__webpack_require__(87);__cov_SpO89fwETTiZB1M82GIUAA.s['20']++;var _=__webpack_require__(21);__cov_SpO89fwETTiZB1M82GIUAA.s['21']++;var react_1=__webpack_require__(20);__cov_SpO89fwETTiZB1M82GIUAA.s['22']++;var SettingsForm=function(_super){__cov_SpO89fwETTiZB1M82GIUAA.f['4']++;__cov_SpO89fwETTiZB1M82GIUAA.s['23']++;__extends(SettingsForm,_super);function SettingsForm(){__cov_SpO89fwETTiZB1M82GIUAA.f['5']++;__cov_SpO89fwETTiZB1M82GIUAA.s['25']++;_super.apply(this,arguments);}__cov_SpO89fwETTiZB1M82GIUAA.s['26']++;SettingsForm.prototype.componentDidMount=function(){__cov_SpO89fwETTiZB1M82GIUAA.f['6']++;__cov_SpO89fwETTiZB1M82GIUAA.s['27']++;this._initSemanticUi();};__cov_SpO89fwETTiZB1M82GIUAA.s['28']++;SettingsForm.prototype.componentDidUpdate=function(){__cov_SpO89fwETTiZB1M82GIUAA.f['7']++;__cov_SpO89fwETTiZB1M82GIUAA.s['29']++;this._initSemanticUi();};__cov_SpO89fwETTiZB1M82GIUAA.s['30']++;SettingsForm.prototype._initSemanticUi=function(){__cov_SpO89fwETTiZB1M82GIUAA.f['8']++;__cov_SpO89fwETTiZB1M82GIUAA.s['31']++;$('.icon.help.circle').popup({position:'top left',offset:-10});__cov_SpO89fwETTiZB1M82GIUAA.s['32']++;$('.ui.checkbox').checkbox();};__cov_SpO89fwETTiZB1M82GIUAA.s['33']++;SettingsForm.prototype.render=function(){__cov_SpO89fwETTiZB1M82GIUAA.f['9']++;__cov_SpO89fwETTiZB1M82GIUAA.s['34']++;var props=this.props;__cov_SpO89fwETTiZB1M82GIUAA.s['35']++;var fields=props.fields;__cov_SpO89fwETTiZB1M82GIUAA.s['36']++;return React.createElement('form',{className:'ui form'},collection_1.chunk(this.props.settings,1).map(function(chunk){__cov_SpO89fwETTiZB1M82GIUAA.f['10']++;__cov_SpO89fwETTiZB1M82GIUAA.s['37']++;return React.createElement('div',{key:chunk[0].id,className:'field'},chunk.map(function(setting){__cov_SpO89fwETTiZB1M82GIUAA.f['11']++;__cov_SpO89fwETTiZB1M82GIUAA.s['38']++;return React.createElement(Field,__assign({key:setting.id},setting,{field:fields[setting.id]}));}));}));};__cov_SpO89fwETTiZB1M82GIUAA.s['39']++;return SettingsForm;}(React.Component);__cov_SpO89fwETTiZB1M82GIUAA.s['40']++;SettingsForm.propTypes={settings:react_1.PropTypes.arrayOf(react_1.PropTypes.shape({id:react_1.PropTypes.string.isRequired,type:react_1.PropTypes.string.isRequired,name:react_1.PropTypes.string.isRequired})).isRequired};__cov_SpO89fwETTiZB1M82GIUAA.s['41']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_SpO89fwETTiZB1M82GIUAA.s['42']++;exports.default=redux_form_1.reduxForm({})(SettingsForm);function Field(props){__cov_SpO89fwETTiZB1M82GIUAA.f['12']++;__cov_SpO89fwETTiZB1M82GIUAA.s['44']++;return React.createElement('div',{className:'field'},React.createElement('label',null,props.name,(__cov_SpO89fwETTiZB1M82GIUAA.b['7'][0]++,props.description)&&(__cov_SpO89fwETTiZB1M82GIUAA.b['7'][1]++,props.type!=='boolean')?(__cov_SpO89fwETTiZB1M82GIUAA.b['6'][0]++,React.createElement(ui.Icon,{type:'help circle','data-content':props.description})):(__cov_SpO89fwETTiZB1M82GIUAA.b['6'][1]++,null)),React.createElement(SettingsInput,__assign({},props)));}__cov_SpO89fwETTiZB1M82GIUAA.s['45']++;Field.propTypes={field:react_1.PropTypes.object.isRequired,name:react_1.PropTypes.string.isRequired,type:react_1.PropTypes.string.isRequired,description:react_1.PropTypes.string};function SettingsInput(props){__cov_SpO89fwETTiZB1M82GIUAA.f['13']++;__cov_SpO89fwETTiZB1M82GIUAA.s['47']++;switch(props.type){case'text':__cov_SpO89fwETTiZB1M82GIUAA.b['8'][0]++;__cov_SpO89fwETTiZB1M82GIUAA.s['48']++;return React.createElement('textarea',__assign({rows:'3',placeholder:props.description},props.field));case'string':__cov_SpO89fwETTiZB1M82GIUAA.b['8'][1]++;__cov_SpO89fwETTiZB1M82GIUAA.s['49']++;return React.createElement('input',__assign({placeholder:props.description},props.field));case'json':__cov_SpO89fwETTiZB1M82GIUAA.b['8'][2]++;__cov_SpO89fwETTiZB1M82GIUAA.s['50']++;return React.createElement('textarea',__assign({rows:'3',placeholder:props.description},props.field));case'number':__cov_SpO89fwETTiZB1M82GIUAA.b['8'][3]++;__cov_SpO89fwETTiZB1M82GIUAA.s['51']++;return React.createElement('input',__assign({type:'number',min:props.min,max:props.max,placeholder:props.description},props.field));case'boolean':__cov_SpO89fwETTiZB1M82GIUAA.b['8'][4]++;__cov_SpO89fwETTiZB1M82GIUAA.s['52']++;return React.createElement('input',__assign({type:'checkbox'},props.field));case'option':__cov_SpO89fwETTiZB1M82GIUAA.b['8'][5]++;__cov_SpO89fwETTiZB1M82GIUAA.s['53']++;return React.createElement('select',__assign({className:'ui fluid dropdown'},props.field),React.createElement('option',null,'Select '+props.name+' ...'),props.options.map(function(option){__cov_SpO89fwETTiZB1M82GIUAA.f['14']++;__cov_SpO89fwETTiZB1M82GIUAA.s['54']++;var optionValue=_.isObject(option)?(__cov_SpO89fwETTiZB1M82GIUAA.b['9'][0]++,option.value):(__cov_SpO89fwETTiZB1M82GIUAA.b['9'][1]++,option);__cov_SpO89fwETTiZB1M82GIUAA.s['55']++;var optionName=_.isObject(option)?(__cov_SpO89fwETTiZB1M82GIUAA.b['10'][0]++,option.name):(__cov_SpO89fwETTiZB1M82GIUAA.b['10'][1]++,option);__cov_SpO89fwETTiZB1M82GIUAA.s['56']++;return React.createElement('option',{key:optionValue,value:optionValue},optionName);}));case'datasource':__cov_SpO89fwETTiZB1M82GIUAA.b['8'][6]++;__cov_SpO89fwETTiZB1M82GIUAA.s['57']++;return React.createElement(DatasourceInputContainer,__assign({},props));default:__cov_SpO89fwETTiZB1M82GIUAA.b['8'][7]++;__cov_SpO89fwETTiZB1M82GIUAA.s['58']++;console.error('Unknown type for settings field with id \''+props.id+'\': '+props.type);__cov_SpO89fwETTiZB1M82GIUAA.s['59']++;return React.createElement('input',{placeholder:props.description,readonly:true,value:'Unknown field type: '+props.type});}}__cov_SpO89fwETTiZB1M82GIUAA.s['60']++;SettingsInput.propTypes={field:react_1.PropTypes.object.isRequired,type:react_1.PropTypes.string.isRequired,id:react_1.PropTypes.string.isRequired,name:react_1.PropTypes.string.isRequired,description:react_1.PropTypes.string,min:react_1.PropTypes.number,max:react_1.PropTypes.number,options:react_1.PropTypes.oneOfType([react_1.PropTypes.arrayOf(react_1.PropTypes.shape({name:react_1.PropTypes.string,value:react_1.PropTypes.string.isRequired}.isRequired)).isRequired,react_1.PropTypes.arrayOf(react_1.PropTypes.string).isRequired])};__cov_SpO89fwETTiZB1M82GIUAA.s['61']++;var DatasourceInput=function(props){__cov_SpO89fwETTiZB1M82GIUAA.f['15']++;__cov_SpO89fwETTiZB1M82GIUAA.s['62']++;var datasources=props.datasources;__cov_SpO89fwETTiZB1M82GIUAA.s['63']++;return React.createElement('select',__assign({className:'ui fluid dropdown'},props.field),React.createElement('option',null,'Select '+props.name+' ...'),_.toPairs(datasources).map(function(_a){__cov_SpO89fwETTiZB1M82GIUAA.f['16']++;__cov_SpO89fwETTiZB1M82GIUAA.s['64']++;var id=_a[0],ds=_a[1];__cov_SpO89fwETTiZB1M82GIUAA.s['65']++;return React.createElement('option',{key:id,value:id},ds.settings.name+' ('+ds.type+')');}));};__cov_SpO89fwETTiZB1M82GIUAA.s['66']++;DatasourceInput.propTypes={datasources:react_1.PropTypes.object.isRequired,field:react_1.PropTypes.object.isRequired,name:react_1.PropTypes.string.isRequired};__cov_SpO89fwETTiZB1M82GIUAA.s['67']++;var DatasourceInputContainer=react_redux_1.connect(function(state){__cov_SpO89fwETTiZB1M82GIUAA.f['17']++;__cov_SpO89fwETTiZB1M82GIUAA.s['68']++;return{datasources:state.datasources};})(DatasourceInput);
+
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
@@ -2885,1020 +596,195 @@ webpackJsonp([0],[
 /* 87 */
 /***/ function(module, exports) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	function chunk(array, chunkSize, handle) {
-	    var i, j, chunk;
-	    var chunkNum = 0;
-	    var chunks = [];
-	    if (!array) {
-	        return chunks;
-	    }
-	    for (i = 0, j = array.length; i < j; i += chunkSize) {
-	        chunk = array.slice(i, i + chunkSize);
-	        if (handle) {
-	            handle(chunk, chunkNum);
-	        }
-	        chunkNum++;
-	        chunks.push(chunk);
-	    }
-	    return chunks;
+	var __cov_0u7yGn_FuPAPC1_9Pk_4sQ = (Function('return this'))();
+	if (!__cov_0u7yGn_FuPAPC1_9Pk_4sQ.__coverage__) { __cov_0u7yGn_FuPAPC1_9Pk_4sQ.__coverage__ = {}; }
+	__cov_0u7yGn_FuPAPC1_9Pk_4sQ = __cov_0u7yGn_FuPAPC1_9Pk_4sQ.__coverage__;
+	if (!(__cov_0u7yGn_FuPAPC1_9Pk_4sQ['/home/travis/build/Niondir/iot-dashboard/src/util/collection.js'])) {
+	   __cov_0u7yGn_FuPAPC1_9Pk_4sQ['/home/travis/build/Niondir/iot-dashboard/src/util/collection.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/util/collection.js","s":{"1":1,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0},"b":{"1":[0,0],"2":[0,0]},"f":{"1":0},"fnMap":{"1":{"name":"chunk","line":5,"loc":{"start":{"line":5,"column":0},"end":{"line":5,"column":41}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":21,"column":1}},"2":{"start":{"line":6,"column":4},"end":{"line":6,"column":20}},"3":{"start":{"line":7,"column":4},"end":{"line":7,"column":21}},"4":{"start":{"line":8,"column":4},"end":{"line":8,"column":20}},"5":{"start":{"line":9,"column":4},"end":{"line":11,"column":5}},"6":{"start":{"line":10,"column":8},"end":{"line":10,"column":22}},"7":{"start":{"line":12,"column":4},"end":{"line":19,"column":5}},"8":{"start":{"line":13,"column":8},"end":{"line":13,"column":46}},"9":{"start":{"line":14,"column":8},"end":{"line":16,"column":9}},"10":{"start":{"line":15,"column":12},"end":{"line":15,"column":36}},"11":{"start":{"line":17,"column":8},"end":{"line":17,"column":19}},"12":{"start":{"line":18,"column":8},"end":{"line":18,"column":27}},"13":{"start":{"line":20,"column":4},"end":{"line":20,"column":18}},"14":{"start":{"line":22,"column":0},"end":{"line":22,"column":22}}},"branchMap":{"1":{"line":9,"type":"if","locations":[{"start":{"line":9,"column":4},"end":{"line":9,"column":4}},{"start":{"line":9,"column":4},"end":{"line":9,"column":4}}]},"2":{"line":14,"type":"if","locations":[{"start":{"line":14,"column":8},"end":{"line":14,"column":8}},{"start":{"line":14,"column":8},"end":{"line":14,"column":8}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","function chunk(array, chunkSize, handle) {","    var i, j, chunk;","    var chunkNum = 0;","    var chunks = [];","    if (!array) {","        return chunks;","    }","    for (i = 0, j = array.length; i < j; i += chunkSize) {","        chunk = array.slice(i, i + chunkSize);","        if (handle) {","            handle(chunk, chunkNum);","        }","        chunkNum++;","        chunks.push(chunk);","    }","    return chunks;","}","exports.chunk = chunk;",""]};
 	}
-	exports.chunk = chunk;
+	__cov_0u7yGn_FuPAPC1_9Pk_4sQ = __cov_0u7yGn_FuPAPC1_9Pk_4sQ['/home/travis/build/Niondir/iot-dashboard/src/util/collection.js'];
+	function chunk(array,chunkSize,handle){__cov_0u7yGn_FuPAPC1_9Pk_4sQ.f['1']++;__cov_0u7yGn_FuPAPC1_9Pk_4sQ.s['2']++;var i,j,chunk;__cov_0u7yGn_FuPAPC1_9Pk_4sQ.s['3']++;var chunkNum=0;__cov_0u7yGn_FuPAPC1_9Pk_4sQ.s['4']++;var chunks=[];__cov_0u7yGn_FuPAPC1_9Pk_4sQ.s['5']++;if(!array){__cov_0u7yGn_FuPAPC1_9Pk_4sQ.b['1'][0]++;__cov_0u7yGn_FuPAPC1_9Pk_4sQ.s['6']++;return chunks;}else{__cov_0u7yGn_FuPAPC1_9Pk_4sQ.b['1'][1]++;}__cov_0u7yGn_FuPAPC1_9Pk_4sQ.s['7']++;for(i=0,j=array.length;i<j;i+=chunkSize){__cov_0u7yGn_FuPAPC1_9Pk_4sQ.s['8']++;chunk=array.slice(i,i+chunkSize);__cov_0u7yGn_FuPAPC1_9Pk_4sQ.s['9']++;if(handle){__cov_0u7yGn_FuPAPC1_9Pk_4sQ.b['2'][0]++;__cov_0u7yGn_FuPAPC1_9Pk_4sQ.s['10']++;handle(chunk,chunkNum);}else{__cov_0u7yGn_FuPAPC1_9Pk_4sQ.b['2'][1]++;}__cov_0u7yGn_FuPAPC1_9Pk_4sQ.s['11']++;chunkNum++;__cov_0u7yGn_FuPAPC1_9Pk_4sQ.s['12']++;chunks.push(chunk);}__cov_0u7yGn_FuPAPC1_9Pk_4sQ.s['13']++;return chunks;}__cov_0u7yGn_FuPAPC1_9Pk_4sQ.s['14']++;exports.chunk=chunk;
 
 
 /***/ },
 /* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(39);
-	var Modal = __webpack_require__(50);
-	var ModalIds = __webpack_require__(51);
-	var react_1 = __webpack_require__(20);
-	var DashboardTopNavItem = function (props) {
-	    return React.createElement("div", {className: "ui simple dropdown item"}, "Board", React.createElement("i", {className: "dropdown icon"}), React.createElement("div", {className: "ui menu"}, React.createElement("a", {className: "item", onClick: function () { return props.showModal(ModalIds.DASHBOARD_IMPORT_EXPORT); }}, React.createElement("i", {className: "folder open outline icon"}), "Import / Export")));
-	};
-	DashboardTopNavItem.propTypes = {
-	    showModal: react_1.PropTypes.func.isRequired
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = react_redux_1.connect(function (state) {
-	    return {
-	        state: state
-	    };
-	}, function (dispatch) {
-	    return {
-	        showModal: function (id) { return dispatch(Modal.showModal(id)); }
-	    };
-	})(DashboardTopNavItem);
+	var __cov_A9dPM0i4Q4ym167KtJtygQ = (Function('return this'))();
+	if (!__cov_A9dPM0i4Q4ym167KtJtygQ.__coverage__) { __cov_A9dPM0i4Q4ym167KtJtygQ.__coverage__ = {}; }
+	__cov_A9dPM0i4Q4ym167KtJtygQ = __cov_A9dPM0i4Q4ym167KtJtygQ.__coverage__;
+	if (!(__cov_A9dPM0i4Q4ym167KtJtygQ['/home/travis/build/Niondir/iot-dashboard/src/dashboard/dashboardMenuEntry.ui.js'])) {
+	   __cov_A9dPM0i4Q4ym167KtJtygQ['/home/travis/build/Niondir/iot-dashboard/src/dashboard/dashboardMenuEntry.ui.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/dashboard/dashboardMenuEntry.ui.js","s":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0},"b":{},"f":{"1":0,"2":0,"3":0,"4":0,"5":0},"fnMap":{"1":{"name":"(anonymous_1)","line":10,"loc":{"start":{"line":10,"column":26},"end":{"line":10,"column":43}}},"2":{"name":"(anonymous_2)","line":11,"loc":{"start":{"line":11,"column":248},"end":{"line":11,"column":260}}},"3":{"name":"(anonymous_3)","line":17,"loc":{"start":{"line":17,"column":40},"end":{"line":17,"column":57}}},"4":{"name":"(anonymous_4)","line":21,"loc":{"start":{"line":21,"column":3},"end":{"line":21,"column":23}}},"5":{"name":"(anonymous_5)","line":23,"loc":{"start":{"line":23,"column":19},"end":{"line":23,"column":33}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":29}},"2":{"start":{"line":6,"column":0},"end":{"line":6,"column":43}},"3":{"start":{"line":7,"column":0},"end":{"line":7,"column":44}},"4":{"start":{"line":8,"column":0},"end":{"line":8,"column":50}},"5":{"start":{"line":9,"column":0},"end":{"line":9,"column":31}},"6":{"start":{"line":10,"column":0},"end":{"line":12,"column":2}},"7":{"start":{"line":11,"column":4},"end":{"line":11,"column":412}},"8":{"start":{"line":11,"column":262},"end":{"line":11,"column":319}},"9":{"start":{"line":13,"column":0},"end":{"line":15,"column":2}},"10":{"start":{"line":16,"column":0},"end":{"line":16,"column":62}},"11":{"start":{"line":17,"column":0},"end":{"line":25,"column":24}},"12":{"start":{"line":18,"column":4},"end":{"line":20,"column":6}},"13":{"start":{"line":22,"column":4},"end":{"line":24,"column":6}},"14":{"start":{"line":23,"column":35},"end":{"line":23,"column":72}}},"branchMap":{},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var React = require('react');","var react_redux_1 = require('react-redux');","var Modal = require('../modal/modalDialog');","var ModalIds = require('../modal/modalDialogIds');","var react_1 = require(\"react\");","var DashboardTopNavItem = function (props) {","    return React.createElement(\"div\", {className: \"ui simple dropdown item\"}, \"Board\", React.createElement(\"i\", {className: \"dropdown icon\"}), React.createElement(\"div\", {className: \"ui menu\"}, React.createElement(\"a\", {className: \"item\", onClick: function () { return props.showModal(ModalIds.DASHBOARD_IMPORT_EXPORT); }}, React.createElement(\"i\", {className: \"folder open outline icon\"}), \"Import / Export\")));","};","DashboardTopNavItem.propTypes = {","    showModal: react_1.PropTypes.func.isRequired","};","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = react_redux_1.connect(function (state) {","    return {","        state: state","    };","}, function (dispatch) {","    return {","        showModal: function (id) { return dispatch(Modal.showModal(id)); }","    };","})(DashboardTopNavItem);",""]};
+	}
+	__cov_A9dPM0i4Q4ym167KtJtygQ = __cov_A9dPM0i4Q4ym167KtJtygQ['/home/travis/build/Niondir/iot-dashboard/src/dashboard/dashboardMenuEntry.ui.js'];
+	__cov_A9dPM0i4Q4ym167KtJtygQ.s['1']++;var React=__webpack_require__(20);__cov_A9dPM0i4Q4ym167KtJtygQ.s['2']++;var react_redux_1=__webpack_require__(39);__cov_A9dPM0i4Q4ym167KtJtygQ.s['3']++;var Modal=__webpack_require__(50);__cov_A9dPM0i4Q4ym167KtJtygQ.s['4']++;var ModalIds=__webpack_require__(51);__cov_A9dPM0i4Q4ym167KtJtygQ.s['5']++;var react_1=__webpack_require__(20);__cov_A9dPM0i4Q4ym167KtJtygQ.s['6']++;var DashboardTopNavItem=function(props){__cov_A9dPM0i4Q4ym167KtJtygQ.f['1']++;__cov_A9dPM0i4Q4ym167KtJtygQ.s['7']++;return React.createElement('div',{className:'ui simple dropdown item'},'Board',React.createElement('i',{className:'dropdown icon'}),React.createElement('div',{className:'ui menu'},React.createElement('a',{className:'item',onClick:function(){__cov_A9dPM0i4Q4ym167KtJtygQ.f['2']++;__cov_A9dPM0i4Q4ym167KtJtygQ.s['8']++;return props.showModal(ModalIds.DASHBOARD_IMPORT_EXPORT);}},React.createElement('i',{className:'folder open outline icon'}),'Import / Export')));};__cov_A9dPM0i4Q4ym167KtJtygQ.s['9']++;DashboardTopNavItem.propTypes={showModal:react_1.PropTypes.func.isRequired};__cov_A9dPM0i4Q4ym167KtJtygQ.s['10']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_A9dPM0i4Q4ym167KtJtygQ.s['11']++;exports.default=react_redux_1.connect(function(state){__cov_A9dPM0i4Q4ym167KtJtygQ.f['3']++;__cov_A9dPM0i4Q4ym167KtJtygQ.s['12']++;return{state:state};},function(dispatch){__cov_A9dPM0i4Q4ym167KtJtygQ.f['4']++;__cov_A9dPM0i4Q4ym167KtJtygQ.s['13']++;return{showModal:function(id){__cov_A9dPM0i4Q4ym167KtJtygQ.f['5']++;__cov_A9dPM0i4Q4ym167KtJtygQ.s['14']++;return dispatch(Modal.showModal(id));}};})(DashboardTopNavItem);
 
 
 /***/ },
 /* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(39);
-	var Import = __webpack_require__(90);
-	var modalDialog_ui_js_1 = __webpack_require__(84);
-	var ModalIds = __webpack_require__(51);
-	var react_1 = __webpack_require__(20);
-	var ImportExportDialog = (function (_super) {
-	    __extends(ImportExportDialog, _super);
-	    function ImportExportDialog(props) {
-	        _super.call(this, props);
-	        this.state = { state: null };
-	    }
-	    ImportExportDialog.prototype.componentWillReceiveProps = function (nextProps) {
-	        //this.refs.data.value = Import.serialize(nextProps.state);
-	    };
-	    ImportExportDialog.prototype.componentDidMount = function () {
-	    };
-	    ImportExportDialog.prototype._loadData = function () {
-	        this.refs.data.value = Import.serialize(this.props.state);
-	        this.refs.data.focus();
-	        this.refs.data.select();
-	    };
-	    ImportExportDialog.prototype._clearData = function () {
-	        this.refs.data.value = "";
-	        this.refs.data.focus();
-	        this.refs.data.select();
-	    };
-	    ImportExportDialog.prototype._exportToClipboard = function () {
-	        this.refs.data.focus();
-	        this.refs.data.select();
-	        try {
-	            var successful = document.execCommand('copy');
-	            var msg = successful ? 'successful' : 'unsuccessful';
-	            console.log('Copying text command was ' + msg);
-	        }
-	        catch (err) {
-	            alert('Oops, unable to copy');
-	        }
-	    };
-	    ImportExportDialog.prototype.render = function () {
-	        var _this = this;
-	        var props = this.props;
-	        var actions = [
-	            {
-	                className: "ui right black button",
-	                label: "Close",
-	                onClick: function () { return true; }
-	            },
-	            {
-	                className: "ui right labeled icon positive button",
-	                iconClass: "folder open icon",
-	                label: "Import",
-	                onClick: function () {
-	                    props.doImport(_this.refs.data.value);
-	                    return true;
-	                }
-	            }
-	        ];
-	        return React.createElement(modalDialog_ui_js_1.default, {id: ModalIds.DASHBOARD_IMPORT_EXPORT, title: "Import / Export Dashboard", actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, React.createElement("button", {className: "ui compact labeled icon button", onClick: this._loadData.bind(this)}, React.createElement("i", {className: "refresh icon"}), "Load Data"), React.createElement("button", {className: "ui compact labeled icon button", onClick: this._exportToClipboard.bind(this)}, React.createElement("i", {className: "upload icon"}), "Copy to Clipboard"), React.createElement("button", {className: "ui compact labeled icon button", onClick: this._clearData.bind(this)}, React.createElement("i", {className: "erase icon"}), "Clear Data")), React.createElement("div", {className: "column"}, React.createElement("form", {className: "ui form"}, React.createElement("div", {className: "field"}, React.createElement("label", null, "Data"), React.createElement("textarea", {className: "monospace", ref: "data", rows: "10", onFocus: function (e) { return e.target.select(); }, placeholder: 'Click "Load Data" to get data for export or paste your data here ...'}))))));
-	    };
-	    return ImportExportDialog;
-	}(React.Component));
-	ImportExportDialog.propTypes = {
-	    state: react_1.PropTypes.object,
-	    doImport: react_1.PropTypes.func.isRequired
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = react_redux_1.connect(function (state) {
-	    return {
-	        state: state
-	    };
-	}, function (dispatch) {
-	    return {
-	        doImport: function (state) { return dispatch(Import.doImport(state)); }
-	    };
-	})(ImportExportDialog);
+	var __cov_fFu$6eMzoO7M9FY$xK_T6Q = (Function('return this'))();
+	if (!__cov_fFu$6eMzoO7M9FY$xK_T6Q.__coverage__) { __cov_fFu$6eMzoO7M9FY$xK_T6Q.__coverage__ = {}; }
+	__cov_fFu$6eMzoO7M9FY$xK_T6Q = __cov_fFu$6eMzoO7M9FY$xK_T6Q.__coverage__;
+	if (!(__cov_fFu$6eMzoO7M9FY$xK_T6Q['/home/travis/build/Niondir/iot-dashboard/src/dashboard/importExportDialog.ui.js'])) {
+	   __cov_fFu$6eMzoO7M9FY$xK_T6Q['/home/travis/build/Niondir/iot-dashboard/src/dashboard/importExportDialog.ui.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/dashboard/importExportDialog.ui.js","s":{"1":0,"2":0,"3":0,"4":0,"5":1,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":1,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":0,"38":0,"39":0,"40":0,"41":0,"42":0,"43":0,"44":0,"45":0,"46":0,"47":0,"48":0,"49":0,"50":0,"51":0,"52":0},"b":{"1":[0,0,0],"2":[0,0],"3":[0,0],"4":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0},"fnMap":{"1":{"name":"(anonymous_1)","line":5,"loc":{"start":{"line":5,"column":44},"end":{"line":5,"column":60}}},"2":{"name":"__","line":7,"loc":{"start":{"line":7,"column":4},"end":{"line":7,"column":18}}},"3":{"name":"(anonymous_3)","line":16,"loc":{"start":{"line":16,"column":26},"end":{"line":16,"column":44}}},"4":{"name":"ImportExportDialog","line":18,"loc":{"start":{"line":18,"column":4},"end":{"line":18,"column":39}}},"5":{"name":"(anonymous_5)","line":22,"loc":{"start":{"line":22,"column":61},"end":{"line":22,"column":82}}},"6":{"name":"(anonymous_6)","line":25,"loc":{"start":{"line":25,"column":53},"end":{"line":25,"column":65}}},"7":{"name":"(anonymous_7)","line":27,"loc":{"start":{"line":27,"column":45},"end":{"line":27,"column":57}}},"8":{"name":"(anonymous_8)","line":32,"loc":{"start":{"line":32,"column":46},"end":{"line":32,"column":58}}},"9":{"name":"(anonymous_9)","line":37,"loc":{"start":{"line":37,"column":54},"end":{"line":37,"column":66}}},"10":{"name":"(anonymous_10)","line":49,"loc":{"start":{"line":49,"column":42},"end":{"line":49,"column":54}}},"11":{"name":"(anonymous_11)","line":56,"loc":{"start":{"line":56,"column":25},"end":{"line":56,"column":37}}},"12":{"name":"(anonymous_12)","line":62,"loc":{"start":{"line":62,"column":25},"end":{"line":62,"column":37}}},"13":{"name":"(anonymous_13)","line":68,"loc":{"start":{"line":68,"column":1119},"end":{"line":68,"column":1132}}},"14":{"name":"(anonymous_14)","line":77,"loc":{"start":{"line":77,"column":40},"end":{"line":77,"column":57}}},"15":{"name":"(anonymous_15)","line":81,"loc":{"start":{"line":81,"column":3},"end":{"line":81,"column":23}}},"16":{"name":"(anonymous_16)","line":83,"loc":{"start":{"line":83,"column":18},"end":{"line":83,"column":35}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":9,"column":2}},"2":{"start":{"line":6,"column":4},"end":{"line":6,"column":58}},"3":{"start":{"line":6,"column":21},"end":{"line":6,"column":58}},"4":{"start":{"line":6,"column":46},"end":{"line":6,"column":58}},"5":{"start":{"line":7,"column":4},"end":{"line":7,"column":43}},"6":{"start":{"line":7,"column":20},"end":{"line":7,"column":41}},"7":{"start":{"line":8,"column":4},"end":{"line":8,"column":89}},"8":{"start":{"line":10,"column":0},"end":{"line":10,"column":29}},"9":{"start":{"line":11,"column":0},"end":{"line":11,"column":43}},"10":{"start":{"line":12,"column":0},"end":{"line":12,"column":33}},"11":{"start":{"line":13,"column":0},"end":{"line":13,"column":64}},"12":{"start":{"line":14,"column":0},"end":{"line":14,"column":50}},"13":{"start":{"line":15,"column":0},"end":{"line":15,"column":31}},"14":{"start":{"line":16,"column":0},"end":{"line":71,"column":20}},"15":{"start":{"line":17,"column":4},"end":{"line":17,"column":42}},"16":{"start":{"line":18,"column":4},"end":{"line":21,"column":5}},"17":{"start":{"line":19,"column":8},"end":{"line":19,"column":33}},"18":{"start":{"line":20,"column":8},"end":{"line":20,"column":37}},"19":{"start":{"line":22,"column":4},"end":{"line":24,"column":6}},"20":{"start":{"line":25,"column":4},"end":{"line":26,"column":6}},"21":{"start":{"line":27,"column":4},"end":{"line":31,"column":6}},"22":{"start":{"line":28,"column":8},"end":{"line":28,"column":66}},"23":{"start":{"line":29,"column":8},"end":{"line":29,"column":31}},"24":{"start":{"line":30,"column":8},"end":{"line":30,"column":32}},"25":{"start":{"line":32,"column":4},"end":{"line":36,"column":6}},"26":{"start":{"line":33,"column":8},"end":{"line":33,"column":34}},"27":{"start":{"line":34,"column":8},"end":{"line":34,"column":31}},"28":{"start":{"line":35,"column":8},"end":{"line":35,"column":32}},"29":{"start":{"line":37,"column":4},"end":{"line":48,"column":6}},"30":{"start":{"line":38,"column":8},"end":{"line":38,"column":31}},"31":{"start":{"line":39,"column":8},"end":{"line":39,"column":32}},"32":{"start":{"line":40,"column":8},"end":{"line":47,"column":9}},"33":{"start":{"line":41,"column":12},"end":{"line":41,"column":58}},"34":{"start":{"line":42,"column":12},"end":{"line":42,"column":65}},"35":{"start":{"line":43,"column":12},"end":{"line":43,"column":59}},"36":{"start":{"line":46,"column":12},"end":{"line":46,"column":42}},"37":{"start":{"line":49,"column":4},"end":{"line":69,"column":6}},"38":{"start":{"line":50,"column":8},"end":{"line":50,"column":25}},"39":{"start":{"line":51,"column":8},"end":{"line":51,"column":31}},"40":{"start":{"line":52,"column":8},"end":{"line":67,"column":10}},"41":{"start":{"line":56,"column":39},"end":{"line":56,"column":51}},"42":{"start":{"line":63,"column":20},"end":{"line":63,"column":58}},"43":{"start":{"line":64,"column":20},"end":{"line":64,"column":32}},"44":{"start":{"line":68,"column":8},"end":{"line":68,"column":1254}},"45":{"start":{"line":68,"column":1134},"end":{"line":68,"column":1159}},"46":{"start":{"line":70,"column":4},"end":{"line":70,"column":30}},"47":{"start":{"line":72,"column":0},"end":{"line":75,"column":2}},"48":{"start":{"line":76,"column":0},"end":{"line":76,"column":62}},"49":{"start":{"line":77,"column":0},"end":{"line":85,"column":23}},"50":{"start":{"line":78,"column":4},"end":{"line":80,"column":6}},"51":{"start":{"line":82,"column":4},"end":{"line":84,"column":6}},"52":{"start":{"line":83,"column":37},"end":{"line":83,"column":77}}},"branchMap":{"1":{"line":5,"type":"binary-expr","locations":[{"start":{"line":5,"column":17},"end":{"line":5,"column":21}},{"start":{"line":5,"column":25},"end":{"line":5,"column":39}},{"start":{"line":5,"column":44},"end":{"line":9,"column":1}}]},"2":{"line":6,"type":"if","locations":[{"start":{"line":6,"column":21},"end":{"line":6,"column":21}},{"start":{"line":6,"column":21},"end":{"line":6,"column":21}}]},"3":{"line":8,"type":"cond-expr","locations":[{"start":{"line":8,"column":31},"end":{"line":8,"column":47}},{"start":{"line":8,"column":51},"end":{"line":8,"column":87}}]},"4":{"line":42,"type":"cond-expr","locations":[{"start":{"line":42,"column":35},"end":{"line":42,"column":47}},{"start":{"line":42,"column":50},"end":{"line":42,"column":64}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var __extends = (this && this.__extends) || function (d, b) {","    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];","    function __() { this.constructor = d; }","    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());","};","var React = require('react');","var react_redux_1 = require('react-redux');","var Import = require('./import');","var modalDialog_ui_js_1 = require('../modal/modalDialog.ui.js');","var ModalIds = require('../modal/modalDialogIds');","var react_1 = require(\"react\");","var ImportExportDialog = (function (_super) {","    __extends(ImportExportDialog, _super);","    function ImportExportDialog(props) {","        _super.call(this, props);","        this.state = { state: null };","    }","    ImportExportDialog.prototype.componentWillReceiveProps = function (nextProps) {","        //this.refs.data.value = Import.serialize(nextProps.state);","    };","    ImportExportDialog.prototype.componentDidMount = function () {","    };","    ImportExportDialog.prototype._loadData = function () {","        this.refs.data.value = Import.serialize(this.props.state);","        this.refs.data.focus();","        this.refs.data.select();","    };","    ImportExportDialog.prototype._clearData = function () {","        this.refs.data.value = \"\";","        this.refs.data.focus();","        this.refs.data.select();","    };","    ImportExportDialog.prototype._exportToClipboard = function () {","        this.refs.data.focus();","        this.refs.data.select();","        try {","            var successful = document.execCommand('copy');","            var msg = successful ? 'successful' : 'unsuccessful';","            console.log('Copying text command was ' + msg);","        }","        catch (err) {","            alert('Oops, unable to copy');","        }","    };","    ImportExportDialog.prototype.render = function () {","        var _this = this;","        var props = this.props;","        var actions = [","            {","                className: \"ui right black button\",","                label: \"Close\",","                onClick: function () { return true; }","            },","            {","                className: \"ui right labeled icon positive button\",","                iconClass: \"folder open icon\",","                label: \"Import\",","                onClick: function () {","                    props.doImport(_this.refs.data.value);","                    return true;","                }","            }","        ];","        return React.createElement(modalDialog_ui_js_1.default, {id: ModalIds.DASHBOARD_IMPORT_EXPORT, title: \"Import / Export Dashboard\", actions: actions}, React.createElement(\"div\", {className: \"ui one column grid\"}, React.createElement(\"div\", {className: \"column\"}, React.createElement(\"button\", {className: \"ui compact labeled icon button\", onClick: this._loadData.bind(this)}, React.createElement(\"i\", {className: \"refresh icon\"}), \"Load Data\"), React.createElement(\"button\", {className: \"ui compact labeled icon button\", onClick: this._exportToClipboard.bind(this)}, React.createElement(\"i\", {className: \"upload icon\"}), \"Copy to Clipboard\"), React.createElement(\"button\", {className: \"ui compact labeled icon button\", onClick: this._clearData.bind(this)}, React.createElement(\"i\", {className: \"erase icon\"}), \"Clear Data\")), React.createElement(\"div\", {className: \"column\"}, React.createElement(\"form\", {className: \"ui form\"}, React.createElement(\"div\", {className: \"field\"}, React.createElement(\"label\", null, \"Data\"), React.createElement(\"textarea\", {className: \"monospace\", ref: \"data\", rows: \"10\", onFocus: function (e) { return e.target.select(); }, placeholder: 'Click \"Load Data\" to get data for export or paste your data here ...'}))))));","    };","    return ImportExportDialog;","}(React.Component));","ImportExportDialog.propTypes = {","    state: react_1.PropTypes.object,","    doImport: react_1.PropTypes.func.isRequired","};","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = react_redux_1.connect(function (state) {","    return {","        state: state","    };","}, function (dispatch) {","    return {","        doImport: function (state) { return dispatch(Import.doImport(state)); }","    };","})(ImportExportDialog);",""]};
+	}
+	__cov_fFu$6eMzoO7M9FY$xK_T6Q = __cov_fFu$6eMzoO7M9FY$xK_T6Q['/home/travis/build/Niondir/iot-dashboard/src/dashboard/importExportDialog.ui.js'];
+	__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['1']++;var __extends=(__cov_fFu$6eMzoO7M9FY$xK_T6Q.b['1'][0]++,this)&&(__cov_fFu$6eMzoO7M9FY$xK_T6Q.b['1'][1]++,this.__extends)||(__cov_fFu$6eMzoO7M9FY$xK_T6Q.b['1'][2]++,function(d,b){__cov_fFu$6eMzoO7M9FY$xK_T6Q.f['1']++;__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['2']++;for(var p in b){__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['3']++;if(b.hasOwnProperty(p)){__cov_fFu$6eMzoO7M9FY$xK_T6Q.b['2'][0]++;__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['4']++;d[p]=b[p];}else{__cov_fFu$6eMzoO7M9FY$xK_T6Q.b['2'][1]++;}}function __(){__cov_fFu$6eMzoO7M9FY$xK_T6Q.f['2']++;__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['6']++;this.constructor=d;}__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['7']++;d.prototype=b===null?(__cov_fFu$6eMzoO7M9FY$xK_T6Q.b['3'][0]++,Object.create(b)):(__cov_fFu$6eMzoO7M9FY$xK_T6Q.b['3'][1]++,(__.prototype=b.prototype,new __()));});__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['8']++;var React=__webpack_require__(20);__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['9']++;var react_redux_1=__webpack_require__(39);__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['10']++;var Import=__webpack_require__(90);__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['11']++;var modalDialog_ui_js_1=__webpack_require__(84);__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['12']++;var ModalIds=__webpack_require__(51);__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['13']++;var react_1=__webpack_require__(20);__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['14']++;var ImportExportDialog=function(_super){__cov_fFu$6eMzoO7M9FY$xK_T6Q.f['3']++;__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['15']++;__extends(ImportExportDialog,_super);function ImportExportDialog(props){__cov_fFu$6eMzoO7M9FY$xK_T6Q.f['4']++;__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['17']++;_super.call(this,props);__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['18']++;this.state={state:null};}__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['19']++;ImportExportDialog.prototype.componentWillReceiveProps=function(nextProps){__cov_fFu$6eMzoO7M9FY$xK_T6Q.f['5']++;};__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['20']++;ImportExportDialog.prototype.componentDidMount=function(){__cov_fFu$6eMzoO7M9FY$xK_T6Q.f['6']++;};__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['21']++;ImportExportDialog.prototype._loadData=function(){__cov_fFu$6eMzoO7M9FY$xK_T6Q.f['7']++;__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['22']++;this.refs.data.value=Import.serialize(this.props.state);__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['23']++;this.refs.data.focus();__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['24']++;this.refs.data.select();};__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['25']++;ImportExportDialog.prototype._clearData=function(){__cov_fFu$6eMzoO7M9FY$xK_T6Q.f['8']++;__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['26']++;this.refs.data.value='';__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['27']++;this.refs.data.focus();__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['28']++;this.refs.data.select();};__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['29']++;ImportExportDialog.prototype._exportToClipboard=function(){__cov_fFu$6eMzoO7M9FY$xK_T6Q.f['9']++;__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['30']++;this.refs.data.focus();__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['31']++;this.refs.data.select();__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['32']++;try{__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['33']++;var successful=document.execCommand('copy');__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['34']++;var msg=successful?(__cov_fFu$6eMzoO7M9FY$xK_T6Q.b['4'][0]++,'successful'):(__cov_fFu$6eMzoO7M9FY$xK_T6Q.b['4'][1]++,'unsuccessful');__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['35']++;console.log('Copying text command was '+msg);}catch(err){__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['36']++;alert('Oops, unable to copy');}};__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['37']++;ImportExportDialog.prototype.render=function(){__cov_fFu$6eMzoO7M9FY$xK_T6Q.f['10']++;__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['38']++;var _this=this;__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['39']++;var props=this.props;__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['40']++;var actions=[{className:'ui right black button',label:'Close',onClick:function(){__cov_fFu$6eMzoO7M9FY$xK_T6Q.f['11']++;__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['41']++;return true;}},{className:'ui right labeled icon positive button',iconClass:'folder open icon',label:'Import',onClick:function(){__cov_fFu$6eMzoO7M9FY$xK_T6Q.f['12']++;__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['42']++;props.doImport(_this.refs.data.value);__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['43']++;return true;}}];__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['44']++;return React.createElement(modalDialog_ui_js_1.default,{id:ModalIds.DASHBOARD_IMPORT_EXPORT,title:'Import / Export Dashboard',actions:actions},React.createElement('div',{className:'ui one column grid'},React.createElement('div',{className:'column'},React.createElement('button',{className:'ui compact labeled icon button',onClick:this._loadData.bind(this)},React.createElement('i',{className:'refresh icon'}),'Load Data'),React.createElement('button',{className:'ui compact labeled icon button',onClick:this._exportToClipboard.bind(this)},React.createElement('i',{className:'upload icon'}),'Copy to Clipboard'),React.createElement('button',{className:'ui compact labeled icon button',onClick:this._clearData.bind(this)},React.createElement('i',{className:'erase icon'}),'Clear Data')),React.createElement('div',{className:'column'},React.createElement('form',{className:'ui form'},React.createElement('div',{className:'field'},React.createElement('label',null,'Data'),React.createElement('textarea',{className:'monospace',ref:'data',rows:'10',onFocus:function(e){__cov_fFu$6eMzoO7M9FY$xK_T6Q.f['13']++;__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['45']++;return e.target.select();},placeholder:'Click "Load Data" to get data for export or paste your data here ...'}))))));};__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['46']++;return ImportExportDialog;}(React.Component);__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['47']++;ImportExportDialog.propTypes={state:react_1.PropTypes.object,doImport:react_1.PropTypes.func.isRequired};__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['48']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['49']++;exports.default=react_redux_1.connect(function(state){__cov_fFu$6eMzoO7M9FY$xK_T6Q.f['14']++;__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['50']++;return{state:state};},function(dispatch){__cov_fFu$6eMzoO7M9FY$xK_T6Q.f['15']++;__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['51']++;return{doImport:function(state){__cov_fFu$6eMzoO7M9FY$xK_T6Q.f['16']++;__cov_fFu$6eMzoO7M9FY$xK_T6Q.s['52']++;return dispatch(Import.doImport(state));}};})(ImportExportDialog);
 
 
 /***/ },
 /* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Action = __webpack_require__(43);
-	var actionNames_1 = __webpack_require__(43);
-	var layouts_1 = __webpack_require__(81);
-	var Plugins = __webpack_require__(59);
-	/**
-	 * To extend the import/export by another property you just need to add the property to the exported data
-	 * See: serialize()
-	 *
-	 * If there are any action needed after a property got imported, call them after the import.
-	 * See: afterImport()
-	 */
-	function serialize(state) {
-	    return JSON.stringify({
-	        widgets: state.widgets,
-	        datasources: state.datasources,
-	        datasourcePlugins: state.datasourcePlugins,
-	        widgetPlugins: state.widgetPlugins
-	    });
+	var __cov_PnoUYyz4c1n96EiGDEij_A = (Function('return this'))();
+	if (!__cov_PnoUYyz4c1n96EiGDEij_A.__coverage__) { __cov_PnoUYyz4c1n96EiGDEij_A.__coverage__ = {}; }
+	__cov_PnoUYyz4c1n96EiGDEij_A = __cov_PnoUYyz4c1n96EiGDEij_A.__coverage__;
+	if (!(__cov_PnoUYyz4c1n96EiGDEij_A['/home/travis/build/Niondir/iot-dashboard/src/dashboard/import.js'])) {
+	   __cov_PnoUYyz4c1n96EiGDEij_A['/home/travis/build/Niondir/iot-dashboard/src/dashboard/import.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/dashboard/import.js","s":{"1":0,"2":0,"3":0,"4":0,"5":1,"6":0,"7":0,"8":1,"9":0,"10":1,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":1,"18":0,"19":0,"20":0,"21":0,"22":1,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0,"29":0},"b":{"1":[0,0],"2":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0},"fnMap":{"1":{"name":"serialize","line":16,"loc":{"start":{"line":16,"column":0},"end":{"line":16,"column":26}}},"2":{"name":"afterImport","line":25,"loc":{"start":{"line":25,"column":0},"end":{"line":25,"column":41}}},"3":{"name":"importReducer","line":28,"loc":{"start":{"line":28,"column":0},"end":{"line":28,"column":38}}},"4":{"name":"deserialize","line":39,"loc":{"start":{"line":39,"column":0},"end":{"line":39,"column":27}}},"5":{"name":"doImport","line":48,"loc":{"start":{"line":48,"column":0},"end":{"line":48,"column":24}}},"6":{"name":"(anonymous_6)","line":50,"loc":{"start":{"line":50,"column":11},"end":{"line":50,"column":41}}},"7":{"name":"(anonymous_7)","line":53,"loc":{"start":{"line":53,"column":19},"end":{"line":53,"column":31}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":39}},"2":{"start":{"line":6,"column":0},"end":{"line":6,"column":46}},"3":{"start":{"line":7,"column":0},"end":{"line":7,"column":46}},"4":{"start":{"line":8,"column":0},"end":{"line":8,"column":46}},"5":{"start":{"line":16,"column":0},"end":{"line":23,"column":1}},"6":{"start":{"line":17,"column":4},"end":{"line":22,"column":7}},"7":{"start":{"line":24,"column":0},"end":{"line":24,"column":30}},"8":{"start":{"line":25,"column":0},"end":{"line":27,"column":1}},"9":{"start":{"line":26,"column":4},"end":{"line":26,"column":50}},"10":{"start":{"line":28,"column":0},"end":{"line":37,"column":1}},"11":{"start":{"line":29,"column":4},"end":{"line":36,"column":5}},"12":{"start":{"line":31,"column":12},"end":{"line":31,"column":66}},"13":{"start":{"line":32,"column":12},"end":{"line":32,"column":69}},"14":{"start":{"line":33,"column":12},"end":{"line":33,"column":28}},"15":{"start":{"line":35,"column":12},"end":{"line":35,"column":25}},"16":{"start":{"line":38,"column":0},"end":{"line":38,"column":38}},"17":{"start":{"line":39,"column":0},"end":{"line":46,"column":1}},"18":{"start":{"line":40,"column":4},"end":{"line":45,"column":5}},"19":{"start":{"line":41,"column":8},"end":{"line":41,"column":32}},"20":{"start":{"line":44,"column":8},"end":{"line":44,"column":98}},"21":{"start":{"line":47,"column":0},"end":{"line":47,"column":34}},"22":{"start":{"line":48,"column":0},"end":{"line":61,"column":1}},"23":{"start":{"line":49,"column":4},"end":{"line":49,"column":34}},"24":{"start":{"line":50,"column":4},"end":{"line":60,"column":6}},"25":{"start":{"line":52,"column":8},"end":{"line":52,"column":46}},"26":{"start":{"line":53,"column":8},"end":{"line":59,"column":14}},"27":{"start":{"line":54,"column":12},"end":{"line":57,"column":15}},"28":{"start":{"line":58,"column":12},"end":{"line":58,"column":44}},"29":{"start":{"line":62,"column":0},"end":{"line":62,"column":28}}},"branchMap":{"1":{"line":29,"type":"switch","locations":[{"start":{"line":30,"column":8},"end":{"line":33,"column":28}},{"start":{"line":34,"column":8},"end":{"line":35,"column":25}}]},"2":{"line":40,"type":"if","locations":[{"start":{"line":40,"column":4},"end":{"line":40,"column":4}},{"start":{"line":40,"column":4},"end":{"line":40,"column":4}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var Action = require(\"../actionNames\");","var actionNames_1 = require(\"../actionNames\");","var layouts_1 = require(\"../layouts/layouts\");","var Plugins = require(\"../pluginApi/plugins\");","/**"," * To extend the import/export by another property you just need to add the property to the exported data"," * See: serialize()"," *"," * If there are any action needed after a property got imported, call them after the import."," * See: afterImport()"," */","function serialize(state) {","    return JSON.stringify({","        widgets: state.widgets,","        datasources: state.datasources,","        datasourcePlugins: state.datasourcePlugins,","        widgetPlugins: state.widgetPlugins","    });","}","exports.serialize = serialize;","function afterImport(dispatch, getState) {","    dispatch(Plugins.initializeExternalPlugins());","}","function importReducer(state, action) {","    switch (action.type) {","        case Action.DASHBOARD_IMPORT:","            var newState = Object.assign({}, state, action.state);","            console.log(\"new State:\", state, action.state, newState);","            return newState;","        default:","            return state;","    }","}","exports.importReducer = importReducer;","function deserialize(data) {","    if (typeof data === \"string\") {","        return JSON.parse(data);","    }","    else {","        throw new Error(\"Dashboard data for import must be of type string but is \" + typeof data);","    }","}","exports.deserialize = deserialize;","function doImport(data) {","    var state = deserialize(data);","    return function (dispatch, getState) {","        // Bad hack to force the grid layout to update correctly","        dispatch(layouts_1.loadEmptyLayout());","        setTimeout(function () {","            dispatch({","                type: actionNames_1.DASHBOARD_IMPORT,","                state: state","            });","            afterImport(dispatch, getState);","        }, 0);","    };","}","exports.doImport = doImport;",""]};
 	}
-	exports.serialize = serialize;
-	function afterImport(dispatch, getState) {
-	    dispatch(Plugins.initializeExternalPlugins());
-	}
-	function importReducer(state, action) {
-	    switch (action.type) {
-	        case Action.DASHBOARD_IMPORT:
-	            var newState = Object.assign({}, state, action.state);
-	            console.log("new State:", state, action.state, newState);
-	            return newState;
-	        default:
-	            return state;
-	    }
-	}
-	exports.importReducer = importReducer;
-	function deserialize(data) {
-	    if (typeof data === "string") {
-	        return JSON.parse(data);
-	    }
-	    else {
-	        throw new Error("Dashboard data for import must be of type string but is " + typeof data);
-	    }
-	}
-	exports.deserialize = deserialize;
-	function doImport(data) {
-	    var state = deserialize(data);
-	    return function (dispatch, getState) {
-	        // Bad hack to force the grid layout to update correctly
-	        dispatch(layouts_1.loadEmptyLayout());
-	        setTimeout(function () {
-	            dispatch({
-	                type: actionNames_1.DASHBOARD_IMPORT,
-	                state: state
-	            });
-	            afterImport(dispatch, getState);
-	        }, 0);
-	    };
-	}
-	exports.doImport = doImport;
+	__cov_PnoUYyz4c1n96EiGDEij_A = __cov_PnoUYyz4c1n96EiGDEij_A['/home/travis/build/Niondir/iot-dashboard/src/dashboard/import.js'];
+	__cov_PnoUYyz4c1n96EiGDEij_A.s['1']++;var Action=__webpack_require__(43);__cov_PnoUYyz4c1n96EiGDEij_A.s['2']++;var actionNames_1=__webpack_require__(43);__cov_PnoUYyz4c1n96EiGDEij_A.s['3']++;var layouts_1=__webpack_require__(81);__cov_PnoUYyz4c1n96EiGDEij_A.s['4']++;var Plugins=__webpack_require__(59);function serialize(state){__cov_PnoUYyz4c1n96EiGDEij_A.f['1']++;__cov_PnoUYyz4c1n96EiGDEij_A.s['6']++;return JSON.stringify({widgets:state.widgets,datasources:state.datasources,datasourcePlugins:state.datasourcePlugins,widgetPlugins:state.widgetPlugins});}__cov_PnoUYyz4c1n96EiGDEij_A.s['7']++;exports.serialize=serialize;function afterImport(dispatch,getState){__cov_PnoUYyz4c1n96EiGDEij_A.f['2']++;__cov_PnoUYyz4c1n96EiGDEij_A.s['9']++;dispatch(Plugins.initializeExternalPlugins());}function importReducer(state,action){__cov_PnoUYyz4c1n96EiGDEij_A.f['3']++;__cov_PnoUYyz4c1n96EiGDEij_A.s['11']++;switch(action.type){case Action.DASHBOARD_IMPORT:__cov_PnoUYyz4c1n96EiGDEij_A.b['1'][0]++;__cov_PnoUYyz4c1n96EiGDEij_A.s['12']++;var newState=Object.assign({},state,action.state);__cov_PnoUYyz4c1n96EiGDEij_A.s['13']++;console.log('new State:',state,action.state,newState);__cov_PnoUYyz4c1n96EiGDEij_A.s['14']++;return newState;default:__cov_PnoUYyz4c1n96EiGDEij_A.b['1'][1]++;__cov_PnoUYyz4c1n96EiGDEij_A.s['15']++;return state;}}__cov_PnoUYyz4c1n96EiGDEij_A.s['16']++;exports.importReducer=importReducer;function deserialize(data){__cov_PnoUYyz4c1n96EiGDEij_A.f['4']++;__cov_PnoUYyz4c1n96EiGDEij_A.s['18']++;if(typeof data==='string'){__cov_PnoUYyz4c1n96EiGDEij_A.b['2'][0]++;__cov_PnoUYyz4c1n96EiGDEij_A.s['19']++;return JSON.parse(data);}else{__cov_PnoUYyz4c1n96EiGDEij_A.b['2'][1]++;__cov_PnoUYyz4c1n96EiGDEij_A.s['20']++;throw new Error('Dashboard data for import must be of type string but is '+typeof data);}}__cov_PnoUYyz4c1n96EiGDEij_A.s['21']++;exports.deserialize=deserialize;function doImport(data){__cov_PnoUYyz4c1n96EiGDEij_A.f['5']++;__cov_PnoUYyz4c1n96EiGDEij_A.s['23']++;var state=deserialize(data);__cov_PnoUYyz4c1n96EiGDEij_A.s['24']++;return function(dispatch,getState){__cov_PnoUYyz4c1n96EiGDEij_A.f['6']++;__cov_PnoUYyz4c1n96EiGDEij_A.s['25']++;dispatch(layouts_1.loadEmptyLayout());__cov_PnoUYyz4c1n96EiGDEij_A.s['26']++;setTimeout(function(){__cov_PnoUYyz4c1n96EiGDEij_A.f['7']++;__cov_PnoUYyz4c1n96EiGDEij_A.s['27']++;dispatch({type:actionNames_1.DASHBOARD_IMPORT,state:state});__cov_PnoUYyz4c1n96EiGDEij_A.s['28']++;afterImport(dispatch,getState);},0);};}__cov_PnoUYyz4c1n96EiGDEij_A.s['29']++;exports.doImport=doImport;
 
 
 /***/ },
 /* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var __assign = (this && this.__assign) || Object.assign || function(t) {
-	    for (var s, i = 1, n = arguments.length; i < n; i++) {
-	        s = arguments[i];
-	        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-	            t[p] = s[p];
-	    }
-	    return t;
-	};
-	var React = __webpack_require__(20);
-	var modalDialog_ui_js_1 = __webpack_require__(84);
-	var Datasource = __webpack_require__(58);
-	var react_redux_1 = __webpack_require__(39);
-	var _ = __webpack_require__(21);
-	var ui = __webpack_require__(82);
-	var settingsForm_ui_1 = __webpack_require__(85);
-	var redux_form_1 = __webpack_require__(86);
-	var ModalIds = __webpack_require__(51);
-	var react_1 = __webpack_require__(20);
-	var DIALOG_ID = ModalIds.DATASOURCE_CONFIG;
-	var FORM_ID = "datasource-settings-form";
-	function unshiftIfNotExists(array, element, isEqual) {
-	    if (isEqual === void 0) { isEqual = function (a, b) { return a.id == b.id; }; }
-	    if (array.find(function (e) { return isEqual(e, element); }) == undefined) {
-	        array.unshift(element);
-	    }
+	var __cov_XHcIeT5TJRvrGXigedGK9w = (Function('return this'))();
+	if (!__cov_XHcIeT5TJRvrGXigedGK9w.__coverage__) { __cov_XHcIeT5TJRvrGXigedGK9w.__coverage__ = {}; }
+	__cov_XHcIeT5TJRvrGXigedGK9w = __cov_XHcIeT5TJRvrGXigedGK9w.__coverage__;
+	if (!(__cov_XHcIeT5TJRvrGXigedGK9w['/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourceConfigDialog.ui.js'])) {
+	   __cov_XHcIeT5TJRvrGXigedGK9w['/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourceConfigDialog.ui.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourceConfigDialog.ui.js","s":{"1":0,"2":0,"3":0,"4":0,"5":1,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":1,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":1,"38":0,"39":0,"40":0,"41":0,"42":0,"43":0,"44":0,"45":0,"46":0,"47":0,"48":0,"49":0,"50":0,"51":0,"52":0,"53":0,"54":0,"55":0,"56":0,"57":0,"58":0,"59":0,"60":0,"61":0,"62":0,"63":0,"64":0,"65":0,"66":0,"67":0,"68":0,"69":0,"70":0,"71":0,"72":0,"73":0,"74":0,"75":0,"76":0,"77":0,"78":0,"79":0,"80":0,"81":0,"82":0,"83":0,"84":0,"85":0,"86":0,"87":0,"88":0,"89":0,"90":0,"91":0,"92":0,"93":0,"94":0,"95":0,"96":0,"97":0,"98":0,"99":0},"b":{"1":[0,0,0],"2":[0,0],"3":[0,0],"4":[0,0,0,0],"5":[0,0],"6":[0,0],"7":[0,0],"8":[0,0],"9":[0,0],"10":[0,0],"11":[0,0],"12":[0,0],"13":[0,0],"14":[0,0],"15":[0,0],"16":[0,0],"17":[0,0],"18":[0,0],"19":[0,0],"20":[0,0],"21":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0},"fnMap":{"1":{"name":"(anonymous_1)","line":5,"loc":{"start":{"line":5,"column":44},"end":{"line":5,"column":60}}},"2":{"name":"__","line":7,"loc":{"start":{"line":7,"column":4},"end":{"line":7,"column":18}}},"3":{"name":"(anonymous_3)","line":10,"loc":{"start":{"line":10,"column":59},"end":{"line":10,"column":71}}},"4":{"name":"unshiftIfNotExists","line":30,"loc":{"start":{"line":30,"column":0},"end":{"line":30,"column":53}}},"5":{"name":"(anonymous_5)","line":31,"loc":{"start":{"line":31,"column":40},"end":{"line":31,"column":56}}},"6":{"name":"(anonymous_6)","line":32,"loc":{"start":{"line":32,"column":19},"end":{"line":32,"column":32}}},"7":{"name":"(anonymous_7)","line":37,"loc":{"start":{"line":37,"column":29},"end":{"line":37,"column":47}}},"8":{"name":"DatasourceConfigModal","line":39,"loc":{"start":{"line":39,"column":4},"end":{"line":39,"column":42}}},"9":{"name":"(anonymous_9)","line":45,"loc":{"start":{"line":45,"column":64},"end":{"line":45,"column":85}}},"10":{"name":"(anonymous_10)","line":53,"loc":{"start":{"line":53,"column":47},"end":{"line":53,"column":77}}},"11":{"name":"(anonymous_11)","line":63,"loc":{"start":{"line":63,"column":48},"end":{"line":63,"column":60}}},"12":{"name":"(anonymous_12)","line":66,"loc":{"start":{"line":66,"column":49},"end":{"line":66,"column":61}}},"13":{"name":"(anonymous_13)","line":69,"loc":{"start":{"line":69,"column":60},"end":{"line":69,"column":72}}},"14":{"name":"(anonymous_14)","line":72,"loc":{"start":{"line":72,"column":45},"end":{"line":72,"column":57}}},"15":{"name":"(anonymous_15)","line":79,"loc":{"start":{"line":79,"column":25},"end":{"line":79,"column":37}}},"16":{"name":"(anonymous_16)","line":87,"loc":{"start":{"line":87,"column":25},"end":{"line":87,"column":37}}},"17":{"name":"(anonymous_17)","line":96,"loc":{"start":{"line":96,"column":25},"end":{"line":96,"column":37}}},"18":{"name":"(anonymous_18)","line":121,"loc":{"start":{"line":121,"column":34},"end":{"line":121,"column":53}}},"19":{"name":"(anonymous_19)","line":127,"loc":{"start":{"line":127,"column":44},"end":{"line":127,"column":78}}},"20":{"name":"(anonymous_20)","line":140,"loc":{"start":{"line":140,"column":241},"end":{"line":140,"column":254}}},"21":{"name":"(anonymous_21)","line":140,"loc":{"start":{"line":140,"column":439},"end":{"line":140,"column":459}}},"22":{"name":"(anonymous_22)","line":154,"loc":{"start":{"line":154,"column":40},"end":{"line":154,"column":57}}},"23":{"name":"(anonymous_23)","line":159,"loc":{"start":{"line":159,"column":3},"end":{"line":159,"column":23}}},"24":{"name":"(anonymous_24)","line":161,"loc":{"start":{"line":161,"column":19},"end":{"line":161,"column":33}}},"25":{"name":"(anonymous_25)","line":162,"loc":{"start":{"line":162,"column":26},"end":{"line":162,"column":54}}},"26":{"name":"(anonymous_26)","line":165,"loc":{"start":{"line":165,"column":26},"end":{"line":165,"column":58}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":9,"column":2}},"2":{"start":{"line":6,"column":4},"end":{"line":6,"column":58}},"3":{"start":{"line":6,"column":21},"end":{"line":6,"column":58}},"4":{"start":{"line":6,"column":46},"end":{"line":6,"column":58}},"5":{"start":{"line":7,"column":4},"end":{"line":7,"column":43}},"6":{"start":{"line":7,"column":20},"end":{"line":7,"column":41}},"7":{"start":{"line":8,"column":4},"end":{"line":8,"column":89}},"8":{"start":{"line":10,"column":0},"end":{"line":17,"column":2}},"9":{"start":{"line":11,"column":4},"end":{"line":15,"column":5}},"10":{"start":{"line":12,"column":8},"end":{"line":12,"column":25}},"11":{"start":{"line":13,"column":8},"end":{"line":14,"column":24}},"12":{"start":{"line":13,"column":25},"end":{"line":14,"column":24}},"13":{"start":{"line":14,"column":12},"end":{"line":14,"column":24}},"14":{"start":{"line":16,"column":4},"end":{"line":16,"column":13}},"15":{"start":{"line":18,"column":0},"end":{"line":18,"column":29}},"16":{"start":{"line":19,"column":0},"end":{"line":19,"column":64}},"17":{"start":{"line":20,"column":0},"end":{"line":20,"column":41}},"18":{"start":{"line":21,"column":0},"end":{"line":21,"column":43}},"19":{"start":{"line":22,"column":0},"end":{"line":22,"column":26}},"20":{"start":{"line":23,"column":0},"end":{"line":23,"column":38}},"21":{"start":{"line":24,"column":0},"end":{"line":24,"column":57}},"22":{"start":{"line":25,"column":0},"end":{"line":25,"column":41}},"23":{"start":{"line":26,"column":0},"end":{"line":26,"column":50}},"24":{"start":{"line":27,"column":0},"end":{"line":27,"column":31}},"25":{"start":{"line":28,"column":0},"end":{"line":28,"column":43}},"26":{"start":{"line":29,"column":0},"end":{"line":29,"column":41}},"27":{"start":{"line":30,"column":0},"end":{"line":35,"column":1}},"28":{"start":{"line":31,"column":4},"end":{"line":31,"column":83}},"29":{"start":{"line":31,"column":30},"end":{"line":31,"column":81}},"30":{"start":{"line":31,"column":58},"end":{"line":31,"column":78}},"31":{"start":{"line":32,"column":4},"end":{"line":34,"column":5}},"32":{"start":{"line":32,"column":34},"end":{"line":32,"column":61}},"33":{"start":{"line":33,"column":8},"end":{"line":33,"column":31}},"34":{"start":{"line":36,"column":0},"end":{"line":36,"column":48}},"35":{"start":{"line":37,"column":0},"end":{"line":145,"column":20}},"36":{"start":{"line":38,"column":4},"end":{"line":38,"column":45}},"37":{"start":{"line":39,"column":4},"end":{"line":44,"column":5}},"38":{"start":{"line":40,"column":8},"end":{"line":40,"column":33}},"39":{"start":{"line":41,"column":8},"end":{"line":43,"column":10}},"40":{"start":{"line":45,"column":4},"end":{"line":52,"column":6}},"41":{"start":{"line":46,"column":8},"end":{"line":51,"column":9}},"42":{"start":{"line":47,"column":12},"end":{"line":47,"column":68}},"43":{"start":{"line":48,"column":12},"end":{"line":50,"column":14}},"44":{"start":{"line":53,"column":4},"end":{"line":62,"column":6}},"45":{"start":{"line":54,"column":8},"end":{"line":60,"column":9}},"46":{"start":{"line":55,"column":12},"end":{"line":55,"column":53}},"47":{"start":{"line":56,"column":12},"end":{"line":56,"column":79}},"48":{"start":{"line":59,"column":12},"end":{"line":59,"column":75}},"49":{"start":{"line":61,"column":8},"end":{"line":61,"column":20}},"50":{"start":{"line":63,"column":4},"end":{"line":65,"column":6}},"51":{"start":{"line":64,"column":8},"end":{"line":64,"column":38}},"52":{"start":{"line":66,"column":4},"end":{"line":68,"column":6}},"53":{"start":{"line":67,"column":8},"end":{"line":67,"column":50}},"54":{"start":{"line":69,"column":4},"end":{"line":71,"column":6}},"55":{"start":{"line":70,"column":8},"end":{"line":70,"column":48}},"56":{"start":{"line":72,"column":4},"end":{"line":143,"column":6}},"57":{"start":{"line":73,"column":8},"end":{"line":73,"column":25}},"58":{"start":{"line":74,"column":8},"end":{"line":74,"column":31}},"59":{"start":{"line":75,"column":8},"end":{"line":103,"column":10}},"60":{"start":{"line":80,"column":20},"end":{"line":80,"column":38}},"61":{"start":{"line":81,"column":20},"end":{"line":81,"column":33}},"62":{"start":{"line":88,"column":20},"end":{"line":88,"column":38}},"63":{"start":{"line":89,"column":20},"end":{"line":89,"column":32}},"64":{"start":{"line":97,"column":20},"end":{"line":97,"column":59}},"65":{"start":{"line":98,"column":20},"end":{"line":99,"column":42}},"66":{"start":{"line":99,"column":24},"end":{"line":99,"column":42}},"67":{"start":{"line":100,"column":20},"end":{"line":100,"column":35}},"68":{"start":{"line":104,"column":8},"end":{"line":104,"column":34}},"69":{"start":{"line":105,"column":8},"end":{"line":107,"column":9}},"70":{"start":{"line":106,"column":12},"end":{"line":106,"column":85}},"71":{"start":{"line":108,"column":8},"end":{"line":108,"column":26}},"72":{"start":{"line":109,"column":8},"end":{"line":114,"column":9}},"73":{"start":{"line":110,"column":12},"end":{"line":110,"column":71}},"74":{"start":{"line":113,"column":12},"end":{"line":113,"column":26}},"75":{"start":{"line":115,"column":8},"end":{"line":120,"column":11}},"76":{"start":{"line":121,"column":8},"end":{"line":121,"column":77}},"77":{"start":{"line":121,"column":55},"end":{"line":121,"column":73}},"78":{"start":{"line":122,"column":8},"end":{"line":122,"column":31}},"79":{"start":{"line":123,"column":8},"end":{"line":133,"column":9}},"80":{"start":{"line":124,"column":12},"end":{"line":124,"column":85}},"81":{"start":{"line":127,"column":12},"end":{"line":132,"column":19}},"82":{"start":{"line":128,"column":16},"end":{"line":130,"column":17}},"83":{"start":{"line":129,"column":20},"end":{"line":129,"column":69}},"84":{"start":{"line":131,"column":16},"end":{"line":131,"column":37}},"85":{"start":{"line":134,"column":8},"end":{"line":134,"column":40}},"86":{"start":{"line":135,"column":8},"end":{"line":137,"column":9}},"87":{"start":{"line":136,"column":12},"end":{"line":136,"column":38}},"88":{"start":{"line":138,"column":8},"end":{"line":142,"column":272}},"89":{"start":{"line":140,"column":256},"end":{"line":140,"column":305}},"90":{"start":{"line":141,"column":12},"end":{"line":141,"column":113}},"91":{"start":{"line":144,"column":4},"end":{"line":144,"column":33}},"92":{"start":{"line":146,"column":0},"end":{"line":152,"column":2}},"93":{"start":{"line":153,"column":0},"end":{"line":153,"column":62}},"94":{"start":{"line":154,"column":0},"end":{"line":169,"column":26}},"95":{"start":{"line":155,"column":4},"end":{"line":158,"column":6}},"96":{"start":{"line":160,"column":4},"end":{"line":168,"column":6}},"97":{"start":{"line":161,"column":35},"end":{"line":161,"column":75}},"98":{"start":{"line":163,"column":12},"end":{"line":163,"column":68}},"99":{"start":{"line":166,"column":12},"end":{"line":166,"column":72}}},"branchMap":{"1":{"line":5,"type":"binary-expr","locations":[{"start":{"line":5,"column":17},"end":{"line":5,"column":21}},{"start":{"line":5,"column":25},"end":{"line":5,"column":39}},{"start":{"line":5,"column":44},"end":{"line":9,"column":1}}]},"2":{"line":6,"type":"if","locations":[{"start":{"line":6,"column":21},"end":{"line":6,"column":21}},{"start":{"line":6,"column":21},"end":{"line":6,"column":21}}]},"3":{"line":8,"type":"cond-expr","locations":[{"start":{"line":8,"column":31},"end":{"line":8,"column":47}},{"start":{"line":8,"column":51},"end":{"line":8,"column":87}}]},"4":{"line":10,"type":"binary-expr","locations":[{"start":{"line":10,"column":16},"end":{"line":10,"column":20}},{"start":{"line":10,"column":24},"end":{"line":10,"column":37}},{"start":{"line":10,"column":42},"end":{"line":10,"column":55}},{"start":{"line":10,"column":59},"end":{"line":17,"column":1}}]},"5":{"line":13,"type":"if","locations":[{"start":{"line":13,"column":25},"end":{"line":13,"column":25}},{"start":{"line":13,"column":25},"end":{"line":13,"column":25}}]},"6":{"line":31,"type":"if","locations":[{"start":{"line":31,"column":4},"end":{"line":31,"column":4}},{"start":{"line":31,"column":4},"end":{"line":31,"column":4}}]},"7":{"line":32,"type":"if","locations":[{"start":{"line":32,"column":4},"end":{"line":32,"column":4}},{"start":{"line":32,"column":4},"end":{"line":32,"column":4}}]},"8":{"line":46,"type":"if","locations":[{"start":{"line":46,"column":8},"end":{"line":46,"column":8}},{"start":{"line":46,"column":8},"end":{"line":46,"column":8}}]},"9":{"line":54,"type":"if","locations":[{"start":{"line":54,"column":8},"end":{"line":54,"column":8}},{"start":{"line":54,"column":8},"end":{"line":54,"column":8}}]},"10":{"line":95,"type":"cond-expr","locations":[{"start":{"line":95,"column":43},"end":{"line":95,"column":49}},{"start":{"line":95,"column":52},"end":{"line":95,"column":60}}]},"11":{"line":98,"type":"if","locations":[{"start":{"line":98,"column":20},"end":{"line":98,"column":20}},{"start":{"line":98,"column":20},"end":{"line":98,"column":20}}]},"12":{"line":105,"type":"if","locations":[{"start":{"line":105,"column":8},"end":{"line":105,"column":8}},{"start":{"line":105,"column":8},"end":{"line":105,"column":8}}]},"13":{"line":109,"type":"if","locations":[{"start":{"line":109,"column":8},"end":{"line":109,"column":8}},{"start":{"line":109,"column":8},"end":{"line":109,"column":8}}]},"14":{"line":109,"type":"binary-expr","locations":[{"start":{"line":109,"column":12},"end":{"line":109,"column":33}},{"start":{"line":109,"column":37},"end":{"line":109,"column":76}}]},"15":{"line":119,"type":"cond-expr","locations":[{"start":{"line":119,"column":50},"end":{"line":119,"column":85}},{"start":{"line":119,"column":88},"end":{"line":119,"column":90}}]},"16":{"line":123,"type":"if","locations":[{"start":{"line":123,"column":8},"end":{"line":123,"column":8}},{"start":{"line":123,"column":8},"end":{"line":123,"column":8}}]},"17":{"line":128,"type":"if","locations":[{"start":{"line":128,"column":16},"end":{"line":128,"column":16}},{"start":{"line":128,"column":16},"end":{"line":128,"column":16}}]},"18":{"line":135,"type":"if","locations":[{"start":{"line":135,"column":8},"end":{"line":135,"column":8}},{"start":{"line":135,"column":8},"end":{"line":135,"column":8}}]},"19":{"line":138,"type":"cond-expr","locations":[{"start":{"line":139,"column":12},"end":{"line":139,"column":218}},{"start":{"line":140,"column":14},"end":{"line":140,"column":18}}]},"20":{"line":138,"type":"binary-expr","locations":[{"start":{"line":138,"column":225},"end":{"line":138,"column":246}},{"start":{"line":138,"column":250},"end":{"line":138,"column":292}}]},"21":{"line":156,"type":"binary-expr","locations":[{"start":{"line":156,"column":20},"end":{"line":156,"column":42}},{"start":{"line":156,"column":46},"end":{"line":156,"column":48}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public"," * License, v. 2.0. If a copy of the MPL was not distributed with this"," * file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var __extends = (this && this.__extends) || function (d, b) {","    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];","    function __() { this.constructor = d; }","    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());","};","var __assign = (this && this.__assign) || Object.assign || function(t) {","    for (var s, i = 1, n = arguments.length; i < n; i++) {","        s = arguments[i];","        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))","            t[p] = s[p];","    }","    return t;","};","var React = require('react');","var modalDialog_ui_js_1 = require('../modal/modalDialog.ui.js');","var Datasource = require('./datasource');","var react_redux_1 = require('react-redux');","var _ = require('lodash');","var ui = require('../ui/elements.ui');","var settingsForm_ui_1 = require('../ui/settingsForm.ui');","var redux_form_1 = require('redux-form');","var ModalIds = require('../modal/modalDialogIds');","var react_1 = require(\"react\");","var DIALOG_ID = ModalIds.DATASOURCE_CONFIG;","var FORM_ID = \"datasource-settings-form\";","function unshiftIfNotExists(array, element, isEqual) {","    if (isEqual === void 0) { isEqual = function (a, b) { return a.id == b.id; }; }","    if (array.find(function (e) { return isEqual(e, element); }) == undefined) {","        array.unshift(element);","    }","}","exports.unshiftIfNotExists = unshiftIfNotExists;","var DatasourceConfigModal = (function (_super) {","    __extends(DatasourceConfigModal, _super);","    function DatasourceConfigModal(props) {","        _super.call(this, props);","        this.state = {","            selectedType: ''","        };","    }","    DatasourceConfigModal.prototype.componentWillReceiveProps = function (nextProps) {","        if (nextProps.dialogData.datasource) {","            var selectedType = nextProps.dialogData.datasource.type;","            this.state = {","                selectedType: selectedType","            };","        }","    };","    DatasourceConfigModal.prototype.onSubmit = function (formData, dispatch) {","        if (this._isEditing()) {","            var id = this._getEditingDatasource().id;","            this.props.updateDatasource(id, this.state.selectedType, formData);","        }","        else {","            this.props.createDatasource(this.state.selectedType, formData);","        }","        return true;","    };","    DatasourceConfigModal.prototype.resetForm = function () {","        this.props.resetForm(FORM_ID);","    };","    DatasourceConfigModal.prototype._isEditing = function () {","        return !!this.props.dialogData.datasource;","    };","    DatasourceConfigModal.prototype._getEditingDatasource = function () {","        return this.props.dialogData.datasource;","    };","    DatasourceConfigModal.prototype.render = function () {","        var _this = this;","        var props = this.props;","        var actions = [","            {","                className: \"ui right button\",","                label: \"Reset\",","                onClick: function () {","                    _this.resetForm();","                    return false;","                }","            },","            {","                className: \"ui right red button\",","                label: \"Cancel\",","                onClick: function () {","                    _this.resetForm();","                    return true;","                }","            },","            {","                className: \"ui right labeled icon positive button\",","                iconClass: \"save icon\",","                label: this._isEditing() ? \"Save\" : \"Create\",","                onClick: function () {","                    var success = _this.refs.form.submit();","                    if (success)","                        _this.resetForm();","                    return success;","                }","            }","        ];","        var selectedDsPluginState;","        if (this.state.selectedType) {","            selectedDsPluginState = props.datasourcePlugins[this.state.selectedType];","        }","        var settings = [];","        if (selectedDsPluginState && selectedDsPluginState.typeInfo.settings) {","            settings = selectedDsPluginState.typeInfo.settings.slice();","        }","        else {","            settings = [];","        }","        unshiftIfNotExists(settings, {","            id: 'name',","            name: 'Name',","            type: 'string',","            defaultValue: selectedDsPluginState ? selectedDsPluginState.typeInfo.name : \"\"","        });","        var fields = settings.map(function (setting) { return setting.id; });","        var initialValues = {};","        if (this._isEditing()) {","            initialValues = Object.assign({}, this._getEditingDatasource().settings);","        }","        else {","            initialValues = settings.reduce(function (initialValues, setting) {","                if (setting.defaultValue !== undefined) {","                    initialValues[setting.id] = setting.defaultValue;","                }","                return initialValues;","            }, {});","        }","        var title = \"Create Datasource\";","        if (this._isEditing()) {","            title = \"Edit Datasource\";","        }","        return React.createElement(modalDialog_ui_js_1.default, {id: DIALOG_ID, title: title, actions: actions}, React.createElement(\"div\", {className: \"ui one column grid\"}, React.createElement(\"div\", {className: \"column\"}, selectedDsPluginState && selectedDsPluginState.typeInfo.description ?","            React.createElement(\"div\", {className: \"ui icon message\"}, React.createElement(\"i\", {className: \"idea icon\"}), React.createElement(\"div\", {className: \"content\"}, selectedDsPluginState.typeInfo.description))","            : null, React.createElement(\"div\", {className: \"field\"}, React.createElement(\"label\", null, \"Type\"), React.createElement(\"select\", __assign({className: \"ui fluid dropdown\", name: \"type\", value: this.state.selectedType, onChange: function (e) { _this.setState({ selectedType: e.target.value }); }}, fields.type), React.createElement(\"option\", {key: \"none\", value: \"\"}, \"Select Type...\"), _.valuesIn(props.datasourcePlugins).map(function (dsPlugin) {","            return React.createElement(\"option\", {key: dsPlugin.id, value: dsPlugin.id}, dsPlugin.typeInfo.name);","        }))), React.createElement(ui.Divider, null), React.createElement(settingsForm_ui_1.default, {ref: \"form\", form: FORM_ID, onSubmit: this.onSubmit.bind(this), fields: [\"type\", \"name\", \"interval\"].concat(fields), settings: settings, initialValues: initialValues}))));","    };","    return DatasourceConfigModal;","}(React.Component));","DatasourceConfigModal.propTypes = {","    createDatasource: react_1.PropTypes.func.isRequired,","    updateDatasource: react_1.PropTypes.func.isRequired,","    resetForm: react_1.PropTypes.func.isRequired,","    dialogData: react_1.PropTypes.object.isRequired,","    datasourcePlugins: react_1.PropTypes.object.isRequired","};","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = react_redux_1.connect(function (state) {","    return {","        dialogData: state.modalDialog.data || {},","        datasourcePlugins: state.datasourcePlugins","    };","}, function (dispatch) {","    return {","        resetForm: function (id) { return dispatch(redux_form_1.reset(id)); },","        createDatasource: function (type, dsSettings) {","            dispatch(Datasource.createDatasource(type, dsSettings));","        },","        updateDatasource: function (id, type, dsSettings) {","            dispatch(Datasource.updateDatasource(id, type, dsSettings));","        }","    };","})(DatasourceConfigModal);",""]};
 	}
-	exports.unshiftIfNotExists = unshiftIfNotExists;
-	var DatasourceConfigModal = (function (_super) {
-	    __extends(DatasourceConfigModal, _super);
-	    function DatasourceConfigModal(props) {
-	        _super.call(this, props);
-	        this.state = {
-	            selectedType: ''
-	        };
-	    }
-	    DatasourceConfigModal.prototype.componentWillReceiveProps = function (nextProps) {
-	        if (nextProps.dialogData.datasource) {
-	            var selectedType = nextProps.dialogData.datasource.type;
-	            this.state = {
-	                selectedType: selectedType
-	            };
-	        }
-	    };
-	    DatasourceConfigModal.prototype.onSubmit = function (formData, dispatch) {
-	        if (this._isEditing()) {
-	            var id = this._getEditingDatasource().id;
-	            this.props.updateDatasource(id, this.state.selectedType, formData);
-	        }
-	        else {
-	            this.props.createDatasource(this.state.selectedType, formData);
-	        }
-	        return true;
-	    };
-	    DatasourceConfigModal.prototype.resetForm = function () {
-	        this.props.resetForm(FORM_ID);
-	    };
-	    DatasourceConfigModal.prototype._isEditing = function () {
-	        return !!this.props.dialogData.datasource;
-	    };
-	    DatasourceConfigModal.prototype._getEditingDatasource = function () {
-	        return this.props.dialogData.datasource;
-	    };
-	    DatasourceConfigModal.prototype.render = function () {
-	        var _this = this;
-	        var props = this.props;
-	        var actions = [
-	            {
-	                className: "ui right button",
-	                label: "Reset",
-	                onClick: function () {
-	                    _this.resetForm();
-	                    return false;
-	                }
-	            },
-	            {
-	                className: "ui right red button",
-	                label: "Cancel",
-	                onClick: function () {
-	                    _this.resetForm();
-	                    return true;
-	                }
-	            },
-	            {
-	                className: "ui right labeled icon positive button",
-	                iconClass: "save icon",
-	                label: this._isEditing() ? "Save" : "Create",
-	                onClick: function () {
-	                    var success = _this.refs.form.submit();
-	                    if (success)
-	                        _this.resetForm();
-	                    return success;
-	                }
-	            }
-	        ];
-	        var selectedDsPluginState;
-	        if (this.state.selectedType) {
-	            selectedDsPluginState = props.datasourcePlugins[this.state.selectedType];
-	        }
-	        var settings = [];
-	        if (selectedDsPluginState && selectedDsPluginState.typeInfo.settings) {
-	            settings = selectedDsPluginState.typeInfo.settings.slice();
-	        }
-	        else {
-	            settings = [];
-	        }
-	        unshiftIfNotExists(settings, {
-	            id: 'name',
-	            name: 'Name',
-	            type: 'string',
-	            defaultValue: selectedDsPluginState ? selectedDsPluginState.typeInfo.name : ""
-	        });
-	        var fields = settings.map(function (setting) { return setting.id; });
-	        var initialValues = {};
-	        if (this._isEditing()) {
-	            initialValues = Object.assign({}, this._getEditingDatasource().settings);
-	        }
-	        else {
-	            initialValues = settings.reduce(function (initialValues, setting) {
-	                if (setting.defaultValue !== undefined) {
-	                    initialValues[setting.id] = setting.defaultValue;
-	                }
-	                return initialValues;
-	            }, {});
-	        }
-	        var title = "Create Datasource";
-	        if (this._isEditing()) {
-	            title = "Edit Datasource";
-	        }
-	        return React.createElement(modalDialog_ui_js_1.default, {id: DIALOG_ID, title: title, actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, selectedDsPluginState && selectedDsPluginState.typeInfo.description ?
-	            React.createElement("div", {className: "ui icon message"}, React.createElement("i", {className: "idea icon"}), React.createElement("div", {className: "content"}, selectedDsPluginState.typeInfo.description))
-	            : null, React.createElement("div", {className: "field"}, React.createElement("label", null, "Type"), React.createElement("select", __assign({className: "ui fluid dropdown", name: "type", value: this.state.selectedType, onChange: function (e) { _this.setState({ selectedType: e.target.value }); }}, fields.type), React.createElement("option", {key: "none", value: ""}, "Select Type..."), _.valuesIn(props.datasourcePlugins).map(function (dsPlugin) {
-	            return React.createElement("option", {key: dsPlugin.id, value: dsPlugin.id}, dsPlugin.typeInfo.name);
-	        }))), React.createElement(ui.Divider, null), React.createElement(settingsForm_ui_1.default, {ref: "form", form: FORM_ID, onSubmit: this.onSubmit.bind(this), fields: ["type", "name", "interval"].concat(fields), settings: settings, initialValues: initialValues}))));
-	    };
-	    return DatasourceConfigModal;
-	}(React.Component));
-	DatasourceConfigModal.propTypes = {
-	    createDatasource: react_1.PropTypes.func.isRequired,
-	    updateDatasource: react_1.PropTypes.func.isRequired,
-	    resetForm: react_1.PropTypes.func.isRequired,
-	    dialogData: react_1.PropTypes.object.isRequired,
-	    datasourcePlugins: react_1.PropTypes.object.isRequired
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = react_redux_1.connect(function (state) {
-	    return {
-	        dialogData: state.modalDialog.data || {},
-	        datasourcePlugins: state.datasourcePlugins
-	    };
-	}, function (dispatch) {
-	    return {
-	        resetForm: function (id) { return dispatch(redux_form_1.reset(id)); },
-	        createDatasource: function (type, dsSettings) {
-	            dispatch(Datasource.createDatasource(type, dsSettings));
-	        },
-	        updateDatasource: function (id, type, dsSettings) {
-	            dispatch(Datasource.updateDatasource(id, type, dsSettings));
-	        }
-	    };
-	})(DatasourceConfigModal);
+	__cov_XHcIeT5TJRvrGXigedGK9w = __cov_XHcIeT5TJRvrGXigedGK9w['/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourceConfigDialog.ui.js'];
+	__cov_XHcIeT5TJRvrGXigedGK9w.s['1']++;var __extends=(__cov_XHcIeT5TJRvrGXigedGK9w.b['1'][0]++,this)&&(__cov_XHcIeT5TJRvrGXigedGK9w.b['1'][1]++,this.__extends)||(__cov_XHcIeT5TJRvrGXigedGK9w.b['1'][2]++,function(d,b){__cov_XHcIeT5TJRvrGXigedGK9w.f['1']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['2']++;for(var p in b){__cov_XHcIeT5TJRvrGXigedGK9w.s['3']++;if(b.hasOwnProperty(p)){__cov_XHcIeT5TJRvrGXigedGK9w.b['2'][0]++;__cov_XHcIeT5TJRvrGXigedGK9w.s['4']++;d[p]=b[p];}else{__cov_XHcIeT5TJRvrGXigedGK9w.b['2'][1]++;}}function __(){__cov_XHcIeT5TJRvrGXigedGK9w.f['2']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['6']++;this.constructor=d;}__cov_XHcIeT5TJRvrGXigedGK9w.s['7']++;d.prototype=b===null?(__cov_XHcIeT5TJRvrGXigedGK9w.b['3'][0]++,Object.create(b)):(__cov_XHcIeT5TJRvrGXigedGK9w.b['3'][1]++,(__.prototype=b.prototype,new __()));});__cov_XHcIeT5TJRvrGXigedGK9w.s['8']++;var __assign=(__cov_XHcIeT5TJRvrGXigedGK9w.b['4'][0]++,this)&&(__cov_XHcIeT5TJRvrGXigedGK9w.b['4'][1]++,this.__assign)||(__cov_XHcIeT5TJRvrGXigedGK9w.b['4'][2]++,Object.assign)||(__cov_XHcIeT5TJRvrGXigedGK9w.b['4'][3]++,function(t){__cov_XHcIeT5TJRvrGXigedGK9w.f['3']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['9']++;for(var s,i=1,n=arguments.length;i<n;i++){__cov_XHcIeT5TJRvrGXigedGK9w.s['10']++;s=arguments[i];__cov_XHcIeT5TJRvrGXigedGK9w.s['11']++;for(var p in s){__cov_XHcIeT5TJRvrGXigedGK9w.s['12']++;if(Object.prototype.hasOwnProperty.call(s,p)){__cov_XHcIeT5TJRvrGXigedGK9w.b['5'][0]++;__cov_XHcIeT5TJRvrGXigedGK9w.s['13']++;t[p]=s[p];}else{__cov_XHcIeT5TJRvrGXigedGK9w.b['5'][1]++;}}}__cov_XHcIeT5TJRvrGXigedGK9w.s['14']++;return t;});__cov_XHcIeT5TJRvrGXigedGK9w.s['15']++;var React=__webpack_require__(20);__cov_XHcIeT5TJRvrGXigedGK9w.s['16']++;var modalDialog_ui_js_1=__webpack_require__(84);__cov_XHcIeT5TJRvrGXigedGK9w.s['17']++;var Datasource=__webpack_require__(58);__cov_XHcIeT5TJRvrGXigedGK9w.s['18']++;var react_redux_1=__webpack_require__(39);__cov_XHcIeT5TJRvrGXigedGK9w.s['19']++;var _=__webpack_require__(21);__cov_XHcIeT5TJRvrGXigedGK9w.s['20']++;var ui=__webpack_require__(82);__cov_XHcIeT5TJRvrGXigedGK9w.s['21']++;var settingsForm_ui_1=__webpack_require__(85);__cov_XHcIeT5TJRvrGXigedGK9w.s['22']++;var redux_form_1=__webpack_require__(86);__cov_XHcIeT5TJRvrGXigedGK9w.s['23']++;var ModalIds=__webpack_require__(51);__cov_XHcIeT5TJRvrGXigedGK9w.s['24']++;var react_1=__webpack_require__(20);__cov_XHcIeT5TJRvrGXigedGK9w.s['25']++;var DIALOG_ID=ModalIds.DATASOURCE_CONFIG;__cov_XHcIeT5TJRvrGXigedGK9w.s['26']++;var FORM_ID='datasource-settings-form';function unshiftIfNotExists(array,element,isEqual){__cov_XHcIeT5TJRvrGXigedGK9w.f['4']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['28']++;if(isEqual===void 0){__cov_XHcIeT5TJRvrGXigedGK9w.b['6'][0]++;__cov_XHcIeT5TJRvrGXigedGK9w.s['29']++;isEqual=function(a,b){__cov_XHcIeT5TJRvrGXigedGK9w.f['5']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['30']++;return a.id==b.id;};}else{__cov_XHcIeT5TJRvrGXigedGK9w.b['6'][1]++;}__cov_XHcIeT5TJRvrGXigedGK9w.s['31']++;if(array.find(function(e){__cov_XHcIeT5TJRvrGXigedGK9w.f['6']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['32']++;return isEqual(e,element);})==undefined){__cov_XHcIeT5TJRvrGXigedGK9w.b['7'][0]++;__cov_XHcIeT5TJRvrGXigedGK9w.s['33']++;array.unshift(element);}else{__cov_XHcIeT5TJRvrGXigedGK9w.b['7'][1]++;}}__cov_XHcIeT5TJRvrGXigedGK9w.s['34']++;exports.unshiftIfNotExists=unshiftIfNotExists;__cov_XHcIeT5TJRvrGXigedGK9w.s['35']++;var DatasourceConfigModal=function(_super){__cov_XHcIeT5TJRvrGXigedGK9w.f['7']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['36']++;__extends(DatasourceConfigModal,_super);function DatasourceConfigModal(props){__cov_XHcIeT5TJRvrGXigedGK9w.f['8']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['38']++;_super.call(this,props);__cov_XHcIeT5TJRvrGXigedGK9w.s['39']++;this.state={selectedType:''};}__cov_XHcIeT5TJRvrGXigedGK9w.s['40']++;DatasourceConfigModal.prototype.componentWillReceiveProps=function(nextProps){__cov_XHcIeT5TJRvrGXigedGK9w.f['9']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['41']++;if(nextProps.dialogData.datasource){__cov_XHcIeT5TJRvrGXigedGK9w.b['8'][0]++;__cov_XHcIeT5TJRvrGXigedGK9w.s['42']++;var selectedType=nextProps.dialogData.datasource.type;__cov_XHcIeT5TJRvrGXigedGK9w.s['43']++;this.state={selectedType:selectedType};}else{__cov_XHcIeT5TJRvrGXigedGK9w.b['8'][1]++;}};__cov_XHcIeT5TJRvrGXigedGK9w.s['44']++;DatasourceConfigModal.prototype.onSubmit=function(formData,dispatch){__cov_XHcIeT5TJRvrGXigedGK9w.f['10']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['45']++;if(this._isEditing()){__cov_XHcIeT5TJRvrGXigedGK9w.b['9'][0]++;__cov_XHcIeT5TJRvrGXigedGK9w.s['46']++;var id=this._getEditingDatasource().id;__cov_XHcIeT5TJRvrGXigedGK9w.s['47']++;this.props.updateDatasource(id,this.state.selectedType,formData);}else{__cov_XHcIeT5TJRvrGXigedGK9w.b['9'][1]++;__cov_XHcIeT5TJRvrGXigedGK9w.s['48']++;this.props.createDatasource(this.state.selectedType,formData);}__cov_XHcIeT5TJRvrGXigedGK9w.s['49']++;return true;};__cov_XHcIeT5TJRvrGXigedGK9w.s['50']++;DatasourceConfigModal.prototype.resetForm=function(){__cov_XHcIeT5TJRvrGXigedGK9w.f['11']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['51']++;this.props.resetForm(FORM_ID);};__cov_XHcIeT5TJRvrGXigedGK9w.s['52']++;DatasourceConfigModal.prototype._isEditing=function(){__cov_XHcIeT5TJRvrGXigedGK9w.f['12']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['53']++;return!!this.props.dialogData.datasource;};__cov_XHcIeT5TJRvrGXigedGK9w.s['54']++;DatasourceConfigModal.prototype._getEditingDatasource=function(){__cov_XHcIeT5TJRvrGXigedGK9w.f['13']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['55']++;return this.props.dialogData.datasource;};__cov_XHcIeT5TJRvrGXigedGK9w.s['56']++;DatasourceConfigModal.prototype.render=function(){__cov_XHcIeT5TJRvrGXigedGK9w.f['14']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['57']++;var _this=this;__cov_XHcIeT5TJRvrGXigedGK9w.s['58']++;var props=this.props;__cov_XHcIeT5TJRvrGXigedGK9w.s['59']++;var actions=[{className:'ui right button',label:'Reset',onClick:function(){__cov_XHcIeT5TJRvrGXigedGK9w.f['15']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['60']++;_this.resetForm();__cov_XHcIeT5TJRvrGXigedGK9w.s['61']++;return false;}},{className:'ui right red button',label:'Cancel',onClick:function(){__cov_XHcIeT5TJRvrGXigedGK9w.f['16']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['62']++;_this.resetForm();__cov_XHcIeT5TJRvrGXigedGK9w.s['63']++;return true;}},{className:'ui right labeled icon positive button',iconClass:'save icon',label:this._isEditing()?(__cov_XHcIeT5TJRvrGXigedGK9w.b['10'][0]++,'Save'):(__cov_XHcIeT5TJRvrGXigedGK9w.b['10'][1]++,'Create'),onClick:function(){__cov_XHcIeT5TJRvrGXigedGK9w.f['17']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['64']++;var success=_this.refs.form.submit();__cov_XHcIeT5TJRvrGXigedGK9w.s['65']++;if(success){__cov_XHcIeT5TJRvrGXigedGK9w.b['11'][0]++;__cov_XHcIeT5TJRvrGXigedGK9w.s['66']++;_this.resetForm();}else{__cov_XHcIeT5TJRvrGXigedGK9w.b['11'][1]++;}__cov_XHcIeT5TJRvrGXigedGK9w.s['67']++;return success;}}];__cov_XHcIeT5TJRvrGXigedGK9w.s['68']++;var selectedDsPluginState;__cov_XHcIeT5TJRvrGXigedGK9w.s['69']++;if(this.state.selectedType){__cov_XHcIeT5TJRvrGXigedGK9w.b['12'][0]++;__cov_XHcIeT5TJRvrGXigedGK9w.s['70']++;selectedDsPluginState=props.datasourcePlugins[this.state.selectedType];}else{__cov_XHcIeT5TJRvrGXigedGK9w.b['12'][1]++;}__cov_XHcIeT5TJRvrGXigedGK9w.s['71']++;var settings=[];__cov_XHcIeT5TJRvrGXigedGK9w.s['72']++;if((__cov_XHcIeT5TJRvrGXigedGK9w.b['14'][0]++,selectedDsPluginState)&&(__cov_XHcIeT5TJRvrGXigedGK9w.b['14'][1]++,selectedDsPluginState.typeInfo.settings)){__cov_XHcIeT5TJRvrGXigedGK9w.b['13'][0]++;__cov_XHcIeT5TJRvrGXigedGK9w.s['73']++;settings=selectedDsPluginState.typeInfo.settings.slice();}else{__cov_XHcIeT5TJRvrGXigedGK9w.b['13'][1]++;__cov_XHcIeT5TJRvrGXigedGK9w.s['74']++;settings=[];}__cov_XHcIeT5TJRvrGXigedGK9w.s['75']++;unshiftIfNotExists(settings,{id:'name',name:'Name',type:'string',defaultValue:selectedDsPluginState?(__cov_XHcIeT5TJRvrGXigedGK9w.b['15'][0]++,selectedDsPluginState.typeInfo.name):(__cov_XHcIeT5TJRvrGXigedGK9w.b['15'][1]++,'')});__cov_XHcIeT5TJRvrGXigedGK9w.s['76']++;var fields=settings.map(function(setting){__cov_XHcIeT5TJRvrGXigedGK9w.f['18']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['77']++;return setting.id;});__cov_XHcIeT5TJRvrGXigedGK9w.s['78']++;var initialValues={};__cov_XHcIeT5TJRvrGXigedGK9w.s['79']++;if(this._isEditing()){__cov_XHcIeT5TJRvrGXigedGK9w.b['16'][0]++;__cov_XHcIeT5TJRvrGXigedGK9w.s['80']++;initialValues=Object.assign({},this._getEditingDatasource().settings);}else{__cov_XHcIeT5TJRvrGXigedGK9w.b['16'][1]++;__cov_XHcIeT5TJRvrGXigedGK9w.s['81']++;initialValues=settings.reduce(function(initialValues,setting){__cov_XHcIeT5TJRvrGXigedGK9w.f['19']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['82']++;if(setting.defaultValue!==undefined){__cov_XHcIeT5TJRvrGXigedGK9w.b['17'][0]++;__cov_XHcIeT5TJRvrGXigedGK9w.s['83']++;initialValues[setting.id]=setting.defaultValue;}else{__cov_XHcIeT5TJRvrGXigedGK9w.b['17'][1]++;}__cov_XHcIeT5TJRvrGXigedGK9w.s['84']++;return initialValues;},{});}__cov_XHcIeT5TJRvrGXigedGK9w.s['85']++;var title='Create Datasource';__cov_XHcIeT5TJRvrGXigedGK9w.s['86']++;if(this._isEditing()){__cov_XHcIeT5TJRvrGXigedGK9w.b['18'][0]++;__cov_XHcIeT5TJRvrGXigedGK9w.s['87']++;title='Edit Datasource';}else{__cov_XHcIeT5TJRvrGXigedGK9w.b['18'][1]++;}__cov_XHcIeT5TJRvrGXigedGK9w.s['88']++;return React.createElement(modalDialog_ui_js_1.default,{id:DIALOG_ID,title:title,actions:actions},React.createElement('div',{className:'ui one column grid'},React.createElement('div',{className:'column'},(__cov_XHcIeT5TJRvrGXigedGK9w.b['20'][0]++,selectedDsPluginState)&&(__cov_XHcIeT5TJRvrGXigedGK9w.b['20'][1]++,selectedDsPluginState.typeInfo.description)?(__cov_XHcIeT5TJRvrGXigedGK9w.b['19'][0]++,React.createElement('div',{className:'ui icon message'},React.createElement('i',{className:'idea icon'}),React.createElement('div',{className:'content'},selectedDsPluginState.typeInfo.description))):(__cov_XHcIeT5TJRvrGXigedGK9w.b['19'][1]++,null),React.createElement('div',{className:'field'},React.createElement('label',null,'Type'),React.createElement('select',__assign({className:'ui fluid dropdown',name:'type',value:this.state.selectedType,onChange:function(e){__cov_XHcIeT5TJRvrGXigedGK9w.f['20']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['89']++;_this.setState({selectedType:e.target.value});}},fields.type),React.createElement('option',{key:'none',value:''},'Select Type...'),_.valuesIn(props.datasourcePlugins).map(function(dsPlugin){__cov_XHcIeT5TJRvrGXigedGK9w.f['21']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['90']++;return React.createElement('option',{key:dsPlugin.id,value:dsPlugin.id},dsPlugin.typeInfo.name);}))),React.createElement(ui.Divider,null),React.createElement(settingsForm_ui_1.default,{ref:'form',form:FORM_ID,onSubmit:this.onSubmit.bind(this),fields:['type','name','interval'].concat(fields),settings:settings,initialValues:initialValues}))));};__cov_XHcIeT5TJRvrGXigedGK9w.s['91']++;return DatasourceConfigModal;}(React.Component);__cov_XHcIeT5TJRvrGXigedGK9w.s['92']++;DatasourceConfigModal.propTypes={createDatasource:react_1.PropTypes.func.isRequired,updateDatasource:react_1.PropTypes.func.isRequired,resetForm:react_1.PropTypes.func.isRequired,dialogData:react_1.PropTypes.object.isRequired,datasourcePlugins:react_1.PropTypes.object.isRequired};__cov_XHcIeT5TJRvrGXigedGK9w.s['93']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_XHcIeT5TJRvrGXigedGK9w.s['94']++;exports.default=react_redux_1.connect(function(state){__cov_XHcIeT5TJRvrGXigedGK9w.f['22']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['95']++;return{dialogData:(__cov_XHcIeT5TJRvrGXigedGK9w.b['21'][0]++,state.modalDialog.data)||(__cov_XHcIeT5TJRvrGXigedGK9w.b['21'][1]++,{}),datasourcePlugins:state.datasourcePlugins};},function(dispatch){__cov_XHcIeT5TJRvrGXigedGK9w.f['23']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['96']++;return{resetForm:function(id){__cov_XHcIeT5TJRvrGXigedGK9w.f['24']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['97']++;return dispatch(redux_form_1.reset(id));},createDatasource:function(type,dsSettings){__cov_XHcIeT5TJRvrGXigedGK9w.f['25']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['98']++;dispatch(Datasource.createDatasource(type,dsSettings));},updateDatasource:function(id,type,dsSettings){__cov_XHcIeT5TJRvrGXigedGK9w.f['26']++;__cov_XHcIeT5TJRvrGXigedGK9w.s['99']++;dispatch(Datasource.updateDatasource(id,type,dsSettings));}};})(DatasourceConfigModal);
 
 
 /***/ },
 /* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var React = __webpack_require__(20);
-	var Datasource = __webpack_require__(58);
-	var react_redux_1 = __webpack_require__(39);
-	var _ = __webpack_require__(21);
-	var ui = __webpack_require__(82);
-	var react_1 = __webpack_require__(20);
-	var DatasourceTopNavItem = function (props) {
-	    return React.createElement("div", {className: "ui simple dropdown item"}, "Datasources", React.createElement("i", {className: "dropdown icon"}), React.createElement("div", {className: "ui menu"}, React.createElement(ui.LinkItem, {icon: "plus", onClick: function () { props.createDatasource(); }}, "Add Datasource"), React.createElement(ui.Divider, null), _.valuesIn(props.datasources).map(function (ds) {
-	        return React.createElement(ui.LinkItem, {key: ds.id, onClick: function () { props.editDatasource(ds.id); }}, React.createElement(ui.Icon, {type: "delete", size: "huge", align: "right", onClick: function (e) {
-	            e.stopPropagation();
-	            e.preventDefault();
-	            props.deleteDatasource(ds.id);
-	        }}), ds.settings.name);
-	    })));
-	};
-	DatasourceTopNavItem.propTypes = {
-	    createDatasource: react_1.PropTypes.func.isRequired,
-	    editDatasource: react_1.PropTypes.func.isRequired,
-	    deleteDatasource: react_1.PropTypes.func.isRequired,
-	    datasources: react_1.PropTypes.objectOf(react_1.PropTypes.shape({
-	        type: react_1.PropTypes.string.isRequired,
-	        id: react_1.PropTypes.string.isRequired,
-	        settings: react_1.PropTypes.object.isRequired
-	    })).isRequired
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = react_redux_1.connect(function (state) {
-	    return {
-	        datasources: state.datasources
-	    };
-	}, function (dispatch) {
-	    return {
-	        createDatasource: function () { return dispatch(Datasource.startCreateDatasource()); },
-	        editDatasource: function (id) { return dispatch(Datasource.startEditDatasource(id)); },
-	        deleteDatasource: function (id) { return dispatch(Datasource.deleteDatasource(id)); }
-	    };
-	})(DatasourceTopNavItem);
+	var __cov_iHaaZVaSa19ZuS87lch7ew = (Function('return this'))();
+	if (!__cov_iHaaZVaSa19ZuS87lch7ew.__coverage__) { __cov_iHaaZVaSa19ZuS87lch7ew.__coverage__ = {}; }
+	__cov_iHaaZVaSa19ZuS87lch7ew = __cov_iHaaZVaSa19ZuS87lch7ew.__coverage__;
+	if (!(__cov_iHaaZVaSa19ZuS87lch7ew['/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourceNavItem.ui.js'])) {
+	   __cov_iHaaZVaSa19ZuS87lch7ew['/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourceNavItem.ui.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourceNavItem.ui.js","s":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0},"b":{},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0},"fnMap":{"1":{"name":"(anonymous_1)","line":11,"loc":{"start":{"line":11,"column":27},"end":{"line":11,"column":44}}},"2":{"name":"(anonymous_2)","line":12,"loc":{"start":{"line":12,"column":257},"end":{"line":12,"column":269}}},"3":{"name":"(anonymous_3)","line":12,"loc":{"start":{"line":12,"column":393},"end":{"line":12,"column":407}}},"4":{"name":"(anonymous_4)","line":13,"loc":{"start":{"line":13,"column":70},"end":{"line":13,"column":82}}},"5":{"name":"(anonymous_5)","line":13,"loc":{"start":{"line":13,"column":202},"end":{"line":13,"column":215}}},"6":{"name":"(anonymous_6)","line":31,"loc":{"start":{"line":31,"column":40},"end":{"line":31,"column":57}}},"7":{"name":"(anonymous_7)","line":35,"loc":{"start":{"line":35,"column":3},"end":{"line":35,"column":23}}},"8":{"name":"(anonymous_8)","line":37,"loc":{"start":{"line":37,"column":26},"end":{"line":37,"column":38}}},"9":{"name":"(anonymous_9)","line":38,"loc":{"start":{"line":38,"column":24},"end":{"line":38,"column":38}}},"10":{"name":"(anonymous_10)","line":39,"loc":{"start":{"line":39,"column":26},"end":{"line":39,"column":40}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":29}},"2":{"start":{"line":6,"column":0},"end":{"line":6,"column":41}},"3":{"start":{"line":7,"column":0},"end":{"line":7,"column":43}},"4":{"start":{"line":8,"column":0},"end":{"line":8,"column":26}},"5":{"start":{"line":9,"column":0},"end":{"line":9,"column":38}},"6":{"start":{"line":10,"column":0},"end":{"line":10,"column":31}},"7":{"start":{"line":11,"column":0},"end":{"line":19,"column":2}},"8":{"start":{"line":12,"column":4},"end":{"line":18,"column":9}},"9":{"start":{"line":12,"column":271},"end":{"line":12,"column":296}},"10":{"start":{"line":13,"column":8},"end":{"line":17,"column":31}},"11":{"start":{"line":13,"column":84},"end":{"line":13,"column":112}},"12":{"start":{"line":14,"column":12},"end":{"line":14,"column":32}},"13":{"start":{"line":15,"column":12},"end":{"line":15,"column":31}},"14":{"start":{"line":16,"column":12},"end":{"line":16,"column":42}},"15":{"start":{"line":20,"column":0},"end":{"line":29,"column":2}},"16":{"start":{"line":30,"column":0},"end":{"line":30,"column":62}},"17":{"start":{"line":31,"column":0},"end":{"line":41,"column":25}},"18":{"start":{"line":32,"column":4},"end":{"line":34,"column":6}},"19":{"start":{"line":36,"column":4},"end":{"line":40,"column":6}},"20":{"start":{"line":37,"column":40},"end":{"line":37,"column":92}},"21":{"start":{"line":38,"column":40},"end":{"line":38,"column":92}},"22":{"start":{"line":39,"column":42},"end":{"line":39,"column":91}}},"branchMap":{},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var React = require('react');","var Datasource = require(\"./datasource\");","var react_redux_1 = require(\"react-redux\");","var _ = require('lodash');","var ui = require(\"../ui/elements.ui\");","var react_1 = require(\"react\");","var DatasourceTopNavItem = function (props) {","    return React.createElement(\"div\", {className: \"ui simple dropdown item\"}, \"Datasources\", React.createElement(\"i\", {className: \"dropdown icon\"}), React.createElement(\"div\", {className: \"ui menu\"}, React.createElement(ui.LinkItem, {icon: \"plus\", onClick: function () { props.createDatasource(); }}, \"Add Datasource\"), React.createElement(ui.Divider, null), _.valuesIn(props.datasources).map(function (ds) {","        return React.createElement(ui.LinkItem, {key: ds.id, onClick: function () { props.editDatasource(ds.id); }}, React.createElement(ui.Icon, {type: \"delete\", size: \"huge\", align: \"right\", onClick: function (e) {","            e.stopPropagation();","            e.preventDefault();","            props.deleteDatasource(ds.id);","        }}), ds.settings.name);","    })));","};","DatasourceTopNavItem.propTypes = {","    createDatasource: react_1.PropTypes.func.isRequired,","    editDatasource: react_1.PropTypes.func.isRequired,","    deleteDatasource: react_1.PropTypes.func.isRequired,","    datasources: react_1.PropTypes.objectOf(react_1.PropTypes.shape({","        type: react_1.PropTypes.string.isRequired,","        id: react_1.PropTypes.string.isRequired,","        settings: react_1.PropTypes.object.isRequired","    })).isRequired","};","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = react_redux_1.connect(function (state) {","    return {","        datasources: state.datasources","    };","}, function (dispatch) {","    return {","        createDatasource: function () { return dispatch(Datasource.startCreateDatasource()); },","        editDatasource: function (id) { return dispatch(Datasource.startEditDatasource(id)); },","        deleteDatasource: function (id) { return dispatch(Datasource.deleteDatasource(id)); }","    };","})(DatasourceTopNavItem);",""]};
+	}
+	__cov_iHaaZVaSa19ZuS87lch7ew = __cov_iHaaZVaSa19ZuS87lch7ew['/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourceNavItem.ui.js'];
+	__cov_iHaaZVaSa19ZuS87lch7ew.s['1']++;var React=__webpack_require__(20);__cov_iHaaZVaSa19ZuS87lch7ew.s['2']++;var Datasource=__webpack_require__(58);__cov_iHaaZVaSa19ZuS87lch7ew.s['3']++;var react_redux_1=__webpack_require__(39);__cov_iHaaZVaSa19ZuS87lch7ew.s['4']++;var _=__webpack_require__(21);__cov_iHaaZVaSa19ZuS87lch7ew.s['5']++;var ui=__webpack_require__(82);__cov_iHaaZVaSa19ZuS87lch7ew.s['6']++;var react_1=__webpack_require__(20);__cov_iHaaZVaSa19ZuS87lch7ew.s['7']++;var DatasourceTopNavItem=function(props){__cov_iHaaZVaSa19ZuS87lch7ew.f['1']++;__cov_iHaaZVaSa19ZuS87lch7ew.s['8']++;return React.createElement('div',{className:'ui simple dropdown item'},'Datasources',React.createElement('i',{className:'dropdown icon'}),React.createElement('div',{className:'ui menu'},React.createElement(ui.LinkItem,{icon:'plus',onClick:function(){__cov_iHaaZVaSa19ZuS87lch7ew.f['2']++;__cov_iHaaZVaSa19ZuS87lch7ew.s['9']++;props.createDatasource();}},'Add Datasource'),React.createElement(ui.Divider,null),_.valuesIn(props.datasources).map(function(ds){__cov_iHaaZVaSa19ZuS87lch7ew.f['3']++;__cov_iHaaZVaSa19ZuS87lch7ew.s['10']++;return React.createElement(ui.LinkItem,{key:ds.id,onClick:function(){__cov_iHaaZVaSa19ZuS87lch7ew.f['4']++;__cov_iHaaZVaSa19ZuS87lch7ew.s['11']++;props.editDatasource(ds.id);}},React.createElement(ui.Icon,{type:'delete',size:'huge',align:'right',onClick:function(e){__cov_iHaaZVaSa19ZuS87lch7ew.f['5']++;__cov_iHaaZVaSa19ZuS87lch7ew.s['12']++;e.stopPropagation();__cov_iHaaZVaSa19ZuS87lch7ew.s['13']++;e.preventDefault();__cov_iHaaZVaSa19ZuS87lch7ew.s['14']++;props.deleteDatasource(ds.id);}}),ds.settings.name);})));};__cov_iHaaZVaSa19ZuS87lch7ew.s['15']++;DatasourceTopNavItem.propTypes={createDatasource:react_1.PropTypes.func.isRequired,editDatasource:react_1.PropTypes.func.isRequired,deleteDatasource:react_1.PropTypes.func.isRequired,datasources:react_1.PropTypes.objectOf(react_1.PropTypes.shape({type:react_1.PropTypes.string.isRequired,id:react_1.PropTypes.string.isRequired,settings:react_1.PropTypes.object.isRequired})).isRequired};__cov_iHaaZVaSa19ZuS87lch7ew.s['16']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_iHaaZVaSa19ZuS87lch7ew.s['17']++;exports.default=react_redux_1.connect(function(state){__cov_iHaaZVaSa19ZuS87lch7ew.f['6']++;__cov_iHaaZVaSa19ZuS87lch7ew.s['18']++;return{datasources:state.datasources};},function(dispatch){__cov_iHaaZVaSa19ZuS87lch7ew.f['7']++;__cov_iHaaZVaSa19ZuS87lch7ew.s['19']++;return{createDatasource:function(){__cov_iHaaZVaSa19ZuS87lch7ew.f['8']++;__cov_iHaaZVaSa19ZuS87lch7ew.s['20']++;return dispatch(Datasource.startCreateDatasource());},editDatasource:function(id){__cov_iHaaZVaSa19ZuS87lch7ew.f['9']++;__cov_iHaaZVaSa19ZuS87lch7ew.s['21']++;return dispatch(Datasource.startEditDatasource(id));},deleteDatasource:function(id){__cov_iHaaZVaSa19ZuS87lch7ew.f['10']++;__cov_iHaaZVaSa19ZuS87lch7ew.s['22']++;return dispatch(Datasource.deleteDatasource(id));}};})(DatasourceTopNavItem);
 
 
 /***/ },
 /* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(39);
-	var WidgetConfig = __webpack_require__(49);
-	var _ = __webpack_require__(21);
-	var ui = __webpack_require__(82);
-	var WidgetPlugins = __webpack_require__(52);
-	var react_1 = __webpack_require__(20);
-	var WidgetsNavItem = function (props) {
-	    return React.createElement("div", {className: "ui simple dropdown item"}, "Add Widget", React.createElement("i", {className: "dropdown icon"}), React.createElement("div", {className: "ui menu"}, React.createElement(ui.Divider, null), _.valuesIn(props.widgetPlugins).map(function (widgetPlugin) {
-	        return React.createElement(AddWidget, {key: widgetPlugin.id, text: widgetPlugin.typeInfo.name, type: widgetPlugin.typeInfo.type});
-	    })));
-	};
-	WidgetsNavItem.propTypes = {
-	    widgetPlugins: react_1.PropTypes.objectOf(WidgetPlugins.widgetPluginType)
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = react_redux_1.connect(function (state) {
-	    return {
-	        widgetPlugins: state.widgetPlugins
-	    };
-	})(WidgetsNavItem);
-	var AddWidget = react_redux_1.connect(function (state) {
-	    return {};
-	}, function (dispatch) {
-	    return {
-	        onClick: function (props) {
-	            dispatch(WidgetConfig.createWidget(props.type));
-	        }
-	    };
-	})(ui.LinkItem);
+	var __cov_qLsmj8Z4ekKXs6UtpVKq_A = (Function('return this'))();
+	if (!__cov_qLsmj8Z4ekKXs6UtpVKq_A.__coverage__) { __cov_qLsmj8Z4ekKXs6UtpVKq_A.__coverage__ = {}; }
+	__cov_qLsmj8Z4ekKXs6UtpVKq_A = __cov_qLsmj8Z4ekKXs6UtpVKq_A.__coverage__;
+	if (!(__cov_qLsmj8Z4ekKXs6UtpVKq_A['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetsNavItem.ui.js'])) {
+	   __cov_qLsmj8Z4ekKXs6UtpVKq_A['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetsNavItem.ui.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetsNavItem.ui.js","s":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0},"b":{},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0},"fnMap":{"1":{"name":"(anonymous_1)","line":12,"loc":{"start":{"line":12,"column":21},"end":{"line":12,"column":38}}},"2":{"name":"(anonymous_2)","line":13,"loc":{"start":{"line":13,"column":274},"end":{"line":13,"column":298}}},"3":{"name":"(anonymous_3)","line":21,"loc":{"start":{"line":21,"column":40},"end":{"line":21,"column":57}}},"4":{"name":"(anonymous_4)","line":26,"loc":{"start":{"line":26,"column":38},"end":{"line":26,"column":55}}},"5":{"name":"(anonymous_5)","line":28,"loc":{"start":{"line":28,"column":3},"end":{"line":28,"column":23}}},"6":{"name":"(anonymous_6)","line":30,"loc":{"start":{"line":30,"column":17},"end":{"line":30,"column":34}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":29}},"2":{"start":{"line":6,"column":0},"end":{"line":6,"column":43}},"3":{"start":{"line":7,"column":0},"end":{"line":7,"column":45}},"4":{"start":{"line":8,"column":0},"end":{"line":8,"column":26}},"5":{"start":{"line":9,"column":0},"end":{"line":9,"column":38}},"6":{"start":{"line":10,"column":0},"end":{"line":10,"column":47}},"7":{"start":{"line":11,"column":0},"end":{"line":11,"column":31}},"8":{"start":{"line":12,"column":0},"end":{"line":16,"column":2}},"9":{"start":{"line":13,"column":4},"end":{"line":15,"column":9}},"10":{"start":{"line":14,"column":8},"end":{"line":14,"column":138}},"11":{"start":{"line":17,"column":0},"end":{"line":19,"column":2}},"12":{"start":{"line":20,"column":0},"end":{"line":20,"column":62}},"13":{"start":{"line":21,"column":0},"end":{"line":25,"column":19}},"14":{"start":{"line":22,"column":4},"end":{"line":24,"column":6}},"15":{"start":{"line":26,"column":0},"end":{"line":34,"column":16}},"16":{"start":{"line":27,"column":4},"end":{"line":27,"column":14}},"17":{"start":{"line":29,"column":4},"end":{"line":33,"column":6}},"18":{"start":{"line":31,"column":12},"end":{"line":31,"column":60}}},"branchMap":{},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var React = require('react');","var react_redux_1 = require(\"react-redux\");","var WidgetConfig = require('./widgetConfig');","var _ = require('lodash');","var ui = require(\"../ui/elements.ui\");","var WidgetPlugins = require('./widgetPlugins');","var react_1 = require(\"react\");","var WidgetsNavItem = function (props) {","    return React.createElement(\"div\", {className: \"ui simple dropdown item\"}, \"Add Widget\", React.createElement(\"i\", {className: \"dropdown icon\"}), React.createElement(\"div\", {className: \"ui menu\"}, React.createElement(ui.Divider, null), _.valuesIn(props.widgetPlugins).map(function (widgetPlugin) {","        return React.createElement(AddWidget, {key: widgetPlugin.id, text: widgetPlugin.typeInfo.name, type: widgetPlugin.typeInfo.type});","    })));","};","WidgetsNavItem.propTypes = {","    widgetPlugins: react_1.PropTypes.objectOf(WidgetPlugins.widgetPluginType)","};","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = react_redux_1.connect(function (state) {","    return {","        widgetPlugins: state.widgetPlugins","    };","})(WidgetsNavItem);","var AddWidget = react_redux_1.connect(function (state) {","    return {};","}, function (dispatch) {","    return {","        onClick: function (props) {","            dispatch(WidgetConfig.createWidget(props.type));","        }","    };","})(ui.LinkItem);",""]};
+	}
+	__cov_qLsmj8Z4ekKXs6UtpVKq_A = __cov_qLsmj8Z4ekKXs6UtpVKq_A['/home/travis/build/Niondir/iot-dashboard/src/widgets/widgetsNavItem.ui.js'];
+	__cov_qLsmj8Z4ekKXs6UtpVKq_A.s['1']++;var React=__webpack_require__(20);__cov_qLsmj8Z4ekKXs6UtpVKq_A.s['2']++;var react_redux_1=__webpack_require__(39);__cov_qLsmj8Z4ekKXs6UtpVKq_A.s['3']++;var WidgetConfig=__webpack_require__(49);__cov_qLsmj8Z4ekKXs6UtpVKq_A.s['4']++;var _=__webpack_require__(21);__cov_qLsmj8Z4ekKXs6UtpVKq_A.s['5']++;var ui=__webpack_require__(82);__cov_qLsmj8Z4ekKXs6UtpVKq_A.s['6']++;var WidgetPlugins=__webpack_require__(52);__cov_qLsmj8Z4ekKXs6UtpVKq_A.s['7']++;var react_1=__webpack_require__(20);__cov_qLsmj8Z4ekKXs6UtpVKq_A.s['8']++;var WidgetsNavItem=function(props){__cov_qLsmj8Z4ekKXs6UtpVKq_A.f['1']++;__cov_qLsmj8Z4ekKXs6UtpVKq_A.s['9']++;return React.createElement('div',{className:'ui simple dropdown item'},'Add Widget',React.createElement('i',{className:'dropdown icon'}),React.createElement('div',{className:'ui menu'},React.createElement(ui.Divider,null),_.valuesIn(props.widgetPlugins).map(function(widgetPlugin){__cov_qLsmj8Z4ekKXs6UtpVKq_A.f['2']++;__cov_qLsmj8Z4ekKXs6UtpVKq_A.s['10']++;return React.createElement(AddWidget,{key:widgetPlugin.id,text:widgetPlugin.typeInfo.name,type:widgetPlugin.typeInfo.type});})));};__cov_qLsmj8Z4ekKXs6UtpVKq_A.s['11']++;WidgetsNavItem.propTypes={widgetPlugins:react_1.PropTypes.objectOf(WidgetPlugins.widgetPluginType)};__cov_qLsmj8Z4ekKXs6UtpVKq_A.s['12']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_qLsmj8Z4ekKXs6UtpVKq_A.s['13']++;exports.default=react_redux_1.connect(function(state){__cov_qLsmj8Z4ekKXs6UtpVKq_A.f['3']++;__cov_qLsmj8Z4ekKXs6UtpVKq_A.s['14']++;return{widgetPlugins:state.widgetPlugins};})(WidgetsNavItem);__cov_qLsmj8Z4ekKXs6UtpVKq_A.s['15']++;var AddWidget=react_redux_1.connect(function(state){__cov_qLsmj8Z4ekKXs6UtpVKq_A.f['4']++;__cov_qLsmj8Z4ekKXs6UtpVKq_A.s['16']++;return{};},function(dispatch){__cov_qLsmj8Z4ekKXs6UtpVKq_A.f['5']++;__cov_qLsmj8Z4ekKXs6UtpVKq_A.s['17']++;return{onClick:function(props){__cov_qLsmj8Z4ekKXs6UtpVKq_A.f['6']++;__cov_qLsmj8Z4ekKXs6UtpVKq_A.s['18']++;dispatch(WidgetConfig.createWidget(props.type));}};})(ui.LinkItem);
 
 
 /***/ },
 /* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(39);
-	var ModalIds = __webpack_require__(51);
-	var Modal = __webpack_require__(50);
-	var react_1 = __webpack_require__(20);
-	var PluginsTopNavItem = function (props) {
-	    return React.createElement("a", {className: "item", onClick: function () { return props.showPluginsDialog(); }}, "Plugins");
-	};
-	PluginsTopNavItem.propTypes = {
-	    showPluginsDialog: react_1.PropTypes.func.isRequired
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = react_redux_1.connect(function (state) {
-	    return {};
-	}, function (dispatch) {
-	    return {
-	        showPluginsDialog: function () {
-	            dispatch(Modal.showModal(ModalIds.PLUGINS));
-	        }
-	    };
-	})(PluginsTopNavItem);
+	var __cov_JX_M9a3D_ddm9CVuqQCkYQ = (Function('return this'))();
+	if (!__cov_JX_M9a3D_ddm9CVuqQCkYQ.__coverage__) { __cov_JX_M9a3D_ddm9CVuqQCkYQ.__coverage__ = {}; }
+	__cov_JX_M9a3D_ddm9CVuqQCkYQ = __cov_JX_M9a3D_ddm9CVuqQCkYQ.__coverage__;
+	if (!(__cov_JX_M9a3D_ddm9CVuqQCkYQ['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/pluginNavItem.ui.js'])) {
+	   __cov_JX_M9a3D_ddm9CVuqQCkYQ['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/pluginNavItem.ui.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/pluginApi/pluginNavItem.ui.js","s":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0},"b":{},"f":{"1":0,"2":0,"3":0,"4":0,"5":0},"fnMap":{"1":{"name":"(anonymous_1)","line":10,"loc":{"start":{"line":10,"column":24},"end":{"line":10,"column":41}}},"2":{"name":"(anonymous_2)","line":11,"loc":{"start":{"line":11,"column":65},"end":{"line":11,"column":77}}},"3":{"name":"(anonymous_3)","line":17,"loc":{"start":{"line":17,"column":40},"end":{"line":17,"column":57}}},"4":{"name":"(anonymous_4)","line":19,"loc":{"start":{"line":19,"column":3},"end":{"line":19,"column":23}}},"5":{"name":"(anonymous_5)","line":21,"loc":{"start":{"line":21,"column":27},"end":{"line":21,"column":39}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":29}},"2":{"start":{"line":6,"column":0},"end":{"line":6,"column":43}},"3":{"start":{"line":7,"column":0},"end":{"line":7,"column":50}},"4":{"start":{"line":8,"column":0},"end":{"line":8,"column":44}},"5":{"start":{"line":9,"column":0},"end":{"line":9,"column":31}},"6":{"start":{"line":10,"column":0},"end":{"line":12,"column":2}},"7":{"start":{"line":11,"column":4},"end":{"line":11,"column":128}},"8":{"start":{"line":11,"column":79},"end":{"line":11,"column":112}},"9":{"start":{"line":13,"column":0},"end":{"line":15,"column":2}},"10":{"start":{"line":16,"column":0},"end":{"line":16,"column":62}},"11":{"start":{"line":17,"column":0},"end":{"line":25,"column":22}},"12":{"start":{"line":18,"column":4},"end":{"line":18,"column":14}},"13":{"start":{"line":20,"column":4},"end":{"line":24,"column":6}},"14":{"start":{"line":22,"column":12},"end":{"line":22,"column":56}}},"branchMap":{},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var React = require('react');","var react_redux_1 = require('react-redux');","var ModalIds = require('../modal/modalDialogIds');","var Modal = require('../modal/modalDialog');","var react_1 = require(\"react\");","var PluginsTopNavItem = function (props) {","    return React.createElement(\"a\", {className: \"item\", onClick: function () { return props.showPluginsDialog(); }}, \"Plugins\");","};","PluginsTopNavItem.propTypes = {","    showPluginsDialog: react_1.PropTypes.func.isRequired","};","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = react_redux_1.connect(function (state) {","    return {};","}, function (dispatch) {","    return {","        showPluginsDialog: function () {","            dispatch(Modal.showModal(ModalIds.PLUGINS));","        }","    };","})(PluginsTopNavItem);",""]};
+	}
+	__cov_JX_M9a3D_ddm9CVuqQCkYQ = __cov_JX_M9a3D_ddm9CVuqQCkYQ['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/pluginNavItem.ui.js'];
+	__cov_JX_M9a3D_ddm9CVuqQCkYQ.s['1']++;var React=__webpack_require__(20);__cov_JX_M9a3D_ddm9CVuqQCkYQ.s['2']++;var react_redux_1=__webpack_require__(39);__cov_JX_M9a3D_ddm9CVuqQCkYQ.s['3']++;var ModalIds=__webpack_require__(51);__cov_JX_M9a3D_ddm9CVuqQCkYQ.s['4']++;var Modal=__webpack_require__(50);__cov_JX_M9a3D_ddm9CVuqQCkYQ.s['5']++;var react_1=__webpack_require__(20);__cov_JX_M9a3D_ddm9CVuqQCkYQ.s['6']++;var PluginsTopNavItem=function(props){__cov_JX_M9a3D_ddm9CVuqQCkYQ.f['1']++;__cov_JX_M9a3D_ddm9CVuqQCkYQ.s['7']++;return React.createElement('a',{className:'item',onClick:function(){__cov_JX_M9a3D_ddm9CVuqQCkYQ.f['2']++;__cov_JX_M9a3D_ddm9CVuqQCkYQ.s['8']++;return props.showPluginsDialog();}},'Plugins');};__cov_JX_M9a3D_ddm9CVuqQCkYQ.s['9']++;PluginsTopNavItem.propTypes={showPluginsDialog:react_1.PropTypes.func.isRequired};__cov_JX_M9a3D_ddm9CVuqQCkYQ.s['10']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_JX_M9a3D_ddm9CVuqQCkYQ.s['11']++;exports.default=react_redux_1.connect(function(state){__cov_JX_M9a3D_ddm9CVuqQCkYQ.f['3']++;__cov_JX_M9a3D_ddm9CVuqQCkYQ.s['12']++;return{};},function(dispatch){__cov_JX_M9a3D_ddm9CVuqQCkYQ.f['4']++;__cov_JX_M9a3D_ddm9CVuqQCkYQ.s['13']++;return{showPluginsDialog:function(){__cov_JX_M9a3D_ddm9CVuqQCkYQ.f['5']++;__cov_JX_M9a3D_ddm9CVuqQCkYQ.s['14']++;dispatch(Modal.showModal(ModalIds.PLUGINS));}};})(PluginsTopNavItem);
 
 
 /***/ },
 /* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var __assign = (this && this.__assign) || Object.assign || function(t) {
-	    for (var s, i = 1, n = arguments.length; i < n; i++) {
-	        s = arguments[i];
-	        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-	            t[p] = s[p];
-	    }
-	    return t;
-	};
-	var React = __webpack_require__(20);
-	var modalDialog_ui_js_1 = __webpack_require__(84);
-	var react_redux_1 = __webpack_require__(39);
-	var _ = __webpack_require__(21);
-	var ModalIds = __webpack_require__(51);
-	var Modal = __webpack_require__(50);
-	var Plugins = __webpack_require__(59);
-	var WidgetsPlugins = __webpack_require__(52);
-	var DatasourcePlugins = __webpack_require__(96);
-	var react_1 = __webpack_require__(20);
-	var PluginsModal = (function (_super) {
-	    __extends(PluginsModal, _super);
-	    function PluginsModal() {
-	        _super.apply(this, arguments);
-	    }
-	    PluginsModal.prototype.render = function () {
-	        var _this = this;
-	        var props = this.props;
-	        var actions = [
-	            {
-	                className: "ui right labeled icon positive button",
-	                iconClass: "save icon",
-	                label: "Close",
-	                onClick: function () {
-	                    props.closeDialog();
-	                }
-	            }
-	        ];
-	        var datasourcePluginStates = _.valuesIn(props.datasourcePlugins);
-	        var widgetPluginStates = _.valuesIn(props.widgetPlugins);
-	        return React.createElement(modalDialog_ui_js_1.default, {id: ModalIds.PLUGINS, title: "Plugins", actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, React.createElement("form", {className: "ui form"}, React.createElement("h4", {className: "ui dividing header"}, "Load Plugin"), React.createElement("div", {className: "field"}, React.createElement("label", null, "From URL"), React.createElement("div", {className: "field"}, React.createElement("input", {ref: "pluginUrl", type: "text", name: "plugin-url", placeholder: "http://my-page.com/myPlugin.js", defaultValue: "plugins/TestWidgetPlugin.js"}))), React.createElement("div", {className: "ui button", onClick: function () { return props.loadPlugin(_this.refs.pluginUrl.value); }, tabIndex: "0"}, "Load Plugin")), React.createElement("h4", {className: "ui dividing header"}, "Datasource Plugins"), React.createElement(DatasourcePluginList, __assign({datasourceStates: datasourcePluginStates}, props)), React.createElement("h4", {className: "ui dividing header"}, "Widget Plugins"), React.createElement(WidgetPluginList, __assign({widgetPluginStates: widgetPluginStates}, props)))));
-	    };
-	    return PluginsModal;
-	}(React.Component));
-	PluginsModal.propTypes = {
-	    datasourcePlugins: react_1.PropTypes.object.isRequired,
-	    widgetPlugins: react_1.PropTypes.object.isRequired,
-	    closeDialog: react_1.PropTypes.func.isRequired,
-	    loadPlugin: react_1.PropTypes.func.isRequired
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = react_redux_1.connect(function (state) {
-	    return {
-	        widgetPlugins: state.widgetPlugins,
-	        datasourcePlugins: state.datasourcePlugins
-	    };
-	}, function (dispatch) {
-	    return {
-	        closeDialog: function () { return dispatch(Modal.closeModal()); },
-	        // TODO: Render loading indicator while Plugin loads
-	        // maybe build some generic solution for Ajax calls where the state can hold all information to render loading indicators / retry buttons etc...
-	        loadPlugin: function (url) { return dispatch(Plugins.loadPluginFromUrl(url)); }
-	    };
-	})(PluginsModal);
-	var DatasourcePluginList = function (props) {
-	    return React.createElement("div", {className: "ui five cards"}, props.datasourceStates.map(function (dsState) {
-	        return React.createElement(DatasourcePluginCard, __assign({key: dsState.id, pluginState: dsState}, props));
-	    }));
-	};
-	DatasourcePluginList.propTypes = {
-	    datasourceStates: react_1.PropTypes.arrayOf(react_1.PropTypes.shape({
-	        id: react_1.PropTypes.string.isRequired
-	    })).isRequired
-	};
-	var WidgetPluginList = function (props) {
-	    return React.createElement("div", {className: "ui five cards"}, props.widgetPluginStates.map(function (dsState) {
-	        return React.createElement(WidgetPluginCard, __assign({key: dsState.id, pluginState: dsState}, props));
-	    }));
-	};
-	WidgetPluginList.propTypes = {
-	    widgetPluginStates: react_1.PropTypes.arrayOf(WidgetsPlugins.widgetPluginType)
-	};
-	var PluginCard = (function (_super) {
-	    __extends(PluginCard, _super);
-	    function PluginCard() {
-	        _super.apply(this, arguments);
-	    }
-	    PluginCard.prototype._copyUrl = function () {
-	        this.refs.url.focus();
-	        this.refs.url.select();
-	        document.execCommand('copy');
-	    };
-	    PluginCard.prototype.render = function () {
-	        var _this = this;
-	        var props = this.props;
-	        var pluginState = props.pluginState;
-	        return React.createElement("div", {className: "card"}, React.createElement("div", {className: "content"}, React.createElement("div", {className: "header"}, pluginState.typeInfo.name), React.createElement("div", {className: "description"}, React.createElement("p", null, "Type: ", pluginState.typeInfo.type), React.createElement("p", null, pluginState.typeInfo.description ? pluginState.typeInfo.description : "No Description."))), React.createElement("div", {className: "extra content"}, React.createElement("i", {className: "copy outline icon", onClick: function () { _this._copyUrl(); }, style: { display: "inline" }}), React.createElement("div", {className: "ui large transparent input"}, React.createElement("input", {type: "text", ref: "url", readOnly: true, style: { width: "100%", paddingLeft: 0, paddingRight: 0 }, placeholder: "Plugin Url ...", defaultValue: pluginState.url ? pluginState.url : "Packaged"}))), React.createElement("div", {className: "ui bottom attached button", onClick: function () { return props.removePlugin(pluginState.id); }}, React.createElement("i", {className: "trash icon"}), "Remove"));
-	    };
-	    return PluginCard;
-	}(React.Component));
-	PluginCard.propTypes = {
-	    pluginState: react_1.PropTypes.object.isRequired,
-	    removePlugin: react_1.PropTypes.func.isRequired
-	};
-	var WidgetPluginCard = react_redux_1.connect(function (state) {
-	    return {};
-	}, function (dispatch) {
-	    return {
-	        removePlugin: function (type) { return dispatch(WidgetsPlugins.unloadPlugin(type)); }
-	    };
-	})(PluginCard);
-	var DatasourcePluginCard = react_redux_1.connect(function (state) {
-	    return {};
-	}, function (dispatch) {
-	    return {
-	        removePlugin: function (type) { return dispatch(DatasourcePlugins.unloadPlugin(type)); }
-	    };
-	})(PluginCard);
+	var __cov_uy0ovOYFkKfT8eoJ_mVObw = (Function('return this'))();
+	if (!__cov_uy0ovOYFkKfT8eoJ_mVObw.__coverage__) { __cov_uy0ovOYFkKfT8eoJ_mVObw.__coverage__ = {}; }
+	__cov_uy0ovOYFkKfT8eoJ_mVObw = __cov_uy0ovOYFkKfT8eoJ_mVObw.__coverage__;
+	if (!(__cov_uy0ovOYFkKfT8eoJ_mVObw['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/pluginsDialog.ui.js'])) {
+	   __cov_uy0ovOYFkKfT8eoJ_mVObw['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/pluginsDialog.ui.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/pluginApi/pluginsDialog.ui.js","s":{"1":0,"2":0,"3":0,"4":0,"5":1,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":1,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":0,"38":0,"39":0,"40":0,"41":0,"42":0,"43":0,"44":0,"45":0,"46":0,"47":0,"48":0,"49":0,"50":0,"51":0,"52":0,"53":0,"54":0,"55":0,"56":1,"57":0,"58":0,"59":0,"60":0,"61":0,"62":0,"63":0,"64":0,"65":0,"66":0,"67":0,"68":0,"69":0,"70":0,"71":0,"72":0,"73":0,"74":0,"75":0,"76":0,"77":0,"78":0},"b":{"1":[0,0,0],"2":[0,0],"3":[0,0],"4":[0,0,0,0],"5":[0,0],"6":[0,0],"7":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0},"fnMap":{"1":{"name":"(anonymous_1)","line":5,"loc":{"start":{"line":5,"column":44},"end":{"line":5,"column":60}}},"2":{"name":"__","line":7,"loc":{"start":{"line":7,"column":4},"end":{"line":7,"column":18}}},"3":{"name":"(anonymous_3)","line":10,"loc":{"start":{"line":10,"column":59},"end":{"line":10,"column":71}}},"4":{"name":"(anonymous_4)","line":28,"loc":{"start":{"line":28,"column":20},"end":{"line":28,"column":38}}},"5":{"name":"PluginsModal","line":30,"loc":{"start":{"line":30,"column":4},"end":{"line":30,"column":28}}},"6":{"name":"(anonymous_6)","line":33,"loc":{"start":{"line":33,"column":36},"end":{"line":33,"column":48}}},"7":{"name":"(anonymous_7)","line":41,"loc":{"start":{"line":41,"column":25},"end":{"line":41,"column":37}}},"8":{"name":"(anonymous_8)","line":48,"loc":{"start":{"line":48,"column":750},"end":{"line":48,"column":762}}},"9":{"name":"(anonymous_9)","line":59,"loc":{"start":{"line":59,"column":40},"end":{"line":59,"column":57}}},"10":{"name":"(anonymous_10)","line":64,"loc":{"start":{"line":64,"column":3},"end":{"line":64,"column":23}}},"11":{"name":"(anonymous_11)","line":66,"loc":{"start":{"line":66,"column":21},"end":{"line":66,"column":33}}},"12":{"name":"(anonymous_12)","line":69,"loc":{"start":{"line":69,"column":20},"end":{"line":69,"column":35}}},"13":{"name":"(anonymous_13)","line":72,"loc":{"start":{"line":72,"column":27},"end":{"line":72,"column":44}}},"14":{"name":"(anonymous_14)","line":73,"loc":{"start":{"line":73,"column":95},"end":{"line":73,"column":114}}},"15":{"name":"(anonymous_15)","line":82,"loc":{"start":{"line":82,"column":23},"end":{"line":82,"column":40}}},"16":{"name":"(anonymous_16)","line":83,"loc":{"start":{"line":83,"column":97},"end":{"line":83,"column":116}}},"17":{"name":"(anonymous_17)","line":90,"loc":{"start":{"line":90,"column":18},"end":{"line":90,"column":36}}},"18":{"name":"PluginCard","line":92,"loc":{"start":{"line":92,"column":4},"end":{"line":92,"column":26}}},"19":{"name":"(anonymous_19)","line":95,"loc":{"start":{"line":95,"column":36},"end":{"line":95,"column":48}}},"20":{"name":"(anonymous_20)","line":100,"loc":{"start":{"line":100,"column":34},"end":{"line":100,"column":46}}},"21":{"name":"(anonymous_21)","line":104,"loc":{"start":{"line":104,"column":563},"end":{"line":104,"column":575}}},"22":{"name":"(anonymous_22)","line":104,"loc":{"start":{"line":104,"column":1005},"end":{"line":104,"column":1017}}},"23":{"name":"(anonymous_23)","line":112,"loc":{"start":{"line":112,"column":45},"end":{"line":112,"column":62}}},"24":{"name":"(anonymous_24)","line":114,"loc":{"start":{"line":114,"column":3},"end":{"line":114,"column":23}}},"25":{"name":"(anonymous_25)","line":116,"loc":{"start":{"line":116,"column":22},"end":{"line":116,"column":38}}},"26":{"name":"(anonymous_26)","line":119,"loc":{"start":{"line":119,"column":49},"end":{"line":119,"column":66}}},"27":{"name":"(anonymous_27)","line":121,"loc":{"start":{"line":121,"column":3},"end":{"line":121,"column":23}}},"28":{"name":"(anonymous_28)","line":123,"loc":{"start":{"line":123,"column":22},"end":{"line":123,"column":38}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":9,"column":2}},"2":{"start":{"line":6,"column":4},"end":{"line":6,"column":58}},"3":{"start":{"line":6,"column":21},"end":{"line":6,"column":58}},"4":{"start":{"line":6,"column":46},"end":{"line":6,"column":58}},"5":{"start":{"line":7,"column":4},"end":{"line":7,"column":43}},"6":{"start":{"line":7,"column":20},"end":{"line":7,"column":41}},"7":{"start":{"line":8,"column":4},"end":{"line":8,"column":89}},"8":{"start":{"line":10,"column":0},"end":{"line":17,"column":2}},"9":{"start":{"line":11,"column":4},"end":{"line":15,"column":5}},"10":{"start":{"line":12,"column":8},"end":{"line":12,"column":25}},"11":{"start":{"line":13,"column":8},"end":{"line":14,"column":24}},"12":{"start":{"line":13,"column":25},"end":{"line":14,"column":24}},"13":{"start":{"line":14,"column":12},"end":{"line":14,"column":24}},"14":{"start":{"line":16,"column":4},"end":{"line":16,"column":13}},"15":{"start":{"line":18,"column":0},"end":{"line":18,"column":29}},"16":{"start":{"line":19,"column":0},"end":{"line":19,"column":64}},"17":{"start":{"line":20,"column":0},"end":{"line":20,"column":43}},"18":{"start":{"line":21,"column":0},"end":{"line":21,"column":26}},"19":{"start":{"line":22,"column":0},"end":{"line":22,"column":50}},"20":{"start":{"line":23,"column":0},"end":{"line":23,"column":44}},"21":{"start":{"line":24,"column":0},"end":{"line":24,"column":46}},"22":{"start":{"line":25,"column":0},"end":{"line":25,"column":57}},"23":{"start":{"line":26,"column":0},"end":{"line":26,"column":67}},"24":{"start":{"line":27,"column":0},"end":{"line":27,"column":31}},"25":{"start":{"line":28,"column":0},"end":{"line":51,"column":20}},"26":{"start":{"line":29,"column":4},"end":{"line":29,"column":36}},"27":{"start":{"line":30,"column":4},"end":{"line":32,"column":5}},"28":{"start":{"line":31,"column":8},"end":{"line":31,"column":38}},"29":{"start":{"line":33,"column":4},"end":{"line":49,"column":6}},"30":{"start":{"line":34,"column":8},"end":{"line":34,"column":25}},"31":{"start":{"line":35,"column":8},"end":{"line":35,"column":31}},"32":{"start":{"line":36,"column":8},"end":{"line":45,"column":10}},"33":{"start":{"line":42,"column":20},"end":{"line":42,"column":40}},"34":{"start":{"line":46,"column":8},"end":{"line":46,"column":73}},"35":{"start":{"line":47,"column":8},"end":{"line":47,"column":65}},"36":{"start":{"line":48,"column":8},"end":{"line":48,"column":1221}},"37":{"start":{"line":48,"column":764},"end":{"line":48,"column":816}},"38":{"start":{"line":50,"column":4},"end":{"line":50,"column":24}},"39":{"start":{"line":52,"column":0},"end":{"line":57,"column":2}},"40":{"start":{"line":58,"column":0},"end":{"line":58,"column":62}},"41":{"start":{"line":59,"column":0},"end":{"line":71,"column":17}},"42":{"start":{"line":60,"column":4},"end":{"line":63,"column":6}},"43":{"start":{"line":65,"column":4},"end":{"line":70,"column":6}},"44":{"start":{"line":66,"column":35},"end":{"line":66,"column":71}},"45":{"start":{"line":69,"column":37},"end":{"line":69,"column":85}},"46":{"start":{"line":72,"column":0},"end":{"line":76,"column":2}},"47":{"start":{"line":73,"column":4},"end":{"line":75,"column":8}},"48":{"start":{"line":74,"column":8},"end":{"line":74,"column":115}},"49":{"start":{"line":77,"column":0},"end":{"line":81,"column":2}},"50":{"start":{"line":82,"column":0},"end":{"line":86,"column":2}},"51":{"start":{"line":83,"column":4},"end":{"line":85,"column":8}},"52":{"start":{"line":84,"column":8},"end":{"line":84,"column":111}},"53":{"start":{"line":87,"column":0},"end":{"line":89,"column":2}},"54":{"start":{"line":90,"column":0},"end":{"line":107,"column":20}},"55":{"start":{"line":91,"column":4},"end":{"line":91,"column":34}},"56":{"start":{"line":92,"column":4},"end":{"line":94,"column":5}},"57":{"start":{"line":93,"column":8},"end":{"line":93,"column":38}},"58":{"start":{"line":95,"column":4},"end":{"line":99,"column":6}},"59":{"start":{"line":96,"column":8},"end":{"line":96,"column":30}},"60":{"start":{"line":97,"column":8},"end":{"line":97,"column":31}},"61":{"start":{"line":98,"column":8},"end":{"line":98,"column":37}},"62":{"start":{"line":100,"column":4},"end":{"line":105,"column":6}},"63":{"start":{"line":101,"column":8},"end":{"line":101,"column":25}},"64":{"start":{"line":102,"column":8},"end":{"line":102,"column":31}},"65":{"start":{"line":103,"column":8},"end":{"line":103,"column":44}},"66":{"start":{"line":104,"column":8},"end":{"line":104,"column":1130}},"67":{"start":{"line":104,"column":577},"end":{"line":104,"column":594}},"68":{"start":{"line":104,"column":1019},"end":{"line":104,"column":1061}},"69":{"start":{"line":106,"column":4},"end":{"line":106,"column":22}},"70":{"start":{"line":108,"column":0},"end":{"line":111,"column":2}},"71":{"start":{"line":112,"column":0},"end":{"line":118,"column":15}},"72":{"start":{"line":113,"column":4},"end":{"line":113,"column":14}},"73":{"start":{"line":115,"column":4},"end":{"line":117,"column":6}},"74":{"start":{"line":116,"column":40},"end":{"line":116,"column":91}},"75":{"start":{"line":119,"column":0},"end":{"line":125,"column":15}},"76":{"start":{"line":120,"column":4},"end":{"line":120,"column":14}},"77":{"start":{"line":122,"column":4},"end":{"line":124,"column":6}},"78":{"start":{"line":123,"column":40},"end":{"line":123,"column":94}}},"branchMap":{"1":{"line":5,"type":"binary-expr","locations":[{"start":{"line":5,"column":17},"end":{"line":5,"column":21}},{"start":{"line":5,"column":25},"end":{"line":5,"column":39}},{"start":{"line":5,"column":44},"end":{"line":9,"column":1}}]},"2":{"line":6,"type":"if","locations":[{"start":{"line":6,"column":21},"end":{"line":6,"column":21}},{"start":{"line":6,"column":21},"end":{"line":6,"column":21}}]},"3":{"line":8,"type":"cond-expr","locations":[{"start":{"line":8,"column":31},"end":{"line":8,"column":47}},{"start":{"line":8,"column":51},"end":{"line":8,"column":87}}]},"4":{"line":10,"type":"binary-expr","locations":[{"start":{"line":10,"column":16},"end":{"line":10,"column":20}},{"start":{"line":10,"column":24},"end":{"line":10,"column":37}},{"start":{"line":10,"column":42},"end":{"line":10,"column":55}},{"start":{"line":10,"column":59},"end":{"line":17,"column":1}}]},"5":{"line":13,"type":"if","locations":[{"start":{"line":13,"column":25},"end":{"line":13,"column":25}},{"start":{"line":13,"column":25},"end":{"line":13,"column":25}}]},"6":{"line":104,"type":"cond-expr","locations":[{"start":{"line":104,"column":382},"end":{"line":104,"column":414}},{"start":{"line":104,"column":417},"end":{"line":104,"column":434}}]},"7":{"line":104,"type":"cond-expr","locations":[{"start":{"line":104,"column":894},"end":{"line":104,"column":909}},{"start":{"line":104,"column":912},"end":{"line":104,"column":922}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var __extends = (this && this.__extends) || function (d, b) {","    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];","    function __() { this.constructor = d; }","    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());","};","var __assign = (this && this.__assign) || Object.assign || function(t) {","    for (var s, i = 1, n = arguments.length; i < n; i++) {","        s = arguments[i];","        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))","            t[p] = s[p];","    }","    return t;","};","var React = require('react');","var modalDialog_ui_js_1 = require('../modal/modalDialog.ui.js');","var react_redux_1 = require('react-redux');","var _ = require('lodash');","var ModalIds = require('../modal/modalDialogIds');","var Modal = require('../modal/modalDialog');","var Plugins = require('../pluginApi/plugins');","var WidgetsPlugins = require('../widgets/widgetPlugins');","var DatasourcePlugins = require('../datasource/datasourcePlugins');","var react_1 = require(\"react\");","var PluginsModal = (function (_super) {","    __extends(PluginsModal, _super);","    function PluginsModal() {","        _super.apply(this, arguments);","    }","    PluginsModal.prototype.render = function () {","        var _this = this;","        var props = this.props;","        var actions = [","            {","                className: \"ui right labeled icon positive button\",","                iconClass: \"save icon\",","                label: \"Close\",","                onClick: function () {","                    props.closeDialog();","                }","            }","        ];","        var datasourcePluginStates = _.valuesIn(props.datasourcePlugins);","        var widgetPluginStates = _.valuesIn(props.widgetPlugins);","        return React.createElement(modalDialog_ui_js_1.default, {id: ModalIds.PLUGINS, title: \"Plugins\", actions: actions}, React.createElement(\"div\", {className: \"ui one column grid\"}, React.createElement(\"div\", {className: \"column\"}, React.createElement(\"form\", {className: \"ui form\"}, React.createElement(\"h4\", {className: \"ui dividing header\"}, \"Load Plugin\"), React.createElement(\"div\", {className: \"field\"}, React.createElement(\"label\", null, \"From URL\"), React.createElement(\"div\", {className: \"field\"}, React.createElement(\"input\", {ref: \"pluginUrl\", type: \"text\", name: \"plugin-url\", placeholder: \"http://my-page.com/myPlugin.js\", defaultValue: \"plugins/TestWidgetPlugin.js\"}))), React.createElement(\"div\", {className: \"ui button\", onClick: function () { return props.loadPlugin(_this.refs.pluginUrl.value); }, tabIndex: \"0\"}, \"Load Plugin\")), React.createElement(\"h4\", {className: \"ui dividing header\"}, \"Datasource Plugins\"), React.createElement(DatasourcePluginList, __assign({datasourceStates: datasourcePluginStates}, props)), React.createElement(\"h4\", {className: \"ui dividing header\"}, \"Widget Plugins\"), React.createElement(WidgetPluginList, __assign({widgetPluginStates: widgetPluginStates}, props)))));","    };","    return PluginsModal;","}(React.Component));","PluginsModal.propTypes = {","    datasourcePlugins: react_1.PropTypes.object.isRequired,","    widgetPlugins: react_1.PropTypes.object.isRequired,","    closeDialog: react_1.PropTypes.func.isRequired,","    loadPlugin: react_1.PropTypes.func.isRequired","};","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = react_redux_1.connect(function (state) {","    return {","        widgetPlugins: state.widgetPlugins,","        datasourcePlugins: state.datasourcePlugins","    };","}, function (dispatch) {","    return {","        closeDialog: function () { return dispatch(Modal.closeModal()); },","        // TODO: Render loading indicator while Plugin loads","        // maybe build some generic solution for Ajax calls where the state can hold all information to render loading indicators / retry buttons etc...","        loadPlugin: function (url) { return dispatch(Plugins.loadPluginFromUrl(url)); }","    };","})(PluginsModal);","var DatasourcePluginList = function (props) {","    return React.createElement(\"div\", {className: \"ui five cards\"}, props.datasourceStates.map(function (dsState) {","        return React.createElement(DatasourcePluginCard, __assign({key: dsState.id, pluginState: dsState}, props));","    }));","};","DatasourcePluginList.propTypes = {","    datasourceStates: react_1.PropTypes.arrayOf(react_1.PropTypes.shape({","        id: react_1.PropTypes.string.isRequired","    })).isRequired","};","var WidgetPluginList = function (props) {","    return React.createElement(\"div\", {className: \"ui five cards\"}, props.widgetPluginStates.map(function (dsState) {","        return React.createElement(WidgetPluginCard, __assign({key: dsState.id, pluginState: dsState}, props));","    }));","};","WidgetPluginList.propTypes = {","    widgetPluginStates: react_1.PropTypes.arrayOf(WidgetsPlugins.widgetPluginType)","};","var PluginCard = (function (_super) {","    __extends(PluginCard, _super);","    function PluginCard() {","        _super.apply(this, arguments);","    }","    PluginCard.prototype._copyUrl = function () {","        this.refs.url.focus();","        this.refs.url.select();","        document.execCommand('copy');","    };","    PluginCard.prototype.render = function () {","        var _this = this;","        var props = this.props;","        var pluginState = props.pluginState;","        return React.createElement(\"div\", {className: \"card\"}, React.createElement(\"div\", {className: \"content\"}, React.createElement(\"div\", {className: \"header\"}, pluginState.typeInfo.name), React.createElement(\"div\", {className: \"description\"}, React.createElement(\"p\", null, \"Type: \", pluginState.typeInfo.type), React.createElement(\"p\", null, pluginState.typeInfo.description ? pluginState.typeInfo.description : \"No Description.\"))), React.createElement(\"div\", {className: \"extra content\"}, React.createElement(\"i\", {className: \"copy outline icon\", onClick: function () { _this._copyUrl(); }, style: { display: \"inline\" }}), React.createElement(\"div\", {className: \"ui large transparent input\"}, React.createElement(\"input\", {type: \"text\", ref: \"url\", readOnly: true, style: { width: \"100%\", paddingLeft: 0, paddingRight: 0 }, placeholder: \"Plugin Url ...\", defaultValue: pluginState.url ? pluginState.url : \"Packaged\"}))), React.createElement(\"div\", {className: \"ui bottom attached button\", onClick: function () { return props.removePlugin(pluginState.id); }}, React.createElement(\"i\", {className: \"trash icon\"}), \"Remove\"));","    };","    return PluginCard;","}(React.Component));","PluginCard.propTypes = {","    pluginState: react_1.PropTypes.object.isRequired,","    removePlugin: react_1.PropTypes.func.isRequired","};","var WidgetPluginCard = react_redux_1.connect(function (state) {","    return {};","}, function (dispatch) {","    return {","        removePlugin: function (type) { return dispatch(WidgetsPlugins.unloadPlugin(type)); }","    };","})(PluginCard);","var DatasourcePluginCard = react_redux_1.connect(function (state) {","    return {};","}, function (dispatch) {","    return {","        removePlugin: function (type) { return dispatch(DatasourcePlugins.unloadPlugin(type)); }","    };","})(PluginCard);",""]};
+	}
+	__cov_uy0ovOYFkKfT8eoJ_mVObw = __cov_uy0ovOYFkKfT8eoJ_mVObw['/home/travis/build/Niondir/iot-dashboard/src/pluginApi/pluginsDialog.ui.js'];
+	__cov_uy0ovOYFkKfT8eoJ_mVObw.s['1']++;var __extends=(__cov_uy0ovOYFkKfT8eoJ_mVObw.b['1'][0]++,this)&&(__cov_uy0ovOYFkKfT8eoJ_mVObw.b['1'][1]++,this.__extends)||(__cov_uy0ovOYFkKfT8eoJ_mVObw.b['1'][2]++,function(d,b){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['1']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['2']++;for(var p in b){__cov_uy0ovOYFkKfT8eoJ_mVObw.s['3']++;if(b.hasOwnProperty(p)){__cov_uy0ovOYFkKfT8eoJ_mVObw.b['2'][0]++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['4']++;d[p]=b[p];}else{__cov_uy0ovOYFkKfT8eoJ_mVObw.b['2'][1]++;}}function __(){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['2']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['6']++;this.constructor=d;}__cov_uy0ovOYFkKfT8eoJ_mVObw.s['7']++;d.prototype=b===null?(__cov_uy0ovOYFkKfT8eoJ_mVObw.b['3'][0]++,Object.create(b)):(__cov_uy0ovOYFkKfT8eoJ_mVObw.b['3'][1]++,(__.prototype=b.prototype,new __()));});__cov_uy0ovOYFkKfT8eoJ_mVObw.s['8']++;var __assign=(__cov_uy0ovOYFkKfT8eoJ_mVObw.b['4'][0]++,this)&&(__cov_uy0ovOYFkKfT8eoJ_mVObw.b['4'][1]++,this.__assign)||(__cov_uy0ovOYFkKfT8eoJ_mVObw.b['4'][2]++,Object.assign)||(__cov_uy0ovOYFkKfT8eoJ_mVObw.b['4'][3]++,function(t){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['3']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['9']++;for(var s,i=1,n=arguments.length;i<n;i++){__cov_uy0ovOYFkKfT8eoJ_mVObw.s['10']++;s=arguments[i];__cov_uy0ovOYFkKfT8eoJ_mVObw.s['11']++;for(var p in s){__cov_uy0ovOYFkKfT8eoJ_mVObw.s['12']++;if(Object.prototype.hasOwnProperty.call(s,p)){__cov_uy0ovOYFkKfT8eoJ_mVObw.b['5'][0]++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['13']++;t[p]=s[p];}else{__cov_uy0ovOYFkKfT8eoJ_mVObw.b['5'][1]++;}}}__cov_uy0ovOYFkKfT8eoJ_mVObw.s['14']++;return t;});__cov_uy0ovOYFkKfT8eoJ_mVObw.s['15']++;var React=__webpack_require__(20);__cov_uy0ovOYFkKfT8eoJ_mVObw.s['16']++;var modalDialog_ui_js_1=__webpack_require__(84);__cov_uy0ovOYFkKfT8eoJ_mVObw.s['17']++;var react_redux_1=__webpack_require__(39);__cov_uy0ovOYFkKfT8eoJ_mVObw.s['18']++;var _=__webpack_require__(21);__cov_uy0ovOYFkKfT8eoJ_mVObw.s['19']++;var ModalIds=__webpack_require__(51);__cov_uy0ovOYFkKfT8eoJ_mVObw.s['20']++;var Modal=__webpack_require__(50);__cov_uy0ovOYFkKfT8eoJ_mVObw.s['21']++;var Plugins=__webpack_require__(59);__cov_uy0ovOYFkKfT8eoJ_mVObw.s['22']++;var WidgetsPlugins=__webpack_require__(52);__cov_uy0ovOYFkKfT8eoJ_mVObw.s['23']++;var DatasourcePlugins=__webpack_require__(96);__cov_uy0ovOYFkKfT8eoJ_mVObw.s['24']++;var react_1=__webpack_require__(20);__cov_uy0ovOYFkKfT8eoJ_mVObw.s['25']++;var PluginsModal=function(_super){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['4']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['26']++;__extends(PluginsModal,_super);function PluginsModal(){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['5']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['28']++;_super.apply(this,arguments);}__cov_uy0ovOYFkKfT8eoJ_mVObw.s['29']++;PluginsModal.prototype.render=function(){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['6']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['30']++;var _this=this;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['31']++;var props=this.props;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['32']++;var actions=[{className:'ui right labeled icon positive button',iconClass:'save icon',label:'Close',onClick:function(){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['7']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['33']++;props.closeDialog();}}];__cov_uy0ovOYFkKfT8eoJ_mVObw.s['34']++;var datasourcePluginStates=_.valuesIn(props.datasourcePlugins);__cov_uy0ovOYFkKfT8eoJ_mVObw.s['35']++;var widgetPluginStates=_.valuesIn(props.widgetPlugins);__cov_uy0ovOYFkKfT8eoJ_mVObw.s['36']++;return React.createElement(modalDialog_ui_js_1.default,{id:ModalIds.PLUGINS,title:'Plugins',actions:actions},React.createElement('div',{className:'ui one column grid'},React.createElement('div',{className:'column'},React.createElement('form',{className:'ui form'},React.createElement('h4',{className:'ui dividing header'},'Load Plugin'),React.createElement('div',{className:'field'},React.createElement('label',null,'From URL'),React.createElement('div',{className:'field'},React.createElement('input',{ref:'pluginUrl',type:'text',name:'plugin-url',placeholder:'http://my-page.com/myPlugin.js',defaultValue:'plugins/TestWidgetPlugin.js'}))),React.createElement('div',{className:'ui button',onClick:function(){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['8']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['37']++;return props.loadPlugin(_this.refs.pluginUrl.value);},tabIndex:'0'},'Load Plugin')),React.createElement('h4',{className:'ui dividing header'},'Datasource Plugins'),React.createElement(DatasourcePluginList,__assign({datasourceStates:datasourcePluginStates},props)),React.createElement('h4',{className:'ui dividing header'},'Widget Plugins'),React.createElement(WidgetPluginList,__assign({widgetPluginStates:widgetPluginStates},props)))));};__cov_uy0ovOYFkKfT8eoJ_mVObw.s['38']++;return PluginsModal;}(React.Component);__cov_uy0ovOYFkKfT8eoJ_mVObw.s['39']++;PluginsModal.propTypes={datasourcePlugins:react_1.PropTypes.object.isRequired,widgetPlugins:react_1.PropTypes.object.isRequired,closeDialog:react_1.PropTypes.func.isRequired,loadPlugin:react_1.PropTypes.func.isRequired};__cov_uy0ovOYFkKfT8eoJ_mVObw.s['40']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_uy0ovOYFkKfT8eoJ_mVObw.s['41']++;exports.default=react_redux_1.connect(function(state){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['9']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['42']++;return{widgetPlugins:state.widgetPlugins,datasourcePlugins:state.datasourcePlugins};},function(dispatch){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['10']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['43']++;return{closeDialog:function(){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['11']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['44']++;return dispatch(Modal.closeModal());},loadPlugin:function(url){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['12']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['45']++;return dispatch(Plugins.loadPluginFromUrl(url));}};})(PluginsModal);__cov_uy0ovOYFkKfT8eoJ_mVObw.s['46']++;var DatasourcePluginList=function(props){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['13']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['47']++;return React.createElement('div',{className:'ui five cards'},props.datasourceStates.map(function(dsState){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['14']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['48']++;return React.createElement(DatasourcePluginCard,__assign({key:dsState.id,pluginState:dsState},props));}));};__cov_uy0ovOYFkKfT8eoJ_mVObw.s['49']++;DatasourcePluginList.propTypes={datasourceStates:react_1.PropTypes.arrayOf(react_1.PropTypes.shape({id:react_1.PropTypes.string.isRequired})).isRequired};__cov_uy0ovOYFkKfT8eoJ_mVObw.s['50']++;var WidgetPluginList=function(props){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['15']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['51']++;return React.createElement('div',{className:'ui five cards'},props.widgetPluginStates.map(function(dsState){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['16']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['52']++;return React.createElement(WidgetPluginCard,__assign({key:dsState.id,pluginState:dsState},props));}));};__cov_uy0ovOYFkKfT8eoJ_mVObw.s['53']++;WidgetPluginList.propTypes={widgetPluginStates:react_1.PropTypes.arrayOf(WidgetsPlugins.widgetPluginType)};__cov_uy0ovOYFkKfT8eoJ_mVObw.s['54']++;var PluginCard=function(_super){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['17']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['55']++;__extends(PluginCard,_super);function PluginCard(){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['18']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['57']++;_super.apply(this,arguments);}__cov_uy0ovOYFkKfT8eoJ_mVObw.s['58']++;PluginCard.prototype._copyUrl=function(){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['19']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['59']++;this.refs.url.focus();__cov_uy0ovOYFkKfT8eoJ_mVObw.s['60']++;this.refs.url.select();__cov_uy0ovOYFkKfT8eoJ_mVObw.s['61']++;document.execCommand('copy');};__cov_uy0ovOYFkKfT8eoJ_mVObw.s['62']++;PluginCard.prototype.render=function(){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['20']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['63']++;var _this=this;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['64']++;var props=this.props;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['65']++;var pluginState=props.pluginState;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['66']++;return React.createElement('div',{className:'card'},React.createElement('div',{className:'content'},React.createElement('div',{className:'header'},pluginState.typeInfo.name),React.createElement('div',{className:'description'},React.createElement('p',null,'Type: ',pluginState.typeInfo.type),React.createElement('p',null,pluginState.typeInfo.description?(__cov_uy0ovOYFkKfT8eoJ_mVObw.b['6'][0]++,pluginState.typeInfo.description):(__cov_uy0ovOYFkKfT8eoJ_mVObw.b['6'][1]++,'No Description.')))),React.createElement('div',{className:'extra content'},React.createElement('i',{className:'copy outline icon',onClick:function(){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['21']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['67']++;_this._copyUrl();},style:{display:'inline'}}),React.createElement('div',{className:'ui large transparent input'},React.createElement('input',{type:'text',ref:'url',readOnly:true,style:{width:'100%',paddingLeft:0,paddingRight:0},placeholder:'Plugin Url ...',defaultValue:pluginState.url?(__cov_uy0ovOYFkKfT8eoJ_mVObw.b['7'][0]++,pluginState.url):(__cov_uy0ovOYFkKfT8eoJ_mVObw.b['7'][1]++,'Packaged')}))),React.createElement('div',{className:'ui bottom attached button',onClick:function(){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['22']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['68']++;return props.removePlugin(pluginState.id);}},React.createElement('i',{className:'trash icon'}),'Remove'));};__cov_uy0ovOYFkKfT8eoJ_mVObw.s['69']++;return PluginCard;}(React.Component);__cov_uy0ovOYFkKfT8eoJ_mVObw.s['70']++;PluginCard.propTypes={pluginState:react_1.PropTypes.object.isRequired,removePlugin:react_1.PropTypes.func.isRequired};__cov_uy0ovOYFkKfT8eoJ_mVObw.s['71']++;var WidgetPluginCard=react_redux_1.connect(function(state){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['23']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['72']++;return{};},function(dispatch){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['24']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['73']++;return{removePlugin:function(type){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['25']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['74']++;return dispatch(WidgetsPlugins.unloadPlugin(type));}};})(PluginCard);__cov_uy0ovOYFkKfT8eoJ_mVObw.s['75']++;var DatasourcePluginCard=react_redux_1.connect(function(state){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['26']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['76']++;return{};},function(dispatch){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['27']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['77']++;return{removePlugin:function(type){__cov_uy0ovOYFkKfT8eoJ_mVObw.f['28']++;__cov_uy0ovOYFkKfT8eoJ_mVObw.s['78']++;return dispatch(DatasourcePlugins.unloadPlugin(type));}};})(PluginCard);
 
 
 /***/ },
 /* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Action = __webpack_require__(43);
-	var reducer_js_1 = __webpack_require__(47);
-	var dashboard_1 = __webpack_require__(55);
-	var initialState = {};
-	function unloadPlugin(type) {
-	    return function (dispatch) {
-	        var dsFactory = dashboard_1.default.getInstance().datasourcePluginRegistry.getPlugin(type);
-	        dsFactory.dispose();
-	        dispatch(deletePlugin(type));
-	    };
+	var __cov_CEpn43NmAbvWlXkFzfrFBw = (Function('return this'))();
+	if (!__cov_CEpn43NmAbvWlXkFzfrFBw.__coverage__) { __cov_CEpn43NmAbvWlXkFzfrFBw.__coverage__ = {}; }
+	__cov_CEpn43NmAbvWlXkFzfrFBw = __cov_CEpn43NmAbvWlXkFzfrFBw.__coverage__;
+	if (!(__cov_CEpn43NmAbvWlXkFzfrFBw['/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourcePlugins.ts'])) {
+	   __cov_CEpn43NmAbvWlXkFzfrFBw['/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourcePlugins.ts'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourcePlugins.ts","s":{"1":0,"2":0,"3":0,"4":0,"5":1,"6":0,"7":0,"8":0,"9":0,"10":0,"11":1,"12":0,"13":0,"14":1,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":1,"22":0,"23":0,"24":0,"25":0,"26":0},"b":{"1":[0,0],"2":[0],"3":[0,0],"4":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0},"fnMap":{"1":{"name":"unloadPlugin","line":9,"loc":{"start":{"line":9,"column":0},"end":{"line":9,"column":28}}},"2":{"name":"(anonymous_2)","line":10,"loc":{"start":{"line":10,"column":11},"end":{"line":10,"column":31}}},"3":{"name":"deletePlugin","line":17,"loc":{"start":{"line":17,"column":0},"end":{"line":17,"column":28}}},"4":{"name":"datasourcePlugins","line":24,"loc":{"start":{"line":24,"column":0},"end":{"line":24,"column":42}}},"5":{"name":"datasourcePlugin","line":33,"loc":{"start":{"line":33,"column":0},"end":{"line":33,"column":41}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":39}},"2":{"start":{"line":6,"column":0},"end":{"line":6,"column":49}},"3":{"start":{"line":7,"column":0},"end":{"line":7,"column":42}},"4":{"start":{"line":8,"column":0},"end":{"line":8,"column":22}},"5":{"start":{"line":9,"column":0},"end":{"line":15,"column":1}},"6":{"start":{"line":10,"column":4},"end":{"line":14,"column":6}},"7":{"start":{"line":11,"column":8},"end":{"line":11,"column":99}},"8":{"start":{"line":12,"column":8},"end":{"line":12,"column":28}},"9":{"start":{"line":13,"column":8},"end":{"line":13,"column":37}},"10":{"start":{"line":16,"column":0},"end":{"line":16,"column":36}},"11":{"start":{"line":17,"column":0},"end":{"line":22,"column":1}},"12":{"start":{"line":18,"column":4},"end":{"line":21,"column":6}},"13":{"start":{"line":23,"column":0},"end":{"line":23,"column":136}},"14":{"start":{"line":24,"column":0},"end":{"line":31,"column":1}},"15":{"start":{"line":25,"column":4},"end":{"line":25,"column":51}},"16":{"start":{"line":25,"column":28},"end":{"line":25,"column":49}},"17":{"start":{"line":26,"column":4},"end":{"line":26,"column":46}},"18":{"start":{"line":27,"column":4},"end":{"line":30,"column":5}},"19":{"start":{"line":29,"column":12},"end":{"line":29,"column":25}},"20":{"start":{"line":32,"column":0},"end":{"line":32,"column":46}},"21":{"start":{"line":33,"column":0},"end":{"line":50,"column":1}},"22":{"start":{"line":34,"column":4},"end":{"line":49,"column":5}},"23":{"start":{"line":36,"column":12},"end":{"line":39,"column":13}},"24":{"start":{"line":38,"column":16},"end":{"line":38,"column":92}},"25":{"start":{"line":40,"column":12},"end":{"line":46,"column":14}},"26":{"start":{"line":48,"column":12},"end":{"line":48,"column":25}}},"branchMap":{"1":{"line":25,"type":"if","locations":[{"start":{"line":25,"column":4},"end":{"line":25,"column":4}},{"start":{"line":25,"column":4},"end":{"line":25,"column":4}}]},"2":{"line":27,"type":"switch","locations":[{"start":{"line":28,"column":8},"end":{"line":29,"column":25}}]},"3":{"line":34,"type":"switch","locations":[{"start":{"line":35,"column":8},"end":{"line":46,"column":14}},{"start":{"line":47,"column":8},"end":{"line":48,"column":25}}]},"4":{"line":36,"type":"if","locations":[{"start":{"line":36,"column":12},"end":{"line":36,"column":12}},{"start":{"line":36,"column":12},"end":{"line":36,"column":12}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public"," * License, v. 2.0. If a copy of the MPL was not distributed with this"," * file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var Action = require(\"../actionNames\");","var reducer_js_1 = require(\"../util/reducer.js\");","var dashboard_1 = require(\"../dashboard\");","var initialState = {};","function unloadPlugin(type) {","    return function (dispatch) {","        var dsFactory = dashboard_1.default.getInstance().datasourcePluginRegistry.getPlugin(type);","        dsFactory.dispose();","        dispatch(deletePlugin(type));","    };","}","exports.unloadPlugin = unloadPlugin;","function deletePlugin(type) {","    return {","        type: Action.DELETE_DATASOURCE_PLUGIN,","        id: type","    };","}","var pluginsCrudReducer = reducer_js_1.genCrudReducer([Action.ADD_DATASOURCE_PLUGIN, Action.DELETE_DATASOURCE_PLUGIN], datasourcePlugin);","function datasourcePlugins(state, action) {","    if (state === void 0) { state = initialState; }","    state = pluginsCrudReducer(state, action);","    switch (action.type) {","        default:","            return state;","    }","}","exports.datasourcePlugins = datasourcePlugins;","function datasourcePlugin(state, action) {","    switch (action.type) {","        case Action.ADD_DATASOURCE_PLUGIN:","            if (!action.typeInfo.type) {","                // TODO: Catch this earlier","                throw new Error(\"A Plugin needs a type name. Please define TYPE_INFO.type\");","            }","            return {","                id: action.typeInfo.type,","                url: action.url,","                typeInfo: action.typeInfo,","                isDatasource: action.pluginType === \"datasource\",","                isWidget: action.pluginType === \"widget\"","            };","        default:","            return state;","    }","}",""]};
 	}
-	exports.unloadPlugin = unloadPlugin;
-	function deletePlugin(type) {
-	    return {
-	        type: Action.DELETE_DATASOURCE_PLUGIN,
-	        id: type
-	    };
-	}
-	var pluginsCrudReducer = reducer_js_1.genCrudReducer([Action.ADD_DATASOURCE_PLUGIN, Action.DELETE_DATASOURCE_PLUGIN], datasourcePlugin);
-	function datasourcePlugins(state, action) {
-	    if (state === void 0) { state = initialState; }
-	    state = pluginsCrudReducer(state, action);
-	    switch (action.type) {
-	        default:
-	            return state;
-	    }
-	}
-	exports.datasourcePlugins = datasourcePlugins;
-	function datasourcePlugin(state, action) {
-	    switch (action.type) {
-	        case Action.ADD_DATASOURCE_PLUGIN:
-	            if (!action.typeInfo.type) {
-	                // TODO: Catch this earlier
-	                throw new Error("A Plugin needs a type name. Please define TYPE_INFO.type");
-	            }
-	            return {
-	                id: action.typeInfo.type,
-	                url: action.url,
-	                typeInfo: action.typeInfo,
-	                isDatasource: action.pluginType === "datasource",
-	                isWidget: action.pluginType === "widget"
-	            };
-	        default:
-	            return state;
-	    }
-	}
+	__cov_CEpn43NmAbvWlXkFzfrFBw = __cov_CEpn43NmAbvWlXkFzfrFBw['/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourcePlugins.ts'];
+	__cov_CEpn43NmAbvWlXkFzfrFBw.s['1']++;var Action=__webpack_require__(43);__cov_CEpn43NmAbvWlXkFzfrFBw.s['2']++;var reducer_js_1=__webpack_require__(47);__cov_CEpn43NmAbvWlXkFzfrFBw.s['3']++;var dashboard_1=__webpack_require__(55);__cov_CEpn43NmAbvWlXkFzfrFBw.s['4']++;var initialState={};function unloadPlugin(type){__cov_CEpn43NmAbvWlXkFzfrFBw.f['1']++;__cov_CEpn43NmAbvWlXkFzfrFBw.s['6']++;return function(dispatch){__cov_CEpn43NmAbvWlXkFzfrFBw.f['2']++;__cov_CEpn43NmAbvWlXkFzfrFBw.s['7']++;var dsFactory=dashboard_1.default.getInstance().datasourcePluginRegistry.getPlugin(type);__cov_CEpn43NmAbvWlXkFzfrFBw.s['8']++;dsFactory.dispose();__cov_CEpn43NmAbvWlXkFzfrFBw.s['9']++;dispatch(deletePlugin(type));};}__cov_CEpn43NmAbvWlXkFzfrFBw.s['10']++;exports.unloadPlugin=unloadPlugin;function deletePlugin(type){__cov_CEpn43NmAbvWlXkFzfrFBw.f['3']++;__cov_CEpn43NmAbvWlXkFzfrFBw.s['12']++;return{type:Action.DELETE_DATASOURCE_PLUGIN,id:type};}__cov_CEpn43NmAbvWlXkFzfrFBw.s['13']++;var pluginsCrudReducer=reducer_js_1.genCrudReducer([Action.ADD_DATASOURCE_PLUGIN,Action.DELETE_DATASOURCE_PLUGIN],datasourcePlugin);function datasourcePlugins(state,action){__cov_CEpn43NmAbvWlXkFzfrFBw.f['4']++;__cov_CEpn43NmAbvWlXkFzfrFBw.s['15']++;if(state===void 0){__cov_CEpn43NmAbvWlXkFzfrFBw.b['1'][0]++;__cov_CEpn43NmAbvWlXkFzfrFBw.s['16']++;state=initialState;}else{__cov_CEpn43NmAbvWlXkFzfrFBw.b['1'][1]++;}__cov_CEpn43NmAbvWlXkFzfrFBw.s['17']++;state=pluginsCrudReducer(state,action);__cov_CEpn43NmAbvWlXkFzfrFBw.s['18']++;switch(action.type){default:__cov_CEpn43NmAbvWlXkFzfrFBw.b['2'][0]++;__cov_CEpn43NmAbvWlXkFzfrFBw.s['19']++;return state;}}__cov_CEpn43NmAbvWlXkFzfrFBw.s['20']++;exports.datasourcePlugins=datasourcePlugins;function datasourcePlugin(state,action){__cov_CEpn43NmAbvWlXkFzfrFBw.f['5']++;__cov_CEpn43NmAbvWlXkFzfrFBw.s['22']++;switch(action.type){case Action.ADD_DATASOURCE_PLUGIN:__cov_CEpn43NmAbvWlXkFzfrFBw.b['3'][0]++;__cov_CEpn43NmAbvWlXkFzfrFBw.s['23']++;if(!action.typeInfo.type){__cov_CEpn43NmAbvWlXkFzfrFBw.b['4'][0]++;__cov_CEpn43NmAbvWlXkFzfrFBw.s['24']++;throw new Error('A Plugin needs a type name. Please define TYPE_INFO.type');}else{__cov_CEpn43NmAbvWlXkFzfrFBw.b['4'][1]++;}__cov_CEpn43NmAbvWlXkFzfrFBw.s['25']++;return{id:action.typeInfo.type,url:action.url,typeInfo:action.typeInfo,isDatasource:action.pluginType==='datasource',isWidget:action.pluginType==='widget'};default:__cov_CEpn43NmAbvWlXkFzfrFBw.b['3'][1]++;__cov_CEpn43NmAbvWlXkFzfrFBw.s['26']++;return state;}}
 
 
 /***/ },
 /* 97 */
 /***/ function(module, exports) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var lastSave = new Date();
-	function clearData() {
-	    lastSave = new Date();
-	    if (window.confirm("Wipe app data and reload page?")) {
-	        window.localStorage.setItem("appState", undefined);
-	        location.reload();
-	    }
+	var __cov_W8WMWWjFfm2sqdDXBv$EKQ = (Function('return this'))();
+	if (!__cov_W8WMWWjFfm2sqdDXBv$EKQ.__coverage__) { __cov_W8WMWWjFfm2sqdDXBv$EKQ.__coverage__ = {}; }
+	__cov_W8WMWWjFfm2sqdDXBv$EKQ = __cov_W8WMWWjFfm2sqdDXBv$EKQ.__coverage__;
+	if (!(__cov_W8WMWWjFfm2sqdDXBv$EKQ['/home/travis/build/Niondir/iot-dashboard/src/persistence.js'])) {
+	   __cov_W8WMWWjFfm2sqdDXBv$EKQ['/home/travis/build/Niondir/iot-dashboard/src/persistence.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/persistence.js","s":{"1":0,"2":1,"3":0,"4":0,"5":0,"6":0,"7":0,"8":1,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":1,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0,"29":0,"30":1,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":0,"38":0,"39":0,"40":0,"41":0,"42":0},"b":{"1":[0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0],"7":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0},"fnMap":{"1":{"name":"clearData","line":6,"loc":{"start":{"line":6,"column":0},"end":{"line":6,"column":21}}},"2":{"name":"persistenceMiddleware","line":14,"loc":{"start":{"line":14,"column":0},"end":{"line":14,"column":35}}},"3":{"name":"(anonymous_3)","line":16,"loc":{"start":{"line":16,"column":11},"end":{"line":16,"column":27}}},"4":{"name":"(anonymous_4)","line":16,"loc":{"start":{"line":16,"column":36},"end":{"line":16,"column":54}}},"5":{"name":"saveToLocalStorage","line":29,"loc":{"start":{"line":29,"column":0},"end":{"line":29,"column":35}}},"6":{"name":"loadFromLocalStorage","line":40,"loc":{"start":{"line":40,"column":0},"end":{"line":40,"column":32}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":26}},"2":{"start":{"line":6,"column":0},"end":{"line":12,"column":1}},"3":{"start":{"line":7,"column":4},"end":{"line":7,"column":26}},"4":{"start":{"line":8,"column":4},"end":{"line":11,"column":5}},"5":{"start":{"line":9,"column":8},"end":{"line":9,"column":59}},"6":{"start":{"line":10,"column":8},"end":{"line":10,"column":26}},"7":{"start":{"line":13,"column":0},"end":{"line":13,"column":30}},"8":{"start":{"line":14,"column":0},"end":{"line":27,"column":1}},"9":{"start":{"line":15,"column":4},"end":{"line":15,"column":31}},"10":{"start":{"line":16,"column":4},"end":{"line":26,"column":9}},"11":{"start":{"line":16,"column":29},"end":{"line":26,"column":6}},"12":{"start":{"line":17,"column":8},"end":{"line":17,"column":37}},"13":{"start":{"line":18,"column":8},"end":{"line":18,"column":29}},"14":{"start":{"line":19,"column":8},"end":{"line":21,"column":9}},"15":{"start":{"line":20,"column":12},"end":{"line":20,"column":29}},"16":{"start":{"line":22,"column":8},"end":{"line":22,"column":39}},"17":{"start":{"line":23,"column":8},"end":{"line":23,"column":39}},"18":{"start":{"line":24,"column":8},"end":{"line":24,"column":30}},"19":{"start":{"line":25,"column":8},"end":{"line":25,"column":25}},"20":{"start":{"line":28,"column":0},"end":{"line":28,"column":54}},"21":{"start":{"line":29,"column":0},"end":{"line":38,"column":1}},"22":{"start":{"line":30,"column":4},"end":{"line":33,"column":5}},"23":{"start":{"line":31,"column":8},"end":{"line":31,"column":78}},"24":{"start":{"line":32,"column":8},"end":{"line":32,"column":15}},"25":{"start":{"line":34,"column":4},"end":{"line":34,"column":48}},"26":{"start":{"line":35,"column":4},"end":{"line":35,"column":29}},"27":{"start":{"line":36,"column":4},"end":{"line":36,"column":36}},"28":{"start":{"line":37,"column":4},"end":{"line":37,"column":74}},"29":{"start":{"line":39,"column":0},"end":{"line":39,"column":48}},"30":{"start":{"line":40,"column":0},"end":{"line":57,"column":1}},"31":{"start":{"line":41,"column":4},"end":{"line":44,"column":5}},"32":{"start":{"line":42,"column":8},"end":{"line":42,"column":80}},"33":{"start":{"line":43,"column":8},"end":{"line":43,"column":25}},"34":{"start":{"line":45,"column":4},"end":{"line":45,"column":62}},"35":{"start":{"line":46,"column":4},"end":{"line":46,"column":26}},"36":{"start":{"line":47,"column":4},"end":{"line":54,"column":5}},"37":{"start":{"line":48,"column":8},"end":{"line":50,"column":9}},"38":{"start":{"line":49,"column":12},"end":{"line":49,"column":44}},"39":{"start":{"line":53,"column":8},"end":{"line":53,"column":96}},"40":{"start":{"line":55,"column":4},"end":{"line":55,"column":40}},"41":{"start":{"line":56,"column":4},"end":{"line":56,"column":46}},"42":{"start":{"line":58,"column":0},"end":{"line":58,"column":52}}},"branchMap":{"1":{"line":8,"type":"if","locations":[{"start":{"line":8,"column":4},"end":{"line":8,"column":4}},{"start":{"line":8,"column":4},"end":{"line":8,"column":4}}]},"2":{"line":19,"type":"if","locations":[{"start":{"line":19,"column":8},"end":{"line":19,"column":8}},{"start":{"line":19,"column":8},"end":{"line":19,"column":8}}]},"3":{"line":30,"type":"if","locations":[{"start":{"line":30,"column":4},"end":{"line":30,"column":4}},{"start":{"line":30,"column":4},"end":{"line":30,"column":4}}]},"4":{"line":41,"type":"if","locations":[{"start":{"line":41,"column":4},"end":{"line":41,"column":4}},{"start":{"line":41,"column":4},"end":{"line":41,"column":4}}]},"5":{"line":48,"type":"if","locations":[{"start":{"line":48,"column":8},"end":{"line":48,"column":8}},{"start":{"line":48,"column":8},"end":{"line":48,"column":8}}]},"6":{"line":48,"type":"binary-expr","locations":[{"start":{"line":48,"column":12},"end":{"line":48,"column":37}},{"start":{"line":48,"column":41},"end":{"line":48,"column":68}}]},"7":{"line":56,"type":"cond-expr","locations":[{"start":{"line":56,"column":28},"end":{"line":56,"column":33}},{"start":{"line":56,"column":36},"end":{"line":56,"column":45}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var lastSave = new Date();","function clearData() {","    lastSave = new Date();","    if (window.confirm(\"Wipe app data and reload page?\")) {","        window.localStorage.setItem(\"appState\", undefined);","        location.reload();","    }","}","exports.clearData = clearData;","function persistenceMiddleware(_a) {","    var getState = _a.getState;","    return function (next) { return function (action) {","        var nextState = next(action);","        var now = new Date();","        if (now.getTime() - lastSave.getTime() < 10000) {","            return nextState;","        }","        saveToLocalStorage(getState());","        console.log('Saved state ...');","        lastSave = new Date();","        return nextState;","    }; };","}","exports.persistenceMiddleware = persistenceMiddleware;","function saveToLocalStorage(state) {","    if (typeof window === 'undefined') {","        console.warn(\"Can not save to local storage in current environment.\");","        return;","    }","    var savableState = Object.assign({}, state);","    delete savableState.form;","    delete savableState.modalDialog;","    window.localStorage.setItem(\"appState\", JSON.stringify(savableState));","}","exports.saveToLocalStorage = saveToLocalStorage;","function loadFromLocalStorage() {","    if (typeof window === 'undefined') {","        console.warn(\"Can not load from local storage in current environment.\");","        return undefined;","    }","    var stateString = window.localStorage.getItem(\"appState\");","    var state = undefined;","    try {","        if (stateString !== undefined && stateString !== \"undefined\") {","            state = JSON.parse(stateString);","        }","    }","    catch (e) {","        console.error(\"Failed to load state from local storage. Data:\", stateString, e.message);","    }","    console.log(\"Loaded state:\", state);","    return state !== null ? state : undefined;","}","exports.loadFromLocalStorage = loadFromLocalStorage;",""]};
 	}
-	exports.clearData = clearData;
-	function persistenceMiddleware(_a) {
-	    var getState = _a.getState;
-	    return function (next) { return function (action) {
-	        var nextState = next(action);
-	        var now = new Date();
-	        if (now.getTime() - lastSave.getTime() < 10000) {
-	            return nextState;
-	        }
-	        saveToLocalStorage(getState());
-	        console.log('Saved state ...');
-	        lastSave = new Date();
-	        return nextState;
-	    }; };
-	}
-	exports.persistenceMiddleware = persistenceMiddleware;
-	function saveToLocalStorage(state) {
-	    if (typeof window === 'undefined') {
-	        console.warn("Can not save to local storage in current environment.");
-	        return;
-	    }
-	    var savableState = Object.assign({}, state);
-	    delete savableState.form;
-	    delete savableState.modalDialog;
-	    window.localStorage.setItem("appState", JSON.stringify(savableState));
-	}
-	exports.saveToLocalStorage = saveToLocalStorage;
-	function loadFromLocalStorage() {
-	    if (typeof window === 'undefined') {
-	        console.warn("Can not load from local storage in current environment.");
-	        return undefined;
-	    }
-	    var stateString = window.localStorage.getItem("appState");
-	    var state = undefined;
-	    try {
-	        if (stateString !== undefined && stateString !== "undefined") {
-	            state = JSON.parse(stateString);
-	        }
-	    }
-	    catch (e) {
-	        console.error("Failed to load state from local storage. Data:", stateString, e.message);
-	    }
-	    console.log("Loaded state:", state);
-	    return state !== null ? state : undefined;
-	}
-	exports.loadFromLocalStorage = loadFromLocalStorage;
+	__cov_W8WMWWjFfm2sqdDXBv$EKQ = __cov_W8WMWWjFfm2sqdDXBv$EKQ['/home/travis/build/Niondir/iot-dashboard/src/persistence.js'];
+	__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['1']++;var lastSave=new Date();function clearData(){__cov_W8WMWWjFfm2sqdDXBv$EKQ.f['1']++;__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['3']++;lastSave=new Date();__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['4']++;if(window.confirm('Wipe app data and reload page?')){__cov_W8WMWWjFfm2sqdDXBv$EKQ.b['1'][0]++;__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['5']++;window.localStorage.setItem('appState',undefined);__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['6']++;location.reload();}else{__cov_W8WMWWjFfm2sqdDXBv$EKQ.b['1'][1]++;}}__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['7']++;exports.clearData=clearData;function persistenceMiddleware(_a){__cov_W8WMWWjFfm2sqdDXBv$EKQ.f['2']++;__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['9']++;var getState=_a.getState;__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['10']++;return function(next){__cov_W8WMWWjFfm2sqdDXBv$EKQ.f['3']++;__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['11']++;return function(action){__cov_W8WMWWjFfm2sqdDXBv$EKQ.f['4']++;__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['12']++;var nextState=next(action);__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['13']++;var now=new Date();__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['14']++;if(now.getTime()-lastSave.getTime()<10000){__cov_W8WMWWjFfm2sqdDXBv$EKQ.b['2'][0]++;__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['15']++;return nextState;}else{__cov_W8WMWWjFfm2sqdDXBv$EKQ.b['2'][1]++;}__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['16']++;saveToLocalStorage(getState());__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['17']++;console.log('Saved state ...');__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['18']++;lastSave=new Date();__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['19']++;return nextState;};};}__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['20']++;exports.persistenceMiddleware=persistenceMiddleware;function saveToLocalStorage(state){__cov_W8WMWWjFfm2sqdDXBv$EKQ.f['5']++;__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['22']++;if(typeof window==='undefined'){__cov_W8WMWWjFfm2sqdDXBv$EKQ.b['3'][0]++;__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['23']++;console.warn('Can not save to local storage in current environment.');__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['24']++;return;}else{__cov_W8WMWWjFfm2sqdDXBv$EKQ.b['3'][1]++;}__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['25']++;var savableState=Object.assign({},state);__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['26']++;delete savableState.form;__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['27']++;delete savableState.modalDialog;__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['28']++;window.localStorage.setItem('appState',JSON.stringify(savableState));}__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['29']++;exports.saveToLocalStorage=saveToLocalStorage;function loadFromLocalStorage(){__cov_W8WMWWjFfm2sqdDXBv$EKQ.f['6']++;__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['31']++;if(typeof window==='undefined'){__cov_W8WMWWjFfm2sqdDXBv$EKQ.b['4'][0]++;__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['32']++;console.warn('Can not load from local storage in current environment.');__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['33']++;return undefined;}else{__cov_W8WMWWjFfm2sqdDXBv$EKQ.b['4'][1]++;}__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['34']++;var stateString=window.localStorage.getItem('appState');__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['35']++;var state=undefined;__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['36']++;try{__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['37']++;if((__cov_W8WMWWjFfm2sqdDXBv$EKQ.b['6'][0]++,stateString!==undefined)&&(__cov_W8WMWWjFfm2sqdDXBv$EKQ.b['6'][1]++,stateString!=='undefined')){__cov_W8WMWWjFfm2sqdDXBv$EKQ.b['5'][0]++;__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['38']++;state=JSON.parse(stateString);}else{__cov_W8WMWWjFfm2sqdDXBv$EKQ.b['5'][1]++;}}catch(e){__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['39']++;console.error('Failed to load state from local storage. Data:',stateString,e.message);}__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['40']++;console.log('Loaded state:',state);__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['41']++;return state!==null?(__cov_W8WMWWjFfm2sqdDXBv$EKQ.b['7'][0]++,state):(__cov_W8WMWWjFfm2sqdDXBv$EKQ.b['7'][1]++,undefined);}__cov_W8WMWWjFfm2sqdDXBv$EKQ.s['42']++;exports.loadFromLocalStorage=loadFromLocalStorage;
 
 
 /***/ },
 /* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var React = __webpack_require__(20);
-	var react_1 = __webpack_require__(20);
-	var react_2 = __webpack_require__(20);
-	exports.TYPE_INFO = {
-	    type: "text",
-	    name: "Text",
-	    description: "Display content of a datasource as plain text",
-	    settings: [
-	        {
-	            id: 'datasource',
-	            name: 'Datasource',
-	            type: 'datasource',
-	            description: "Datasource to get the text"
-	        }
-	    ]
-	};
-	var Widget = (function (_super) {
-	    __extends(Widget, _super);
-	    function Widget() {
-	        _super.apply(this, arguments);
-	    }
-	    Widget.prototype.render = function () {
-	        var props = this.props;
-	        var data = props.getData(props.state.settings.datasource);
-	        if (!data || data.length == 0) {
-	            return React.createElement("p", null, "No data");
-	        }
-	        return React.createElement("div", {style: { padding: "10px" }}, React.createElement("p", null, JSON.stringify(data)));
-	    };
-	    return Widget;
-	}(react_1.Component));
-	exports.Widget = Widget;
-	// TODO: Move to core, for simple reuse
-	Widget.propTypes = {
-	    getData: react_2.PropTypes.func.isRequired,
-	    state: react_2.PropTypes.shape({
-	        height: react_2.PropTypes.number.isRequired,
-	        id: react_2.PropTypes.string.isRequired
-	    }).isRequired
-	};
+	var __cov_zOcOf9iADYZxnfXBoS_K8A = (Function('return this'))();
+	if (!__cov_zOcOf9iADYZxnfXBoS_K8A.__coverage__) { __cov_zOcOf9iADYZxnfXBoS_K8A.__coverage__ = {}; }
+	__cov_zOcOf9iADYZxnfXBoS_K8A = __cov_zOcOf9iADYZxnfXBoS_K8A.__coverage__;
+	if (!(__cov_zOcOf9iADYZxnfXBoS_K8A['/home/travis/build/Niondir/iot-dashboard/src/widgets/plugins/textWidget.js'])) {
+	   __cov_zOcOf9iADYZxnfXBoS_K8A['/home/travis/build/Niondir/iot-dashboard/src/widgets/plugins/textWidget.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/widgets/plugins/textWidget.js","s":{"1":0,"2":0,"3":0,"4":0,"5":1,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":1,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0},"b":{"1":[0,0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0},"fnMap":{"1":{"name":"(anonymous_1)","line":5,"loc":{"start":{"line":5,"column":44},"end":{"line":5,"column":60}}},"2":{"name":"__","line":7,"loc":{"start":{"line":7,"column":4},"end":{"line":7,"column":18}}},"3":{"name":"(anonymous_3)","line":26,"loc":{"start":{"line":26,"column":14},"end":{"line":26,"column":32}}},"4":{"name":"Widget","line":28,"loc":{"start":{"line":28,"column":4},"end":{"line":28,"column":22}}},"5":{"name":"(anonymous_5)","line":31,"loc":{"start":{"line":31,"column":30},"end":{"line":31,"column":42}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":9,"column":2}},"2":{"start":{"line":6,"column":4},"end":{"line":6,"column":58}},"3":{"start":{"line":6,"column":21},"end":{"line":6,"column":58}},"4":{"start":{"line":6,"column":46},"end":{"line":6,"column":58}},"5":{"start":{"line":7,"column":4},"end":{"line":7,"column":43}},"6":{"start":{"line":7,"column":20},"end":{"line":7,"column":41}},"7":{"start":{"line":8,"column":4},"end":{"line":8,"column":89}},"8":{"start":{"line":10,"column":0},"end":{"line":10,"column":29}},"9":{"start":{"line":11,"column":0},"end":{"line":11,"column":31}},"10":{"start":{"line":12,"column":0},"end":{"line":12,"column":31}},"11":{"start":{"line":13,"column":0},"end":{"line":25,"column":2}},"12":{"start":{"line":26,"column":0},"end":{"line":40,"column":22}},"13":{"start":{"line":27,"column":4},"end":{"line":27,"column":30}},"14":{"start":{"line":28,"column":4},"end":{"line":30,"column":5}},"15":{"start":{"line":29,"column":8},"end":{"line":29,"column":38}},"16":{"start":{"line":31,"column":4},"end":{"line":38,"column":6}},"17":{"start":{"line":32,"column":8},"end":{"line":32,"column":31}},"18":{"start":{"line":33,"column":8},"end":{"line":33,"column":66}},"19":{"start":{"line":34,"column":8},"end":{"line":36,"column":9}},"20":{"start":{"line":35,"column":12},"end":{"line":35,"column":61}},"21":{"start":{"line":37,"column":8},"end":{"line":37,"column":126}},"22":{"start":{"line":39,"column":4},"end":{"line":39,"column":18}},"23":{"start":{"line":41,"column":0},"end":{"line":41,"column":24}},"24":{"start":{"line":43,"column":0},"end":{"line":49,"column":2}}},"branchMap":{"1":{"line":5,"type":"binary-expr","locations":[{"start":{"line":5,"column":17},"end":{"line":5,"column":21}},{"start":{"line":5,"column":25},"end":{"line":5,"column":39}},{"start":{"line":5,"column":44},"end":{"line":9,"column":1}}]},"2":{"line":6,"type":"if","locations":[{"start":{"line":6,"column":21},"end":{"line":6,"column":21}},{"start":{"line":6,"column":21},"end":{"line":6,"column":21}}]},"3":{"line":8,"type":"cond-expr","locations":[{"start":{"line":8,"column":31},"end":{"line":8,"column":47}},{"start":{"line":8,"column":51},"end":{"line":8,"column":87}}]},"4":{"line":34,"type":"if","locations":[{"start":{"line":34,"column":8},"end":{"line":34,"column":8}},{"start":{"line":34,"column":8},"end":{"line":34,"column":8}}]},"5":{"line":34,"type":"binary-expr","locations":[{"start":{"line":34,"column":12},"end":{"line":34,"column":17}},{"start":{"line":34,"column":21},"end":{"line":34,"column":37}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var __extends = (this && this.__extends) || function (d, b) {","    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];","    function __() { this.constructor = d; }","    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());","};","var React = require('react');","var react_1 = require('react');","var react_2 = require(\"react\");","exports.TYPE_INFO = {","    type: \"text\",","    name: \"Text\",","    description: \"Display content of a datasource as plain text\",","    settings: [","        {","            id: 'datasource',","            name: 'Datasource',","            type: 'datasource',","            description: \"Datasource to get the text\"","        }","    ]","};","var Widget = (function (_super) {","    __extends(Widget, _super);","    function Widget() {","        _super.apply(this, arguments);","    }","    Widget.prototype.render = function () {","        var props = this.props;","        var data = props.getData(props.state.settings.datasource);","        if (!data || data.length == 0) {","            return React.createElement(\"p\", null, \"No data\");","        }","        return React.createElement(\"div\", {style: { padding: \"10px\" }}, React.createElement(\"p\", null, JSON.stringify(data)));","    };","    return Widget;","}(react_1.Component));","exports.Widget = Widget;","// TODO: Move to core, for simple reuse","Widget.propTypes = {","    getData: react_2.PropTypes.func.isRequired,","    state: react_2.PropTypes.shape({","        height: react_2.PropTypes.number.isRequired,","        id: react_2.PropTypes.string.isRequired","    }).isRequired","};",""]};
+	}
+	__cov_zOcOf9iADYZxnfXBoS_K8A = __cov_zOcOf9iADYZxnfXBoS_K8A['/home/travis/build/Niondir/iot-dashboard/src/widgets/plugins/textWidget.js'];
+	__cov_zOcOf9iADYZxnfXBoS_K8A.s['1']++;var __extends=(__cov_zOcOf9iADYZxnfXBoS_K8A.b['1'][0]++,this)&&(__cov_zOcOf9iADYZxnfXBoS_K8A.b['1'][1]++,this.__extends)||(__cov_zOcOf9iADYZxnfXBoS_K8A.b['1'][2]++,function(d,b){__cov_zOcOf9iADYZxnfXBoS_K8A.f['1']++;__cov_zOcOf9iADYZxnfXBoS_K8A.s['2']++;for(var p in b){__cov_zOcOf9iADYZxnfXBoS_K8A.s['3']++;if(b.hasOwnProperty(p)){__cov_zOcOf9iADYZxnfXBoS_K8A.b['2'][0]++;__cov_zOcOf9iADYZxnfXBoS_K8A.s['4']++;d[p]=b[p];}else{__cov_zOcOf9iADYZxnfXBoS_K8A.b['2'][1]++;}}function __(){__cov_zOcOf9iADYZxnfXBoS_K8A.f['2']++;__cov_zOcOf9iADYZxnfXBoS_K8A.s['6']++;this.constructor=d;}__cov_zOcOf9iADYZxnfXBoS_K8A.s['7']++;d.prototype=b===null?(__cov_zOcOf9iADYZxnfXBoS_K8A.b['3'][0]++,Object.create(b)):(__cov_zOcOf9iADYZxnfXBoS_K8A.b['3'][1]++,(__.prototype=b.prototype,new __()));});__cov_zOcOf9iADYZxnfXBoS_K8A.s['8']++;var React=__webpack_require__(20);__cov_zOcOf9iADYZxnfXBoS_K8A.s['9']++;var react_1=__webpack_require__(20);__cov_zOcOf9iADYZxnfXBoS_K8A.s['10']++;var react_2=__webpack_require__(20);__cov_zOcOf9iADYZxnfXBoS_K8A.s['11']++;exports.TYPE_INFO={type:'text',name:'Text',description:'Display content of a datasource as plain text',settings:[{id:'datasource',name:'Datasource',type:'datasource',description:'Datasource to get the text'}]};__cov_zOcOf9iADYZxnfXBoS_K8A.s['12']++;var Widget=function(_super){__cov_zOcOf9iADYZxnfXBoS_K8A.f['3']++;__cov_zOcOf9iADYZxnfXBoS_K8A.s['13']++;__extends(Widget,_super);function Widget(){__cov_zOcOf9iADYZxnfXBoS_K8A.f['4']++;__cov_zOcOf9iADYZxnfXBoS_K8A.s['15']++;_super.apply(this,arguments);}__cov_zOcOf9iADYZxnfXBoS_K8A.s['16']++;Widget.prototype.render=function(){__cov_zOcOf9iADYZxnfXBoS_K8A.f['5']++;__cov_zOcOf9iADYZxnfXBoS_K8A.s['17']++;var props=this.props;__cov_zOcOf9iADYZxnfXBoS_K8A.s['18']++;var data=props.getData(props.state.settings.datasource);__cov_zOcOf9iADYZxnfXBoS_K8A.s['19']++;if((__cov_zOcOf9iADYZxnfXBoS_K8A.b['5'][0]++,!data)||(__cov_zOcOf9iADYZxnfXBoS_K8A.b['5'][1]++,data.length==0)){__cov_zOcOf9iADYZxnfXBoS_K8A.b['4'][0]++;__cov_zOcOf9iADYZxnfXBoS_K8A.s['20']++;return React.createElement('p',null,'No data');}else{__cov_zOcOf9iADYZxnfXBoS_K8A.b['4'][1]++;}__cov_zOcOf9iADYZxnfXBoS_K8A.s['21']++;return React.createElement('div',{style:{padding:'10px'}},React.createElement('p',null,JSON.stringify(data)));};__cov_zOcOf9iADYZxnfXBoS_K8A.s['22']++;return Widget;}(react_1.Component);__cov_zOcOf9iADYZxnfXBoS_K8A.s['23']++;exports.Widget=Widget;__cov_zOcOf9iADYZxnfXBoS_K8A.s['24']++;Widget.propTypes={getData:react_2.PropTypes.func.isRequired,state:react_2.PropTypes.shape({height:react_2.PropTypes.number.isRequired,id:react_2.PropTypes.string.isRequired}).isRequired};
 
 
 /***/ },
 /* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var React = __webpack_require__(20);
-	var react_1 = __webpack_require__(20);
-	var c3 = __webpack_require__(100);
-	var react_2 = __webpack_require__(20);
-	exports.TYPE_INFO = {
-	    type: "chart",
-	    name: "Chart",
-	    description: "Renders a chart. Will be way more flexible in future.",
-	    settings: [
-	        {
-	            id: 'datasource',
-	            name: 'Datasource',
-	            type: 'datasource'
-	        },
-	        {
-	            id: 'chartType',
-	            name: 'Chart Type',
-	            type: 'option',
-	            defaultValue: 'spline',
-	            options: [
-	                'line',
-	                'spline',
-	                'step',
-	                'area',
-	                'area-spline',
-	                'area-step',
-	                'bar',
-	                'scatter',
-	                'pie',
-	                'donut',
-	                'gauge'
-	            ]
-	        },
-	        {
-	            id: 'dataKeys',
-	            type: "json",
-	            name: "Data Keys",
-	            description: "An array of Keys of an data object that define the data sets",
-	            defaultValue: '["value"]'
-	        },
-	        {
-	            id: 'xKey',
-	            type: "string",
-	            name: "X Key",
-	            description: "Key of an data object that defines the X value",
-	            defaultValue: "x"
-	        },
-	        {
-	            id: 'names',
-	            type: "json",
-	            name: "Data Names",
-	            description: "Json object that maps Data Keys to displayed names",
-	            defaultValue: '{"value": "My Value"}'
-	        },
-	        {
-	            id: 'gaugeData',
-	            type: "json",
-	            name: "Gauge Data",
-	            description: "Json object that is passed as configuration for gauge chats",
-	            defaultValue: JSON.stringify({ "min": 0, "max": 100, units: ' %' })
-	        } /*,
-	         {
-	         id: 'donutData',
-	         type: "json",
-	         name: "Gauge Data",
-	         description: "Json object that maps Data Keys to displayed names",
-	         defaultValue: JSON.stringify({title: 'Title'})
-	         }*/
-	    ]
-	};
-	function safeParseJsonObject(string) {
-	    try {
-	        return JSON.parse(string);
-	    }
-	    catch (e) {
-	        console.error("Was not able to parse JSON: " + string);
-	        return {};
-	    }
+	var __cov_6MV2Ag759i28HsZzmYSgRA = (Function('return this'))();
+	if (!__cov_6MV2Ag759i28HsZzmYSgRA.__coverage__) { __cov_6MV2Ag759i28HsZzmYSgRA.__coverage__ = {}; }
+	__cov_6MV2Ag759i28HsZzmYSgRA = __cov_6MV2Ag759i28HsZzmYSgRA.__coverage__;
+	if (!(__cov_6MV2Ag759i28HsZzmYSgRA['/home/travis/build/Niondir/iot-dashboard/src/widgets/plugins/chartWidget.js'])) {
+	   __cov_6MV2Ag759i28HsZzmYSgRA['/home/travis/build/Niondir/iot-dashboard/src/widgets/plugins/chartWidget.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/widgets/plugins/chartWidget.js","s":{"1":0,"2":0,"3":0,"4":0,"5":1,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":1,"14":0,"15":0,"16":0,"17":0,"18":1,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":1,"26":0,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":0,"38":0,"39":0,"40":0,"41":0,"42":0,"43":0,"44":0,"45":0,"46":0,"47":0,"48":0,"49":0,"50":0,"51":0,"52":0,"53":0},"b":{"1":[0,0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0],"7":[0,0],"8":[0,0],"9":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0},"fnMap":{"1":{"name":"(anonymous_1)","line":5,"loc":{"start":{"line":5,"column":44},"end":{"line":5,"column":60}}},"2":{"name":"__","line":7,"loc":{"start":{"line":7,"column":4},"end":{"line":7,"column":18}}},"3":{"name":"safeParseJsonObject","line":80,"loc":{"start":{"line":80,"column":0},"end":{"line":80,"column":37}}},"4":{"name":"safeParseJsonArray","line":89,"loc":{"start":{"line":89,"column":0},"end":{"line":89,"column":36}}},"5":{"name":"(anonymous_5)","line":98,"loc":{"start":{"line":98,"column":14},"end":{"line":98,"column":32}}},"6":{"name":"Widget","line":100,"loc":{"start":{"line":100,"column":4},"end":{"line":100,"column":22}}},"7":{"name":"(anonymous_7)","line":103,"loc":{"start":{"line":103,"column":41},"end":{"line":103,"column":53}}},"8":{"name":"(anonymous_8)","line":106,"loc":{"start":{"line":106,"column":49},"end":{"line":106,"column":70}}},"9":{"name":"(anonymous_9)","line":112,"loc":{"start":{"line":112,"column":36},"end":{"line":112,"column":53}}},"10":{"name":"(anonymous_10)","line":148,"loc":{"start":{"line":148,"column":36},"end":{"line":148,"column":48}}},"11":{"name":"(anonymous_11)","line":177,"loc":{"start":{"line":177,"column":30},"end":{"line":177,"column":42}}},"12":{"name":"(anonymous_12)","line":181,"loc":{"start":{"line":181,"column":44},"end":{"line":181,"column":56}}},"13":{"name":"(anonymous_13)","line":184,"loc":{"start":{"line":184,"column":31},"end":{"line":184,"column":43}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":9,"column":2}},"2":{"start":{"line":6,"column":4},"end":{"line":6,"column":58}},"3":{"start":{"line":6,"column":21},"end":{"line":6,"column":58}},"4":{"start":{"line":6,"column":46},"end":{"line":6,"column":58}},"5":{"start":{"line":7,"column":4},"end":{"line":7,"column":43}},"6":{"start":{"line":7,"column":20},"end":{"line":7,"column":41}},"7":{"start":{"line":8,"column":4},"end":{"line":8,"column":89}},"8":{"start":{"line":10,"column":0},"end":{"line":10,"column":29}},"9":{"start":{"line":11,"column":0},"end":{"line":11,"column":31}},"10":{"start":{"line":12,"column":0},"end":{"line":12,"column":23}},"11":{"start":{"line":13,"column":0},"end":{"line":13,"column":31}},"12":{"start":{"line":14,"column":0},"end":{"line":79,"column":2}},"13":{"start":{"line":80,"column":0},"end":{"line":88,"column":1}},"14":{"start":{"line":81,"column":4},"end":{"line":87,"column":5}},"15":{"start":{"line":82,"column":8},"end":{"line":82,"column":34}},"16":{"start":{"line":85,"column":8},"end":{"line":85,"column":63}},"17":{"start":{"line":86,"column":8},"end":{"line":86,"column":18}},"18":{"start":{"line":89,"column":0},"end":{"line":97,"column":1}},"19":{"start":{"line":90,"column":4},"end":{"line":96,"column":5}},"20":{"start":{"line":91,"column":8},"end":{"line":91,"column":34}},"21":{"start":{"line":94,"column":8},"end":{"line":94,"column":63}},"22":{"start":{"line":95,"column":8},"end":{"line":95,"column":18}},"23":{"start":{"line":98,"column":0},"end":{"line":188,"column":22}},"24":{"start":{"line":99,"column":4},"end":{"line":99,"column":30}},"25":{"start":{"line":100,"column":4},"end":{"line":102,"column":5}},"26":{"start":{"line":101,"column":8},"end":{"line":101,"column":38}},"27":{"start":{"line":103,"column":4},"end":{"line":105,"column":6}},"28":{"start":{"line":104,"column":8},"end":{"line":104,"column":38}},"29":{"start":{"line":106,"column":4},"end":{"line":111,"column":6}},"30":{"start":{"line":107,"column":8},"end":{"line":110,"column":9}},"31":{"start":{"line":109,"column":12},"end":{"line":109,"column":41}},"32":{"start":{"line":112,"column":4},"end":{"line":147,"column":6}},"33":{"start":{"line":113,"column":8},"end":{"line":113,"column":42}},"34":{"start":{"line":114,"column":8},"end":{"line":114,"column":52}},"35":{"start":{"line":115,"column":8},"end":{"line":146,"column":11}},"36":{"start":{"line":148,"column":4},"end":{"line":176,"column":6}},"37":{"start":{"line":149,"column":8},"end":{"line":151,"column":9}},"38":{"start":{"line":150,"column":12},"end":{"line":150,"column":19}},"39":{"start":{"line":152,"column":8},"end":{"line":152,"column":31}},"40":{"start":{"line":153,"column":8},"end":{"line":153,"column":44}},"41":{"start":{"line":154,"column":8},"end":{"line":154,"column":54}},"42":{"start":{"line":156,"column":8},"end":{"line":156,"column":71}},"43":{"start":{"line":168,"column":8},"end":{"line":175,"column":11}},"44":{"start":{"line":177,"column":4},"end":{"line":180,"column":6}},"45":{"start":{"line":178,"column":8},"end":{"line":178,"column":28}},"46":{"start":{"line":179,"column":8},"end":{"line":179,"column":158}},"47":{"start":{"line":181,"column":4},"end":{"line":183,"column":6}},"48":{"start":{"line":182,"column":8},"end":{"line":182,"column":46}},"49":{"start":{"line":184,"column":4},"end":{"line":186,"column":6}},"50":{"start":{"line":185,"column":8},"end":{"line":185,"column":45}},"51":{"start":{"line":187,"column":4},"end":{"line":187,"column":18}},"52":{"start":{"line":189,"column":0},"end":{"line":189,"column":24}},"53":{"start":{"line":191,"column":0},"end":{"line":197,"column":2}}},"branchMap":{"1":{"line":5,"type":"binary-expr","locations":[{"start":{"line":5,"column":17},"end":{"line":5,"column":21}},{"start":{"line":5,"column":25},"end":{"line":5,"column":39}},{"start":{"line":5,"column":44},"end":{"line":9,"column":1}}]},"2":{"line":6,"type":"if","locations":[{"start":{"line":6,"column":21},"end":{"line":6,"column":21}},{"start":{"line":6,"column":21},"end":{"line":6,"column":21}}]},"3":{"line":8,"type":"cond-expr","locations":[{"start":{"line":8,"column":31},"end":{"line":8,"column":47}},{"start":{"line":8,"column":51},"end":{"line":8,"column":87}}]},"4":{"line":107,"type":"if","locations":[{"start":{"line":107,"column":8},"end":{"line":107,"column":8}},{"start":{"line":107,"column":8},"end":{"line":107,"column":8}}]},"5":{"line":107,"type":"binary-expr","locations":[{"start":{"line":107,"column":12},"end":{"line":107,"column":48}},{"start":{"line":108,"column":15},"end":{"line":108,"column":65}}]},"6":{"line":126,"type":"cond-expr","locations":[{"start":{"line":126,"column":37},"end":{"line":126,"column":48}},{"start":{"line":126,"column":51},"end":{"line":126,"column":60}}]},"7":{"line":149,"type":"if","locations":[{"start":{"line":149,"column":8},"end":{"line":149,"column":8}},{"start":{"line":149,"column":8},"end":{"line":149,"column":8}}]},"8":{"line":156,"type":"cond-expr","locations":[{"start":{"line":156,"column":44},"end":{"line":156,"column":65}},{"start":{"line":156,"column":68},"end":{"line":156,"column":70}}]},"9":{"line":171,"type":"binary-expr","locations":[{"start":{"line":171,"column":19},"end":{"line":171,"column":32}},{"start":{"line":171,"column":36},"end":{"line":171,"column":45}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var __extends = (this && this.__extends) || function (d, b) {","    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];","    function __() { this.constructor = d; }","    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());","};","var React = require('react');","var react_1 = require('react');","var c3 = require('c3');","var react_2 = require(\"react\");","exports.TYPE_INFO = {","    type: \"chart\",","    name: \"Chart\",","    description: \"Renders a chart. Will be way more flexible in future.\",","    settings: [","        {","            id: 'datasource',","            name: 'Datasource',","            type: 'datasource'","        },","        {","            id: 'chartType',","            name: 'Chart Type',","            type: 'option',","            defaultValue: 'spline',","            options: [","                'line',","                'spline',","                'step',","                'area',","                'area-spline',","                'area-step',","                'bar',","                'scatter',","                'pie',","                'donut',","                'gauge'","            ]","        },","        {","            id: 'dataKeys',","            type: \"json\",","            name: \"Data Keys\",","            description: \"An array of Keys of an data object that define the data sets\",","            defaultValue: '[\"value\"]'","        },","        {","            id: 'xKey',","            type: \"string\",","            name: \"X Key\",","            description: \"Key of an data object that defines the X value\",","            defaultValue: \"x\"","        },","        {","            id: 'names',","            type: \"json\",","            name: \"Data Names\",","            description: \"Json object that maps Data Keys to displayed names\",","            defaultValue: '{\"value\": \"My Value\"}'","        },","        {","            id: 'gaugeData',","            type: \"json\",","            name: \"Gauge Data\",","            description: \"Json object that is passed as configuration for gauge chats\",","            defaultValue: JSON.stringify({ \"min\": 0, \"max\": 100, units: ' %' })","        } /*,","         {","         id: 'donutData',","         type: \"json\",","         name: \"Gauge Data\",","         description: \"Json object that maps Data Keys to displayed names\",","         defaultValue: JSON.stringify({title: 'Title'})","         }*/","    ]","};","function safeParseJsonObject(string) {","    try {","        return JSON.parse(string);","    }","    catch (e) {","        console.error(\"Was not able to parse JSON: \" + string);","        return {};","    }","}","function safeParseJsonArray(string) {","    try {","        return JSON.parse(string);","    }","    catch (e) {","        console.error(\"Was not able to parse JSON: \" + string);","        return {};","    }","}","var Widget = (function (_super) {","    __extends(Widget, _super);","    function Widget() {","        _super.apply(this, arguments);","    }","    Widget.prototype.componentDidMount = function () {","        this._createChart(this.props);","    };","    Widget.prototype.componentWillReceiveProps = function (nextProps) {","        if (nextProps.settings !== this.settings","            || nextProps.state.height !== this.props.state.height) {","            this._createChart(nextProps);","        }","    };","    Widget.prototype._createChart = function (props) {","        var config = props.state.settings;","        var data = props.getData(config.datasource);","        this.chart = c3.generate({","            bindto: '#chart-' + props.state.id,","            size: {","                height: props.state.availableHeightPx","            },","            data: {","                json: data,","                type: config.chartType,","                // Seems not to work with chart.load, so on update props we have to recreate the chart to update","                names: safeParseJsonObject(config.names),","                keys: {","                    x: config.xKey ? config.xKey : undefined,","                    value: safeParseJsonArray(config.dataKeys)","                }","            },","            axis: {","                x: {","                    tick: {","                        culling: false","                    }","                }","            },","            gauge: safeParseJsonObject(config.gaugeData),","            donut: {","                label: {","                    show: false","                }","            },","            transition: {","                duration: 0","            }","        });","    };","    Widget.prototype._renderChart = function () {","        if (!this.chart) {","            return;","        }","        var props = this.props;","        var settings = props.state.settings;","        var data = props.getData(settings.datasource);","        // TODO: Do not take last element, but all new elements ;)","        var lastElement = data.length > 0 ? data[data.length - 1] : {};","        /* chart.flow does not work with x axis categories and messes up the x values.","         this.chart.flow({","         json: [lastElement],","         keys: {","         //x: \"x\",//config.xKey || undefined,","         value: safeParseJsonObject(config.dataKeys)","         },","         labels: false,","         //to: firstElement[config.xKey],","         duration: 500","         });     */","        this.chart.load({","            json: data,","            keys: {","                x: settings.xKey || undefined,","                value: safeParseJsonObject(settings.dataKeys)","            },","            labels: false","        });","    };","    Widget.prototype.render = function () {","        this._renderChart();","        return React.createElement(\"div\", {style: { padding: \"10px\" }}, React.createElement(\"div\", {className: \"\", id: 'chart-' + this.props.state.id}), \" \");","    };","    Widget.prototype.componentWillUnmount = function () {","        console.log(\"Unmounted Chart Widget\");","    };","    Widget.prototype.dispose = function () {","        console.log(\"Disposed Chart Widget\");","    };","    return Widget;","}(react_1.Component));","exports.Widget = Widget;","// TODO: Move to core, for simple reuse","Widget.propTypes = {","    getData: react_2.PropTypes.func.isRequired,","    state: react_2.PropTypes.shape({","        height: react_2.PropTypes.number.isRequired,","        id: react_2.PropTypes.string.isRequired","    }).isRequired","};",""]};
 	}
-	function safeParseJsonArray(string) {
-	    try {
-	        return JSON.parse(string);
-	    }
-	    catch (e) {
-	        console.error("Was not able to parse JSON: " + string);
-	        return {};
-	    }
-	}
-	var Widget = (function (_super) {
-	    __extends(Widget, _super);
-	    function Widget() {
-	        _super.apply(this, arguments);
-	    }
-	    Widget.prototype.componentDidMount = function () {
-	        this._createChart(this.props);
-	    };
-	    Widget.prototype.componentWillReceiveProps = function (nextProps) {
-	        if (nextProps.settings !== this.settings
-	            || nextProps.state.height !== this.props.state.height) {
-	            this._createChart(nextProps);
-	        }
-	    };
-	    Widget.prototype._createChart = function (props) {
-	        var config = props.state.settings;
-	        var data = props.getData(config.datasource);
-	        this.chart = c3.generate({
-	            bindto: '#chart-' + props.state.id,
-	            size: {
-	                height: props.state.availableHeightPx
-	            },
-	            data: {
-	                json: data,
-	                type: config.chartType,
-	                // Seems not to work with chart.load, so on update props we have to recreate the chart to update
-	                names: safeParseJsonObject(config.names),
-	                keys: {
-	                    x: config.xKey ? config.xKey : undefined,
-	                    value: safeParseJsonArray(config.dataKeys)
-	                }
-	            },
-	            axis: {
-	                x: {
-	                    tick: {
-	                        culling: false
-	                    }
-	                }
-	            },
-	            gauge: safeParseJsonObject(config.gaugeData),
-	            donut: {
-	                label: {
-	                    show: false
-	                }
-	            },
-	            transition: {
-	                duration: 0
-	            }
-	        });
-	    };
-	    Widget.prototype._renderChart = function () {
-	        if (!this.chart) {
-	            return;
-	        }
-	        var props = this.props;
-	        var settings = props.state.settings;
-	        var data = props.getData(settings.datasource);
-	        // TODO: Do not take last element, but all new elements ;)
-	        var lastElement = data.length > 0 ? data[data.length - 1] : {};
-	        /* chart.flow does not work with x axis categories and messes up the x values.
-	         this.chart.flow({
-	         json: [lastElement],
-	         keys: {
-	         //x: "x",//config.xKey || undefined,
-	         value: safeParseJsonObject(config.dataKeys)
-	         },
-	         labels: false,
-	         //to: firstElement[config.xKey],
-	         duration: 500
-	         });     */
-	        this.chart.load({
-	            json: data,
-	            keys: {
-	                x: settings.xKey || undefined,
-	                value: safeParseJsonObject(settings.dataKeys)
-	            },
-	            labels: false
-	        });
-	    };
-	    Widget.prototype.render = function () {
-	        this._renderChart();
-	        return React.createElement("div", {style: { padding: "10px" }}, React.createElement("div", {className: "", id: 'chart-' + this.props.state.id}), " ");
-	    };
-	    Widget.prototype.componentWillUnmount = function () {
-	        console.log("Unmounted Chart Widget");
-	    };
-	    Widget.prototype.dispose = function () {
-	        console.log("Disposed Chart Widget");
-	    };
-	    return Widget;
-	}(react_1.Component));
-	exports.Widget = Widget;
-	// TODO: Move to core, for simple reuse
-	Widget.propTypes = {
-	    getData: react_2.PropTypes.func.isRequired,
-	    state: react_2.PropTypes.shape({
-	        height: react_2.PropTypes.number.isRequired,
-	        id: react_2.PropTypes.string.isRequired
-	    }).isRequired
-	};
+	__cov_6MV2Ag759i28HsZzmYSgRA = __cov_6MV2Ag759i28HsZzmYSgRA['/home/travis/build/Niondir/iot-dashboard/src/widgets/plugins/chartWidget.js'];
+	__cov_6MV2Ag759i28HsZzmYSgRA.s['1']++;var __extends=(__cov_6MV2Ag759i28HsZzmYSgRA.b['1'][0]++,this)&&(__cov_6MV2Ag759i28HsZzmYSgRA.b['1'][1]++,this.__extends)||(__cov_6MV2Ag759i28HsZzmYSgRA.b['1'][2]++,function(d,b){__cov_6MV2Ag759i28HsZzmYSgRA.f['1']++;__cov_6MV2Ag759i28HsZzmYSgRA.s['2']++;for(var p in b){__cov_6MV2Ag759i28HsZzmYSgRA.s['3']++;if(b.hasOwnProperty(p)){__cov_6MV2Ag759i28HsZzmYSgRA.b['2'][0]++;__cov_6MV2Ag759i28HsZzmYSgRA.s['4']++;d[p]=b[p];}else{__cov_6MV2Ag759i28HsZzmYSgRA.b['2'][1]++;}}function __(){__cov_6MV2Ag759i28HsZzmYSgRA.f['2']++;__cov_6MV2Ag759i28HsZzmYSgRA.s['6']++;this.constructor=d;}__cov_6MV2Ag759i28HsZzmYSgRA.s['7']++;d.prototype=b===null?(__cov_6MV2Ag759i28HsZzmYSgRA.b['3'][0]++,Object.create(b)):(__cov_6MV2Ag759i28HsZzmYSgRA.b['3'][1]++,(__.prototype=b.prototype,new __()));});__cov_6MV2Ag759i28HsZzmYSgRA.s['8']++;var React=__webpack_require__(20);__cov_6MV2Ag759i28HsZzmYSgRA.s['9']++;var react_1=__webpack_require__(20);__cov_6MV2Ag759i28HsZzmYSgRA.s['10']++;var c3=__webpack_require__(100);__cov_6MV2Ag759i28HsZzmYSgRA.s['11']++;var react_2=__webpack_require__(20);__cov_6MV2Ag759i28HsZzmYSgRA.s['12']++;exports.TYPE_INFO={type:'chart',name:'Chart',description:'Renders a chart. Will be way more flexible in future.',settings:[{id:'datasource',name:'Datasource',type:'datasource'},{id:'chartType',name:'Chart Type',type:'option',defaultValue:'spline',options:['line','spline','step','area','area-spline','area-step','bar','scatter','pie','donut','gauge']},{id:'dataKeys',type:'json',name:'Data Keys',description:'An array of Keys of an data object that define the data sets',defaultValue:'["value"]'},{id:'xKey',type:'string',name:'X Key',description:'Key of an data object that defines the X value',defaultValue:'x'},{id:'names',type:'json',name:'Data Names',description:'Json object that maps Data Keys to displayed names',defaultValue:'{"value": "My Value"}'},{id:'gaugeData',type:'json',name:'Gauge Data',description:'Json object that is passed as configuration for gauge chats',defaultValue:JSON.stringify({'min':0,'max':100,units:' %'})}]};function safeParseJsonObject(string){__cov_6MV2Ag759i28HsZzmYSgRA.f['3']++;__cov_6MV2Ag759i28HsZzmYSgRA.s['14']++;try{__cov_6MV2Ag759i28HsZzmYSgRA.s['15']++;return JSON.parse(string);}catch(e){__cov_6MV2Ag759i28HsZzmYSgRA.s['16']++;console.error('Was not able to parse JSON: '+string);__cov_6MV2Ag759i28HsZzmYSgRA.s['17']++;return{};}}function safeParseJsonArray(string){__cov_6MV2Ag759i28HsZzmYSgRA.f['4']++;__cov_6MV2Ag759i28HsZzmYSgRA.s['19']++;try{__cov_6MV2Ag759i28HsZzmYSgRA.s['20']++;return JSON.parse(string);}catch(e){__cov_6MV2Ag759i28HsZzmYSgRA.s['21']++;console.error('Was not able to parse JSON: '+string);__cov_6MV2Ag759i28HsZzmYSgRA.s['22']++;return{};}}__cov_6MV2Ag759i28HsZzmYSgRA.s['23']++;var Widget=function(_super){__cov_6MV2Ag759i28HsZzmYSgRA.f['5']++;__cov_6MV2Ag759i28HsZzmYSgRA.s['24']++;__extends(Widget,_super);function Widget(){__cov_6MV2Ag759i28HsZzmYSgRA.f['6']++;__cov_6MV2Ag759i28HsZzmYSgRA.s['26']++;_super.apply(this,arguments);}__cov_6MV2Ag759i28HsZzmYSgRA.s['27']++;Widget.prototype.componentDidMount=function(){__cov_6MV2Ag759i28HsZzmYSgRA.f['7']++;__cov_6MV2Ag759i28HsZzmYSgRA.s['28']++;this._createChart(this.props);};__cov_6MV2Ag759i28HsZzmYSgRA.s['29']++;Widget.prototype.componentWillReceiveProps=function(nextProps){__cov_6MV2Ag759i28HsZzmYSgRA.f['8']++;__cov_6MV2Ag759i28HsZzmYSgRA.s['30']++;if((__cov_6MV2Ag759i28HsZzmYSgRA.b['5'][0]++,nextProps.settings!==this.settings)||(__cov_6MV2Ag759i28HsZzmYSgRA.b['5'][1]++,nextProps.state.height!==this.props.state.height)){__cov_6MV2Ag759i28HsZzmYSgRA.b['4'][0]++;__cov_6MV2Ag759i28HsZzmYSgRA.s['31']++;this._createChart(nextProps);}else{__cov_6MV2Ag759i28HsZzmYSgRA.b['4'][1]++;}};__cov_6MV2Ag759i28HsZzmYSgRA.s['32']++;Widget.prototype._createChart=function(props){__cov_6MV2Ag759i28HsZzmYSgRA.f['9']++;__cov_6MV2Ag759i28HsZzmYSgRA.s['33']++;var config=props.state.settings;__cov_6MV2Ag759i28HsZzmYSgRA.s['34']++;var data=props.getData(config.datasource);__cov_6MV2Ag759i28HsZzmYSgRA.s['35']++;this.chart=c3.generate({bindto:'#chart-'+props.state.id,size:{height:props.state.availableHeightPx},data:{json:data,type:config.chartType,names:safeParseJsonObject(config.names),keys:{x:config.xKey?(__cov_6MV2Ag759i28HsZzmYSgRA.b['6'][0]++,config.xKey):(__cov_6MV2Ag759i28HsZzmYSgRA.b['6'][1]++,undefined),value:safeParseJsonArray(config.dataKeys)}},axis:{x:{tick:{culling:false}}},gauge:safeParseJsonObject(config.gaugeData),donut:{label:{show:false}},transition:{duration:0}});};__cov_6MV2Ag759i28HsZzmYSgRA.s['36']++;Widget.prototype._renderChart=function(){__cov_6MV2Ag759i28HsZzmYSgRA.f['10']++;__cov_6MV2Ag759i28HsZzmYSgRA.s['37']++;if(!this.chart){__cov_6MV2Ag759i28HsZzmYSgRA.b['7'][0]++;__cov_6MV2Ag759i28HsZzmYSgRA.s['38']++;return;}else{__cov_6MV2Ag759i28HsZzmYSgRA.b['7'][1]++;}__cov_6MV2Ag759i28HsZzmYSgRA.s['39']++;var props=this.props;__cov_6MV2Ag759i28HsZzmYSgRA.s['40']++;var settings=props.state.settings;__cov_6MV2Ag759i28HsZzmYSgRA.s['41']++;var data=props.getData(settings.datasource);__cov_6MV2Ag759i28HsZzmYSgRA.s['42']++;var lastElement=data.length>0?(__cov_6MV2Ag759i28HsZzmYSgRA.b['8'][0]++,data[data.length-1]):(__cov_6MV2Ag759i28HsZzmYSgRA.b['8'][1]++,{});__cov_6MV2Ag759i28HsZzmYSgRA.s['43']++;this.chart.load({json:data,keys:{x:(__cov_6MV2Ag759i28HsZzmYSgRA.b['9'][0]++,settings.xKey)||(__cov_6MV2Ag759i28HsZzmYSgRA.b['9'][1]++,undefined),value:safeParseJsonObject(settings.dataKeys)},labels:false});};__cov_6MV2Ag759i28HsZzmYSgRA.s['44']++;Widget.prototype.render=function(){__cov_6MV2Ag759i28HsZzmYSgRA.f['11']++;__cov_6MV2Ag759i28HsZzmYSgRA.s['45']++;this._renderChart();__cov_6MV2Ag759i28HsZzmYSgRA.s['46']++;return React.createElement('div',{style:{padding:'10px'}},React.createElement('div',{className:'',id:'chart-'+this.props.state.id}),' ');};__cov_6MV2Ag759i28HsZzmYSgRA.s['47']++;Widget.prototype.componentWillUnmount=function(){__cov_6MV2Ag759i28HsZzmYSgRA.f['12']++;__cov_6MV2Ag759i28HsZzmYSgRA.s['48']++;console.log('Unmounted Chart Widget');};__cov_6MV2Ag759i28HsZzmYSgRA.s['49']++;Widget.prototype.dispose=function(){__cov_6MV2Ag759i28HsZzmYSgRA.f['13']++;__cov_6MV2Ag759i28HsZzmYSgRA.s['50']++;console.log('Disposed Chart Widget');};__cov_6MV2Ag759i28HsZzmYSgRA.s['51']++;return Widget;}(react_1.Component);__cov_6MV2Ag759i28HsZzmYSgRA.s['52']++;exports.Widget=Widget;__cov_6MV2Ag759i28HsZzmYSgRA.s['53']++;Widget.propTypes={getData:react_2.PropTypes.func.isRequired,state:react_2.PropTypes.shape({height:react_2.PropTypes.number.isRequired,id:react_2.PropTypes.string.isRequired}).isRequired};
 
 
 /***/ },
@@ -3907,258 +793,60 @@ webpackJsonp([0],[
 /* 102 */
 /***/ function(module, exports) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var uiRefreshInterval;
-	function start(store) {
-	    if (uiRefreshInterval) {
-	        clearInterval(uiRefreshInterval);
-	    }
-	    uiRefreshInterval = setInterval(function () {
-	        //store.dispatch(Datasource.fetchDatasourceData());
-	    }, 1000);
+	var __cov_p_rnGwzZfIORSmVewW$uwQ = (Function('return this'))();
+	if (!__cov_p_rnGwzZfIORSmVewW$uwQ.__coverage__) { __cov_p_rnGwzZfIORSmVewW$uwQ.__coverage__ = {}; }
+	__cov_p_rnGwzZfIORSmVewW$uwQ = __cov_p_rnGwzZfIORSmVewW$uwQ.__coverage__;
+	if (!(__cov_p_rnGwzZfIORSmVewW$uwQ['/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourceWorker.js'])) {
+	   __cov_p_rnGwzZfIORSmVewW$uwQ['/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourceWorker.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourceWorker.js","s":{"1":0,"2":1,"3":0,"4":0,"5":0,"6":0,"7":1,"8":0,"9":0,"10":0,"11":0},"b":{"1":[0,0],"2":[0,0]},"f":{"1":0,"2":0,"3":0},"fnMap":{"1":{"name":"start","line":6,"loc":{"start":{"line":6,"column":0},"end":{"line":6,"column":22}}},"2":{"name":"(anonymous_2)","line":10,"loc":{"start":{"line":10,"column":36},"end":{"line":10,"column":48}}},"3":{"name":"stop","line":15,"loc":{"start":{"line":15,"column":0},"end":{"line":15,"column":16}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":22}},"2":{"start":{"line":6,"column":0},"end":{"line":13,"column":1}},"3":{"start":{"line":7,"column":4},"end":{"line":9,"column":5}},"4":{"start":{"line":8,"column":8},"end":{"line":8,"column":41}},"5":{"start":{"line":10,"column":4},"end":{"line":12,"column":13}},"6":{"start":{"line":14,"column":0},"end":{"line":14,"column":22}},"7":{"start":{"line":15,"column":0},"end":{"line":20,"column":1}},"8":{"start":{"line":16,"column":4},"end":{"line":19,"column":5}},"9":{"start":{"line":17,"column":8},"end":{"line":17,"column":41}},"10":{"start":{"line":18,"column":8},"end":{"line":18,"column":33}},"11":{"start":{"line":21,"column":0},"end":{"line":21,"column":20}}},"branchMap":{"1":{"line":7,"type":"if","locations":[{"start":{"line":7,"column":4},"end":{"line":7,"column":4}},{"start":{"line":7,"column":4},"end":{"line":7,"column":4}}]},"2":{"line":16,"type":"if","locations":[{"start":{"line":16,"column":4},"end":{"line":16,"column":4}},{"start":{"line":16,"column":4},"end":{"line":16,"column":4}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public"," * License, v. 2.0. If a copy of the MPL was not distributed with this"," * file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var uiRefreshInterval;","function start(store) {","    if (uiRefreshInterval) {","        clearInterval(uiRefreshInterval);","    }","    uiRefreshInterval = setInterval(function () {","        //store.dispatch(Datasource.fetchDatasourceData());","    }, 1000);","}","exports.start = start;","function stop() {","    if (uiRefreshInterval) {","        clearInterval(uiRefreshInterval);","        uiRefreshInterval = null;","    }","}","exports.stop = stop;",""]};
 	}
-	exports.start = start;
-	function stop() {
-	    if (uiRefreshInterval) {
-	        clearInterval(uiRefreshInterval);
-	        uiRefreshInterval = null;
-	    }
-	}
-	exports.stop = stop;
+	__cov_p_rnGwzZfIORSmVewW$uwQ = __cov_p_rnGwzZfIORSmVewW$uwQ['/home/travis/build/Niondir/iot-dashboard/src/datasource/datasourceWorker.js'];
+	__cov_p_rnGwzZfIORSmVewW$uwQ.s['1']++;var uiRefreshInterval;function start(store){__cov_p_rnGwzZfIORSmVewW$uwQ.f['1']++;__cov_p_rnGwzZfIORSmVewW$uwQ.s['3']++;if(uiRefreshInterval){__cov_p_rnGwzZfIORSmVewW$uwQ.b['1'][0]++;__cov_p_rnGwzZfIORSmVewW$uwQ.s['4']++;clearInterval(uiRefreshInterval);}else{__cov_p_rnGwzZfIORSmVewW$uwQ.b['1'][1]++;}__cov_p_rnGwzZfIORSmVewW$uwQ.s['5']++;uiRefreshInterval=setInterval(function(){__cov_p_rnGwzZfIORSmVewW$uwQ.f['2']++;},1000);}__cov_p_rnGwzZfIORSmVewW$uwQ.s['6']++;exports.start=start;function stop(){__cov_p_rnGwzZfIORSmVewW$uwQ.f['3']++;__cov_p_rnGwzZfIORSmVewW$uwQ.s['8']++;if(uiRefreshInterval){__cov_p_rnGwzZfIORSmVewW$uwQ.b['2'][0]++;__cov_p_rnGwzZfIORSmVewW$uwQ.s['9']++;clearInterval(uiRefreshInterval);__cov_p_rnGwzZfIORSmVewW$uwQ.s['10']++;uiRefreshInterval=null;}else{__cov_p_rnGwzZfIORSmVewW$uwQ.b['2'][1]++;}}__cov_p_rnGwzZfIORSmVewW$uwQ.s['11']++;exports.stop=stop;
 
 
 /***/ },
 /* 103 */
 /***/ function(module, exports) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	exports.TYPE_INFO = {
-	    type: "random",
-	    name: "Random",
-	    description: "A datasource that provides a random value each tick",
-	    settings: [
-	        {
-	            id: "maxValues",
-	            name: "Max Values",
-	            description: "Maximum number of values stored",
-	            type: "number"
-	        },
-	        {
-	            id: "min",
-	            name: "Min Value",
-	            type: "number",
-	            defaultValue: 0
-	        },
-	        {
-	            id: "max",
-	            name: "Max Value",
-	            type: "number",
-	            defaultValue: 100
-	        }
-	    ]
-	};
-	function getRandomInt(min, max) {
-	    return Math.floor(Math.random() * (max - min + 1)) + min;
+	var __cov_jnS$$sqQ5yP_a$_gvFve2w = (Function('return this'))();
+	if (!__cov_jnS$$sqQ5yP_a$_gvFve2w.__coverage__) { __cov_jnS$$sqQ5yP_a$_gvFve2w.__coverage__ = {}; }
+	__cov_jnS$$sqQ5yP_a$_gvFve2w = __cov_jnS$$sqQ5yP_a$_gvFve2w.__coverage__;
+	if (!(__cov_jnS$$sqQ5yP_a$_gvFve2w['/home/travis/build/Niondir/iot-dashboard/src/datasource/plugins/randomDatasource.js'])) {
+	   __cov_jnS$$sqQ5yP_a$_gvFve2w['/home/travis/build/Niondir/iot-dashboard/src/datasource/plugins/randomDatasource.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/datasource/plugins/randomDatasource.js","s":{"1":0,"2":1,"3":0,"4":0,"5":1,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0,"31":0},"b":{"1":[0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0},"fnMap":{"1":{"name":"getRandomInt","line":30,"loc":{"start":{"line":30,"column":0},"end":{"line":30,"column":32}}},"2":{"name":"(anonymous_2)","line":33,"loc":{"start":{"line":33,"column":18},"end":{"line":33,"column":30}}},"3":{"name":"Datasource","line":34,"loc":{"start":{"line":34,"column":4},"end":{"line":34,"column":31}}},"4":{"name":"(anonymous_4)","line":43,"loc":{"start":{"line":43,"column":54},"end":{"line":43,"column":71}}},"5":{"name":"(anonymous_5)","line":45,"loc":{"start":{"line":45,"column":37},"end":{"line":45,"column":64}}},"6":{"name":"(anonymous_6)","line":49,"loc":{"start":{"line":49,"column":37},"end":{"line":49,"column":49}}},"7":{"name":"(anonymous_7)","line":57,"loc":{"start":{"line":57,"column":38},"end":{"line":57,"column":50}}},"8":{"name":"(anonymous_8)","line":64,"loc":{"start":{"line":64,"column":35},"end":{"line":64,"column":47}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":29,"column":2}},"2":{"start":{"line":30,"column":0},"end":{"line":32,"column":1}},"3":{"start":{"line":31,"column":4},"end":{"line":31,"column":61}},"4":{"start":{"line":33,"column":0},"end":{"line":69,"column":5}},"5":{"start":{"line":34,"column":4},"end":{"line":42,"column":5}},"6":{"start":{"line":35,"column":8},"end":{"line":35,"column":39}},"7":{"start":{"line":37,"column":8},"end":{"line":37,"column":37}},"8":{"start":{"line":38,"column":8},"end":{"line":38,"column":19}},"9":{"start":{"line":39,"column":8},"end":{"line":41,"column":9}},"10":{"start":{"line":40,"column":12},"end":{"line":40,"column":60}},"11":{"start":{"line":43,"column":4},"end":{"line":44,"column":6}},"12":{"start":{"line":45,"column":4},"end":{"line":48,"column":6}},"13":{"start":{"line":46,"column":8},"end":{"line":46,"column":34}},"14":{"start":{"line":47,"column":8},"end":{"line":47,"column":35}},"15":{"start":{"line":49,"column":4},"end":{"line":56,"column":6}},"16":{"start":{"line":50,"column":8},"end":{"line":50,"column":45}},"17":{"start":{"line":51,"column":8},"end":{"line":51,"column":76}},"18":{"start":{"line":52,"column":8},"end":{"line":54,"column":9}},"19":{"start":{"line":53,"column":12},"end":{"line":53,"column":33}},"20":{"start":{"line":55,"column":8},"end":{"line":55,"column":28}},"21":{"start":{"line":57,"column":4},"end":{"line":63,"column":6}},"22":{"start":{"line":58,"column":8},"end":{"line":58,"column":49}},"23":{"start":{"line":59,"column":8},"end":{"line":59,"column":44}},"24":{"start":{"line":60,"column":8},"end":{"line":60,"column":46}},"25":{"start":{"line":61,"column":8},"end":{"line":61,"column":102}},"26":{"start":{"line":62,"column":8},"end":{"line":62,"column":24}},"27":{"start":{"line":64,"column":4},"end":{"line":67,"column":6}},"28":{"start":{"line":65,"column":8},"end":{"line":65,"column":26}},"29":{"start":{"line":66,"column":8},"end":{"line":66,"column":51}},"30":{"start":{"line":68,"column":4},"end":{"line":68,"column":22}},"31":{"start":{"line":70,"column":0},"end":{"line":70,"column":32}}},"branchMap":{"1":{"line":37,"type":"binary-expr","locations":[{"start":{"line":37,"column":23},"end":{"line":37,"column":30}},{"start":{"line":37,"column":34},"end":{"line":37,"column":36}}]},"2":{"line":39,"type":"if","locations":[{"start":{"line":39,"column":8},"end":{"line":39,"column":8}},{"start":{"line":39,"column":8},"end":{"line":39,"column":8}}]},"3":{"line":40,"type":"binary-expr","locations":[{"start":{"line":40,"column":21},"end":{"line":40,"column":54}},{"start":{"line":40,"column":58},"end":{"line":40,"column":59}}]},"4":{"line":51,"type":"binary-expr","locations":[{"start":{"line":51,"column":24},"end":{"line":51,"column":67}},{"start":{"line":51,"column":71},"end":{"line":51,"column":75}}]},"5":{"line":59,"type":"binary-expr","locations":[{"start":{"line":59,"column":25},"end":{"line":59,"column":37}},{"start":{"line":59,"column":41},"end":{"line":59,"column":42}}]},"6":{"line":60,"type":"binary-expr","locations":[{"start":{"line":60,"column":25},"end":{"line":60,"column":37}},{"start":{"line":60,"column":41},"end":{"line":60,"column":44}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public"," * License, v. 2.0. If a copy of the MPL was not distributed with this"," * file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","exports.TYPE_INFO = {","    type: \"random\",","    name: \"Random\",","    description: \"A datasource that provides a random value each tick\",","    settings: [","        {","            id: \"maxValues\",","            name: \"Max Values\",","            description: \"Maximum number of values stored\",","            type: \"number\"","        },","        {","            id: \"min\",","            name: \"Min Value\",","            type: \"number\",","            defaultValue: 0","        },","        {","            id: \"max\",","            name: \"Max Value\",","            type: \"number\",","            defaultValue: 100","        }","    ]","};","function getRandomInt(min, max) {","    return Math.floor(Math.random() * (max - min + 1)) + min;","}","var Datasource = (function () {","    function Datasource(props) {","        var history = props.state.data;","        // Initialize with non random values to demonstrate loading of historic values","        this.history = history || []; // [{value: 10}, {value: 20}, {value: 30}, {value: 40}, {value: 50}]","        this.x = 0;","        if (this.history.length > 1) {","            this.x = history[history.length - 1].x + 1 || 0;","        }","    }","    Datasource.prototype.datasourceWillReceiveProps = function (props) {","    };","    Datasource.prototype.fetchData = function (resolve, reject) {","        console.log(\"Fetch data\");","        resolve(this.fetchValue());","    };","    Datasource.prototype.getValues = function () {","        this.history.push(this.fetchValue());","        var maxValues = Number(this.props.state.settings.maxValues) || 1000;","        while (this.history.length > maxValues) {","            this.history.shift();","        }","        return this.history;","    };","    Datasource.prototype.fetchValue = function () {","        var settings = this.props.state.settings;","        var min = Number(settings.min || 0);","        var max = Number(settings.max || 100);","        var newValue = { x: this.x++, value: getRandomInt(min, max), value2: getRandomInt(min, max) };","        return newValue;","    };","    Datasource.prototype.dispose = function () {","        this.history = [];","        console.log(\"Random Datasource destroyed\");","    };","    return Datasource;","}());","exports.Datasource = Datasource;",""]};
 	}
-	var Datasource = (function () {
-	    function Datasource(props) {
-	        var history = props.state.data;
-	        // Initialize with non random values to demonstrate loading of historic values
-	        this.history = history || []; // [{value: 10}, {value: 20}, {value: 30}, {value: 40}, {value: 50}]
-	        this.x = 0;
-	        if (this.history.length > 1) {
-	            this.x = history[history.length - 1].x + 1 || 0;
-	        }
-	    }
-	    Datasource.prototype.datasourceWillReceiveProps = function (props) {
-	    };
-	    Datasource.prototype.fetchData = function (resolve, reject) {
-	        console.log("Fetch data");
-	        resolve(this.fetchValue());
-	    };
-	    Datasource.prototype.getValues = function () {
-	        this.history.push(this.fetchValue());
-	        var maxValues = Number(this.props.state.settings.maxValues) || 1000;
-	        while (this.history.length > maxValues) {
-	            this.history.shift();
-	        }
-	        return this.history;
-	    };
-	    Datasource.prototype.fetchValue = function () {
-	        var settings = this.props.state.settings;
-	        var min = Number(settings.min || 0);
-	        var max = Number(settings.max || 100);
-	        var newValue = { x: this.x++, value: getRandomInt(min, max), value2: getRandomInt(min, max) };
-	        return newValue;
-	    };
-	    Datasource.prototype.dispose = function () {
-	        this.history = [];
-	        console.log("Random Datasource destroyed");
-	    };
-	    return Datasource;
-	}());
-	exports.Datasource = Datasource;
+	__cov_jnS$$sqQ5yP_a$_gvFve2w = __cov_jnS$$sqQ5yP_a$_gvFve2w['/home/travis/build/Niondir/iot-dashboard/src/datasource/plugins/randomDatasource.js'];
+	__cov_jnS$$sqQ5yP_a$_gvFve2w.s['1']++;exports.TYPE_INFO={type:'random',name:'Random',description:'A datasource that provides a random value each tick',settings:[{id:'maxValues',name:'Max Values',description:'Maximum number of values stored',type:'number'},{id:'min',name:'Min Value',type:'number',defaultValue:0},{id:'max',name:'Max Value',type:'number',defaultValue:100}]};function getRandomInt(min,max){__cov_jnS$$sqQ5yP_a$_gvFve2w.f['1']++;__cov_jnS$$sqQ5yP_a$_gvFve2w.s['3']++;return Math.floor(Math.random()*(max-min+1))+min;}__cov_jnS$$sqQ5yP_a$_gvFve2w.s['4']++;var Datasource=function(){__cov_jnS$$sqQ5yP_a$_gvFve2w.f['2']++;function Datasource(props){__cov_jnS$$sqQ5yP_a$_gvFve2w.f['3']++;__cov_jnS$$sqQ5yP_a$_gvFve2w.s['6']++;var history=props.state.data;__cov_jnS$$sqQ5yP_a$_gvFve2w.s['7']++;this.history=(__cov_jnS$$sqQ5yP_a$_gvFve2w.b['1'][0]++,history)||(__cov_jnS$$sqQ5yP_a$_gvFve2w.b['1'][1]++,[]);__cov_jnS$$sqQ5yP_a$_gvFve2w.s['8']++;this.x=0;__cov_jnS$$sqQ5yP_a$_gvFve2w.s['9']++;if(this.history.length>1){__cov_jnS$$sqQ5yP_a$_gvFve2w.b['2'][0]++;__cov_jnS$$sqQ5yP_a$_gvFve2w.s['10']++;this.x=(__cov_jnS$$sqQ5yP_a$_gvFve2w.b['3'][0]++,history[history.length-1].x+1)||(__cov_jnS$$sqQ5yP_a$_gvFve2w.b['3'][1]++,0);}else{__cov_jnS$$sqQ5yP_a$_gvFve2w.b['2'][1]++;}}__cov_jnS$$sqQ5yP_a$_gvFve2w.s['11']++;Datasource.prototype.datasourceWillReceiveProps=function(props){__cov_jnS$$sqQ5yP_a$_gvFve2w.f['4']++;};__cov_jnS$$sqQ5yP_a$_gvFve2w.s['12']++;Datasource.prototype.fetchData=function(resolve,reject){__cov_jnS$$sqQ5yP_a$_gvFve2w.f['5']++;__cov_jnS$$sqQ5yP_a$_gvFve2w.s['13']++;console.log('Fetch data');__cov_jnS$$sqQ5yP_a$_gvFve2w.s['14']++;resolve(this.fetchValue());};__cov_jnS$$sqQ5yP_a$_gvFve2w.s['15']++;Datasource.prototype.getValues=function(){__cov_jnS$$sqQ5yP_a$_gvFve2w.f['6']++;__cov_jnS$$sqQ5yP_a$_gvFve2w.s['16']++;this.history.push(this.fetchValue());__cov_jnS$$sqQ5yP_a$_gvFve2w.s['17']++;var maxValues=(__cov_jnS$$sqQ5yP_a$_gvFve2w.b['4'][0]++,Number(this.props.state.settings.maxValues))||(__cov_jnS$$sqQ5yP_a$_gvFve2w.b['4'][1]++,1000);__cov_jnS$$sqQ5yP_a$_gvFve2w.s['18']++;while(this.history.length>maxValues){__cov_jnS$$sqQ5yP_a$_gvFve2w.s['19']++;this.history.shift();}__cov_jnS$$sqQ5yP_a$_gvFve2w.s['20']++;return this.history;};__cov_jnS$$sqQ5yP_a$_gvFve2w.s['21']++;Datasource.prototype.fetchValue=function(){__cov_jnS$$sqQ5yP_a$_gvFve2w.f['7']++;__cov_jnS$$sqQ5yP_a$_gvFve2w.s['22']++;var settings=this.props.state.settings;__cov_jnS$$sqQ5yP_a$_gvFve2w.s['23']++;var min=Number((__cov_jnS$$sqQ5yP_a$_gvFve2w.b['5'][0]++,settings.min)||(__cov_jnS$$sqQ5yP_a$_gvFve2w.b['5'][1]++,0));__cov_jnS$$sqQ5yP_a$_gvFve2w.s['24']++;var max=Number((__cov_jnS$$sqQ5yP_a$_gvFve2w.b['6'][0]++,settings.max)||(__cov_jnS$$sqQ5yP_a$_gvFve2w.b['6'][1]++,100));__cov_jnS$$sqQ5yP_a$_gvFve2w.s['25']++;var newValue={x:this.x++,value:getRandomInt(min,max),value2:getRandomInt(min,max)};__cov_jnS$$sqQ5yP_a$_gvFve2w.s['26']++;return newValue;};__cov_jnS$$sqQ5yP_a$_gvFve2w.s['27']++;Datasource.prototype.dispose=function(){__cov_jnS$$sqQ5yP_a$_gvFve2w.f['8']++;__cov_jnS$$sqQ5yP_a$_gvFve2w.s['28']++;this.history=[];__cov_jnS$$sqQ5yP_a$_gvFve2w.s['29']++;console.log('Random Datasource destroyed');};__cov_jnS$$sqQ5yP_a$_gvFve2w.s['30']++;return Datasource;}();__cov_jnS$$sqQ5yP_a$_gvFve2w.s['31']++;exports.Datasource=Datasource;
 
 
 /***/ },
 /* 104 */
 /***/ function(module, exports) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	exports.TYPE_INFO = {
-	    type: "time",
-	    name: "Time"
-	};
-	var Datasource = (function () {
-	    function Datasource() {
-	    }
-	    Datasource.prototype.renderTime = function () {
-	        var currentTime = new Date();
-	        var diem = 'AM';
-	        var h = currentTime.getHours();
-	        var m = currentTime.getMinutes();
-	        var s = currentTime.getSeconds();
-	        if (h === 0) {
-	            h = 12;
-	        }
-	        else if (h > 12) {
-	            h = h - 12;
-	            diem = 'PM';
-	        }
-	        if (m < 10) {
-	            m = '0' + m;
-	        }
-	        if (s < 10) {
-	            s = '0' + s;
-	        }
-	        return {
-	            hours: h,
-	            minutes: m,
-	            seconds: s,
-	            diem: diem
-	        };
-	    };
-	    Datasource.prototype.getValues = function () {
-	        var now = new Date();
-	        return [{ date: now }];
-	    };
-	    return Datasource;
-	}());
-	exports.Datasource = Datasource;
+	var __cov_uP6oDzq7wKll_qaJEyiZbw = (Function('return this'))();
+	if (!__cov_uP6oDzq7wKll_qaJEyiZbw.__coverage__) { __cov_uP6oDzq7wKll_qaJEyiZbw.__coverage__ = {}; }
+	__cov_uP6oDzq7wKll_qaJEyiZbw = __cov_uP6oDzq7wKll_qaJEyiZbw.__coverage__;
+	if (!(__cov_uP6oDzq7wKll_qaJEyiZbw['/home/travis/build/Niondir/iot-dashboard/src/datasource/plugins/timeDatasource.js'])) {
+	   __cov_uP6oDzq7wKll_qaJEyiZbw['/home/travis/build/Niondir/iot-dashboard/src/datasource/plugins/timeDatasource.js'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/datasource/plugins/timeDatasource.js","s":{"1":0,"2":0,"3":1,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0},"b":{"1":[0,0],"2":[0,0],"3":[0,0],"4":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0},"fnMap":{"1":{"name":"(anonymous_1)","line":9,"loc":{"start":{"line":9,"column":18},"end":{"line":9,"column":30}}},"2":{"name":"Datasource","line":10,"loc":{"start":{"line":10,"column":4},"end":{"line":10,"column":26}}},"3":{"name":"(anonymous_3)","line":12,"loc":{"start":{"line":12,"column":38},"end":{"line":12,"column":50}}},"4":{"name":"(anonymous_4)","line":38,"loc":{"start":{"line":38,"column":37},"end":{"line":38,"column":49}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":8,"column":2}},"2":{"start":{"line":9,"column":0},"end":{"line":43,"column":5}},"3":{"start":{"line":10,"column":4},"end":{"line":11,"column":5}},"4":{"start":{"line":12,"column":4},"end":{"line":37,"column":6}},"5":{"start":{"line":13,"column":8},"end":{"line":13,"column":37}},"6":{"start":{"line":14,"column":8},"end":{"line":14,"column":24}},"7":{"start":{"line":15,"column":8},"end":{"line":15,"column":39}},"8":{"start":{"line":16,"column":8},"end":{"line":16,"column":41}},"9":{"start":{"line":17,"column":8},"end":{"line":17,"column":41}},"10":{"start":{"line":18,"column":8},"end":{"line":24,"column":9}},"11":{"start":{"line":19,"column":12},"end":{"line":19,"column":19}},"12":{"start":{"line":21,"column":13},"end":{"line":24,"column":9}},"13":{"start":{"line":22,"column":12},"end":{"line":22,"column":23}},"14":{"start":{"line":23,"column":12},"end":{"line":23,"column":24}},"15":{"start":{"line":25,"column":8},"end":{"line":27,"column":9}},"16":{"start":{"line":26,"column":12},"end":{"line":26,"column":24}},"17":{"start":{"line":28,"column":8},"end":{"line":30,"column":9}},"18":{"start":{"line":29,"column":12},"end":{"line":29,"column":24}},"19":{"start":{"line":31,"column":8},"end":{"line":36,"column":10}},"20":{"start":{"line":38,"column":4},"end":{"line":41,"column":6}},"21":{"start":{"line":39,"column":8},"end":{"line":39,"column":29}},"22":{"start":{"line":40,"column":8},"end":{"line":40,"column":31}},"23":{"start":{"line":42,"column":4},"end":{"line":42,"column":22}},"24":{"start":{"line":44,"column":0},"end":{"line":44,"column":32}}},"branchMap":{"1":{"line":18,"type":"if","locations":[{"start":{"line":18,"column":8},"end":{"line":18,"column":8}},{"start":{"line":18,"column":8},"end":{"line":18,"column":8}}]},"2":{"line":21,"type":"if","locations":[{"start":{"line":21,"column":13},"end":{"line":21,"column":13}},{"start":{"line":21,"column":13},"end":{"line":21,"column":13}}]},"3":{"line":25,"type":"if","locations":[{"start":{"line":25,"column":8},"end":{"line":25,"column":8}},{"start":{"line":25,"column":8},"end":{"line":25,"column":8}}]},"4":{"line":28,"type":"if","locations":[{"start":{"line":28,"column":8},"end":{"line":28,"column":8}},{"start":{"line":28,"column":8},"end":{"line":28,"column":8}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","exports.TYPE_INFO = {","    type: \"time\",","    name: \"Time\"","};","var Datasource = (function () {","    function Datasource() {","    }","    Datasource.prototype.renderTime = function () {","        var currentTime = new Date();","        var diem = 'AM';","        var h = currentTime.getHours();","        var m = currentTime.getMinutes();","        var s = currentTime.getSeconds();","        if (h === 0) {","            h = 12;","        }","        else if (h > 12) {","            h = h - 12;","            diem = 'PM';","        }","        if (m < 10) {","            m = '0' + m;","        }","        if (s < 10) {","            s = '0' + s;","        }","        return {","            hours: h,","            minutes: m,","            seconds: s,","            diem: diem","        };","    };","    Datasource.prototype.getValues = function () {","        var now = new Date();","        return [{ date: now }];","    };","    return Datasource;","}());","exports.Datasource = Datasource;",""]};
+	}
+	__cov_uP6oDzq7wKll_qaJEyiZbw = __cov_uP6oDzq7wKll_qaJEyiZbw['/home/travis/build/Niondir/iot-dashboard/src/datasource/plugins/timeDatasource.js'];
+	__cov_uP6oDzq7wKll_qaJEyiZbw.s['1']++;exports.TYPE_INFO={type:'time',name:'Time'};__cov_uP6oDzq7wKll_qaJEyiZbw.s['2']++;var Datasource=function(){__cov_uP6oDzq7wKll_qaJEyiZbw.f['1']++;function Datasource(){__cov_uP6oDzq7wKll_qaJEyiZbw.f['2']++;}__cov_uP6oDzq7wKll_qaJEyiZbw.s['4']++;Datasource.prototype.renderTime=function(){__cov_uP6oDzq7wKll_qaJEyiZbw.f['3']++;__cov_uP6oDzq7wKll_qaJEyiZbw.s['5']++;var currentTime=new Date();__cov_uP6oDzq7wKll_qaJEyiZbw.s['6']++;var diem='AM';__cov_uP6oDzq7wKll_qaJEyiZbw.s['7']++;var h=currentTime.getHours();__cov_uP6oDzq7wKll_qaJEyiZbw.s['8']++;var m=currentTime.getMinutes();__cov_uP6oDzq7wKll_qaJEyiZbw.s['9']++;var s=currentTime.getSeconds();__cov_uP6oDzq7wKll_qaJEyiZbw.s['10']++;if(h===0){__cov_uP6oDzq7wKll_qaJEyiZbw.b['1'][0]++;__cov_uP6oDzq7wKll_qaJEyiZbw.s['11']++;h=12;}else{__cov_uP6oDzq7wKll_qaJEyiZbw.b['1'][1]++;__cov_uP6oDzq7wKll_qaJEyiZbw.s['12']++;if(h>12){__cov_uP6oDzq7wKll_qaJEyiZbw.b['2'][0]++;__cov_uP6oDzq7wKll_qaJEyiZbw.s['13']++;h=h-12;__cov_uP6oDzq7wKll_qaJEyiZbw.s['14']++;diem='PM';}else{__cov_uP6oDzq7wKll_qaJEyiZbw.b['2'][1]++;}}__cov_uP6oDzq7wKll_qaJEyiZbw.s['15']++;if(m<10){__cov_uP6oDzq7wKll_qaJEyiZbw.b['3'][0]++;__cov_uP6oDzq7wKll_qaJEyiZbw.s['16']++;m='0'+m;}else{__cov_uP6oDzq7wKll_qaJEyiZbw.b['3'][1]++;}__cov_uP6oDzq7wKll_qaJEyiZbw.s['17']++;if(s<10){__cov_uP6oDzq7wKll_qaJEyiZbw.b['4'][0]++;__cov_uP6oDzq7wKll_qaJEyiZbw.s['18']++;s='0'+s;}else{__cov_uP6oDzq7wKll_qaJEyiZbw.b['4'][1]++;}__cov_uP6oDzq7wKll_qaJEyiZbw.s['19']++;return{hours:h,minutes:m,seconds:s,diem:diem};};__cov_uP6oDzq7wKll_qaJEyiZbw.s['20']++;Datasource.prototype.getValues=function(){__cov_uP6oDzq7wKll_qaJEyiZbw.f['4']++;__cov_uP6oDzq7wKll_qaJEyiZbw.s['21']++;var now=new Date();__cov_uP6oDzq7wKll_qaJEyiZbw.s['22']++;return[{date:now}];};__cov_uP6oDzq7wKll_qaJEyiZbw.s['23']++;return Datasource;}();__cov_uP6oDzq7wKll_qaJEyiZbw.s['24']++;exports.Datasource=Datasource;
 
 
 /***/ },
 /* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Redux = __webpack_require__(40);
-	var redux_thunk_1 = __webpack_require__(106);
-	var createLogger = __webpack_require__(107);
-	var Widgets = __webpack_require__(45);
-	var WidgetConfig = __webpack_require__(49);
-	var Layouts = __webpack_require__(81);
-	var Datasource = __webpack_require__(58);
-	var Global = __webpack_require__(42);
-	var Import = __webpack_require__(90);
-	var Modal = __webpack_require__(50);
-	var Persist = __webpack_require__(97);
-	var redux_form_1 = __webpack_require__(86);
-	var Action = __webpack_require__(43);
-	var WidgetPlugins = __webpack_require__(52);
-	var DatasourcePlugins = __webpack_require__(96);
-	var Config = __webpack_require__(108);
-	var appReducer = Redux.combineReducers({
-	    config: Config.config,
-	    widgets: Widgets.widgets,
-	    widgetConfig: WidgetConfig.widgetConfigDialog,
-	    layouts: Layouts.layouts,
-	    currentLayout: Layouts.currentLayout,
-	    datasources: Datasource.datasources,
-	    form: redux_form_1.reducer,
-	    modalDialog: Modal.modalDialog,
-	    widgetPlugins: WidgetPlugins.widgetPlugins,
-	    datasourcePlugins: DatasourcePlugins.datasourcePlugins,
-	    global: Global.global
-	});
-	var reducer = function (state, action) {
-	    if (action.type === Action.CLEAR_STATE) {
-	        state = undefined;
-	    }
-	    state = Import.importReducer(state, action);
-	    return appReducer(state, action);
-	};
-	var logger = createLogger({
-	    duration: false,
-	    timestamp: true,
-	    logErrors: true,
-	    predicate: function (getState, action) {
-	        if (action.type.startsWith("redux-form")) {
-	            return false;
-	        }
-	        return !action.doNotLog;
-	    }
-	});
-	function emptyState() {
-	    return {
-	        config: null,
-	        widgets: {},
-	        datasources: {},
-	        datasourcePlugins: {}
-	    };
+	var __cov_k1Y276qFRY2mk5fQSQ7ofQ = (Function('return this'))();
+	if (!__cov_k1Y276qFRY2mk5fQSQ7ofQ.__coverage__) { __cov_k1Y276qFRY2mk5fQSQ7ofQ.__coverage__ = {}; }
+	__cov_k1Y276qFRY2mk5fQSQ7ofQ = __cov_k1Y276qFRY2mk5fQSQ7ofQ.__coverage__;
+	if (!(__cov_k1Y276qFRY2mk5fQSQ7ofQ['/home/travis/build/Niondir/iot-dashboard/src/store.ts'])) {
+	   __cov_k1Y276qFRY2mk5fQSQ7ofQ['/home/travis/build/Niondir/iot-dashboard/src/store.ts'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/store.ts","s":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":1,"28":0,"29":0,"30":1,"31":0,"32":0,"33":0,"34":0,"35":1,"36":0,"37":0,"38":0,"39":0,"40":0,"41":1,"42":0,"43":0,"44":0,"45":0,"46":0,"47":0,"48":0,"49":0,"50":0,"51":0,"52":1,"53":0,"54":0},"b":{"1":[0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0],"7":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0},"fnMap":{"1":{"name":"(anonymous_1)","line":34,"loc":{"start":{"line":34,"column":14},"end":{"line":34,"column":39}}},"2":{"name":"(anonymous_2)","line":45,"loc":{"start":{"line":45,"column":15},"end":{"line":45,"column":43}}},"3":{"name":"emptyState","line":52,"loc":{"start":{"line":52,"column":0},"end":{"line":52,"column":22}}},"4":{"name":"createEmpty","line":64,"loc":{"start":{"line":64,"column":0},"end":{"line":64,"column":30}}},"5":{"name":"createDefault","line":72,"loc":{"start":{"line":72,"column":0},"end":{"line":72,"column":32}}},"6":{"name":"create","line":81,"loc":{"start":{"line":81,"column":0},"end":{"line":81,"column":39}}},"7":{"name":"clearState","line":94,"loc":{"start":{"line":94,"column":0},"end":{"line":94,"column":22}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":29}},"2":{"start":{"line":6,"column":0},"end":{"line":6,"column":43}},"3":{"start":{"line":7,"column":0},"end":{"line":7,"column":43}},"4":{"start":{"line":8,"column":0},"end":{"line":8,"column":43}},"5":{"start":{"line":9,"column":0},"end":{"line":9,"column":56}},"6":{"start":{"line":10,"column":0},"end":{"line":10,"column":46}},"7":{"start":{"line":11,"column":0},"end":{"line":11,"column":52}},"8":{"start":{"line":12,"column":0},"end":{"line":12,"column":46}},"9":{"start":{"line":13,"column":0},"end":{"line":13,"column":46}},"10":{"start":{"line":14,"column":0},"end":{"line":14,"column":46}},"11":{"start":{"line":15,"column":0},"end":{"line":15,"column":42}},"12":{"start":{"line":16,"column":0},"end":{"line":16,"column":41}},"13":{"start":{"line":17,"column":0},"end":{"line":17,"column":38}},"14":{"start":{"line":18,"column":0},"end":{"line":18,"column":58}},"15":{"start":{"line":19,"column":0},"end":{"line":19,"column":66}},"16":{"start":{"line":20,"column":0},"end":{"line":20,"column":33}},"17":{"start":{"line":21,"column":0},"end":{"line":33,"column":3}},"18":{"start":{"line":34,"column":0},"end":{"line":40,"column":2}},"19":{"start":{"line":35,"column":4},"end":{"line":37,"column":5}},"20":{"start":{"line":36,"column":8},"end":{"line":36,"column":26}},"21":{"start":{"line":38,"column":4},"end":{"line":38,"column":48}},"22":{"start":{"line":39,"column":4},"end":{"line":39,"column":37}},"23":{"start":{"line":41,"column":0},"end":{"line":51,"column":3}},"24":{"start":{"line":46,"column":8},"end":{"line":48,"column":9}},"25":{"start":{"line":47,"column":12},"end":{"line":47,"column":25}},"26":{"start":{"line":49,"column":8},"end":{"line":49,"column":32}},"27":{"start":{"line":52,"column":0},"end":{"line":59,"column":1}},"28":{"start":{"line":53,"column":4},"end":{"line":58,"column":6}},"29":{"start":{"line":60,"column":0},"end":{"line":60,"column":32}},"30":{"start":{"line":64,"column":0},"end":{"line":67,"column":1}},"31":{"start":{"line":65,"column":4},"end":{"line":65,"column":56}},"32":{"start":{"line":65,"column":30},"end":{"line":65,"column":54}},"33":{"start":{"line":66,"column":4},"end":{"line":66,"column":41}},"34":{"start":{"line":68,"column":0},"end":{"line":68,"column":34}},"35":{"start":{"line":72,"column":0},"end":{"line":75,"column":1}},"36":{"start":{"line":73,"column":4},"end":{"line":73,"column":56}},"37":{"start":{"line":73,"column":30},"end":{"line":73,"column":54}},"38":{"start":{"line":74,"column":4},"end":{"line":74,"column":38}},"39":{"start":{"line":76,"column":0},"end":{"line":76,"column":38}},"40":{"start":{"line":77,"column":0},"end":{"line":77,"column":58}},"41":{"start":{"line":81,"column":0},"end":{"line":92,"column":1}},"42":{"start":{"line":82,"column":4},"end":{"line":82,"column":71}},"43":{"start":{"line":82,"column":30},"end":{"line":82,"column":69}},"44":{"start":{"line":83,"column":4},"end":{"line":83,"column":24}},"45":{"start":{"line":84,"column":4},"end":{"line":84,"column":43}},"46":{"start":{"line":85,"column":4},"end":{"line":87,"column":5}},"47":{"start":{"line":86,"column":8},"end":{"line":86,"column":55}},"48":{"start":{"line":88,"column":4},"end":{"line":90,"column":5}},"49":{"start":{"line":89,"column":8},"end":{"line":89,"column":32}},"50":{"start":{"line":91,"column":4},"end":{"line":91,"column":100}},"51":{"start":{"line":93,"column":0},"end":{"line":93,"column":24}},"52":{"start":{"line":94,"column":0},"end":{"line":98,"column":1}},"53":{"start":{"line":95,"column":4},"end":{"line":97,"column":6}},"54":{"start":{"line":99,"column":0},"end":{"line":99,"column":32}}},"branchMap":{"1":{"line":35,"type":"if","locations":[{"start":{"line":35,"column":4},"end":{"line":35,"column":4}},{"start":{"line":35,"column":4},"end":{"line":35,"column":4}}]},"2":{"line":46,"type":"if","locations":[{"start":{"line":46,"column":8},"end":{"line":46,"column":8}},{"start":{"line":46,"column":8},"end":{"line":46,"column":8}}]},"3":{"line":65,"type":"if","locations":[{"start":{"line":65,"column":4},"end":{"line":65,"column":4}},{"start":{"line":65,"column":4},"end":{"line":65,"column":4}}]},"4":{"line":73,"type":"if","locations":[{"start":{"line":73,"column":4},"end":{"line":73,"column":4}},{"start":{"line":73,"column":4},"end":{"line":73,"column":4}}]},"5":{"line":82,"type":"if","locations":[{"start":{"line":82,"column":4},"end":{"line":82,"column":4}},{"start":{"line":82,"column":4},"end":{"line":82,"column":4}}]},"6":{"line":85,"type":"if","locations":[{"start":{"line":85,"column":4},"end":{"line":85,"column":4}},{"start":{"line":85,"column":4},"end":{"line":85,"column":4}}]},"7":{"line":88,"type":"if","locations":[{"start":{"line":88,"column":4},"end":{"line":88,"column":4}},{"start":{"line":88,"column":4},"end":{"line":88,"column":4}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public"," * License, v. 2.0. If a copy of the MPL was not distributed with this"," * file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var Redux = require(\"redux\");","var redux_thunk_1 = require(\"redux-thunk\");","var createLogger = require(\"redux-logger\");","var Widgets = require(\"./widgets/widgets\");","var WidgetConfig = require(\"./widgets/widgetConfig.js\");","var Layouts = require(\"./layouts/layouts.js\");","var Datasource = require(\"./datasource/datasource\");","var Global = require(\"./dashboard/global.js\");","var Import = require(\"./dashboard/import.js\");","var Modal = require(\"./modal/modalDialog.js\");","var Persist = require(\"./persistence.js\");","var redux_form_1 = require(\"redux-form\");","var Action = require(\"./actionNames\");","var WidgetPlugins = require(\"./widgets/widgetPlugins.js\");","var DatasourcePlugins = require(\"./datasource/datasourcePlugins\");","var Config = require(\"./config\");","var appReducer = Redux.combineReducers({","    config: Config.config,","    widgets: Widgets.widgets,","    widgetConfig: WidgetConfig.widgetConfigDialog,","    layouts: Layouts.layouts,","    currentLayout: Layouts.currentLayout,","    datasources: Datasource.datasources,","    form: redux_form_1.reducer,","    modalDialog: Modal.modalDialog,","    widgetPlugins: WidgetPlugins.widgetPlugins,","    datasourcePlugins: DatasourcePlugins.datasourcePlugins,","    global: Global.global","});","var reducer = function (state, action) {","    if (action.type === Action.CLEAR_STATE) {","        state = undefined;","    }","    state = Import.importReducer(state, action);","    return appReducer(state, action);","};","var logger = createLogger({","    duration: false,","    timestamp: true,","    logErrors: true,","    predicate: function (getState, action) {","        if (action.type.startsWith(\"redux-form\")) {","            return false;","        }","        return !action.doNotLog;","    }","});","function emptyState() {","    return {","        config: null,","        widgets: {},","        datasources: {},","        datasourcePlugins: {}","    };","}","exports.emptyState = emptyState;","/**"," * Create a store as empty as possible"," */","function createEmpty(options) {","    if (options === void 0) { options = { log: true }; }","    return create(emptyState(), options);","}","exports.createEmpty = createEmpty;","/**"," * Create a store with default values"," */","function createDefault(options) {","    if (options === void 0) { options = { log: true }; }","    return create(undefined, options);","}","exports.createDefault = createDefault;","exports.testStoreOptions = { log: false, persist: false };","/**"," * Create a store and execute all side-effects to have a consistent app"," */","function create(initialState, options) {","    if (options === void 0) { options = { log: true, persist: true }; }","    var middleware = [];","    middleware.push(redux_thunk_1.default);","    if (options.persist) {","        middleware.push(Persist.persistenceMiddleware);","    }","    if (options.log) {","        middleware.push(logger); // must be last","    }","    return Redux.createStore(reducer, initialState, Redux.applyMiddleware.apply(Redux, middleware));","}","exports.create = create;","function clearState() {","    return {","        type: Action.CLEAR_STATE","    };","}","exports.clearState = clearState;",""]};
 	}
-	exports.emptyState = emptyState;
-	/**
-	 * Create a store as empty as possible
-	 */
-	function createEmpty(options) {
-	    if (options === void 0) { options = { log: true }; }
-	    return create(emptyState(), options);
-	}
-	exports.createEmpty = createEmpty;
-	/**
-	 * Create a store with default values
-	 */
-	function createDefault(options) {
-	    if (options === void 0) { options = { log: true }; }
-	    return create(undefined, options);
-	}
-	exports.createDefault = createDefault;
-	exports.testStoreOptions = { log: false, persist: false };
-	/**
-	 * Create a store and execute all side-effects to have a consistent app
-	 */
-	function create(initialState, options) {
-	    if (options === void 0) { options = { log: true, persist: true }; }
-	    var middleware = [];
-	    middleware.push(redux_thunk_1.default);
-	    if (options.persist) {
-	        middleware.push(Persist.persistenceMiddleware);
-	    }
-	    if (options.log) {
-	        middleware.push(logger); // must be last
-	    }
-	    return Redux.createStore(reducer, initialState, Redux.applyMiddleware.apply(Redux, middleware));
-	}
-	exports.create = create;
-	function clearState() {
-	    return {
-	        type: Action.CLEAR_STATE
-	    };
-	}
-	exports.clearState = clearState;
+	__cov_k1Y276qFRY2mk5fQSQ7ofQ = __cov_k1Y276qFRY2mk5fQSQ7ofQ['/home/travis/build/Niondir/iot-dashboard/src/store.ts'];
+	__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['1']++;var Redux=__webpack_require__(40);__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['2']++;var redux_thunk_1=__webpack_require__(106);__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['3']++;var createLogger=__webpack_require__(107);__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['4']++;var Widgets=__webpack_require__(45);__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['5']++;var WidgetConfig=__webpack_require__(49);__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['6']++;var Layouts=__webpack_require__(81);__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['7']++;var Datasource=__webpack_require__(58);__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['8']++;var Global=__webpack_require__(42);__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['9']++;var Import=__webpack_require__(90);__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['10']++;var Modal=__webpack_require__(50);__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['11']++;var Persist=__webpack_require__(97);__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['12']++;var redux_form_1=__webpack_require__(86);__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['13']++;var Action=__webpack_require__(43);__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['14']++;var WidgetPlugins=__webpack_require__(52);__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['15']++;var DatasourcePlugins=__webpack_require__(96);__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['16']++;var Config=__webpack_require__(108);__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['17']++;var appReducer=Redux.combineReducers({config:Config.config,widgets:Widgets.widgets,widgetConfig:WidgetConfig.widgetConfigDialog,layouts:Layouts.layouts,currentLayout:Layouts.currentLayout,datasources:Datasource.datasources,form:redux_form_1.reducer,modalDialog:Modal.modalDialog,widgetPlugins:WidgetPlugins.widgetPlugins,datasourcePlugins:DatasourcePlugins.datasourcePlugins,global:Global.global});__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['18']++;var reducer=function(state,action){__cov_k1Y276qFRY2mk5fQSQ7ofQ.f['1']++;__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['19']++;if(action.type===Action.CLEAR_STATE){__cov_k1Y276qFRY2mk5fQSQ7ofQ.b['1'][0]++;__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['20']++;state=undefined;}else{__cov_k1Y276qFRY2mk5fQSQ7ofQ.b['1'][1]++;}__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['21']++;state=Import.importReducer(state,action);__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['22']++;return appReducer(state,action);};__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['23']++;var logger=createLogger({duration:false,timestamp:true,logErrors:true,predicate:function(getState,action){__cov_k1Y276qFRY2mk5fQSQ7ofQ.f['2']++;__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['24']++;if(action.type.startsWith('redux-form')){__cov_k1Y276qFRY2mk5fQSQ7ofQ.b['2'][0]++;__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['25']++;return false;}else{__cov_k1Y276qFRY2mk5fQSQ7ofQ.b['2'][1]++;}__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['26']++;return!action.doNotLog;}});function emptyState(){__cov_k1Y276qFRY2mk5fQSQ7ofQ.f['3']++;__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['28']++;return{config:null,widgets:{},datasources:{},datasourcePlugins:{}};}__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['29']++;exports.emptyState=emptyState;function createEmpty(options){__cov_k1Y276qFRY2mk5fQSQ7ofQ.f['4']++;__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['31']++;if(options===void 0){__cov_k1Y276qFRY2mk5fQSQ7ofQ.b['3'][0]++;__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['32']++;options={log:true};}else{__cov_k1Y276qFRY2mk5fQSQ7ofQ.b['3'][1]++;}__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['33']++;return create(emptyState(),options);}__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['34']++;exports.createEmpty=createEmpty;function createDefault(options){__cov_k1Y276qFRY2mk5fQSQ7ofQ.f['5']++;__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['36']++;if(options===void 0){__cov_k1Y276qFRY2mk5fQSQ7ofQ.b['4'][0]++;__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['37']++;options={log:true};}else{__cov_k1Y276qFRY2mk5fQSQ7ofQ.b['4'][1]++;}__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['38']++;return create(undefined,options);}__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['39']++;exports.createDefault=createDefault;__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['40']++;exports.testStoreOptions={log:false,persist:false};function create(initialState,options){__cov_k1Y276qFRY2mk5fQSQ7ofQ.f['6']++;__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['42']++;if(options===void 0){__cov_k1Y276qFRY2mk5fQSQ7ofQ.b['5'][0]++;__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['43']++;options={log:true,persist:true};}else{__cov_k1Y276qFRY2mk5fQSQ7ofQ.b['5'][1]++;}__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['44']++;var middleware=[];__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['45']++;middleware.push(redux_thunk_1.default);__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['46']++;if(options.persist){__cov_k1Y276qFRY2mk5fQSQ7ofQ.b['6'][0]++;__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['47']++;middleware.push(Persist.persistenceMiddleware);}else{__cov_k1Y276qFRY2mk5fQSQ7ofQ.b['6'][1]++;}__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['48']++;if(options.log){__cov_k1Y276qFRY2mk5fQSQ7ofQ.b['7'][0]++;__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['49']++;middleware.push(logger);}else{__cov_k1Y276qFRY2mk5fQSQ7ofQ.b['7'][1]++;}__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['50']++;return Redux.createStore(reducer,initialState,Redux.applyMiddleware.apply(Redux,middleware));}__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['51']++;exports.create=create;function clearState(){__cov_k1Y276qFRY2mk5fQSQ7ofQ.f['7']++;__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['53']++;return{type:Action.CLEAR_STATE};}__cov_k1Y276qFRY2mk5fQSQ7ofQ.s['54']++;exports.clearState=clearState;
 
 
 /***/ },
@@ -4167,21 +855,15 @@ webpackJsonp([0],[
 /* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var configJson = __webpack_require__(109);
-	function config(state, action) {
-	    if (state === void 0) { state = configJson; }
-	    switch (action.type) {
-	        default:
-	            return configJson;
-	    }
+	var __cov_I$5v2$rWNO6acp5sn8Za7A = (Function('return this'))();
+	if (!__cov_I$5v2$rWNO6acp5sn8Za7A.__coverage__) { __cov_I$5v2$rWNO6acp5sn8Za7A.__coverage__ = {}; }
+	__cov_I$5v2$rWNO6acp5sn8Za7A = __cov_I$5v2$rWNO6acp5sn8Za7A.__coverage__;
+	if (!(__cov_I$5v2$rWNO6acp5sn8Za7A['/home/travis/build/Niondir/iot-dashboard/src/config.ts'])) {
+	   __cov_I$5v2$rWNO6acp5sn8Za7A['/home/travis/build/Niondir/iot-dashboard/src/config.ts'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/config.ts","s":{"1":0,"2":1,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0},"b":{"1":[0,0],"2":[0]},"f":{"1":0},"fnMap":{"1":{"name":"config","line":6,"loc":{"start":{"line":6,"column":0},"end":{"line":6,"column":31}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":42}},"2":{"start":{"line":6,"column":0},"end":{"line":12,"column":1}},"3":{"start":{"line":7,"column":4},"end":{"line":7,"column":49}},"4":{"start":{"line":7,"column":28},"end":{"line":7,"column":47}},"5":{"start":{"line":8,"column":4},"end":{"line":11,"column":5}},"6":{"start":{"line":10,"column":12},"end":{"line":10,"column":30}},"7":{"start":{"line":13,"column":0},"end":{"line":13,"column":24}},"8":{"start":{"line":14,"column":0},"end":{"line":14,"column":62}},"9":{"start":{"line":15,"column":0},"end":{"line":15,"column":25}}},"branchMap":{"1":{"line":7,"type":"if","locations":[{"start":{"line":7,"column":4},"end":{"line":7,"column":4}},{"start":{"line":7,"column":4},"end":{"line":7,"column":4}}]},"2":{"line":8,"type":"switch","locations":[{"start":{"line":9,"column":8},"end":{"line":10,"column":30}}]}},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public"," * License, v. 2.0. If a copy of the MPL was not distributed with this"," * file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var configJson = require('./config.json');","function config(state, action) {","    if (state === void 0) { state = configJson; }","    switch (action.type) {","        default:","            return configJson;","    }","}","exports.config = config;","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = config;",""]};
 	}
-	exports.config = config;
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = config;
+	__cov_I$5v2$rWNO6acp5sn8Za7A = __cov_I$5v2$rWNO6acp5sn8Za7A['/home/travis/build/Niondir/iot-dashboard/src/config.ts'];
+	__cov_I$5v2$rWNO6acp5sn8Za7A.s['1']++;var configJson=__webpack_require__(109);function config(state,action){__cov_I$5v2$rWNO6acp5sn8Za7A.f['1']++;__cov_I$5v2$rWNO6acp5sn8Za7A.s['3']++;if(state===void 0){__cov_I$5v2$rWNO6acp5sn8Za7A.b['1'][0]++;__cov_I$5v2$rWNO6acp5sn8Za7A.s['4']++;state=configJson;}else{__cov_I$5v2$rWNO6acp5sn8Za7A.b['1'][1]++;}__cov_I$5v2$rWNO6acp5sn8Za7A.s['5']++;switch(action.type){default:__cov_I$5v2$rWNO6acp5sn8Za7A.b['2'][0]++;__cov_I$5v2$rWNO6acp5sn8Za7A.s['6']++;return configJson;}}__cov_I$5v2$rWNO6acp5sn8Za7A.s['7']++;exports.config=config;__cov_I$5v2$rWNO6acp5sn8Za7A.s['8']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_I$5v2$rWNO6acp5sn8Za7A.s['9']++;exports.default=config;
 
 
 /***/ },
@@ -4190,11 +872,10 @@ webpackJsonp([0],[
 
 	module.exports = {
 		"version": "0.0.4",
-		"revision": "b51d9b5a66fc7255ee09623c560dbda4a5ab11e3",
-		"revisionShort": "b51d9b5",
-		"branch": "Detatched: b51d9b5a66fc7255ee09623c560dbda4a5ab11e3"
+		"revision": "d055da2f41adca6c379e554d1a4a0569c5cec964",
+		"revisionShort": "d055da2",
+		"branch": "Detatched: d055da2f41adca6c379e554d1a4a0569c5cec964"
 	};
 
 /***/ }
 ]);
-//# sourceMappingURL=app.bundle.js.map

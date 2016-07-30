@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/datasource/datasourcePluginRegistry.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">src/datasource/</a> datasourcePluginRegistry.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">86.15% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>56/65</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">60% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>9/15</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">88.24% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>15/17</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">88.71% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>55/62</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
+    for (var p in b) <span class="cstat-no" title="statement not covered" >if (b.hasOwnProperty(p)) <span class="cstat-no" title="statement not covered" >d[p] = b[p];</span></span>
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? <span class="branch-0 cbranch-no" title="branch not covered" >Object.create(b) </span>: (__.prototype = b.prototype, new __());
+};
+var pluginRegistry_1 = require("../pluginApi/pluginRegistry");
+var datasourcePluginFactory_1 = require("./datasourcePluginFactory");
+var datasource_1 = require("./datasource");
+var DatasourcePluginRegistry = (function (_super) {
+    __extends(DatasourcePluginRegistry, _super);
+    function DatasourcePluginRegistry(_store) {
+        var _this = this;
+        _super.call(this, _store);
+        this._fetchPromises = {};
+        this._disposed = false;
+        this._fetchIntervalRef = setInterval(<span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            _this.doFetchData();</span>
+        }, 1000);
+    }
+    Object.defineProperty(DatasourcePluginRegistry.prototype, "disposed", {
+        get: function () {
+            return this._disposed;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * Create instances for all plugins that are in the store
+     */
+    DatasourcePluginRegistry.prototype.initializePluginInstances = function () {
+        var _this = this;
+        var dsStates = this.store.getState().datasources;
+        _.valuesIn(dsStates).forEach(function (dsState) {
+            var pluginFactory = _this.getPlugin(dsState.type);
+            pluginFactory.createInstance(dsState.id);
+        });
+    };
+    DatasourcePluginRegistry.prototype.createPluginFromModule = function (module) {
+        console.assert(_.isObject(module.TYPE_INFO), "Missing TYPE_INFO on datasource module. Every module must export TYPE_INFO");
+        return new datasourcePluginFactory_1.default(module.TYPE_INFO.type, module.Datasource, this.store);
+    };
+    DatasourcePluginRegistry.prototype.doFetchData = function () {
+        var _this = this;
+        var datasourcePluginStates = this.store.getState().datasourcePlugins;
+        var datasourceStates = this.store.getState().datasources;
+        // It is important that we only call fetch on Datasources and Plugins that are also in the Store!
+        // Else you could have ugly side effects when something runs out of sync with the store
+        _.valuesIn(datasourcePluginStates).forEach(function (dsPluginState) {
+            var dsPluginFactory = _this.getPlugin(dsPluginState.id);
+            _.valuesIn(datasourceStates).forEach(function (dsState) {
+                var dsPlugin = dsPluginFactory.getInstance(dsState.id);
+                _this.doFetchDataForDatasourceInstance(dsPlugin, dsState);
+            });
+        });
+    };
+    DatasourcePluginRegistry.prototype.doFetchDataForDatasourceInstance = function (dsInstance, dsState) {
+        var _this = this;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (this._fetchPromises[dsState.id]) {
+<span class="cstat-no" title="statement not covered" >            console.warn("Do not fetch data because a fetch is currently running on Datasource", dsState);</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!dsInstance.fetchData) {
+<span class="cstat-no" title="statement not covered" >            console.warn("fetchData(resolve, reject) is not implemented in Datasource ", dsState);</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+        var fetchPromise = new Promise(function (resolve, reject) {
+            dsInstance.fetchData(resolve, reject);
+            // TODO: Implement a timeout?
+        });
+        this._fetchPromises[dsState.id] = fetchPromise;
+        fetchPromise.then(function (result) {
+            console.log("_fetchPromises =&gt; null");
+            _this._fetchPromises[dsState.id] = null;
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (!_this._disposed) {
+                //console.log("fetData plugin finished", dsState, result);
+                _this.store.dispatch(datasource_1.appendDatasourceData(dsState.id, result));
+            }
+            else {
+<span class="cstat-no" title="statement not covered" >                console.error("fetData of disposed plugin finished", dsState, result);</span>
+            }
+        }).catch(<span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            _this._fetchPromises[dsState.id] = null;</span>
+        });
+    };
+    DatasourcePluginRegistry.prototype.dispose = function () {
+        if (!this._disposed) {
+            this._disposed = true;
+            clearInterval(this._fetchIntervalRef);
+            this._fetchIntervalRef = null;
+        }
+    };
+    return DatasourcePluginRegistry;
+}(pluginRegistry_1.default));
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = DatasourcePluginRegistry;
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jul 30 2016 16:48:29 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
