@@ -34,6 +34,11 @@ export default class Dashboard {
         this._store.dispatch(Plugins.initializeExternalPlugins());
     }
 
+    dispose() {
+        this._datasourcePluginRegistry.dispose();
+        // TODO: this._widgetPluginRegistry.dispose();
+    }
+
 
     /**
      * We have some code that depends on this global instance of the Dashboard

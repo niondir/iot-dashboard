@@ -59,8 +59,16 @@ export default class PluginRegistry<TPlugin extends IPlugin, TPluginModule exten
         throw new Error("PluginRegistry must implement createPluginFromModule");
     }
 
+    hasPlugin(type: string): boolean {
+        return this._plugins[type] !== undefined;
+    }
+
     getPlugin(type: string): TPluginFactory {
-        return this._plugins[type];
+        const plugin = this._plugins[type];
+        if (!plugin) {
+            throw new Error("Can not find plugin with type '" + type + "' in plugin registry.");
+        }
+        return plugin;
     }
 
 

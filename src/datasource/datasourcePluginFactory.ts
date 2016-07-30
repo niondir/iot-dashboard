@@ -14,7 +14,7 @@ export interface IDatasourceConstructor extends IDatasourceInstance {
 }
 
 export interface IDatasourceInstance extends IPlugin {
-    props: any
+    props?: any
     datasourceWillReceiveProps?: (newProps: any) => void
     dispose?: () => void
     getValues?(): any[] // TODO: Might get depricated
@@ -31,7 +31,7 @@ export default class DataSourcePluginFactory implements IPluginFactory<IDatasour
     private _unsubscribe: Unsubscribe;
     private _disposed: boolean = false;
 
-    constructor(private _type: string, private _datasource: IDatasourceConstructor, private _store: DashboardStore) {
+    constructor(private _type: string, private _datasource: IDatasourceInstance, private _store: DashboardStore) {
         this._unsubscribe = _store.subscribe(this.handleStateChange.bind(this));
     }
 
@@ -45,7 +45,12 @@ export default class DataSourcePluginFactory implements IPluginFactory<IDatasour
 
     getDatasourceState(id: string) {
         const state = this._store.getState();
-        return state.datasources[id];
+        const dsState = state.datasources[id];
+
+        if (!dsState) {
+            throw new Error("Can not get state of non existing datasource with id " + id);
+        }
+        return dsState;
     }
 
     /**
@@ -73,7 +78,7 @@ export default class DataSourcePluginFactory implements IPluginFactory<IDatasour
         const props = {
             state: dsState
         };
-        const pluginInstance = new this._datasource(props);
+        const pluginInstance = new (<IDatasourceConstructor>this._datasource)(props);
 
         pluginInstance.props = props;
 

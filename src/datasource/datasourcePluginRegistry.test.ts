@@ -4,56 +4,112 @@
 
 
 import {assert} from "chai";
-import * as Datasource from "./datasource";
+import {appendDatasourceData} from "./datasource";
 import * as Store from "../store";
-import * as Plugins from "../pluginApi/plugins.js";
-import Dashboard from "../dashboard";
+import {DashboardStore} from "../store";
 import {IDatasourceInstance} from "./datasourcePluginFactory";
 import * as Sinon from "sinon";
-import SinonStub = Sinon.SinonStub;
-import {appendDatasourceData} from "./datasource";
 import DatasourcePluginRegistry from "./datasourcePluginRegistry";
+import SinonStub = Sinon.SinonStub;
+import SinonFakeTimers = Sinon.SinonFakeTimers;
 
 describe("Datasource > DatasourcePluginRegistry", function () {
 
-    it("register and fetchData happy path", function (done) {
+    let store: DashboardStore;
+    let datasourcePluginRegistry: DatasourcePluginRegistry;
+    let clock: SinonFakeTimers;
+
+    beforeEach(() => {
+        clock = Sinon.useFakeTimers()
+        store = Store.createEmpty(Store.testStoreOptions);
+        datasourcePluginRegistry = new DatasourcePluginRegistry(store);
+    });
+
+    afterEach(() => {
+        if (datasourcePluginRegistry && !datasourcePluginRegistry.disposed) {
+            console.log("after test .. dispose")
+            datasourcePluginRegistry.dispose();
+        }
+        clock.restore();
+    });
+
+    it("it is possible to register a plugin", function () {
         const TYPE_INFO = {
-            type: "test-ds-plugin"
+            type: "test-ds-plugin-1"
         };
         class PluginImpl implements IDatasourceInstance {
             public props: any;
 
             fetchData(resolve: any, reject: any) {
-                resolve(["a"]);
+                resolve([]);
             }
         }
 
-        const store = Store.createEmpty();
-        const clock = Sinon.useFakeTimers();
-
-        const dispatchStub = Sinon.stub(store, "dispatch");
-        const datasourcePluginRegistry = new DatasourcePluginRegistry(store);
-
         datasourcePluginRegistry.register({TYPE_INFO, Datasource: PluginImpl});
 
+        const registeredPlugin = datasourcePluginRegistry.getPlugin("test-ds-plugin-1");
 
-        const dsPlugin = datasourcePluginRegistry.getPlugin("test-ds-plugin");
+        assert.isOk(registeredPlugin, "The registered plugin can be fetched from the registry");
+        assert.equal("test-ds-plugin-1", registeredPlugin.type, "The registered plugin has the correct type");
+        assert.isFalse(registeredPlugin.disposed, "The registered plugin is not disposed");
+    });
 
-        const dsInstance = dsPlugin.createInstance("plugin-instance");
-        clock.tick(3000);
 
-        datasourcePluginRegistry.dispose();
 
-        // We need to restore the clock and check asserts asnyc, strange bug in Sinon (or Chrome?) or something else?
-        clock.restore();
-        setTimeout(() => {
-            assert.isOk(dsInstance, "a datasource instance was created");
+    it("register and fetchData happy path", function () {
+        const dispatchStub = Sinon.stub(store, "dispatch");
+        const getStateStub = Sinon.stub(store, "getState");
+        const doFetchDataSpy = Sinon.spy(datasourcePluginRegistry, "doFetchData");
+
+
+        // The plugin id is the plugin type
+        var PLUGIN_TYPE = "happy-test-ds-plugin-type";
+        var DS_PLUGIN_ID = "happy-plugin-instance-id";
+        getStateStub.returns(_.assign(Store.emptyState(),
+            {
+                datasourcePlugins: {
+                    "happy-test-ds-plugin-type": {
+                        id: PLUGIN_TYPE
+                    }
+                },
+                datasources: {
+                    "happy-plugin-instance-id": {
+                        id: DS_PLUGIN_ID
+                    }
+                }
+            }));
+
+        const DatasourcePlugin = {
+            TYPE_INFO: {
+                type: PLUGIN_TYPE
+            },
+            Datasource: class PluginImpl implements IDatasourceInstance {
+                public props: any;
+
+                fetchData(resolve: any, reject: any) {
+                    resolve(["a"]);
+                }
+            }
+        };
+
+        datasourcePluginRegistry.register(DatasourcePlugin);
+
+        const dsPlugin = datasourcePluginRegistry.getPlugin(PLUGIN_TYPE);
+
+        const dsInstance = dsPlugin.createInstance(DS_PLUGIN_ID);
+        clock.tick(1000);
+
+        const fetchPromise = (<any>datasourcePluginRegistry)._fetchPromises[DS_PLUGIN_ID];
+        assert.isOk(fetchPromise, "There is is valid fetch promise to wait for");
+        assert.isOk(dsInstance, "a datasource instance was created");
+        assert.equal(1, doFetchDataSpy.callCount, "doFetchData() was called once");
+        assert.isNumber((<any>datasourcePluginRegistry)._fetchIntervalRef, "datasourcePluginRegistry._fetchIntervalRef must be set");
+        assert.isFalse(datasourcePluginRegistry.disposed, "datasourcePluginRegistry is not disposed");
+
+        return fetchPromise.then(()=> {
             assert.equal(1, dispatchStub.callCount, "dispatch was called once after data was fetched");
-            assert.equal(1, dispatchStub.calledWith(appendDatasourceData("test-ds-id", ["a"])), "dispatch was called with the expected argument");
-            assert.isNull((<any>datasourcePluginRegistry)._fetchPromises, "fetchPromise must be null after it was resolved");
-            assert.isNumber((<any>datasourcePluginRegistry)._fetchIntervalRef, "datasourcePluginRegistry._fetchIntervalRef must be set");
-            assert.isTrue(datasourcePluginRegistry.disposed, "datasourcePluginRegistry is disposed");
-            done();
+            assert.isTrue(dispatchStub.calledWith(appendDatasourceData(DS_PLUGIN_ID, ["a"])), "dispatch was called with the expected argument");
+            assert.isNull((<any>datasourcePluginRegistry)._fetchPromises[DS_PLUGIN_ID], "fetchPromise must be null after it was resolved");
         });
 
     })

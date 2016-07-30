@@ -4,6 +4,7 @@
 
 /* inject:tests */
 import './datasource/datasource.test.ts'
+import './datasource/datasourcePluginFactory.test.ts'
 import './datasource/datasourcePluginRegistry.test.ts'
 import './datasource/datasourcePlugins.test.ts'
 import './datasource/plugins/randomDatasource.test.js'

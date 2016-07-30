@@ -70,25 +70,12 @@ export function initializeExternalPlugins() {
 function registerPlugin(plugin) {
     // TODO: I do not like that we use some singleton here to register widgets (there are other places as well)
     const dashboard = Dashboard.getInstance();
-
-    const type = plugin.TYPE_INFO.type;
+    
     if (plugin.Datasource) {
-        const dsPlugin = dashboard.datasourcePluginRegistry.getPlugin(type);
-        if (!dsPlugin) {
-            dashboard.datasourcePluginRegistry.register(plugin);
-        }
-        else {
-            console.warn("Plugin of type " + type + " already loaded:", dsPlugin, ". Tried to load: ", plugin);
-        }
+        dashboard.datasourcePluginRegistry.register(plugin);
     }
     else if (plugin.Widget) {
-        const widgetPlugin = dashboard.widgetPluginRegistry.getPlugin(type);
-        if (!widgetPlugin) {
-            dashboard.widgetPluginRegistry.register(plugin);
-        }
-        else {
-            console.warn("Plugin of type " + type + " already loaded:", widgetPlugin, ". Tried to load: ", plugin);
-        }
+        dashboard.widgetPluginRegistry.register(plugin);
     }
     else {
         throw new Error("Plugin neither defines a Datasource nor a Widget.", plugin);

@@ -7,8 +7,22 @@ import * as Datasource from "./datasource";
 import * as Store from "../store";
 import * as Plugins from "../pluginApi/plugins.js";
 import Dashboard from "../dashboard";
+import {DashboardStore} from "../store";
 
 describe("Datasource > Datasource", function () {
+
+    let store: DashboardStore;
+    let dashboard: Dashboard;
+
+    beforeEach(() => {
+        store = Store.createEmpty(Store.testStoreOptions);
+        dashboard = new Dashboard(store);
+    });
+
+    afterEach(() => {
+         dashboard.dispose();
+    });
+
     describe("api", function () {
         /**
          * For the Datasource API we have to consider different use cases how a Datasource wants to provide data:
@@ -29,27 +43,6 @@ describe("Datasource > Datasource", function () {
          - Error when loading plugin twice
          */
 
-        it("datasource must implement getValues()", function () {
-            const DatasourcePlugin = {
-                TYPE_INFO: {type: "test-ds"},
-                Datasource: function (props: any) {
-                    return;
-                }
-            };
-
-            const store = Store.createEmpty({log: true});
-            const dashboard = new Dashboard(store);
-            dashboard.init();
-
-            store.dispatch(Plugins.loadPlugin(DatasourcePlugin));
-            try {
-                store.dispatch(Datasource.createDatasource("test-ds", {}, "ds-id"));
-                assert.fail("Creating a datasource should fail because of missing getValues()")
-            }
-            catch (e) {
-                assert.equal(e.message, 'Datasource must implement "getValues(): any[]" but is missing. {"id":"ds-id","type":"test-ds"}');
-            }
-        });
         it("fetchData() is called as configured in the settings", function () {
 
             const DatasourcePlugin = {
@@ -60,7 +53,7 @@ describe("Datasource > Datasource", function () {
                     }
                 },
                 Datasource: function (props: any) {
-                    this.getValues = function():any[] {
+                    this.getValues = function (): any[] {
                         return [];
                     };
                     this.fetchData = (resolve: ResolveFunc<any[]>) => {
@@ -70,8 +63,7 @@ describe("Datasource > Datasource", function () {
             };
 
             // TODO: new store but old state outside of the store :(
-            const store = Store.createEmpty({log: true});
-            const dashboard = new Dashboard(store);
+
             dashboard.init();
             store.dispatch(Plugins.loadPlugin(DatasourcePlugin));
             store.dispatch(Datasource.createDatasource("test-ds", {}, "ds-id"));

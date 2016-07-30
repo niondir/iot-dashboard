@@ -10,7 +10,7 @@ import {IDatasourcePluginState} from "./datasourcePlugins";
  * Describes how we expect the plugin module to be
  */
 interface IDatasourcePluginModule extends IPluginModule {
-    Datasource: any
+    Datasource: IDatasourceInstance
 }
 
 export default class DatasourcePluginRegistry extends PluginRegistry<IDatasourceInstance, IDatasourcePluginModule, DataSourcePluginFactory> {
@@ -24,7 +24,7 @@ export default class DatasourcePluginRegistry extends PluginRegistry<IDatasource
 
         this._fetchIntervalRef = setInterval(() => {
             this.doFetchData()
-        }, 2000)
+        }, 1000)
     }
 
     get disposed() {
@@ -40,6 +40,8 @@ export default class DatasourcePluginRegistry extends PluginRegistry<IDatasource
         const datasourcePluginStates = this.store.getState().datasourcePlugins;
         const datasourceStates = this.store.getState().datasources;
 
+        // It is important that we only call fetch on Datasources and Plugins that are also in the Store!
+        // Else you could have ugly side effects when something runs out of sync with the store
         _.valuesIn<IDatasourcePluginState>(datasourcePluginStates).forEach((dsPluginState) => {
             const dsPluginFactory = this.getPlugin(dsPluginState.id);
             _.valuesIn<IDatasourceState>(datasourceStates).forEach((dsState) => {
@@ -66,9 +68,13 @@ export default class DatasourcePluginRegistry extends PluginRegistry<IDatasource
         this._fetchPromises[dsState.id] = fetchPromise;
 
         fetchPromise.then((result) => {
+            console.log("_fetchPromises => null");
             this._fetchPromises[dsState.id] = null;
             if (!this._disposed) {
+                //console.log("fetData plugin finished", dsState, result);
                 this.store.dispatch(appendDatasourceData(dsState.id, result));
+            } else {
+                console.error("fetData of disposed plugin finished", dsState, result);
             }
         }).catch(() => {
             this._fetchPromises[dsState.id] = null;
@@ -79,6 +85,7 @@ export default class DatasourcePluginRegistry extends PluginRegistry<IDatasource
         if (!this._disposed) {
             this._disposed = true;
             clearInterval(this._fetchIntervalRef);
+            this._fetchIntervalRef = null;
         }
     }
 }
