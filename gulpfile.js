@@ -15,28 +15,20 @@ if (!process.env.NODE_ENV) {
     process.env.NODE_ENV = gutil.env.production ? 'production' : 'development';
 }
 
-/**
- * Needed to end the build when mocha tests are done.
- * The issue came when I used promises in mocha test the first time.
- */
-gulp.doneCallback = function (err) {
-    process.exit(err ? 1 : 0);
-};
-
 gutil.log("NODE_ENV = '" + process.env.NODE_ENV + "'");
 
 /**
  * Setup everything for a smooth development
  */
-gulp.task("dev", sequence(['inject', 'copy'], 'webpack:dev-server'));
+gulp.task("dev", sequence(['inject', 'compile:plugins'], 'webpack:dev-server'));
 
 /**
  * Keeps files up to date that are not covered by Webpack
  */
-gulp.task('watch', ["inject:tests", "copy"], function () {
+gulp.task('watch', ["inject:tests", "compile:plugins"], function () {
     gulp.watch("src/**/*.test.js", ['inject:tests']);
     gulp.watch("src/**/*.test.ts", ['inject:tests']);
-    gulp.watch("plugins/**/*", ['copy:plugins']);
+    gulp.watch("plugins/**/*", ['compile:plugins']);
 });
 
 
@@ -52,7 +44,7 @@ gulp.task("build", sequence('test', ['compile', 'lint']));
  * Compile all code to /dist
  * - no tests, no overhead, just what is needed to generate a runnable application
  * */
-gulp.task('compile', sequence('copy:plugins', 'webpack:client'));
+gulp.task('compile', sequence('compile:plugins', 'webpack:client'));
 
 // TODO: We do not have uiTests yet. All tests are running with node
 // There is some ui test code already but it's considered unstable (should we just delete it for now?)
@@ -201,6 +193,12 @@ gulp.task('compile:config', function () {
         .pipe(gulp.dest("./src"));
 });
 
+gulp.task('compile:plugins', function () {
+    // TODO: compile with babel
+   // gulp.src('./plugins/**/*.*')
+  //      .pipe(gulp.dest('./dist/plugins'));
+});
+
 //////////////////////////////
 // Inject/Modify files Tasks
 //////////////////////////////
@@ -243,23 +241,13 @@ gulp.task('clean:lib', function () {
         'lib/**/*'
     ]);
 });
-///////////////
-// Copy Tasks
-///////////////
-
-gulp.task('copy', ['copy:plugins']);
-
-gulp.task('copy:plugins', function () {
-    gulp.src('./plugins/**/*.*')
-        .pipe(gulp.dest('./dist/plugins'));
-});
 
 //////////////////////
 // Webpack Dev-Server
 //////////////////////
 
 var WebpackDevServer = require("webpack-dev-server");
-gulp.task("webpack:dev-server", ['copy', 'inject', 'compile:ts'], function (callback) {
+gulp.task("webpack:dev-server", ['compile:plugins', 'inject', 'compile:ts'], function (callback) {
     // Start a webpack-dev-server
     var webpackConfig = require('./webpack.client.js');
     webpackConfig.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");

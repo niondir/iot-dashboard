@@ -11,7 +11,25 @@ import Dashboard from '../dashboard'
 
 
 // TODO: Later load all plugins from external URL's ?
-const initialState = {};
+const initialState = {
+    "chart": {
+        id: "chart",
+        url: "./plugins/widgets/chartWidget.js",
+        typeInfo: {
+            type: "will-be-loaded",
+            name: "chart (not loaded yet)"
+        }
+    },
+    "text": {
+        id: "text",
+        url: "./plugins/widgets/textWidget.js",
+        typeInfo: {
+            type: "will-be-loaded",
+            name: "text (not loaded yet)"
+        }
+    }
+
+};
 
 export const widgetPluginType = Prop.shape({
     id: Prop.string.isRequired,
@@ -74,6 +92,8 @@ function widgetPlugin(state, action) {
                 url: action.url,
                 typeInfo: action.typeInfo
             };
+        case Action.PLUGIN_IS_LOADING:
+            return _.assign({}, state, {isLoading: action.isLoading});
         default:
             return state;
     }

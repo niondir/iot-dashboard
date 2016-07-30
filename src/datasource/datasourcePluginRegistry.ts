@@ -32,16 +32,18 @@ export default class DatasourcePluginRegistry extends PluginRegistry<IDatasource
     }
 
     /**
-     * Create instances for all plugins that are in the store
+     * Create instances for all plugins of a given type that are in the store
      */
-    initializePluginInstances() {
+    initializePluginInstances(pluginType: string) {
         const dsStates = this.store.getState().datasources;
 
-        _.valuesIn<IDatasourceState>(dsStates).forEach((dsState) => {
-            const pluginFactory = this.getPlugin(dsState.type);
-            pluginFactory.createInstance(dsState.id);
+        _.valuesIn<IDatasourceState>(dsStates)
+            .filter((dsState) => dsState.type == pluginType)
+            .forEach((dsState) => {
+                const pluginFactory = this.getPlugin(dsState.type);
+                pluginFactory.createInstance(dsState.id);
 
-        })
+            })
     }
 
     createPluginFromModule(module: IDatasourcePluginModule) {
@@ -50,18 +52,13 @@ export default class DatasourcePluginRegistry extends PluginRegistry<IDatasource
     }
 
     doFetchData() {
-        const datasourcePluginStates = this.store.getState().datasourcePlugins;
         const datasourceStates = this.store.getState().datasources;
 
-        // It is important that we only call fetch on Datasources and Plugins that are also in the Store!
-        // Else you could have ugly side effects when something runs out of sync with the store
-        _.valuesIn<IDatasourcePluginState>(datasourcePluginStates).forEach((dsPluginState) => {
-            const dsPluginFactory = this.getPlugin(dsPluginState.id);
-            _.valuesIn<IDatasourceState>(datasourceStates).forEach((dsState) => {
-                const dsPlugin = dsPluginFactory.getInstance(dsState.id);
-                this.doFetchDataForDatasourceInstance(dsPlugin, dsState);
-            })
-        });
+        _.valuesIn<IDatasourceState>(datasourceStates).forEach((dsState) => {
+            const dsPluginFactory = this.getPlugin(dsState.type);
+            const dsPlugin = dsPluginFactory.getInstance(dsState.id);
+            this.doFetchDataForDatasourceInstance(dsPlugin, dsState);
+        })
     }
 
     doFetchDataForDatasourceInstance(dsInstance: IDatasourcePlugin, dsState: IDatasourceState) {
@@ -81,7 +78,6 @@ export default class DatasourcePluginRegistry extends PluginRegistry<IDatasource
         this._fetchPromises[dsState.id] = fetchPromise;
 
         fetchPromise.then((result) => {
-            console.log("_fetchPromises => null");
             this._fetchPromises[dsState.id] = null;
             if (!this._disposed) {
                 //console.log("fetData plugin finished", dsState, result);

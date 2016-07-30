@@ -8,6 +8,7 @@ import 'c3css'
 import 'expose?$!expose?jQuery!jquery'
 import 'expose?React!react'
 import 'expose?_!lodash'
+import 'expose?c3!c3'
 import './pluginApi/freeboardPluginApi'
 import './pluginApi/pluginApi'
 import './app.css'
@@ -15,33 +16,16 @@ import 'file?name=[name].[ext]!./index.html'
 import 'es6-promise'
 
 import * as Renderer from './renderer.js'
-import * as TextWidget from './widgets/plugins/textWidget.js'
-import * as ChartWidget from './widgets/plugins/chartWidget.js'
 import * as DatasourceWorker from './datasource/datasourceWorker.js'
-import * as RandomDatasource from './datasource/plugins/randomDatasource.js'
-import * as TimeDatasource from './datasource/plugins/timeDatasource.js'
 import * as Store from './store'
-import * as Plugins from './pluginApi/plugins.js'
 import * as Persist from "./persistence.js"
 import Dashboard from './dashboard'
 
 
 const initialState = Persist.loadFromLocalStorage();
 const dashboardStore = Store.create(initialState);
-const dashboard = new Dashboard(dashboardStore);
+let dashboard = new Dashboard(dashboardStore);
 dashboard.init();
-
-function loadInitialPlugins(store: Store.DashboardStore) {
-    store.dispatch(Plugins.loadPlugin(TextWidget));
-    store.dispatch(Plugins.loadPlugin(ChartWidget));
-    store.dispatch(Plugins.loadPluginFromUrl("./plugins/GoogleMapsWidget.js"));
-
-    store.dispatch(Plugins.loadPlugin(RandomDatasource));
-    store.dispatch(Plugins.loadPlugin(TimeDatasource));
-    store.dispatch(Plugins.loadPluginFromUrl("./plugins/DigimondoGpsDatasource.js"));
-}
-
-loadInitialPlugins(dashboardStore);
 
 const appElement = document.getElementById('app');
 
@@ -53,7 +37,9 @@ if (appElement) {
         console.warn("Failed to load dashboard. Asking user to wipe data and retry. The error will be printed below...");
         if (confirm("Failed to load dashboard. Reset all Data?\n\nPress cancel and check the browser console for more details.")) {
             dashboardStore.dispatch(Store.clearState());
-            loadInitialPlugins(dashboardStore);
+            dashboard.dispose();
+            dashboard = new Dashboard(dashboardStore);
+            dashboard.init();
             renderDashboard(appElement, dashboardStore);
         }
         else {

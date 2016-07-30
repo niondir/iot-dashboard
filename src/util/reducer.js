@@ -28,7 +28,7 @@ export function genCrudReducer(actionNames, elementReducer, idProperty = 'id') {
     return function crudReducer(state, action) {
         const id = action[idProperty];
         switch (action.type) {
-            case CREATE_ACTION:
+            case CREATE_ACTION: // Create or replace when already exists
                 return Object.assign({}, state, {[id]: elementReducer(undefined, action)});
             case DELETE_ACTION:
                 const newState = Object.assign({}, state);

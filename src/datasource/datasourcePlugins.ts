@@ -7,7 +7,31 @@ import {genCrudReducer} from "../util/reducer.js";
 import * as AppState from "../appState";
 import Dashboard from "../dashboard";
 
-const initialState: IDatasourcePluginsState = {};
+
+// TODO: does it work to have the URL as ID?
+const initialState: IDatasourcePluginsState = {
+    "random": { // TODO: can we have another id (id != plugin type) without breaking stuff?
+        id: "random",
+        url: "./plugins/datasources/randomDatasource.js",
+        typeInfo: {
+            type: "will-be-loaded"
+        }
+    },
+    "time": {
+        id: "time",
+        url: "./plugins/datasources/timeDatasource.js",
+        typeInfo: {
+            type: "will-be-loaded"
+        }
+    },
+    "digimondo-gps-datasource": {
+        id: "digimondo-gps-datasource",
+        url: "./plugins/datasources/DigimondoGpsDatasource.js",
+        typeInfo: {
+            type: "will-be-loaded"
+        }
+    }
+};
 
 
 export interface IDatasourcePluginsState {
@@ -15,12 +39,10 @@ export interface IDatasourcePluginsState {
 }
 
 
-export interface IDatasourcePluginState extends AppState.Action {
+export interface IDatasourcePluginState {
     id: string
     typeInfo: AppState.ITypeInfo
     url: string
-    isDatasource: boolean
-    isWidget: boolean
 }
 
 
@@ -28,10 +50,8 @@ export interface IDatasourcePluginAction extends AppState.Action {
     typeInfo: AppState.ITypeInfo
     url: string
     pluginType: string
+    isLoading: boolean
 }
-
-
-
 
 
 export function unloadPlugin(type: string) {
@@ -71,10 +91,10 @@ function datasourcePlugin(state: IDatasourcePluginState, action: IDatasourcePlug
             return <IDatasourcePluginState>{
                 id: action.typeInfo.type,
                 url: action.url,
-                typeInfo: action.typeInfo,
-                isDatasource: action.pluginType === "datasource",
-                isWidget: action.pluginType === "widget"
+                typeInfo: action.typeInfo
             };
+        case Action.PLUGIN_IS_LOADING:
+            return _.assign<any, IDatasourcePluginState>({}, state, {isLoading: action.isLoading});
         default:
             return state;
     }

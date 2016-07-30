@@ -121,7 +121,7 @@ export function setDatasourceData(id: string, data: any[]): IDatasourceAction {
     }
 }
 
-export function appendDatasourceData(id: string, data: any[], maxValues: number = 5): IDatasourceAction {
+export function appendDatasourceData(id: string, data: any[], maxValues: number = 10): IDatasourceAction {
     return {
         type: ActionNames.APPEND_DATASOURCE_DATA,
         id,
@@ -202,7 +202,7 @@ function datasource(state: IDatasourceState, action: IDatasourceAction): IDataso
         case ActionNames.APPEND_DATASOURCE_DATA:
             let newData = _.clone(state.data).concat(action.data);
             if (action.maxValues) {
-                newData = newData.slice(newData.length - action.maxValues);
+                newData = _.takeRight(newData, action.maxValues);
             }
             return _.assign<any, IDatasourceState>({}, state, {
                 data: newData

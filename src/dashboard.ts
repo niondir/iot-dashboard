@@ -1,8 +1,12 @@
 import {DashboardStore} from "./store";
 import {WidgetPluginRegistry} from "./widgets/widgetPlugins.js";
-import DatasourcePluginRegistry from "./datasource/datasourcePluginRegistry";
+import DatasourcePluginRegistry, {IDatasourcePluginModule} from "./datasource/datasourcePluginRegistry";
 import * as Plugins from "./pluginApi/plugins.js";
-import {IDatasourcePluginModule} from "./datasource/datasourcePluginRegistry";
+import * as PluginCache from "./pluginApi/pluginCache";
+import scriptloader from "./util/scriptLoader";
+import * as URI from "urijs";
+import {IDatasourcePluginState} from "./datasource/datasourcePlugins";
+import {IPluginModule} from "./pluginApi/pluginRegistry";
 
 /**
  * The root of the Dashboard business Logic
@@ -14,7 +18,7 @@ export default class Dashboard {
     private _widgetPluginRegistry: WidgetPluginRegistry;
     private _initialized: boolean = false;
 
-    constructor(private _store: DashboardStore, private _initialDatasourcePlugins?: IDatasourcePluginModule[]) {
+    constructor(private _store: DashboardStore) {
         this._datasourcePluginRegistry = new DatasourcePluginRegistry(_store);
         this._widgetPluginRegistry = new WidgetPluginRegistry(_store);
     }
@@ -54,21 +58,64 @@ export default class Dashboard {
         this._initialized = true;
         Dashboard.setInstance(this);
 
-        // First load all build-in plugins
-        if (this._initialDatasourcePlugins) {
-            this._initialDatasourcePlugins.forEach((dsPlugin) => {
-                this._datasourcePluginRegistry.register(dsPlugin);
-            })
-        }
-
         // There might be external plugins that need to be loaded from the web
-        this._store.dispatch(Plugins.initializeExternalPlugins());
+        //this._store.dispatch(Plugins.initializeExternalPlugins());
 
+        const state = this._store.getState();
+        const plugins = _.valuesIn<IDatasourcePluginState>(state.datasourcePlugins)
+            .concat(_.valuesIn<any>(state.widgetPlugins));  // TODO: type IWidgetPluginState
 
-        // When all plugins are loaded we can create all known instances for them
-        this._datasourcePluginRegistry.initializePluginInstances();
+        // TODO: remove all plugins that we can not load from state?
+        plugins.filter(pluginState => !_.isEmpty(pluginState.url)).forEach(plugin => {
+            this._store.dispatch(Plugins.setIsLoading(plugin.id, true));
+            scriptloader.loadScript([plugin.url]).then(() => {
+                this.onScriptLoaded(plugin.url);
+            });
+        });
 
     }
+
+    private onScriptLoaded(url: string) {
+        if (PluginCache.hasPlugin()) {
+            // TODO: use a reference to the pluginCache and only bind that instance to the window object while the script is loaded
+            // TODO: The scriploader can ensure that only one script is loaded at a time
+            const plugin = PluginCache.popLoadedPlugin();
+
+            const dependencies: string[] = plugin.TYPE_INFO.dependencies;
+            if (_.isArray(dependencies) && dependencies.length !== 0) {
+
+                const dependencyPaths = dependencies.map(dependency => {
+                    return URI(dependency).absoluteTo(url).toString();
+                });
+
+                console.log("Loading Dependencies for Plugin", dependencyPaths);
+
+                scriptloader.loadScript(dependencyPaths).then(() => {
+                    this.onFinishedLoadingPlugin(plugin, url);
+                });
+            }
+            else {
+                this.onFinishedLoadingPlugin(plugin, url);
+            }
+        }
+        else {
+            console.error("Failed to load Plugin. Make sure it called window.iotDashboardApi.register***Plugin from url " + url);
+        }
+    }
+
+    private onFinishedLoadingPlugin(plugin: IPluginModule, url: string = null) {
+        if ((<IDatasourcePluginModule>plugin).Datasource) {
+            this._datasourcePluginRegistry.register((<IDatasourcePluginModule>plugin));
+            console.log("plugin", plugin)
+            this._datasourcePluginRegistry.initializePluginInstances(plugin.TYPE_INFO.type);
+
+        }
+        else if ((<any>plugin).Widget) {
+            this._widgetPluginRegistry.register(plugin);
+        }
+        this._store.dispatch(Plugins.addPlugin(plugin, url));
+    }
+
 
     dispose() {
         this._datasourcePluginRegistry.dispose();

@@ -19,8 +19,14 @@ import SinonStub = Sinon.SinonStub;
 describe('Datasource > DatasourcePlugins', function () {
 
     let dashboard: Dashboard;
+    let loadScriptStub: SinonStub;
+
+    beforeEach(function () {
+        loadScriptStub = Sinon.stub(scriptloader, "loadScript");
+    });
 
     afterEach(function () {
+        loadScriptStub.restore();
         if (dashboard) {
             dashboard.dispose();
         }
@@ -39,15 +45,7 @@ describe('Datasource > DatasourcePlugins', function () {
          - register internal plugin
          */
 
-        let loadScriptStub: SinonStub;
 
-        beforeEach(function () {
-            loadScriptStub = Sinon.stub(scriptloader, "loadScript");
-        });
-
-        afterEach(function () {
-            loadScriptStub.restore();
-        });
 
 
         it("an external datasource plugin is loaded when it is already in state", function () {
@@ -58,7 +56,6 @@ describe('Datasource > DatasourcePlugins', function () {
                 return;
             };
 
-            // Restore
             loadScriptStub.restore();
             loadScriptStub = Sinon.stub(scriptloader, "loadScript", function (scripts: string[], options: any) {
                 pluginCache.registerDatasourcePlugin(typeInfo, datasource);
@@ -75,8 +72,6 @@ describe('Datasource > DatasourcePlugins', function () {
                     id: "ext-ds",
                     typeInfo: {type: "ext-ds"},
                     url: "fake/plugin.js",
-                    isDatasource: true,
-                    isWidget: false
                 }
             };
 
@@ -102,9 +97,7 @@ describe('Datasource > DatasourcePlugins', function () {
                 "ext-ds": {
                     "id": "ext-ds",
                     "typeInfo": {"type": "ext-ds"},
-                    "url": "fake/plugin.js",
-                    "isDatasource": true,
-                    "isWidget": false
+                    "url": "fake/plugin.js"
                 }
             }, "The new state has the registered datasource plugin");
         });
@@ -122,14 +115,21 @@ describe('Datasource > DatasourcePlugins', function () {
             }
         };
 
+        loadScriptStub.restore();
+        loadScriptStub = Sinon.stub(scriptloader, "loadScript", function (scripts: string[], options: any) {
+            pluginCache.registerDatasourcePlugin(testDsPlugin.TYPE_INFO, testDsPlugin.Datasource);
+
+            // In reality the success function is called async
+            // but then we to now know how long to wait to verify the plugin
+            options.success();
+        });
+
 
         const initialState: AppState.State = Store.emptyState();
         initialState.datasourcePlugins = {
             "ds-with-instance-in-state": <DatasourcePlugins.IDatasourcePluginState>{
                 id: "ds-with-instance-in-state",
-                typeInfo: {type: "ds-with-instance-in-state"},
-                isDatasource: true,
-                isWidget: false
+                typeInfo: {type: "ds-with-instance-in-state"}
             }
         };
         initialState.datasources = {
@@ -142,7 +142,7 @@ describe('Datasource > DatasourcePlugins', function () {
         };
 
         const store = Store.create(initialState, Store.testStoreOptions);
-        dashboard = new Dashboard(store, [testDsPlugin]);
+        dashboard = new Dashboard(store);
         dashboard.init();
 
         const datasourcePluginFactory = dashboard.datasourcePluginRegistry.getPlugin("ds-with-instance-in-state");
