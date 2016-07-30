@@ -5,9 +5,9 @@
 import {assert} from "chai";
 import * as Datasource from "./datasource";
 import * as Store from "../store";
+import {DashboardStore} from "../store";
 import * as Plugins from "../pluginApi/plugins.js";
 import Dashboard from "../dashboard";
-import {DashboardStore} from "../store";
 
 describe("Datasource > Datasource", function () {
 
@@ -20,7 +20,7 @@ describe("Datasource > Datasource", function () {
     });
 
     afterEach(() => {
-         dashboard.dispose();
+        dashboard.dispose();
     });
 
     describe("api", function () {
@@ -45,7 +45,7 @@ describe("Datasource > Datasource", function () {
 
         it("fetchData() is called as configured in the settings", function () {
 
-            const DatasourcePlugin = {
+            const datasourcePlugin = {
                 TYPE_INFO: {
                     type: "test-ds",
                     fetchData: {
@@ -62,10 +62,8 @@ describe("Datasource > Datasource", function () {
                 }
             };
 
-            // TODO: new store but old state outside of the store :(
-
             dashboard.init();
-            store.dispatch(Plugins.loadPlugin(DatasourcePlugin));
+            store.dispatch(Plugins.loadPlugin(datasourcePlugin));
             store.dispatch(Datasource.createDatasource("test-ds", {}, "ds-id"));
 
             const pluginFactory = dashboard.datasourcePluginRegistry.getPlugin("test-ds");
@@ -74,7 +72,7 @@ describe("Datasource > Datasource", function () {
             assert.isOk(plugin, "Datasource plugin is registered in the registry");
 
 
-        })
+        });
     });
 });
 

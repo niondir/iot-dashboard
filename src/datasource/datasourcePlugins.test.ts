@@ -9,24 +9,22 @@ import * as Store from "../store";
 import * as AppState from "../appState";
 import * as Sinon from "sinon";
 import scriptloader from "../util/scriptLoader";
-import * as pluginCache from "../pluginApi/pluginCache.js";
+import * as pluginCache from "../pluginApi/pluginCache";
 import {default as DataSourcePluginFactory} from "./datasourcePluginFactory";
 import Dashboard from "../dashboard";
 import SinonStub = Sinon.SinonStub;
 
-const stateWithExternalDatasource: AppState.State = Store.emptyState();
-stateWithExternalDatasource.datasourcePlugins = {
-    "ext-ds": <DatasourcePlugins.IDatasourcePluginState>{
-        id: "ext-ds",
-        typeInfo: {type: "ext-ds"},
-        url: "fake/plugin.js",
-        isDatasource: true,
-        isWidget: false
-    }
-};
 
 // TODO: Test Actions, Test Reducer
 describe('Datasource > DatasourcePlugins', function () {
+
+    let dashboard: Dashboard;
+
+    afterEach(function () {
+        if (dashboard) {
+            dashboard.dispose();
+        }
+    });
 
     describe("plugin registration", function () {
         /* TODO: Testcases
@@ -48,22 +46,22 @@ describe('Datasource > DatasourcePlugins', function () {
         });
 
         afterEach(function () {
-            loadScriptStub.restore()
+            loadScriptStub.restore();
         });
 
 
-        it("an external plugin is loaded when it is already in state", function () {
+        it("an external datasource plugin is loaded when it is already in state", function () {
 
             // TYPE_INFO and Datasource is usually created inside the plugin script
-            const TYPE_INFO = {type: "ext-ds"};
-            const Datasource = function (props: any) {
+            const typeInfo = {type: "ext-ds"};
+            const datasource = function (props: any) {
                 return;
             };
 
             // Restore
             loadScriptStub.restore();
             loadScriptStub = Sinon.stub(scriptloader, "loadScript", function (scripts: string[], options: any) {
-                pluginCache.registerDatasourcePlugin(TYPE_INFO, Datasource);
+                pluginCache.registerDatasourcePlugin(typeInfo, datasource);
 
                 // In reality the success function is called async
                 // but then we to now know how long to wait to verify the plugin
@@ -71,9 +69,20 @@ describe('Datasource > DatasourcePlugins', function () {
             });
             loadScriptStub.withArgs(["fake/plugin.js"]);
 
+            const stateWithExternalDatasource: AppState.State = Store.emptyState();
+            stateWithExternalDatasource.datasourcePlugins = {
+                "ext-ds": <DatasourcePlugins.IDatasourcePluginState>{
+                    id: "ext-ds",
+                    typeInfo: {type: "ext-ds"},
+                    url: "fake/plugin.js",
+                    isDatasource: true,
+                    isWidget: false
+                }
+            };
+
             const store = Store.create(stateWithExternalDatasource, Store.testStoreOptions);
             const state = store.getState();
-            const dashboard = new Dashboard(store);
+            dashboard = new Dashboard(store);
             dashboard.init();
 
             const plugin: DataSourcePluginFactory = dashboard.datasourcePluginRegistry.getPlugin("ext-ds");
@@ -84,7 +93,7 @@ describe('Datasource > DatasourcePlugins', function () {
             assert.equal(plugin.disposed, false, "The loaded plugin is not disposed");
             assert.deepEqual((<any>plugin)._plugins, {}, "The loaded plugin has no instances");
             assert.equal((<any>plugin)._store, store, "The loaded plugin knows the correct store");
-            assert.equal((<any>plugin)._datasource, Datasource, "The loaded plugin knows the datasouces");
+            assert.equal((<any>plugin)._datasource, datasource, "The loaded plugin knows the datasouces");
             assert.equal(plugin.type, "ext-ds", "The loaded plugin knows the plugin type");
 
             assert.deepEqual(state.widgets, {}, "The new state has no widgets");
@@ -101,6 +110,45 @@ describe('Datasource > DatasourcePlugins', function () {
         });
         it("register internal plugin");
         it("a plugin is marked as defective when the external plugin was not loaded");
+    });
+
+    // TODO: consider moving to dashboard.test.ts?
+    it("A datasource instance is created, when it is already in state", () => {
+
+        const testDsPlugin = {
+            TYPE_INFO: {type: "ds-with-instance-in-state"},
+            Datasource: function (props: any) {
+                return;
+            }
+        };
+
+
+        const initialState: AppState.State = Store.emptyState();
+        initialState.datasourcePlugins = {
+            "ds-with-instance-in-state": <DatasourcePlugins.IDatasourcePluginState>{
+                id: "ds-with-instance-in-state",
+                typeInfo: {type: "ds-with-instance-in-state"},
+                isDatasource: true,
+                isWidget: false
+            }
+        };
+        initialState.datasources = {
+            "ds-instance-in-state-id": {
+                id: "ds-instance-in-state-id",
+                type: "ds-with-instance-in-state",
+                settings: {},
+                data: [{ernie: "bert"}]
+            }
+        };
+
+        const store = Store.create(initialState, Store.testStoreOptions);
+        dashboard = new Dashboard(store, [testDsPlugin]);
+        dashboard.init();
+
+        const datasourcePluginFactory = dashboard.datasourcePluginRegistry.getPlugin("ds-with-instance-in-state");
+        const datasourcePluginInstance = datasourcePluginFactory.getInstance("ds-instance-in-state-id");
+
+        assert.isOk(datasourcePluginInstance, "The plugin instance is available");
     });
 
 

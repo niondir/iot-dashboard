@@ -5,9 +5,7 @@
 import {assert} from "chai";
 import * as Store from "../store";
 import {DashboardStore} from "../store";
-import {IDatasourceInstance, default as DataSourcePluginFactory} from "./datasourcePluginFactory";
-import SinonStub = Sinon.SinonStub;
-import SinonFakeTimers = Sinon.SinonFakeTimers;
+import {IDatasourcePlugin, default as DataSourcePluginFactory} from "./datasourcePluginFactory";
 
 describe("Datasource > DatasourcePluginFactory", function () {
 
@@ -19,14 +17,14 @@ describe("Datasource > DatasourcePluginFactory", function () {
 
     it("can not create datasource plugin instance of a datasource that is not in the store", function () {
 
-        const PluginImpl = function (props: any): IDatasourceInstance {
+        const pluginImpl = function (props: any): IDatasourcePlugin {
             this.fetchData = function (resolve: any, reject: any) {
                 assert.fail(true, false, "fetchData must not be called");
             };
             return {}
         };
 
-        const dsPlugin = new DataSourcePluginFactory("test-ds-plugin-type", PluginImpl, store);
+        const dsPlugin = new DataSourcePluginFactory("test-ds-plugin-type", pluginImpl, store);
 
         try {
             dsPlugin.createInstance("plugin-instance");

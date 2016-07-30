@@ -104,13 +104,13 @@
     //
     // -------------------
     // Here we implement the actual datasource plugin. We pass in the settings and updateCallback.
-    var meshbluSource = function(settings, updateCallback)
+    const meshbluSource = function(settings, updateCallback)
     {
         // Always a good idea...
-        var self = this;
+        const self = this;
 
         // Good idea to create a variable to hold on to our settings, because they might change in the future. See below.
-        var currentSettings = settings;
+        let currentSettings = settings;
 
 
 
@@ -121,7 +121,7 @@
         {
 
 
-            var conn = meshblu.createConnection({
+            const conn = meshblu.createConnection({
                 "uuid": currentSettings.uuid,
                 "token": currentSettings.token,
                 "server": currentSettings.server,
@@ -132,7 +132,7 @@
 
                 conn.on('message', function(message){
 
-                    var newData = message;
+                    const newData = message;
                     updateCallback(newData);
 
                 });

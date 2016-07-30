@@ -29,7 +29,7 @@ export interface IPlugin {
 
 export type IdValueMap<T> = {[id: string]: T}
 
-export default class PluginRegistry<TPlugin extends IPlugin, TPluginModule extends IPluginModule, TPluginFactory extends IPluginFactory<TPlugin>> {
+export default class PluginRegistry<TPluginModule extends IPluginModule, TPluginFactory extends IPluginFactory<any>> {
 
     private _plugins: IdValueMap<TPluginFactory> = {};
 
@@ -63,6 +63,7 @@ export default class PluginRegistry<TPlugin extends IPlugin, TPluginModule exten
         return this._plugins[type] !== undefined;
     }
 
+    // TODO: rename to getPluginFactory() when also widgets are in TypeScript?
     getPlugin(type: string): TPluginFactory {
         const plugin = this._plugins[type];
         if (!plugin) {

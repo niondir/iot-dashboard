@@ -2,13 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import * as DatasourcePlugins from './datasourcePlugins'
-import {genCrudReducer} from '../util/reducer.js'
-import * as ActionNames from '../actionNames'
-import * as Uuid from '../util/uuid.js'
-import * as _ from 'lodash'
-import * as ModalIds from '../modal/modalDialogIds.js'
-import * as Modal from '../modal/modalDialog.js'
+import {genCrudReducer} from "../util/reducer.js";
+import * as ActionNames from "../actionNames";
+import * as Uuid from "../util/uuid.js";
+import * as _ from "lodash";
+import * as ModalIds from "../modal/modalDialogIds.js";
+import * as Modal from "../modal/modalDialog.js";
 import * as AppState from "../appState";
 import Dashboard from "../dashboard";
 

@@ -9,11 +9,11 @@ import {IDatasourceState} from "./datasource";
 import Unsubscribe = Redux.Unsubscribe;
 
 
-export interface IDatasourceConstructor extends IDatasourceInstance {
-    new(props: any): IDatasourceInstance
+export interface IDatasourceConstructor extends IDatasourcePlugin {
+    new(props: any): IDatasourcePlugin
 }
 
-export interface IDatasourceInstance extends IPlugin {
+export interface IDatasourcePlugin extends IPlugin {
     props?: any
     datasourceWillReceiveProps?: (newProps: any) => void
     dispose?: () => void
@@ -25,13 +25,13 @@ export interface IDatasourceInstance extends IPlugin {
 /**
  * Connects a datasource to the application state
  */
-export default class DataSourcePluginFactory implements IPluginFactory<IDatasourceInstance> {
+export default class DataSourcePluginFactory implements IPluginFactory<IDatasourcePlugin> {
 
-    private _plugins: {[id: string]: IDatasourceInstance} = {};
+    private _plugins: {[id: string]: IDatasourcePlugin} = {};
     private _unsubscribe: Unsubscribe;
     private _disposed: boolean = false;
 
-    constructor(private _type: string, private _datasource: IDatasourceInstance, private _store: DashboardStore) {
+    constructor(private _type: string, private _datasource: IDatasourcePlugin, private _store: DashboardStore) {
         this._unsubscribe = _store.subscribe(this.handleStateChange.bind(this));
     }
 
@@ -63,7 +63,7 @@ export default class DataSourcePluginFactory implements IPluginFactory<IDatasour
         return this.getInstance(id);
     }
 
-    createInstance(id: string): IDatasourceInstance {
+    createInstance(id: string): IDatasourcePlugin {
         if (this._disposed === true) {
             throw new Error("Try to create datasource of destroyed type: " + JSON.stringify({id, type: this.type}));
         }
@@ -110,7 +110,7 @@ export default class DataSourcePluginFactory implements IPluginFactory<IDatasour
 
     dispose() {
         this._disposed = true;
-        _.valuesIn<IDatasourceInstance>(this._plugins).forEach((plugin) => {
+        _.valuesIn<IDatasourcePlugin>(this._plugins).forEach((plugin) => {
             if (_.isFunction(plugin.dispose)) {
                 try {
                     plugin.dispose();

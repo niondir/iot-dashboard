@@ -2,6 +2,8 @@
 * License, v. 2.0. If a copy of the MPL was not distributed with this
 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import {ITypeInfo} from "../appState";
+import {IDatasourcePlugin} from "../datasource/datasourcePluginFactory";
 /**
  * When a Plugin is loaded via the UI, an action is called to do so.
  * The action will load an external script, containing the plugin code, which calls one of the API methods here.
@@ -11,7 +13,7 @@
  * @type {null}
  */
 
-let pluginCache = null;
+let pluginCache: any = null;
 
 
 export function popLoadedPlugin() {
@@ -24,18 +26,19 @@ export function hasPlugin() {
     return pluginCache !== null;
 }
 
-export function registerDatasourcePlugin(typeInfo, Datasource) {
+export function registerDatasourcePlugin(typeInfo: ITypeInfo, datasource: IDatasourcePlugin) {
     console.assert(!hasPlugin(), "Plugin must be finished loading before another can be registered", pluginCache);
     pluginCache = ({
         TYPE_INFO: typeInfo,
-        Datasource
+        Datasource: datasource
     });
 }
 
-export function registerWidgetPlugin(typeInfo, Widget) {
+// TODO: type Widget as soon as it is in typescript
+export function registerWidgetPlugin(typeInfo: ITypeInfo, widget: any) {
     console.assert(!hasPlugin(), "Plugin must be finished loading before another can be registered", pluginCache);
     pluginCache = ({
         TYPE_INFO: typeInfo,
-        Widget
+        Widget: widget
     });
 }

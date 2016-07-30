@@ -19,7 +19,6 @@ import * as  WidgetPlugins from "./widgets/widgetPlugins.js";
 import * as DatasourcePlugins from "./datasource/datasourcePlugins";
 import * as AppState from "./appState.ts";
 import * as Config from "./config";
-import Middleware = Redux.Middleware;
 import Dashboard from "./dashboard";
 
 export interface DashboardStore extends Redux.Store<AppState.State> {

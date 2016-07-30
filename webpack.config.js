@@ -106,9 +106,9 @@ module.exports = {
                 test: /\.(png)$/,
                 loader: "file-loader?name=img/[name].[sha256:hash:base58:10].[ext]",
                 include: paths.css
-            },
+            }
             // TODO: try with sinon-2.0.0-pre - maybe we do not need this anymore
-            { test: /sinon.*\.js$/,   loader: "imports?define=>false,require=>false"  }
+            //{ test: /sinon.*\.js$/,   loader: "imports?define=>false,require=>false"  }
 
         ]
     },

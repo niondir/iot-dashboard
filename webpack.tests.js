@@ -10,6 +10,9 @@ webpackConfig.entry = {
 
 webpackConfig.devtool = undefined;
 
+//webpackConfig.resolve.alias['source-map-support'] = path.resolve('./node_modules/source-map-support/source-map-support.js');
+delete webpackConfig.resolve.alias['source-map-support'];
+
 webpackConfig.module.postLoaders.unshift(
     /*{ // Used for remap-istanbul to find all sourcemaps of external dependencies
      test: /\.(js)$/,

@@ -1,7 +1,7 @@
 import PluginRegistry from "../pluginApi/pluginRegistry";
 import DataSourcePluginFactory from "./datasourcePluginFactory";
 import {IPluginModule} from "../pluginApi/pluginRegistry";
-import {IDatasourceInstance} from "./datasourcePluginFactory";
+import {IDatasourcePlugin} from "./datasourcePluginFactory";
 import {DashboardStore} from "../store";
 import {IDatasourceState, appendDatasourceData} from "./datasource";
 import {IDatasourcePluginState} from "./datasourcePlugins";
@@ -9,11 +9,11 @@ import {IDatasourcePluginState} from "./datasourcePlugins";
 /**
  * Describes how we expect the plugin module to be
  */
-interface IDatasourcePluginModule extends IPluginModule {
-    Datasource: IDatasourceInstance
+export interface IDatasourcePluginModule extends IPluginModule {
+    Datasource: IDatasourcePlugin
 }
 
-export default class DatasourcePluginRegistry extends PluginRegistry<IDatasourceInstance, IDatasourcePluginModule, DataSourcePluginFactory> {
+export default class DatasourcePluginRegistry extends PluginRegistry<IDatasourcePluginModule, DataSourcePluginFactory> {
 
     private _fetchIntervalRef: number;
     private _fetchPromises: {[dsStateId: string]: Promise<any[]>} = {};
@@ -29,6 +29,19 @@ export default class DatasourcePluginRegistry extends PluginRegistry<IDatasource
 
     get disposed() {
         return this._disposed
+    }
+
+    /**
+     * Create instances for all plugins that are in the store
+     */
+    initializePluginInstances() {
+        const dsStates = this.store.getState().datasources;
+
+        _.valuesIn<IDatasourceState>(dsStates).forEach((dsState) => {
+            const pluginFactory = this.getPlugin(dsState.type);
+            pluginFactory.createInstance(dsState.id);
+
+        })
     }
 
     createPluginFromModule(module: IDatasourcePluginModule) {
@@ -51,7 +64,7 @@ export default class DatasourcePluginRegistry extends PluginRegistry<IDatasource
         });
     }
 
-    doFetchDataForDatasourceInstance(dsInstance: IDatasourceInstance, dsState: IDatasourceState) {
+    doFetchDataForDatasourceInstance(dsInstance: IDatasourcePlugin, dsState: IDatasourceState) {
         if (this._fetchPromises[dsState.id]) {
             console.warn("Do not fetch data because a fetch is currently running on Datasource", dsState);
             return;
