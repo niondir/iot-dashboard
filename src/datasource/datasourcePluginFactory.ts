@@ -5,8 +5,8 @@
 import * as _ from "lodash";
 import {DashboardStore} from "../store";
 import {IPluginFactory, IPlugin} from "../pluginApi/pluginRegistry";
-import {IDatasourceState} from "./datasource";
 import * as Datasource from "./datasource";
+import {IDatasourceState} from "./datasource";
 import Unsubscribe = Redux.Unsubscribe;
 
 
@@ -28,12 +28,12 @@ export interface IDatasourcePlugin extends IPlugin {
  */
 export default class DataSourcePluginFactory implements IPluginFactory<IDatasourcePlugin> {
 
-    private _plugins: {[id: string]: IDatasourcePlugin} = {};
+    private _pluginInstances: {[id: string]: IDatasourcePlugin} = {};
     private _unsubscribe: Unsubscribe;
     private _disposed: boolean = false;
 
     constructor(private _type: string, private _datasource: IDatasourcePlugin, private _store: DashboardStore) {
-        this._unsubscribe = _store.subscribe(this.handleStateChange.bind(this));
+        this._unsubscribe = _store.subscribe(() => this.handleStateChange());
     }
 
     get type() {
@@ -51,14 +51,80 @@ export default class DataSourcePluginFactory implements IPluginFactory<IDatasour
         if (!dsState) {
             throw new Error("Can not get state of non existing datasource with id " + id);
         }
+        if (dsState.type !== this.type) {
+            throw new Error("Can not get state of datasource that is not of the correct type: " + dsState.type + " != " + this.type);
+        }
         return dsState;
     }
 
-    createInstance(id: string): IDatasourcePlugin {
+
+    getInstance(id: string) {
+        if (this._disposed === true) {
+            throw new Error("Try to get datasource of destroyed type. " + JSON.stringify({id, type: this.type}));
+        }
+        if (!this._pluginInstances[id]) {
+            throw new Error("No running instance of datasource. " + JSON.stringify({id, type: this.type}));
+        }
+        return this._pluginInstances[id];
+    }
+
+    dispose() {
+        this._disposed = true;
+        _.valuesIn<IDatasourcePlugin>(this._pluginInstances).forEach((plugin) => {
+            if (_.isFunction(plugin.dispose)) {
+                try {
+                    plugin.dispose();
+                }
+                catch (e) {
+                    console.error("Failed to destroy Datasource instance", plugin);
+                }
+            }
+        });
+        this._pluginInstances = {};
+        this._unsubscribe();
+    }
+
+    handleStateChange() {
+        const state = this._store.getState();
+
+        // Create Datasource instances for missing data sources in store
+        _.valuesIn<IDatasourceState>(state.datasources)
+            .filter((dsState) => dsState.type === this.type)
+            .forEach((dsState) => {
+                if (this._pluginInstances[dsState.id] === undefined) {
+                    this.createInstance(dsState.id);
+                    this._store.dispatch(Datasource.finishedLoading(dsState.id))
+                }
+            });
+
+        // For all running datasources we notify them about setting changes
+        _.valuesIn<IDatasourceState>(state.datasources).forEach(dsState => this.updateDatasource(dsState))
+    }
+
+    private updateDatasource(dsState: IDatasourceState) {
+        const plugin = this._pluginInstances[dsState.id];
+        if (!plugin) {
+            // This is normal to happen when the app starts,
+            // since the state already contains the id's before plugin instances are loaded
+            //console.warn("Can not find Datasource instance with id " + dsState.id + ". Skipping Update!");
+            return;
+        }
+
+        const oldProps = plugin.props;
+        const newProps = _.assign({oldProps, state: dsState});
+        if (oldProps !== newProps) {
+            if (_.isFunction(plugin.datasourceWillReceiveProps)) {
+                plugin.datasourceWillReceiveProps(newProps);
+            }
+            plugin.props = newProps;
+        }
+    }
+
+    private createInstance(id: string): IDatasourcePlugin {
         if (this._disposed === true) {
             throw new Error("Try to create datasource of destroyed type: " + JSON.stringify({id, type: this.type}));
         }
-        if (this._plugins[id] !== undefined) {
+        if (this._pluginInstances[id] !== undefined) {
             throw new Error("Can not create datasource instance. It already exists: " + JSON.stringify({
                     id,
                     type: this.type
@@ -85,70 +151,7 @@ export default class DataSourcePluginFactory implements IPluginFactory<IDatasour
         }
         // TODO: bind (and require?) fetchData()
 
-        this._plugins[id] = pluginInstance;
+        this._pluginInstances[id] = pluginInstance;
         return pluginInstance;
-    }
-
-    getInstance(id: string) {
-        if (this._disposed === true) {
-            throw new Error("Try to get datasource of destroyed type. " + JSON.stringify({id, type: this.type}));
-        }
-        if (!this._plugins[id]) {
-            throw new Error("No running instance of datasource. " + JSON.stringify({id, type: this.type}));
-        }
-        return this._plugins[id];
-    }
-
-    dispose() {
-        this._disposed = true;
-        _.valuesIn<IDatasourcePlugin>(this._plugins).forEach((plugin) => {
-            if (_.isFunction(plugin.dispose)) {
-                try {
-                    plugin.dispose();
-                }
-                catch (e) {
-                    console.error("Failed to destroy Datasource instance", plugin);
-                }
-            }
-        });
-        this._plugins = {};
-        this._unsubscribe();
-    }
-
-    handleStateChange() {
-        const state = this._store.getState();
-
-
-        // Whenever a datasource is added that is still loading, we create an instance and update the loading state
-        _.valuesIn<IDatasourceState>(state.datasources)
-            .filter((dsState) => dsState.isLoading)
-            .forEach((dsState) => {
-                this.createInstance(dsState.id);
-                this._store.dispatch(Datasource.finishedLoading(dsState.id))
-            })
-
-        // For all running datasources we notify them about setting changes
-        _.valuesIn<IDatasourceState>(state.datasources).forEach(dsState => this.updateDatasource(dsState))
-
-
-    }
-
-    updateDatasource(dsState: IDatasourceState) {
-        const plugin = this._plugins[dsState.id];
-        if (!plugin) {
-            // This is normal to happen when the app starts,
-            // since the state already contains the id's before plugin instances are loaded
-            //console.warn("Can not find Datasource instance with id " + dsState.id + ". Skipping Update!");
-            return;
-        }
-
-        const oldProps = plugin.props;
-        const newProps = _.assign({oldProps, state: dsState});
-        if (oldProps !== newProps) {
-            if (_.isFunction(plugin.datasourceWillReceiveProps)) {
-                plugin.datasourceWillReceiveProps(newProps);
-            }
-            plugin.props = newProps;
-        }
     }
 }

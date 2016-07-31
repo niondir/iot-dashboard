@@ -92,8 +92,6 @@ function widgetPlugin(state, action) {
                 url: action.url,
                 typeInfo: action.typeInfo
             };
-        case Action.PLUGIN_IS_LOADING:
-            return _.assign({}, state, {isLoading: action.isLoading});
         default:
             return state;
     }

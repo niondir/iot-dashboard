@@ -93,8 +93,6 @@ function datasourcePlugin(state: IDatasourcePluginState, action: IDatasourcePlug
                 url: action.url,
                 typeInfo: action.typeInfo
             };
-        case Action.PLUGIN_IS_LOADING:
-            return _.assign<any, IDatasourcePluginState>({}, state, {isLoading: action.isLoading});
         default:
             return state;
     }

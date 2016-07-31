@@ -46,7 +46,7 @@ describe('Datasource > DatasourcePlugins', function () {
          */
 
 
-        it("an external datasource plugin is loaded when it is already in state", function () {
+        it("an external datasource plugin is loaded when it is already in state", function (done) {
 
             // TYPE_INFO and Datasource is usually created inside the plugin script
             const typeInfo = {type: "ext-ds"};
@@ -84,16 +84,25 @@ describe('Datasource > DatasourcePlugins', function () {
                 }
             }, "The new state has the registered datasource plugin");
 
-            return dashboard.init().then(() => {
-                const plugin: DataSourcePluginFactory = dashboard.datasourcePluginRegistry.getPlugin("ext-ds");
+            dashboard.init();
 
-                assert.isOk(loadScriptStub.calledOnce);
-                assert.isOk(plugin, "The loaded plugin is okay");
-                assert.equal(plugin.disposed, false, "The loaded plugin is not disposed");
-                assert.deepEqual((<any>plugin)._plugins, {}, "The loaded plugin has no instances");
-                assert.equal((<any>plugin)._store, store, "The loaded plugin knows the correct store");
-                assert.equal((<any>plugin)._datasource, datasource, "The loaded plugin knows the datasouces");
-                assert.equal(plugin.type, "ext-ds", "The loaded plugin knows the plugin type");
+            let count = 0;
+            store.subscribe(() => {
+                count++;
+
+                // Wait till 2 dispatches are done ...
+                if (count === 1) {
+                    const plugin: DataSourcePluginFactory = dashboard.datasourcePluginRegistry.getPlugin("ext-ds");
+
+                    assert.isOk(loadScriptStub.calledOnce);
+                    assert.isOk(plugin, "The loaded plugin is okay");
+                    assert.equal(plugin.disposed, false, "The loaded plugin is not disposed");
+                    assert.equal((<any>plugin)._store, store, "The loaded plugin knows the correct store");
+                    assert.deepEqual((<any>plugin)._pluginInstances, {}, "The loaded plugin has no instances");
+                    assert.equal((<any>plugin)._datasource, datasource, "The loaded plugin knows the datasouces");
+                    assert.equal(plugin.type, "ext-ds", "The loaded plugin knows the plugin type");
+                    done()
+                }
             });
 
         });
@@ -102,7 +111,7 @@ describe('Datasource > DatasourcePlugins', function () {
     });
 
     // TODO: consider moving to dashboard.test.ts?
-    it("A datasource instance is created, when it is already in state", () => {
+    it("A datasource instance is created, when it is already in state", (done) => {
 
         const testDsPlugin = {
             TYPE_INFO: {type: "ds-with-instance-in-state"},
@@ -112,9 +121,10 @@ describe('Datasource > DatasourcePlugins', function () {
         };
 
         loadScriptStub.restore();
+        const scriptLoaded = Promise.resolve();
         loadScriptStub = Sinon.stub(scriptloader, "loadScript", function (scripts: string[], options: any) {
             pluginCache.registerDatasourcePlugin(testDsPlugin.TYPE_INFO, testDsPlugin.Datasource);
-            return Promise.resolve();
+            return scriptLoaded;
         });
 
 
@@ -122,7 +132,8 @@ describe('Datasource > DatasourcePlugins', function () {
         initialState.datasourcePlugins = {
             "ds-with-instance-in-state": <DatasourcePlugins.IDatasourcePluginState>{
                 id: "ds-with-instance-in-state",
-                typeInfo: {type: "ds-with-instance-in-state"}
+                typeInfo: {type: "ds-with-instance-in-state"},
+                url: "some/url"
             }
         };
         initialState.datasources = {
@@ -136,14 +147,29 @@ describe('Datasource > DatasourcePlugins', function () {
         };
 
         const store = Store.create(initialState, Store.testStoreOptions());
+
+        assert.deepEqual(store.getState().pluginLoader.loadingUrls, []);
+
+
         dashboard = new Dashboard(store);
+        dashboard.init();
 
-        return dashboard.init().then(() => {
-            const datasourcePluginFactory = dashboard.datasourcePluginRegistry.getPlugin("ds-with-instance-in-state");
-            const datasourcePluginInstance = datasourcePluginFactory.getInstance("ds-instance-in-state-id");
-            assert.isOk(datasourcePluginInstance, "The plugin instance is available");
-        })
+        const state = store.getState();
 
+        assert.deepEqual(state.pluginLoader.loadingUrls, ["some/url"], "The URL is in store to be loaded");
+
+        let count = 0;
+        store.subscribe(() => {
+            count++;
+
+            // Wait till 2 dispatches are done ...
+            if (count === 2) {
+                const datasourcePluginFactory = dashboard.datasourcePluginRegistry.getPlugin("ds-with-instance-in-state");
+                const datasourcePluginInstance = datasourcePluginFactory.getInstance("ds-instance-in-state-id");
+                assert.isOk(datasourcePluginInstance, "The plugin instance is available");
+                done()
+            }
+        });
     });
 
 

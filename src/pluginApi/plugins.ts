@@ -26,17 +26,6 @@ export function startLoadingPluginFromUrl(url: string): IPluginLoaderAction {
     }
 }
 
-/**
- * Set the status of a plugin that might be already in the state to be loading
- */
-export function pluginIsLoading(id: string, isLoading: boolean) {
-    return {
-        type: Action.PLUGIN_IS_LOADING,
-        id,
-        isLoading
-    }
-}
-
 export function widgetPluginFinishedLoading(plugin: IPluginModule, url: string = null) {
     return {
         type: Action.WIDGET_PLUGIN_FINISHED_LOADING,

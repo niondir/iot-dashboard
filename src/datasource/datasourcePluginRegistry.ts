@@ -1,10 +1,7 @@
-import PluginRegistry from "../pluginApi/pluginRegistry";
-import DataSourcePluginFactory from "./datasourcePluginFactory";
-import {IPluginModule} from "../pluginApi/pluginRegistry";
-import {IDatasourcePlugin} from "./datasourcePluginFactory";
+import PluginRegistry, {IPluginModule} from "../pluginApi/pluginRegistry";
+import DataSourcePluginFactory, {IDatasourcePlugin} from "./datasourcePluginFactory";
 import {DashboardStore} from "../store";
 import {IDatasourceState, appendDatasourceData} from "./datasource";
-import * as Datasource from "./datasource";
 import * as Plugins from "../pluginApi/plugins";
 
 /**
@@ -36,23 +33,8 @@ export default class DatasourcePluginRegistry extends PluginRegistry<IDatasource
         super.register(plugin);
 
         this.store.dispatch(Plugins.datasourcePluginFinishedLoading((<IDatasourcePluginModule>plugin), url));
-        this.initializePluginInstances(plugin.TYPE_INFO.type);
     }
 
-    /**
-     * Create instances for all plugins of a given type that are in the store
-     */
-    initializePluginInstances(pluginType: string) {
-        const dsStates = this.store.getState().datasources;
-
-        _.valuesIn<IDatasourceState>(dsStates)
-            .filter((dsState) => dsState.type === pluginType)
-            .forEach((dsState) => {
-                const pluginFactory = this.getPlugin(dsState.type);
-                pluginFactory.createInstance(dsState.id);
-                this.store.dispatch(Datasource.finishedLoading(dsState.id))
-            })
-    }
 
     createPluginFromModule(module: IDatasourcePluginModule) {
         console.assert(_.isObject(module.TYPE_INFO), "Missing TYPE_INFO on datasource module. Every module must export TYPE_INFO");

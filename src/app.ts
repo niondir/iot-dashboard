@@ -45,9 +45,7 @@ function retryLoading(dashboard: Dashboard, error: Error) {
 
 function start() {
     let dashboard = new Dashboard(dashboardStore);
-    dashboard.init().catch((error) => {
-        retryLoading(dashboard, error)
-    });
+    dashboard.init();
 
     try {
         renderDashboard(appElement, dashboardStore);

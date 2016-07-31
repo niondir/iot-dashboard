@@ -27,7 +27,7 @@ describe("Datasource > DatasourcePluginFactory", function () {
         const dsPlugin = new DataSourcePluginFactory("test-ds-plugin-type", pluginImpl, store);
 
         try {
-            dsPlugin.createInstance("plugin-instance");
+            (<any>dsPlugin).createInstance("plugin-instance");
             assert.fail("createInstance must throw an error");
         } catch (e) {
             assert.equal('Can not get state of non existing datasource with id plugin-instance', e.message)

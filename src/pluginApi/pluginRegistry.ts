@@ -17,7 +17,7 @@ export interface IPluginModule {
  * After a plugin was registered, we create a PluginFactory to store and create instances of the loaded Plugin
  */
 export interface IPluginFactory<TPlugin extends IPlugin> {
-    createInstance(id: string): TPlugin
+    getInstance(id: string): TPlugin
     dispose(): void
 }
 

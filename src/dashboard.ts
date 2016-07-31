@@ -66,7 +66,7 @@ export default class Dashboard {
     }
 
 
-    public init(): Promise<void[]> {
+    public init() {
         if (this._initialized) {
             throw new Error("Dashboard was already initialized. Can not call init() twice.");
         }
@@ -77,16 +77,9 @@ export default class Dashboard {
         const plugins = _.valuesIn<IDatasourcePluginState>(state.datasourcePlugins)
             .concat(_.valuesIn<any>(state.widgetPlugins));  // TODO: type IWidgetPluginState
 
-        const pluginsLoaded: Promise<void>[] = [];
-
         plugins.forEach(plugin => {
-            this._store.dispatch(Plugins.pluginIsLoading(plugin.id, true));
             this._store.dispatch(Plugins.startLoadingPluginFromUrl(plugin.url));
-
-            //pluginsLoaded.push(this.loadPluginScript(plugin.url));
         });
-
-        return Promise.all(pluginsLoaded);
     }
 
     dispose() {
@@ -117,11 +110,13 @@ export default class Dashboard {
                 }
 
                 delete this._scriptsLoading[url];
-                return Promise.resolve(plugin);
-            }).catch((error) => {
-                console.error(error.message);
-                delete this._scriptsLoading[url];
+                return Promise.resolve<void>();
             });
+        /*.catch((error) => {
+         console.error(error.message);
+         delete this._scriptsLoading[url];
+         throw error;
+         }); */
 
         return this._scriptsLoading[url];
     }

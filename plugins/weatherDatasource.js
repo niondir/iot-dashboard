@@ -32,7 +32,7 @@
     const Plugin = function (props) {
     };
 
-    function fetchData(fulfill, reject) {
+    Plugin.prototype.fetchData = function(fulfill, reject) {
         $.simpleWeather({
             location: settings["location"],
             woeid: '',
@@ -44,7 +44,7 @@
                 reject(error);
             }
         })
-    }
+    };
 
     function getUnits(type) {
         switch (type) {

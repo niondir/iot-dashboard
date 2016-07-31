@@ -9,7 +9,7 @@ import * as Redux from "redux";
 import * as Plugins from "./plugins";
 
 
-describe.only("pluginApi > plugins", () => {
+describe("pluginApi > plugins", () => {
 
     describe("reducers", () => {
 

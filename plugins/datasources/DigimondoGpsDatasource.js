@@ -115,7 +115,7 @@
             settings.appEui +
             "?auth=" + auth +
             (settings.limitToLast ? "&limitToLast=" + settings.limitToLast : "" ) +
-            (settingss.offset ? "&offset=" + settings.offset : "" ) +
+            (settings.offset ? "&offset=" + settings.offset : "" ) +
             (settings.receivedAfter ? "&receivedAfter=" + settings.receivedAfter : "" ) +
             "&payloadonly")
             .then(function (response) {
