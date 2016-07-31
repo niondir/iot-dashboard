@@ -36,7 +36,7 @@ As you can see each plugin contains two parts. The `TYPE_INFO` and the Implement
 
 ## TypeInfo
 
-The TypeInfo is mostly the same for `Datasource` and `Widget`. Additional properties for Datasources or Widgets are described below.
+The TypeInfo is mostly the same for `Datasource` and `Widget`. Additional properties for datasources or Widgets are described below.
 
 A good start for a typeInfo would be:
 
@@ -85,8 +85,8 @@ There is still some work left for settings. There is no validation yet, values a
 
 # Datasource Api
 
-A Datasource is a JavaScript object that is responsible for fetching and caching data, so it can pass on the fetched data when `getValues()` is called.
-All additional information is passed via an `props` object into the constructor.
+A Datasource is a JavaScript object that is responsible for fetching and caching data, so it can pass on the fetched data when `fetchData(resolve, reject)` is called.
+All additional information is passed via a `props` object into the constructor.
 
 ## Props
 
@@ -122,18 +122,17 @@ You can define some functions to handle certain events.
           // Handle updated props
      };
 
-     Datasource.prototype.getValues = function () {
+     Datasource.prototype.fetchData = function (resolve, reject) {
          // Return the data that is handed over to the Widgets.
          // Data must be an array containing JavaScript objects.
-         return [{value: "foo"}, {value: "bar"}];
+         // resolve and reject are callbacks, so you can return data that is loaded async
+         // Per default, resolved data is appended to the datasource data
+         resolve([{value: "foo"}, {value: "bar"}]);
      }.bind(Datasource);
 
      Datasource.prototype.dispose = function () {
          // Cleanup state when the datasource is unloaded (e.g. stop timers)
      }.bind(Datasource)
-
-
-
 
 # Widget Api
 
