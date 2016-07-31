@@ -51,12 +51,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
                 return React.createElement(
                     "div",
-                    { style: { padding: "10px" } },
-                    React.createElement(
-                        "p",
-                        null,
-                        JSON.stringify(data)
-                    )
+                    { style: { width: '100%', height: '100%' } },
+                    React.createElement("textarea", { style: { padding: "5px", border: 'none', width: '100%', height: '100%', resize: 'none' },
+                        value: JSON.stringify(data) })
                 );
             }
         }]);

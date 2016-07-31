@@ -55,7 +55,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }, {
             key: "fetchData",
             value: function fetchData(resolve, reject) {
-                console.log("Fetch data");
                 resolve(this.fetchValue());
             }
         }, {
