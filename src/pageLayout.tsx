@@ -23,6 +23,7 @@ import {IConfigState} from "./config";
 interface LayoutProps {
     setReadOnly(readOnly: boolean): void;
     isReadOnly: boolean;
+    devMode: boolean;
     config: IConfigState;
 }
 
@@ -46,17 +47,19 @@ export class Layout extends Component<LayoutProps, LayoutState> {
     }
 
     componentDidMount() {
-        this.onReadOnlyModeKeyPress = this.onReadOnlyModeKeyPress.bind(this);
+        if (this.props.devMode) {
+            this.onReadOnlyModeKeyPress = this.onReadOnlyModeKeyPress.bind(this);
 
-        ReactDOM.findDOMNode<any>(this)
-            .offsetParent
-            .addEventListener('keydown', this.onReadOnlyModeKeyPress);
+            ReactDOM.findDOMNode<any>(this)
+                .offsetParent
+                .addEventListener('keydown', this.onReadOnlyModeKeyPress);
+        }
     }
 
     render() {
         const props = this.props;
 
-        const showMenu = !props.isReadOnly || this.state.hover;
+        const showMenu = props.devMode && (!props.isReadOnly || this.state.hover);
 
         return <div onKeyUp={(event) => this.onReadOnlyModeKeyPress(event)}>
             <div>
@@ -114,6 +117,7 @@ export default connect(
     state => {
         return {
             isReadOnly: state.global.isReadOnly,
+            devMode: state.global.devMode,
             config: state.config
         };
     },

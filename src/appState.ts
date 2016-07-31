@@ -25,6 +25,13 @@ export interface State {
     datasourcePlugins: DatasourcePlugins.IDatasourcePluginsState
     widgetPlugins: any // TODO: type WidgetPlugins (and migrate to ts)
     pluginLoader: Plugins.IPluginLoaderState
+    global: IGlobalState
+}
+
+// TODO: move to dashboard/global when converted to ts
+export interface IGlobalState {
+    isReadOnly: boolean
+    devMode: boolean
 }
 
 export interface ITypeInfo {

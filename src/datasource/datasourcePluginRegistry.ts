@@ -48,9 +48,16 @@ export default class DatasourcePluginRegistry extends PluginRegistry<IDatasource
         const datasourceStates = this.store.getState().datasources;
 
         _.valuesIn<IDatasourceState>(datasourceStates).forEach((dsState) => {
-            const dsPluginFactory = this.getPlugin(dsState.type);
-            const dsPlugin = dsPluginFactory.getInstance(dsState.id);
-            this.doFetchDataForDatasourceInstance(dsPlugin, dsState);
+            // TODO: make fetch interval configurable per datasource
+
+            if (!dsState.isLoading) {
+                const dsPluginFactory = this.getPlugin(dsState.type);
+                const dsPlugin = dsPluginFactory.getInstance(dsState.id);
+                this.doFetchDataForDatasourceInstance(dsPlugin, dsState);
+            }
+            else {
+                console.log("Skipping loading plugin for fetch data")
+            }
         })
     }
 
@@ -65,13 +72,18 @@ export default class DatasourcePluginRegistry extends PluginRegistry<IDatasource
         }
 
         if (this._fetchPromises[dsState.id]) {
-            console.log("Fetch already in progress, returning", dsState)
+            console.log("Fetch already in progress, returning", dsState);
             return;
         }
 
         const fetchPromise = new Promise<any[]>((resolve, reject) => {
             dsInstance.fetchData(resolve, reject);
-            // TODO: Implement a timeout?
+
+            setTimeout(() => {
+                if (this._fetchPromises[dsState.id] === fetchPromise) {
+                    reject(new Error("Timeout! Datasource fetchData() took longer than 5 seconds."));
+                }
+            }, 5000);
         });
 
         this._fetchPromises[dsState.id] = fetchPromise;

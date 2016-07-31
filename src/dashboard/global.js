@@ -5,7 +5,8 @@
 import * as Action from '../actionNames'
 
 export const initialState = {
-    isReadOnly: false
+    isReadOnly: false,
+    devMode: true
 };
 
 
@@ -22,7 +23,6 @@ function setReadOnlyAction(isReadOnly) {
     };
 
 }
-
 
 export function global(state = initialState, action) {
     switch (action.type) {

@@ -100,12 +100,21 @@ export function testStoreOptions() {
     return {log: false, persist: false}
 }
 
+export function defaultStoreOptions() {
+    return {log: true, persist: true}
+}
+
 /**
  * Create a store and execute all side-effects to have a consistent app
  */
-export function create(initialState?: AppState.State, options: any = {log: true, persist: true}): DashboardStore {
+export function create(initialState?: AppState.State, options?: any): DashboardStore {
+    if (!initialState) {
+        initialState = <AppState.State>Persist.loadFromLocalStorage();
+    }
+
     const middleware: Redux.Middleware[] = [];
     middleware.push(thunk);
+
     if (options.persist) {
         middleware.push(Persist.persistenceMiddleware);
     }
