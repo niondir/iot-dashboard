@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">80.6% </span>
+        <span class="strong">77.78% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>54/67</span>
+        <span class='fraction'>56/72</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">57.89% </span>
+        <span class="strong">52.17% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>11/19</span>
+        <span class='fraction'>12/23</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">93.33% </span>
+        <span class="strong">87.5% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>14/15</span>
+        <span class='fraction'>14/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">82.81% </span>
+        <span class="strong">79.71% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>53/64</span>
+        <span class='fraction'>55/69</span>
       </div>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -137,7 +137,17 @@
 92
 93
 94
-95</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -180,11 +190,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -201,6 +217,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -274,9 +294,15 @@ var DatasourcePluginRegistry = (function (_super) {
         }
         var datasourceStates = this.store.getState().datasources;
         _.valuesIn(datasourceStates).forEach(function (dsState) {
-            var dsPluginFactory = _this.getPlugin(dsState.type);
-            var dsPlugin = dsPluginFactory.getInstance(dsState.id);
-            _this.doFetchDataForDatasourceInstance(dsPlugin, dsState);
+            // TODO: make fetch interval configurable per datasource
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (!dsState.isLoading) {
+                var dsPluginFactory = _this.getPlugin(dsState.type);
+                var dsPlugin = dsPluginFactory.getInstance(dsState.id);
+                _this.doFetchDataForDatasourceInstance(dsPlugin, dsState);
+            }
+            else {
+<span class="cstat-no" title="statement not covered" >                console.log("Skipping loading plugin for fetch data");</span>
+            }
         });
     };
     DatasourcePluginRegistry.prototype.doFetchDataForDatasourceInstance = function (dsInstance, dsState) {
@@ -295,7 +321,11 @@ var DatasourcePluginRegistry = (function (_super) {
         }
         var fetchPromise = new Promise(function (resolve, reject) {
             dsInstance.fetchData(resolve, reject);
-            // TODO: Implement a timeout?
+            setTimeout(<span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                if (_this._fetchPromises[dsState.id] === fetchPromise) {</span>
+<span class="cstat-no" title="statement not covered" >                    reject(new Error("Timeout! Datasource fetchData() took longer than 5 seconds."));</span>
+                }
+            }, 5000);
         });
         this._fetchPromises[dsState.id] = fetchPromise;
         fetchPromise.then(function (result) {
@@ -331,7 +361,7 @@ exports.default = DatasourcePluginRegistry;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 31 2016 17:08:02 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 31 2016 21:45:40 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

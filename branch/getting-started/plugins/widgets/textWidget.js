@@ -53,6 +53,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                     "div",
                     { style: { width: '100%', height: '100%' } },
                     React.createElement("textarea", { style: { padding: "5px", border: 'none', width: '100%', height: '100%', resize: 'none' },
+                        readOnly: true,
                         value: JSON.stringify(data) })
                 );
             }
