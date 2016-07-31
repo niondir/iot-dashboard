@@ -2,6 +2,8 @@
 
 **Dev:** [![Build Status](https://travis-ci.org/Niondir/iot-dashboard.svg?branch=dev)](https://travis-ci.org/Niondir/iot-dashboard)
 
+For help, questions, feedback, ... try:  [![Gitter](https://badges.gitter.im/Niondir/iot-dashboard.svg)](https://gitter.im/Niondir/iot-dashboard?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge)
+
 # Individual Open Technology - Dashboard
 Free Dashboard for your Data
 
