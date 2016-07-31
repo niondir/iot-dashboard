@@ -1,12 +1,16 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this
-* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-let lastSave = new Date();
+let lastAction = "NONE";
+let allowSave = true;
+let saveTimeout;
 
 export function clearData() {
-    lastSave = new Date();
     if (window.confirm("Wipe app data and reload page?")) {
+        if (saveTimeout) {
+            clearTimeout(saveTimeout);
+        }
         window.localStorage.setItem("appState", undefined);
         location.reload();
     }
@@ -17,14 +21,27 @@ export function persistenceMiddleware({getState}) {
 
         const nextState = next(action);
 
-        const now = new Date();
-        if (now.getTime() - lastSave.getTime() < 10000) {
+        if (!allowSave) {
+            lastAction = action;
             return nextState;
         }
 
-        saveToLocalStorage(getState());
-        console.log('Saved state ...');
-        lastSave = new Date();
+
+        if (!action.doNotPersist) {
+            // we wait some before we save
+            // this leads to less saving (max every 100ms) without loosing actions
+            // if we would just block saving for some time after saving an action we would loose the last actions
+            allowSave = false;
+            saveTimeout = setTimeout(() => {
+                saveToLocalStorage(getState());
+                console.log('Saved state @' + lastAction.type);
+
+                allowSave = true;
+            }, 100)
+
+
+        }
+        lastAction = action;
         return nextState;
     }
 }

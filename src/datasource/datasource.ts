@@ -32,6 +32,7 @@ export interface IDatasourceAction extends AppState.Action {
     dsType?: string
     maxValues?: number
     isLoading?: boolean
+    doNotPersist?: boolean
 }
 
 export interface IDatasourcesState {
@@ -132,7 +133,8 @@ export function appendDatasourceData(id: string, data: any[], maxValues: number 
         id,
         data,
         maxValues,
-        doNotLog: true
+        doNotLog: true,
+        doNotPersist: true
     }
 }
 
