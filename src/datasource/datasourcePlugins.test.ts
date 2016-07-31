@@ -57,10 +57,7 @@ describe('Datasource > DatasourcePlugins', function () {
             loadScriptStub.restore();
             loadScriptStub = Sinon.stub(scriptloader, "loadScript", function (scripts: string[], options: any) {
                 pluginCache.registerDatasourcePlugin(typeInfo, datasource);
-
-                // In reality the success function is called async
-                // but then we to now know how long to wait to verify the plugin
-                options.success();
+                return Promise.resolve();
             });
             loadScriptStub.withArgs(["fake/plugin.js"]);
 
@@ -73,21 +70,9 @@ describe('Datasource > DatasourcePlugins', function () {
                 }
             };
 
-            const store = Store.create(stateWithExternalDatasource, Store.testStoreOptions);
+            const store = Store.create(stateWithExternalDatasource, Store.testStoreOptions());
             const state = store.getState();
             dashboard = new Dashboard(store);
-            dashboard.init();
-
-            const plugin: DataSourcePluginFactory = dashboard.datasourcePluginRegistry.getPlugin("ext-ds");
-
-
-            assert.isOk(loadScriptStub.calledOnce);
-            assert.isOk(plugin, "The loaded plugin is okay");
-            assert.equal(plugin.disposed, false, "The loaded plugin is not disposed");
-            assert.deepEqual((<any>plugin)._plugins, {}, "The loaded plugin has no instances");
-            assert.equal((<any>plugin)._store, store, "The loaded plugin knows the correct store");
-            assert.equal((<any>plugin)._datasource, datasource, "The loaded plugin knows the datasouces");
-            assert.equal(plugin.type, "ext-ds", "The loaded plugin knows the plugin type");
 
             assert.deepEqual(state.widgets, {}, "The new state has no widgets");
             assert.deepEqual(state.datasources, {}, "The new state has no datasources");
@@ -98,9 +83,22 @@ describe('Datasource > DatasourcePlugins', function () {
                     "url": "fake/plugin.js"
                 }
             }, "The new state has the registered datasource plugin");
+
+            return dashboard.init().then(() => {
+                const plugin: DataSourcePluginFactory = dashboard.datasourcePluginRegistry.getPlugin("ext-ds");
+
+                assert.isOk(loadScriptStub.calledOnce);
+                assert.isOk(plugin, "The loaded plugin is okay");
+                assert.equal(plugin.disposed, false, "The loaded plugin is not disposed");
+                assert.deepEqual((<any>plugin)._plugins, {}, "The loaded plugin has no instances");
+                assert.equal((<any>plugin)._store, store, "The loaded plugin knows the correct store");
+                assert.equal((<any>plugin)._datasource, datasource, "The loaded plugin knows the datasouces");
+                assert.equal(plugin.type, "ext-ds", "The loaded plugin knows the plugin type");
+            });
+
         });
-        it("register internal plugin");
-        it("a plugin is marked as defective when the external plugin was not loaded");
+
+        // it("a plugin is marked as defective when the external plugin was not loaded");
     });
 
     // TODO: consider moving to dashboard.test.ts?
@@ -116,10 +114,7 @@ describe('Datasource > DatasourcePlugins', function () {
         loadScriptStub.restore();
         loadScriptStub = Sinon.stub(scriptloader, "loadScript", function (scripts: string[], options: any) {
             pluginCache.registerDatasourcePlugin(testDsPlugin.TYPE_INFO, testDsPlugin.Datasource);
-
-            // In reality the success function is called async
-            // but then we to now know how long to wait to verify the plugin
-            options.success();
+            return Promise.resolve();
         });
 
 
@@ -135,24 +130,30 @@ describe('Datasource > DatasourcePlugins', function () {
                 id: "ds-instance-in-state-id",
                 type: "ds-with-instance-in-state",
                 settings: {},
-                data: [{ernie: "bert"}]
+                data: [{ernie: "bert"}],
+                isLoading: false
             }
         };
 
-        const store = Store.create(initialState, Store.testStoreOptions);
+        const store = Store.create(initialState, Store.testStoreOptions());
         dashboard = new Dashboard(store);
-        dashboard.init();
 
-        const datasourcePluginFactory = dashboard.datasourcePluginRegistry.getPlugin("ds-with-instance-in-state");
-        const datasourcePluginInstance = datasourcePluginFactory.getInstance("ds-instance-in-state-id");
+        return dashboard.init().then(() => {
+            const datasourcePluginFactory = dashboard.datasourcePluginRegistry.getPlugin("ds-with-instance-in-state");
+            const datasourcePluginInstance = datasourcePluginFactory.getInstance("ds-instance-in-state-id");
+            assert.isOk(datasourcePluginInstance, "The plugin instance is available");
+        })
 
-        assert.isOk(datasourcePluginInstance, "The plugin instance is available");
     });
 
 
     describe('pluginRegistry #register() && #getPlugin()', function () {
         it("It's possible to register and get back a plugin", function () {
-            const registry = new DatasourcePluginRegistry(Store.create());
+            const registry = new DatasourcePluginRegistry(Store.create(undefined, Store.testStoreOptions()));
+
+            afterEach(() => {
+                registry.dispose();
+            });
 
             registry.register({
                 TYPE_INFO: {

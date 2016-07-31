@@ -1,7 +1,15 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this
-* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/**
+ * Rules for action names
+ * ------------------------
+ * (many of them are not applied but try to follow them in future)
+ *
+ * - Try to name Action after what happened not what should happen
+ * -- i.e. "STARTED_LOADING_PLUGIN" rather than "START_LOADING_PLUGIN"
+ */
 
 export const CLEAR_STATE = "CLEAR_STATE";
 
@@ -32,13 +40,15 @@ export const DELETE_DATASOURCE = "DELETE_DATASOURCE";
 
 export const SET_DATASOURCE_DATA = "SET_DATASOURCE_DATA";
 export const APPEND_DATASOURCE_DATA = "APPEND_DATASOURCE_DATA";
+export const DATASOURCE_FINISHED_LOADING = "DATASOURCE_FINISHED_LOADING";
 
 // Plugins
-export const ADD_WIDGET_PLUGIN = "ADD_WIDGET_PLUGIN";
-export const ADD_DATASOURCE_PLUGIN = "ADD_DATASOURCE_PLUGIN";
+export const WIDGET_PLUGIN_FINISHED_LOADING = "WIDGET_PLUGIN_FINISHED_LOADING";
+export const DATASOURCE_PLUGIN_FINISHED_LOADING = "DATASOURCE_PLUGIN_FINISHED_LOADING";
 export const DELETE_WIDGET_PLUGIN = "DELETE_WIDGET_PLUGIN";
 export const DELETE_DATASOURCE_PLUGIN = "DELETE_DATASOURCE_PLUGIN";
 export const PLUGIN_IS_LOADING = "PLUGIN_IS_LOADING";
+export const STARTED_LOADING_PLUGIN_FROM_URL = "STARTED_LOADING_PLUGIN_FROM_URL";
 
 // Modal
 export const SHOW_MODAL = "SHOW_MODAL";

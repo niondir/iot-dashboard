@@ -69,7 +69,7 @@ function deletePlugin(type: string) {
     }
 }
 
-const pluginsCrudReducer: Function = genCrudReducer([Action.ADD_DATASOURCE_PLUGIN, Action.DELETE_DATASOURCE_PLUGIN], datasourcePlugin);
+const pluginsCrudReducer: Function = genCrudReducer([Action.DATASOURCE_PLUGIN_FINISHED_LOADING, Action.DELETE_DATASOURCE_PLUGIN], datasourcePlugin);
 export function datasourcePlugins(state: IDatasourcePluginsState = initialState, action: AppState.Action) {
 
     state = pluginsCrudReducer(state, action);
@@ -82,7 +82,7 @@ export function datasourcePlugins(state: IDatasourcePluginsState = initialState,
 
 function datasourcePlugin(state: IDatasourcePluginState, action: IDatasourcePluginAction): IDatasourcePluginState {
     switch (action.type) {
-        case Action.ADD_DATASOURCE_PLUGIN:
+        case Action.DATASOURCE_PLUGIN_FINISHED_LOADING:
             if (!action.typeInfo.type) {
                 // TODO: Catch this earlier
                 throw new Error("A Plugin needs a type name. Please define TYPE_INFO.type");

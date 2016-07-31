@@ -7,6 +7,7 @@ import * as Datasource from './datasource/datasource'
 import * as Widgets from './widgets/widgets'
 import * as DatasourcePlugins from './datasource/datasourcePlugins'
 import * as Config from './config'
+import * as Plugins from './pluginApi/plugins'
 
 export type Dispatch = Redux.Dispatch<State>
 export type GetState = () => State
@@ -23,6 +24,7 @@ export interface State {
     datasources: Datasource.IDatasourcesState
     datasourcePlugins: DatasourcePlugins.IDatasourcePluginsState
     widgetPlugins: any // TODO: type WidgetPlugins (and migrate to ts)
+    pluginLoader: Plugins.IPluginLoaderState
 }
 
 export interface ITypeInfo {

@@ -11,7 +11,7 @@ import * as _ from "lodash";
 describe('Widget', function () {
     describe('action', function () {
         it("create Widget", function () {
-            const store = Store.createEmpty(Store.testStoreOptions);
+            const store = Store.createEmpty(Store.testStoreOptions());
 
             store.dispatch(Widgets.createWidget("my-widget-type", {foo: "bar"}));
 
@@ -32,7 +32,7 @@ describe('Widget', function () {
         });
 
         it("add Widget", function () {
-            const store = Store.createEmpty(Store.testStoreOptions);
+            const store = Store.createEmpty(Store.testStoreOptions());
 
             store.dispatch(Widgets.addWidget("my-widget-type", {foo: "bar"}, 1, 2, 3, 4));
 
@@ -80,7 +80,7 @@ describe('Widget', function () {
         });
 
         it("delete Widget", function () {
-            const store = Store.createEmpty(Store.testStoreOptions);
+            const store = Store.createEmpty(Store.testStoreOptions());
 
             store.dispatch(Widgets.addWidget("my-widget-type", {foo: "bar"}, 1, 2, 3, 4));
             assert.equal(_.keysIn(store.getState().widgets).length, 1);
@@ -94,7 +94,7 @@ describe('Widget', function () {
         });
 
         it("update Widget settings", function () {
-            const store = Store.createEmpty(Store.testStoreOptions);
+            const store = Store.createEmpty(Store.testStoreOptions());
 
             store.dispatch(Widgets.addWidget("my-widget-type", {asterix: "obelix"}, 1, 2, 3, 4));
 
@@ -114,7 +114,7 @@ describe('Widget', function () {
 
         });
         it("update Widget layout based on data from react-grid-view", function () {
-            const store = Store.createEmpty(Store.testStoreOptions);
+            const store = Store.createEmpty(Store.testStoreOptions());
 
             store.dispatch(Widgets.addWidget("my-widget-type", {foo: "bar"}, 1, 2, 3, 4));
             const id = _.keysIn(store.getState().widgets)[0];
@@ -138,7 +138,7 @@ describe('Widget', function () {
         });
 
         it("do not update widget if no layout provided", function () {
-            const store = Store.createEmpty(Store.testStoreOptions);
+            const store = Store.createEmpty(Store.testStoreOptions());
 
             store.dispatch(Widgets.addWidget("widget-without-layout", {foo: "bar"}, 1, 2, 3, 4));
             const id = _.keysIn(store.getState().widgets)[0];

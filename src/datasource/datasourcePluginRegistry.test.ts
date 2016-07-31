@@ -6,30 +6,11 @@
 import {assert} from "chai";
 import {appendDatasourceData} from "./datasource";
 import * as Store from "../store";
-import {DashboardStore} from "../store";
 import {IDatasourcePlugin} from "./datasourcePluginFactory";
 import * as Sinon from "sinon";
 import DatasourcePluginRegistry from "./datasourcePluginRegistry";
-//import SinonFakeTimers = Sinon.SinonFakeTimers;
 
 describe("Datasource > DatasourcePluginRegistry", function () {
-
-    let store: DashboardStore;
-    let datasourcePluginRegistry: DatasourcePluginRegistry;
-    //let clock: SinonFakeTimers;
-
-    beforeEach(() => {
-        //clock = Sinon.useFakeTimers();
-        store = Store.createEmpty(Store.testStoreOptions);
-        datasourcePluginRegistry = new DatasourcePluginRegistry(store);
-    });
-
-    afterEach(() => {
-        if (datasourcePluginRegistry && !datasourcePluginRegistry.disposed) {
-            datasourcePluginRegistry.dispose();
-        }
-        //clock.restore();
-    });
 
     it("it is possible to register a plugin", function () {
         const TYPE_INFO = {
@@ -42,6 +23,12 @@ describe("Datasource > DatasourcePluginRegistry", function () {
                 resolve([]);
             }
         }
+        const store = Store.createEmpty(Store.testStoreOptions());
+        const datasourcePluginRegistry = new DatasourcePluginRegistry(store);
+
+        afterEach(() => {
+            datasourcePluginRegistry.dispose();
+        });
 
         datasourcePluginRegistry.register({TYPE_INFO, Datasource: PluginImpl});
 
@@ -54,10 +41,17 @@ describe("Datasource > DatasourcePluginRegistry", function () {
 
 
     it("register and fetchData happy path", function () {
-        const dispatchStub = Sinon.stub(store, "dispatch");
+
+        const store = Store.createEmpty(Store.testStoreOptions());
+        const datasourcePluginRegistry = new DatasourcePluginRegistry(store);
+
+        afterEach(() => {
+            datasourcePluginRegistry.dispose();
+        });
+
+        const dispatchStub = Sinon.spy(store, "dispatch");
         const getStateStub = Sinon.stub(store, "getState");
         const doFetchDataSpy = Sinon.spy(datasourcePluginRegistry, "doFetchData");
-
 
         // The plugin id is the plugin type
         const PLUGIN_TYPE = "happy-test-ds-plugin-type";
@@ -71,7 +65,8 @@ describe("Datasource > DatasourcePluginRegistry", function () {
                 },
                 datasources: {
                     "happy-plugin-instance-id": {
-                        id: DS_PLUGIN_ID
+                        id: DS_PLUGIN_ID,
+                        type: PLUGIN_TYPE
                     }
                 }
             }));
@@ -89,15 +84,15 @@ describe("Datasource > DatasourcePluginRegistry", function () {
             }
         };
 
-        datasourcePluginRegistry.register(datasourcePlugin);
+        datasourcePluginRegistry.registerDatasourcePlugin(datasourcePlugin, 'fake/url/plugin.js');
 
         const dsPlugin = datasourcePluginRegistry.getPlugin(PLUGIN_TYPE);
 
-        const dsInstance = dsPlugin.createInstance(DS_PLUGIN_ID);
+        const dsInstance = dsPlugin.getInstance(DS_PLUGIN_ID);
 
         // This fakes the waiting for the next timeout. So we do not need fake timers here.
+        // That is it actually called in tested in another test
         datasourcePluginRegistry.doFetchData();
-        //clock.tick(1000);
 
         const fetchPromise = (<any>datasourcePluginRegistry)._fetchPromises[DS_PLUGIN_ID];
         assert.isOk(fetchPromise, "There is is valid fetch promise to wait for");
@@ -107,10 +102,27 @@ describe("Datasource > DatasourcePluginRegistry", function () {
         assert.isFalse(datasourcePluginRegistry.disposed, "datasourcePluginRegistry is not disposed");
 
         return fetchPromise.then(() => {
-            assert.equal(1, dispatchStub.callCount, "dispatch was called once after data was fetched");
+            assert.isAtLeast(dispatchStub.callCount, 1, "dispatch was called at least once after data was fetched");
             assert.isTrue(dispatchStub.calledWith(appendDatasourceData(DS_PLUGIN_ID, ["a"])), "dispatch was called with the expected argument");
             assert.isNull((<any>datasourcePluginRegistry)._fetchPromises[DS_PLUGIN_ID], "fetchPromise must be null after it was resolved");
         });
 
+    });
+
+    it("doFetchData is called", () => {
+        const clock = Sinon.useFakeTimers();
+        const store = Store.createEmpty(Store.testStoreOptions());
+        const datasourcePluginRegistry = new DatasourcePluginRegistry(store);
+        const doFetchDataStub = Sinon.stub(datasourcePluginRegistry, "doFetchData");
+
+
+        afterEach(() => {
+            clock.restore();
+            datasourcePluginRegistry.dispose();
+        });
+
+        clock.tick(1000);
+
+        assert.isTrue(doFetchDataStub.calledOnce, "doFetchData was called once");
     })
 });

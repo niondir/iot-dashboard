@@ -15,7 +15,7 @@ describe("Datasource > Datasource", function () {
     let dashboard: Dashboard;
 
     beforeEach(() => {
-        store = Store.createEmpty(Store.testStoreOptions);
+        store = Store.createEmpty(Store.testStoreOptions());
         dashboard = new Dashboard(store);
     });
 
@@ -63,7 +63,8 @@ describe("Datasource > Datasource", function () {
             };
 
             dashboard.init();
-            store.dispatch(Plugins.loadPlugin(datasourcePlugin));
+            dashboard.datasourcePluginRegistry.register(datasourcePlugin);
+            store.dispatch(Plugins.datasourcePluginFinishedLoading(datasourcePlugin));
             store.dispatch(Datasource.createDatasource("test-ds", {}, "ds-id"));
 
             const pluginFactory = dashboard.datasourcePluginRegistry.getPlugin("test-ds");

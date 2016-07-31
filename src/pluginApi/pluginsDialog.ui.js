@@ -85,7 +85,7 @@ export default connect(
             closeDialog: () => dispatch(Modal.closeModal()),
             // TODO: Render loading indicator while Plugin loads
             // maybe build some generic solution for Ajax calls where the state can hold all information to render loading indicators / retry buttons etc...
-            loadPlugin: (url) => dispatch(Plugins.loadPluginFromUrl(url))
+            loadPlugin: (url) => dispatch(Plugins.startLoadingPluginFromUrl(url))
         }
     }
 )(PluginsModal);

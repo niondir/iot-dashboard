@@ -12,7 +12,7 @@ describe("Datasource > DatasourcePluginFactory", function () {
     let store: DashboardStore;
 
     beforeEach(() => {
-        store = Store.createEmpty(Store.testStoreOptions);
+        store = Store.createEmpty(Store.testStoreOptions());
     });
 
     it("can not create datasource plugin instance of a datasource that is not in the store", function () {

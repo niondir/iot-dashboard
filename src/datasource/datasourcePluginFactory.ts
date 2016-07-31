@@ -6,6 +6,7 @@ import * as _ from "lodash";
 import {DashboardStore} from "../store";
 import {IPluginFactory, IPlugin} from "../pluginApi/pluginRegistry";
 import {IDatasourceState} from "./datasource";
+import * as Datasource from "./datasource";
 import Unsubscribe = Redux.Unsubscribe;
 
 
@@ -51,16 +52,6 @@ export default class DataSourcePluginFactory implements IPluginFactory<IDatasour
             throw new Error("Can not get state of non existing datasource with id " + id);
         }
         return dsState;
-    }
-
-    /**
-     * Better use getInstance or createInstance directly!
-     */
-    getOrCreateInstance(id: string) {
-        if (!this._plugins[id]) {
-            return this.createInstance(id)
-        }
-        return this.getInstance(id);
     }
 
     createInstance(id: string): IDatasourcePlugin {
@@ -126,7 +117,20 @@ export default class DataSourcePluginFactory implements IPluginFactory<IDatasour
 
     handleStateChange() {
         const state = this._store.getState();
+
+
+        // Whenever a datasource is added that is still loading, we create an instance and update the loading state
+        _.valuesIn<IDatasourceState>(state.datasources)
+            .filter((dsState) => dsState.isLoading)
+            .forEach((dsState) => {
+                this.createInstance(dsState.id);
+                this._store.dispatch(Datasource.finishedLoading(dsState.id))
+            })
+
+        // For all running datasources we notify them about setting changes
         _.valuesIn<IDatasourceState>(state.datasources).forEach(dsState => this.updateDatasource(dsState))
+
+
     }
 
     updateDatasource(dsState: IDatasourceState) {

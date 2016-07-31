@@ -21,10 +21,12 @@ const WidgetFrame = (props) => {
     // If the plugin is not in the registry, we assume it's currently loading
     const pluginLoaded = Dashboard.getInstance().widgetPluginRegistry.hasPlugin(widgetState.type)
 
+
     let widgetFactory;
     if (pluginLoaded) {
         widgetFactory = Dashboard.getInstance().widgetPluginRegistry.getPlugin(widgetState.type);
     }
+
 
     return (
         <div className="ui raised segments"

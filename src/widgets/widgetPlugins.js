@@ -68,7 +68,7 @@ function deletePlugin(type) {
     }
 }
 
-const pluginsCrudReducer = genCrudReducer([Action.ADD_WIDGET_PLUGIN, Action.DELETE_WIDGET_PLUGIN], widgetPlugin);
+const pluginsCrudReducer = genCrudReducer([Action.WIDGET_PLUGIN_FINISHED_LOADING, Action.DELETE_WIDGET_PLUGIN], widgetPlugin);
 export function widgetPlugins(state = initialState, action) {
 
     state = pluginsCrudReducer(state, action);
@@ -81,7 +81,7 @@ export function widgetPlugins(state = initialState, action) {
 
 function widgetPlugin(state, action) {
     switch (action.type) {
-        case Action.ADD_WIDGET_PLUGIN:
+        case Action.WIDGET_PLUGIN_FINISHED_LOADING:
             if (!action.typeInfo.type) {
                 // TODO: Catch this earlier
                 throw new Error("A Plugin needs a type name.");

@@ -2,9 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import {DashboardStore} from '../store';
-import {ITypeInfo} from '../appState';
-import * as _ from 'lodash'
+import {DashboardStore} from "../store";
+import {ITypeInfo} from "../appState";
+import * as _ from "lodash";
 
 /**
  * The plugin that is registered to the Dashboard
@@ -51,7 +51,6 @@ export default class PluginRegistry<TPluginModule extends IPluginModule, TPlugin
         console.assert(module.TYPE_INFO !== undefined, "Missing TYPE_INFO on plugin module. Every module must export TYPE_INFO");
         console.assert(module.TYPE_INFO.type !== undefined, "Missing TYPE_INFO.type on plugin TYPE_INFO.");
 
-        console.log("registering plugin: ", module);
         this._plugins[module.TYPE_INFO.type] = this.createPluginFromModule(module);
     }
 

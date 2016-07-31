@@ -13,6 +13,7 @@ import * as Global from "./dashboard/global.js";
 import * as Import from "./dashboard/import.js";
 import * as Modal from "./modal/modalDialog.js";
 import * as Persist from "./persistence.js";
+import * as Plugins from './pluginApi/plugins'
 import {reducer as formReducer} from "redux-form";
 import * as Action from "./actionNames";
 import * as  WidgetPlugins from "./widgets/widgetPlugins.js";
@@ -26,6 +27,7 @@ export interface DashboardStore extends Redux.Store<AppState.State> {
 }
 
 
+// TODO: name all reducers ***Reducer
 const appReducer: AppState.Reducer = Redux.combineReducers<AppState.State>({
     config: Config.config,
     widgets: Widgets.widgets,
@@ -35,6 +37,7 @@ const appReducer: AppState.Reducer = Redux.combineReducers<AppState.State>({
     datasources: Datasource.datasources,
     form: formReducer,
     modalDialog: Modal.modalDialog,
+    pluginLoader: Plugins.pluginLoaderReducer,
     widgetPlugins: WidgetPlugins.widgetPlugins,
     datasourcePlugins: DatasourcePlugins.datasourcePlugins,
     global: Global.global
@@ -70,7 +73,11 @@ export function emptyState() {
         config: null,
         widgets: {},
         datasources: {},
-        datasourcePlugins: {}
+        datasourcePlugins: {},
+        widgetPlugins: {},
+        pluginLoader: {
+            loadingUrls: []
+        }
     }
 }
 
@@ -89,7 +96,9 @@ export function createDefault(options: any = {log: true}): DashboardStore {
     return create(undefined, options);
 }
 
-export const testStoreOptions = {log: false, persist: false};
+export function testStoreOptions() {
+    return {log: false, persist: false}
+}
 
 /**
  * Create a store and execute all side-effects to have a consistent app

@@ -3,8 +3,8 @@ import loadjs = require('loadjs');
 
 // This is a class because we can not mock it on module level.
 export default class ScriptLoader {
-    static loadScript(paths: Array<string>) {
-        return new Promise((resolve, reject) => {
+    static loadScript(paths: Array<string>): Promise<void> {
+        return new Promise<void>((resolve, reject) => {
             loadjs(paths, {
                 success: () => {
                     resolve();

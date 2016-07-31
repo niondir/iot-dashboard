@@ -31,9 +31,10 @@ export default class WidgetPlugin {
         return this._type;
     }
 
+    // TODO: split in get and create methods
     getOrCreateInstance(id) {
         if (this.disposed === true) {
-            throw new Error("Try to get or create widget of destroyed type: " + this.type);
+            throw new Error("Try to create widget of destroyed type: " + this.type);
         }
 
         if (this.instances[id]) {

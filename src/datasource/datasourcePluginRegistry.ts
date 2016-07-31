@@ -4,6 +4,8 @@ import {IPluginModule} from "../pluginApi/pluginRegistry";
 import {IDatasourcePlugin} from "./datasourcePluginFactory";
 import {DashboardStore} from "../store";
 import {IDatasourceState, appendDatasourceData} from "./datasource";
+import * as Datasource from "./datasource";
+import * as Plugins from "../pluginApi/plugins";
 
 /**
  * Describes how we expect the plugin module to be
@@ -22,12 +24,19 @@ export default class DatasourcePluginRegistry extends PluginRegistry<IDatasource
         super(_store);
 
         this._fetchIntervalRef = setInterval(() => {
-            this.doFetchData()
-        }, 1000)
+            this.doFetchData();
+        }, 1000);
     }
 
     get disposed() {
         return this._disposed
+    }
+
+    registerDatasourcePlugin(plugin: IDatasourcePluginModule, url: string) {
+        super.register(plugin);
+
+        this.store.dispatch(Plugins.datasourcePluginFinishedLoading((<IDatasourcePluginModule>plugin), url));
+        this.initializePluginInstances(plugin.TYPE_INFO.type);
     }
 
     /**
@@ -41,7 +50,7 @@ export default class DatasourcePluginRegistry extends PluginRegistry<IDatasource
             .forEach((dsState) => {
                 const pluginFactory = this.getPlugin(dsState.type);
                 pluginFactory.createInstance(dsState.id);
-
+                this.store.dispatch(Datasource.finishedLoading(dsState.id))
             })
     }
 
@@ -51,6 +60,9 @@ export default class DatasourcePluginRegistry extends PluginRegistry<IDatasource
     }
 
     doFetchData() {
+        if (this._disposed) {
+            throw new Error("DatasourcePluginRegistry is disposed. Can not fetch data.");
+        }
         const datasourceStates = this.store.getState().datasources;
 
         _.valuesIn<IDatasourceState>(datasourceStates).forEach((dsState) => {
