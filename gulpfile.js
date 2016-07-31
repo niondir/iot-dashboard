@@ -134,11 +134,12 @@ gulp.task("tslint", () =>
 //////////////////
 const webpack = require('webpack');
 const ts = require('gulp-typescript');
+const babel = require('gulp-babel');
 
 var tsProject = ts.createProject('./tsconfig.json');
 
 /**
- * It's not yet intended to compile the TS code without webpack.
+ * It's not yet intended to compile the code without webpack.
  * But if someone wants to use parts of the code as library this might get handy.
  */
 gulp.task('compile:ts', [], function () {
@@ -147,6 +148,19 @@ gulp.task('compile:ts', [], function () {
 
     return tsResult.js.pipe(gulp.dest('./lib'));
 });
+
+gulp.task('compile:js', [], function () {
+    return gulp.src('src/**/*.js')
+        .pipe(babel())
+        .pipe(gulp.dest('./lib'));
+});
+
+gulp.task('compile:plugins', [], function () {
+    return gulp.src('plugins/**/*.js')
+        .pipe(babel())
+        .pipe(gulp.dest('./dist/plugins'));
+});
+
 
 const webpackErrorHandler = function (callback, error, stats) {
     if (error) {
@@ -193,11 +207,6 @@ gulp.task('compile:config', function () {
         .pipe(gulp.dest("./src"));
 });
 
-gulp.task('compile:plugins', function () {
-    // TODO: compile with babel
-   // gulp.src('./plugins/**/*.*')
-  //      .pipe(gulp.dest('./dist/plugins'));
-});
 
 //////////////////////////////
 // Inject/Modify files Tasks
