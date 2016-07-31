@@ -28,7 +28,13 @@
                 return <p>No data</p>
             }
 
-            return <div style={{padding: "10px"}}><p>{JSON.stringify(data)}</p></div>
+            return <div style={{width: '100%', height: '100%'}}>
+                     <textarea style={{padding: "5px", border: 'none', width: '100%', height: '100%', resize: 'none'}}
+                               value={JSON.stringify(data)}>
+                     </textarea>
+
+
+            </div>
         }
     }
 

@@ -63,6 +63,12 @@ export default class DatasourcePluginRegistry extends PluginRegistry<IDatasource
             console.warn("fetchData(resolve, reject) is not implemented in Datasource ", dsState);
             return;
         }
+
+        if (this._fetchPromises[dsState.id]) {
+            console.log("Fetch already in progress, returning", dsState)
+            return;
+        }
+
         const fetchPromise = new Promise<any[]>((resolve, reject) => {
             dsInstance.fetchData(resolve, reject);
             // TODO: Implement a timeout?
@@ -78,7 +84,9 @@ export default class DatasourcePluginRegistry extends PluginRegistry<IDatasource
             } else {
                 console.error("fetData of disposed plugin finished", dsState, result);
             }
-        }).catch(() => {
+        }).catch((error) => {
+            console.warn("Failed to fetch data for Datasource " + dsState.type, dsState);
+            console.error(error);
             this._fetchPromises[dsState.id] = null;
         })
     }

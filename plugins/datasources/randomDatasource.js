@@ -52,7 +52,6 @@
         }
 
         fetchData(resolve, reject) {
-            console.log("Fetch data")
             resolve(this.fetchValue())
         }
 

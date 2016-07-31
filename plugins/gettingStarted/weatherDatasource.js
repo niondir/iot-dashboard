@@ -3,11 +3,8 @@
     const TYPE_INFO = {
         type: 'simpleweatherjs',
         name: 'Weather',
-        description: 'Receive Weatherdata from Yahoo!',
+        description: 'Receive Weather data from Yahoo!',
         dependencies: ['https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js'],
-        fetchData: {
-            interval: 10000
-        },
         settings: [
             {
                 id: 'unitType',
@@ -33,6 +30,7 @@
     };
 
     Plugin.prototype.fetchData = function(fulfill, reject) {
+        const settings = this.props.state.settings;
         $.simpleWeather({
             location: settings["location"],
             woeid: '',
