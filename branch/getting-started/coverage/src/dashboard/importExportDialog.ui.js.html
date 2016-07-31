@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">61.54% </span>
+        <span class="strong">46.15% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>32/52</span>
+        <span class='fraction'>24/52</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">44.44% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>4/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">43.75% </span>
+        <span class="strong">18.75% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>7/16</span>
+        <span class='fraction'>3/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">64.58% </span>
+        <span class="strong">47.92% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>31/48</span>
+        <span class='fraction'>23/48</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -147,8 +147,8 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -178,9 +178,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -196,7 +196,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -206,11 +206,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -232,9 +232,9 @@ var ModalIds = require('../modal/modalDialogIds');
 var react_1 = require("react");
 var ImportExportDialog = (function (_super) {
     __extends(ImportExportDialog, _super);
-    function ImportExportDialog(props) {
-        _super.call(this, props);
-        this.state = { state: null };
+<span class="fstat-no" title="function not covered" >    function ImportExportDialog(props) {</span>
+<span class="cstat-no" title="statement not covered" >        _super.call(this, props);</span>
+<span class="cstat-no" title="statement not covered" >        this.state = { state: null };</span>
     }
     ImportExportDialog.prototype.componentWillReceiveProps = <span class="fstat-no" title="function not covered" >function (nextProps) {</span>
         //this.refs.data.value = Import.serialize(nextProps.state);
@@ -263,10 +263,10 @@ var ImportExportDialog = (function (_super) {
 <span class="cstat-no" title="statement not covered" >            alert('Oops, unable to copy');</span>
         }
     };
-    ImportExportDialog.prototype.render = function () {
-        var _this = this;
-        var props = this.props;
-        var actions = [
+    ImportExportDialog.prototype.render = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        var _this = this;</span>
+<span class="cstat-no" title="statement not covered" >        var props = this.props;</span>
+<span class="cstat-no" title="statement not covered" >        var actions = [</span>
             {
                 className: "ui right black button",
                 label: "Close",
@@ -282,7 +282,7 @@ var ImportExportDialog = (function (_super) {
                 }
             }
         ];
-        return React.createElement(modalDialog_ui_js_1.default, {id: ModalIds.DASHBOARD_IMPORT_EXPORT, title: "Import / Export Dashboard", actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, React.createElement("button", {className: "ui compact labeled icon button", onClick: this._loadData.bind(this)}, React.createElement("i", {className: "refresh icon"}), "Load Data"), React.createElement("button", {className: "ui compact labeled icon button", onClick: this._exportToClipboard.bind(this)}, React.createElement("i", {className: "upload icon"}), "Copy to Clipboard"), React.createElement("button", {className: "ui compact labeled icon button", onClick: this._clearData.bind(this)}, React.createElement("i", {className: "erase icon"}), "Clear Data")), React.createElement("div", {className: "column"}, React.createElement("form", {className: "ui form"}, React.createElement("div", {className: "field"}, React.createElement("label", null, "Data"), React.createElement("textarea", {className: "monospace", ref: "data", rows: "10", onFocus: <span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return e.target.select(); </span>}, placeholder: 'Click "Load Data" to get data for export or paste your data here ...'}))))));
+<span class="cstat-no" title="statement not covered" >        return React.createElement(modalDialog_ui_js_1.default, {id: ModalIds.DASHBOARD_IMPORT_EXPORT, title: "Import / Export Dashboard", actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, React.createElement("button", {className: "ui compact labeled icon button", onClick: this._loadData.bind(this)}, React.createElement("i", {className: "refresh icon"}), "Load Data"), React.createElement("button", {className: "ui compact labeled icon button", onClick: this._exportToClipboard.bind(this)}, React.createElement("i", {className: "upload icon"}), "Copy to Clipboard"), React.createElement("button", {className: "ui compact labeled icon button", onClick: this._clearData.bind(this)}, React.createElement("i", {className: "erase icon"}), "Clear Data")), React.createElement("div", {className: "column"}, React.createElement("form", {className: "ui form"}, React.createElement("div", {className: "field"}, React.createElement("label", null, "Data"), React.createElement("textarea", {className: "monospace", ref: "data", rows: "10", onFocus: <span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return e.target.select(); </span>}, placeholder: 'Click "Load Data" to get data for export or paste your data here ...'}))))));</span>
     };
     return ImportExportDialog;
 }(React.Component));
@@ -291,12 +291,12 @@ ImportExportDialog.propTypes = {
     doImport: react_1.PropTypes.func.isRequired
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = react_redux_1.connect(function (state) {
-    return {
+exports.default = react_redux_1.connect(<span class="fstat-no" title="function not covered" >function (state) {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
         state: state
     };
-}, function (dispatch) {
-    return {
+}, <span class="fstat-no" title="function not covered" >function (dispatch) {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
         doImport: <span class="fstat-no" title="function not covered" >function (state) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(Import.doImport(state)); </span>}
     };
 })(ImportExportDialog);
@@ -307,7 +307,7 @@ exports.default = react_redux_1.connect(function (state) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jul 30 2016 16:48:29 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 31 2016 13:06:03 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

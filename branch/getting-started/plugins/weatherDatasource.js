@@ -1,3 +1,5 @@
+'use strict';
+
 (function (window) {
 
     var TYPE_INFO = {
@@ -8,50 +10,43 @@
         fetchData: {
             interval: 10000
         },
-        settings: [
-            {
-                id: 'unitType',
-                name: 'Units',
-                type: 'option',
-                defaultValue: 'metric',
-                options: [
-                    {name: 'Metric', value: 'metric'},
-                    {name: 'Imperial', value: 'imperial'}
-                ]
-            },
-            {
-                id: 'location',
-                name: "Location",
-                type: 'string',
-                description: 'lat/lon, US zip code, or location name for Yahoo! weather API',
-                defaultValue: 'Austin, TX'
-            }
-        ]
+        settings: [{
+            id: 'unitType',
+            name: 'Units',
+            type: 'option',
+            defaultValue: 'metric',
+            options: [{ name: 'Metric', value: 'metric' }, { name: 'Imperial', value: 'imperial' }]
+        }, {
+            id: 'location',
+            name: "Location",
+            type: 'string',
+            description: 'lat/lon, US zip code, or location name for Yahoo! weather API',
+            defaultValue: 'Austin, TX'
+        }]
     };
 
-    var Plugin = function (props) {
-    };
+    var Plugin = function Plugin(props) {};
 
     function fetchData(fulfill, reject) {
         $.simpleWeather({
             location: settings["location"],
             woeid: '',
             units: getUnits(settings["unitType"]),
-            success: function (weather) {
+            success: function success(weather) {
                 fulfill([weather]);
             },
-            error: function (error) {
-                reject(error);
+            error: function error(_error) {
+                reject(_error);
             }
-        })
+        });
     }
 
     function getUnits(type) {
         switch (type) {
             case 'metric':
-                return {temp: 'c', distance: 'km', pressure: 'mb', speed: 'kph'};
+                return { temp: 'c', distance: 'km', pressure: 'mb', speed: 'kph' };
             default:
-                return {temp: 'f', distance: 'mi', pressure: 'in', speed: 'mph'};
+                return { temp: 'f', distance: 'mi', pressure: 'in', speed: 'mph' };
         }
     }
 
@@ -65,9 +60,7 @@
         }
     };
 
-    Plugin.prototype.dispose = function () {
-    };
+    Plugin.prototype.dispose = function () {};
 
-
-    window.iotDashboardApi.registerDatasourcePlugin(TYPE_INFO, Plugin)
+    window.iotDashboardApi.registerDatasourcePlugin(TYPE_INFO, Plugin);
 })(window);

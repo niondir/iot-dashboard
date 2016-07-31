@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">45.68% </span>
+        <span class="strong">35.8% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>37/81</span>
+        <span class='fraction'>29/81</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">12.12% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>4/33</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">30% </span>
+        <span class="strong">20% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>6/20</span>
+        <span class='fraction'>4/20</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">46.15% </span>
+        <span class="strong">35.9% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>36/78</span>
+        <span class='fraction'>28/78</span>
       </div>
     </div>
   </div>
@@ -176,7 +176,8 @@
 131
 132
 133
-134</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+134
+135</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -191,14 +192,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -208,7 +209,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -323,15 +325,15 @@ var React = require('react');
 var react_1 = require("react");
 // TODO: Rename to ...Factory
 var WidgetPlugin = (function () {
-    function WidgetPlugin(module, store) {
-        console.assert(module.TYPE_INFO, "Missing TYPE_INFO on widget module. Every module must export TYPE_INFO");
-        this._type = module.TYPE_INFO.type;
-        this.Widget = module.Widget;
-        this.store = store;
-        this.instances = {};
-        this.disposed = false;
+<span class="fstat-no" title="function not covered" >    function WidgetPlugin(module, store) {</span>
+<span class="cstat-no" title="statement not covered" >        console.assert(module.TYPE_INFO, "Missing TYPE_INFO on widget module. Every module must export TYPE_INFO");</span>
+<span class="cstat-no" title="statement not covered" >        this._type = module.TYPE_INFO.type;</span>
+<span class="cstat-no" title="statement not covered" >        this.Widget = module.Widget;</span>
+<span class="cstat-no" title="statement not covered" >        this.store = store;</span>
+<span class="cstat-no" title="statement not covered" >        this.instances = {};</span>
+<span class="cstat-no" title="statement not covered" >        this.disposed = false;</span>
         // only bind the getData function once, so it can be safely used in the connect function
-        this.getData = <span class="fstat-no" title="function not covered" >function (getState, dsId) {</span>
+<span class="cstat-no" title="statement not covered" >        this.getData = <span class="fstat-no" title="function not covered" >function (getState, dsId) {</span></span>
 <span class="cstat-no" title="statement not covered" >            var ds = getState().datasources[dsId];</span>
 <span class="cstat-no" title="statement not covered" >            if (!ds) {</span>
 <span class="cstat-no" title="statement not covered" >                return [];</span>
@@ -340,16 +342,17 @@ var WidgetPlugin = (function () {
         }.bind(this, this.store.getState);
     }
     Object.defineProperty(WidgetPlugin.prototype, "type", {
-        get: function () {
-            return this._type;
+        get: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            return this._type;</span>
         },
         enumerable: true,
         configurable: true
     });
+    // TODO: split in get and create methods
     WidgetPlugin.prototype.getOrCreateInstance = <span class="fstat-no" title="function not covered" >function (id) {</span>
 <span class="cstat-no" title="statement not covered" >        var _this = this;</span>
 <span class="cstat-no" title="statement not covered" >        if (this.disposed === true) {</span>
-<span class="cstat-no" title="statement not covered" >            throw new Error("Try to get or create widget of destroyed type: " + this.type);</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error("Try to create widget of destroyed type: " + this.type);</span>
         }
 <span class="cstat-no" title="statement not covered" >        if (this.instances[id]) {</span>
 <span class="cstat-no" title="statement not covered" >            return this.instances[id];</span>
@@ -448,7 +451,7 @@ DomWidgetContainer.propTypes = {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jul 30 2016 16:48:29 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 31 2016 13:06:03 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

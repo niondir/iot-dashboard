@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">88.89% </span>
+        <span class="strong">45.83% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>24/27</span>
+        <span class='fraction'>11/24</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">73.33% </span>
+        <span class="strong">27.27% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>11/15</span>
+        <span class='fraction'>3/11</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,13 +35,13 @@
         <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">88.46% </span>
+        <span class="strong">43.48% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>23/26</span>
+        <span class='fraction'>10/23</span>
       </div>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -97,14 +97,10 @@
 52
 53
 54
-55
-56
-57
-58</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+55</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -123,31 +119,29 @@
 <span class="cline-any cline-yes">5×</span>
 <span class="cline-any cline-yes">5×</span>
 <span class="cline-any cline-yes">5×</span>
-<span class="cline-any cline-yes">5×</span>
-<span class="cline-any cline-yes">5×</span>
-<span class="cline-any cline-yes">145×</span>
-<span class="cline-any cline-yes">145×</span>
+<span class="cline-any cline-yes">25×</span>
+<span class="cline-any cline-yes">25×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">136×</span>
-<span class="cline-any cline-yes">95×</span>
-<span class="cline-any cline-yes">41×</span>
-<span class="cline-any cline-yes">41×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">40×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">25×</span>
+<span class="cline-any cline-yes">25×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -161,7 +155,6 @@
 * License, v. 2.0. If a copy of the MPL was not distributed with this
 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
-var _ = require('lodash');
 /**
  * Creates an reducer that works on an object where you can create, delete and update properties of type Object.
  * The key of properties always matches the id property of the value object.
@@ -179,32 +172,30 @@ function genCrudReducer(actionNames, elementReducer, idProperty) {
     <span class="missing-if-branch" title="else path not taken" >E</span>if (idProperty === void 0) { idProperty = 'id'; }
     console.assert(actionNames.length === 2, "ActionNames must contain 2 names for create, delete in that order");
     var CREATE_ACTION = actionNames[0], DELETE_ACTION = actionNames[1];
-    console.assert(_.includes(CREATE_ACTION, "ADD") || <span class="branch-1 cbranch-no" title="branch not covered" >_.includes(CREATE_ACTION, "CREATE"),</span> "The create action name should probably contain ADD or DELETE, but is: " + CREATE_ACTION);
-    console.assert(_.includes(DELETE_ACTION, "DELETE") || <span class="branch-1 cbranch-no" title="branch not covered" >_.includes(DELETE_ACTION, "REMOVE"),</span> "The delete action name should probably contain DELETE or REMOVE, but is: " + DELETE_ACTION);
     return function crudReducer(state, action) {
         var id = action[idProperty];
         switch (action.type) {
-            case CREATE_ACTION:
-                return Object.assign({}, state, (_a = {}, _a[id] = elementReducer(undefined, action), _a));
-            case DELETE_ACTION:
-                var newState = Object.assign({}, state);
-                delete newState[id];
-                return newState;
+<span class="branch-0 cbranch-no" title="branch not covered" >            case CREATE_ACTION:</span>
+<span class="cstat-no" title="statement not covered" >                return Object.assign({}, state, (_a = {}, _a[id] = elementReducer(undefined, action), _a));</span>
+<span class="branch-1 cbranch-no" title="branch not covered" >            case DELETE_ACTION:</span>
+<span class="cstat-no" title="statement not covered" >                var newState = Object.assign({}, state);</span>
+<span class="cstat-no" title="statement not covered" >                delete newState[id];</span>
+<span class="cstat-no" title="statement not covered" >                return newState;</span>
             default:
-                if (id === undefined)
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (id === undefined)
                     return state;
-                var elementState = state[id];
-                if (elementState == undefined) {
+<span class="cstat-no" title="statement not covered" >                var elementState = state[id];</span>
+<span class="cstat-no" title="statement not covered" >                if (elementState == undefined) {</span>
                     // Do not update what we don't have.
                     // TODO: Log warning, or document why not.
-                    return state;
+<span class="cstat-no" title="statement not covered" >                    return state;</span>
                 }
-                var updatedElement = elementReducer(elementState, action);
-                <span class="missing-if-branch" title="if path not taken" >I</span>if (updatedElement == undefined) {
+<span class="cstat-no" title="statement not covered" >                var updatedElement = elementReducer(elementState, action);</span>
+<span class="cstat-no" title="statement not covered" >                if (updatedElement == undefined) {</span>
 <span class="cstat-no" title="statement not covered" >                    console.error("ElementReducer has some problem: ", elementReducer, " with action: ", action);</span>
 <span class="cstat-no" title="statement not covered" >                    throw new Error("Reducer must return the original state if they not implement the action. Check action " + action.type + ".");</span>
                 }
-                return Object.assign({}, state, (_b = {},
+<span class="cstat-no" title="statement not covered" >                return Object.assign({}, state, (_b = {},</span>
                     _b[id] = updatedElement,
                     _b
                 ));
@@ -220,7 +211,7 @@ exports.genCrudReducer = genCrudReducer;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jul 30 2016 16:48:29 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 31 2016 13:06:03 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
