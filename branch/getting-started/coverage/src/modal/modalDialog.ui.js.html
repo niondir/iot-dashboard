@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">51.35% </span>
+        <span class="strong">75.68% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>19/37</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">36.36% </span>
-        <span class="quiet">Branches</span>
-        <span class='fraction'>4/11</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">21.43% </span>
-        <span class="quiet">Functions</span>
-        <span class='fraction'>3/14</span>
+        <span class='fraction'>28/37</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">54.55% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>6/11</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">57.14% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>8/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">81.82% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>18/33</span>
+        <span class='fraction'>27/33</span>
       </div>
     </div>
   </div>
@@ -127,7 +127,7 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -146,18 +146,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">9×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -172,9 +172,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -194,8 +194,8 @@ var Modal = require('./modalDialog');
 var react_1 = require("react");
 var ModalDialog = (function (_super) {
     __extends(ModalDialog, _super);
-<span class="fstat-no" title="function not covered" >    function ModalDialog() {</span>
-<span class="cstat-no" title="statement not covered" >        _super.apply(this, arguments);</span>
+    function ModalDialog() {
+        _super.apply(this, arguments);
     }
     ModalDialog.prototype.componentDidMount = <span class="fstat-no" title="function not covered" >function () {</span>
 <span class="cstat-no" title="statement not covered" >        $('.ui.modal.' + this.props.id)</span>
@@ -213,14 +213,14 @@ var ModalDialog = (function (_super) {
 <span class="cstat-no" title="statement not covered" >            this.props.closeDialog();</span>
         }
     };
-    ModalDialog.prototype.render = <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >        var _this = this;</span>
-<span class="cstat-no" title="statement not covered" >        var key = 0;</span>
-<span class="cstat-no" title="statement not covered" >        var actions = this.props.actions.map(<span class="fstat-no" title="function not covered" >function (action) {</span></span>
-<span class="cstat-no" title="statement not covered" >            return React.createElement("div", {key: key++, className: action.className, onClick: <span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return _this.onClick(e, action); </span>}}, action.label, action.iconClass ? React.createElement("i", {className: action.iconClass}) : null);</span>
+    ModalDialog.prototype.render = function () {
+        var _this = this;
+        var key = 0;
+        var actions = this.props.actions.map(function (action) {
+            return React.createElement("div", {key: key++, className: action.className, onClick: <span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return _this.onClick(e, action); </span>}}, action.label, action.iconClass ? React.createElement("i", {className: action.iconClass}) : null);
         });
-<span class="cstat-no" title="statement not covered" >        var props = this.props;</span>
-<span class="cstat-no" title="statement not covered" >        return React.createElement("div", {id: this.props.id, className: 'ui modal ' + this.props.id}, React.createElement("div", {className: "header"}, props.title), React.createElement("div", {className: "content"}, props.children), React.createElement("div", {className: "actions"}, actions));</span>
+        var props = this.props;
+        return React.createElement("div", {id: this.props.id, className: 'ui modal ' + this.props.id}, React.createElement("div", {className: "header"}, props.title), React.createElement("div", {className: "content"}, props.children), React.createElement("div", {className: "actions"}, actions));
     };
     return ModalDialog;
 }(React.Component));
@@ -239,10 +239,10 @@ ModalDialog.propTypes = {
     closeDialog: react_1.PropTypes.func
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = react_redux_1.connect(<span class="fstat-no" title="function not covered" >function (state) {</span>
-<span class="cstat-no" title="statement not covered" >    return {};</span>
-}, <span class="fstat-no" title="function not covered" >function (dispatch) {</span>
-<span class="cstat-no" title="statement not covered" >    return {</span>
+exports.default = react_redux_1.connect(function (state) {
+    return {};
+}, function (dispatch) {
+    return {
         closeDialog: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return dispatch(Modal.closeModal()); </span>}
     };
 })(ModalDialog);
@@ -253,7 +253,7 @@ exports.default = react_redux_1.connect(<span class="fstat-no" title="function n
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 31 2016 13:06:03 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 31 2016 14:58:41 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

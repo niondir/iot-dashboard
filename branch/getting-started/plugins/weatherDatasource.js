@@ -27,7 +27,7 @@
 
     var Plugin = function Plugin(props) {};
 
-    function fetchData(fulfill, reject) {
+    Plugin.prototype.fetchData = function (fulfill, reject) {
         $.simpleWeather({
             location: settings["location"],
             woeid: '',
@@ -39,7 +39,7 @@
                 reject(_error);
             }
         });
-    }
+    };
 
     function getUnits(type) {
         switch (type) {

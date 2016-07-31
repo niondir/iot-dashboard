@@ -105,7 +105,7 @@
 
         var self = this;
 
-        fetch("https://api.digimondo.io/v1/" + settings.appEui + "?auth=" + auth + (settings.limitToLast ? "&limitToLast=" + settings.limitToLast : "") + (settingss.offset ? "&offset=" + settings.offset : "") + (settings.receivedAfter ? "&receivedAfter=" + settings.receivedAfter : "") + "&payloadonly").then(function (response) {
+        fetch("https://api.digimondo.io/v1/" + settings.appEui + "?auth=" + auth + (settings.limitToLast ? "&limitToLast=" + settings.limitToLast : "") + (settings.offset ? "&offset=" + settings.offset : "") + (settings.receivedAfter ? "&receivedAfter=" + settings.receivedAfter : "") + "&payloadonly").then(function (response) {
             return response.json();
         }).then(function (data) {
 

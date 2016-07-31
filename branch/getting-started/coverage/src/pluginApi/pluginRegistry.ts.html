@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">41.38% </span>
+        <span class="strong">82.76% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>12/29</span>
+        <span class='fraction'>24/29</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>3/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">12.5% </span>
+        <span class="strong">75% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/8</span>
+        <span class='fraction'>6/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">41.38% </span>
+        <span class="strong">82.76% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>12/29</span>
+        <span class='fraction'>24/29</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -100,40 +100,40 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">13×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">7×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -149,41 +149,41 @@
 "use strict";
 var _ = require("lodash");
 var PluginRegistry = (function () {
-<span class="fstat-no" title="function not covered" >    function PluginRegistry(_store) {</span>
-<span class="cstat-no" title="statement not covered" >        this._store = _store;</span>
-<span class="cstat-no" title="statement not covered" >        this._plugins = {};</span>
-<span class="cstat-no" title="statement not covered" >        if (!_store) {</span>
+    function PluginRegistry(_store) {
+        this._store = _store;
+        this._plugins = {};
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!_store) {
 <span class="cstat-no" title="statement not covered" >            throw new Error("PluginRegistry must be initialized with a Store");</span>
         }
     }
     Object.defineProperty(PluginRegistry.prototype, "store", {
-        get: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >            return this._store;</span>
+        get: function () {
+            return this._store;
         },
         enumerable: true,
         configurable: true
     });
-    PluginRegistry.prototype.register = <span class="fstat-no" title="function not covered" >function (module) {</span>
-<span class="cstat-no" title="statement not covered" >        if (!this._store === undefined) {</span>
+    PluginRegistry.prototype.register = function (module) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!this._store === undefined) {
 <span class="cstat-no" title="statement not covered" >            throw new Error("PluginRegistry has no store. Set the store property before registering modules!");</span>
         }
-<span class="cstat-no" title="statement not covered" >        console.assert(module.TYPE_INFO !== undefined, "Missing TYPE_INFO on plugin module. Every module must export TYPE_INFO");</span>
-<span class="cstat-no" title="statement not covered" >        console.assert(module.TYPE_INFO.type !== undefined, "Missing TYPE_INFO.type on plugin TYPE_INFO.");</span>
-<span class="cstat-no" title="statement not covered" >        this._plugins[module.TYPE_INFO.type] = this.createPluginFromModule(module);</span>
+        console.assert(module.TYPE_INFO !== undefined, "Missing TYPE_INFO on plugin module. Every module must export TYPE_INFO");
+        console.assert(module.TYPE_INFO.type !== undefined, "Missing TYPE_INFO.type on plugin TYPE_INFO.");
+        this._plugins[module.TYPE_INFO.type] = this.createPluginFromModule(module);
     };
     PluginRegistry.prototype.createPluginFromModule = <span class="fstat-no" title="function not covered" >function (module) {</span>
 <span class="cstat-no" title="statement not covered" >        throw new Error("PluginRegistry must implement createPluginFromModule");</span>
     };
-    PluginRegistry.prototype.hasPlugin = <span class="fstat-no" title="function not covered" >function (type) {</span>
-<span class="cstat-no" title="statement not covered" >        return this._plugins[type] !== undefined;</span>
+    PluginRegistry.prototype.hasPlugin = function (type) {
+        return this._plugins[type] !== undefined;
     };
     // TODO: rename to getPluginFactory() when also widgets are in TypeScript?
-    PluginRegistry.prototype.getPlugin = <span class="fstat-no" title="function not covered" >function (type) {</span>
-<span class="cstat-no" title="statement not covered" >        var plugin = this._plugins[type];</span>
-<span class="cstat-no" title="statement not covered" >        if (!plugin) {</span>
+    PluginRegistry.prototype.getPlugin = function (type) {
+        var plugin = this._plugins[type];
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!plugin) {
 <span class="cstat-no" title="statement not covered" >            throw new Error("Can not find plugin with type '" + type + "' in plugin registry.");</span>
         }
-<span class="cstat-no" title="statement not covered" >        return plugin;</span>
+        return plugin;
     };
     PluginRegistry.prototype.getPlugins = <span class="fstat-no" title="function not covered" >function () {</span>
 <span class="cstat-no" title="statement not covered" >        return _.assign({}, this._plugins);</span>
@@ -199,7 +199,7 @@ exports.default = PluginRegistry;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 31 2016 13:06:03 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 31 2016 14:58:41 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

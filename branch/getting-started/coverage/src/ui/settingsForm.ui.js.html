@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">45.59% </span>
+        <span class="strong">58.82% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>31/68</span>
+        <span class='fraction'>40/68</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">24.14% </span>
+        <span class="strong">34.48% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>7/29</span>
+        <span class='fraction'>10/29</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">17.65% </span>
+        <span class="strong">52.94% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>3/17</span>
+        <span class='fraction'>9/17</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">46.88% </span>
+        <span class="strong">60.94% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>30/64</span>
+        <span class='fraction'>39/64</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -204,6 +204,9 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -212,9 +215,6 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -222,11 +222,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -242,7 +242,7 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -252,11 +252,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -337,8 +337,8 @@ var _ = require('lodash');
 var react_1 = require("react");
 var SettingsForm = (function (_super) {
     __extends(SettingsForm, _super);
-<span class="fstat-no" title="function not covered" >    function SettingsForm() {</span>
-<span class="cstat-no" title="statement not covered" >        _super.apply(this, arguments);</span>
+    function SettingsForm() {
+        _super.apply(this, arguments);
     }
     SettingsForm.prototype.componentDidMount = <span class="fstat-no" title="function not covered" >function () {</span>
 <span class="cstat-no" title="statement not covered" >        this._initSemanticUi();</span>
@@ -355,12 +355,12 @@ var SettingsForm = (function (_super) {
 <span class="cstat-no" title="statement not covered" >        $('.ui.checkbox')</span>
             .checkbox();
     };
-    SettingsForm.prototype.render = <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >        var props = this.props;</span>
-<span class="cstat-no" title="statement not covered" >        var fields = props.fields;</span>
-<span class="cstat-no" title="statement not covered" >        return React.createElement("form", {className: "ui form"}, collection_1.chunk(this.props.settings, 1).map(<span class="fstat-no" title="function not covered" >function (chunk) {</span></span>
-<span class="cstat-no" title="statement not covered" >            return React.createElement("div", {key: chunk[0].id, className: "field"}, chunk.map(<span class="fstat-no" title="function not covered" >function (setting) {</span></span>
-<span class="cstat-no" title="statement not covered" >                return React.createElement(Field, __assign({key: setting.id}, setting, {field: fields[setting.id]}));</span>
+    SettingsForm.prototype.render = function () {
+        var props = this.props;
+        var fields = props.fields;
+        return React.createElement("form", {className: "ui form"}, collection_1.chunk(this.props.settings, 1).map(function (chunk) {
+            return React.createElement("div", {key: chunk[0].id, className: "field"}, chunk.map(function (setting) {
+                return React.createElement(Field, __assign({key: setting.id}, setting, {field: fields[setting.id]}));
             }));
         }));
     };
@@ -375,9 +375,9 @@ SettingsForm.propTypes = {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = redux_form_1.reduxForm({})(SettingsForm);
-<span class="fstat-no" title="function not covered" >function Field(props) {</span>
-<span class="cstat-no" title="statement not covered" >    return React.createElement("div", {className: "field"}, React.createElement("label", null, props.name, props.description &amp;&amp; props.type !== 'boolean' ?</span>
-        React.createElement(ui.Icon, {type: "help circle", "data-content": props.description}) : null), React.createElement(SettingsInput, __assign({}, props)));
+function Field(props) {
+    return React.createElement("div", {className: "field"}, React.createElement("label", null, props.name, props.description &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >props.type !== 'boolean' </span>?
+<span class="branch-0 cbranch-no" title="branch not covered" >        React.createElement(ui.Icon, {type: "help circle", "data-content": props.description}) </span>: null), React.createElement(SettingsInput, __assign({}, props)));
 }
 Field.propTypes = {
     field: react_1.PropTypes.object.isRequired,
@@ -385,27 +385,27 @@ Field.propTypes = {
     type: react_1.PropTypes.string.isRequired,
     description: react_1.PropTypes.string
 };
-<span class="fstat-no" title="function not covered" >function SettingsInput(props) {</span>
-<span class="cstat-no" title="statement not covered" >    switch (props.type) {</span>
-        case "text":
+function SettingsInput(props) {
+    switch (props.type) {
+<span class="branch-0 cbranch-no" title="branch not covered" >        case "text":</span>
 <span class="cstat-no" title="statement not covered" >            return React.createElement("textarea", __assign({rows: "3", placeholder: props.description}, props.field));</span>
         case "string":
-<span class="cstat-no" title="statement not covered" >            return React.createElement("input", __assign({placeholder: props.description}, props.field));</span>
-        case "json":
+            return React.createElement("input", __assign({placeholder: props.description}, props.field));
+<span class="branch-2 cbranch-no" title="branch not covered" >        case "json":</span>
 <span class="cstat-no" title="statement not covered" >            return React.createElement("textarea", __assign({rows: "3", placeholder: props.description}, props.field));</span>
-        case "number":
+<span class="branch-3 cbranch-no" title="branch not covered" >        case "number":</span>
 <span class="cstat-no" title="statement not covered" >            return React.createElement("input", __assign({type: "number", min: props.min, max: props.max, placeholder: props.description}, props.field));</span>
-        case "boolean":
+<span class="branch-4 cbranch-no" title="branch not covered" >        case "boolean":</span>
 <span class="cstat-no" title="statement not covered" >            return React.createElement("input", __assign({type: "checkbox"}, props.field));</span>
-        case "option":
+<span class="branch-5 cbranch-no" title="branch not covered" >        case "option":</span>
 <span class="cstat-no" title="statement not covered" >            return React.createElement("select", __assign({className: "ui fluid dropdown"}, props.field), React.createElement("option", null, "Select " + props.name + " ..."), props.options.map(<span class="fstat-no" title="function not covered" >function (option) {</span></span>
 <span class="cstat-no" title="statement not covered" >                var optionValue = _.isObject(option) ? option.value : option;</span>
 <span class="cstat-no" title="statement not covered" >                var optionName = _.isObject(option) ? option.name : option;</span>
 <span class="cstat-no" title="statement not covered" >                return React.createElement("option", {key: optionValue, value: optionValue}, optionName);</span>
             }));
-        case "datasource":
+<span class="branch-6 cbranch-no" title="branch not covered" >        case "datasource":</span>
 <span class="cstat-no" title="statement not covered" >            return React.createElement(DatasourceInputContainer, __assign({}, props));</span>
-        default:
+<span class="branch-7 cbranch-no" title="branch not covered" >        default:</span>
 <span class="cstat-no" title="statement not covered" >            console.error("Unknown type for settings field with id '" + props.id + "': " + props.type);</span>
 <span class="cstat-no" title="statement not covered" >            return React.createElement("input", {placeholder: props.description, readonly: true, value: "Unknown field type: " + props.type});</span>
     }
@@ -451,7 +451,7 @@ var DatasourceInputContainer = react_redux_1.connect(<span class="fstat-no" titl
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 31 2016 13:06:03 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 31 2016 14:58:41 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

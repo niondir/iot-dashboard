@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">66.67% </span>
+        <span class="strong">94.44% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>12/18</span>
+        <span class='fraction'>17/18</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">83.33% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>5/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">66.67% </span>
+        <span class="strong">94.44% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>12/18</span>
+        <span class='fraction'>17/18</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -90,8 +90,8 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -99,14 +99,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -124,24 +124,24 @@ var _ = require('lodash');
 var ui = require("../ui/elements.ui");
 var WidgetPlugins = require('./widgetPlugins');
 var react_1 = require("react");
-var WidgetsNavItem = <span class="fstat-no" title="function not covered" >function (props) {</span>
-<span class="cstat-no" title="statement not covered" >    return React.createElement("div", {className: "ui simple dropdown item"}, "Add Widget", React.createElement("i", {className: "dropdown icon"}), React.createElement("div", {className: "ui menu"}, React.createElement(ui.Divider, null), _.valuesIn(props.widgetPlugins).map(<span class="fstat-no" title="function not covered" >function (widgetPlugin) {</span></span>
-<span class="cstat-no" title="statement not covered" >        return React.createElement(AddWidget, {key: widgetPlugin.id, text: widgetPlugin.typeInfo.name, type: widgetPlugin.typeInfo.type});</span>
+var WidgetsNavItem = function (props) {
+    return React.createElement("div", {className: "ui simple dropdown item"}, "Add Widget", React.createElement("i", {className: "dropdown icon"}), React.createElement("div", {className: "ui menu"}, React.createElement(ui.Divider, null), _.valuesIn(props.widgetPlugins).map(function (widgetPlugin) {
+        return React.createElement(AddWidget, {key: widgetPlugin.id, text: widgetPlugin.typeInfo.name, type: widgetPlugin.typeInfo.type});
     })));
 };
 WidgetsNavItem.propTypes = {
     widgetPlugins: react_1.PropTypes.objectOf(WidgetPlugins.widgetPluginType)
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = react_redux_1.connect(<span class="fstat-no" title="function not covered" >function (state) {</span>
-<span class="cstat-no" title="statement not covered" >    return {</span>
+exports.default = react_redux_1.connect(function (state) {
+    return {
         widgetPlugins: state.widgetPlugins
     };
 })(WidgetsNavItem);
-var AddWidget = react_redux_1.connect(<span class="fstat-no" title="function not covered" >function (state) {</span>
-<span class="cstat-no" title="statement not covered" >    return {};</span>
-}, <span class="fstat-no" title="function not covered" >function (dispatch) {</span>
-<span class="cstat-no" title="statement not covered" >    return {</span>
+var AddWidget = react_redux_1.connect(function (state) {
+    return {};
+}, function (dispatch) {
+    return {
         onClick: <span class="fstat-no" title="function not covered" >function (props) {</span>
 <span class="cstat-no" title="statement not covered" >            dispatch(WidgetConfig.createWidget(props.type));</span>
         }
@@ -154,7 +154,7 @@ var AddWidget = react_redux_1.connect(<span class="fstat-no" title="function not
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 31 2016 13:06:03 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 31 2016 14:58:41 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
