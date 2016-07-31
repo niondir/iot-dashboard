@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/pluginApi/pluginCache.js</title>
+    <title>Code coverage report for src/pluginApi/pluginCache.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">all files</a> / <a href="index.html">src/pluginApi/</a> pluginCache.js
+      <a href="../../index.html">all files</a> / <a href="index.html">src/pluginApi/</a> pluginCache.ts
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">55.56% </span>
+        <span class="strong">88.24% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>10/18</span>
+        <span class='fraction'>15/17</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">75% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/4</span>
+        <span class='fraction'>3/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">55.56% </span>
+        <span class="strong">88.24% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>10/18</span>
+        <span class='fraction'>15/17</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -84,25 +84,7 @@
 39
 40
 41
-42
-43
-44
-45
-46
-47
-48
-49
-50</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+42</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -115,16 +97,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -133,70 +123,56 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
-&nbsp;
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.popLoadedPlugin = popLoadedPlugin;
-exports.hasPlugin = hasPlugin;
-exports.registerDatasourcePlugin = registerDatasourcePlugin;
-exports.registerWidgetPlugin = registerWidgetPlugin;
-/* This Source Code Form is subject to the terms of the Mozilla Public
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* This Source Code Form is subject to the terms of the Mozilla Public
 * License, v. 2.0. If a copy of the MPL was not distributed with this
 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
-&nbsp;
+"use strict";
 /**
  * When a Plugin is loaded via the UI, an action is called to do so.
- * The action will load an external script, containing the plugin code, which calles one of the API methods here.
+ * The action will load an external script, containing the plugin code, which calls one of the API methods here.
  * By calling the API method the plugin is put to the pluginCache where it can be fetched by the application to initialize it
  *
  * The application can not call the Plugin since it could (and should) be wrapped into a module.
  * @type {null}
  */
-&nbsp;
 var pluginCache = null;
-&nbsp;
-<span class="fstat-no" title="function not covered" >function popLoadedPlugin() {</span>
-<span class="cstat-no" title="statement not covered" >    var plugin = pluginCache;</span>
-<span class="cstat-no" title="statement not covered" >    pluginCache = null;</span>
-<span class="cstat-no" title="statement not covered" >    return plugin;</span>
+function popLoadedPlugin() {
+    var plugin = pluginCache;
+    pluginCache = null;
+    return plugin;
 }
-&nbsp;
-<span class="fstat-no" title="function not covered" >function hasPlugin() {</span>
-<span class="cstat-no" title="statement not covered" >    return pluginCache !== null;</span>
+exports.popLoadedPlugin = popLoadedPlugin;
+function hasPlugin() {
+    return pluginCache !== null;
 }
-&nbsp;
-<span class="fstat-no" title="function not covered" >function registerDatasourcePlugin(typeInfo, Datasource) {</span>
-<span class="cstat-no" title="statement not covered" >    console.assert(!hasPlugin(), "Plugin must be finished loading before another can be registered", pluginCache);</span>
-<span class="cstat-no" title="statement not covered" >    pluginCache = {</span>
+exports.hasPlugin = hasPlugin;
+function registerDatasourcePlugin(typeInfo, datasource) {
+    console.assert(!hasPlugin(), "Plugin must be finished loading before another can be registered", pluginCache);
+    pluginCache = ({
         TYPE_INFO: typeInfo,
-        Datasource: Datasource
-    };
+        Datasource: datasource
+    });
 }
-&nbsp;
-<span class="fstat-no" title="function not covered" >function registerWidgetPlugin(typeInfo, Widget) {</span>
+exports.registerDatasourcePlugin = registerDatasourcePlugin;
+// TODO: type Widget as soon as it is in typescript
+<span class="fstat-no" title="function not covered" >function registerWidgetPlugin(typeInfo, widget) {</span>
 <span class="cstat-no" title="statement not covered" >    console.assert(!hasPlugin(), "Plugin must be finished loading before another can be registered", pluginCache);</span>
-<span class="cstat-no" title="statement not covered" >    pluginCache = {</span>
+<span class="cstat-no" title="statement not covered" >    pluginCache = ({</span>
         TYPE_INFO: typeInfo,
-        Widget: Widget
-    };
+        Widget: widget
+    });
 }
+exports.registerWidgetPlugin = registerWidgetPlugin;
+&nbsp;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jul 21 2016 22:15:51 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 31 2016 22:39:47 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

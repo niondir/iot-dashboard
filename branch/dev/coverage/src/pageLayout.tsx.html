@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">72.22% </span>
+        <span class="strong">70.91% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>39/54</span>
+        <span class='fraction'>39/55</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">42.11% </span>
+        <span class="strong">40.91% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>8/19</span>
+        <span class='fraction'>9/22</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">41.18% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>7/17</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">86.36% </span>
+        <span class="strong">84.44% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>38/44</span>
+        <span class='fraction'>38/45</span>
       </div>
     </div>
   </div>
@@ -108,7 +108,10 @@
 63
 64
 65
-66</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+66
+67
+68
+69</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -149,21 +152,24 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -186,7 +192,7 @@ var React = require("react");
 var react_1 = require("react");
 var ReactDOM = require("react-dom");
 var react_redux_1 = require("react-redux");
-var Dashboard = require("./dashboard/dashboard.js");
+var Global = require("./dashboard/global.js");
 var widgetGrid_ui_js_1 = require("./widgets/widgetGrid.ui.js");
 var layouts_ui_js_1 = require("./layouts/layouts.ui.js");
 var widgetConfigDialog_ui_js_1 = require("./widgets/widgetConfigDialog.ui.js");
@@ -212,15 +218,17 @@ var Layout = (function (_super) {
         }
     };
     Layout.prototype.componentDidMount = <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >        this.onReadOnlyModeKeyPress = this.onReadOnlyModeKeyPress.bind(this);</span>
-<span class="cstat-no" title="statement not covered" >        ReactDOM.findDOMNode(this)</span>
-            .offsetParent
-            .addEventListener('keydown', this.onReadOnlyModeKeyPress);
+<span class="cstat-no" title="statement not covered" >        if (this.props.devMode) {</span>
+<span class="cstat-no" title="statement not covered" >            this.onReadOnlyModeKeyPress = this.onReadOnlyModeKeyPress.bind(this);</span>
+<span class="cstat-no" title="statement not covered" >            ReactDOM.findDOMNode(this)</span>
+                .offsetParent
+                .addEventListener('keydown', this.onReadOnlyModeKeyPress);
+        }
     };
     Layout.prototype.render = function () {
         var _this = this;
         var props = this.props;
-        var showMenu = !props.isReadOnly || <span class="branch-1 cbranch-no" title="branch not covered" >this.state.hover;</span>
+        var showMenu = props.devMode &amp;&amp; (!props.isReadOnly || <span class="branch-2 cbranch-no" title="branch not covered" >this.state.hover)</span>;
         return React.createElement("div", {onKeyUp: <span class="fstat-no" title="function not covered" >function (event) {</span> <span class="cstat-no" title="statement not covered" >return _this.onReadOnlyModeKeyPress(event); </span>}}, React.createElement("div", null, React.createElement(widgetConfigDialog_ui_js_1.default, null), React.createElement(importExportDialog_ui_js_1.default, null), React.createElement(datasourceConfigDialog_ui_js_1.default, null), React.createElement(pluginsDialog_ui_js_1.default, null)), React.createElement("div", {className: "container"}, React.createElement("div", {className: showMenu ? "menu-trigger" : <span class="branch-1 cbranch-no" title="branch not covered" >"menu-trigger",</span> onMouseOver: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: true }); </span>}, onMouseEnter: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: true }); </span>}}), React.createElement("div", {className: "ui inverted fixed main menu " + (showMenu ? "topnav--visible" : <span class="branch-1 cbranch-no" title="branch not covered" >"topnav--hidden")</span>, onMouseOver: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: true }); </span>}, onMouseLeave: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: false }); </span>}}, React.createElement("div", {className: "ui container"}, React.createElement("a", {href: "#", className: "header item"}, "Dashboard"), React.createElement(dashboardMenuEntry_ui_js_1.default, null), React.createElement(widgetsNavItem_ui_js_1.default, null), React.createElement(datasourceNavItem_ui_js_1.default, null), React.createElement(pluginNavItem_ui_js_1.default, null), React.createElement(layouts_ui_js_1.default, null), React.createElement("a", {className: "item", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return Persistence.clearData(); </span>}}, React.createElement("i", {className: "red bomb icon"}), "Reset Everything!"), React.createElement("a", {className: "item", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return props.setReadOnly(!props.isReadOnly); </span>}}, React.createElement("i", {className: (props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >"lock" </span>: "unlock alternate") + " icon"}), " "), React.createElement("div", {className: "header selectable right item"}, "v", this.props.config.version, " ", this.props.config.revisionShort))), React.createElement("div", {className: "ui grid"}, React.createElement(widgetGrid_ui_js_1.default, null))));
     };
     return Layout;
@@ -229,12 +237,13 @@ exports.Layout = Layout;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = react_redux_1.connect(function (state) {
     return {
-        isReadOnly: state.dashboard.isReadOnly,
+        isReadOnly: state.global.isReadOnly,
+        devMode: state.global.devMode,
         config: state.config
     };
 }, function (dispatch) {
     return {
-        setReadOnly: <span class="fstat-no" title="function not covered" >function (isReadOnly) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(Dashboard.setReadOnly(isReadOnly)); </span>}
+        setReadOnly: <span class="fstat-no" title="function not covered" >function (isReadOnly) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(Global.setReadOnly(isReadOnly)); </span>}
     };
 })(Layout);
 &nbsp;
@@ -244,7 +253,7 @@ exports.default = react_redux_1.connect(function (state) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jul 21 2016 22:15:51 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 31 2016 22:39:47 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../prettify.js"></script>
