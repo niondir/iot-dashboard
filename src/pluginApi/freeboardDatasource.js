@@ -1,8 +1,7 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this
-* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import scriptloader from '../util/scriptLoader';
 import * as _ from 'lodash'
 
 // **newInstance(settings, newInstanceCallback, updateCallback)** (required) : A function that will be called when a new instance of this plugin is requested.
@@ -13,19 +12,31 @@ import * as _ from 'lodash'
 
 export function create(newInstance, TYPE_INFO) {
 
-    return function FreeboardDatasource(newInstance, props = {}, history = []) {
+    return function FreeboardDatasource(props = {}) {
         this.instance = null;
         this.data = history;
-        this.getValues = function () {
-            if (_.isArray(this.data)) {
-                return this.data;
+        this.fetchData = function (resolve, reject) {
+            if (!this.data) {
+                resolve();
+                return;
             }
-            return [this.data];
+            const data = this.data;
+            this.data = null;
+            if (_.isArray(data)) {
+                resolve(data);
+            } else {
+                return resolve([data]);
+            }
+        }.bind(this);
+        this.dispose = function() {
+            this.instance.onDispose();
         }.bind(this);
 
-        this.updateProps = function (newProps) {
-            console.log("Updating Datasource props");
-            this.instance.onSettingsChanged(newProps)
+        this.datasourceWillReceiveProps = function (newProps) {
+            if (newProps.settings !== this.props.settings) {
+                console.log("Updating Datasource settings");
+                this.instance.onSettingsChanged(newProps);
+            }
         }.bind(this);
 
         const newInstanceCallback = function (instance) {
@@ -37,17 +48,11 @@ export function create(newInstance, TYPE_INFO) {
             this.data = newData;
         }.bind(this);
 
-        // TODO: Maybe no needed anymore when we take care of dependencies elsewhere
-        if (TYPE_INFO.dependencies) {
-            scriptloader.loadScript([...TYPE_INFO.dependencies], {success: createNewInstance});
-        }
-        else {
-            createNewInstance();
-        }
+        createNewInstance();
 
         function createNewInstance() {
             newInstance(props, newInstanceCallback, updateCallback);
         }
 
-    }.bind(this, newInstance)
+    }.bind(this)
 }

@@ -92,9 +92,11 @@ export default class DatasourcePluginRegistry extends PluginRegistry<IDatasource
             this._fetchPromises[dsState.id] = null;
             if (!this._disposed) {
                 //console.log("fetData plugin finished", dsState, result);
-                this.store.dispatch(appendDatasourceData(dsState.id, result));
+                if (result !== undefined) {
+                    this.store.dispatch(appendDatasourceData(dsState.id, result));
+                }
             } else {
-                console.error("fetData of disposed plugin finished", dsState, result);
+                console.error("fetchData of disposed plugin finished", dsState, result);
             }
         }).catch((error) => {
             console.warn("Failed to fetch data for Datasource " + dsState.type, dsState);

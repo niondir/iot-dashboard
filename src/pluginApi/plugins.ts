@@ -20,7 +20,7 @@ export interface IPluginLoaderAction extends AppState.Action {
 }
 
 
-export function startLoadingPluginFromUrl(id: string, url: string): IPluginLoaderAction {
+export function startLoadingPluginFromUrl(url: string, id?: string): IPluginLoaderAction {
     return {
         type: Action.STARTED_LOADING_PLUGIN_FROM_URL,
         id,
@@ -73,6 +73,9 @@ export function pluginLoaderReducer(state: IPluginLoaderState = initialState, ac
 function urlsReducer(state: string[], action: IPluginLoaderAction): string[] {
     switch (action.type) {
         case Action.STARTED_LOADING_PLUGIN_FROM_URL:
+            if (!action.url) {
+                throw new Error("Can not load plugin from empty URL");
+            }
             return [...state].concat([action.url]);
         case Action.WIDGET_PLUGIN_FINISHED_LOADING:
         case Action.DATASOURCE_PLUGIN_FINISHED_LOADING:

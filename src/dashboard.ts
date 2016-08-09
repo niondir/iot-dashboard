@@ -78,7 +78,7 @@ export default class Dashboard {
             .concat(_.valuesIn<any>(state.widgetPlugins));  // TODO: type IWidgetPluginState
 
         plugins.forEach(plugin => {
-            this._store.dispatch(Plugins.startLoadingPluginFromUrl(plugin.id, plugin.url));
+            this._store.dispatch(Plugins.startLoadingPluginFromUrl(plugin.url, plugin.id));
         });
     }
 
