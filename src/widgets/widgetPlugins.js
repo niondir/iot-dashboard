@@ -1,6 +1,6 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this
-* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import WidgetPlugin from './widgetPlugin'
 import PluginRegistry from '../pluginApi/pluginRegistry'
@@ -44,7 +44,7 @@ export const widgetPluginType = Prop.shape({
 export class WidgetPluginRegistry extends PluginRegistry<any, any> {
 
     constructor(store) {
-       super(store);
+        super(store);
     }
 
     createPluginFromModule(module) {
@@ -54,7 +54,7 @@ export class WidgetPluginRegistry extends PluginRegistry<any, any> {
 
 
 export function unloadPlugin(type) {
-    return function(dispatch) {
+    return function (dispatch) {
         const widgetPlugin = Dashboard.getInstance().widgetPluginRegistry.getPlugin(type);
         widgetPlugin.dispose();
         dispatch(deletePlugin(type));
@@ -73,6 +73,15 @@ export function widgetPlugins(state = initialState, action) {
 
     state = pluginsCrudReducer(state, action);
     switch (action.type) {
+        case Action.STARTED_LOADING_PLUGIN_FROM_URL:
+            if (state[action.id]) {
+                return _.assign({}, state, {
+                    [action.id]: widgetPlugin(state[action.id], action)
+                });
+            }
+            else {
+                return state;
+            }
         default:
             return state;
     }
@@ -90,8 +99,13 @@ function widgetPlugin(state, action) {
             return {
                 id: action.typeInfo.type,
                 url: action.url,
-                typeInfo: action.typeInfo
+                typeInfo: action.typeInfo,
+                isLoading: false
             };
+        case Action.STARTED_LOADING_PLUGIN_FROM_URL:
+            return _.assign({}, state, {
+                isLoading: true
+            });
         default:
             return state;
     }

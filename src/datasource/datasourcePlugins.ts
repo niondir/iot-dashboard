@@ -70,10 +70,19 @@ function deletePlugin(type: string) {
 }
 
 const pluginsCrudReducer: Function = genCrudReducer([Action.DATASOURCE_PLUGIN_FINISHED_LOADING, Action.DELETE_DATASOURCE_PLUGIN], datasourcePlugin);
-export function datasourcePlugins(state: IDatasourcePluginsState = initialState, action: AppState.Action) {
+export function datasourcePlugins(state: IDatasourcePluginsState = initialState, action: any) {
 
     state = pluginsCrudReducer(state, action);
     switch (action.type) {
+        case Action.STARTED_LOADING_PLUGIN_FROM_URL:
+            if (state[action.id]) {
+                return _.assign<any, IDatasourcePluginsState>({}, state, {
+                    [action.id]: datasourcePlugin(state[action.id], action)
+                });
+            }
+            else {
+                return state;
+            }
         default:
             return state;
     }
@@ -93,6 +102,10 @@ function datasourcePlugin(state: IDatasourcePluginState, action: IDatasourcePlug
                 url: action.url,
                 typeInfo: action.typeInfo
             };
+        case Action.STARTED_LOADING_PLUGIN_FROM_URL:
+            return _.assign<any, IDatasourcePluginState>({}, state, {
+                isLoading: true
+            });
         default:
             return state;
     }

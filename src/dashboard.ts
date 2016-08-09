@@ -78,7 +78,7 @@ export default class Dashboard {
             .concat(_.valuesIn<any>(state.widgetPlugins));  // TODO: type IWidgetPluginState
 
         plugins.forEach(plugin => {
-            this._store.dispatch(Plugins.startLoadingPluginFromUrl(plugin.url));
+            this._store.dispatch(Plugins.startLoadingPluginFromUrl(plugin.id, plugin.url));
         });
     }
 
@@ -88,8 +88,13 @@ export default class Dashboard {
     }
 
     private loadPluginScript(url: string): Promise<void> {
-        this._scriptsLoading[url] = scriptloader.loadScript([url])
-            .then(() => {
+        const loadScriptsPromise = scriptloader.loadScript([url]);
+
+        loadScriptsPromise.catch((error) => {
+            console.warn("Failed to load script: " + error.message)
+        })
+
+        this._scriptsLoading[url] = loadScriptsPromise.then(() => {
                 if (PluginCache.hasPlugin()) {
                     // TODO: use a reference to the pluginCache and only bind that instance to the window object while the script is loaded
                     // TODO: The scriploader can ensure that only one script is loaded at a time

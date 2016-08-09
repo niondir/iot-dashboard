@@ -15,13 +15,15 @@ export interface IPluginLoaderState {
     loadingUrls: string[]
 }
 export interface IPluginLoaderAction extends AppState.Action {
-    url?: string
+    id: string
+    url: string
 }
 
 
-export function startLoadingPluginFromUrl(url: string): IPluginLoaderAction {
+export function startLoadingPluginFromUrl(id: string, url: string): IPluginLoaderAction {
     return {
         type: Action.STARTED_LOADING_PLUGIN_FROM_URL,
+        id,
         url
     }
 }

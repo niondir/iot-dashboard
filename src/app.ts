@@ -75,7 +75,7 @@ function runWithState(configuredState?: AppState.State) {
         }
         else {
             dashboard.dispose();
-            window.onerror = () => true;
+            window.onerror = () => false;
             throw error;
         }
     }

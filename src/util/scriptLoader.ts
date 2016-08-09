@@ -5,14 +5,18 @@ import loadjs = require('loadjs');
 export default class ScriptLoader {
     static loadScript(paths: Array<string>): Promise<void> {
         return new Promise<void>((resolve, reject) => {
-            loadjs(paths, {
-                success: () => {
-                    resolve();
-                },
-                error: (error: Error) => {
-                    reject(error);
-                }
-            });
+            try {
+                loadjs(paths, {
+                    success: () => {
+                        resolve();
+                    },
+                    error: (error: Error) => {
+                        reject(error);
+                    }
+                });
+            } catch (error) {
+                reject(error);
+            }
         });
     }
 }
