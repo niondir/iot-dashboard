@@ -16427,7 +16427,6 @@
 /***/ function(module, exports) {
 
 	// shim for using process in browser
-
 	var process = module.exports = {};
 
 	// cached from whatever global is present so that test runners that stub it
@@ -16439,21 +16438,63 @@
 	var cachedClearTimeout;
 
 	(function () {
-	  try {
-	    cachedSetTimeout = setTimeout;
-	  } catch (e) {
-	    cachedSetTimeout = function () {
-	      throw new Error('setTimeout is not defined');
+	    try {
+	        cachedSetTimeout = setTimeout;
+	    } catch (e) {
+	        cachedSetTimeout = function () {
+	            throw new Error('setTimeout is not defined');
+	        }
 	    }
-	  }
-	  try {
-	    cachedClearTimeout = clearTimeout;
-	  } catch (e) {
-	    cachedClearTimeout = function () {
-	      throw new Error('clearTimeout is not defined');
+	    try {
+	        cachedClearTimeout = clearTimeout;
+	    } catch (e) {
+	        cachedClearTimeout = function () {
+	            throw new Error('clearTimeout is not defined');
+	        }
 	    }
-	  }
 	} ())
+	function runTimeout(fun) {
+	    if (cachedSetTimeout === setTimeout) {
+	        //normal enviroments in sane situations
+	        return setTimeout(fun, 0);
+	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedSetTimeout(fun, 0);
+	    } catch(e){
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+	            return cachedSetTimeout.call(null, fun, 0);
+	        } catch(e){
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+	            return cachedSetTimeout.call(this, fun, 0);
+	        }
+	    }
+
+
+	}
+	function runClearTimeout(marker) {
+	    if (cachedClearTimeout === clearTimeout) {
+	        //normal enviroments in sane situations
+	        return clearTimeout(marker);
+	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedClearTimeout(marker);
+	    } catch (e){
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+	            return cachedClearTimeout.call(null, marker);
+	        } catch (e){
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+	            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+	            return cachedClearTimeout.call(this, marker);
+	        }
+	    }
+
+
+
+	}
 	var queue = [];
 	var draining = false;
 	var currentQueue;
@@ -16478,7 +16519,7 @@
 	    if (draining) {
 	        return;
 	    }
-	    var timeout = cachedSetTimeout.call(null, cleanUpNextTick);
+	    var timeout = runTimeout(cleanUpNextTick);
 	    draining = true;
 
 	    var len = queue.length;
@@ -16495,7 +16536,7 @@
 	    }
 	    currentQueue = null;
 	    draining = false;
-	    cachedClearTimeout.call(null, timeout);
+	    runClearTimeout(timeout);
 	}
 
 	process.nextTick = function (fun) {
@@ -16507,7 +16548,7 @@
 	    }
 	    queue.push(new Item(fun, args));
 	    if (queue.length === 1 && !draining) {
-	        cachedSetTimeout.call(null, drainQueue, 0);
+	        runTimeout(drainQueue);
 	    }
 	};
 
@@ -24104,9 +24145,9 @@
 
 	module.exports = {
 		"version": "0.0.4",
-		"revision": "2b5d947286d14804db0cc42530f8c5ddf14f3a5b",
-		"revisionShort": "2b5d947",
-		"branch": "Detatched: 2b5d947286d14804db0cc42530f8c5ddf14f3a5b"
+		"revision": "85ef688d2ea2d0436a625c8cde0f168c8dd4403c",
+		"revisionShort": "85ef688",
+		"branch": "Detatched: 85ef688d2ea2d0436a625c8cde0f168c8dd4403c"
 	};
 
 /***/ },
@@ -44601,16 +44642,13 @@
 	var Store = __webpack_require__(101);
 	var dashboard_1 = __webpack_require__(60);
 	describe('ServerRenderer', function () {
-	    var dashboard;
-	    afterEach(function () {
-	        if (dashboard) {
-	            dashboard.dispose();
-	        }
-	    });
 	    describe('render initial state', function () {
 	        it('should return some proper html', function () {
 	            var store = Store.createDefault(Store.testStoreOptions());
-	            dashboard = new dashboard_1.default(store);
+	            var dashboard = new dashboard_1.default(store);
+	            afterEach(function () {
+	                dashboard.dispose();
+	            });
 	            var html = ServerRenderer.render(store);
 	            chai_1.assert.isString(html, "The rendered HTML needs to be a string");
 	            chai_1.assert.include(html, '<div', 'rendered HTML contains at least an open div');
@@ -44630,7 +44668,7 @@
 	if (!__cov_QuYVDS2kaSuorryBzguB$w.__coverage__) { __cov_QuYVDS2kaSuorryBzguB$w.__coverage__ = {}; }
 	__cov_QuYVDS2kaSuorryBzguB$w = __cov_QuYVDS2kaSuorryBzguB$w.__coverage__;
 	if (!(__cov_QuYVDS2kaSuorryBzguB$w['/home/travis/build/Niondir/iot-dashboard/src/serverRenderer.tsx'])) {
-	   __cov_QuYVDS2kaSuorryBzguB$w['/home/travis/build/Niondir/iot-dashboard/src/serverRenderer.tsx'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/serverRenderer.tsx","s":{"1":0,"2":0,"3":0,"4":0,"5":1,"6":0,"7":0},"b":{},"f":{"1":0},"fnMap":{"1":{"name":"render","line":10,"loc":{"start":{"line":10,"column":0},"end":{"line":10,"column":23}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":53}},"2":{"start":{"line":6,"column":0},"end":{"line":6,"column":43}},"3":{"start":{"line":7,"column":0},"end":{"line":7,"column":43}},"4":{"start":{"line":8,"column":0},"end":{"line":8,"column":29}},"5":{"start":{"line":10,"column":0},"end":{"line":12,"column":1}},"6":{"start":{"line":11,"column":4},"end":{"line":11,"column":155}},"7":{"start":{"line":13,"column":0},"end":{"line":13,"column":24}}},"branchMap":{},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public","* License, v. 2.0. If a copy of the MPL was not distributed with this","* file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var react_dom_server_1 = require('react-dom-server');","var react_redux_1 = require('react-redux');","var pageLayout_1 = require('./pageLayout');","var React = require('react'); //TSC needs a reference to react","// Render the component as string","function render(store) {","    return react_dom_server_1.renderToString(React.createElement(react_redux_1.Provider, {store: store}, React.createElement(pageLayout_1.default, null)));","}","exports.render = render;",""]};
+	   __cov_QuYVDS2kaSuorryBzguB$w['/home/travis/build/Niondir/iot-dashboard/src/serverRenderer.tsx'] = {"path":"/home/travis/build/Niondir/iot-dashboard/src/serverRenderer.tsx","s":{"1":0,"2":0,"3":0,"4":0,"5":1,"6":0,"7":0},"b":{},"f":{"1":0},"fnMap":{"1":{"name":"render","line":10,"loc":{"start":{"line":10,"column":0},"end":{"line":10,"column":23}}}},"statementMap":{"1":{"start":{"line":5,"column":0},"end":{"line":5,"column":53}},"2":{"start":{"line":6,"column":0},"end":{"line":6,"column":43}},"3":{"start":{"line":7,"column":0},"end":{"line":7,"column":43}},"4":{"start":{"line":8,"column":0},"end":{"line":8,"column":29}},"5":{"start":{"line":10,"column":0},"end":{"line":12,"column":1}},"6":{"start":{"line":11,"column":4},"end":{"line":11,"column":155}},"7":{"start":{"line":13,"column":0},"end":{"line":13,"column":24}}},"branchMap":{},"code":["/* This Source Code Form is subject to the terms of the Mozilla Public"," * License, v. 2.0. If a copy of the MPL was not distributed with this"," * file, You can obtain one at http://mozilla.org/MPL/2.0/. */","\"use strict\";","var react_dom_server_1 = require('react-dom-server');","var react_redux_1 = require('react-redux');","var pageLayout_1 = require('./pageLayout');","var React = require('react'); //TSC needs a reference to react","// Render the component as string","function render(store) {","    return react_dom_server_1.renderToString(React.createElement(react_redux_1.Provider, {store: store}, React.createElement(pageLayout_1.default, null)));","}","exports.render = render;",""]};
 	}
 	__cov_QuYVDS2kaSuorryBzguB$w = __cov_QuYVDS2kaSuorryBzguB$w['/home/travis/build/Niondir/iot-dashboard/src/serverRenderer.tsx'];
 	__cov_QuYVDS2kaSuorryBzguB$w.s['1']++;var react_dom_server_1=__webpack_require__(177);__cov_QuYVDS2kaSuorryBzguB$w.s['2']++;var react_redux_1=__webpack_require__(44);__cov_QuYVDS2kaSuorryBzguB$w.s['3']++;var pageLayout_1=__webpack_require__(46);__cov_QuYVDS2kaSuorryBzguB$w.s['4']++;var React=__webpack_require__(20);function render(store){__cov_QuYVDS2kaSuorryBzguB$w.f['1']++;__cov_QuYVDS2kaSuorryBzguB$w.s['6']++;return react_dom_server_1.renderToString(React.createElement(react_redux_1.Provider,{store:store},React.createElement(pageLayout_1.default,null)));}__cov_QuYVDS2kaSuorryBzguB$w.s['7']++;exports.render=render;
