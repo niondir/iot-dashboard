@@ -1,6 +1,6 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this
-* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import * as React from 'react'
 import ModalDialog from '../modal/modalDialog.ui.js'
@@ -44,12 +44,10 @@ class PluginsModal extends React.Component {
                         <h4 className="ui dividing header">Load Plugin</h4>
                         <div className="field">
                             <label>From URL</label>
-                            <div className="field">
-                                <input ref="pluginUrl" type="text" name="plugin-url"
-                                       placeholder="http://my-page.com/myPlugin.js"
-                                       defaultValue="plugins/TestWidgetPlugin.js"
-                                />
-                            </div>
+                            <input ref="pluginUrl" type="text" name="plugin-url"
+                                   placeholder="http://my-page.com/myPlugin.js"
+                                   defaultValue="plugins/TestWidgetPlugin.js"
+                            />
                         </div>
                         <div className="ui button" onClick={() => props.loadPlugin(this.refs.pluginUrl.value)}
                              tabIndex="0">
@@ -144,7 +142,9 @@ class PluginCard extends React.Component {
                 </div>
             </div>
             <div className="extra content">
-                <i className="copy outline icon" onClick={() => {this._copyUrl()}} style={{display:"inline"}}/>
+                <i className="copy outline icon" onClick={() => {
+                    this._copyUrl()
+                }} style={{display: "inline"}}/>
                 <div className="ui large transparent input">
                     <input type="text" ref="url"
                            readOnly
