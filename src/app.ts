@@ -66,27 +66,35 @@ function runWithState(configuredState?: AppState.State) {
         throw new Error("Can not get element '#app' from DOM. Okay for headless execution.");
     }
 
-    function retryLoading(dashboard: Dashboard, error: Error) {
-        console.warn("Failed to load dashboard. Asking user to wipe data and retry. The error will be printed below...");
-        if (confirm("Failed to load dashboard. Reset all Data?\n\nPress cancel and check the browser console for more details.")) {
+    function handleError(dashboard: Dashboard, error: Error) {
+        console.warn("Fatal error. Asking user to wipe data and retry. The error will be printed below...");
+        if (confirm("Fatal error. Reset all Data?\n\nPress cancel and check the browser console for more details.")) {
             dashboardStore.dispatch(Store.clearState());
             dashboard.dispose();
             start();
         }
         else {
+            dashboard.dispose();
+            window.onerror = () => true;
             throw error;
         }
     }
 
     function start() {
         let dashboard = new Dashboard(dashboardStore);
+
+        window.onerror = function errorHandler(message: string, filename?: string, lineno?: number, colno?: number, error?: Error) {
+            handleError(dashboard, error);
+            return false;
+        };
+
         dashboard.init();
 
         try {
             renderDashboard(appElement, dashboardStore);
         }
         catch (error) {
-            retryLoading(dashboard, error)
+            handleError(dashboard, error)
         }
     }
 

@@ -9,18 +9,15 @@ import Dashboard from "./dashboard";
 
 describe('ServerRenderer', function () {
 
-    let dashboard: Dashboard;
-
-    afterEach(() => {
-        if (dashboard) {
-            dashboard.dispose();
-        }
-    });
-
     describe('render initial state', function () {
         it('should return some proper html', function () {
             const store = Store.createDefault(Store.testStoreOptions());
-            dashboard = new Dashboard(store);
+            let dashboard = new Dashboard(store);
+
+            afterEach(() => {
+                dashboard.dispose();
+            });
+
             const html = ServerRenderer.render(store);
 
             assert.isString(html, "The rendered HTML needs to be a string");

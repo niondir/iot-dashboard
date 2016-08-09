@@ -1,6 +1,6 @@
 # Plugin Development Getting Started
 
-Lets get started and setup the Dashboard and get the first Plugins running in 20 minutes.
+Lets get started and setup the Dashboard and get the first Plugins running in under 15 minutes.
 
 ## Step 1: Setup your dev environment
 
@@ -39,7 +39,7 @@ And add some code:
     (function (window) {
 
         const TYPE_INFO = {
-            type: 'simpleweatherjs',
+            type: 'simpleweatherjs-ds',
             name: 'Weather',
             description: 'Receive Weather data from Yahoo!',
             dependencies: ['https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js'],
@@ -72,7 +72,7 @@ And add some code:
             $.simpleWeather({
                 location: settings["location"],
                 woeid: '',
-                units: getUnits(settings["unitType"]),
+                unit: settings["unitType"] === 'metric' ? 'c' : 'f',
                 success: function (weather) {
                     fulfill([weather]);
                 },
@@ -81,29 +81,6 @@ And add some code:
                 }
             })
         };
-
-        function getUnits(type) {
-            switch (type) {
-                case 'metric':
-                    return {temp: 'c', distance: 'km', pressure: 'mb', speed: 'kph'};
-                default:
-                    return {temp: 'f', distance: 'mi', pressure: 'in', speed: 'mph'};
-            }
-        }
-
-        function limitHistory(history, count) {
-            return history.slice(history.length - count);
-        }
-
-        Plugin.prototype.datasourceWillReceiveProps = function (nextProps) {
-            if (this.props.state.settings !== nextProps.state.settings) {
-                this.timer = this.setupFetchData(nextProps);
-            }
-        };
-
-        Plugin.prototype.dispose = function () {
-        };
-
 
         window.iotDashboardApi.registerDatasourcePlugin(TYPE_INFO, Plugin)
     })(window);
@@ -114,3 +91,69 @@ You should now see the plugin in the list of Datasource Plugins.
 `Close` the dialog and add a new Datasource (`Datasources` -> `Add Datasource`). Select your plugin (`Weather`) and fill the settings.
 
 To see the data add a text Widget (`Add Widget` -> `Text`) and select your datasource. Now you see what you datasource provides to the widget.
+
+## Step 3: Create your own widget
+
+We got our Weather Datasource up and running. Now it's time to make the visualisation a little more nice.
+
+Create a new file `plugins/weatherWidget.js`
+And add some code:
+
+    (function (window) {
+
+        const TYPE_INFO = {
+            type: 'simpleweatherjs-widget',
+            name: 'Weather',
+            description: 'Visualize Weather data',
+            settings: [
+                {
+                    id: 'datasource',
+                    name: 'Datasource',
+                    type: 'datasource',
+                    description: "Datasource to get the weather data"
+                }
+            ]
+        };
+
+        class Plugin extends React.Component {
+            render() {
+                const props = this.props;
+                const settings = props.state.settings;
+
+                const allData = props.getData(settings.datasource);
+
+
+                if(allData.length === 0) {
+                    return <div>No Data {JSON.stringify(data)}</div>
+                }
+
+                const data = allData[allData.length - 1];
+                const units = data.units || {};
+
+                return <div style={{padding: 5}}>
+                    <h1>{data.city}, {data.country}</h1>
+                    <p>{data.updated}</p>
+                    <p><img className="ui left floated small image" src={data.image} />
+                        <span>
+                            Temp: {data.temp} {units.temp}<br />
+                            Humidity: {data.humidity} %<br />
+                            Pressure: {data.pressure} {units.pressure}
+                        </span>
+                    </p>
+
+                    </div>
+            }
+        }
+
+        window.iotDashboardApi.registerWidgetPlugin(TYPE_INFO, Plugin)
+    })(window);
+
+
+Now open the Dashboard in your browser and go to `Plugins` -> Load from URL: `plugins/weatherWidget.js` -> `Load Plugin`
+
+You should now see the plugin in the list of Widget Plugins.
+`Close` the dialog and add a new Widget (`Add Widget` -> `Weather`) and select your weather datasource from Step 2 in the settings.
+
+Now you should see your weather widget. Feel free to play around with the code of the Widget and Datasource.
+
+Any problems until here? Feel free to submit an issue or contact us in [![Gitter](https://badges.gitter.im/Niondir/iot-dashboard.svg)](https://gitter.im/Niondir/iot-dashboard?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge)
