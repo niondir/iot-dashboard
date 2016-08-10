@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">73.33% </span>
+        <span class="strong">80% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>22/30</span>
+        <span class='fraction'>40/50</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">33.33% </span>
+        <span class="strong">57.14% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>2/6</span>
+        <span class='fraction'>8/14</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">55.56% </span>
+        <span class="strong">63.64% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>5/9</span>
+        <span class='fraction'>7/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">73.33% </span>
+        <span class="strong">80% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>22/30</span>
+        <span class='fraction'>40/50</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -106,7 +106,35 @@
 61
 62
 63
-64</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -116,16 +144,36 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-yes">4×</span>
@@ -137,8 +185,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -178,16 +234,36 @@ var datasourceScheduler_1 = require("./datasourceScheduler");
  * Represents a plugin instance, state should be saved in store!
  */
 var DatasourcePluginInstance = (function () {
-    function DatasourcePluginInstance(id, dsInstance, store) {
+    function DatasourcePluginInstance(id, dsConstructor, store) {
+        var _this = this;
         this.id = id;
-        this.dsInstance = dsInstance;
+        this.dsConstructor = dsConstructor;
         this.store = store;
         this.scheduler = new datasourceScheduler_1.DatasourceScheduler(this, this.store);
+        var dsState = this.state;
+        var props = {
+            state: dsState,
+            setFetchInterval: <span class="fstat-no" title="function not covered" >function (ms) {</span> <span class="cstat-no" title="statement not covered" >return _this.setFetchInterval(ms); </span>}
+        };
+        console.log("dsConstructor", dsConstructor);
+        var pluginInstance = new dsConstructor(props);
+        this.dsInstance = pluginInstance;
+        pluginInstance.props = props;
+        // Bind API functions to instance
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (_.isFunction(pluginInstance.datasourceWillReceiveProps)) {
+<span class="cstat-no" title="statement not covered" >            pluginInstance.datasourceWillReceiveProps = pluginInstance.datasourceWillReceiveProps.bind(pluginInstance);</span>
+        }
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (_.isFunction(pluginInstance.dispose)) {
+<span class="cstat-no" title="statement not covered" >            pluginInstance.dispose = pluginInstance.dispose.bind(pluginInstance);</span>
+        }
+        if (_.isFunction(pluginInstance.fetchData)) {
+            pluginInstance.fetchData = pluginInstance.fetchData.bind(pluginInstance);
+        }
         this.scheduler.start();
     }
     Object.defineProperty(DatasourcePluginInstance.prototype, "props", {
-        get: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >            return this.dsInstance.props;</span>
+        get: function () {
+            return this.dsInstance.props;
         },
         set: function (newProps) {
             var oldProps = this.dsInstance.props;
@@ -199,9 +275,17 @@ var DatasourcePluginInstance = (function () {
         enumerable: true,
         configurable: true
     });
+    DatasourcePluginInstance.prototype.setFetchInterval = <span class="fstat-no" title="function not covered" >function (intervalMs) {</span>
+<span class="cstat-no" title="statement not covered" >        this.scheduler.fetchInterval = intervalMs;</span>
+    };
     Object.defineProperty(DatasourcePluginInstance.prototype, "state", {
-        get: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >            return this.store.getState().datasources[this.id];</span>
+        get: function () {
+            var state = this.store.getState();
+            var dsState = state.datasources[this.id];
+            if (!dsState) {
+                throw new Error("Can not get state of non existing datasource with id " + this.id);
+            }
+            return dsState;
         },
         enumerable: true,
         configurable: true
@@ -238,7 +322,7 @@ exports.DatasourcePluginInstance = DatasourcePluginInstance;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 10 2016 15:40:24 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 10 2016 16:43:29 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">87.84% </span>
+        <span class="strong">89.29% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>65/74</span>
+        <span class='fraction'>50/56</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">62.5% </span>
+        <span class="strong">57.14% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>15/24</span>
+        <span class='fraction'>8/14</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>15/15</span>
+        <span class='fraction'>14/14</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">87.5% </span>
+        <span class="strong">88.89% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>63/72</span>
+        <span class='fraction'>48/54</span>
       </div>
     </div>
   </div>
@@ -143,34 +143,7 @@
 98
 99
 100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126
-127
-128</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+101</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -192,7 +165,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">7×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -203,17 +176,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">2×</span>
@@ -275,22 +237,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -331,17 +277,6 @@ var DataSourcePluginFactory = (function () {
         enumerable: true,
         configurable: true
     });
-    DataSourcePluginFactory.prototype.getDatasourceState = function (id) {
-        var state = this._store.getState();
-        var dsState = state.datasources[id];
-        if (!dsState) {
-            throw new Error("Can not get state of non existing datasource with id " + id);
-        }
-        <span class="missing-if-branch" title="if path not taken" >I</span>if (dsState.type !== this.type) {
-<span class="cstat-no" title="statement not covered" >            throw new Error("Can not get state of datasource that is not of the correct type: " + dsState.type + " != " + this.type);</span>
-        }
-        return dsState;
-    };
     DataSourcePluginFactory.prototype.getInstance = function (id) {
         <span class="missing-if-branch" title="if path not taken" >I</span>if (this._disposed === true) {
 <span class="cstat-no" title="statement not covered" >            throw new Error("Try to get datasource of destroyed type. " + JSON.stringify({ id: id, type: this.type }));</span>
@@ -389,7 +324,7 @@ var DataSourcePluginFactory = (function () {
             //console.warn("Can not find Datasource instance with id " + dsState.id + ". Skipping Update!");
 <span class="cstat-no" title="statement not covered" >            return;</span>
         }
-        plugin.props = _.assign({}, { state: dsState });
+        plugin.props = _.assign({}, plugin.props, { state: dsState });
     };
     DataSourcePluginFactory.prototype.createInstance = function (id) {
         <span class="missing-if-branch" title="if path not taken" >I</span>if (this._disposed === true) {
@@ -401,23 +336,7 @@ var DataSourcePluginFactory = (function () {
                 type: this.type
             }));
         }
-        var dsState = this.getDatasourceState(id);
-        var props = {
-            state: dsState
-        };
-        var pluginInstance = new this._datasource(props);
-        pluginInstance.props = props;
-        // Bind API functions to instance
-        <span class="missing-if-branch" title="if path not taken" >I</span>if (_.isFunction(pluginInstance.datasourceWillReceiveProps)) {
-<span class="cstat-no" title="statement not covered" >            pluginInstance.datasourceWillReceiveProps = pluginInstance.datasourceWillReceiveProps.bind(pluginInstance);</span>
-        }
-        <span class="missing-if-branch" title="if path not taken" >I</span>if (_.isFunction(pluginInstance.dispose)) {
-<span class="cstat-no" title="statement not covered" >            pluginInstance.dispose = pluginInstance.dispose.bind(pluginInstance);</span>
-        }
-        if (_.isFunction(pluginInstance.fetchData)) {
-            pluginInstance.fetchData = pluginInstance.fetchData.bind(pluginInstance);
-        }
-        return new datasourcePluginInstance_1.DatasourcePluginInstance(id, pluginInstance, this._store);
+        return new datasourcePluginInstance_1.DatasourcePluginInstance(id, this._datasource, this._store);
     };
     return DataSourcePluginFactory;
 }());
@@ -430,7 +349,7 @@ exports.default = DataSourcePluginFactory;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 10 2016 15:40:24 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 10 2016 16:43:29 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

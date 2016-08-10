@@ -39,6 +39,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         function Datasource(props) {
             _classCallCheck(this, Datasource);
 
+            props.setFetchInterval(1200);
             var history = props.state.data;
             // Initialize with non random values to demonstrate loading of historic values
             this.history = history || []; // [{value: 10}, {value: 20}, {value: 30}, {value: 40}, {value: 50}]
