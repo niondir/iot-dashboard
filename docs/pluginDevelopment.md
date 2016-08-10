@@ -92,11 +92,12 @@ All additional information is passed via a `props` object into the constructor.
 
 The datasource has a props object which contains Settings and other information. Ist must not be changed by the datasource!
 
-    interface Props {
-        state: DatasourceState
+    export interface DatasourceProps {
+        state: IDatasourceState
+        setFetchInterval: (intervalInMs: number) => void // Set how often fetchData() will be called
     }
 
-    interface DatasourceState {
+    interface IDatasourceState {
         id: string                // Technical unique id of the Widget instance
         settings: UserSettings    // Setting values from TypeInfo.settings
         data: any[]               // Array of all data values currently available to widgets

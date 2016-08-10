@@ -17,6 +17,7 @@ export interface IDatasourceConstructor extends IDatasourcePlugin {
 
 export interface DatasourceProps {
     state: IDatasourceState
+    setFetchInterval: (intervalInMs: number) => void
 }
 
 export interface IDatasourcePlugin extends IPlugin {
@@ -47,20 +48,6 @@ export default class DataSourcePluginFactory implements IPluginFactory<Datasourc
     get disposed() {
         return this._disposed;
     }
-
-    getDatasourceState(id: string) {
-        const state = this._store.getState();
-        const dsState = state.datasources[id];
-
-        if (!dsState) {
-            throw new Error("Can not get state of non existing datasource with id " + id);
-        }
-        if (dsState.type !== this.type) {
-            throw new Error("Can not get state of datasource that is not of the correct type: " + dsState.type + " != " + this.type);
-        }
-        return dsState;
-    }
-
 
     getInstance(id: string) {
         if (this._disposed === true) {
@@ -114,7 +101,7 @@ export default class DataSourcePluginFactory implements IPluginFactory<Datasourc
             return;
         }
 
-        plugin.props = _.assign({}, {state: dsState});
+        plugin.props = _.assign({}, plugin.props, {state: dsState});
     }
 
     private createInstance(id: string): DatasourcePluginInstance {
@@ -128,25 +115,7 @@ export default class DataSourcePluginFactory implements IPluginFactory<Datasourc
                 }));
         }
 
-        const dsState = this.getDatasourceState(id);
-        const props = {
-            state: dsState
-        };
-        const pluginInstance = new (<IDatasourceConstructor>this._datasource)(props);
 
-        pluginInstance.props = props;
-
-        // Bind API functions to instance
-        if (_.isFunction(pluginInstance.datasourceWillReceiveProps)) {
-            pluginInstance.datasourceWillReceiveProps = pluginInstance.datasourceWillReceiveProps.bind(pluginInstance);
-        }
-        if (_.isFunction(pluginInstance.dispose)) {
-            pluginInstance.dispose = pluginInstance.dispose.bind(pluginInstance);
-        }
-        if (_.isFunction(pluginInstance.fetchData)) {
-            pluginInstance.fetchData = pluginInstance.fetchData.bind(pluginInstance);
-        }
-
-        return new DatasourcePluginInstance(id, pluginInstance, this._store);
+        return new DatasourcePluginInstance(id, <IDatasourceConstructor>this._datasource, this._store);
     }
 }

@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 
-import {IDatasourcePlugin} from "./datasourcePluginFactory";
+import {IDatasourcePlugin, IDatasourceConstructor} from "./datasourcePluginFactory";
 import {DashboardStore} from "../store";
 import {DatasourceScheduler} from "./datasourceScheduler";
 
@@ -12,14 +12,43 @@ import {DatasourceScheduler} from "./datasourceScheduler";
  */
 export class DatasourcePluginInstance {
     private scheduler: DatasourceScheduler;
+    private dsInstance: IDatasourcePlugin;
 
-    constructor(public id: string, private dsInstance: IDatasourcePlugin, private store: DashboardStore) {
+    constructor(public id: string, private dsConstructor: IDatasourceConstructor, private store: DashboardStore) {
         this.scheduler = new DatasourceScheduler(this, this.store);
+
+        const dsState = this.state;
+        const props = {
+            state: dsState,
+            setFetchInterval: (ms: number) => this.setFetchInterval(ms)
+        };
+
+        console.log("dsConstructor", dsConstructor)
+        const pluginInstance = new dsConstructor(props);
+        this.dsInstance = pluginInstance;
+
+        pluginInstance.props = props;
+
+        // Bind API functions to instance
+        if (_.isFunction(pluginInstance.datasourceWillReceiveProps)) {
+            pluginInstance.datasourceWillReceiveProps = pluginInstance.datasourceWillReceiveProps.bind(pluginInstance);
+        }
+        if (_.isFunction(pluginInstance.dispose)) {
+            pluginInstance.dispose = pluginInstance.dispose.bind(pluginInstance);
+        }
+        if (_.isFunction(pluginInstance.fetchData)) {
+            pluginInstance.fetchData = pluginInstance.fetchData.bind(pluginInstance);
+        }
+
         this.scheduler.start();
     }
 
     get props() {
         return this.dsInstance.props;
+    }
+
+    setFetchInterval(intervalMs: number) {
+        this.scheduler.fetchInterval = intervalMs;
     }
 
     set props(newProps: any) {
@@ -31,7 +60,14 @@ export class DatasourcePluginInstance {
     }
 
     get state() {
-        return this.store.getState().datasources[this.id];
+        const state = this.store.getState();
+        const dsState = state.datasources[this.id];
+
+        if (!dsState) {
+            throw new Error("Can not get state of non existing datasource with id " + this.id);
+        }
+
+        return dsState;
     }
 
     get pluginState() {

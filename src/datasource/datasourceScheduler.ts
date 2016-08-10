@@ -8,24 +8,49 @@ import * as Datasource from "./datasource";
 
 export class DatasourceScheduler {
 
+
+    private _fetchInterval: number = 1000;
     private fetchPromise: Promise<any>;
-    private interval: number;
+    private fetchTimeoutRef: number;
     private disposed = false;
+    private running = false;
 
 
     constructor(private dsInstance: DatasourcePluginInstance, private store: DashboardStore) {
     }
 
+    set fetchInterval(ms: number) {
+        this._fetchInterval = ms;
+        this.clearFetchTimeout();
+        this.scheduleFetch();
+    }
+
+
     start() {
-        // TODO: make fetch interval configurable per datasource
-        this.interval = setInterval(() => {
-            this.doFetchData();
-        }, 1000)
+        this.running = true;
+        this.scheduleFetch();
     }
 
     dispose() {
-        clearInterval(this.interval);
+        this.clearFetchTimeout();
         this.disposed = true;
+        this.running = false;
+    }
+
+    private scheduleFetch() {
+        if (!this.running) {
+            return;
+        }
+        this.fetchTimeoutRef = setTimeout(() => {
+            this.doFetchData();
+        }, this._fetchInterval)
+    }
+
+    private clearFetchTimeout() {
+        if (this.fetchTimeoutRef) {
+            clearTimeout(this.fetchTimeoutRef);
+            this.fetchTimeoutRef = null;
+        }
     }
 
     private doFetchData() {
@@ -59,8 +84,10 @@ export class DatasourceScheduler {
                 if (result !== undefined) {
                     this.store.dispatch(Datasource.appendDatasourceData(dsState.id, result));
                 }
+
+                this.scheduleFetch();
             } else {
-                console.error("fetchData of disposed plugin finished", dsState, result);
+                console.error("fetchData of disposed plugin finished - result discarded", dsState, result);
             }
         }).catch((error) => {
             console.warn("Failed to fetch data for Datasource " + dsState.type, dsState);
