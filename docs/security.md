@@ -25,8 +25,8 @@ Some usecases:
 * You can allow only certain trusted plugin repositories
 * Forbid plugin development in a production dashboard by just disable eval()
 
-Read more at: http://content-security-policy.com/
+Read more at: [content-security-policy.com](http://content-security-policy.com/)
 
 ### Cross-Origin Resource Sharing (CORS)
 
-Read more at: http://www.html5rocks.com/en/tutorials/cors/
+Read more at: [www.html5rocks.com](http://www.html5rocks.com/en/tutorials/cors/)

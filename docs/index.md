@@ -80,5 +80,5 @@ Read the redux guide about [writing tests](http://redux.js.org/docs/recipes/Writ
 Useful to check problems in the Webpack build.
 
 - Execute: `npm run webpack-profile`
-- Goto: https://webpack.github.io/analyse/
+- Goto: [https://webpack.github.io/analyse/](https://webpack.github.io/analyse/)
 - Load the generated stats.json

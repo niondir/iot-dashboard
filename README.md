@@ -65,9 +65,9 @@ Open your browser at http://localhost:8081
     npm run compile
     npm start
 
-* Dashboard: http://localhost:8081/
-* Tests: http://localhost:8081/tests.html
-* Testcoverage: http://localhost:8081/coverage/
+* Dashboard: [http://localhost:8081/](http://localhost:8081/)
+* Tests: [http://localhost:8081/tests.html](http://localhost:8081/tests.html)
+* Testcoverage: [http://localhost:8081/coverage/](http://localhost:8081/coverage/)
 
 ### Development ###
 
@@ -81,7 +81,7 @@ Run the Webpack Server with live-reload and hot module replacement
 
     npm run dev
 
-Open your browser at: `http://localhost:8080` and for developing tests: `http://localhost:8080/webpack-dev-server/tests.html`
+Open your browser at: [http://localhost:8080](http://localhost:8080) and for developing tests: [http://localhost:8080/webpack-dev-server/tests.html](http://localhost:8080/webpack-dev-server/tests.html)
 
 Run a second watch task to keep some other files up to date (optional)
 See `gulpfile.js` -> `watch` task for details.
@@ -96,7 +96,7 @@ To just run the tests (not enough to survive the CI build!)
 
     npm test
 
-Find the coverage report in `dist/coverage` or while the server is running at `http://localhost:8080/coverage/`
+Find the coverage report in `dist/coverage` or while the server is running at [http://localhost:8080/coverage/](http://localhost:8080/coverage/)
 
 ## Documentation ##
 

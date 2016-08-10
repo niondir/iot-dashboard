@@ -15,8 +15,8 @@ Lets get started and setup the Dashboard and get the first Plugins running in un
 
 That's it, you can modify code and see the result (dashboard and tests) in the browser.
 
-* Dashboard: http://localhost:8081/
-* Tests: http://localhost:8080/webpack-dev-server/tests.html
+* Dashboard: [http://localhost:8081](http://localhost:8081/)
+* Tests: [http://localhost:8080/webpack-dev-server/tests.html](http://localhost:8080/webpack-dev-server/tests.html)
 
 Plugins are loaded at runtime and not bundled with the Dashboard, that's why the webpack dev server does not load them.
 Just start another task that helps you with that:
