@@ -7,6 +7,7 @@ import {DashboardStore} from "../store";
 import {IPluginFactory, IPlugin} from "../pluginApi/pluginRegistry";
 import * as Datasource from "./datasource";
 import {IDatasourceState} from "./datasource";
+import {DatasourcePluginInstance} from "./datasourcePluginInstance";
 import Unsubscribe = Redux.Unsubscribe;
 
 
@@ -14,11 +15,14 @@ export interface IDatasourceConstructor extends IDatasourcePlugin {
     new(props: any): IDatasourcePlugin
 }
 
+export interface DatasourceProps {
+    state: IDatasourceState
+}
+
 export interface IDatasourcePlugin extends IPlugin {
-    props?: any
+    props?: DatasourceProps
     datasourceWillReceiveProps?: (newProps: any) => void
     dispose?: () => void
-    getValues?(): any[] // TODO: Might get depricated
     fetchData?<T>(resolve: (value?: T | Thenable<T>) => void, reject: (reason?: any) => void): void
 }
 
@@ -26,9 +30,9 @@ export interface IDatasourcePlugin extends IPlugin {
 /**
  * Connects a datasource to the application state
  */
-export default class DataSourcePluginFactory implements IPluginFactory<IDatasourcePlugin> {
+export default class DataSourcePluginFactory implements IPluginFactory<DatasourcePluginInstance> {
 
-    private _pluginInstances: {[id: string]: IDatasourcePlugin} = {};
+    private _pluginInstances: {[id: string]: DatasourcePluginInstance} = {};
     private _unsubscribe: Unsubscribe;
     private _disposed: boolean = false;
 
@@ -92,7 +96,7 @@ export default class DataSourcePluginFactory implements IPluginFactory<IDatasour
             .filter((dsState) => dsState.type === this.type)
             .forEach((dsState) => {
                 if (this._pluginInstances[dsState.id] === undefined) {
-                    this.createInstance(dsState.id);
+                    this._pluginInstances[dsState.id] = this.createInstance(dsState.id);
                     this._store.dispatch(Datasource.finishedLoading(dsState.id))
                 }
             });
@@ -110,17 +114,10 @@ export default class DataSourcePluginFactory implements IPluginFactory<IDatasour
             return;
         }
 
-        const oldProps = plugin.props;
-        const newProps = _.assign({oldProps, state: dsState});
-        if (oldProps !== newProps) {
-            if (_.isFunction(plugin.datasourceWillReceiveProps)) {
-                plugin.datasourceWillReceiveProps(newProps);
-            }
-            plugin.props = newProps;
-        }
+        plugin.props = _.assign({}, {state: dsState});
     }
 
-    private createInstance(id: string): IDatasourcePlugin {
+    private createInstance(id: string): DatasourcePluginInstance {
         if (this._disposed === true) {
             throw new Error("Try to create datasource of destroyed type: " + JSON.stringify({id, type: this.type}));
         }
@@ -146,12 +143,10 @@ export default class DataSourcePluginFactory implements IPluginFactory<IDatasour
         if (_.isFunction(pluginInstance.dispose)) {
             pluginInstance.dispose = pluginInstance.dispose.bind(pluginInstance);
         }
-        if (_.isFunction(pluginInstance.getValues)) {
-            pluginInstance.getValues = pluginInstance.getValues.bind(pluginInstance);
+        if (_.isFunction(pluginInstance.fetchData)) {
+            pluginInstance.fetchData = pluginInstance.fetchData.bind(pluginInstance);
         }
-        // TODO: bind (and require?) fetchData()
 
-        this._pluginInstances[id] = pluginInstance;
-        return pluginInstance;
+        return new DatasourcePluginInstance(id, pluginInstance, this._store);
     }
 }

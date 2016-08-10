@@ -1,7 +1,6 @@
 import PluginRegistry, {IPluginModule} from "../pluginApi/pluginRegistry";
 import DataSourcePluginFactory, {IDatasourcePlugin} from "./datasourcePluginFactory";
 import {DashboardStore} from "../store";
-import {IDatasourceState, appendDatasourceData} from "./datasource";
 import * as Plugins from "../pluginApi/plugins";
 
 /**
@@ -14,15 +13,10 @@ export interface IDatasourcePluginModule extends IPluginModule {
 export default class DatasourcePluginRegistry extends PluginRegistry<IDatasourcePluginModule, DataSourcePluginFactory> {
 
     private _fetchIntervalRef: number;
-    private _fetchPromises: {[dsStateId: string]: Promise<any[]>} = {};
     private _disposed: boolean = false;
 
     constructor(_store: DashboardStore) {
         super(_store);
-
-        this._fetchIntervalRef = setInterval(() => {
-            this.doFetchData();
-        }, 1000);
     }
 
     get disposed() {
@@ -31,7 +25,6 @@ export default class DatasourcePluginRegistry extends PluginRegistry<IDatasource
 
     registerDatasourcePlugin(plugin: IDatasourcePluginModule, url: string) {
         super.register(plugin);
-
         this.store.dispatch(Plugins.datasourcePluginFinishedLoading((<IDatasourcePluginModule>plugin), url));
     }
 
@@ -41,75 +34,12 @@ export default class DatasourcePluginRegistry extends PluginRegistry<IDatasource
         return new DataSourcePluginFactory(module.TYPE_INFO.type, module.Datasource, this.store);
     }
 
-    doFetchData() {
-        if (this._disposed) {
-            throw new Error("DatasourcePluginRegistry is disposed. Can not fetch data.");
-        }
-        const datasourceStates = this.store.getState().datasources;
-
-        _.valuesIn<IDatasourceState>(datasourceStates).forEach((dsState) => {
-            // TODO: make fetch interval configurable per datasource
-
-            if (!dsState.isLoading) {
-                const dsPluginFactory = this.getPlugin(dsState.type);
-                const dsPlugin = dsPluginFactory.getInstance(dsState.id);
-                this.doFetchDataForDatasourceInstance(dsPlugin, dsState);
-            }
-            else {
-                console.log("Skipping loading plugin for fetch data")
-            }
-        })
-    }
-
-    doFetchDataForDatasourceInstance(dsInstance: IDatasourcePlugin, dsState: IDatasourceState) {
-        if (this._fetchPromises[dsState.id]) {
-            console.warn("Do not fetch data because a fetch is currently running on Datasource", dsState);
-            return;
-        }
-        if (!dsInstance.fetchData) {
-            console.warn("fetchData(resolve, reject) is not implemented in Datasource ", dsState);
-            return;
-        }
-
-        if (this._fetchPromises[dsState.id]) {
-            console.log("Fetch already in progress, returning", dsState);
-            return;
-        }
-
-        const fetchPromise = new Promise<any[]>((resolve, reject) => {
-            dsInstance.fetchData(resolve, reject);
-
-            setTimeout(() => {
-                if (this._fetchPromises[dsState.id] === fetchPromise) {
-                    reject(new Error("Timeout! Datasource fetchData() took longer than 5 seconds."));
-                }
-            }, 5000);
-        });
-
-        this._fetchPromises[dsState.id] = fetchPromise;
-
-        fetchPromise.then((result) => {
-            this._fetchPromises[dsState.id] = null;
-            if (!this._disposed) {
-                //console.log("fetData plugin finished", dsState, result);
-                if (result !== undefined) {
-                    this.store.dispatch(appendDatasourceData(dsState.id, result));
-                }
-            } else {
-                console.error("fetchData of disposed plugin finished", dsState, result);
-            }
-        }).catch((error) => {
-            console.warn("Failed to fetch data for Datasource " + dsState.type, dsState);
-            console.error(error);
-            this._fetchPromises[dsState.id] = null;
-        })
-    }
-
     dispose() {
         if (!this._disposed) {
             this._disposed = true;
             clearInterval(this._fetchIntervalRef);
             this._fetchIntervalRef = null;
+            super.dispose();
         }
     }
 }

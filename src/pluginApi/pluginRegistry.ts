@@ -75,4 +75,13 @@ export default class PluginRegistry<TPluginModule extends IPluginModule, TPlugin
     getPlugins() {
         return _.assign<any, IdValueMap<TPluginFactory>>({}, this._plugins);
     }
+
+    dispose() {
+        _.valuesIn(this._plugins).forEach((plugin: any) => {
+            if (_.isFunction(plugin.dispose)) {
+                plugin.dispose();
+            }
+        });
+        this._plugins = {};
+    }
 }
