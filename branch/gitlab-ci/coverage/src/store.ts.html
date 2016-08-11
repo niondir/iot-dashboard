@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/store.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">src/</a> store.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">81.97% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>50/61</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">50% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>7/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">50% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>4/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">84.48% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>49/58</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+"use strict";
+var Redux = require("redux");
+var redux_thunk_1 = require("redux-thunk");
+var createLogger = require("redux-logger");
+var Widgets = require("./widgets/widgets");
+var WidgetConfig = require("./widgets/widgetConfig.js");
+var Layouts = require("./layouts/layouts.js");
+var Datasource = require("./datasource/datasource.js");
+var Dashboard = require("./dashboard/dashboard.js");
+var Import = require("./dashboard/import.js");
+var Modal = require("./modal/modalDialog.js");
+var Persist = require("./persistence.js");
+var redux_form_1 = require("redux-form");
+var Action = require("./actionNames.js");
+var WidgetPlugins = require("./widgets/widgetPlugins.js");
+var DatasourcePlugins = require("./datasource/datasourcePlugins.js");
+var Config = require("./config");
+var appReducer = Redux.combineReducers({
+    config: Config.config,
+    widgets: Widgets.widgets,
+    widgetConfig: WidgetConfig.widgetConfigDialog,
+    layouts: Layouts.layouts,
+    currentLayout: Layouts.currentLayout,
+    datasources: Datasource.datasources,
+    form: redux_form_1.reducer,
+    modalDialog: Modal.modalDialog,
+    widgetPlugins: WidgetPlugins.widgetPlugins,
+    datasourcePlugins: DatasourcePlugins.datasourcePlugins,
+    dashboard: Dashboard.dashboard
+});
+var reducer = function (state, action) {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (action.type === Action.CLEAR_STATE) {
+<span class="cstat-no" title="statement not covered" >        state = undefined;</span>
+    }
+    state = Import.importReducer(state, action);
+    return appReducer(state, action);
+};
+var logger = createLogger({
+    duration: false,
+    timestamp: true,
+    logErrors: true,
+    predicate: <span class="fstat-no" title="function not covered" >function (getState, action) {</span>
+<span class="cstat-no" title="statement not covered" >        if (action.type.startsWith("redux-form")) {</span>
+<span class="cstat-no" title="statement not covered" >            return false;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return !action.doNotLog;</span>
+    }
+});
+var globalStore;
+<span class="fstat-no" title="function not covered" >function setGlobalStore(store) {</span>
+<span class="cstat-no" title="statement not covered" >    globalStore = store;</span>
+}
+exports.setGlobalStore = setGlobalStore;
+<span class="fstat-no" title="function not covered" >function get() {</span>
+<span class="cstat-no" title="statement not covered" >    if (!globalStore) {</span>
+<span class="cstat-no" title="statement not covered" >        throw new Error("No global store created. Call setGlobalStore(store) before!");</span>
+    }
+<span class="cstat-no" title="statement not covered" >    return globalStore;</span>
+}
+exports.get = get;
+/**
+ * Create a store as empty as possible
+ */
+function createEmpty(options) {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (options === void 0) { <span class="cstat-no" title="statement not covered" >options = { log: true }; </span>}
+    return create({
+        config: null,
+        widgets: {},
+        datasources: {}
+    }, options);
+}
+exports.createEmpty = createEmpty;
+/**
+ * Create a store with default values
+ */
+function createDefault(options) {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (options === void 0) { <span class="cstat-no" title="statement not covered" >options = { log: true }; </span>}
+    return create(undefined, options);
+}
+exports.createDefault = createDefault;
+function create(initialState, options) {
+    if (options === void 0) { options = { log: true }; }
+    var middleware = [];
+    middleware.push(redux_thunk_1.default);
+    middleware.push(Persist.persistenceMiddleware);
+    if (options.log) {
+        middleware.push(logger); // must be last
+    }
+    var store = Redux.createStore(reducer, initialState, Redux.applyMiddleware.apply(Redux, middleware));
+    DatasourcePlugins.pluginRegistry.store = store;
+    WidgetPlugins.pluginRegistry.store = store;
+    return store;
+}
+exports.create = create;
+<span class="fstat-no" title="function not covered" >function clearState() {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+        type: Action.CLEAR_STATE
+    };
+}
+exports.clearState = clearState;
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Aug 11 2016 11:03:00 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
