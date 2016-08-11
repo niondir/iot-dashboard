@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/widgets/widgetPlugins.js</title>
+    <title>Code coverage report for src/datasource/datasourcePlugins.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">all files</a> / <a href="index.html">src/widgets/</a> widgetPlugins.js
+      <a href="../../index.html">all files</a> / <a href="index.html">src/datasource/</a> datasourcePlugins.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">74.7% </span>
+        <span class="strong">74.07% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>62/83</span>
+        <span class='fraction'>60/81</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">54.17% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>12/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">79.59% </span>
+        <span class="strong">78.72% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>39/49</span>
+        <span class='fraction'>37/47</span>
       </div>
     </div>
   </div>
@@ -152,16 +152,7 @@
 107
 108
 109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+110</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -171,8 +162,6 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -205,15 +194,6 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -271,6 +251,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -284,16 +266,16 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.pluginRegistry = exports.widgetPluginType = undefined;
+exports.pluginRegistry = exports.DatasourcePluginRegistry = undefined;
 &nbsp;
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i &lt; props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; <span class="missing-if-branch" title="else path not taken" >E</span>if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { <span class="missing-if-branch" title="else path not taken" >E</span>if (protoProps) defineProperties(Constructor.prototype, protoProps); <span class="missing-if-branch" title="if path not taken" >I</span>if (staticProps) <span class="cstat-no" title="statement not covered" >defineProperties(Constructor, staticProps); </span>return Constructor; }; }();
 &nbsp;
 exports.unloadPlugin = unloadPlugin;
-exports.widgetPlugins = widgetPlugins;
+exports.datasourcePlugins = datasourcePlugins;
 &nbsp;
-var _widgetPlugin = require('./widgetPlugin');
+var _datasourcePlugin = require('./datasourcePlugin');
 &nbsp;
-var _widgetPlugin2 = _interopRequireDefault(_widgetPlugin);
+var DsPlugin = _interopRequireWildcard(_datasourcePlugin);
 &nbsp;
 var _pluginRegistry = require('../pluginApi/pluginRegistry');
 &nbsp;
@@ -305,11 +287,9 @@ var Action = _interopRequireWildcard(_actionNames);
 &nbsp;
 var _reducer = require('../util/reducer');
 &nbsp;
-var _react = require('react');
+function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? obj : <span class="branch-1 cbranch-no" title="branch not covered" >{ default: obj };</span> }
 &nbsp;
 function _interopRequireWildcard(obj) { <span class="missing-if-branch" title="else path not taken" >E</span>if (obj &amp;&amp; obj.__esModule) { return obj; } else { <span class="cstat-no" title="statement not covered" >var newObj = {}; <span class="cstat-no" title="statement not covered" ></span>if (obj != null) { <span class="cstat-no" title="statement not covered" >for (var key in obj) { <span class="cstat-no" title="statement not covered" >if (Object.prototype.hasOwnProperty.call(obj, key)) <span class="cstat-no" title="statement not covered" >newObj[key] = obj[key]; </span></span>} </span>} <span class="cstat-no" title="statement not covered" ></span>newObj.default = obj; <span class="cstat-no" title="statement not covered" ></span>return newObj; </span>} }
-&nbsp;
-function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? obj : <span class="branch-1 cbranch-no" title="branch not covered" >{ default: obj };</span> }
 &nbsp;
 function _classCallCheck(instance, Constructor) { <span class="missing-if-branch" title="if path not taken" >I</span>if (!(instance instanceof Constructor)) { <span class="cstat-no" title="statement not covered" >throw new TypeError("Cannot call a class as a function"); </span>} }
 &nbsp;
@@ -322,53 +302,44 @@ function _inherits(subClass, superClass) { <span class="missing-if-branch" title
 // TODO: Later load all plugins from external URL's ?
 var initialState = {};
 &nbsp;
-var widgetPluginType = exports.widgetPluginType = _react.PropTypes.shape({
-    id: _react.PropTypes.string.isRequired,
-    typeInfo: _react.PropTypes.shape({
-        type: _react.PropTypes.string.isRequired,
-        name: _react.PropTypes.string.isRequired,
-        settings: _react.PropTypes.array
-    })
-});
+var DatasourcePluginRegistry = exports.DatasourcePluginRegistry = function (_PluginRegistry) {
+    _inherits(DatasourcePluginRegistry, _PluginRegistry);
 &nbsp;
-var WidgetPluginRegistry = function (_PluginRegistry) {
-    _inherits(WidgetPluginRegistry, _PluginRegistry);
+    function DatasourcePluginRegistry() {
+        _classCallCheck(this, DatasourcePluginRegistry);
 &nbsp;
-    function WidgetPluginRegistry() {
-        _classCallCheck(this, WidgetPluginRegistry);
-&nbsp;
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(WidgetPluginRegistry).apply(this, arguments));
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(DatasourcePluginRegistry).apply(this, arguments));
     }
 &nbsp;
-    _createClass(WidgetPluginRegistry, [{
+    _createClass(DatasourcePluginRegistry, [{
         key: 'createPluginFromModule',
         value: function createPluginFromModule(module) {
-            return new _widgetPlugin2.default(module, this.store);
+            return new DsPlugin.DataSourcePlugin(module, this.store);
         }
     }]);
 &nbsp;
-    return WidgetPluginRegistry;
+    return DatasourcePluginRegistry;
 }(_pluginRegistry2.default);
 &nbsp;
-var pluginRegistry = exports.pluginRegistry = new WidgetPluginRegistry();
+var pluginRegistry = exports.pluginRegistry = new DatasourcePluginRegistry();
 &nbsp;
 <span class="fstat-no" title="function not covered" >function unloadPlugin(type) {</span>
 <span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >function (dispatch) {</span></span>
-<span class="cstat-no" title="statement not covered" >        var widgetPlugin = pluginRegistry.getPlugin(type);</span>
-<span class="cstat-no" title="statement not covered" >        widgetPlugin.dispose();</span>
+<span class="cstat-no" title="statement not covered" >        var dsFactory = pluginRegistry.getPlugin(type);</span>
+<span class="cstat-no" title="statement not covered" >        dsFactory.dispose();</span>
 <span class="cstat-no" title="statement not covered" >        dispatch(deletePlugin(type));</span>
     };
 }
 &nbsp;
 <span class="fstat-no" title="function not covered" >function deletePlugin(type) {</span>
 <span class="cstat-no" title="statement not covered" >    return {</span>
-        type: Action.DELETE_WIDGET_PLUGIN,
+        type: Action.DELETE_DATASOURCE_PLUGIN,
         id: type
     };
 }
 &nbsp;
-var pluginsCrudReducer = (0, _reducer.genCrudReducer)([Action.ADD_WIDGET_PLUGIN, Action.DELETE_WIDGET_PLUGIN], widgetPlugin);
-function widgetPlugins() {
+var pluginsCrudReducer = (0, _reducer.genCrudReducer)([Action.ADD_DATASOURCE_PLUGIN, Action.DELETE_DATASOURCE_PLUGIN], datasourcePlugin);
+function datasourcePlugins() {
     var state = arguments.length &lt;= 0 || arguments[0] === undefined ? initialState : arguments[0];
     var action = arguments[1];
 &nbsp;
@@ -380,9 +351,9 @@ function widgetPlugins() {
     }
 }
 &nbsp;
-<span class="fstat-no" title="function not covered" >function widgetPlugin(state, action) {</span>
+<span class="fstat-no" title="function not covered" >function datasourcePlugin(state, action) {</span>
 <span class="cstat-no" title="statement not covered" >    switch (action.type) {</span>
-        case Action.ADD_WIDGET_PLUGIN:
+        case Action.ADD_DATASOURCE_PLUGIN:
 <span class="cstat-no" title="statement not covered" >            if (!action.typeInfo.type) {</span>
                 // TODO: Catch this earlier
 <span class="cstat-no" title="statement not covered" >                throw new Error("A Plugin needs a type name.");</span>
@@ -391,7 +362,9 @@ function widgetPlugins() {
 <span class="cstat-no" title="statement not covered" >            return {</span>
                 id: action.typeInfo.type,
                 url: action.url,
-                typeInfo: action.typeInfo
+                typeInfo: action.typeInfo,
+                isDatasource: action.pluginType === "datasource",
+                isWidget: action.pluginType === "widget"
             };
         default:
 <span class="cstat-no" title="statement not covered" >            return state;</span>
