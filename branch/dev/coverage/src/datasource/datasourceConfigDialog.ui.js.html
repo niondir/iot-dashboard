@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">63.64% </span>
+        <span class="strong">66% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>63/99</span>
+        <span class='fraction'>66/100</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">44.44% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>20/45</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">46.15% </span>
+        <span class="strong">53.85% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>12/26</span>
+        <span class='fraction'>14/26</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">65.93% </span>
+        <span class="strong">66.3% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>60/91</span>
+        <span class='fraction'>61/92</span>
       </div>
     </div>
   </div>
@@ -213,7 +213,14 @@
 168
 169
 170
-171</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+171
+172
+173
+174
+175
+176
+177
+178</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -243,9 +250,9 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -333,17 +340,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -413,8 +427,8 @@ var react_1 = require("react");
 var DIALOG_ID = ModalIds.DATASOURCE_CONFIG;
 var FORM_ID = "datasource-settings-form";
 function unshiftIfNotExists(array, element, isEqual) {
-    <span class="missing-if-branch" title="else path not taken" >E</span>if (isEqual === void 0) { isEqual = <span class="fstat-no" title="function not covered" >function (a, b) {</span> <span class="cstat-no" title="statement not covered" >return a.id == b.id; </span>}; }
-    <span class="missing-if-branch" title="else path not taken" >E</span>if (array.find(<span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return isEqual(e, element); </span>}) == undefined) {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (isEqual === void 0) { isEqual = function (a, b) { return a.id == b.id; }; }
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (array.find(function (e) { return isEqual(e, element); }) == undefined) {
         array.unshift(element);
     }
 }
@@ -498,6 +512,13 @@ var DatasourceConfigModal = (function (_super) {
             settings = [];
         }
         unshiftIfNotExists(settings, {
+            id: 'maxValues',
+            name: 'MaxValues',
+            type: 'number',
+            description: "Maximum number of values stored",
+            defaultValue: 100
+        });
+        unshiftIfNotExists(settings, {
             id: 'name',
             name: 'Name',
             type: 'string',
@@ -559,7 +580,7 @@ exports.default = react_redux_1.connect(function (state) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 10 2016 16:43:29 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Aug 11 2016 08:42:13 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">58.82% </span>
+        <span class="strong">60.29% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>40/68</span>
+        <span class='fraction'>41/68</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">34.48% </span>
+        <span class="strong">44.83% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>10/29</span>
+        <span class='fraction'>13/29</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">52.94% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>9/17</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">60.94% </span>
+        <span class="strong">62.5% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>39/64</span>
+        <span class='fraction'>40/64</span>
       </div>
     </div>
   </div>
@@ -225,8 +225,8 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -242,7 +242,7 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -252,7 +252,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -260,7 +260,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -376,8 +376,8 @@ SettingsForm.propTypes = {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = redux_form_1.reduxForm({})(SettingsForm);
 function Field(props) {
-    return React.createElement("div", {className: "field"}, React.createElement("label", null, props.name, props.description &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >props.type !== 'boolean' </span>?
-<span class="branch-0 cbranch-no" title="branch not covered" >        React.createElement(ui.Icon, {type: "help circle", "data-content": props.description}) </span>: null), React.createElement(SettingsInput, __assign({}, props)));
+    return React.createElement("div", {className: "field"}, React.createElement("label", null, props.name, props.description &amp;&amp; props.type !== 'boolean' ?
+        React.createElement(ui.Icon, {type: "help circle", "data-content": props.description}) : null), React.createElement(SettingsInput, __assign({}, props)));
 }
 Field.propTypes = {
     field: react_1.PropTypes.object.isRequired,
@@ -393,8 +393,8 @@ function SettingsInput(props) {
             return React.createElement("input", __assign({placeholder: props.description}, props.field));
 <span class="branch-2 cbranch-no" title="branch not covered" >        case "json":</span>
 <span class="cstat-no" title="statement not covered" >            return React.createElement("textarea", __assign({rows: "3", placeholder: props.description}, props.field));</span>
-<span class="branch-3 cbranch-no" title="branch not covered" >        case "number":</span>
-<span class="cstat-no" title="statement not covered" >            return React.createElement("input", __assign({type: "number", min: props.min, max: props.max, placeholder: props.description}, props.field));</span>
+        case "number":
+            return React.createElement("input", __assign({type: "number", min: props.min, max: props.max, placeholder: props.description}, props.field));
 <span class="branch-4 cbranch-no" title="branch not covered" >        case "boolean":</span>
 <span class="cstat-no" title="statement not covered" >            return React.createElement("input", __assign({type: "checkbox"}, props.field));</span>
 <span class="branch-5 cbranch-no" title="branch not covered" >        case "option":</span>
@@ -451,7 +451,7 @@ var DatasourceInputContainer = react_redux_1.connect(<span class="fstat-no" titl
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 10 2016 16:43:29 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Aug 11 2016 08:42:13 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
