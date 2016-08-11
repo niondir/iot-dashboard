@@ -109,11 +109,19 @@ class DatasourceConfigModal extends React.Component {
         }
 
         unshiftIfNotExists(settings, {
+            id: 'maxValues',
+            name: 'MaxValues',
+            type: 'number',
+            description: "Maximum number of values stored",
+            defaultValue: 100
+        });
+        unshiftIfNotExists(settings, {
             id: 'name',
             name: 'Name',
             type: 'string',
             defaultValue: selectedDsPluginState ? selectedDsPluginState.typeInfo.name : ""
         });
+
 
 
         const fields = settings.map(setting => setting.id);

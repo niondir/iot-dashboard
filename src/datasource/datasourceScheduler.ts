@@ -8,7 +8,6 @@ import * as Datasource from "./datasource";
 
 export class DatasourceScheduler {
 
-
     private _fetchInterval: number = 1000;
     private fetchPromise: Promise<any>;
     private fetchTimeoutRef: number;
@@ -82,7 +81,7 @@ export class DatasourceScheduler {
             if (!this.disposed) {
                 //console.log("fetData plugin finished", dsState, result);
                 if (result !== undefined) {
-                    this.store.dispatch(Datasource.appendDatasourceData(dsState.id, result));
+                    this.store.dispatch(Datasource.fetchedDatasourceData(dsState.id, result));
                 }
 
                 this.scheduleFetch();

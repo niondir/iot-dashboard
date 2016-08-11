@@ -118,26 +118,23 @@ export function deleteDatasource(id: string): IDatasourceAction {
     }
 }
 
-export function setDatasourceData(id: string, data: any[]): IDatasourceAction {
+export function fetchedDatasourceData(id: string, data: any[]): IDatasourceAction {
     return {
-        type: ActionNames.SET_DATASOURCE_DATA,
+        type: ActionNames.FETCHED_DATASOURCE_DATA,
         id,
         data,
-        doNotLog: true
-    }
-}
-
-export function appendDatasourceData(id: string, data: any[], maxValues: number = 10): IDatasourceAction {
-    return {
-        type: ActionNames.APPEND_DATASOURCE_DATA,
-        id,
-        data,
-        maxValues,
         doNotLog: true,
         doNotPersist: true
     }
 }
 
+export function updatedMaxValues(id: string, maxValues: number): IDatasourceAction {
+    return {
+        type: ActionNames.UPDATED_MAX_VALUES,
+        id,
+        maxValues
+    }
+}
 
 const datasourceCrudReducer = genCrudReducer([ActionNames.ADD_DATASOURCE, ActionNames.DELETE_DATASOURCE], datasource);
 export function datasources(state: IDatasourcesState = initialDatasources, action: IDatasourceAction): IDatasourcesState {
@@ -153,6 +150,10 @@ export function datasources(state: IDatasourcesState = initialDatasources, actio
             });
 
             return newState;
+        case ActionNames.UPDATED_MAX_VALUES:
+            return _.assign<any, IDatasourcesState>({}, state, {
+                [action.id]: datasource(newState[action.id], action)
+            });
         default:
             return state;
     }
@@ -172,10 +173,18 @@ function datasource(state: IDatasourceState, action: IDatasourceAction): IDataso
             return _.assign<any, IDatasourceState>({}, state, {
                 data: action.data || []
             });
-        case ActionNames.APPEND_DATASOURCE_DATA:
+        case ActionNames.UPDATED_MAX_VALUES:
+            let maxValues = action.maxValues;
+            if (maxValues < 1) {
+                maxValues = 1;
+            }
+            return _.assign<any, IDatasourceState>({}, state, {
+                settings: _.assign({}, state.settings, {maxValues: maxValues})
+            });
+        case ActionNames.FETCHED_DATASOURCE_DATA:
             let newData = _.clone(state.data).concat(action.data);
-            if (action.maxValues) {
-                newData = _.takeRight(newData, action.maxValues);
+            if (state.settings.maxValues) {
+                newData = _.takeRight(newData, state.settings.maxValues);
             }
             return _.assign<any, IDatasourceState>({}, state, {
                 data: newData

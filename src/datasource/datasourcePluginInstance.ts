@@ -6,6 +6,7 @@
 import {IDatasourcePlugin, IDatasourceConstructor} from "./datasourcePluginFactory";
 import {DashboardStore} from "../store";
 import {DatasourceScheduler} from "./datasourceScheduler";
+import {updatedMaxValues} from "./datasource";
 
 /**
  * Represents a plugin instance, state should be saved in store!
@@ -49,6 +50,14 @@ export class DatasourcePluginInstance {
 
     setFetchInterval(intervalMs: number) {
         this.scheduler.fetchInterval = intervalMs;
+    }
+
+    /**
+     * The the number of values stored in the datasource
+     * @param maxValues
+     */
+    setMaxValues(maxValues: number) {
+        this.store.dispatch(updatedMaxValues(this.id, maxValues));
     }
 
     set props(newProps: any) {

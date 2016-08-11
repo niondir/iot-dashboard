@@ -9,12 +9,6 @@
         description: "A datasource that provides a random value each tick",
         settings: [
             {
-                id: "maxValues",
-                name: "Max Values",
-                description: "Maximum number of values stored",
-                type: "number"
-            },
-            {
                 id: "min",
                 name: "Min Value",
                 type: "number",
