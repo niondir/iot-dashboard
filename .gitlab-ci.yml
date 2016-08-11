@@ -16,10 +16,13 @@ cache:
 
 stages:
   - build
+  - release
   - deploy
 
 job_build:
   stage: build
+  except:
+  - tags
   script:
   - npm prune
   - npm install
@@ -32,6 +35,8 @@ job_build:
 
 job_deploy_demo:
   stage: deploy
+  except:
+  - tags
   dependencies:
   - job_build
   script:
@@ -40,7 +45,19 @@ job_deploy_demo:
 
 job_deploy_testreport:
   stage: deploy
+  except:
+  - tags
   dependencies:
   - job_build
   script:
   - bash <(curl -s https://codecov.io/bash)
+
+job_release:
+  stage: release
+  only: # regexp for semver with leading v
+    - /\bv(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-[\da-z\-]+(?:\.[\da-z\-]+)*)?(?:\+[\da-z\-]+(?:\.[\da-z\-]+)*)?\b/ig
+  except:
+    - branches
+  script:
+    - npm version ${CI_BUILD_TAG}
+    - npm run release
