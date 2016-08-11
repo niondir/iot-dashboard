@@ -4,23 +4,19 @@
 
 For help, questions, feedback, ... try:  [![Gitter](https://badges.gitter.im/Niondir/iot-dashboard.svg)](https://gitter.im/Niondir/iot-dashboard?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge)
 
-# Individual Open Technology - Dashboard
-Free Dashboard for your Data
+# IoT-Dashboard
+Free Dashboard for your Data - everything is a thing
 
 A generic dashboard application based on JavaScript, HTML and CSS that runs in modern browsers.
 Allows to arrange and configure widgets to display data from any datasource.
 A Plugin API that allows easy widget and datasource development to keep the dashboard as extensible as possible.
 
-Can be used as free alternative to [geckoboard](https://www.geckoboard.com), [kibana](https://www.elastic.co/products/kibana), or [freeboard](https://freeboard.io/).
+Can be used as free alternative to [geckoboard](https://www.geckoboard.com), [kibana](https://www.elastic.co/products/kibana), [grafana](http://grafana.org/) or [freeboard](https://freeboard.io/).
 And of course for all other IoT, M2M, Industry 4.0, BigData, whatever dashboards you have to pay for out there.
 
 ---
 
-**Not Done Yet**
-This Project is still in Development and can not be used for production. Subscribe to get updates.
-
 The **latest stable version** is on the `master` branch.
-The **latest development snapshot** is on the `dev` branch.
 
 ## Demo ##
 
