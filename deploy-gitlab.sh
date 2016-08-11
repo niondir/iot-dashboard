@@ -2,7 +2,7 @@
 set -o errexit -o nounset
 
 CNAME="demo.iot-dashboard.org"
-BRANCH_NAME=${TRAVIS_BRANCH}
+BRANCH_NAME=${CI_BUILD_REF_NAME}
 REV=$(git rev-parse --short HEAD)
 
 rm -rf _deployment
@@ -11,7 +11,7 @@ cd _deployment
 
 echo "Initializing and configuring git.."
 git init
-git config user.name "Travis CI"
+git config user.name "GitLab CI"
 git config user.email "noreply@iot-dashboard.org"
 
 echo "Setting upstream and branch..."
