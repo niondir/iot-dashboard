@@ -1,3 +1,5 @@
+"use strict";
+
 (function () {
 
     // Digimondo Frontend: https://frontend.digimondo.io/login
@@ -11,69 +13,61 @@
         type: "digimondo-gps-datasource",
         name: "Digimondo Gps",
         description: "Fetch GPS Locations from the Digimondo API",
-        settings: [
-            {
-                id: "auth",
-                name: "Auth Token",
-                description: "Digimondo Authentication Token",
-                defaultValue: "",
-                required: true,
-                type: "string"
-            },
-            {
-                id: "appEui",
-                name: "Application EUI",
-                description: "Digimondo Application EUI",
-                defaultValue: "",
-                required: true,
-                type: "string"
-            },
-            {
-                id: "moteeui",
-                name: "Filter Device EUI",
-                description: "Only parse data from given Device EUI",
-                defaultValue: "",
-                type: "string"
-            },
-            {
-                id: "limitToLast",
-                name: "Limit",
-                description: "The amount of most recent Packets to be returned",
-                defaultValue: 0,
-                type: "number"
-            },
-            {
-                id: "offset",
-                name: "Offset",
-                description: "The amount of most recent Packets to skip",
-                defaultValue: 0,
-                type: "number"
-            },
-            {
-                id: "receivedAfter",
-                name: "Received After",
-                description: "Only return packets after this date",
-                defaultValue: 0,
-                type: "number"
-            }
-        ]
+        settings: [{
+            id: "auth",
+            name: "Auth Token",
+            description: "Digimondo Authentication Token",
+            defaultValue: "",
+            required: true,
+            type: "string"
+        }, {
+            id: "appEui",
+            name: "Application EUI",
+            description: "Digimondo Application EUI",
+            defaultValue: "",
+            required: true,
+            type: "string"
+        }, {
+            id: "moteeui",
+            name: "Filter Device EUI",
+            description: "Only parse data from given Device EUI",
+            defaultValue: "",
+            type: "string"
+        }, {
+            id: "limitToLast",
+            name: "Limit",
+            description: "The amount of most recent Packets to be returned",
+            defaultValue: 0,
+            type: "number"
+        }, {
+            id: "offset",
+            name: "Offset",
+            description: "The amount of most recent Packets to skip",
+            defaultValue: 0,
+            type: "number"
+        }, {
+            id: "receivedAfter",
+            name: "Received After",
+            description: "Only return packets after this date",
+            defaultValue: 0,
+            type: "number"
+        }]
     };
 
     function safeParseJsonObject(string) {
         try {
             return JSON.parse(string);
-        }
-        catch (e) {
+        } catch (e) {
             console.error("Was not able to parse JSON: " + string);
-            return {}
+            return {};
         }
     }
 
     function base64ToHex(str) {
-        for (var i = 0, bin = atob(str.replace(/[ \r\n]+$/, "")), hex = []; i < bin.length; ++i) {
+        for (var i = 0, bin = atob(str.replace(/[ \r\n]+$/, "")), _hex = []; i < bin.length; ++i) {
             var tmp = bin.charCodeAt(i).toString(16);
             if (tmp.length === 1) tmp = "0" + tmp;
-            hex[hex.length] = tmp;
+            _hex[_hex.length] = tmp;
         }
         return hex;
     }
@@ -98,8 +92,8 @@
         var long_10000min = parseInt("0x" + hexValue[7] + hexValue[8]);
 
         return {
-            "lat": lat_deg + lat_min / 60 + (lat_10000min / 10000) / 60,
-            "lng": long_deg + long_min / 60 + (long_10000min / 10000) / 60
+            "lat": lat_deg + lat_min / 60 + lat_10000min / 10000 / 60,
+            "lng": long_deg + long_min / 60 + long_10000min / 10000 / 60
         };
     }
 
@@ -111,16 +105,9 @@
 
         var self = this;
 
-        fetch("https://api.digimondo.io/v1/" +
-            settings.appEui +
-            "?auth=" + auth +
-            (settings.limitToLast ? "&limitToLast=" + settings.limitToLast : "" ) +
-            (settingss.offset ? "&offset=" + settings.offset : "" ) +
-            (settings.receivedAfter ? "&receivedAfter=" + settings.receivedAfter : "" ) +
-            "&payloadonly")
-            .then(function (response) {
-                return response.json();
-            }).then(function (data) {
+        fetch("https://api.digimondo.io/v1/" + settings.appEui + "?auth=" + auth + (settings.limitToLast ? "&limitToLast=" + settings.limitToLast : "") + (settings.offset ? "&offset=" + settings.offset : "") + (settings.receivedAfter ? "&receivedAfter=" + settings.receivedAfter : "") + "&payloadonly").then(function (response) {
+            return response.json();
+        }).then(function (data) {
 
             _.forEach(data, function (value) {
                 if (settings.moteeui && value.moteeui !== settings.moteeui) {
@@ -128,18 +115,14 @@
                 }
                 try {
                     value.gps = payloadToGps(value.payload);
-                }
-                catch (e) {
+                } catch (e) {
                     console.warn("Failed to parse GPS data from payload: ", value.payload);
                 }
                 //console.log("value:", value);
                 history.push(value);
                 self.history = history;
-            })
-
+            });
         });
-
-
 
         /*
          const maxValues = Number(this.props.maxValues) || 1000;
@@ -155,11 +138,10 @@
         this.interval = setInterval(fetchData.bind(this), 2000);
         this.history = history || [];
 
-
         this.updateProps = function (props) {
             this.props = props;
             fetchData();
-            console.log("update props")
+            console.log("update props");
         };
 
         this.getValues = function () {
@@ -169,9 +151,8 @@
         this.dispose = function () {
             this.history = [];
             clearInterval(this.interval);
-        }
+        };
     }
 
     window.iotDashboardApi.registerDatasourcePlugin(TYPE_INFO, Datasource);
-
 })();

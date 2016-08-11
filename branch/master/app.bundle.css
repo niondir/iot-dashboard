@@ -40,7 +40,7 @@
     min-height: 0 !important;
     height: 40px;
     overflow: visible;
-   -webkit-transition: all 1s, transform 1s;
+    -webkit-transition: all 1s, transform 1s;
     transition: all 1s, transform 1s;
 }
 
@@ -53,6 +53,10 @@
 .topnav--visible + .ui.grid {
     /*-webkit-transition: all 0s, transform 1s;
     transition: padding-top 0s, transform 1s; */
+}
+
+.monospace {
+    font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
 /* END app.css */

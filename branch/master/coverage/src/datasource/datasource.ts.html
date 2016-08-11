@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/datasource/datasource.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">src/datasource/</a> datasource.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">53.33% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>48/90</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">30% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>9/30</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">31.25% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>5/16</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">54.65% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>47/86</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+"use strict";
+var reducer_js_1 = require("../util/reducer.js");
+var ActionNames = require("../actionNames");
+var Uuid = require("../util/uuid.js");
+var _ = require("lodash");
+var ModalIds = require("../modal/modalDialogIds.js");
+var Modal = require("../modal/modalDialog.js");
+var initialDatasources = {
+    "initial_random_source": {
+        id: "initial_random_source",
+        type: "random",
+        settings: {
+            name: "Random",
+            min: 10,
+            max: 20,
+            maxValues: 20
+        },
+        data: [],
+        isLoading: true
+    }
+};
+function createDatasource(type, settings, id) {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (id === void 0) { <span class="cstat-no" title="statement not covered" >id = Uuid.generate(); </span>}
+    return addDatasource(type, settings, true, id);
+}
+exports.createDatasource = createDatasource;
+<span class="fstat-no" title="function not covered" >function updateDatasource(id, type, settings) {</span>
+<span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >function (dispatch, getState) {</span></span>
+<span class="cstat-no" title="statement not covered" >        var state = getState();</span>
+<span class="cstat-no" title="statement not covered" >        var dsState = state.datasources[id];</span>
+<span class="cstat-no" title="statement not covered" >        if (!dsState) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error("Failed to update not existing datasource of type '" + type + "' with id '" + id + "'");</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (dsState.type !== type) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error("Can not update datasource of type '" + dsState.type + "' with props of type '" + type + "'");</span>
+        }
+<span class="cstat-no" title="statement not covered" >        dispatch(updateDatasourceSettings(id, settings));</span>
+    };
+}
+exports.updateDatasource = updateDatasource;
+function finishedLoading(id) {
+    return {
+        type: ActionNames.DATASOURCE_FINISHED_LOADING,
+        id: id
+    };
+}
+exports.finishedLoading = finishedLoading;
+function addDatasource(dsType, settings, isLoading, id) {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (isLoading === void 0) { <span class="cstat-no" title="statement not covered" >isLoading = true; </span>}
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (id === void 0) { <span class="cstat-no" title="statement not covered" >id = Uuid.generate(); </span>}
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (!dsType) {
+<span class="cstat-no" title="statement not covered" >        console.warn("dsType: ", dsType);</span>
+<span class="cstat-no" title="statement not covered" >        console.warn("settings: ", settings);</span>
+<span class="cstat-no" title="statement not covered" >        throw new Error("Can not add Datasource without Type");</span>
+    }
+    return {
+        type: ActionNames.ADD_DATASOURCE,
+        id: id,
+        dsType: dsType,
+        settings: settings,
+        isLoading: isLoading
+    };
+}
+exports.addDatasource = addDatasource;
+<span class="fstat-no" title="function not covered" >function updateDatasourceSettings(id, settings) {</span>
+    // TODO: Working on that copy does not work yet. We need to notify the Datasource about updated settings!
+    //let settingsCopy = {...settings};
+<span class="cstat-no" title="statement not covered" >    return {</span>
+        type: ActionNames.UPDATE_DATASOURCE,
+        id: id,
+        settings: settings
+    };
+}
+exports.updateDatasourceSettings = updateDatasourceSettings;
+<span class="fstat-no" title="function not covered" >function startCreateDatasource() {</span>
+<span class="cstat-no" title="statement not covered" >    return Modal.showModal(ModalIds.DATASOURCE_CONFIG);</span>
+}
+exports.startCreateDatasource = startCreateDatasource;
+<span class="fstat-no" title="function not covered" >function startEditDatasource(id) {</span>
+<span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >function (dispatch, getState) {</span></span>
+<span class="cstat-no" title="statement not covered" >        var state = getState();</span>
+<span class="cstat-no" title="statement not covered" >        var dsState = state.datasources[id];</span>
+<span class="cstat-no" title="statement not covered" >        dispatch(Modal.showModal(ModalIds.DATASOURCE_CONFIG, { datasource: dsState }));</span>
+    };
+}
+exports.startEditDatasource = startEditDatasource;
+<span class="fstat-no" title="function not covered" >function deleteDatasource(id) {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+        type: ActionNames.DELETE_DATASOURCE,
+        id: id
+    };
+}
+exports.deleteDatasource = deleteDatasource;
+<span class="fstat-no" title="function not covered" >function fetchedDatasourceData(id, data) {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+        type: ActionNames.FETCHED_DATASOURCE_DATA,
+        id: id,
+        data: data,
+        doNotLog: true,
+        doNotPersist: true
+    };
+}
+exports.fetchedDatasourceData = fetchedDatasourceData;
+<span class="fstat-no" title="function not covered" >function updatedMaxValues(id, maxValues) {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+        type: ActionNames.UPDATED_MAX_VALUES,
+        id: id,
+        maxValues: maxValues
+    };
+}
+exports.updatedMaxValues = updatedMaxValues;
+var datasourceCrudReducer = reducer_js_1.genCrudReducer([ActionNames.ADD_DATASOURCE, ActionNames.DELETE_DATASOURCE], datasource);
+function datasources(state, action) {
+    if (state === void 0) { state = initialDatasources; }
+    state = datasourceCrudReducer(state, action);
+    switch (action.type) {
+<span class="branch-0 cbranch-no" title="branch not covered" >        case ActionNames.DELETE_DATASOURCE_PLUGIN:</span>
+<span class="cstat-no" title="statement not covered" >            var toDelete = _.valuesIn(state).filter(<span class="fstat-no" title="function not covered" >function (dsState) {</span></span>
+<span class="cstat-no" title="statement not covered" >                return dsState.type === action.id;</span>
+            });
+<span class="cstat-no" title="statement not covered" >            var newState_1 = _.assign({}, state);</span>
+<span class="cstat-no" title="statement not covered" >            toDelete.forEach(<span class="fstat-no" title="function not covered" >function (dsState) {</span></span>
+<span class="cstat-no" title="statement not covered" >                delete newState_1[dsState.id];</span>
+            });
+<span class="cstat-no" title="statement not covered" >            return newState_1;</span>
+<span class="branch-1 cbranch-no" title="branch not covered" >        case ActionNames.UPDATED_MAX_VALUES:</span>
+<span class="cstat-no" title="statement not covered" >            return _.assign({}, state, (_a = {},</span>
+                _a[action.id] = datasource(newState_1[action.id], action),
+                _a
+            ));
+        default:
+            return state;
+    }
+<span class="cstat-no" title="statement not covered" >    var _a;</span>
+}
+exports.datasources = datasources;
+function datasource(state, action) {
+    switch (action.type) {
+        case ActionNames.ADD_DATASOURCE:
+            return {
+                id: action.id,
+                type: action.dsType,
+                settings: action.settings,
+                data: [],
+                isLoading: true
+            };
+<span class="branch-1 cbranch-no" title="branch not covered" >        case ActionNames.SET_DATASOURCE_DATA:</span>
+<span class="cstat-no" title="statement not covered" >            return _.assign({}, state, {</span>
+                data: action.data || []
+            });
+<span class="branch-2 cbranch-no" title="branch not covered" >        case ActionNames.UPDATED_MAX_VALUES:</span>
+<span class="cstat-no" title="statement not covered" >            var maxValues = action.maxValues;</span>
+<span class="cstat-no" title="statement not covered" >            if (maxValues &lt; 1) {</span>
+<span class="cstat-no" title="statement not covered" >                maxValues = 1;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            return _.assign({}, state, {</span>
+                settings: _.assign({}, state.settings, { maxValues: maxValues })
+            });
+<span class="branch-3 cbranch-no" title="branch not covered" >        case ActionNames.FETCHED_DATASOURCE_DATA:</span>
+<span class="cstat-no" title="statement not covered" >            var newData = _.clone(state.data).concat(action.data);</span>
+<span class="cstat-no" title="statement not covered" >            if (state.settings.maxValues) {</span>
+<span class="cstat-no" title="statement not covered" >                newData = _.takeRight(newData, state.settings.maxValues);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            return _.assign({}, state, {</span>
+                data: newData
+            });
+<span class="branch-4 cbranch-no" title="branch not covered" >        case ActionNames.UPDATE_DATASOURCE:</span>
+<span class="cstat-no" title="statement not covered" >            return _.assign({}, state, {</span>
+                settings: action.settings
+            });
+        case ActionNames.DATASOURCE_FINISHED_LOADING:
+            var newState = _.assign({}, state);
+            newState.isLoading = false;
+            return newState;
+<span class="branch-6 cbranch-no" title="branch not covered" >        default:</span>
+<span class="cstat-no" title="statement not covered" >            return state;</span>
+    }
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Aug 11 2016 13:14:11 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
