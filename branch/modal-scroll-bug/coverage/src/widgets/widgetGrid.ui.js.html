@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/widgets/widgetGrid.ui.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">src/widgets/</a> widgetGrid.ui.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">85.37% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>35/41</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">46.67% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>7/15</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>9/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">89.47% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>34/38</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+"use strict";
+var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
+    for (var p in b) <span class="cstat-no" title="statement not covered" >if (b.hasOwnProperty(p)) <span class="cstat-no" title="statement not covered" >d[p] = b[p];</span></span>
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? <span class="branch-0 cbranch-no" title="branch not covered" >Object.create(b) </span>: (__.prototype = b.prototype, new __());
+};
+var React = require("react");
+var react_1 = require("react");
+var react_redux_1 = require("react-redux");
+var _ = require("lodash");
+var Widgets = require("./widgets");
+var widgetFrame_ui_1 = require("./widgetFrame.ui");
+var widthProvider_ui_1 = require("./widthProvider.ui");
+var react_grid_layout_1 = require("react-grid-layout");
+var ResponsiveGrid = widthProvider_ui_1.default(react_grid_layout_1.Responsive);
+var breakpoints = { lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 };
+var cols = { lg: 12, md: 12, sm: 12, xs: 6, xxs: 3 };
+var WidgetGrid = (function (_super) {
+    __extends(WidgetGrid, _super);
+    function WidgetGrid() {
+        _super.apply(this, arguments);
+    }
+    WidgetGrid.prototype.onLayoutChange = <span class="fstat-no" title="function not covered" >function (layout) {</span>
+<span class="cstat-no" title="statement not covered" >        if (this.props.onLayoutChange) {</span>
+<span class="cstat-no" title="statement not covered" >            this.props.onLayoutChange(layout);</span>
+        }
+    };
+    WidgetGrid.prototype.render = function () {
+        var props = this.props;
+        var widgetStates = this.props.widgets;
+        // TODO: Remove unknown widget from state
+        var widgets = widgetStates.map(function (widgetState) {
+            var widgetPlugin = props.widgetPlugins[widgetState.type];
+            /*
+             if (!widgetPlugin) {
+             // TODO: Render widget with error message - currently a loading indicator is displayed and the setting button is hidden
+             console.warn("No WidgetPlugin for type '" + widgetState.type + "'! Skipping rendering.");
+             return null;
+             } */
+            // WidgetFrame must be loaded as function, else the grid is not working properly.
+            return widgetFrame_ui_1.default({ widget: widgetState, widgetPlugin: widgetPlugin, isReadOnly: props.isReadOnly });
+        }).filter(function (frame) { return frame !== null; });
+        /* //Does NOT work that way:
+         let widgets = widgetData.map((data) =&gt; &lt;WidgetFrame {...data}
+         key={data.id}
+         _grid={{x: data.col, y: data.row, w: data.width, h: data.height}}
+         /&gt;);*/
+        return (React.createElement(ResponsiveGrid, {className: "column", rowHeight: Widgets.ROW_HEIGHT, breakpoints: breakpoints, cols: cols, draggableCancel: ".no-drag", draggableHandle: ".drag", onLayoutChange: this.onLayoutChange.bind(this)}, widgets));
+    };
+    return WidgetGrid;
+}(react_1.Component));
+WidgetGrid.propTypes = {
+    widgets: react_1.PropTypes.array.isRequired,
+    datasources: react_1.PropTypes.object.isRequired,
+    widgetPlugins: react_1.PropTypes.object.isRequired,
+    onLayoutChange: react_1.PropTypes.func,
+    deleteWidget: react_1.PropTypes.func,
+    isReadOnly: react_1.PropTypes.bool.isRequired
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = react_redux_1.connect(function (state) {
+    return {
+        widgets: _.valuesIn(state.widgets) || <span class="branch-1 cbranch-no" title="branch not covered" >[],</span>
+        datasources: state.datasources || <span class="branch-1 cbranch-no" title="branch not covered" >{},</span>
+        widgetPlugins: state.widgetPlugins || <span class="branch-1 cbranch-no" title="branch not covered" >{},</span>
+        isReadOnly: state.global.isReadOnly
+    };
+}, function (dispatch) {
+    return {
+        onLayoutChange: <span class="fstat-no" title="function not covered" >function (layout) {</span>
+<span class="cstat-no" title="statement not covered" >            dispatch(Widgets.updateLayout(layout));</span>
+        },
+        deleteWidget: <span class="fstat-no" title="function not covered" >function (id) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(Widgets.deleteWidget(id)); </span>}
+    };
+})(WidgetGrid);
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Aug 16 2016 11:54:49 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
