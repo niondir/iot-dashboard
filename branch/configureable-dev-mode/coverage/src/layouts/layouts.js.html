@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/layouts/layouts.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">src/layouts/</a> layouts.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">57.89% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>33/57</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">40% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>6/15</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">16.67% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">56.36% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>31/55</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* This Source Code Form is subject to the terms of the Mozilla Public
+* License, v. 2.0. If a copy of the MPL was not distributed with this
+* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+"use strict";
+var Widgets = require('../widgets/widgets');
+var uuid_1 = require('../util/uuid');
+var reducer_1 = require('../util/reducer');
+var actionNames_1 = require('../actionNames');
+var initialLayouts = {
+    "default": {
+        id: "default",
+        name: "Default Layout",
+        widgets: Widgets.initialWidgets
+    }
+};
+<span class="fstat-no" title="function not covered" >function addLayout(name, widgets) {</span>
+<span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >function (dispatch) {</span></span>
+<span class="cstat-no" title="statement not covered" >        var addLayout = dispatch({</span>
+            type: actionNames_1.ADD_LAYOUT,
+            id: uuid_1.generate(),
+            name: name,
+            widgets: widgets
+        });
+<span class="cstat-no" title="statement not covered" >        dispatch(setCurrentLayout(addLayout.id));</span>
+    };
+}
+exports.addLayout = addLayout;
+<span class="fstat-no" title="function not covered" >function updateLayout(id, widgets) {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+        type: actionNames_1.UPDATE_LAYOUT,
+        id: id,
+        widgets: widgets
+    };
+}
+exports.updateLayout = updateLayout;
+<span class="fstat-no" title="function not covered" >function deleteLayout(id) {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+        type: actionNames_1.DELETE_LAYOUT,
+        id: id
+    };
+}
+exports.deleteLayout = deleteLayout;
+<span class="fstat-no" title="function not covered" >function setCurrentLayout(id) {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+        type: actionNames_1.SET_CURRENT_LAYOUT,
+        id: id
+    };
+}
+exports.setCurrentLayout = setCurrentLayout;
+<span class="fstat-no" title="function not covered" >function loadEmptyLayout() {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+        type: actionNames_1.LOAD_LAYOUT,
+        layout: {
+            id: "empty",
+            widgets: {}
+        }
+    };
+}
+exports.loadEmptyLayout = loadEmptyLayout;
+<span class="fstat-no" title="function not covered" >function loadLayout(id) {</span>
+<span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >function (dispatch, getState) {</span></span>
+<span class="cstat-no" title="statement not covered" >        var state = getState();</span>
+<span class="cstat-no" title="statement not covered" >        var layout = state.layouts[id];</span>
+        // Bad hack to force the grid layout to update correctly
+<span class="cstat-no" title="statement not covered" >        dispatch(loadEmptyLayout());</span>
+<span class="cstat-no" title="statement not covered" >        if (!layout) {</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        setTimeout(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >            dispatch(setCurrentLayout(layout.id));</span>
+<span class="cstat-no" title="statement not covered" >            dispatch({</span>
+                type: actionNames_1.LOAD_LAYOUT,
+                layout: layout
+            });
+        }, 0);
+    };
+}
+exports.loadLayout = loadLayout;
+var layoutCrudReducer = reducer_1.genCrudReducer([actionNames_1.ADD_LAYOUT, actionNames_1.DELETE_LAYOUT], layout);
+function layouts(state, action) {
+    if (state === void 0) { state = initialLayouts; }
+    state = layoutCrudReducer(state, action);
+    switch (action.type) {
+        default:
+            return state;
+    }
+}
+exports.layouts = layouts;
+<span class="fstat-no" title="function not covered" >function layout(state, action) {</span>
+<span class="cstat-no" title="statement not covered" >    switch (action.type) {</span>
+        case actionNames_1.ADD_LAYOUT:
+<span class="cstat-no" title="statement not covered" >            return {</span>
+                id: action.id,
+                name: action.name,
+                widgets: action.widgets
+            };
+        case actionNames_1.UPDATE_LAYOUT:
+<span class="cstat-no" title="statement not covered" >            return Object.assign({}, state, {</span>
+                widgets: action.widgets
+            });
+        default:
+<span class="cstat-no" title="statement not covered" >            return state;</span>
+    }
+}
+exports.layout = layout;
+function currentLayout(state, action) {
+    if (state === void 0) { state = {}; }
+    switch (action.type) {
+<span class="branch-0 cbranch-no" title="branch not covered" >        case actionNames_1.SET_CURRENT_LAYOUT:</span>
+<span class="cstat-no" title="statement not covered" >            return Object.assign({}, state, {</span>
+                id: action.id
+            });
+<span class="branch-1 cbranch-no" title="branch not covered" >        case actionNames_1.DELETE_LAYOUT:</span>
+<span class="cstat-no" title="statement not covered" >            if (action.id == state.id) {</span>
+<span class="cstat-no" title="statement not covered" >                return Object.assign({}, state, {</span>
+                    id: undefined
+                });
+            }
+<span class="cstat-no" title="statement not covered" >            return state;</span>
+        default:
+            return state;
+    }
+}
+exports.currentLayout = currentLayout;
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Aug 16 2016 12:23:52 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

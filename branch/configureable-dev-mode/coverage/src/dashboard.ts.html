@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/dashboard.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">src/</a> dashboard.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">83.33% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>60/72</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">43.75% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>7/16</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">83.33% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>15/18</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">83.33% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>60/72</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+var widgetPlugins_js_1 = require("./widgets/widgetPlugins.js");
+var datasourcePluginRegistry_1 = require("./datasource/datasourcePluginRegistry");
+var _ = require("lodash");
+var Plugins = require("./pluginApi/plugins");
+var PluginCache = require("./pluginApi/pluginCache");
+var scriptLoader_1 = require("./util/scriptLoader");
+var URI = require("urijs");
+/**
+ * The root of the Dashboard business Logic
+ * Defines the lifecycle of the Dashboard from creation till disposal
+ */
+var Dashboard = (function () {
+    function Dashboard(_store) {
+        var _this = this;
+        this._store = _store;
+        this._initialized = false;
+        this._scriptsLoading = {};
+        this._datasourcePluginRegistry = new datasourcePluginRegistry_1.default(_store);
+        this._widgetPluginRegistry = new widgetPlugins_js_1.WidgetPluginRegistry(_store);
+        _store.subscribe(function () {
+            // Whenever a datasource is added that is still loading, we create an instance and update the loading state
+            var state = _store.getState();
+            state.pluginLoader.loadingUrls.forEach(function (urlToLoad) {
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (!_this._scriptsLoading[urlToLoad]) {
+                    _this.loadPluginScript(urlToLoad);
+                }
+            });
+        });
+    }
+    Dashboard.setInstance = function (dashboard) {
+        Dashboard._instance = dashboard;
+    };
+    /**
+     * We have some code that depends on this global instance of the Dashboard
+     * This is bad, but better that static references
+     * we have at least the chance to influence the instance during tests
+     *
+     * @returns {Dashboard}
+     */
+    Dashboard.getInstance = function () {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!Dashboard._instance) {
+<span class="cstat-no" title="statement not covered" >            throw new Error("No global dashboard created. Call setInstance(dashboard) before!");</span>
+        }
+        return Dashboard._instance;
+    };
+    Object.defineProperty(Dashboard.prototype, "datasourcePluginRegistry", {
+        get: function () {
+            return this._datasourcePluginRegistry;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Dashboard.prototype, "widgetPluginRegistry", {
+        get: function () {
+            return this._widgetPluginRegistry;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Dashboard.prototype.init = function () {
+        var _this = this;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (this._initialized) {
+<span class="cstat-no" title="statement not covered" >            throw new Error("Dashboard was already initialized. Can not call init() twice.");</span>
+        }
+        this._initialized = true;
+        Dashboard.setInstance(this); // TODO: still needed?
+        var state = this._store.getState();
+        var plugins = _.valuesIn(state.datasourcePlugins)
+            .concat(_.valuesIn(state.widgetPlugins)); // TODO: type IWidgetPluginState
+        plugins.forEach(function (plugin) {
+            _this._store.dispatch(Plugins.startLoadingPluginFromUrl(plugin.url, plugin.id));
+        });
+    };
+    Dashboard.prototype.dispose = function () {
+        this._datasourcePluginRegistry.dispose();
+        // TODO: this._widgetPluginRegistry.dispose();
+    };
+    Dashboard.prototype.loadPluginScript = function (url) {
+        var _this = this;
+        var loadScriptsPromise = scriptLoader_1.default.loadScript([url]);
+        loadScriptsPromise.catch(<span class="fstat-no" title="function not covered" >function (error) {</span>
+<span class="cstat-no" title="statement not covered" >            console.warn("Failed to load script: " + error.message);</span>
+        });
+        this._scriptsLoading[url] = loadScriptsPromise.then(function () {
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (PluginCache.hasPlugin()) {
+                // TODO: use a reference to the pluginCache and only bind that instance to the window object while the script is loaded
+                // TODO: The scriploader can ensure that only one script is loaded at a time
+                var plugin = PluginCache.popLoadedPlugin();
+                return _this.loadPluginScriptDependencies(plugin, url);
+            }
+            else {
+<span class="cstat-no" title="statement not covered" >                return Promise.reject(new Error("Failed to load Plugin. Make sure it called window.iotDashboardApi.register***Plugin from url " + url));</span>
+            }
+        })
+            .then(function (plugin) {
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (plugin.Datasource) {
+                _this._datasourcePluginRegistry.registerDatasourcePlugin(plugin, url);
+            }
+            else <span class="cstat-no" title="statement not covered" >if (plugin.Widget) {</span>
+<span class="cstat-no" title="statement not covered" >                _this._widgetPluginRegistry.register(plugin);</span>
+<span class="cstat-no" title="statement not covered" >                _this._store.dispatch(Plugins.widgetPluginFinishedLoading(plugin, url));</span>
+            }
+            delete _this._scriptsLoading[url];
+            return Promise.resolve();
+        });
+        /*.catch((error) =&gt; {
+         console.error(error.message);
+         delete this._scriptsLoading[url];
+         throw error;
+         }); */
+        return this._scriptsLoading[url];
+    };
+    Dashboard.prototype.loadPluginScriptDependencies = function (plugin, url) {
+        var dependencies = plugin.TYPE_INFO.dependencies;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (_.isArray(dependencies) &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >dependencies.length !== 0)</span> {
+<span class="cstat-no" title="statement not covered" >            var dependencyPaths = dependencies.map(<span class="fstat-no" title="function not covered" >function (dependency) {</span></span>
+<span class="cstat-no" title="statement not covered" >                return URI(dependency).absoluteTo(url).toString();</span>
+            });
+<span class="cstat-no" title="statement not covered" >            console.log("Loading Dependencies for Plugin", dependencyPaths);</span>
+<span class="cstat-no" title="statement not covered" >            return scriptLoader_1.default.loadScript(dependencyPaths).then(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >                return Promise.resolve(plugin);</span>
+            });
+        }
+        else {
+            return Promise.resolve(plugin);
+        }
+    };
+    return Dashboard;
+}());
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = Dashboard;
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Aug 16 2016 12:23:52 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
