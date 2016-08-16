@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75.68% </span>
+        <span class="strong">65.12% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>28/37</span>
+        <span class='fraction'>28/43</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">54.55% </span>
+        <span class="strong">46.15% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>6/11</span>
+        <span class='fraction'>6/13</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">57.14% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>8/14</span>
+        <span class='fraction'>8/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">81.82% </span>
+        <span class="strong">69.23% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>27/33</span>
+        <span class='fraction'>27/39</span>
       </div>
     </div>
   </div>
@@ -111,7 +111,17 @@
 66
 67
 68
-69</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -131,12 +141,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -180,8 +200,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this
-* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
     for (var p in b) <span class="cstat-no" title="statement not covered" >if (b.hasOwnProperty(p)) <span class="cstat-no" title="statement not covered" >d[p] = b[p];</span></span>
@@ -198,13 +218,23 @@ var ModalDialog = (function (_super) {
         _super.apply(this, arguments);
     }
     ModalDialog.prototype.componentDidMount = <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >        $('.ui.modal.' + this.props.id)</span>
-            .modal({
+<span class="cstat-no" title="statement not covered" >        var $modal = $('.ui.modal.' + this.props.id);</span>
+<span class="cstat-no" title="statement not covered" >        $modal.modal({</span>
             detachable: false,
             closable: false,
             observeChanges: true,
             onApprove: <span class="fstat-no" title="function not covered" >function ($element) {</span> <span class="cstat-no" title="statement not covered" >return false; </span>},
-            onDeny: <span class="fstat-no" title="function not covered" >function ($element) {</span> <span class="cstat-no" title="statement not covered" >return false; </span>}
+            onDeny: <span class="fstat-no" title="function not covered" >function ($element) {</span> <span class="cstat-no" title="statement not covered" >return false; </span>},
+            onVisible: <span class="fstat-no" title="function not covered" >function () {</span>
+                // This is to update the Browser Scrollbar, at least needed in WebKit
+<span class="cstat-no" title="statement not covered" >                if (typeof document !== 'undefined') {</span>
+<span class="cstat-no" title="statement not covered" >                    var n_1 = document.createTextNode(' ');</span>
+<span class="cstat-no" title="statement not covered" >                    $modal.append(n_1);</span>
+<span class="cstat-no" title="statement not covered" >                    setTimeout(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >                        n_1.parentNode.removeChild(n_1);</span>
+                    }, 0);
+                }
+            }
         });
     };
     ModalDialog.prototype.onClick = <span class="fstat-no" title="function not covered" >function (e, action) {</span>
@@ -253,7 +283,7 @@ exports.default = react_redux_1.connect(function (state) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Aug 11 2016 18:38:23 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Aug 16 2016 11:59:01 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
