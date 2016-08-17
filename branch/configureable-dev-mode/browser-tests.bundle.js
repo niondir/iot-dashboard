@@ -24104,10 +24104,10 @@
 /***/ function(module, exports) {
 
 	module.exports = {
-		"version": "0.0.4",
-		"revision": "4025297b2ca0d87af4eda5d02c160fe5287c669a",
-		"revisionShort": "4025297",
-		"branch": "Detatched: 4025297b2ca0d87af4eda5d02c160fe5287c669a"
+		"version": "0.1.1",
+		"revision": "c74cf8f2a06ad9bf9565cdfd2b349b6d9d675d63",
+		"revisionShort": "c74cf8f",
+		"branch": "Detatched: c74cf8f2a06ad9bf9565cdfd2b349b6d9d675d63"
 	};
 
 /***/ },
