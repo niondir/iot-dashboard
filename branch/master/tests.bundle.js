@@ -26261,10 +26261,10 @@
 /***/ function(module, exports) {
 
 	module.exports = {
-		"version": "0.1.1",
-		"revision": "e42d4dcb2576db6bec9281aeeb26ceb84a5e13b7",
-		"revisionShort": "e42d4dc",
-		"branch": "Detatched: e42d4dcb2576db6bec9281aeeb26ceb84a5e13b7"
+		"version": "0.1.2",
+		"revision": "22f9eb8f036df581e122b3aeaa575fbc389f34c4",
+		"revisionShort": "22f9eb8",
+		"branch": "Detatched: 22f9eb8f036df581e122b3aeaa575fbc389f34c4"
 	};
 
 /***/ },
