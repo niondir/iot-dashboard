@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50.91% </span>
+        <span class="strong">78.18% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>28/55</span>
+        <span class='fraction'>43/55</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">21.43% </span>
+        <span class="strong">57.14% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>3/14</span>
+        <span class='fraction'>8/14</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">53.85% </span>
+        <span class="strong">84.62% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>7/13</span>
+        <span class='fraction'>11/13</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50.91% </span>
+        <span class="strong">78.18% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>28/55</span>
+        <span class='fraction'>43/55</span>
       </div>
     </div>
   </div>
@@ -162,12 +162,12 @@
 <span class="cline-any cline-yes">20×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -177,32 +177,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -263,33 +263,33 @@ var DatasourceScheduler = (function () {
             this.fetchTimeoutRef = null;
         }
     };
-    DatasourceScheduler.prototype.doFetchData = <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >        var _this = this;</span>
-<span class="cstat-no" title="statement not covered" >        var dsState = this.store.getState().datasources[this.dsInstance.id];</span>
-<span class="cstat-no" title="statement not covered" >        if (dsState.isLoading) {</span>
+    DatasourceScheduler.prototype.doFetchData = function () {
+        var _this = this;
+        var dsState = this.store.getState().datasources[this.dsInstance.id];
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (dsState.isLoading) {
 <span class="cstat-no" title="statement not covered" >            console.log("Skipping fetchData because plugin is still loading");</span>
         }
-<span class="cstat-no" title="statement not covered" >        if (this.fetchPromise) {</span>
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (this.fetchPromise) {
 <span class="cstat-no" title="statement not covered" >            console.warn("Do not fetch data because a fetch is currently running on Datasource", dsState);</span>
 <span class="cstat-no" title="statement not covered" >            return;</span>
         }
-<span class="cstat-no" title="statement not covered" >        var fetchPromise = new Promise(<span class="fstat-no" title="function not covered" >function (resolve, reject) {</span></span>
-<span class="cstat-no" title="statement not covered" >            _this.dsInstance.fetchData(resolve, reject);</span>
-<span class="cstat-no" title="statement not covered" >            setTimeout(<span class="fstat-no" title="function not covered" >function () {</span></span>
-<span class="cstat-no" title="statement not covered" >                if (_this.fetchPromise === fetchPromise) {</span>
+        var fetchPromise = new Promise(function (resolve, reject) {
+            _this.dsInstance.fetchData(resolve, reject);
+            setTimeout(function () {
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (_this.fetchPromise === fetchPromise) {
 <span class="cstat-no" title="statement not covered" >                    reject(new Error("Timeout! Datasource fetchData() took longer than 5 seconds."));</span>
                 }
             }, 5000);
         });
-<span class="cstat-no" title="statement not covered" >        this.fetchPromise = fetchPromise;</span>
-<span class="cstat-no" title="statement not covered" >        fetchPromise.then(<span class="fstat-no" title="function not covered" >function (result) {</span></span>
-<span class="cstat-no" title="statement not covered" >            _this.fetchPromise = null;</span>
-<span class="cstat-no" title="statement not covered" >            if (!_this.disposed) {</span>
+        this.fetchPromise = fetchPromise;
+        fetchPromise.then(function (result) {
+            _this.fetchPromise = null;
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (!_this.disposed) {
                 //console.log("fetData plugin finished", dsState, result);
-<span class="cstat-no" title="statement not covered" >                if (result !== undefined) {</span>
-<span class="cstat-no" title="statement not covered" >                    _this.store.dispatch(Datasource.fetchedDatasourceData(dsState.id, result));</span>
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (result !== undefined) {
+                    _this.store.dispatch(Datasource.fetchedDatasourceData(dsState.id, result));
                 }
-<span class="cstat-no" title="statement not covered" >                _this.scheduleFetch();</span>
+                _this.scheduleFetch();
             }
             else {
 <span class="cstat-no" title="statement not covered" >                console.error("fetchData of disposed plugin finished - result discarded", dsState, result);</span>
@@ -310,7 +310,7 @@ exports.DatasourceScheduler = DatasourceScheduler;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 17 2016 15:32:40 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 17 2016 15:37:34 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
