@@ -22,48 +22,48 @@
 /******/ 			return __webpack_require__(0);
 /******/ 		}
 /******/ 	};
-
+/******/
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+/******/
 /******/ 	// object to store loaded and loading chunks
 /******/ 	// "0" means "already loaded"
 /******/ 	// Array means "loading", array contains callbacks
 /******/ 	var installedChunks = {
 /******/ 		2:0
 /******/ 	};
-
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+/******/
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-
+/******/
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			exports: {},
 /******/ 			id: moduleId,
 /******/ 			loaded: false
 /******/ 		};
-
+/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
-
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-
+/******/
 /******/ 	// This file contains only the entry chunk.
 /******/ 	// The chunk loading function for additional chunks
 /******/ 	__webpack_require__.e = function requireEnsure(chunkId, callback) {
 /******/ 		// "0" is the signal for "already loaded"
 /******/ 		if(installedChunks[chunkId] === 0)
 /******/ 			return callback.call(null, __webpack_require__);
-
+/******/
 /******/ 		// an array means "currently loading".
 /******/ 		if(installedChunks[chunkId] !== undefined) {
 /******/ 			installedChunks[chunkId].push(callback);
@@ -75,21 +75,21 @@
 /******/ 			script.type = 'text/javascript';
 /******/ 			script.charset = 'utf-8';
 /******/ 			script.async = true;
-
+/******/
 /******/ 			script.src = __webpack_require__.p + "chunk." + chunkId + ".js";
 /******/ 			head.appendChild(script);
 /******/ 		}
 /******/ 	};
-
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-
+/******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-
+/******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-
+/******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
 /******/ })
@@ -114,7 +114,7 @@
 	__webpack_require__(15);
 	__webpack_require__(25);
 	__webpack_require__(26);
-	__webpack_require__(185);
+	__webpack_require__(175);
 	__webpack_require__(21);
 	__webpack_require__(66);
 	__webpack_require__(67);
@@ -140,7 +140,7 @@
 	// css base code, injected by the css-loader
 	module.exports = function() {
 		var list = [];
-
+	
 		// return the list of modules as css string
 		list.toString = function toString() {
 			var result = [];
@@ -154,7 +154,7 @@
 			}
 			return result.join("");
 		};
-
+	
 		// import a list of modules into the list
 		list.i = function(modules, mediaQuery) {
 			if(typeof modules === "string")
@@ -211,40 +211,40 @@
 	 *
 	 */
 	;(function ( $, window, document, undefined ) {
-
+	
 	$.site = $.fn.site = function(parameters) {
 	  var
 	    time           = new Date().getTime(),
 	    performance    = [],
-
+	
 	    query          = arguments[0],
 	    methodInvoked  = (typeof query == 'string'),
 	    queryArguments = [].slice.call(arguments, 1),
-
+	
 	    settings        = ( $.isPlainObject(parameters) )
 	      ? $.extend(true, {}, $.site.settings, parameters)
 	      : $.extend({}, $.site.settings),
-
+	
 	    namespace       = settings.namespace,
 	    error           = settings.error,
-
+	
 	    eventNamespace  = '.' + namespace,
 	    moduleNamespace = 'module-' + namespace,
-
+	
 	    $document       = $(document),
 	    $module         = $document,
 	    element         = this,
 	    instance        = $module.data(moduleNamespace),
-
+	
 	    module,
 	    returnedValue
 	  ;
 	  module = {
-
+	
 	    initialize: function() {
 	      module.instantiate();
 	    },
-
+	
 	    instantiate: function() {
 	      module.verbose('Storing instance of site', module);
 	      instance = module;
@@ -252,12 +252,12 @@
 	        .data(moduleNamespace, module)
 	      ;
 	    },
-
+	
 	    normalize: function() {
 	      module.fix.console();
 	      module.fix.requestAnimationFrame();
 	    },
-
+	
 	    fix: {
 	      console: function() {
 	        module.debug('Normalizing window.console');
@@ -293,11 +293,11 @@
 	        }
 	      }
 	    },
-
+	
 	    moduleExists: function(name) {
 	      return ($.fn[name] !== undefined && $.fn[name].settings !== undefined);
 	    },
-
+	
 	    enabled: {
 	      modules: function(modules) {
 	        var
@@ -312,7 +312,7 @@
 	        return enabledModules;
 	      }
 	    },
-
+	
 	    disabled: {
 	      modules: function(modules) {
 	        var
@@ -327,7 +327,7 @@
 	        return disabledModules;
 	      }
 	    },
-
+	
 	    change: {
 	      setting: function(setting, value, modules, modifyExisting) {
 	        modules = (typeof modules === 'string')
@@ -387,7 +387,7 @@
 	        });
 	      }
 	    },
-
+	
 	    enable: {
 	      console: function() {
 	        module.console(true);
@@ -418,7 +418,7 @@
 	        module.change.setting('verbose', false, modules, modifyExisting);
 	      }
 	    },
-
+	
 	    console: function(enable) {
 	      if(enable) {
 	        if(instance.cache.console === undefined) {
@@ -444,16 +444,16 @@
 	        };
 	      }
 	    },
-
+	
 	    destroy: function() {
 	      module.verbose('Destroying previous site for', $module);
 	      $module
 	        .removeData(moduleNamespace)
 	      ;
 	    },
-
+	
 	    cache: {},
-
+	
 	    setting: function(name, value) {
 	      if( $.isPlainObject(name) ) {
 	        $.extend(true, settings, name);
@@ -605,7 +605,7 @@
 	      return found;
 	    }
 	  };
-
+	
 	  if(methodInvoked) {
 	    if(instance === undefined) {
 	      module.initialize();
@@ -623,21 +623,21 @@
 	    : this
 	  ;
 	};
-
+	
 	$.site.settings = {
-
+	
 	  name        : 'Site',
 	  namespace   : 'site',
-
+	
 	  error : {
 	    console : 'Console cannot be restored, most likely it was overwritten outside of module',
 	    method : 'The method you called is not defined.'
 	  },
-
+	
 	  debug       : false,
 	  verbose     : false,
 	  performance : true,
-
+	
 	  modules: [
 	    'accordion',
 	    'api',
@@ -659,7 +659,7 @@
 	    'visit',
 	    'visibility'
 	  ],
-
+	
 	  siteNamespace   : 'site',
 	  namespaceStub   : {
 	    cache     : {},
@@ -668,9 +668,9 @@
 	    section   : {},
 	    utilities : {}
 	  }
-
+	
 	};
-
+	
 	// allows for selection of elements with data attributes
 	$.extend($.expr[ ":" ], {
 	  data: ($.expr.createPseudo)
@@ -684,10 +684,10 @@
 	      return !!$.data(elem, match[ 3 ]);
 	    }
 	});
-
-
+	
+	
 	})( jQuery, window, document );
-
+	
 	/*!
 	 * # Semantic UI 2.1.7 - Form Validation
 	 * http://github.com/semantic-org/semantic-ui/
@@ -698,19 +698,19 @@
 	 * http://opensource.org/licenses/MIT
 	 *
 	 */
-
+	
 	;(function ( $, window, document, undefined ) {
-
+	
 	"use strict";
-
+	
 	$.fn.form = function(parameters) {
 	  var
 	    $allModules      = $(this),
 	    moduleSelector   = $allModules.selector || '',
-
+	
 	    time             = new Date().getTime(),
 	    performance      = [],
-
+	
 	    query            = arguments[0],
 	    legacyParameters = arguments[1],
 	    methodInvoked    = (typeof query == 'string'),
@@ -722,10 +722,10 @@
 	      var
 	        $module     = $(this),
 	        element     = this,
-
+	
 	        formErrors  = [],
 	        keyHeldDown = false,
-
+	
 	        // set at run-time
 	        $field,
 	        $group,
@@ -734,27 +734,27 @@
 	        $submit,
 	        $clear,
 	        $reset,
-
+	
 	        settings,
 	        validation,
-
+	
 	        metadata,
 	        selector,
 	        className,
 	        error,
-
+	
 	        namespace,
 	        moduleNamespace,
 	        eventNamespace,
-
+	
 	        instance,
 	        module
 	      ;
-
+	
 	      module      = {
-
+	
 	        initialize: function() {
-
+	
 	          // settings grabbed at run time
 	          module.get.settings();
 	          if(methodInvoked) {
@@ -770,7 +770,7 @@
 	            module.instantiate();
 	          }
 	        },
-
+	
 	        instantiate: function() {
 	          module.verbose('Storing instance of module', module);
 	          instance = module;
@@ -778,7 +778,7 @@
 	            .data(moduleNamespace, module)
 	          ;
 	        },
-
+	
 	        destroy: function() {
 	          module.verbose('Destroying previous module', instance);
 	          module.removeEvents();
@@ -786,26 +786,26 @@
 	            .removeData(moduleNamespace)
 	          ;
 	        },
-
+	
 	        refresh: function() {
 	          module.verbose('Refreshing selector cache');
 	          $field      = $module.find(selector.field);
 	          $group      = $module.find(selector.group);
 	          $message    = $module.find(selector.message);
 	          $prompt     = $module.find(selector.prompt);
-
+	
 	          $submit     = $module.find(selector.submit);
 	          $clear      = $module.find(selector.clear);
 	          $reset      = $module.find(selector.reset);
 	        },
-
+	
 	        submit: function() {
 	          module.verbose('Submitting form', $module);
 	          $module
 	            .submit()
 	          ;
 	        },
-
+	
 	        attachEvents: function(selector, action) {
 	          action = action || 'submit';
 	          $(selector)
@@ -815,7 +815,7 @@
 	            })
 	          ;
 	        },
-
+	
 	        bindEvents: function() {
 	          module.verbose('Attaching form events');
 	          $module
@@ -843,7 +843,7 @@
 	            })
 	          ;
 	        },
-
+	
 	        clear: function() {
 	          $field
 	            .each(function () {
@@ -876,7 +876,7 @@
 	            })
 	          ;
 	        },
-
+	
 	        reset: function() {
 	          $field
 	            .each(function () {
@@ -913,7 +913,7 @@
 	            })
 	          ;
 	        },
-
+	
 	        is: {
 	          bracketedRule: function(rule) {
 	            return (rule.type && rule.type.match(settings.regExp.bracket));
@@ -931,7 +931,7 @@
 	            return allValid;
 	          }
 	        },
-
+	
 	        removeEvents: function() {
 	          $module
 	            .off(eventNamespace)
@@ -946,7 +946,7 @@
 	            .off(eventNamespace)
 	          ;
 	        },
-
+	
 	        event: {
 	          field: {
 	            keydown: function(event) {
@@ -1008,9 +1008,9 @@
 	              }
 	            }
 	          }
-
+	
 	        },
-
+	
 	        get: {
 	          ancillaryValue: function(rule) {
 	            if(!rule.type || !module.is.bracketedRule(rule)) {
@@ -1106,7 +1106,7 @@
 	                    });
 	                  }
 	                }
-
+	
 	                settings   = $.extend(true, {}, $.fn.form.settings, parameters);
 	                validation = $.extend({}, $.fn.form.settings.defaults, settings.fields);
 	                module.verbose('Extending settings', validation, settings);
@@ -1117,7 +1117,7 @@
 	              validation = $.fn.form.settings.defaults;
 	              module.verbose('Using default form validation', validation, settings);
 	            }
-
+	
 	            // shorthand
 	            namespace       = settings.namespace;
 	            metadata        = settings.metadata;
@@ -1126,10 +1126,10 @@
 	            error           = settings.error;
 	            moduleNamespace = 'module-' + namespace;
 	            eventNamespace  = '.' + namespace;
-
+	
 	            // grab instance
 	            instance = $module.data(moduleNamespace);
-
+	
 	            // refresh selector cache
 	            module.refresh();
 	          },
@@ -1245,9 +1245,9 @@
 	            return values;
 	          }
 	        },
-
+	
 	        has: {
-
+	
 	          field: function(identifier) {
 	            module.verbose('Checking for existence of a field with identifier', identifier);
 	            if(typeof identifier !== 'string') {
@@ -1264,9 +1264,9 @@
 	            }
 	            return false;
 	          }
-
+	
 	        },
-
+	
 	        add: {
 	          prompt: function(identifier, errors) {
 	            var
@@ -1318,7 +1318,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        remove: {
 	          prompt: function(identifier) {
 	            var
@@ -1346,7 +1346,7 @@
 	            }
 	          }
 	        },
-
+	
 	        set: {
 	          success: function() {
 	            $module
@@ -1436,20 +1436,20 @@
 	            });
 	          }
 	        },
-
+	
 	        validate: {
-
+	
 	          form: function(event, ignoreCallbacks) {
 	            var
 	              values = module.get.values(),
 	              apiRequest
 	            ;
-
+	
 	            // input keydown event will fire submit repeatedly by browser default
 	            if(keyHeldDown) {
 	              return false;
 	            }
-
+	
 	            // reset errors
 	            formErrors = [];
 	            if( module.is.valid() ) {
@@ -1474,7 +1474,7 @@
 	              }
 	            }
 	          },
-
+	
 	          // takes a validation object and returns whether field passes validation
 	          field: function(field, fieldName) {
 	            var
@@ -1516,7 +1516,7 @@
 	            }
 	            return true;
 	          },
-
+	
 	          // takes validation rule and returns whether field passes rule
 	          rule: function(field, rule) {
 	            var
@@ -1540,7 +1540,7 @@
 	            return ruleFunction.call($field, value, ancillary);
 	          }
 	        },
-
+	
 	        setting: function(name, value) {
 	          if( $.isPlainObject(name) ) {
 	            $.extend(true, settings, name);
@@ -1700,44 +1700,44 @@
 	      module.initialize();
 	    })
 	  ;
-
+	
 	  return (returnedValue !== undefined)
 	    ? returnedValue
 	    : this
 	  ;
 	};
-
+	
 	$.fn.form.settings = {
-
+	
 	  name              : 'Form',
 	  namespace         : 'form',
-
+	
 	  debug             : false,
 	  verbose           : false,
 	  performance       : true,
-
+	
 	  fields            : false,
-
+	
 	  keyboardShortcuts : true,
 	  on                : 'submit',
 	  inline            : false,
-
+	
 	  delay             : 200,
 	  revalidate        : true,
-
+	
 	  transition        : 'scale',
 	  duration          : 200,
-
+	
 	  onValid           : function() {},
 	  onInvalid         : function() {},
 	  onSuccess         : function() { return true; },
 	  onFailure         : function() { return false; },
-
+	
 	  metadata : {
 	    defaultValue : 'default',
 	    validate     : 'validate'
 	  },
-
+	
 	  regExp: {
 	    bracket : /\[(.*)\]/i,
 	    decimal : /^\d*(\.)\d+/,
@@ -1748,12 +1748,12 @@
 	    number  : /^\-?\d*(\.\d+)?$/,
 	    url     : /(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})/i
 	  },
-
+	
 	  text: {
 	    unspecifiedRule  : 'Please enter a valid value',
 	    unspecifiedField : 'This field'
 	  },
-
+	
 	  prompt: {
 	    empty                : '{name} must have a value',
 	    checked              : '{name} must be checked',
@@ -1782,7 +1782,7 @@
 	    exactCount           : '{name} must have exactly {ruleValue} choices',
 	    maxCount             : '{name} must have {ruleValue} or less choices'
 	  },
-
+	
 	  selector : {
 	    checkbox   : 'input[type="checkbox"], input[type="radio"]',
 	    clear      : '.clear',
@@ -1797,23 +1797,23 @@
 	    uiCheckbox : '.ui.checkbox',
 	    uiDropdown : '.ui.dropdown'
 	  },
-
+	
 	  className : {
 	    error   : 'error',
 	    label   : 'ui prompt label',
 	    pressed : 'down',
 	    success : 'success'
 	  },
-
+	
 	  error: {
 	    identifier : 'You must specify a string identifier for each field',
 	    method     : 'The method you called is not defined.',
 	    noRule     : 'There is no rule matching the one you specified',
 	    oldSyntax  : 'Starting in 2.0 forms now only take a single settings object. Validation settings converted to new syntax automatically.'
 	  },
-
+	
 	  templates: {
-
+	
 	    // template that produces error message
 	    error: function(errors) {
 	      var
@@ -1825,7 +1825,7 @@
 	      html += '</ul>';
 	      return $(html);
 	    },
-
+	
 	    // template that produces label
 	    prompt: function(errors) {
 	      return $('<div/>')
@@ -1834,19 +1834,19 @@
 	      ;
 	    }
 	  },
-
+	
 	  rules: {
-
+	
 	    // is not empty or blank string
 	    empty: function(value) {
 	      return !(value === undefined || '' === value || $.isArray(value) && value.length === 0);
 	    },
-
+	
 	    // checkbox checked
 	    checked: function() {
 	      return ($(this).filter(':checked').length > 0);
 	    },
-
+	
 	    // is most likely an email
 	    email: function(value){
 	      var
@@ -1854,12 +1854,12 @@
 	      ;
 	      return emailRegExp.test(value);
 	    },
-
+	
 	    // value is most likely url
 	    url: function(value) {
 	      return $.fn.form.settings.regExp.url.test(value);
 	    },
-
+	
 	    // matches specified regExp
 	    regExp: function(value, regExp) {
 	      var
@@ -1879,7 +1879,7 @@
 	      }
 	      return value.match( new RegExp(regExp, flags) );
 	    },
-
+	
 	    // is valid integer or matches range
 	    integer: function(value, range) {
 	      var
@@ -1911,17 +1911,17 @@
 	        (max === undefined || value <= max)
 	      );
 	    },
-
+	
 	    // is valid number (with decimal)
 	    decimal: function(value) {
 	      return $.fn.form.settings.regExp.decimal.test(value);
 	    },
-
+	
 	    // is valid number
 	    number: function(value) {
 	      return $.fn.form.settings.regExp.number.test(value);
 	    },
-
+	
 	    // is value (case insensitive)
 	    is: function(value, text) {
 	      text = (typeof text == 'string')
@@ -1934,12 +1934,12 @@
 	      ;
 	      return (value == text);
 	    },
-
+	
 	    // is value
 	    isExactly: function(value, text) {
 	      return (value == text);
 	    },
-
+	
 	    // value is not another value (case insensitive)
 	    not: function(value, notValue) {
 	      value = (typeof value == 'string')
@@ -1952,40 +1952,40 @@
 	      ;
 	      return (value != notValue);
 	    },
-
+	
 	    // value is not another value (case sensitive)
 	    notExactly: function(value, notValue) {
 	      return (value != notValue);
 	    },
-
+	
 	    // value contains text (insensitive)
 	    contains: function(value, text) {
 	      // escape regex characters
 	      text = text.replace($.fn.form.settings.regExp.escape, "\\$&");
 	      return (value.search( new RegExp(text, 'i') ) !== -1);
 	    },
-
+	
 	    // value contains text (case sensitive)
 	    containsExactly: function(value, text) {
 	      // escape regex characters
 	      text = text.replace($.fn.form.settings.regExp.escape, "\\$&");
 	      return (value.search( new RegExp(text) ) !== -1);
 	    },
-
+	
 	    // value contains text (insensitive)
 	    doesntContain: function(value, text) {
 	      // escape regex characters
 	      text = text.replace($.fn.form.settings.regExp.escape, "\\$&");
 	      return (value.search( new RegExp(text, 'i') ) === -1);
 	    },
-
+	
 	    // value contains text (case sensitive)
 	    doesntContainExactly: function(value, text) {
 	      // escape regex characters
 	      text = text.replace($.fn.form.settings.regExp.escape, "\\$&");
 	      return (value.search( new RegExp(text) ) === -1);
 	    },
-
+	
 	    // is at least string length
 	    minLength: function(value, requiredLength) {
 	      return (value !== undefined)
@@ -1993,7 +1993,7 @@
 	        : false
 	      ;
 	    },
-
+	
 	    // see rls notes for 2.0.6 (this is a duplicate of minLength)
 	    length: function(value, requiredLength) {
 	      return (value !== undefined)
@@ -2001,7 +2001,7 @@
 	        : false
 	      ;
 	    },
-
+	
 	    // is exactly length
 	    exactLength: function(value, requiredLength) {
 	      return (value !== undefined)
@@ -2009,7 +2009,7 @@
 	        : false
 	      ;
 	    },
-
+	
 	    // is less than length
 	    maxLength: function(value, maxLength) {
 	      return (value !== undefined)
@@ -2017,7 +2017,7 @@
 	        : false
 	      ;
 	    },
-
+	
 	    // matches another field
 	    match: function(value, identifier) {
 	      var
@@ -2041,7 +2041,7 @@
 	        : false
 	      ;
 	    },
-
+	
 	    // different than another field
 	    different: function(value, identifier) {
 	      // use either id or name of field
@@ -2066,7 +2066,7 @@
 	        : false
 	      ;
 	    },
-
+	
 	    creditCard: function(cardNumber, cardTypes) {
 	      var
 	        cards = {
@@ -2119,11 +2119,11 @@
 	        unionPay,
 	        validation
 	      ;
-
+	
 	      if(typeof cardNumber !== 'string' || cardNumber.length === 0) {
 	        return;
 	      }
-
+	
 	      // verify card types
 	      if(requiredTypes) {
 	        $.each(requiredTypes, function(index, type){
@@ -2139,12 +2139,12 @@
 	            }
 	          }
 	        });
-
+	
 	        if(!validCard) {
 	          return false;
 	        }
 	      }
-
+	
 	      // skip luhn for UnionPay
 	      unionPay = {
 	        number  : ($.inArray(cardNumber.length, cards.unionPay.length) !== -1),
@@ -2153,7 +2153,7 @@
 	      if(unionPay.number && unionPay.pattern) {
 	        return true;
 	      }
-
+	
 	      // verify luhn, adapted from  <https://gist.github.com/2134376>
 	      var
 	        length        = cardNumber.length,
@@ -2170,7 +2170,7 @@
 	      }
 	      return (sum % 10 === 0 && sum > 0);
 	    },
-
+	
 	    minCount: function(value, minCount) {
 	      if(minCount == 0) {
 	        return true;
@@ -2180,7 +2180,7 @@
 	      }
 	      return (value.split(',').length >= minCount);
 	    },
-
+	
 	    exactCount: function(value, exactCount) {
 	      if(exactCount == 0) {
 	        return (value === '');
@@ -2190,7 +2190,7 @@
 	      }
 	      return (value.split(',').length == exactCount);
 	    },
-
+	
 	    maxCount: function(value, maxCount) {
 	      if(maxCount == 0) {
 	        return false;
@@ -2201,11 +2201,11 @@
 	      return (value.split(',').length <= maxCount);
 	    }
 	  }
-
+	
 	};
-
+	
 	})( jQuery, window, document );
-
+	
 	/*!
 	 * # Semantic UI 2.1.7 - Accordion
 	 * http://github.com/semantic-org/semantic-ui/
@@ -2216,28 +2216,28 @@
 	 * http://opensource.org/licenses/MIT
 	 *
 	 */
-
+	
 	;(function ($, window, document, undefined) {
-
+	
 	"use strict";
-
+	
 	$.fn.accordion = function(parameters) {
 	  var
 	    $allModules     = $(this),
-
+	
 	    time            = new Date().getTime(),
 	    performance     = [],
-
+	
 	    query           = arguments[0],
 	    methodInvoked   = (typeof query == 'string'),
 	    queryArguments  = [].slice.call(arguments, 1),
-
+	
 	    requestAnimationFrame = window.requestAnimationFrame
 	      || window.mozRequestAnimationFrame
 	      || window.webkitRequestAnimationFrame
 	      || window.msRequestAnimationFrame
 	      || function(callback) { setTimeout(callback, 0); },
-
+	
 	    returnedValue
 	  ;
 	  $allModules
@@ -2246,28 +2246,28 @@
 	        settings        = ( $.isPlainObject(parameters) )
 	          ? $.extend(true, {}, $.fn.accordion.settings, parameters)
 	          : $.extend({}, $.fn.accordion.settings),
-
+	
 	        className       = settings.className,
 	        namespace       = settings.namespace,
 	        selector        = settings.selector,
 	        error           = settings.error,
-
+	
 	        eventNamespace  = '.' + namespace,
 	        moduleNamespace = 'module-' + namespace,
 	        moduleSelector  = $allModules.selector || '',
-
+	
 	        $module  = $(this),
 	        $title   = $module.find(selector.title),
 	        $content = $module.find(selector.content),
-
+	
 	        element  = this,
 	        instance = $module.data(moduleNamespace),
 	        observer,
 	        module
 	      ;
-
+	
 	      module = {
-
+	
 	        initialize: function() {
 	          module.debug('Initializing', $module);
 	          module.bind.events();
@@ -2276,14 +2276,14 @@
 	          }
 	          module.instantiate();
 	        },
-
+	
 	        instantiate: function() {
 	          instance = module;
 	          $module
 	            .data(moduleNamespace, module)
 	          ;
 	        },
-
+	
 	        destroy: function() {
 	          module.debug('Destroying previous instance', $module);
 	          $module
@@ -2291,12 +2291,12 @@
 	            .removeData(moduleNamespace)
 	          ;
 	        },
-
+	
 	        refresh: function() {
 	          $title   = $module.find(selector.title);
 	          $content = $module.find(selector.content);
 	        },
-
+	
 	        observeChanges: function() {
 	          if('MutationObserver' in window) {
 	            observer = new MutationObserver(function(mutations) {
@@ -2310,7 +2310,7 @@
 	            module.debug('Setting up mutation observer', observer);
 	          }
 	        },
-
+	
 	        bind: {
 	          events: function() {
 	            module.debug('Binding delegated events');
@@ -2319,13 +2319,13 @@
 	            ;
 	          }
 	        },
-
+	
 	        event: {
 	          click: function() {
 	            module.toggle.call(this);
 	          }
 	        },
-
+	
 	        toggle: function(query) {
 	          var
 	            $activeTitle = (query !== undefined)
@@ -2352,7 +2352,7 @@
 	            module.open.call($activeTitle);
 	          }
 	        },
-
+	
 	        open: function(query) {
 	          var
 	            $activeTitle = (query !== undefined)
@@ -2417,7 +2417,7 @@
 	            })
 	          ;
 	        },
-
+	
 	        close: function(query) {
 	          var
 	            $activeTitle = (query !== undefined)
@@ -2478,7 +2478,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        closeOthers: function(index) {
 	          var
 	            $activeTitle = (index !== undefined)
@@ -2542,9 +2542,9 @@
 	            ;
 	          }
 	        },
-
+	
 	        reset: {
-
+	
 	          display: function() {
 	            module.verbose('Removing inline display from element', this);
 	            $(this).css('display', '');
@@ -2555,7 +2555,7 @@
 	              ;
 	            }
 	          },
-
+	
 	          opacity: function() {
 	            module.verbose('Removing inline opacity from element', this);
 	            $(this).css('opacity', '');
@@ -2566,9 +2566,9 @@
 	              ;
 	            }
 	          },
-
+	
 	        },
-
+	
 	        setting: function(name, value) {
 	          module.debug('Changing setting', name, value);
 	          if( $.isPlainObject(name) ) {
@@ -2746,63 +2746,63 @@
 	    : this
 	  ;
 	};
-
+	
 	$.fn.accordion.settings = {
-
+	
 	  name            : 'Accordion',
 	  namespace       : 'accordion',
-
+	
 	  debug           : false,
 	  verbose         : false,
 	  performance     : true,
-
+	
 	  on              : 'click', // event on title that opens accordion
-
+	
 	  observeChanges  : true,  // whether accordion should automatically refresh on DOM insertion
-
+	
 	  exclusive       : true,  // whether a single accordion content panel should be open at once
 	  collapsible     : true,  // whether accordion content can be closed
 	  closeNested     : false, // whether nested content should be closed when a panel is closed
 	  animateChildren : true,  // whether children opacity should be animated
-
+	
 	  duration        : 350, // duration of animation
 	  easing          : 'easeOutQuad', // easing equation for animation
-
-
+	
+	
 	  onOpening       : function(){}, // callback before open animation
 	  onOpen          : function(){}, // callback after open animation
 	  onClosing       : function(){}, // callback before closing animation
 	  onClose         : function(){}, // callback after closing animation
 	  onChange        : function(){}, // callback after closing or opening animation
-
+	
 	  error: {
 	    method : 'The method you called is not defined'
 	  },
-
+	
 	  className   : {
 	    active    : 'active',
 	    animating : 'animating'
 	  },
-
+	
 	  selector    : {
 	    accordion : '.accordion',
 	    title     : '.title',
 	    trigger   : '.title',
 	    content   : '.content'
 	  }
-
+	
 	};
-
+	
 	// Adds easing
 	$.extend( $.easing, {
 	  easeOutQuad: function (x, t, b, c, d) {
 	    return -c *(t/=d)*(t-2) + b;
 	  }
 	});
-
+	
 	})( jQuery, window, document );
-
-
+	
+	
 	/*!
 	 * # Semantic UI 2.1.7 - Checkbox
 	 * http://github.com/semantic-org/semantic-ui/
@@ -2813,68 +2813,68 @@
 	 * http://opensource.org/licenses/MIT
 	 *
 	 */
-
+	
 	;(function ( $, window, document, undefined ) {
-
+	
 	"use strict";
-
+	
 	$.fn.checkbox = function(parameters) {
 	  var
 	    $allModules    = $(this),
 	    moduleSelector = $allModules.selector || '',
-
+	
 	    time           = new Date().getTime(),
 	    performance    = [],
-
+	
 	    query          = arguments[0],
 	    methodInvoked  = (typeof query == 'string'),
 	    queryArguments = [].slice.call(arguments, 1),
 	    returnedValue
 	  ;
-
+	
 	  $allModules
 	    .each(function() {
 	      var
 	        settings        = $.extend(true, {}, $.fn.checkbox.settings, parameters),
-
+	
 	        className       = settings.className,
 	        namespace       = settings.namespace,
 	        selector        = settings.selector,
 	        error           = settings.error,
-
+	
 	        eventNamespace  = '.' + namespace,
 	        moduleNamespace = 'module-' + namespace,
-
+	
 	        $module         = $(this),
 	        $label          = $(this).children(selector.label),
 	        $input          = $(this).children(selector.input),
 	        input           = $input[0],
-
+	
 	        initialLoad     = false,
 	        shortcutPressed = false,
 	        instance        = $module.data(moduleNamespace),
-
+	
 	        observer,
 	        element         = this,
 	        module
 	      ;
-
+	
 	      module      = {
-
+	
 	        initialize: function() {
 	          module.verbose('Initializing checkbox', settings);
-
+	
 	          module.create.label();
 	          module.bind.events();
-
+	
 	          module.set.tabbable();
 	          module.hide.input();
-
+	
 	          module.observeChanges();
 	          module.instantiate();
 	          module.setup();
 	        },
-
+	
 	        instantiate: function() {
 	          module.verbose('Storing instance of module', module);
 	          instance = module;
@@ -2882,14 +2882,14 @@
 	            .data(moduleNamespace, module)
 	          ;
 	        },
-
+	
 	        destroy: function() {
 	          module.verbose('Destroying module');
 	          module.unbind.events();
 	          module.show.input();
 	          $module.removeData(moduleNamespace);
 	        },
-
+	
 	        fix: {
 	          reference: function() {
 	            if( $module.is(selector.input) ) {
@@ -2899,7 +2899,7 @@
 	            }
 	          }
 	        },
-
+	
 	        setup: function() {
 	          module.set.initialLoad();
 	          if( module.is.indeterminate() ) {
@@ -2916,13 +2916,13 @@
 	          }
 	          module.remove.initialLoad();
 	        },
-
+	
 	        refresh: function() {
 	          $label = $module.children(selector.label);
 	          $input = $module.children(selector.input);
 	          input  = $input[0];
 	        },
-
+	
 	        hide: {
 	          input: function() {
 	            module.verbose('Modfying <input> z-index to be unselectable');
@@ -2935,7 +2935,7 @@
 	            $input.removeClass(className.hidden);
 	          }
 	        },
-
+	
 	        observeChanges: function() {
 	          if('MutationObserver' in window) {
 	            observer = new MutationObserver(function(mutations) {
@@ -2949,7 +2949,7 @@
 	            module.debug('Setting up mutation observer', observer);
 	          }
 	        },
-
+	
 	        attachEvents: function(selector, event) {
 	          var
 	            $element = $(selector)
@@ -2968,7 +2968,7 @@
 	            module.error(error.notFound);
 	          }
 	        },
-
+	
 	        event: {
 	          click: function(event) {
 	            var
@@ -3015,7 +3015,7 @@
 	            }
 	          }
 	        },
-
+	
 	        check: function() {
 	          if( !module.should.allowCheck() ) {
 	            return;
@@ -3027,7 +3027,7 @@
 	            settings.onChange.call(input);
 	          }
 	        },
-
+	
 	        uncheck: function() {
 	          if( !module.should.allowUncheck() ) {
 	            return;
@@ -3039,7 +3039,7 @@
 	            settings.onChange.call(input);
 	          }
 	        },
-
+	
 	        indeterminate: function() {
 	          if( module.should.allowIndeterminate() ) {
 	            module.debug('Checkbox is already indeterminate');
@@ -3052,7 +3052,7 @@
 	            settings.onChange.call(input);
 	          }
 	        },
-
+	
 	        determinate: function() {
 	          if( module.should.allowDeterminate() ) {
 	            module.debug('Checkbox is already determinate');
@@ -3065,7 +3065,7 @@
 	            settings.onChange.call(input);
 	          }
 	        },
-
+	
 	        enable: function() {
 	          if( module.is.enabled() ) {
 	            module.debug('Checkbox is already enabled');
@@ -3075,7 +3075,7 @@
 	          module.set.enabled();
 	          settings.onEnabled.call(input);
 	        },
-
+	
 	        disable: function() {
 	          if( module.is.disabled() ) {
 	            module.debug('Checkbox is already disabled');
@@ -3085,7 +3085,7 @@
 	          module.set.disabled();
 	          settings.onDisabled.call(input);
 	        },
-
+	
 	        get: {
 	          radios: function() {
 	            var
@@ -3100,7 +3100,7 @@
 	            return $input.attr('name');
 	          }
 	        },
-
+	
 	        is: {
 	          initialLoad: function() {
 	            return initialLoad;
@@ -3127,7 +3127,7 @@
 	            return !module.is.checked();
 	          }
 	        },
-
+	
 	        should: {
 	          allowCheck: function() {
 	            if(module.is.determinate() && module.is.checked() && !module.should.forceCallbacks() ) {
@@ -3180,7 +3180,7 @@
 	            return (initialLoad && !settings.fireOnInit);
 	          }
 	        },
-
+	
 	        can: {
 	          change: function() {
 	            return !( $module.hasClass(className.disabled) || $module.hasClass(className.readOnly) || $input.prop('disabled') || $input.prop('readonly') );
@@ -3192,7 +3192,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        set: {
 	          initialLoad: function() {
 	            initialLoad = true;
@@ -3298,13 +3298,13 @@
 	            }
 	          }
 	        },
-
+	
 	        remove: {
 	          initialLoad: function() {
 	            initialLoad = false;
 	          }
 	        },
-
+	
 	        trigger: {
 	          change: function() {
 	            var
@@ -3318,8 +3318,8 @@
 	            }
 	          }
 	        },
-
-
+	
+	
 	        create: {
 	          label: function() {
 	            if($input.prevAll(selector.label).length > 0) {
@@ -3332,13 +3332,13 @@
 	            }
 	          }
 	        },
-
+	
 	        has: {
 	          label: function() {
 	            return ($label.length > 0);
 	          }
 	        },
-
+	
 	        bind: {
 	          events: function() {
 	            module.verbose('Attaching checkbox events');
@@ -3349,7 +3349,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        unbind: {
 	          events: function() {
 	            module.debug('Removing events');
@@ -3358,7 +3358,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        uncheckOthers: function() {
 	          var
 	            $radios = module.get.otherRadios()
@@ -3366,7 +3366,7 @@
 	          module.debug('Unchecking other radios', $radios);
 	          $radios.removeClass(className.checked);
 	        },
-
+	
 	        toggle: function() {
 	          if( !module.can.change() ) {
 	            if(!module.is.radio()) {
@@ -3538,7 +3538,7 @@
 	          return found;
 	        }
 	      };
-
+	
 	      if(methodInvoked) {
 	        if(instance === undefined) {
 	          module.initialize();
@@ -3553,42 +3553,42 @@
 	      }
 	    })
 	  ;
-
+	
 	  return (returnedValue !== undefined)
 	    ? returnedValue
 	    : this
 	  ;
 	};
-
+	
 	$.fn.checkbox.settings = {
-
+	
 	  name                : 'Checkbox',
 	  namespace           : 'checkbox',
-
+	
 	  debug               : false,
 	  verbose             : true,
 	  performance         : true,
-
+	
 	  // delegated event context
 	  uncheckable         : 'auto',
 	  fireOnInit          : false,
-
+	
 	  onChange            : function(){},
-
+	
 	  beforeChecked       : function(){},
 	  beforeUnchecked     : function(){},
 	  beforeDeterminate   : function(){},
 	  beforeIndeterminate : function(){},
-
+	
 	  onChecked           : function(){},
 	  onUnchecked         : function(){},
-
+	
 	  onDeterminate       : function() {},
 	  onIndeterminate     : function() {},
-
+	
 	  onEnable            : function(){},
 	  onDisable           : function(){},
-
+	
 	  className       : {
 	    checked       : 'checked',
 	    indeterminate : 'indeterminate',
@@ -3597,22 +3597,22 @@
 	    radio         : 'radio',
 	    readOnly      : 'read-only'
 	  },
-
+	
 	  error     : {
 	    method       : 'The method you called is not defined'
 	  },
-
+	
 	  selector : {
 	    checkbox : '.ui.checkbox',
 	    label    : 'label, .box',
 	    input    : 'input[type="checkbox"], input[type="radio"]',
 	    link     : 'a[href]'
 	  }
-
+	
 	};
-
+	
 	})( jQuery, window, document );
-
+	
 	/*!
 	 * # Semantic UI 2.1.7 - Dimmer
 	 * http://github.com/semantic-org/semantic-ui/
@@ -3623,59 +3623,59 @@
 	 * http://opensource.org/licenses/MIT
 	 *
 	 */
-
+	
 	;(function ( $, window, document, undefined ) {
-
+	
 	"use strict";
-
+	
 	$.fn.dimmer = function(parameters) {
 	  var
 	    $allModules     = $(this),
-
+	
 	    time            = new Date().getTime(),
 	    performance     = [],
-
+	
 	    query           = arguments[0],
 	    methodInvoked   = (typeof query == 'string'),
 	    queryArguments  = [].slice.call(arguments, 1),
-
+	
 	    returnedValue
 	  ;
-
+	
 	  $allModules
 	    .each(function() {
 	      var
 	        settings        = ( $.isPlainObject(parameters) )
 	          ? $.extend(true, {}, $.fn.dimmer.settings, parameters)
 	          : $.extend({}, $.fn.dimmer.settings),
-
+	
 	        selector        = settings.selector,
 	        namespace       = settings.namespace,
 	        className       = settings.className,
 	        error           = settings.error,
-
+	
 	        eventNamespace  = '.' + namespace,
 	        moduleNamespace = 'module-' + namespace,
 	        moduleSelector  = $allModules.selector || '',
-
+	
 	        clickEvent      = ('ontouchstart' in document.documentElement)
 	          ? 'touchstart'
 	          : 'click',
-
+	
 	        $module = $(this),
 	        $dimmer,
 	        $dimmable,
-
+	
 	        element   = this,
 	        instance  = $module.data(moduleNamespace),
 	        module
 	      ;
-
+	
 	      module = {
-
+	
 	        preinitialize: function() {
 	          if( module.is.dimmer() ) {
-
+	
 	            $dimmable = $module.parent();
 	            $dimmer   = $module;
 	          }
@@ -3694,15 +3694,15 @@
 	            }
 	          }
 	        },
-
+	
 	        initialize: function() {
 	          module.debug('Initializing dimmer', settings);
-
+	
 	          module.bind.events();
 	          module.set.dimmable();
 	          module.instantiate();
 	        },
-
+	
 	        instantiate: function() {
 	          module.verbose('Storing instance of module', module);
 	          instance = module;
@@ -3710,7 +3710,7 @@
 	            .data(moduleNamespace, instance)
 	          ;
 	        },
-
+	
 	        destroy: function() {
 	          module.verbose('Destroying previous module', $dimmer);
 	          module.unbind.events();
@@ -3719,7 +3719,7 @@
 	            .off(eventNamespace)
 	          ;
 	        },
-
+	
 	        bind: {
 	          events: function() {
 	            if(settings.on == 'hover') {
@@ -3737,7 +3737,7 @@
 	              module.debug('Setting as a page dimmer', $dimmable);
 	              module.set.pageDimmer();
 	            }
-
+	
 	            if( module.is.closable() ) {
 	              module.verbose('Adding dimmer close event', $dimmer);
 	              $dimmable
@@ -3746,7 +3746,7 @@
 	            }
 	          }
 	        },
-
+	
 	        unbind: {
 	          events: function() {
 	            $module
@@ -3754,7 +3754,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        event: {
 	          click: function(event) {
 	            module.verbose('Determining if event occured on dimmer', event);
@@ -3764,7 +3764,7 @@
 	            }
 	          }
 	        },
-
+	
 	        addContent: function(element) {
 	          var
 	            $content = $(element)
@@ -3774,7 +3774,7 @@
 	            $content.detach().appendTo($dimmer);
 	          }
 	        },
-
+	
 	        create: function() {
 	          var
 	            $element = $( settings.template.dimmer() )
@@ -3792,7 +3792,7 @@
 	          ;
 	          return $element;
 	        },
-
+	
 	        show: function(callback) {
 	          callback = $.isFunction(callback)
 	            ? callback
@@ -3808,7 +3808,7 @@
 	            module.debug('Dimmer is already shown or disabled');
 	          }
 	        },
-
+	
 	        hide: function(callback) {
 	          callback = $.isFunction(callback)
 	            ? callback
@@ -3824,7 +3824,7 @@
 	            module.debug('Dimmer is not visible');
 	          }
 	        },
-
+	
 	        toggle: function() {
 	          module.verbose('Toggling dimmer visibility', $dimmer);
 	          if( !module.is.dimmed() ) {
@@ -3834,7 +3834,7 @@
 	            module.hide();
 	          }
 	        },
-
+	
 	        animate: {
 	          show: function(callback) {
 	            callback = $.isFunction(callback)
@@ -3919,7 +3919,7 @@
 	            }
 	          }
 	        },
-
+	
 	        get: {
 	          dimmer: function() {
 	            return $dimmer;
@@ -3936,7 +3936,7 @@
 	            return settings.duration;
 	          }
 	        },
-
+	
 	        has: {
 	          dimmer: function() {
 	            if(settings.dimmerName) {
@@ -3947,7 +3947,7 @@
 	            }
 	          }
 	        },
-
+	
 	        is: {
 	          active: function() {
 	            return $dimmer.hasClass(className.active);
@@ -3986,13 +3986,13 @@
 	            return $dimmer.hasClass(className.pageDimmer);
 	          }
 	        },
-
+	
 	        can: {
 	          show: function() {
 	            return !$dimmer.hasClass(className.disabled);
 	          }
 	        },
-
+	
 	        set: {
 	          opacity: function(opacity) {
 	            var
@@ -4033,7 +4033,7 @@
 	            }
 	          }
 	        },
-
+	
 	        remove: {
 	          active: function() {
 	            $dimmer
@@ -4053,7 +4053,7 @@
 	            }
 	          }
 	        },
-
+	
 	        setting: function(name, value) {
 	          module.debug('Changing setting', name, value);
 	          if( $.isPlainObject(name) ) {
@@ -4212,9 +4212,9 @@
 	          return found;
 	        }
 	      };
-
+	
 	      module.preinitialize();
-
+	
 	      if(methodInvoked) {
 	        if(instance === undefined) {
 	          module.initialize();
@@ -4229,57 +4229,57 @@
 	      }
 	    })
 	  ;
-
+	
 	  return (returnedValue !== undefined)
 	    ? returnedValue
 	    : this
 	  ;
 	};
-
+	
 	$.fn.dimmer.settings = {
-
+	
 	  name        : 'Dimmer',
 	  namespace   : 'dimmer',
-
+	
 	  debug       : false,
 	  verbose     : false,
 	  performance : true,
-
+	
 	  // name to distinguish between multiple dimmers in context
 	  dimmerName  : false,
-
+	
 	  // whether to add a variation type
 	  variation   : false,
-
+	
 	  // whether to bind close events
 	  closable    : 'auto',
-
+	
 	  // whether to use css animations
 	  useCSS      : true,
-
+	
 	  // css animation to use
 	  transition  : 'fade',
-
+	
 	  // event to bind to
 	  on          : false,
-
+	
 	  // overriding opacity value
 	  opacity     : 'auto',
-
+	
 	  // transition durations
 	  duration    : {
 	    show : 500,
 	    hide : 500
 	  },
-
+	
 	  onChange    : function(){},
 	  onShow      : function(){},
 	  onHide      : function(){},
-
+	
 	  error   : {
 	    method   : 'The method you called is not defined.'
 	  },
-
+	
 	  className : {
 	    active     : 'active',
 	    animating  : 'animating',
@@ -4291,20 +4291,20 @@
 	    pageDimmer : 'page',
 	    show       : 'show'
 	  },
-
+	
 	  selector: {
 	    dimmer   : '> .ui.dimmer',
 	    content  : '.ui.dimmer > .content, .ui.dimmer > .content > .center'
 	  },
-
+	
 	  template: {
 	    dimmer: function() {
 	     return $('<div />').attr('class', 'ui dimmer');
 	    }
 	  }
-
+	
 	};
-
+	
 	})( jQuery, window, document );
 	/*!
 	 * # Semantic UI 2.1.7 - Dropdown
@@ -4316,35 +4316,35 @@
 	 * http://opensource.org/licenses/MIT
 	 *
 	 */
-
+	
 	;(function ( $, window, document, undefined ) {
-
+	
 	"use strict";
-
+	
 	$.fn.dropdown = function(parameters) {
 	  var
 	    $allModules    = $(this),
 	    $document      = $(document),
-
+	
 	    moduleSelector = $allModules.selector || '',
-
+	
 	    hasTouch       = ('ontouchstart' in document.documentElement),
 	    time           = new Date().getTime(),
 	    performance    = [],
-
+	
 	    query          = arguments[0],
 	    methodInvoked  = (typeof query == 'string'),
 	    queryArguments = [].slice.call(arguments, 1),
 	    returnedValue
 	  ;
-
+	
 	  $allModules
 	    .each(function(elementIndex) {
 	      var
 	        settings          = ( $.isPlainObject(parameters) )
 	          ? $.extend(true, {}, $.fn.dropdown.settings, parameters)
 	          : $.extend({}, $.fn.dropdown.settings),
-
+	
 	        className       = settings.className,
 	        message         = settings.message,
 	        fields          = settings.fields,
@@ -4355,30 +4355,30 @@
 	        selector        = settings.selector,
 	        error           = settings.error,
 	        templates       = settings.templates,
-
+	
 	        eventNamespace  = '.' + namespace,
 	        moduleNamespace = 'module-' + namespace,
-
+	
 	        $module         = $(this),
 	        $context        = $(settings.context),
 	        $text           = $module.find(selector.text),
 	        $search         = $module.find(selector.search),
 	        $input          = $module.find(selector.input),
 	        $icon           = $module.find(selector.icon),
-
+	
 	        $combo = ($module.prev().find(selector.text).length > 0)
 	          ? $module.prev().find(selector.text)
 	          : $module.prev(),
-
+	
 	        $menu           = $module.children(selector.menu),
 	        $item           = $menu.find(selector.item),
-
+	
 	        activated       = false,
 	        itemActivated   = false,
 	        internalChange  = false,
 	        element         = this,
 	        instance        = $module.data(moduleNamespace),
-
+	
 	        initialLoad,
 	        pageLostFocus,
 	        elementNamespace,
@@ -4387,31 +4387,31 @@
 	        menuObserver,
 	        module
 	      ;
-
+	
 	      module = {
-
+	
 	        initialize: function() {
 	          module.debug('Initializing dropdown', settings);
-
+	
 	          if( module.is.alreadySetup() ) {
 	            module.setup.reference();
 	          }
 	          else {
 	            module.setup.layout();
 	            module.refreshData();
-
+	
 	            module.save.defaults();
 	            module.restore.selected();
-
+	
 	            module.create.id();
 	            module.bind.events();
-
+	
 	            module.observeChanges();
 	            module.instantiate();
 	          }
-
+	
 	        },
-
+	
 	        instantiate: function() {
 	          module.verbose('Storing instance of dropdown', module);
 	          instance = module;
@@ -4419,7 +4419,7 @@
 	            .data(moduleNamespace, module)
 	          ;
 	        },
-
+	
 	        destroy: function() {
 	          module.verbose('Destroying previous dropdown', $module);
 	          module.remove.tabbable();
@@ -4440,7 +4440,7 @@
 	            menuObserver.disconnect();
 	          }
 	        },
-
+	
 	        observeChanges: function() {
 	          if('MutationObserver' in window) {
 	            selectObserver = new MutationObserver(function(mutations) {
@@ -4466,7 +4466,7 @@
 	            module.debug('Setting up mutation observer', selectObserver, menuObserver);
 	          }
 	        },
-
+	
 	        create: {
 	          id: function() {
 	            id = (Math.random().toString(16) + '000000000').substr(2, 8);
@@ -4526,7 +4526,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        search: function(query) {
 	          query = (query !== undefined)
 	            ? query
@@ -4535,7 +4535,7 @@
 	          module.verbose('Searching for query', query);
 	          module.filter(query);
 	        },
-
+	
 	        select: {
 	          firstUnfiltered: function() {
 	            module.verbose('Selecting first non-filtered element');
@@ -4563,7 +4563,7 @@
 	            }
 	          }
 	        },
-
+	
 	        setup: {
 	          api: function() {
 	            var
@@ -4668,12 +4668,12 @@
 	            $allModules = $firstModules.add($module).add($lastModules);
 	          }
 	        },
-
+	
 	        refresh: function() {
 	          module.refreshSelectors();
 	          module.refreshData();
 	        },
-
+	
 	        refreshSelectors: function() {
 	          module.verbose('Refreshing selector cache');
 	          $text   = $module.find(selector.text);
@@ -4687,7 +4687,7 @@
 	          $menu    = $module.children(selector.menu);
 	          $item    = $menu.find(selector.item);
 	        },
-
+	
 	        refreshData: function() {
 	          module.verbose('Refreshing cached metadata');
 	          $item
@@ -4700,7 +4700,7 @@
 	            .removeData(metadata.placeholderText)
 	          ;
 	        },
-
+	
 	        toggle: function() {
 	          module.verbose('Toggling menu visibility');
 	          if( !module.is.active() ) {
@@ -4710,7 +4710,7 @@
 	            module.hide();
 	          }
 	        },
-
+	
 	        show: function(callback) {
 	          callback = $.isFunction(callback)
 	            ? callback
@@ -4735,7 +4735,7 @@
 	            }
 	          }
 	        },
-
+	
 	        hide: function(callback) {
 	          callback = $.isFunction(callback)
 	            ? callback
@@ -4751,7 +4751,7 @@
 	            }
 	          }
 	        },
-
+	
 	        hideOthers: function() {
 	          module.verbose('Finding other dropdowns to hide');
 	          $allModules
@@ -4760,14 +4760,14 @@
 	                .dropdown('hide')
 	          ;
 	        },
-
+	
 	        hideMenu: function() {
 	          module.verbose('Hiding menu  instantaneously');
 	          module.remove.active();
 	          module.remove.visible();
 	          $menu.transition('hide');
 	        },
-
+	
 	        hideSubMenus: function() {
 	          var
 	            $subMenus = $menu.children(selector.item).find(selector.menu)
@@ -4775,7 +4775,7 @@
 	          module.verbose('Hiding sub menus', $subMenus);
 	          $subMenus.transition('hide');
 	        },
-
+	
 	        bind: {
 	          events: function() {
 	            if(hasTouch) {
@@ -4889,7 +4889,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        unbind: {
 	          intent: function() {
 	            module.verbose('Removing hide intent event from document');
@@ -4904,7 +4904,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        filter: function(query) {
 	          var
 	            searchTerm = (query !== undefined)
@@ -4956,7 +4956,7 @@
 	            afterFiltered();
 	          }
 	        },
-
+	
 	        queryRemote: function(query, callback) {
 	          var
 	            apiSettings = {
@@ -4991,7 +4991,7 @@
 	            .api('query')
 	          ;
 	        },
-
+	
 	        filterItems: function(query) {
 	          var
 	            searchTerm = (query !== undefined)
@@ -5004,7 +5004,7 @@
 	          // avoid loop if we're matching nothing
 	          if( module.has.query() ) {
 	            results = [];
-
+	
 	            module.verbose('Searching for matching values', searchTerm);
 	            $item
 	              .each(function(){
@@ -5026,7 +5026,7 @@
 	                }
 	                if(settings.match == 'both' || settings.match == 'value') {
 	                  value = String(module.get.choiceValue($choice, text));
-
+	
 	                  if(value.search(beginsWithRegExp) !== -1) {
 	                    results.push(this);
 	                    return true;
@@ -5048,7 +5048,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        fuzzySearch: function(query, term) {
 	          var
 	            termLength  = term.length,
@@ -5075,7 +5075,7 @@
 	          }
 	          return true;
 	        },
-
+	
 	        filterActive: function() {
 	          if(settings.useLabels) {
 	            $item.filter('.' + className.active)
@@ -5083,13 +5083,13 @@
 	            ;
 	          }
 	        },
-
+	
 	        focusSearch: function() {
 	          if( module.is.search() && !module.is.focusedOnSearch() ) {
 	            $search[0].focus();
 	          }
 	        },
-
+	
 	        forceSelection: function() {
 	          var
 	            $currentlySelected = $item.not(className.filtered).filter('.' + className.selected).eq(0),
@@ -5111,7 +5111,7 @@
 	          }
 	          module.hide();
 	        },
-
+	
 	        event: {
 	          change: function() {
 	            if(!internalChange) {
@@ -5329,7 +5329,7 @@
 	              }
 	            }
 	          },
-
+	
 	          document: {
 	            // label selection should occur even when element has no focus
 	            keydown: function(event) {
@@ -5357,7 +5357,7 @@
 	                if(isSearch && !hasActiveLabel && !isFocusedOnSearch) {
 	                  return;
 	                }
-
+	
 	                if(pressedKey == keys.leftArrow) {
 	                  // activate previous label
 	                  if((isFocused || caretAtStart) && !hasActiveLabel) {
@@ -5444,7 +5444,7 @@
 	              }
 	            }
 	          },
-
+	
 	          keydown: function(event) {
 	            var
 	              pressedKey    = event.which,
@@ -5473,7 +5473,7 @@
 	              ;
 	              // visible menu keyboard shortcuts
 	              if( module.is.visible() ) {
-
+	
 	                // enter (select or open sub-menu)
 	                if(pressedKey == keys.enter || delimiterPressed) {
 	                  if(pressedKey == keys.enter && hasSelectedItem && hasSubMenu && !settings.allowCategorySelection) {
@@ -5489,12 +5489,12 @@
 	                  }
 	                  event.preventDefault();
 	                }
-
+	
 	                // left arrow (hide sub-menu)
 	                if(pressedKey == keys.leftArrow) {
-
+	
 	                  isSubMenuItem = ($parentMenu[0] !== $menu[0]);
-
+	
 	                  if(isSubMenuItem) {
 	                    module.verbose('Left key pressed, closing sub-menu');
 	                    module.animate.hide(false,  $parentMenu);
@@ -5508,7 +5508,7 @@
 	                    event.preventDefault();
 	                  }
 	                }
-
+	
 	                // right arrow (show sub-menu)
 	                if(pressedKey == keys.rightArrow) {
 	                  if(hasSubMenu) {
@@ -5524,7 +5524,7 @@
 	                    event.preventDefault();
 	                  }
 	                }
-
+	
 	                // up arrow (traverse menu up)
 	                if(pressedKey == keys.upArrow) {
 	                  $nextItem = (hasSelectedItem && inVisibleMenu)
@@ -5548,7 +5548,7 @@
 	                  }
 	                  event.preventDefault();
 	                }
-
+	
 	                // down arrow (traverse menu down)
 	                if(pressedKey == keys.downArrow) {
 	                  $nextItem = (hasSelectedItem && inVisibleMenu)
@@ -5572,7 +5572,7 @@
 	                  }
 	                  event.preventDefault();
 	                }
-
+	
 	                // page down (show next page)
 	                if(pressedKey == keys.pageUp) {
 	                  module.scrollPage('up');
@@ -5582,13 +5582,13 @@
 	                  module.scrollPage('down');
 	                  event.preventDefault();
 	                }
-
+	
 	                // escape (close menu)
 	                if(pressedKey == keys.escape) {
 	                  module.verbose('Escape key pressed, closing dropdown');
 	                  module.hide();
 	                }
-
+	
 	              }
 	              else {
 	                // delimiter key
@@ -5610,7 +5610,7 @@
 	            }
 	          }
 	        },
-
+	
 	        trigger: {
 	          change: function() {
 	            var
@@ -5624,7 +5624,7 @@
 	            }
 	          }
 	        },
-
+	
 	        determine: {
 	          selectAction: function(text, value) {
 	            module.verbose('Determining action', settings.action);
@@ -5682,11 +5682,11 @@
 	            }
 	          }
 	        },
-
+	
 	        action: {
-
+	
 	          nothing: function() {},
-
+	
 	          activate: function(text, value) {
 	            value = (value !== undefined)
 	              ? value
@@ -5702,12 +5702,12 @@
 	              }
 	            }
 	          },
-
+	
 	          select: function(text, value) {
 	            // mimics action.activate but does not select text
 	            module.action.activate.call(this);
 	          },
-
+	
 	          combo: function(text, value) {
 	            value = (value !== undefined)
 	              ? value
@@ -5716,14 +5716,14 @@
 	            module.set.selected(value, $(this));
 	            module.hideAndClear();
 	          },
-
+	
 	          hide: function(text, value) {
 	            module.set.value(value);
 	            module.hideAndClear();
 	          }
-
+	
 	        },
-
+	
 	        get: {
 	          id: function() {
 	            return id;
@@ -6034,7 +6034,7 @@
 	            return $selectedItem;
 	          }
 	        },
-
+	
 	        check: {
 	          maxSelections: function(selectionCount) {
 	            if(settings.maxSelections) {
@@ -6063,7 +6063,7 @@
 	            return true;
 	          }
 	        },
-
+	
 	        restore: {
 	          defaults: function() {
 	            module.clear();
@@ -6156,7 +6156,7 @@
 	            }
 	          }
 	        },
-
+	
 	        read: {
 	          remoteData: function(value) {
 	            var
@@ -6173,7 +6173,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        save: {
 	          defaults: function() {
 	            module.save.defaultText();
@@ -6213,7 +6213,7 @@
 	            sessionStorage.setItem(value, name);
 	          }
 	        },
-
+	
 	        clear: function() {
 	          if(module.is.multiple()) {
 	            module.remove.labels();
@@ -6225,11 +6225,11 @@
 	          module.set.placeholderText();
 	          module.clearValue();
 	        },
-
+	
 	        clearValue: function() {
 	          module.set.value('');
 	        },
-
+	
 	        scrollPage: function(direction, $selectedItem) {
 	          var
 	            $currentItem  = $selectedItem || module.get.selectedItem(),
@@ -6274,7 +6274,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        set: {
 	          filtered: function() {
 	            var
@@ -6359,7 +6359,7 @@
 	              abovePage,
 	              belowPage
 	            ;
-
+	
 	            $item       = $item || module.get.selectedItem();
 	            $menu       = $item.closest(selector.menu);
 	            hasActive   = ($item && $item.length > 0);
@@ -6369,7 +6369,7 @@
 	            ;
 	            if($item && $menu.length > 0 && hasActive) {
 	              itemOffset = $item.position().top;
-
+	
 	              $menu.addClass(className.loading);
 	              menuScroll = $menu.scrollTop();
 	              menuOffset = $menu.offset().top;
@@ -6482,7 +6482,7 @@
 	                  return;
 	                }
 	              }
-
+	
 	              if( module.is.single() && module.has.selectInput() && module.can.extendSelect() ) {
 	                module.debug('Adding user option', value);
 	                module.add.optionValue(value);
@@ -6556,7 +6556,7 @@
 	                  $selected      = $(this),
 	                  selectedText   = module.get.choiceText($selected),
 	                  selectedValue  = module.get.choiceValue($selected, selectedText),
-
+	
 	                  isFiltered     = $selected.hasClass(className.filtered),
 	                  isActive       = $selected.hasClass(className.active),
 	                  isUserValue    = $selected.hasClass(className.addition),
@@ -6600,7 +6600,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        add: {
 	          label: function(value, text, shouldAnimate) {
 	            var
@@ -6615,7 +6615,7 @@
 	              .html(templates.label(value, text))
 	            ;
 	            $label = settings.onLabelCreate.call($label, value, text);
-
+	
 	            if(module.has.label(value)) {
 	              module.debug('Label already exists, skipping', value);
 	              return;
@@ -6777,7 +6777,7 @@
 	              newValue = newValue.join(settings.delimiter);
 	              module.debug('Setting hidden input to delimited value', newValue, $input);
 	            }
-
+	
 	            if(settings.fireOnInit === false && module.is.initialLoad()) {
 	              module.verbose('Skipping onadd callback on initial load', settings.onAdd);
 	            }
@@ -6788,7 +6788,7 @@
 	            module.check.maxSelections();
 	          }
 	        },
-
+	
 	        remove: {
 	          active: function() {
 	            $module.removeClass(className.active);
@@ -6858,11 +6858,11 @@
 	              ? $selectedItem || module.get.itemWithAdditions(value)
 	              : $selectedItem || module.get.item(value)
 	            ;
-
+	
 	            if(!$selectedItem) {
 	              return false;
 	            }
-
+	
 	            $selectedItem
 	              .each(function() {
 	                var
@@ -6997,7 +6997,7 @@
 	            }
 	          }
 	        },
-
+	
 	        has: {
 	          search: function() {
 	            return ($search.length > 0);
@@ -7058,7 +7058,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        is: {
 	          active: function() {
 	            return $module.hasClass(className.active);
@@ -7180,7 +7180,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        can: {
 	          activate: function($item) {
 	            if(settings.useLabels) {
@@ -7207,7 +7207,7 @@
 	            return $.fn.api !== undefined;
 	          }
 	        },
-
+	
 	        animate: {
 	          show: function(callback, $subMenu) {
 	            var
@@ -7279,7 +7279,7 @@
 	            ;
 	            if( module.is.visible($currentMenu) || module.is.animating($currentMenu) ) {
 	              module.verbose('Doing menu hide animation', $currentMenu);
-
+	
 	              if(transition == 'none') {
 	                start();
 	                $currentMenu.transition('hide');
@@ -7309,7 +7309,7 @@
 	            }
 	          }
 	        },
-
+	
 	        hideAndClear: function() {
 	          module.remove.searchTerm();
 	          if( module.has.maxSelections() ) {
@@ -7324,7 +7324,7 @@
 	            module.hide();
 	          }
 	        },
-
+	
 	        delay: {
 	          show: function() {
 	            module.verbose('Delaying show event to ensure user intent');
@@ -7337,14 +7337,14 @@
 	            module.timer = setTimeout(module.hide, settings.delay.hide);
 	          }
 	        },
-
+	
 	        escape: {
 	          regExp: function(text) {
 	            text =  String(text);
 	            return text.replace(regExp.escape, '\\$&');
 	          }
 	        },
-
+	
 	        setting: function(name, value) {
 	          module.debug('Changing setting', name, value);
 	          if( $.isPlainObject(name) ) {
@@ -7500,7 +7500,7 @@
 	          return found;
 	        }
 	      };
-
+	
 	      if(methodInvoked) {
 	        if(instance === undefined) {
 	          module.initialize();
@@ -7520,57 +7520,57 @@
 	    : $allModules
 	  ;
 	};
-
+	
 	$.fn.dropdown.settings = {
-
+	
 	  debug                  : false,
 	  verbose                : false,
 	  performance            : true,
-
+	
 	  on                     : 'click',    // what event should show menu action on item selection
 	  action                 : 'activate', // action on item selection (nothing, activate, select, combo, hide, function(){})
-
-
+	
+	
 	  apiSettings            : false,
 	  saveRemoteData         : true,      // Whether remote name/value pairs should be stored in sessionStorage to allow remote data to be restored on page refresh
 	  throttle               : 200,       // How long to wait after last user input to search remotely
-
+	
 	  context                : window,      // Context to use when determining if on screen
 	  direction              : 'auto',     // Whether dropdown should always open in one direction
 	  keepOnScreen           : true,       // Whether dropdown should check whether it is on screen before showing
-
+	
 	  match                  : 'both',     // what to match against with search selection (both, text, or label)
 	  fullTextSearch         : false,      // search anywhere in value
-
+	
 	  placeholder            : 'auto',     // whether to convert blank <select> values to placeholder text
 	  preserveHTML           : true,       // preserve html when selecting value
 	  sortSelect             : false,      // sort selection on init
-
+	
 	  forceSelection         : true,       // force a choice on blur with search selection
 	  allowAdditions         : false,      // whether multiple select should allow user added values
-
+	
 	  maxSelections          : false,      // When set to a number limits the number of selections to this count
 	  useLabels              : true,       // whether multiple select should filter currently active selections from choices
 	  delimiter              : ',',        // when multiselect uses normal <input> the values will be delimited with this character
-
+	
 	  showOnFocus            : true,       // show menu on focus
 	  allowTab               : true,       // add tabindex to element
 	  allowCategorySelection : false,      // allow elements with sub-menus to be selected
-
+	
 	  fireOnInit             : false,      // Whether callbacks should fire when initializing dropdown values
-
+	
 	  transition             : 'auto',     // auto transition will slide down or up based on direction
 	  duration               : 200,        // duration of transition
-
+	
 	  glyphWidth             : 1.0714,     // widest glyph width in em (W is 1.0714 em) used to calculate multiselect input width
-
+	
 	  // label settings on multi-select
 	  label: {
 	    transition : 'scale',
 	    duration   : 200,
 	    variation  : false
 	  },
-
+	
 	  // delay before event
 	  delay : {
 	    hide   : 300,
@@ -7578,23 +7578,23 @@
 	    search : 20,
 	    touch  : 50
 	  },
-
+	
 	  /* Callbacks */
 	  onChange      : function(value, text, $selected){},
 	  onAdd         : function(value, text, $selected){},
 	  onRemove      : function(value, text, $selected){},
-
+	
 	  onLabelSelect : function($selectedLabels){},
 	  onLabelCreate : function(value, text) { return $(this); },
 	  onLabelRemove : function(value) { return true; },
 	  onNoResults   : function(searchTerm) { return true; },
 	  onShow        : function(){},
 	  onHide        : function(){},
-
+	
 	  /* Component */
 	  name           : 'Dropdown',
 	  namespace      : 'dropdown',
-
+	
 	  message: {
 	    addResult     : 'Add <b>{term}</b>',
 	    count         : '{count} selected',
@@ -7602,7 +7602,7 @@
 	    noResults     : 'No results found.',
 	    serverError   : 'There was an error contacting the server'
 	  },
-
+	
 	  error : {
 	    action          : 'You called a dropdown action that was not defined',
 	    alreadySetup    : 'Once a select has been initialized behaviors must be called on the created ui dropdown',
@@ -7613,11 +7613,11 @@
 	    noStorage       : 'Saving remote data requires session storage',
 	    noTransition    : 'This module requires ui transitions <https://github.com/Semantic-Org/UI-Transition>'
 	  },
-
+	
 	  regExp : {
 	    escape   : /[-[\]{}()*+?.,\\^$|#\s]/g,
 	  },
-
+	
 	  metadata : {
 	    defaultText     : 'defaultText',
 	    defaultValue    : 'defaultValue',
@@ -7625,7 +7625,7 @@
 	    text            : 'text',
 	    value           : 'value'
 	  },
-
+	
 	  // property names for remote query
 	  fields: {
 	    remoteValues : 'results', // grouping for api results
@@ -7633,7 +7633,7 @@
 	    name         : 'name',   // displayed dropdown text
 	    value        : 'value'   // actual dropdown value
 	  },
-
+	
 	  keys : {
 	    backspace  : 8,
 	    delimiter  : 188, // comma
@@ -7647,7 +7647,7 @@
 	    rightArrow : 39,
 	    downArrow  : 40
 	  },
-
+	
 	  selector : {
 	    addition     : '.addition',
 	    dropdown     : '.ui.dropdown',
@@ -7664,7 +7664,7 @@
 	    text         : '> .text:not(.icon)',
 	    unselectable : '.disabled, .filtered'
 	  },
-
+	
 	  className : {
 	    active      : 'active',
 	    addition    : 'addition',
@@ -7686,12 +7686,12 @@
 	    upward      : 'upward',
 	    visible     : 'visible'
 	  }
-
+	
 	};
-
+	
 	/* Templates */
 	$.fn.dropdown.settings.templates = {
-
+	
 	  // generates dropdown from select values
 	  dropdown: function(select) {
 	    var
@@ -7716,7 +7716,7 @@
 	    html += '</div>';
 	    return html;
 	  },
-
+	
 	  // generates just menu from select
 	  menu: function(response, fields) {
 	    var
@@ -7728,27 +7728,27 @@
 	    });
 	    return html;
 	  },
-
+	
 	  // generates label for multiselect
 	  label: function(value, text) {
 	    return text + '<i class="delete icon"></i>';
 	  },
-
-
+	
+	
 	  // generates messages like "No results"
 	  message: function(message) {
 	    return message;
 	  },
-
+	
 	  // generates user addition to selection menu
 	  addition: function(choice) {
 	    return choice;
 	  }
-
+	
 	};
-
+	
 	})( jQuery, window, document );
-
+	
 	/*!
 	 * # Semantic UI 2.1.7 - Video
 	 * http://github.com/semantic-org/semantic-ui/
@@ -7759,35 +7759,35 @@
 	 * http://opensource.org/licenses/MIT
 	 *
 	 */
-
+	
 	;(function ($, window, document, undefined) {
-
+	
 	"use strict";
-
+	
 	$.fn.embed = function(parameters) {
-
+	
 	  var
 	    $allModules     = $(this),
-
+	
 	    moduleSelector  = $allModules.selector || '',
-
+	
 	    time            = new Date().getTime(),
 	    performance     = [],
-
+	
 	    query           = arguments[0],
 	    methodInvoked   = (typeof query == 'string'),
 	    queryArguments  = [].slice.call(arguments, 1),
-
+	
 	    returnedValue
 	  ;
-
+	
 	  $allModules
 	    .each(function() {
 	      var
 	        settings        = ( $.isPlainObject(parameters) )
 	          ? $.extend(true, {}, $.fn.embed.settings, parameters)
 	          : $.extend({}, $.fn.embed.settings),
-
+	
 	        selector        = settings.selector,
 	        className       = settings.className,
 	        sources         = settings.sources,
@@ -7795,23 +7795,23 @@
 	        metadata        = settings.metadata,
 	        namespace       = settings.namespace,
 	        templates       = settings.templates,
-
+	
 	        eventNamespace  = '.' + namespace,
 	        moduleNamespace = 'module-' + namespace,
-
+	
 	        $window         = $(window),
 	        $module         = $(this),
 	        $placeholder    = $module.find(selector.placeholder),
 	        $icon           = $module.find(selector.icon),
 	        $embed          = $module.find(selector.embed),
-
+	
 	        element         = this,
 	        instance        = $module.data(moduleNamespace),
 	        module
 	      ;
-
+	
 	      module = {
-
+	
 	        initialize: function() {
 	          module.debug('Initializing embed');
 	          module.determine.autoplay();
@@ -7819,7 +7819,7 @@
 	          module.bind.events();
 	          module.instantiate();
 	        },
-
+	
 	        instantiate: function() {
 	          module.verbose('Storing instance of module', module);
 	          instance = module;
@@ -7827,7 +7827,7 @@
 	            .data(moduleNamespace, module)
 	          ;
 	        },
-
+	
 	        destroy: function() {
 	          module.verbose('Destroying previous instance of embed');
 	          module.reset();
@@ -7836,14 +7836,14 @@
 	            .off(eventNamespace)
 	          ;
 	        },
-
+	
 	        refresh: function() {
 	          module.verbose('Refreshing selector cache');
 	          $placeholder = $module.find(selector.placeholder);
 	          $icon        = $module.find(selector.icon);
 	          $embed       = $module.find(selector.embed);
 	        },
-
+	
 	        bind: {
 	          events: function() {
 	            if( module.has.placeholder() ) {
@@ -7855,7 +7855,7 @@
 	            }
 	          }
 	        },
-
+	
 	        create: function() {
 	          var
 	            placeholder = module.get.placeholder()
@@ -7867,7 +7867,7 @@
 	            module.createAndShow();
 	          }
 	        },
-
+	
 	        createPlaceholder: function(placeholder) {
 	          var
 	            icon  = module.get.icon(),
@@ -7878,7 +7878,7 @@
 	          $module.html( templates.placeholder(placeholder, icon) );
 	          module.debug('Creating placeholder for embed', placeholder, icon);
 	        },
-
+	
 	        createEmbed: function(url) {
 	          module.refresh();
 	          url = url || module.get.url();
@@ -7890,12 +7890,12 @@
 	          settings.onCreate.call(element, url);
 	          module.debug('Creating embed object', $embed);
 	        },
-
+	
 	        createAndShow: function() {
 	          module.createEmbed();
 	          module.show();
 	        },
-
+	
 	        // sets new embed
 	        change: function(source, id, url) {
 	          module.debug('Changing video to ', source, id, url);
@@ -7906,7 +7906,7 @@
 	          ;
 	          module.create();
 	        },
-
+	
 	        // clears embed
 	        reset: function() {
 	          module.debug('Clearing embed and showing placeholder');
@@ -7915,25 +7915,25 @@
 	          module.showPlaceholder();
 	          settings.onReset.call(element);
 	        },
-
+	
 	        // shows current embed
 	        show: function() {
 	          module.debug('Showing embed');
 	          module.set.active();
 	          settings.onDisplay.call(element);
 	        },
-
+	
 	        hide: function() {
 	          module.debug('Hiding embed');
 	          module.showPlaceholder();
 	        },
-
+	
 	        showPlaceholder: function() {
 	          module.debug('Showing placeholder image');
 	          module.remove.active();
 	          settings.onPlaceholderDisplay.call(element);
 	        },
-
+	
 	        get: {
 	          id: function() {
 	            return settings.id || $module.data(metadata.id);
@@ -7973,7 +7973,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        determine: {
 	          autoplay: function() {
 	            if(module.should.autoplay()) {
@@ -8020,14 +8020,14 @@
 	            return url;
 	          }
 	        },
-
-
+	
+	
 	        set: {
 	          active: function() {
 	            $module.addClass(className.active);
 	          }
 	        },
-
+	
 	        remove: {
 	          active: function() {
 	            $module.removeClass(className.active);
@@ -8036,7 +8036,7 @@
 	            $embed.empty();
 	          }
 	        },
-
+	
 	        encode: {
 	          parameters: function(parameters) {
 	            var
@@ -8049,7 +8049,7 @@
 	            return urlString.join('&amp;');
 	          }
 	        },
-
+	
 	        generate: {
 	          embed: function(url) {
 	            module.debug('Generating embed html');
@@ -8082,13 +8082,13 @@
 	            return module.encode.parameters(parameters);
 	          }
 	        },
-
+	
 	        has: {
 	          placeholder: function() {
 	            return settings.placeholder || $module.data(metadata.placeholder);
 	          }
 	        },
-
+	
 	        should: {
 	          autoplay: function() {
 	            return (settings.autoplay === 'auto')
@@ -8097,13 +8097,13 @@
 	            ;
 	          }
 	        },
-
+	
 	        is: {
 	          video: function() {
 	            return module.get.type() == 'video';
 	          }
 	        },
-
+	
 	        setting: function(name, value) {
 	          module.debug('Changing setting', name, value);
 	          if( $.isPlainObject(name) ) {
@@ -8262,7 +8262,7 @@
 	          return found;
 	        }
 	      };
-
+	
 	      if(methodInvoked) {
 	        if(instance === undefined) {
 	          module.initialize();
@@ -8282,30 +8282,30 @@
 	    : this
 	  ;
 	};
-
+	
 	$.fn.embed.settings = {
-
+	
 	  name        : 'Embed',
 	  namespace   : 'embed',
-
+	
 	  debug       : false,
 	  verbose     : false,
 	  performance : true,
-
+	
 	  icon     : false,
 	  source   : false,
 	  url      : false,
 	  id       : false,
-
+	
 	  // standard video settings
 	  autoplay  : 'auto',
 	  color     : '#444444',
 	  hd        : true,
 	  brandedUI : false,
-
+	
 	  // additional parameters to include with the embed
 	  parameters: false,
-
+	
 	  onDisplay            : function() {},
 	  onPlaceholderDisplay : function() {},
 	  onReset              : function() {},
@@ -8313,7 +8313,7 @@
 	  onEmbed              : function(parameters) {
 	    return parameters;
 	  },
-
+	
 	  metadata    : {
 	    id          : 'id',
 	    icon        : 'icon',
@@ -8321,23 +8321,23 @@
 	    source      : 'source',
 	    url         : 'url'
 	  },
-
+	
 	  error : {
 	    noURL  : 'No URL specified',
 	    method : 'The method you called is not defined'
 	  },
-
+	
 	  className : {
 	    active : 'active',
 	    embed  : 'embed'
 	  },
-
+	
 	  selector : {
 	    embed       : '.embed',
 	    placeholder : '.placeholder',
 	    icon        : '.icon'
 	  },
-
+	
 	  sources: {
 	    youtube: {
 	      name   : 'youtube',
@@ -8374,7 +8374,7 @@
 	      }
 	    }
 	  },
-
+	
 	  templates: {
 	    iframe : function(url, parameters) {
 	      return ''
@@ -8396,19 +8396,19 @@
 	      return html;
 	    }
 	  },
-
+	
 	  // NOT YET IMPLEMENTED
 	  api     : true,
 	  onPause : function() {},
 	  onPlay  : function() {},
 	  onStop  : function() {}
-
+	
 	};
-
-
-
+	
+	
+	
 	})( jQuery, window, document );
-
+	
 	/*!
 	 * # Semantic UI 2.1.7 - Modal
 	 * http://github.com/semantic-org/semantic-ui/
@@ -8419,85 +8419,85 @@
 	 * http://opensource.org/licenses/MIT
 	 *
 	 */
-
+	
 	;(function ( $, window, document, undefined ) {
-
+	
 	"use strict";
-
+	
 	$.fn.modal = function(parameters) {
 	  var
 	    $allModules    = $(this),
 	    $window        = $(window),
 	    $document      = $(document),
 	    $body          = $('body'),
-
+	
 	    moduleSelector = $allModules.selector || '',
-
+	
 	    time           = new Date().getTime(),
 	    performance    = [],
-
+	
 	    query          = arguments[0],
 	    methodInvoked  = (typeof query == 'string'),
 	    queryArguments = [].slice.call(arguments, 1),
-
+	
 	    requestAnimationFrame = window.requestAnimationFrame
 	      || window.mozRequestAnimationFrame
 	      || window.webkitRequestAnimationFrame
 	      || window.msRequestAnimationFrame
 	      || function(callback) { setTimeout(callback, 0); },
-
+	
 	    returnedValue
 	  ;
-
+	
 	  $allModules
 	    .each(function() {
 	      var
 	        settings    = ( $.isPlainObject(parameters) )
 	          ? $.extend(true, {}, $.fn.modal.settings, parameters)
 	          : $.extend({}, $.fn.modal.settings),
-
+	
 	        selector        = settings.selector,
 	        className       = settings.className,
 	        namespace       = settings.namespace,
 	        error           = settings.error,
-
+	
 	        eventNamespace  = '.' + namespace,
 	        moduleNamespace = 'module-' + namespace,
-
+	
 	        $module         = $(this),
 	        $context        = $(settings.context),
 	        $close          = $module.find(selector.close),
-
+	
 	        $allModals,
 	        $otherModals,
 	        $focusedElement,
 	        $dimmable,
 	        $dimmer,
-
+	
 	        element         = this,
 	        instance        = $module.data(moduleNamespace),
-
+	
 	        elementNamespace,
 	        id,
 	        observer,
 	        module
 	      ;
 	      module  = {
-
+	
 	        initialize: function() {
 	          module.verbose('Initializing dimmer', $context);
-
+	
 	          module.create.id();
 	          module.create.dimmer();
 	          module.refreshModals();
-
+	
 	          module.bind.events();
 	          if(settings.observeChanges) {
 	            module.observeChanges();
 	          }
 	          module.instantiate();
 	        },
-
+	
 	        instantiate: function() {
 	          module.verbose('Storing instance of modal');
 	          instance = module;
@@ -8505,7 +8505,7 @@
 	            .data(moduleNamespace, instance)
 	          ;
 	        },
-
+	
 	        create: {
 	          dimmer: function() {
 	            var
@@ -8549,7 +8549,7 @@
 	            module.verbose('Creating unique id for element', id);
 	          }
 	        },
-
+	
 	        destroy: function() {
 	          module.verbose('Destroying previous modal');
 	          $module
@@ -8560,7 +8560,7 @@
 	          $close.off(eventNamespace);
 	          $context.dimmer('destroy');
 	        },
-
+	
 	        observeChanges: function() {
 	          if('MutationObserver' in window) {
 	            observer = new MutationObserver(function(mutations) {
@@ -8574,7 +8574,7 @@
 	            module.debug('Setting up mutation observer', observer);
 	          }
 	        },
-
+	
 	        refresh: function() {
 	          module.remove.scrolling();
 	          module.cacheSizes();
@@ -8582,12 +8582,12 @@
 	          module.set.type();
 	          module.set.position();
 	        },
-
+	
 	        refreshModals: function() {
 	          $otherModals = $module.siblings(selector.modal);
 	          $allModals   = $otherModals.add($module);
 	        },
-
+	
 	        attachEvents: function(selector, event) {
 	          var
 	            $toggle = $(selector)
@@ -8607,7 +8607,7 @@
 	            module.error(error.notFound, selector);
 	          }
 	        },
-
+	
 	        bind: {
 	          events: function() {
 	            module.verbose('Attaching events');
@@ -8621,13 +8621,13 @@
 	            ;
 	          }
 	        },
-
+	
 	        get: {
 	          id: function() {
 	            return (Math.random().toString(16) + '000000000').substr(2,8);
 	          }
 	        },
-
+	
 	        event: {
 	          approve: function() {
 	            if(settings.onApprove.call(element, $(this)) === false) {
@@ -8691,7 +8691,7 @@
 	            }
 	          }
 	        },
-
+	
 	        toggle: function() {
 	          if( module.is.active() || module.is.animating() ) {
 	            module.hide();
@@ -8700,7 +8700,7 @@
 	            module.show();
 	          }
 	        },
-
+	
 	        show: function(callback) {
 	          callback = $.isFunction(callback)
 	            ? callback
@@ -8709,7 +8709,7 @@
 	          module.refreshModals();
 	          module.showModal(callback);
 	        },
-
+	
 	        hide: function(callback) {
 	          callback = $.isFunction(callback)
 	            ? callback
@@ -8718,21 +8718,21 @@
 	          module.refreshModals();
 	          module.hideModal(callback);
 	        },
-
+	
 	        showModal: function(callback) {
 	          callback = $.isFunction(callback)
 	            ? callback
 	            : function(){}
 	          ;
 	          if( module.is.animating() || !module.is.active() ) {
-
+	
 	            module.showDimmer();
 	            module.cacheSizes();
 	            module.set.position();
 	            module.set.screenHeight();
 	            module.set.type();
 	            module.set.clickaway();
-
+	
 	            if( !settings.allowMultiple && module.others.active() ) {
 	              module.hideOthers(module.showModal);
 	            }
@@ -8769,7 +8769,7 @@
 	            module.debug('Modal is already visible');
 	          }
 	        },
-
+	
 	        hideModal: function(callback, keepDimmed) {
 	          callback = $.isFunction(callback)
 	            ? callback
@@ -8780,7 +8780,7 @@
 	            module.verbose('Hide callback returned false cancelling hide');
 	            return;
 	          }
-
+	
 	          if( module.is.animating() || module.is.active() ) {
 	            if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
 	              module.remove.active();
@@ -8810,7 +8810,7 @@
 	            }
 	          }
 	        },
-
+	
 	        showDimmer: function() {
 	          if($dimmable.dimmer('is animating') || !$dimmable.dimmer('is active') ) {
 	            module.debug('Showing dimmer');
@@ -8820,7 +8820,7 @@
 	            module.debug('Dimmer already visible');
 	          }
 	        },
-
+	
 	        hideDimmer: function() {
 	          if( $dimmable.dimmer('is animating') || ($dimmable.dimmer('is active')) ) {
 	            $dimmable.dimmer('hide', function() {
@@ -8833,7 +8833,7 @@
 	            return;
 	          }
 	        },
-
+	
 	        hideAll: function(callback) {
 	          var
 	            $visibleModals = $allModals.filter('.' + className.active + ', .' + className.animating)
@@ -8850,7 +8850,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        hideOthers: function(callback) {
 	          var
 	            $visibleModals = $otherModals.filter('.' + className.active + ', .' + className.animating)
@@ -8866,7 +8866,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        others: {
 	          active: function() {
 	            return ($otherModals.filter('.' + className.active).length > 0);
@@ -8875,8 +8875,8 @@
 	            return ($otherModals.filter('.' + className.animating).length > 0);
 	          }
 	        },
-
-
+	
+	
 	        add: {
 	          keyboardShortcuts: function() {
 	            module.verbose('Adding keyboard shortcuts');
@@ -8885,13 +8885,13 @@
 	            ;
 	          }
 	        },
-
+	
 	        save: {
 	          focus: function() {
 	            $focusedElement = $(document.activeElement).blur();
 	          }
 	        },
-
+	
 	        restore: {
 	          focus: function() {
 	            if($focusedElement && $focusedElement.length > 0) {
@@ -8899,7 +8899,7 @@
 	            }
 	          }
 	        },
-
+	
 	        remove: {
 	          active: function() {
 	            $module.removeClass(className.active);
@@ -8934,7 +8934,7 @@
 	            $module.removeClass(className.scrolling);
 	          }
 	        },
-
+	
 	        cacheSizes: function() {
 	          var
 	            modalHeight = $module.outerHeight()
@@ -8950,13 +8950,13 @@
 	          }
 	          module.debug('Caching modal and container sizes', module.cache);
 	        },
-
+	
 	        can: {
 	          fit: function() {
 	            return ( ( module.cache.height + (settings.padding * 2) ) < module.cache.contextHeight);
 	          }
 	        },
-
+	
 	        is: {
 	          active: function() {
 	            return $module.hasClass(className.active);
@@ -8975,7 +8975,7 @@
 	            return !(window.ActiveXObject || "ActiveXObject" in window);
 	          }
 	        },
-
+	
 	        set: {
 	          autofocus: function() {
 	            var
@@ -9049,7 +9049,7 @@
 	            $dimmable.addClass(className.undetached);
 	          }
 	        },
-
+	
 	        setting: function(name, value) {
 	          module.debug('Changing setting', name, value);
 	          if( $.isPlainObject(name) ) {
@@ -9204,7 +9204,7 @@
 	          return found;
 	        }
 	      };
-
+	
 	      if(methodInvoked) {
 	        if(instance === undefined) {
 	          module.initialize();
@@ -9219,66 +9219,66 @@
 	      }
 	    })
 	  ;
-
+	
 	  return (returnedValue !== undefined)
 	    ? returnedValue
 	    : this
 	  ;
 	};
-
+	
 	$.fn.modal.settings = {
-
+	
 	  name           : 'Modal',
 	  namespace      : 'modal',
-
+	
 	  debug          : false,
 	  verbose        : false,
 	  performance    : true,
-
+	
 	  observeChanges : false,
-
+	
 	  allowMultiple  : false,
 	  detachable     : true,
 	  closable       : true,
 	  autofocus      : true,
-
+	
 	  inverted       : false,
 	  blurring       : false,
-
+	
 	  dimmerSettings : {
 	    closable : false,
 	    useCSS   : true
 	  },
-
-
+	
+	
 	  context    : 'body',
-
+	
 	  queue      : false,
 	  duration   : 500,
 	  offset     : 0,
 	  transition : 'scale',
-
+	
 	  // padding with edge of page
 	  padding    : 50,
-
+	
 	  // called before show animation
 	  onShow     : function(){},
-
+	
 	  // called after show animation
 	  onVisible  : function(){},
-
+	
 	  // called before hide animation
 	  onHide     : function(){ return true; },
-
+	
 	  // called after hide animation
 	  onHidden   : function(){},
-
+	
 	  // called after approve selector match
 	  onApprove  : function(){ return true; },
-
+	
 	  // called after deny selector match
 	  onDeny     : function(){ return true; },
-
+	
 	  selector    : {
 	    close    : '> .close',
 	    approve  : '.actions .positive, .actions .approve, .actions .ok',
@@ -9298,10 +9298,10 @@
 	    undetached : 'undetached'
 	  }
 	};
-
-
+	
+	
 	})( jQuery, window, document );
-
+	
 	/*!
 	 * # Semantic UI 2.1.7 - Nag
 	 * http://github.com/semantic-org/semantic-ui/
@@ -9312,19 +9312,19 @@
 	 * http://opensource.org/licenses/MIT
 	 *
 	 */
-
+	
 	;(function ($, window, document, undefined) {
-
+	
 	"use strict";
-
+	
 	$.fn.nag = function(parameters) {
 	  var
 	    $allModules    = $(this),
 	    moduleSelector = $allModules.selector || '',
-
+	
 	    time           = new Date().getTime(),
 	    performance    = [],
-
+	
 	    query          = arguments[0],
 	    methodInvoked  = (typeof query == 'string'),
 	    queryArguments = [].slice.call(arguments, 1),
@@ -9336,38 +9336,38 @@
 	        settings          = ( $.isPlainObject(parameters) )
 	          ? $.extend(true, {}, $.fn.nag.settings, parameters)
 	          : $.extend({}, $.fn.nag.settings),
-
+	
 	        className       = settings.className,
 	        selector        = settings.selector,
 	        error           = settings.error,
 	        namespace       = settings.namespace,
-
+	
 	        eventNamespace  = '.' + namespace,
 	        moduleNamespace = namespace + '-module',
-
+	
 	        $module         = $(this),
-
+	
 	        $close          = $module.find(selector.close),
 	        $context        = (settings.context)
 	          ? $(settings.context)
 	          : $('body'),
-
+	
 	        element         = this,
 	        instance        = $module.data(moduleNamespace),
-
+	
 	        moduleOffset,
 	        moduleHeight,
-
+	
 	        contextWidth,
 	        contextHeight,
 	        contextOffset,
-
+	
 	        yOffset,
 	        yPosition,
-
+	
 	        timer,
 	        module,
-
+	
 	        requestAnimationFrame = window.requestAnimationFrame
 	          || window.mozRequestAnimationFrame
 	          || window.webkitRequestAnimationFrame
@@ -9375,28 +9375,28 @@
 	          || function(callback) { setTimeout(callback, 0); }
 	      ;
 	      module = {
-
+	
 	        initialize: function() {
 	          module.verbose('Initializing element');
-
+	
 	          $module
 	            .on('click' + eventNamespace, selector.close, module.dismiss)
 	            .data(moduleNamespace, module)
 	          ;
-
+	
 	          if(settings.detachable && $module.parent()[0] !== $context[0]) {
 	            $module
 	              .detach()
 	              .prependTo($context)
 	            ;
 	          }
-
+	
 	          if(settings.displayTime > 0) {
 	            setTimeout(module.hide, settings.displayTime);
 	          }
 	          module.show();
 	        },
-
+	
 	        destroy: function() {
 	          module.verbose('Destroying instance');
 	          $module
@@ -9404,7 +9404,7 @@
 	            .off(eventNamespace)
 	          ;
 	        },
-
+	
 	        show: function() {
 	          if( module.should.show() && !$module.is(':visible') ) {
 	            module.debug('Showing nag', settings.animation.show);
@@ -9420,7 +9420,7 @@
 	            }
 	          }
 	        },
-
+	
 	        hide: function() {
 	          module.debug('Showing nag', settings.animation.hide);
 	          if(settings.animation.show == 'fade') {
@@ -9434,7 +9434,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        onHide: function() {
 	          module.debug('Removing nag', settings.animation.hide);
 	          $module.remove();
@@ -9442,7 +9442,7 @@
 	            settings.onHide();
 	          }
 	        },
-
+	
 	        dismiss: function(event) {
 	          if(settings.storageMethod) {
 	            module.storage.set(settings.key, settings.value);
@@ -9451,7 +9451,7 @@
 	          event.stopImmediatePropagation();
 	          event.preventDefault();
 	        },
-
+	
 	        should: {
 	          show: function() {
 	            if(settings.persist) {
@@ -9466,7 +9466,7 @@
 	            return false;
 	          }
 	        },
-
+	
 	        get: {
 	          storageOptions: function() {
 	            var
@@ -9484,11 +9484,11 @@
 	            return options;
 	          }
 	        },
-
+	
 	        clear: function() {
 	          module.storage.remove(settings.key);
 	        },
-
+	
 	        storage: {
 	          set: function(key, value) {
 	            var
@@ -9552,7 +9552,7 @@
 	            }
 	          }
 	        },
-
+	
 	        setting: function(name, value) {
 	          module.debug('Changing setting', name, value);
 	          if( $.isPlainObject(name) ) {
@@ -9708,7 +9708,7 @@
 	          return found;
 	        }
 	      };
-
+	
 	      if(methodInvoked) {
 	        if(instance === undefined) {
 	          module.initialize();
@@ -9723,72 +9723,72 @@
 	      }
 	    })
 	  ;
-
+	
 	  return (returnedValue !== undefined)
 	    ? returnedValue
 	    : this
 	  ;
 	};
-
+	
 	$.fn.nag.settings = {
-
+	
 	  name        : 'Nag',
-
+	
 	  debug       : false,
 	  verbose     : false,
 	  performance : true,
-
+	
 	  namespace   : 'Nag',
-
+	
 	  // allows cookie to be overriden
 	  persist     : false,
-
+	
 	  // set to zero to require manually dismissal, otherwise hides on its own
 	  displayTime : 0,
-
+	
 	  animation   : {
 	    show : 'slide',
 	    hide : 'slide'
 	  },
-
+	
 	  context       : false,
 	  detachable    : false,
-
+	
 	  expires       : 30,
 	  domain        : false,
 	  path          : '/',
-
+	
 	  // type of storage to use
 	  storageMethod : 'cookie',
-
+	
 	  // value to store in dismissed localstorage/cookie
 	  key           : 'nag',
 	  value         : 'dismiss',
-
+	
 	  error: {
 	    noCookieStorage : '$.cookie is not included. A storage solution is required.',
 	    noStorage       : 'Neither $.cookie or store is defined. A storage solution is required for storing state',
 	    method          : 'The method you called is not defined.'
 	  },
-
+	
 	  className     : {
 	    bottom : 'bottom',
 	    fixed  : 'fixed'
 	  },
-
+	
 	  selector      : {
 	    close : '.close.icon'
 	  },
-
+	
 	  speed         : 500,
 	  easing        : 'easeOutQuad',
-
+	
 	  onHide: function() {}
-
+	
 	};
-
+	
 	})( jQuery, window, document );
-
+	
 	/*!
 	 * # Semantic UI 2.1.7 - Popup
 	 * http://github.com/semantic-org/semantic-ui/
@@ -9799,28 +9799,28 @@
 	 * http://opensource.org/licenses/MIT
 	 *
 	 */
-
+	
 	;(function ($, window, document, undefined) {
-
+	
 	"use strict";
-
+	
 	$.fn.popup = function(parameters) {
 	  var
 	    $allModules    = $(this),
 	    $document      = $(document),
 	    $window        = $(window),
 	    $body          = $('body'),
-
+	
 	    moduleSelector = $allModules.selector || '',
-
+	
 	    hasTouch       = (true),
 	    time           = new Date().getTime(),
 	    performance    = [],
-
+	
 	    query          = arguments[0],
 	    methodInvoked  = (typeof query == 'string'),
 	    queryArguments = [].slice.call(arguments, 1),
-
+	
 	    returnedValue
 	  ;
 	  $allModules
@@ -9829,39 +9829,39 @@
 	        settings        = ( $.isPlainObject(parameters) )
 	          ? $.extend(true, {}, $.fn.popup.settings, parameters)
 	          : $.extend({}, $.fn.popup.settings),
-
+	
 	        selector           = settings.selector,
 	        className          = settings.className,
 	        error              = settings.error,
 	        metadata           = settings.metadata,
 	        namespace          = settings.namespace,
-
+	
 	        eventNamespace     = '.' + settings.namespace,
 	        moduleNamespace    = 'module-' + namespace,
-
+	
 	        $module            = $(this),
 	        $context           = $(settings.context),
 	        $target            = (settings.target)
 	          ? $(settings.target)
 	          : $module,
-
+	
 	        $popup,
 	        $offsetParent,
-
+	
 	        searchDepth        = 0,
 	        triedPositions     = false,
 	        openedWithTouch    = false,
-
+	
 	        element            = this,
 	        instance           = $module.data(moduleNamespace),
-
+	
 	        elementNamespace,
 	        id,
 	        module
 	      ;
-
+	
 	      module = {
-
+	
 	        // binds events
 	        initialize: function() {
 	          module.debug('Initializing', $module);
@@ -9872,7 +9872,7 @@
 	          }
 	          module.instantiate();
 	        },
-
+	
 	        instantiate: function() {
 	          module.verbose('Storing instance', module);
 	          instance = module;
@@ -9880,7 +9880,7 @@
 	            .data(moduleNamespace, instance)
 	          ;
 	        },
-
+	
 	        refresh: function() {
 	          if(settings.popup) {
 	            $popup = $(settings.popup).eq(0);
@@ -9919,12 +9919,12 @@
 	            module.set.variation();
 	          }
 	        },
-
+	
 	        reposition: function() {
 	          module.refresh();
 	          module.set.position();
 	        },
-
+	
 	        destroy: function() {
 	          module.debug('Destroying previous module');
 	          // remove element only if was created dynamically
@@ -9941,7 +9941,7 @@
 	            .removeData(moduleNamespace)
 	          ;
 	        },
-
+	
 	        event: {
 	          start:  function(event) {
 	            var
@@ -9983,7 +9983,7 @@
 	            }
 	          }
 	        },
-
+	
 	        // generates popup html from metadata
 	        create: function() {
 	          var
@@ -9991,7 +9991,7 @@
 	            title     = module.get.title(),
 	            content   = module.get.content()
 	          ;
-
+	
 	          if(html || content || title) {
 	            module.debug('Creating pop-up html');
 	            if(!html) {
@@ -10019,7 +10019,7 @@
 	            }
 	            module.refresh();
 	            module.set.variation();
-
+	
 	            if(settings.hoverable) {
 	              module.bind.popup();
 	            }
@@ -10046,13 +10046,13 @@
 	            module.debug('No content specified skipping display', element);
 	          }
 	        },
-
+	
 	        createID: function() {
 	          id = (Math.random().toString(16) + '000000000').substr(2,8);
 	          elementNamespace = '.' + id;
 	          module.verbose('Creating unique id for element', id);
 	        },
-
+	
 	        // determines popup state
 	        toggle: function() {
 	          module.debug('Toggling pop-up');
@@ -10066,7 +10066,7 @@
 	            module.hide();
 	          }
 	        },
-
+	
 	        show: function(callback) {
 	          callback = callback || function(){};
 	          module.debug('Showing pop-up', settings.transition);
@@ -10090,8 +10090,8 @@
 	            }
 	          }
 	        },
-
-
+	
+	
 	        hide: function(callback) {
 	          callback = callback || function(){};
 	          if( module.is.visible() || module.is.animating() ) {
@@ -10105,7 +10105,7 @@
 	            module.animate.hide(callback);
 	          }
 	        },
-
+	
 	        hideAll: function() {
 	          $(selector.popup)
 	            .filter('.' + className.visible)
@@ -10131,7 +10131,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        removePopup: function() {
 	          if( module.has.popup() && !settings.popup) {
 	            module.debug('Removing popup', $popup);
@@ -10140,7 +10140,7 @@
 	            settings.onRemove.call($popup, element);
 	          }
 	        },
-
+	
 	        save: {
 	          conditions: function() {
 	            module.cache = {
@@ -10213,13 +10213,13 @@
 	            }
 	          }
 	        },
-
+	
 	        change: {
 	          content: function(html) {
 	            $popup.html(html);
 	          }
 	        },
-
+	
 	        get: {
 	          html: function() {
 	            $module.removeData(metadata.html);
@@ -10282,7 +10282,7 @@
 	                height : $window.height()
 	              }
 	            };
-
+	
 	            // add in container calcs if fluid
 	            if( settings.setFluidWidth && module.is.fluid() ) {
 	              calculations.container = {
@@ -10290,7 +10290,7 @@
 	              };
 	              calculations.popup.width = calculations.container.width;
 	            }
-
+	
 	            // add in margins if inline
 	            calculations.target.margin.top = (settings.inline)
 	              ? parseInt( window.getComputedStyle(targetElement).getPropertyValue('margin-top'), 10)
@@ -10344,11 +10344,11 @@
 	            ;
 	            offset       = offset       || module.get.offset();
 	            calculations = calculations || module.get.calculations();
-
+	
 	            // shorthand
 	            popup        = calculations.popup;
 	            boundary     = calculations.boundary;
-
+	
 	            if(offset) {
 	              distanceFromBoundary = {
 	                top    : (offset.top - boundary.top),
@@ -10434,10 +10434,10 @@
 	              module.verbose('All available positions available');
 	              triedPositions = module.get.positions();
 	            }
-
+	
 	            module.debug('Recording last position tried', position);
 	            triedPositions[position] = true;
-
+	
 	            if(settings.prefer === 'opposite') {
 	              nextPosition  = [opposite[verticalPosition], horizontalPosition];
 	              nextPosition  = nextPosition.join(' ');
@@ -10457,10 +10457,10 @@
 	            return nextPosition;
 	          }
 	        },
-
+	
 	        set: {
 	          position: function(position, calculations) {
-
+	
 	            // exit conditions
 	            if($target.length === 0 || $popup.length === 0) {
 	              module.error(error.notFound);
@@ -10476,23 +10476,23 @@
 	              popupOffset,
 	              distanceFromBoundary
 	            ;
-
+	
 	            calculations = calculations || module.get.calculations();
 	            position     = position     || $module.data(metadata.position) || settings.position;
-
+	
 	            offset       = $module.data(metadata.offset) || settings.offset;
 	            distanceAway = settings.distanceAway;
-
+	
 	            // shorthand
 	            target = calculations.target;
 	            popup  = calculations.popup;
 	            parent = calculations.parent;
-
+	
 	            if(target.width === 0 && target.height === 0 && !(target.element instanceof SVGGraphicsElement)) {
 	              module.debug('Popup target is hidden, no action taken');
 	              return false;
 	            }
-
+	
 	            if(settings.inline) {
 	              module.debug('Adding margin to calculation', target.margin);
 	              if(position == 'left center' || position == 'right center') {
@@ -10508,9 +10508,9 @@
 	                distanceAway += target.margin.top;
 	              }
 	            }
-
+	
 	            module.debug('Determining popup position from calculations', position, calculations);
-
+	
 	            if (module.is.rtl()) {
 	              position = position.replace(/left|right/g, function (match) {
 	                return (match == 'left')
@@ -10520,12 +10520,12 @@
 	              });
 	              module.debug('RTL: Popup position updated', position);
 	            }
-
+	
 	            // if last attempt use specified last resort position
 	            if(searchDepth == settings.maxSearchDepth && typeof settings.lastResort === 'string') {
 	              position = settings.lastResort;
 	            }
-
+	
 	            switch (position) {
 	              case 'top left':
 	                positioning = {
@@ -10595,9 +10595,9 @@
 	            if(positioning === undefined) {
 	              module.error(error.invalidPosition, position);
 	            }
-
+	
 	            module.debug('Calculated popup positioning values', positioning);
-
+	
 	            // tentatively place on stage
 	            $popup
 	              .css(positioning)
@@ -10605,12 +10605,12 @@
 	              .addClass(position)
 	              .addClass(className.loading)
 	            ;
-
+	
 	            popupOffset = module.get.popupOffset();
-
+	
 	            // see if any boundaries are surpassed with this tentative position
 	            distanceFromBoundary = module.get.distanceFromBoundary(popupOffset, calculations);
-
+	
 	            if( module.is.offstage(distanceFromBoundary, position) ) {
 	              module.debug('Position is outside viewport', position);
 	              if(searchDepth < settings.maxSearchDepth) {
@@ -10645,13 +10645,13 @@
 	            }
 	            return true;
 	          },
-
+	
 	          fluidWidth: function(calculations) {
 	            calculations = calculations || module.get.calculations();
 	            module.debug('Automatically setting element width to parent width', calculations.parent.width);
 	            $popup.css('width', calculations.container.width);
 	          },
-
+	
 	          variation: function(variation) {
 	            variation = variation || module.get.variation();
 	            if(variation && module.has.popup() ) {
@@ -10659,12 +10659,12 @@
 	              $popup.addClass(variation);
 	            }
 	          },
-
+	
 	          visible: function() {
 	            $module.addClass(className.visible);
 	          }
 	        },
-
+	
 	        remove: {
 	          loading: function() {
 	            $popup.removeClass(className.loading);
@@ -10685,7 +10685,7 @@
 	            triedPositions = false;
 	          }
 	        },
-
+	
 	        bind: {
 	          events: function() {
 	            module.debug('Binding popup events to module');
@@ -10748,7 +10748,7 @@
 	            }
 	          }
 	        },
-
+	
 	        unbind: {
 	          close: function() {
 	            if(settings.hideOnScroll === true || (settings.hideOnScroll == 'auto' && settings.on != 'click')) {
@@ -10773,13 +10773,13 @@
 	            }
 	          }
 	        },
-
+	
 	        has: {
 	          popup: function() {
 	            return ($popup && $popup.length > 0);
 	          }
 	        },
-
+	
 	        is: {
 	          offstage: function(distanceFromBoundary, position) {
 	            var
@@ -10821,7 +10821,7 @@
 	            return $module.css('direction') == 'rtl';
 	          }
 	        },
-
+	
 	        reset: function() {
 	          module.remove.visible();
 	          if(settings.preserve) {
@@ -10835,7 +10835,7 @@
 	            module.removePopup();
 	          }
 	        },
-
+	
 	        setting: function(name, value) {
 	          if( $.isPlainObject(name) ) {
 	            $.extend(true, settings, name);
@@ -10989,7 +10989,7 @@
 	          return found;
 	        }
 	      };
-
+	
 	      if(methodInvoked) {
 	        if(instance === undefined) {
 	          module.initialize();
@@ -11004,126 +11004,126 @@
 	      }
 	    })
 	  ;
-
+	
 	  return (returnedValue !== undefined)
 	    ? returnedValue
 	    : this
 	  ;
 	};
-
+	
 	$.fn.popup.settings = {
-
+	
 	  name         : 'Popup',
-
+	
 	  // module settings
 	  debug        : false,
 	  verbose      : false,
 	  performance  : true,
 	  namespace    : 'popup',
-
+	
 	  // callback only when element added to dom
 	  onCreate     : function(){},
-
+	
 	  // callback before element removed from dom
 	  onRemove     : function(){},
-
+	
 	  // callback before show animation
 	  onShow       : function(){},
-
+	
 	  // callback after show animation
 	  onVisible    : function(){},
-
+	
 	  // callback before hide animation
 	  onHide       : function(){},
-
+	
 	  // callback when popup cannot be positioned in visible screen
 	  onUnplaceable: function(){},
-
+	
 	  // callback after hide animation
 	  onHidden     : function(){},
-
+	
 	  // when to show popup
 	  on           : 'hover',
-
+	
 	  // whether to add touchstart events when using hover
 	  addTouchEvents : true,
-
+	
 	  // default position relative to element
 	  position     : 'top left',
-
+	
 	  // name of variation to use
 	  variation    : '',
-
+	
 	  // whether popup should be moved to context
 	  movePopup      : true,
-
+	
 	  // element which popup should be relative to
 	  target         : false,
-
+	
 	  // jq selector or element that should be used as popup
 	  popup          : false,
-
+	
 	  // popup should remain inline next to activator
 	  inline         : false,
-
+	
 	  // popup should be removed from page on hide
 	  preserve       : false,
-
+	
 	  // popup should not close when being hovered on
 	  hoverable      : false,
-
+	
 	  // explicitly set content
 	  content      : false,
-
+	
 	  // explicitly set html
 	  html         : false,
-
+	
 	  // explicitly set title
 	  title        : false,
-
+	
 	  // whether automatically close on clickaway when on click
 	  closable     : true,
-
+	
 	  // automatically hide on scroll
 	  hideOnScroll : 'auto',
-
+	
 	  // hide other popups on show
 	  exclusive    : false,
-
+	
 	  // context to attach popups
 	  context      : 'body',
-
+	
 	  // position to prefer when calculating new position
 	  prefer       : 'opposite',
-
+	
 	  // specify position to appear even if it doesn't fit
 	  lastResort   : false,
-
+	
 	  // delay used to prevent accidental refiring of animations due to user error
 	  delay        : {
 	    show : 50,
 	    hide : 70
 	  },
-
+	
 	  // whether fluid variation should assign width explicitly
 	  setFluidWidth  : true,
-
+	
 	  // transition settings
 	  duration       : 200,
 	  transition     : 'scale',
-
+	
 	  // distance away from activating element in px
 	  distanceAway   : 0,
-
+	
 	  // number of pixels an element is allowed to be "offstage" for a position to be chosen (allows for rounding)
 	  jitter         : 2,
-
+	
 	  // offset on aligning axis from calculated position
 	  offset         : 0,
-
+	
 	  // maximum times to look for a position before failing (9 positions total)
 	  maxSearchDepth : 15,
-
+	
 	  error: {
 	    invalidPosition : 'The position you specified is not a valid position',
 	    cannotPlace     : 'Popup does not fit within the boundaries of the viewport',
@@ -11131,7 +11131,7 @@
 	    noTransition    : 'This module requires ui transitions <https://github.com/Semantic-Org/UI-Transition>',
 	    notFound        : 'The target or popup you specified does not exist on the page'
 	  },
-
+	
 	  metadata: {
 	    activator : 'activator',
 	    content   : 'content',
@@ -11141,7 +11141,7 @@
 	    title     : 'title',
 	    variation : 'variation'
 	  },
-
+	
 	  className   : {
 	    active    : 'active',
 	    animating : 'animating',
@@ -11152,11 +11152,11 @@
 	    position  : 'top left center bottom right',
 	    visible   : 'visible'
 	  },
-
+	
 	  selector    : {
 	    popup    : '.ui.popup'
 	  },
-
+	
 	  templates: {
 	    escape: function(string) {
 	      var
@@ -11197,12 +11197,12 @@
 	      return html;
 	    }
 	  }
-
+	
 	};
-
-
+	
+	
 	})( jQuery, window, document );
-
+	
 	/*!
 	 * # Semantic UI 2.1.7 - Progress
 	 * http://github.com/semantic-org/semantic-ui/
@@ -11213,70 +11213,70 @@
 	 * http://opensource.org/licenses/MIT
 	 *
 	 */
-
+	
 	;(function ( $, window, document, undefined ) {
-
+	
 	"use strict";
-
+	
 	$.fn.progress = function(parameters) {
 	  var
 	    $allModules    = $(this),
-
+	
 	    moduleSelector = $allModules.selector || '',
-
+	
 	    time           = new Date().getTime(),
 	    performance    = [],
-
+	
 	    query          = arguments[0],
 	    methodInvoked  = (typeof query == 'string'),
 	    queryArguments = [].slice.call(arguments, 1),
-
+	
 	    returnedValue
 	  ;
-
+	
 	  $allModules
 	    .each(function() {
 	      var
 	        settings          = ( $.isPlainObject(parameters) )
 	          ? $.extend(true, {}, $.fn.progress.settings, parameters)
 	          : $.extend({}, $.fn.progress.settings),
-
+	
 	        className       = settings.className,
 	        metadata        = settings.metadata,
 	        namespace       = settings.namespace,
 	        selector        = settings.selector,
 	        error           = settings.error,
-
+	
 	        eventNamespace  = '.' + namespace,
 	        moduleNamespace = 'module-' + namespace,
-
+	
 	        $module         = $(this),
 	        $bar            = $(this).find(selector.bar),
 	        $progress       = $(this).find(selector.progress),
 	        $label          = $(this).find(selector.label),
-
+	
 	        element         = this,
 	        instance        = $module.data(moduleNamespace),
-
+	
 	        animating = false,
 	        transitionEnd,
 	        module
 	      ;
-
+	
 	      module = {
-
+	
 	        initialize: function() {
 	          module.debug('Initializing progress bar', settings);
-
+	
 	          module.set.duration();
 	          module.set.transitionEvent();
-
+	
 	          module.read.metadata();
 	          module.read.settings();
-
+	
 	          module.instantiate();
 	        },
-
+	
 	        instantiate: function() {
 	          module.verbose('Storing instance of progress', module);
 	          instance = module;
@@ -11291,18 +11291,18 @@
 	          $module.removeData(moduleNamespace);
 	          instance = undefined;
 	        },
-
+	
 	        reset: function() {
 	          module.set.percent(0);
 	          module.set.value(0);
 	        },
-
+	
 	        complete: function() {
 	          if(module.percent === undefined || module.percent < 100) {
 	            module.set.percent(100);
 	          }
 	        },
-
+	
 	        read: {
 	          metadata: function() {
 	            var
@@ -11342,7 +11342,7 @@
 	            }
 	          }
 	        },
-
+	
 	        increment: function(incrementValue) {
 	          var
 	            maxValue,
@@ -11352,10 +11352,10 @@
 	          if( module.has.total() ) {
 	            startValue     = module.get.value();
 	            incrementValue = incrementValue || 1;
-
+	
 	            newValue       = startValue + incrementValue;
 	            maxValue       = module.get.total();
-
+	
 	            module.debug('Incrementing value', startValue, newValue, maxValue);
 	            if(newValue > maxValue ) {
 	              module.debug('Value cannot increment above total', maxValue);
@@ -11365,10 +11365,10 @@
 	          else {
 	            startValue     = module.get.percent();
 	            incrementValue = incrementValue || module.get.randomValue();
-
+	
 	            newValue       = startValue + incrementValue;
 	            maxValue       = 100;
-
+	
 	            module.debug('Incrementing percentage by', startValue, newValue);
 	            if(newValue > maxValue ) {
 	              module.debug('Value cannot increment above 100 percent');
@@ -11395,20 +11395,20 @@
 	            newValue       =  startValue - decrementValue;
 	            module.debug('Decrementing percentage by', decrementValue, startValue);
 	          }
-
+	
 	          if(newValue < 0) {
 	            module.debug('Value cannot decrement below 0');
 	            newValue = 0;
 	          }
 	          module.set.progress(newValue);
 	        },
-
+	
 	        has: {
 	          total: function() {
 	            return (module.get.total() !== false);
 	          }
 	        },
-
+	
 	        get: {
 	          text: function(templateText) {
 	            var
@@ -11431,13 +11431,13 @@
 	            module.debug('Adding variables to progress bar text', templateText);
 	            return templateText;
 	          },
-
-
+	
+	
 	          randomValue: function() {
 	            module.debug('Generating random increment percentage');
 	            return Math.floor((Math.random() * settings.random.max) + settings.random.min);
 	          },
-
+	
 	          numericValue: function(value) {
 	            return (typeof value === 'string')
 	              ? (value.replace(/[^\d.]/g, '') !== '')
@@ -11446,7 +11446,7 @@
 	              : value
 	            ;
 	          },
-
+	
 	          transitionEnd: function() {
 	            var
 	              element     = document.createElement('element'),
@@ -11464,7 +11464,7 @@
 	              }
 	            }
 	          },
-
+	
 	          // gets current displayed percentage (if animating values this is the intermediary value)
 	          displayPercent: function() {
 	            var
@@ -11480,7 +11480,7 @@
 	              : Math.round(displayPercent)
 	            ;
 	          },
-
+	
 	          percent: function() {
 	            return module.percent || 0;
 	          },
@@ -11491,7 +11491,7 @@
 	            return module.total || false;
 	          }
 	        },
-
+	
 	        is: {
 	          success: function() {
 	            return $module.hasClass(className.success);
@@ -11509,7 +11509,7 @@
 	            return $module.is(':visible');
 	          }
 	        },
-
+	
 	        remove: {
 	          state: function() {
 	            module.verbose('Removing stored state');
@@ -11534,7 +11534,7 @@
 	            $module.removeClass(className.error);
 	          }
 	        },
-
+	
 	        set: {
 	          barWidth: function(value) {
 	            if(value > 100) {
@@ -11743,7 +11743,7 @@
 	            }
 	          }
 	        },
-
+	
 	        setting: function(name, value) {
 	          module.debug('Changing setting', name, value);
 	          if( $.isPlainObject(name) ) {
@@ -11899,7 +11899,7 @@
 	          return found;
 	        }
 	      };
-
+	
 	      if(methodInvoked) {
 	        if(instance === undefined) {
 	          module.initialize();
@@ -11914,70 +11914,70 @@
 	      }
 	    })
 	  ;
-
+	
 	  return (returnedValue !== undefined)
 	    ? returnedValue
 	    : this
 	  ;
 	};
-
+	
 	$.fn.progress.settings = {
-
+	
 	  name         : 'Progress',
 	  namespace    : 'progress',
-
+	
 	  debug        : false,
 	  verbose      : false,
 	  performance  : true,
-
+	
 	  random       : {
 	    min : 2,
 	    max : 5
 	  },
-
+	
 	  duration     : 300,
-
+	
 	  autoSuccess  : true,
 	  showActivity : true,
 	  limitValues  : true,
-
+	
 	  label        : 'percent',
 	  precision    : 0,
 	  framerate    : (1000 / 30), /// 30 fps
-
+	
 	  percent      : false,
 	  total        : false,
 	  value        : false,
-
+	
 	  onChange     : function(percent, value, total){},
 	  onSuccess    : function(total){},
 	  onActive     : function(value, total){},
 	  onError      : function(value, total){},
 	  onWarning    : function(value, total){},
-
+	
 	  error    : {
 	    method     : 'The method you called is not defined.',
 	    nonNumeric : 'Progress value is non numeric',
 	    tooHigh    : 'Value specified is above 100%',
 	    tooLow     : 'Value specified is below 0%'
 	  },
-
+	
 	  regExp: {
 	    variable: /\{\$*[A-z0-9]+\}/g
 	  },
-
+	
 	  metadata: {
 	    percent : 'percent',
 	    total   : 'total',
 	    value   : 'value'
 	  },
-
+	
 	  selector : {
 	    bar      : '> .bar',
 	    label    : '> .label',
 	    progress : '.bar > .progress'
 	  },
-
+	
 	  text : {
 	    active  : false,
 	    error   : false,
@@ -11986,17 +11986,17 @@
 	    percent : '{percent}%',
 	    ratio   : '{value} of {total}'
 	  },
-
+	
 	  className : {
 	    active  : 'active',
 	    error   : 'error',
 	    success : 'success',
 	    warning : 'warning'
 	  }
-
+	
 	};
-
-
+	
+	
 	})( jQuery, window, document );
 	/*!
 	 * # Semantic UI 2.1.7 - Rating
@@ -12008,19 +12008,19 @@
 	 * http://opensource.org/licenses/MIT
 	 *
 	 */
-
+	
 	;(function ($, window, document, undefined) {
-
+	
 	"use strict";
-
+	
 	$.fn.rating = function(parameters) {
 	  var
 	    $allModules     = $(this),
 	    moduleSelector  = $allModules.selector || '',
-
+	
 	    time            = new Date().getTime(),
 	    performance     = [],
-
+	
 	    query           = arguments[0],
 	    methodInvoked   = (typeof query == 'string'),
 	    queryArguments  = [].slice.call(arguments, 1),
@@ -12032,34 +12032,34 @@
 	        settings        = ( $.isPlainObject(parameters) )
 	          ? $.extend(true, {}, $.fn.rating.settings, parameters)
 	          : $.extend({}, $.fn.rating.settings),
-
+	
 	        namespace       = settings.namespace,
 	        className       = settings.className,
 	        metadata        = settings.metadata,
 	        selector        = settings.selector,
 	        error           = settings.error,
-
+	
 	        eventNamespace  = '.' + namespace,
 	        moduleNamespace = 'module-' + namespace,
-
+	
 	        element         = this,
 	        instance        = $(this).data(moduleNamespace),
-
+	
 	        $module         = $(this),
 	        $icon           = $module.find(selector.icon),
-
+	
 	        module
 	      ;
-
+	
 	      module = {
-
+	
 	        initialize: function() {
 	          module.verbose('Initializing rating module', settings);
-
+	
 	          if($icon.length === 0) {
 	            module.setup.layout();
 	          }
-
+	
 	          if(settings.interactive) {
 	            module.enable();
 	          }
@@ -12069,7 +12069,7 @@
 	          module.set.rating( module.get.initialRating() );
 	          module.instantiate();
 	        },
-
+	
 	        instantiate: function() {
 	          module.verbose('Instantiating module', settings);
 	          instance = module;
@@ -12077,7 +12077,7 @@
 	            .data(moduleNamespace, module)
 	          ;
 	        },
-
+	
 	        destroy: function() {
 	          module.verbose('Destroying previous instance', instance);
 	          module.remove.events();
@@ -12085,11 +12085,11 @@
 	            .removeData(moduleNamespace)
 	          ;
 	        },
-
+	
 	        refresh: function() {
 	          $icon   = $module.find(selector.icon);
 	        },
-
+	
 	        setup: {
 	          layout: function() {
 	            var
@@ -12103,7 +12103,7 @@
 	            module.refresh();
 	          }
 	        },
-
+	
 	        event: {
 	          mouseenter: function() {
 	            var
@@ -12147,12 +12147,12 @@
 	            }
 	          }
 	        },
-
+	
 	        clearRating: function() {
 	          module.debug('Clearing current rating');
 	          module.set.rating(0);
 	        },
-
+	
 	        bind: {
 	          events: function() {
 	            module.verbose('Binding events');
@@ -12163,7 +12163,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        remove: {
 	          events: function() {
 	            module.verbose('Removing events');
@@ -12172,7 +12172,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        enable: function() {
 	          module.debug('Setting rating to interactive mode');
 	          module.bind.events();
@@ -12180,7 +12180,7 @@
 	            .removeClass(className.disabled)
 	          ;
 	        },
-
+	
 	        disable: function() {
 	          module.debug('Setting rating to read-only mode');
 	          module.remove.events();
@@ -12188,7 +12188,7 @@
 	            .addClass(className.disabled)
 	          ;
 	        },
-
+	
 	        get: {
 	          initialRating: function() {
 	            if($module.data(metadata.rating) !== undefined) {
@@ -12212,7 +12212,7 @@
 	            return currentRating;
 	          }
 	        },
-
+	
 	        set: {
 	          rating: function(rating) {
 	            var
@@ -12239,7 +12239,7 @@
 	            settings.onRate.call(element, rating);
 	          }
 	        },
-
+	
 	        setting: function(name, value) {
 	          module.debug('Changing setting', name, value);
 	          if( $.isPlainObject(name) ) {
@@ -12411,51 +12411,51 @@
 	      }
 	    })
 	  ;
-
+	
 	  return (returnedValue !== undefined)
 	    ? returnedValue
 	    : this
 	  ;
 	};
-
+	
 	$.fn.rating.settings = {
-
+	
 	  name          : 'Rating',
 	  namespace     : 'rating',
-
+	
 	  debug         : false,
 	  verbose       : false,
 	  performance   : true,
-
+	
 	  initialRating : 0,
 	  interactive   : true,
 	  maxRating     : 4,
 	  clearable     : 'auto',
-
+	
 	  onRate        : function(rating){},
-
+	
 	  error         : {
 	    method    : 'The method you called is not defined',
 	    noMaximum : 'No maximum rating specified. Cannot generate HTML automatically'
 	  },
-
-
+	
+	
 	  metadata: {
 	    rating    : 'rating',
 	    maxRating : 'maxRating'
 	  },
-
+	
 	  className : {
 	    active   : 'active',
 	    disabled : 'disabled',
 	    selected : 'selected',
 	    loading  : 'loading'
 	  },
-
+	
 	  selector  : {
 	    icon : '.icon'
 	  },
-
+	
 	  templates: {
 	    icon: function(maxRating) {
 	      var
@@ -12469,11 +12469,11 @@
 	      return html;
 	    }
 	  }
-
+	
 	};
-
+	
 	})( jQuery, window, document );
-
+	
 	/*!
 	 * # Semantic UI 2.1.7 - Search
 	 * http://github.com/semantic-org/semantic-ui/
@@ -12484,19 +12484,19 @@
 	 * http://opensource.org/licenses/MIT
 	 *
 	 */
-
+	
 	;(function ($, window, document, undefined) {
-
+	
 	"use strict";
-
+	
 	$.fn.search = function(parameters) {
 	  var
 	    $allModules     = $(this),
 	    moduleSelector  = $allModules.selector || '',
-
+	
 	    time            = new Date().getTime(),
 	    performance     = [],
-
+	
 	    query           = arguments[0],
 	    methodInvoked   = (typeof query == 'string'),
 	    queryArguments  = [].slice.call(arguments, 1),
@@ -12508,7 +12508,7 @@
 	        settings          = ( $.isPlainObject(parameters) )
 	          ? $.extend(true, {}, $.fn.search.settings, parameters)
 	          : $.extend({}, $.fn.search.settings),
-
+	
 	        className       = settings.className,
 	        metadata        = settings.metadata,
 	        regExp          = settings.regExp,
@@ -12516,25 +12516,25 @@
 	        selector        = settings.selector,
 	        error           = settings.error,
 	        namespace       = settings.namespace,
-
+	
 	        eventNamespace  = '.' + namespace,
 	        moduleNamespace = namespace + '-module',
-
+	
 	        $module         = $(this),
 	        $prompt         = $module.find(selector.prompt),
 	        $searchButton   = $module.find(selector.searchButton),
 	        $results        = $module.find(selector.results),
 	        $result         = $module.find(selector.result),
 	        $category       = $module.find(selector.category),
-
+	
 	        element         = this,
 	        instance        = $module.data(moduleNamespace),
-
+	
 	        module
 	      ;
-
+	
 	      module = {
-
+	
 	        initialize: function() {
 	          module.verbose('Initializing module');
 	          module.determine.searchFields();
@@ -12557,7 +12557,7 @@
 	            .removeData(moduleNamespace)
 	          ;
 	        },
-
+	
 	        bind: {
 	          events: function() {
 	            module.verbose('Binding events to search');
@@ -12583,7 +12583,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        determine: {
 	          searchFields: function() {
 	            // this makes sure $.extend does not add specified search fields to default fields
@@ -12593,7 +12593,7 @@
 	            }
 	          }
 	        },
-
+	
 	        event: {
 	          input: function() {
 	            clearTimeout(module.timer);
@@ -12688,7 +12688,7 @@
 	            $category    = $module.find(selector.category),
 	            currentIndex = $result.index( $result.filter('.' + className.active) ),
 	            resultSize   = $result.length,
-
+	
 	            keyCode      = event.which,
 	            keys         = {
 	              backspace : 8,
@@ -12760,7 +12760,7 @@
 	            }
 	          }
 	        },
-
+	
 	        setup: {
 	          api: function() {
 	            var
@@ -12777,7 +12777,7 @@
 	            $module.api(apiSettings);
 	          }
 	        },
-
+	
 	        can: {
 	          useAPI: function() {
 	            return $.fn.api !== undefined;
@@ -12789,7 +12789,7 @@
 	            return settings.transition && $.fn.transition !== undefined && $module.transition('is supported');
 	          }
 	        },
-
+	
 	        is: {
 	          animating: function() {
 	            return $results.hasClass(className.animating);
@@ -12807,7 +12807,7 @@
 	            return ($prompt.filter(':focus').length > 0);
 	          }
 	        },
-
+	
 	        trigger: {
 	          blur: function() {
 	            var
@@ -12821,7 +12821,7 @@
 	            }
 	          }
 	        },
-
+	
 	        get: {
 	          inputEvent: function() {
 	            var
@@ -12875,7 +12875,7 @@
 	            return result || false;
 	          },
 	        },
-
+	
 	        set: {
 	          focus: function() {
 	            $module.addClass(className.focus);
@@ -12899,7 +12899,7 @@
 	            $searchButton.addClass(className.pressed);
 	          }
 	        },
-
+	
 	        remove: {
 	          loading: function() {
 	            $module.removeClass(className.loading);
@@ -12911,7 +12911,7 @@
 	            $searchButton.removeClass(className.pressed);
 	          }
 	        },
-
+	
 	        query: function() {
 	          var
 	            searchTerm = module.get.value(),
@@ -12942,7 +12942,7 @@
 	            module.hideResults();
 	          }
 	        },
-
+	
 	        search: {
 	          local: function(searchTerm) {
 	            var
@@ -12952,7 +12952,7 @@
 	            module.set.loading();
 	            module.save.results(results);
 	            module.debug('Returned local search results', results);
-
+	
 	            searchHTML = module.generateResults({
 	              results: results
 	            });
@@ -12995,7 +12995,7 @@
 	              fuzzyResults = [],
 	              searchExp    = searchTerm.toString().replace(regExp.escape, '\\$&'),
 	              matchRegExp  = new RegExp(regExp.beginsWith + searchExp, 'i'),
-
+	
 	              // avoid duplicates when pushing results
 	              addResult = function(array, result) {
 	                var
@@ -13012,18 +13012,18 @@
 	              ? searchFields
 	              : settings.searchFields
 	            ;
-
+	
 	            // search fields should be array to loop correctly
 	            if(!$.isArray(searchFields)) {
 	              searchFields = [searchFields];
 	            }
-
+	
 	            // exit conditions if no source
 	            if(source === undefined || source === false) {
 	              module.error(error.source);
 	              return [];
 	            }
-
+	
 	            // iterate through search fields looking for matches
 	            $.each(searchFields, function(index, field) {
 	              $.each(source, function(label, content) {
@@ -13045,7 +13045,7 @@
 	            return $.merge(results, fuzzyResults);
 	          }
 	        },
-
+	
 	        fuzzySearch: function(query, term) {
 	          var
 	            termLength  = term.length,
@@ -13075,7 +13075,7 @@
 	          }
 	          return true;
 	        },
-
+	
 	        parse: {
 	          response: function(response, searchTerm) {
 	            var
@@ -13095,7 +13095,7 @@
 	            }
 	          }
 	        },
-
+	
 	        cancel: {
 	          query: function() {
 	            if( module.can.useAPI() ) {
@@ -13103,7 +13103,7 @@
 	            }
 	          }
 	        },
-
+	
 	        has: {
 	          minimumCharacters: function() {
 	            var
@@ -13113,7 +13113,7 @@
 	            return (numCharacters >= settings.minCharacters);
 	          }
 	        },
-
+	
 	        clear: {
 	          cache: function(value) {
 	            var
@@ -13130,7 +13130,7 @@
 	            }
 	          }
 	        },
-
+	
 	        read: {
 	          cache: function(name) {
 	            var
@@ -13146,7 +13146,7 @@
 	            return false;
 	          }
 	        },
-
+	
 	        create: {
 	          id: function(resultIndex, categoryIndex) {
 	            var
@@ -13177,7 +13177,7 @@
 	            }
 	          }
 	        },
-
+	
 	        inject: {
 	          result: function(result, resultIndex, categoryIndex) {
 	            module.verbose('Injecting result into results');
@@ -13234,14 +13234,14 @@
 	            return results;
 	          }
 	        },
-
+	
 	        save: {
 	          results: function(results) {
 	            module.verbose('Saving current search results to metadata', results);
 	            $module.data(metadata.results, results);
 	          }
 	        },
-
+	
 	        write: {
 	          cache: function(name, value) {
 	            var
@@ -13258,7 +13258,7 @@
 	            }
 	          }
 	        },
-
+	
 	        addResults: function(html) {
 	          if( $.isFunction(settings.onResultsAdd) ) {
 	            if( settings.onResultsAdd.call($results, html) === false ) {
@@ -13273,7 +13273,7 @@
 	            module.showResults();
 	          }
 	        },
-
+	
 	        showResults: function() {
 	          if(!module.is.visible()) {
 	            if( module.can.transition() ) {
@@ -13322,7 +13322,7 @@
 	            settings.onResultsClose.call($results);
 	          }
 	        },
-
+	
 	        generateResults: function(response) {
 	          module.debug('Generating html from response', response);
 	          var
@@ -13355,14 +13355,14 @@
 	          settings.onResults.call(element, response);
 	          return html;
 	        },
-
+	
 	        displayMessage: function(text, type) {
 	          type = type || 'standard';
 	          module.debug('Displaying message', text, type);
 	          module.addResults( settings.templates.message(text, type) );
 	          return settings.templates.message(text, type);
 	        },
-
+	
 	        setting: function(name, value) {
 	          if( $.isPlainObject(name) ) {
 	            $.extend(true, settings, name);
@@ -13531,79 +13531,79 @@
 	        }
 	        module.initialize();
 	      }
-
+	
 	    })
 	  ;
-
+	
 	  return (returnedValue !== undefined)
 	    ? returnedValue
 	    : this
 	  ;
 	};
-
+	
 	$.fn.search.settings = {
-
+	
 	  name           : 'Search',
 	  namespace      : 'search',
-
+	
 	  debug          : false,
 	  verbose        : false,
 	  performance    : true,
-
+	
 	  type           : 'standard',
 	  // template to use (specified in settings.templates)
-
+	
 	  minCharacters  : 1,
 	  // minimum characters required to search
-
+	
 	  apiSettings    : false,
 	  // API config
-
+	
 	  source         : false,
 	  // object to search
-
+	
 	  searchFields   : [
 	    'title',
 	    'description'
 	  ],
 	  // fields to search
-
+	
 	  displayField   : '',
 	  // field to display in standard results template
-
+	
 	  searchFullText : true,
 	  // whether to include fuzzy results in local search
-
+	
 	  automatic      : true,
 	  // whether to add events to prompt automatically
-
+	
 	  hideDelay      : 0,
 	  // delay before hiding menu after blur
-
+	
 	  searchDelay    : 200,
 	  // delay before searching
-
+	
 	  maxResults     : 7,
 	  // maximum results returned from local
-
+	
 	  cache          : true,
 	  // whether to store lookups in local cache
-
+	
 	  // transition settings
 	  transition     : 'scale',
 	  duration       : 200,
 	  easing         : 'easeOutExpo',
-
+	
 	  // callbacks
 	  onSelect       : false,
 	  onResultsAdd   : false,
-
+	
 	  onSearchQuery  : function(query){},
 	  onResults      : function(response){},
-
+	
 	  onResultsOpen  : function(){},
 	  onResultsClose : function(){},
-
+	
 	  className: {
 	    animating : 'animating',
 	    active    : 'active',
@@ -13614,7 +13614,7 @@
 	    results   : 'results',
 	    pressed   : 'down'
 	  },
-
+	
 	  error : {
 	    source      : 'Cannot search. No source used, and Semantic API module was not included',
 	    noResults   : 'Your search returned no results',
@@ -13625,18 +13625,18 @@
 	    maxResults  : 'Results must be an array to use maxResults setting',
 	    method      : 'The method you called is not defined.'
 	  },
-
+	
 	  metadata: {
 	    cache   : 'cache',
 	    results : 'results',
 	    result  : 'result'
 	  },
-
+	
 	  regExp: {
 	    escape     : /[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g,
 	    beginsWith : '(?:\s|^)'
 	  },
-
+	
 	  // maps api response attributes to internal representation
 	  fields: {
 	    categories      : 'results',     // array of categories (category view)
@@ -13652,7 +13652,7 @@
 	    actionText      : 'text',        // "view more" text
 	    actionURL       : 'url'          // "view more" url
 	  },
-
+	
 	  selector : {
 	    prompt       : '.prompt',
 	    searchButton : '.search.button',
@@ -13661,7 +13661,7 @@
 	    result       : '.result',
 	    title        : '.title, .name'
 	  },
-
+	
 	  templates: {
 	    escape: function(string) {
 	      var
@@ -13712,17 +13712,17 @@
 	        escape = $.fn.search.settings.templates.escape
 	      ;
 	      if(response[fields.categoryResults] !== undefined) {
-
+	
 	        // each category
 	        $.each(response[fields.categoryResults], function(index, category) {
 	          if(category[fields.results] !== undefined && category.results.length > 0) {
-
+	
 	            html  += '<div class="category">';
-
+	
 	            if(category[fields.categoryName] !== undefined) {
 	              html += '<div class="name">' + category[fields.categoryName] + '</div>';
 	            }
-
+	
 	            // each item inside category
 	            $.each(category.results, function(index, result) {
 	              if(result[fields.url]) {
@@ -13773,7 +13773,7 @@
 	        html = ''
 	      ;
 	      if(response[fields.results] !== undefined) {
-
+	
 	        // each result
 	        $.each(response[fields.results], function(index, result) {
 	          if(result[fields.url]) {
@@ -13804,7 +13804,7 @@
 	          ;
 	          html += '</a>';
 	        });
-
+	
 	        if(response[fields.action]) {
 	          html += ''
 	          + '<a href="' + response[fields.action][fields.actionURL] + '" class="action">'
@@ -13817,9 +13817,9 @@
 	    }
 	  }
 	};
-
+	
 	})( jQuery, window, document );
-
+	
 	/*!
 	 * # Semantic UI 2.1.7 - Shape
 	 * http://github.com/semantic-org/semantic-ui/
@@ -13830,32 +13830,32 @@
 	 * http://opensource.org/licenses/MIT
 	 *
 	 */
-
+	
 	;(function ( $, window, document, undefined ) {
-
+	
 	"use strict";
-
+	
 	$.fn.shape = function(parameters) {
 	  var
 	    $allModules     = $(this),
 	    $body           = $('body'),
-
+	
 	    time            = new Date().getTime(),
 	    performance     = [],
-
+	
 	    query           = arguments[0],
 	    methodInvoked   = (typeof query == 'string'),
 	    queryArguments  = [].slice.call(arguments, 1),
-
+	
 	    requestAnimationFrame = window.requestAnimationFrame
 	      || window.mozRequestAnimationFrame
 	      || window.webkitRequestAnimationFrame
 	      || window.msRequestAnimationFrame
 	      || function(callback) { setTimeout(callback, 0); },
-
+	
 	    returnedValue
 	  ;
-
+	
 	  $allModules
 	    .each(function() {
 	      var
@@ -13863,41 +13863,41 @@
 	        settings       = ( $.isPlainObject(parameters) )
 	          ? $.extend(true, {}, $.fn.shape.settings, parameters)
 	          : $.extend({}, $.fn.shape.settings),
-
+	
 	        // internal aliases
 	        namespace     = settings.namespace,
 	        selector      = settings.selector,
 	        error         = settings.error,
 	        className     = settings.className,
-
+	
 	        // define namespaces for modules
 	        eventNamespace  = '.' + namespace,
 	        moduleNamespace = 'module-' + namespace,
-
+	
 	        // selector cache
 	        $module       = $(this),
 	        $sides        = $module.find(selector.sides),
 	        $side         = $module.find(selector.side),
-
+	
 	        // private variables
 	        nextIndex = false,
 	        $activeSide,
 	        $nextSide,
-
+	
 	        // standard module
 	        element       = this,
 	        instance      = $module.data(moduleNamespace),
 	        module
 	      ;
-
+	
 	      module = {
-
+	
 	        initialize: function() {
 	          module.verbose('Initializing module for', element);
 	          module.set.defaultSide();
 	          module.instantiate();
 	        },
-
+	
 	        instantiate: function() {
 	          module.verbose('Storing instance of module', module);
 	          instance = module;
@@ -13905,7 +13905,7 @@
 	            .data(moduleNamespace, instance)
 	          ;
 	        },
-
+	
 	        destroy: function() {
 	          module.verbose('Destroying previous module for', element);
 	          $module
@@ -13913,14 +13913,14 @@
 	            .off(eventNamespace)
 	          ;
 	        },
-
+	
 	        refresh: function() {
 	          module.verbose('Refreshing selector cache for', element);
 	          $module = $(element);
 	          $sides  = $(this).find(selector.shape);
 	          $side   = $(this).find(selector.side);
 	        },
-
+	
 	        repaint: function() {
 	          module.verbose('Forcing repaint event');
 	          var
@@ -13928,7 +13928,7 @@
 	            fakeAssignment = shape.offsetWidth
 	          ;
 	        },
-
+	
 	        animate: function(propertyObject, callback) {
 	          module.verbose('Animating box with properties', propertyObject);
 	          callback = callback || function(event) {
@@ -13963,7 +13963,7 @@
 	            callback();
 	          }
 	        },
-
+	
 	        queue: function(method) {
 	          module.debug('Queueing animation of', method);
 	          $sides
@@ -13975,7 +13975,7 @@
 	            })
 	          ;
 	        },
-
+	
 	        reset: function() {
 	          module.verbose('Animating states reset');
 	          $module
@@ -13999,7 +13999,7 @@
 	            .removeAttr('style')
 	          ;
 	        },
-
+	
 	        is: {
 	          complete: function() {
 	            return ($side.filter('.' + className.active)[0] == $nextSide[0]);
@@ -14008,9 +14008,9 @@
 	            return $module.hasClass(className.animating);
 	          }
 	        },
-
+	
 	        set: {
-
+	
 	          defaultSide: function() {
 	            $activeSide = $module.find('.' + settings.className.active);
 	            $nextSide   = ( $activeSide.next(selector.side).length > 0 )
@@ -14021,7 +14021,7 @@
 	            module.verbose('Active side set to', $activeSide);
 	            module.verbose('Next side set to', $nextSide);
 	          },
-
+	
 	          duration: function(duration) {
 	            duration = duration || settings.duration;
 	            duration = (typeof duration == 'number')
@@ -14041,7 +14041,7 @@
 	              ;
 	            }
 	          },
-
+	
 	          currentStageSize: function() {
 	            var
 	              $activeSide = $module.find('.' + settings.className.active),
@@ -14055,7 +14055,7 @@
 	              })
 	            ;
 	          },
-
+	
 	          stageSize: function() {
 	            var
 	              $clone      = $module.clone().addClass(className.loading),
@@ -14081,7 +14081,7 @@
 	            ;
 	            module.verbose('Resizing stage to fit new content', newSize);
 	          },
-
+	
 	          nextSide: function(selector) {
 	            nextIndex = selector;
 	            $nextSide = $side.filter(selector);
@@ -14092,7 +14092,7 @@
 	            }
 	            module.verbose('Next side manually set to', $nextSide);
 	          },
-
+	
 	          active: function() {
 	            module.verbose('Setting new side to active', $nextSide);
 	            $side
@@ -14105,9 +14105,9 @@
 	            module.set.defaultSide();
 	          }
 	        },
-
+	
 	        flip: {
-
+	
 	          up: function() {
 	            if(module.is.complete() && !module.is.animating() && !settings.allowRepeats) {
 	              module.debug('Side already visible', $nextSide);
@@ -14123,7 +14123,7 @@
 	              module.queue('flip up');
 	            }
 	          },
-
+	
 	          down: function() {
 	            if(module.is.complete() && !module.is.animating() && !settings.allowRepeats) {
 	              module.debug('Side already visible', $nextSide);
@@ -14139,7 +14139,7 @@
 	              module.queue('flip down');
 	            }
 	          },
-
+	
 	          left: function() {
 	            if(module.is.complete() && !module.is.animating() && !settings.allowRepeats) {
 	              module.debug('Side already visible', $nextSide);
@@ -14155,7 +14155,7 @@
 	              module.queue('flip left');
 	            }
 	          },
-
+	
 	          right: function() {
 	            if(module.is.complete() && !module.is.animating() && !settings.allowRepeats) {
 	              module.debug('Side already visible', $nextSide);
@@ -14171,7 +14171,7 @@
 	              module.queue('flip right');
 	            }
 	          },
-
+	
 	          over: function() {
 	            if(module.is.complete() && !module.is.animating() && !settings.allowRepeats) {
 	              module.debug('Side already visible', $nextSide);
@@ -14187,7 +14187,7 @@
 	              module.queue('flip over');
 	            }
 	          },
-
+	
 	          back: function() {
 	            if(module.is.complete() && !module.is.animating() && !settings.allowRepeats) {
 	              module.debug('Side already visible', $nextSide);
@@ -14203,11 +14203,11 @@
 	              module.queue('flip back');
 	            }
 	          }
-
+	
 	        },
-
+	
 	        get: {
-
+	
 	          transform: {
 	            up: function() {
 	              var
@@ -14220,7 +14220,7 @@
 	                transform: 'translateY(' + translate.y + 'px) translateZ('+ translate.z + 'px) rotateX(-90deg)'
 	              };
 	            },
-
+	
 	            down: function() {
 	              var
 	                translate = {
@@ -14232,7 +14232,7 @@
 	                transform: 'translateY(' + translate.y + 'px) translateZ('+ translate.z + 'px) rotateX(90deg)'
 	              };
 	            },
-
+	
 	            left: function() {
 	              var
 	                translate = {
@@ -14244,7 +14244,7 @@
 	                transform: 'translateX(' + translate.x + 'px) translateZ(' + translate.z + 'px) rotateY(90deg)'
 	              };
 	            },
-
+	
 	            right: function() {
 	              var
 	                translate = {
@@ -14256,7 +14256,7 @@
 	                transform: 'translateX(' + translate.x + 'px) translateZ(' + translate.z + 'px) rotateY(-90deg)'
 	              };
 	            },
-
+	
 	            over: function() {
 	              var
 	                translate = {
@@ -14267,7 +14267,7 @@
 	                transform: 'translateX(' + translate.x + 'px) rotateY(180deg)'
 	              };
 	            },
-
+	
 	            back: function() {
 	              var
 	                translate = {
@@ -14279,7 +14279,7 @@
 	              };
 	            }
 	          },
-
+	
 	          transitionEvent: function() {
 	            var
 	              element     = document.createElement('element'),
@@ -14297,18 +14297,18 @@
 	              }
 	            }
 	          },
-
+	
 	          nextSide: function() {
 	            return ( $activeSide.next(selector.side).length > 0 )
 	              ? $activeSide.next(selector.side)
 	              : $module.find(selector.side).first()
 	            ;
 	          }
-
+	
 	        },
-
+	
 	        stage: {
-
+	
 	          above: function() {
 	            var
 	              box = {
@@ -14338,7 +14338,7 @@
 	              })
 	            ;
 	          },
-
+	
 	          below: function() {
 	            var
 	              box = {
@@ -14368,7 +14368,7 @@
 	              })
 	            ;
 	          },
-
+	
 	          left: function() {
 	            var
 	              height = {
@@ -14402,7 +14402,7 @@
 	              })
 	            ;
 	          },
-
+	
 	          right: function() {
 	            var
 	              height = {
@@ -14436,7 +14436,7 @@
 	              })
 	            ;
 	          },
-
+	
 	          behind: function() {
 	            var
 	              height = {
@@ -14623,7 +14623,7 @@
 	          return found;
 	        }
 	      };
-
+	
 	      if(methodInvoked) {
 	        if(instance === undefined) {
 	          module.initialize();
@@ -14638,46 +14638,46 @@
 	      }
 	    })
 	  ;
-
+	
 	  return (returnedValue !== undefined)
 	    ? returnedValue
 	    : this
 	  ;
 	};
-
+	
 	$.fn.shape.settings = {
-
+	
 	  // module info
 	  name : 'Shape',
-
+	
 	  // debug content outputted to console
 	  debug      : false,
-
+	
 	  // verbose debug output
 	  verbose    : false,
-
+	
 	  // performance data output
 	  performance: true,
-
+	
 	  // event namespace
 	  namespace  : 'shape',
-
+	
 	  // callback occurs on side change
 	  beforeChange : function() {},
 	  onChange     : function() {},
-
+	
 	  // allow animation to same side
 	  allowRepeats: false,
-
+	
 	  // animation duration
 	  duration   : false,
-
+	
 	  // possible errors
 	  error: {
 	    side   : 'You tried to switch to a side that does not exist.',
 	    method : 'The method you called is not defined'
 	  },
-
+	
 	  // classnames used
 	  className   : {
 	    animating : 'animating',
@@ -14685,16 +14685,16 @@
 	    loading   : 'loading',
 	    active    : 'active'
 	  },
-
+	
 	  // selectors used
 	  selector    : {
 	    sides : '.sides',
 	    side  : '.side'
 	  }
-
+	
 	};
-
-
+	
+	
 	})( jQuery, window, document );
 	/*!
 	 * # Semantic UI 2.1.7 - Sidebar
@@ -14706,11 +14706,11 @@
 	 * http://opensource.org/licenses/MIT
 	 *
 	 */
-
+	
 	;(function ( $, window, document, undefined ) {
-
+	
 	"use strict";
-
+	
 	$.fn.sidebar = function(parameters) {
 	  var
 	    $allModules     = $(this),
@@ -14718,73 +14718,73 @@
 	    $document       = $(document),
 	    $html           = $('html'),
 	    $head           = $('head'),
-
+	
 	    moduleSelector  = $allModules.selector || '',
-
+	
 	    time            = new Date().getTime(),
 	    performance     = [],
-
+	
 	    query           = arguments[0],
 	    methodInvoked   = (typeof query == 'string'),
 	    queryArguments  = [].slice.call(arguments, 1),
-
+	
 	    requestAnimationFrame = window.requestAnimationFrame
 	      || window.mozRequestAnimationFrame
 	      || window.webkitRequestAnimationFrame
 	      || window.msRequestAnimationFrame
 	      || function(callback) { setTimeout(callback, 0); },
-
+	
 	    returnedValue
 	  ;
-
+	
 	  $allModules
 	    .each(function() {
 	      var
 	        settings        = ( $.isPlainObject(parameters) )
 	          ? $.extend(true, {}, $.fn.sidebar.settings, parameters)
 	          : $.extend({}, $.fn.sidebar.settings),
-
+	
 	        selector        = settings.selector,
 	        className       = settings.className,
 	        namespace       = settings.namespace,
 	        regExp          = settings.regExp,
 	        error           = settings.error,
-
+	
 	        eventNamespace  = '.' + namespace,
 	        moduleNamespace = 'module-' + namespace,
-
+	
 	        $module         = $(this),
 	        $context        = $(settings.context),
-
+	
 	        $sidebars       = $module.children(selector.sidebar),
 	        $fixed          = $context.children(selector.fixed),
 	        $pusher         = $context.children(selector.pusher),
 	        $style,
-
+	
 	        element         = this,
 	        instance        = $module.data(moduleNamespace),
-
+	
 	        elementNamespace,
 	        id,
 	        currentScroll,
 	        transitionEvent,
-
+	
 	        module
 	      ;
-
+	
 	      module      = {
-
+	
 	        initialize: function() {
 	          module.debug('Initializing sidebar', parameters);
-
+	
 	          module.create.id();
-
+	
 	          transitionEvent = module.get.transitionEvent();
-
+	
 	          if(module.is.ios()) {
 	            module.set.ios();
 	          }
-
+	
 	          // avoids locking rendering if initialized in onReady
 	          if(settings.delaySetup) {
 	            requestAnimationFrame(module.setup.layout);
@@ -14792,14 +14792,14 @@
 	          else {
 	            module.setup.layout();
 	          }
-
+	
 	          requestAnimationFrame(function() {
 	            module.setup.cache();
 	          });
-
+	
 	          module.instantiate();
 	        },
-
+	
 	        instantiate: function() {
 	          module.verbose('Storing instance of module', module);
 	          instance = module;
@@ -14807,7 +14807,7 @@
 	            .data(moduleNamespace, module)
 	          ;
 	        },
-
+	
 	        create: {
 	          id: function() {
 	            id = (Math.random().toString(16) + '000000000').substr(2,8);
@@ -14815,7 +14815,7 @@
 	            module.verbose('Creating unique id for element', id);
 	          }
 	        },
-
+	
 	        destroy: function() {
 	          module.verbose('Destroying previous module for', $module);
 	          $module
@@ -14830,7 +14830,7 @@
 	          $window.off(elementNamespace);
 	          $document.off(elementNamespace);
 	        },
-
+	
 	        event: {
 	          clickaway: function(event) {
 	            var
@@ -14863,7 +14863,7 @@
 	            }
 	          }
 	        },
-
+	
 	        bind: {
 	          clickaway: function() {
 	            module.verbose('Adding clickaway events to context', $context);
@@ -14902,7 +14902,7 @@
 	            $module.off('scroll' + eventNamespace);
 	          }
 	        },
-
+	
 	        add: {
 	          inlineCSS: function() {
 	            var
@@ -14918,15 +14918,15 @@
 	              },
 	              style
 	            ;
-
+	
 	            if(isRTL){
 	              module.verbose('RTL detected, flipping widths');
 	              distance.left = -width;
 	              distance.right = width;
 	            }
-
+	
 	            style  = '<style>';
-
+	
 	            if(direction === 'left' || direction === 'right') {
 	              module.debug('Adding CSS rules for animation distance', width);
 	              style  += ''
@@ -14946,7 +14946,7 @@
 	                + ' }'
 	              ;
 	            }
-
+	
 	            /* IE is only browser not to create context with transforms */
 	            /* https://www.w3.org/Bugs/Public/show_bug.cgi?id=16328 */
 	            if( module.is.ie() ) {
@@ -14983,7 +14983,7 @@
 	            module.debug('Adding sizing css to head', $style);
 	          }
 	        },
-
+	
 	        refresh: function() {
 	          module.verbose('Refreshing selector cache');
 	          $context  = $(settings.context);
@@ -14992,12 +14992,12 @@
 	          $fixed    = $context.children(selector.fixed);
 	          module.clear.cache();
 	        },
-
+	
 	        refreshSidebars: function() {
 	          module.verbose('Refreshing other sidebars');
 	          $sidebars = $context.children(selector.sidebar);
 	        },
-
+	
 	        repaint: function() {
 	          module.verbose('Forcing repaint event');
 	          element.style.display = 'none';
@@ -15005,7 +15005,7 @@
 	          element.scrollTop = element.scrollTop;
 	          element.style.display = '';
 	        },
-
+	
 	        setup: {
 	          cache: function() {
 	            module.cache = {
@@ -15038,7 +15038,7 @@
 	            module.set.direction();
 	          }
 	        },
-
+	
 	        attachEvents: function(selector, event) {
 	          var
 	            $toggle = $(selector)
@@ -15057,7 +15057,7 @@
 	            module.error(error.notFound, selector);
 	          }
 	        },
-
+	
 	        show: function(callback) {
 	          callback = $.isFunction(callback)
 	            ? callback
@@ -15097,7 +15097,7 @@
 	            module.debug('Sidebar is already visible');
 	          }
 	        },
-
+	
 	        hide: function(callback) {
 	          callback = $.isFunction(callback)
 	            ? callback
@@ -15114,7 +15114,7 @@
 	            settings.onHide.call(element);
 	          }
 	        },
-
+	
 	        othersAnimating: function() {
 	          return ($sidebars.not($module).filter('.' + className.animating).length > 0);
 	        },
@@ -15124,7 +15124,7 @@
 	        othersActive: function() {
 	          return(module.othersVisible() || module.othersAnimating());
 	        },
-
+	
 	        hideOthers: function(callback) {
 	          var
 	            $otherSidebars = $sidebars.not($module).filter('.' + className.visible),
@@ -15141,7 +15141,7 @@
 	            })
 	          ;
 	        },
-
+	
 	        toggle: function() {
 	          module.verbose('Determining toggled direction');
 	          if(module.is.hidden()) {
@@ -15151,7 +15151,7 @@
 	            module.hide();
 	          }
 	        },
-
+	
 	        pushPage: function(callback) {
 	          var
 	            transition = module.get.transition(),
@@ -15195,7 +15195,7 @@
 	            requestAnimationFrame(dim);
 	          }
 	        },
-
+	
 	        pullPage: function(callback) {
 	          var
 	            transition = module.get.transition(),
@@ -15210,10 +15210,10 @@
 	            : function(){}
 	          ;
 	          module.verbose('Removing context push state', module.get.direction());
-
+	
 	          module.unbind.clickaway();
 	          module.unbind.scrollLock();
-
+	
 	          animate = function() {
 	            module.set.transition(transition);
 	            module.set.animating();
@@ -15238,33 +15238,33 @@
 	          $transition.on(transitionEvent + elementNamespace, transitionEnd);
 	          requestAnimationFrame(animate);
 	        },
-
+	
 	        scrollToTop: function() {
 	          module.verbose('Scrolling to top of page to avoid animation issues');
 	          currentScroll = $(window).scrollTop();
 	          $module.scrollTop(0);
 	          window.scrollTo(0, 0);
 	        },
-
+	
 	        scrollBack: function() {
 	          module.verbose('Scrolling back to original page position');
 	          window.scrollTo(0, currentScroll);
 	        },
-
+	
 	        clear: {
 	          cache: function() {
 	            module.verbose('Clearing cached dimensions');
 	            module.cache = {};
 	          }
 	        },
-
+	
 	        set: {
-
+	
 	          // ios only (scroll on html not document). This prevent auto-resize canvas/scroll in ios
 	          ios: function() {
 	            $html.addClass(className.ios);
 	          },
-
+	
 	          // container
 	          pushed: function() {
 	            $context.addClass(className.pushed);
@@ -15272,12 +15272,12 @@
 	          pushable: function() {
 	            $context.addClass(className.pushable);
 	          },
-
+	
 	          // pusher
 	          dimmed: function() {
 	            $pusher.addClass(className.dimmed);
 	          },
-
+	
 	          // sidebar
 	          active: function() {
 	            $module.addClass(className.active);
@@ -15301,19 +15301,19 @@
 	          }
 	        },
 	        remove: {
-
+	
 	          inlineCSS: function() {
 	            module.debug('Removing inline css styles', $style);
 	            if($style && $style.length > 0) {
 	              $style.remove();
 	            }
 	          },
-
+	
 	          // ios scroll on html not document
 	          ios: function() {
 	            $html.removeClass(className.ios);
 	          },
-
+	
 	          // context
 	          pushed: function() {
 	            $context.removeClass(className.pushed);
@@ -15321,7 +15321,7 @@
 	          pushable: function() {
 	            $context.removeClass(className.pushable);
 	          },
-
+	
 	          // sidebar
 	          active: function() {
 	            $module.removeClass(className.active);
@@ -15344,7 +15344,7 @@
 	            $module.removeClass(className.overlay);
 	          }
 	        },
-
+	
 	        get: {
 	          direction: function() {
 	            if($module.hasClass(className.top)) {
@@ -15392,9 +15392,9 @@
 	            }
 	          }
 	        },
-
+	
 	        is: {
-
+	
 	          ie: function() {
 	            var
 	              isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
@@ -15402,7 +15402,7 @@
 	            ;
 	            return (isIE11 || isIE);
 	          },
-
+	
 	          ios: function() {
 	            var
 	              userAgent      = navigator.userAgent,
@@ -15457,7 +15457,7 @@
 	            return module.cache.rtl;
 	          }
 	        },
-
+	
 	        setting: function(name, value) {
 	          module.debug('Changing setting', name, value);
 	          if( $.isPlainObject(name) ) {
@@ -15614,7 +15614,7 @@
 	        }
 	      }
 	    ;
-
+	
 	    if(methodInvoked) {
 	      if(instance === undefined) {
 	        module.initialize();
@@ -15628,25 +15628,25 @@
 	      module.initialize();
 	    }
 	  });
-
+	
 	  return (returnedValue !== undefined)
 	    ? returnedValue
 	    : this
 	  ;
 	};
-
+	
 	$.fn.sidebar.settings = {
-
+	
 	  name              : 'Sidebar',
 	  namespace         : 'sidebar',
-
+	
 	  debug             : false,
 	  verbose           : false,
 	  performance       : true,
-
+	
 	  transition        : 'auto',
 	  mobileTransition  : 'auto',
-
+	
 	  defaultTransition : {
 	    computer: {
 	      left   : 'uncover',
@@ -15661,7 +15661,7 @@
 	      bottom : 'overlay'
 	    }
 	  },
-
+	
 	  context           : 'body',
 	  exclusive         : false,
 	  closable          : true,
@@ -15669,16 +15669,16 @@
 	  scrollLock        : false,
 	  returnScroll      : false,
 	  delaySetup        : false,
-
+	
 	  duration          : 500,
-
+	
 	  onChange          : function(){},
 	  onShow            : function(){},
 	  onHide            : function(){},
-
+	
 	  onHidden          : function(){},
 	  onVisible         : function(){},
-
+	
 	  className         : {
 	    active    : 'active',
 	    animating : 'animating',
@@ -15692,20 +15692,20 @@
 	    bottom    : 'bottom',
 	    visible   : 'visible'
 	  },
-
+	
 	  selector: {
 	    fixed   : '.fixed',
 	    omitted : 'script, link, style, .ui.modal, .ui.dimmer, .ui.nag, .ui.fixed',
 	    pusher  : '.pusher',
 	    sidebar : '.ui.sidebar'
 	  },
-
+	
 	  regExp: {
 	    ios          : /(iPad|iPhone|iPod)/g,
 	    mobileChrome : /(CriOS)/g,
 	    mobile       : /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/g
 	  },
-
+	
 	  error   : {
 	    method       : 'The method you called is not defined.',
 	    pusher       : 'Had to add pusher element. For optimal performance make sure body content is inside a pusher element',
@@ -15713,12 +15713,12 @@
 	    overlay      : 'The overlay setting is no longer supported, use animation: overlay',
 	    notFound     : 'There were no elements that matched the specified selector'
 	  }
-
+	
 	};
-
-
+	
+	
 	})( jQuery, window, document );
-
+	
 	/*!
 	 * # Semantic UI 2.1.7 - Sticky
 	 * http://github.com/semantic-org/semantic-ui/
@@ -15729,77 +15729,77 @@
 	 * http://opensource.org/licenses/MIT
 	 *
 	 */
-
+	
 	;(function ( $, window, document, undefined ) {
-
+	
 	"use strict";
-
+	
 	$.fn.sticky = function(parameters) {
 	  var
 	    $allModules    = $(this),
 	    moduleSelector = $allModules.selector || '',
-
+	
 	    time           = new Date().getTime(),
 	    performance    = [],
-
+	
 	    query          = arguments[0],
 	    methodInvoked  = (typeof query == 'string'),
 	    queryArguments = [].slice.call(arguments, 1),
 	    returnedValue
 	  ;
-
+	
 	  $allModules
 	    .each(function() {
 	      var
 	        settings              = ( $.isPlainObject(parameters) )
 	          ? $.extend(true, {}, $.fn.sticky.settings, parameters)
 	          : $.extend({}, $.fn.sticky.settings),
-
+	
 	        className             = settings.className,
 	        namespace             = settings.namespace,
 	        error                 = settings.error,
-
+	
 	        eventNamespace        = '.' + namespace,
 	        moduleNamespace       = 'module-' + namespace,
-
+	
 	        $module               = $(this),
 	        $window               = $(window),
 	        $scroll               = $(settings.scrollContext),
 	        $container,
 	        $context,
-
+	
 	        selector              = $module.selector || '',
 	        instance              = $module.data(moduleNamespace),
-
+	
 	        requestAnimationFrame = window.requestAnimationFrame
 	          || window.mozRequestAnimationFrame
 	          || window.webkitRequestAnimationFrame
 	          || window.msRequestAnimationFrame
 	          || function(callback) { setTimeout(callback, 0); },
-
+	
 	        element         = this,
 	        observer,
 	        module
 	      ;
-
+	
 	      module      = {
-
+	
 	        initialize: function() {
-
+	
 	          module.determineContainer();
 	          module.determineContext();
 	          module.verbose('Initializing sticky', settings, $container);
-
+	
 	          module.save.positions();
 	          module.checkErrors();
 	          module.bind.events();
-
+	
 	          if(settings.observeChanges) {
 	            module.observeChanges();
 	          }
 	          module.instantiate();
 	        },
-
+	
 	        instantiate: function() {
 	          module.verbose('Storing instance of module', module);
 	          instance = module;
@@ -15807,7 +15807,7 @@
 	            .data(moduleNamespace, module)
 	          ;
 	        },
-
+	
 	        destroy: function() {
 	          module.verbose('Destroying previous instance');
 	          module.reset();
@@ -15823,7 +15823,7 @@
 	          ;
 	          $module.removeData(moduleNamespace);
 	        },
-
+	
 	        observeChanges: function() {
 	          var
 	            context = $context[0]
@@ -15847,11 +15847,11 @@
 	            module.debug('Setting up mutation observer', observer);
 	          }
 	        },
-
+	
 	        determineContainer: function() {
 	          $container = $module.offsetParent();
 	        },
-
+	
 	        determineContext: function() {
 	          if(settings.context) {
 	            $context = $(settings.context);
@@ -15864,7 +15864,7 @@
 	            return;
 	          }
 	        },
-
+	
 	        checkErrors: function() {
 	          if( module.is.hidden() ) {
 	            module.error(error.visible, $module);
@@ -15875,7 +15875,7 @@
 	            return;
 	          }
 	        },
-
+	
 	        bind: {
 	          events: function() {
 	            $window
@@ -15890,7 +15890,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        event: {
 	          load: function() {
 	            module.verbose('Page contents finished loading');
@@ -15910,7 +15910,7 @@
 	            settings.onScroll.call(element);
 	          }
 	        },
-
+	
 	        refresh: function(hardRefresh) {
 	          module.reset();
 	          if(!settings.context) {
@@ -15923,7 +15923,7 @@
 	          module.stick();
 	          settings.onReposition.call(element);
 	        },
-
+	
 	        supports: {
 	          sticky: function() {
 	            var
@@ -15934,7 +15934,7 @@
 	            return($element.css('position').match('sticky'));
 	          }
 	        },
-
+	
 	        save: {
 	          lastScroll: function(scroll) {
 	            module.lastScroll = scroll;
@@ -15966,10 +15966,10 @@
 	            ;
 	            if( !module.is.standardScroll() ) {
 	              module.debug('Non-standard scroll. Removing scroll offset from element offset');
-
+	
 	              scrollContext.top  = $scroll.scrollTop();
 	              scrollContext.left = $scroll.scrollLeft();
-
+	
 	              element.offset.top  += scrollContext.top;
 	              context.offset.top  += scrollContext.top;
 	              element.offset.left += scrollContext.left;
@@ -16000,7 +16000,7 @@
 	            module.debug('Caching element positions', module.cache);
 	          }
 	        },
-
+	
 	        get: {
 	          direction: function(scroll) {
 	            var
@@ -16033,7 +16033,7 @@
 	              : Math.abs(parseInt($module.css('bottom'), 10)) || 0
 	            ;
 	          },
-
+	
 	          elementScroll: function(scroll) {
 	            scroll = scroll || $scroll.scrollTop();
 	            var
@@ -16056,7 +16056,7 @@
 	            return elementScroll;
 	          }
 	        },
-
+	
 	        remove: {
 	          lastScroll: function() {
 	            delete module.lastScroll;
@@ -16068,7 +16068,7 @@
 	            $module.css('margin-top', '');
 	          }
 	        },
-
+	
 	        set: {
 	          offset: function() {
 	            module.verbose('Setting offset on element', settings.offset);
@@ -16127,7 +16127,7 @@
 	            }
 	          }
 	        },
-
+	
 	        is: {
 	          standardScroll: function() {
 	            return ($scroll[0] == window);
@@ -16151,7 +16151,7 @@
 	            return $module.hasClass(className.fixed);
 	          }
 	        },
-
+	
 	        stick: function(scroll) {
 	          var
 	            cachedPosition = scroll || $scroll.scrollTop(),
@@ -16171,14 +16171,14 @@
 	            elementScroll  = (fits)
 	              ? 0
 	              : module.get.elementScroll(scroll.top),
-
+	
 	            // shorthand
 	            doesntFit      = !fits,
 	            elementVisible = (element.height !== 0)
 	          ;
-
+	
 	          if(elementVisible) {
-
+	
 	            if( module.is.initialPosition() ) {
 	              if(scroll.top >= context.bottom) {
 	                module.debug('Initial element position is bottom of container');
@@ -16194,10 +16194,10 @@
 	                  module.fixTop();
 	                }
 	              }
-
+	
 	            }
 	            else if( module.is.fixed() ) {
-
+	
 	              // currently fixed top
 	              if( module.is.top() ) {
 	                if( scroll.top <= element.top ) {
@@ -16215,10 +16215,10 @@
 	                  module.save.elementScroll(elementScroll);
 	                }
 	              }
-
+	
 	              // currently fixed bottom
 	              else if(module.is.bottom() ) {
-
+	
 	                // top edge
 	                if( (scroll.bottom - element.height) <= element.top) {
 	                  module.debug('Bottom fixed rail has reached top of container');
@@ -16235,7 +16235,7 @@
 	                  module.save.lastScroll(scroll.top);
 	                  module.save.elementScroll(elementScroll);
 	                }
-
+	
 	              }
 	            }
 	            else if( module.is.bottom() ) {
@@ -16260,7 +16260,7 @@
 	            }
 	          }
 	        },
-
+	
 	        bindTop: function() {
 	          module.debug('Binding element to top of parent container');
 	          module.remove.offset();
@@ -16294,14 +16294,14 @@
 	          settings.onBottom.call(element);
 	          settings.onUnstick.call(element);
 	        },
-
+	
 	        setInitialPosition: function() {
 	          module.debug('Returning to initial position');
 	          module.unfix();
 	          module.unbind();
 	        },
-
-
+	
+	
 	        fixTop: function() {
 	          module.debug('Fixing element to top of page');
 	          module.set.minimumSize();
@@ -16319,7 +16319,7 @@
 	          ;
 	          settings.onStick.call(element);
 	        },
-
+	
 	        fixBottom: function() {
 	          module.debug('Sticking element to bottom of page');
 	          module.set.minimumSize();
@@ -16337,7 +16337,7 @@
 	          ;
 	          settings.onStick.call(element);
 	        },
-
+	
 	        unbind: function() {
 	          if( module.is.bound() ) {
 	            module.debug('Removing container bound position on element');
@@ -16349,7 +16349,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        unfix: function() {
 	          if( module.is.fixed() ) {
 	            module.debug('Removing fixed position on element');
@@ -16362,7 +16362,7 @@
 	            settings.onUnstick.call(element);
 	          }
 	        },
-
+	
 	        reset: function() {
 	          module.debug('Reseting elements position');
 	          module.unbind();
@@ -16371,7 +16371,7 @@
 	          module.remove.offset();
 	          module.remove.lastScroll();
 	        },
-
+	
 	        resetCSS: function() {
 	          $module
 	            .css({
@@ -16385,7 +16385,7 @@
 	            })
 	          ;
 	        },
-
+	
 	        setting: function(name, value) {
 	          if( $.isPlainObject(name) ) {
 	            $.extend(true, settings, name);
@@ -16539,7 +16539,7 @@
 	          return found;
 	        }
 	      };
-
+	
 	      if(methodInvoked) {
 	        if(instance === undefined) {
 	          module.initialize();
@@ -16554,59 +16554,59 @@
 	      }
 	    })
 	  ;
-
+	
 	  return (returnedValue !== undefined)
 	    ? returnedValue
 	    : this
 	  ;
 	};
-
+	
 	$.fn.sticky.settings = {
-
+	
 	  name           : 'Sticky',
 	  namespace      : 'sticky',
-
+	
 	  debug          : false,
 	  verbose        : true,
 	  performance    : true,
-
+	
 	  // whether to stick in the opposite direction on scroll up
 	  pushing        : false,
-
+	
 	  context        : false,
-
+	
 	  // Context to watch scroll events
 	  scrollContext  : window,
-
+	
 	  // Offset to adjust scroll
 	  offset         : 0,
-
+	
 	  // Offset to adjust scroll when attached to bottom of screen
 	  bottomOffset   : 0,
-
+	
 	  jitter         : 5, // will only set container height if difference between context and container is larger than this number
-
+	
 	  // Whether to automatically observe changes with Mutation Observers
 	  observeChanges : false,
-
+	
 	  // Called when position is recalculated
 	  onReposition   : function(){},
-
+	
 	  // Called on each scroll
 	  onScroll       : function(){},
-
+	
 	  // Called when element is stuck to viewport
 	  onStick        : function(){},
-
+	
 	  // Called when element is unstuck from viewport
 	  onUnstick      : function(){},
-
+	
 	  // Called when element reaches top of context
 	  onTop          : function(){},
-
+	
 	  // Called when element reaches bottom of context
 	  onBottom       : function(){},
-
+	
 	  error         : {
 	    container      : 'Sticky element must be inside a relative container',
 	    visible        : 'Element is hidden, you must call refresh after element becomes visible',
@@ -16614,7 +16614,7 @@
 	    invalidContext : 'Context specified does not exist',
 	    elementSize    : 'Sticky element is larger than its container, cannot create sticky.'
 	  },
-
+	
 	  className : {
 	    bound     : 'bound',
 	    fixed     : 'fixed',
@@ -16622,9 +16622,9 @@
 	    top       : 'top',
 	    bottom    : 'bottom'
 	  }
-
+	
 	};
-
+	
 	})( jQuery, window, document );
 	/*!
 	 * # Semantic UI 2.1.7 - Tab
@@ -16636,87 +16636,87 @@
 	 * http://opensource.org/licenses/MIT
 	 *
 	 */
-
+	
 	;(function ($, window, document, undefined) {
-
+	
 	"use strict";
-
+	
 	$.fn.tab = function(parameters) {
-
+	
 	  var
 	    // use window context if none specified
 	    $allModules     = $.isFunction(this)
 	        ? $(window)
 	        : $(this),
-
+	
 	    moduleSelector  = $allModules.selector || '',
 	    time            = new Date().getTime(),
 	    performance     = [],
-
+	
 	    query           = arguments[0],
 	    methodInvoked   = (typeof query == 'string'),
 	    queryArguments  = [].slice.call(arguments, 1),
-
+	
 	    initializedHistory = false,
 	    returnedValue
 	  ;
-
+	
 	  $allModules
 	    .each(function() {
 	      var
-
+	
 	        settings        = ( $.isPlainObject(parameters) )
 	          ? $.extend(true, {}, $.fn.tab.settings, parameters)
 	          : $.extend({}, $.fn.tab.settings),
-
+	
 	        className       = settings.className,
 	        metadata        = settings.metadata,
 	        selector        = settings.selector,
 	        error           = settings.error,
-
+	
 	        eventNamespace  = '.' + settings.namespace,
 	        moduleNamespace = 'module-' + settings.namespace,
-
+	
 	        $module         = $(this),
 	        $context,
 	        $tabs,
-
+	
 	        cache           = {},
 	        firstLoad       = true,
 	        recursionDepth  = 0,
 	        element         = this,
 	        instance        = $module.data(moduleNamespace),
-
+	
 	        activeTabPath,
 	        parameterArray,
 	        module,
-
+	
 	        historyEvent
-
+	
 	      ;
-
+	
 	      module = {
-
+	
 	        initialize: function() {
 	          module.debug('Initializing tab menu item', $module);
 	          module.fix.callbacks();
 	          module.determineTabs();
-
+	
 	          module.debug('Determining tabs', settings.context, $tabs);
 	          // set up automatic routing
 	          if(settings.auto) {
 	            module.set.auto();
 	          }
 	          module.bind.events();
-
+	
 	          if(settings.history && !initializedHistory) {
 	            module.initializeHistory();
 	            initializedHistory = true;
 	          }
-
+	
 	          module.instantiate();
 	        },
-
+	
 	        instantiate: function () {
 	          module.verbose('Storing instance of module', module);
 	          instance = module;
@@ -16724,7 +16724,7 @@
 	            .data(moduleNamespace, module)
 	          ;
 	        },
-
+	
 	        destroy: function() {
 	          module.debug('Destroying tabs', $module);
 	          $module
@@ -16732,7 +16732,7 @@
 	            .off(eventNamespace)
 	          ;
 	        },
-
+	
 	        bind: {
 	          events: function() {
 	            // if using $.tab don't add events
@@ -16744,12 +16744,12 @@
 	            }
 	          }
 	        },
-
+	
 	        determineTabs: function() {
 	          var
 	            $reference
 	          ;
-
+	
 	          // determine tab context
 	          if(settings.context === 'parent') {
 	            if($module.closest(selector.ui).length > 0) {
@@ -16779,7 +16779,7 @@
 	            module.debug('Searching tab context for tabs', $context, $tabs);
 	          }
 	        },
-
+	
 	        fix: {
 	          callbacks: function() {
 	            if( $.isPlainObject(parameters) && (parameters.onTabLoad || parameters.onTabInit) ) {
@@ -16797,7 +16797,7 @@
 	            }
 	          }
 	        },
-
+	
 	        initializeHistory: function() {
 	          module.debug('Initializing page state');
 	          if( $.address === undefined ) {
@@ -16823,7 +16823,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        event: {
 	          click: function(event) {
 	            var
@@ -16862,16 +16862,16 @@
 	            }
 	          }
 	        },
-
+	
 	        refresh: function() {
 	          if(activeTabPath) {
 	            module.debug('Refreshing tab', activeTabPath);
 	            module.changeTab(activeTabPath);
 	          }
 	        },
-
+	
 	        cache: {
-
+	
 	          read: function(cacheKey) {
 	            return (cacheKey !== undefined)
 	              ? cache[cacheKey]
@@ -16889,7 +16889,7 @@
 	            delete cache[cacheKey];
 	          }
 	        },
-
+	
 	        set: {
 	          auto: function() {
 	            var
@@ -16928,7 +16928,7 @@
 	            $.address.value(state);
 	          }
 	        },
-
+	
 	        changeTab: function(tabPath) {
 	          var
 	            pushStateAvailable = (window.history && window.history.pushState),
@@ -16944,10 +16944,10 @@
 	            var
 	              currentPathArray   = pathArray.slice(0, index + 1),
 	              currentPath        = module.utilities.arrayToPath(currentPathArray),
-
+	
 	              isTab              = module.is.tab(currentPath),
 	              isLastIndex        = (index + 1 == pathArray.length),
-
+	
 	              $tab               = module.get.tabElement(currentPath),
 	              $anchor,
 	              nextPathArray,
@@ -16960,7 +16960,7 @@
 	              // scope up
 	              activeTabPath  = currentPath;
 	              parameterArray = module.utilities.filterArray(pathArray, currentPathArray);
-
+	
 	              if(isLastIndex) {
 	                isLastTab = true;
 	              }
@@ -16997,7 +16997,7 @@
 	                }
 	                settings.onLoad.call($tab[0], currentPath, parameterArray, historyEvent);
 	              }
-
+	
 	            }
 	            else if(tabPath.search('/') == -1 && tabPath !== '') {
 	              // look for in page anchor
@@ -17028,7 +17028,7 @@
 	            }
 	          });
 	        },
-
+	
 	        scrollTo: function($element) {
 	          var
 	            scrollOffset = ($element && $element.length > 0)
@@ -17040,7 +17040,7 @@
 	            $(document).scrollTop(scrollOffset);
 	          }
 	        },
-
+	
 	        update: {
 	          content: function(tabPath, html, evaluateScripts) {
 	            var
@@ -17061,9 +17061,9 @@
 	            }
 	          }
 	        },
-
+	
 	        fetch: {
-
+	
 	          content: function(tabPath, fullTabPath) {
 	            var
 	              $tab        = module.get.tabElement(tabPath),
@@ -17097,11 +17097,11 @@
 	              requestSettings,
 	              cachedContent
 	            ;
-
+	
 	            fullTabPath   = fullTabPath || tabPath;
 	            cachedContent = module.cache.read(fullTabPath);
-
-
+	
+	
 	            if(settings.cache && cachedContent) {
 	              module.activate.tab(tabPath);
 	              module.debug('Adding cached content', fullTabPath);
@@ -17128,7 +17128,7 @@
 	            }
 	          }
 	        },
-
+	
 	        activate: {
 	          all: function(tabPath) {
 	            module.activate.tab(tabPath);
@@ -17166,7 +17166,7 @@
 	            }
 	          }
 	        },
-
+	
 	        deactivate: {
 	          all: function() {
 	            module.deactivate.navigation();
@@ -17183,7 +17183,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        is: {
 	          tab: function(tabName) {
 	            return (tabName !== undefined)
@@ -17192,7 +17192,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        get: {
 	          initialPath: function() {
 	            return $allModules.eq(0).data(metadata.tab) || $tabs.eq(0).data(metadata.tab);
@@ -17248,7 +17248,7 @@
 	            return activeTabPath;
 	          }
 	        },
-
+	
 	        utilities: {
 	          filterArray: function(keepArray, removeArray) {
 	            return $.grep(keepArray, function(keepValue) {
@@ -17277,7 +17277,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        setting: function(name, value) {
 	          module.debug('Changing setting', name, value);
 	          if( $.isPlainObject(name) ) {
@@ -17451,48 +17451,48 @@
 	    ? returnedValue
 	    : this
 	  ;
-
+	
 	};
-
+	
 	// shortcut for tabbed content with no defined navigation
 	$.tab = function() {
 	  $(window).tab.apply(this, arguments);
 	};
-
+	
 	$.fn.tab.settings = {
-
+	
 	  name            : 'Tab',
 	  namespace       : 'tab',
-
+	
 	  debug           : false,
 	  verbose         : false,
 	  performance     : true,
-
+	
 	  auto            : false,  // uses pjax style endpoints fetching content from same url with remote-content headers
 	  history         : false,  // use browser history
 	  historyType     : 'hash', // #/ or html5 state
 	  path            : false,  // base path of url
-
+	
 	  context         : false,  // specify a context that tabs must appear inside
 	  childrenOnly    : false,  // use only tabs that are children of context
 	  maxDepth        : 25,     // max depth a tab can be nested
-
+	
 	  alwaysRefresh   : false,  // load tab content new every tab click
 	  cache           : true,   // cache the content requests to pull locally
 	  ignoreFirstLoad : false,  // don't load remote content on first load
-
+	
 	  apiSettings     : false,  // settings for api call
 	  evaluateScripts : 'once', // whether inline scripts should be parsed (true/false/once). Once will not re-evaluate on cached content
-
+	
 	  onFirstLoad : function(tabPath, parameterArray, historyEvent) {}, // called first time loaded
 	  onLoad      : function(tabPath, parameterArray, historyEvent) {}, // called on every load
 	  onVisible   : function(tabPath, parameterArray, historyEvent) {}, // called every time tab visible
 	  onRequest   : function(tabPath, parameterArray, historyEvent) {}, // called ever time a tab beings loading remote content
-
+	
 	  templates    : {
 	    determineTitle: function(tabArray) {} // returns page title for path
 	  },
-
+	
 	  error: {
 	    api        : 'You attempted to load content without API module',
 	    method     : 'The method you called is not defined',
@@ -17504,27 +17504,27 @@
 	    legacyLoad : 'onTabLoad has been renamed to onLoad in 2.0. Please adjust your code',
 	    state      : 'History requires Asual\'s Address library <https://github.com/asual/jquery-address>'
 	  },
-
+	
 	  metadata : {
 	    tab    : 'tab',
 	    loaded : 'loaded',
 	    promise: 'promise'
 	  },
-
+	
 	  className   : {
 	    loading : 'loading',
 	    active  : 'active'
 	  },
-
+	
 	  selector    : {
 	    tabs : '.ui.tab',
 	    ui   : '.ui'
 	  }
-
+	
 	};
-
+	
 	})( jQuery, window, document );
-
+	
 	/*!
 	 * # Semantic UI 2.1.7 - Transition
 	 * http://github.com/semantic-org/semantic-ui/
@@ -17535,30 +17535,30 @@
 	 * http://opensource.org/licenses/MIT
 	 *
 	 */
-
+	
 	;(function ( $, window, document, undefined ) {
-
+	
 	"use strict";
-
+	
 	$.fn.transition = function() {
 	  var
 	    $allModules     = $(this),
 	    moduleSelector  = $allModules.selector || '',
-
+	
 	    time            = new Date().getTime(),
 	    performance     = [],
-
+	
 	    moduleArguments = arguments,
 	    query           = moduleArguments[0],
 	    queryArguments  = [].slice.call(arguments, 1),
 	    methodInvoked   = (typeof query === 'string'),
-
+	
 	    requestAnimationFrame = window.requestAnimationFrame
 	      || window.mozRequestAnimationFrame
 	      || window.webkitRequestAnimationFrame
 	      || window.msRequestAnimationFrame
 	      || function(callback) { setTimeout(callback, 0); },
-
+	
 	    returnedValue
 	  ;
 	  $allModules
@@ -17566,47 +17566,47 @@
 	      var
 	        $module  = $(this),
 	        element  = this,
-
+	
 	        // set at run time
 	        settings,
 	        instance,
-
+	
 	        error,
 	        className,
 	        metadata,
 	        animationEnd,
 	        animationName,
-
+	
 	        namespace,
 	        moduleNamespace,
 	        eventNamespace,
 	        module
 	      ;
-
+	
 	      module = {
-
+	
 	        initialize: function() {
-
+	
 	          // get full settings
 	          settings        = module.get.settings.apply(element, moduleArguments);
-
+	
 	          // shorthand
 	          className       = settings.className;
 	          error           = settings.error;
 	          metadata        = settings.metadata;
-
+	
 	          // define namespace
 	          eventNamespace  = '.' + settings.namespace;
 	          moduleNamespace = 'module-' + settings.namespace;
 	          instance        = $module.data(moduleNamespace) || module;
-
+	
 	          // get vendor specific events
 	          animationEnd    = module.get.animationEndEvent();
-
+	
 	          if(methodInvoked) {
 	            methodInvoked = module.invoke(query);
 	          }
-
+	
 	          // method not invoked, lets run an animation
 	          if(methodInvoked === false) {
 	            module.verbose('Converted arguments into settings object', settings);
@@ -17619,7 +17619,7 @@
 	            module.instantiate();
 	          }
 	        },
-
+	
 	        instantiate: function() {
 	          module.verbose('Storing instance of module', module);
 	          instance = module;
@@ -17627,19 +17627,19 @@
 	            .data(moduleNamespace, instance)
 	          ;
 	        },
-
+	
 	        destroy: function() {
 	          module.verbose('Destroying previous module for', element);
 	          $module
 	            .removeData(moduleNamespace)
 	          ;
 	        },
-
+	
 	        refresh: function() {
 	          module.verbose('Refreshing display type on next animation');
 	          delete module.displayType;
 	        },
-
+	
 	        forceRepaint: function() {
 	          module.verbose('Forcing element repaint');
 	          var
@@ -17653,14 +17653,14 @@
 	            $module.detach().insertBefore($nextElement);
 	          }
 	        },
-
+	
 	        repaint: function() {
 	          module.verbose('Repainting element');
 	          var
 	            fakeAssignment = element.offsetWidth
 	          ;
 	        },
-
+	
 	        delay: function(interval) {
 	          var
 	            direction = module.get.animationDirection(),
@@ -17685,7 +17685,7 @@
 	          module.debug('Delaying animation by', delay);
 	          setTimeout(module.animate, delay);
 	        },
-
+	
 	        animate: function(overrideSettings) {
 	          settings = overrideSettings || settings;
 	          if(!module.is.supported()) {
@@ -17719,14 +17719,14 @@
 	            module.error(error.noAnimation, settings.animation, element);
 	          }
 	        },
-
+	
 	        reset: function() {
 	          module.debug('Resetting animation to beginning conditions');
 	          module.remove.animationCallbacks();
 	          module.restore.conditions();
 	          module.remove.animating();
 	        },
-
+	
 	        queue: function(animation) {
 	          module.debug('Queueing animation of', animation);
 	          module.queuing = true;
@@ -17738,7 +17738,7 @@
 	            })
 	          ;
 	        },
-
+	
 	        complete: function (event) {
 	          module.debug('Animation complete', settings.animation);
 	          module.remove.completeCallback();
@@ -17761,7 +17761,7 @@
 	            }
 	          }
 	        },
-
+	
 	        force: {
 	          visible: function() {
 	            var
@@ -17801,7 +17801,7 @@
 	            }
 	          }
 	        },
-
+	
 	        has: {
 	          direction: function(animation) {
 	            var
@@ -17825,7 +17825,7 @@
 	            return $.isArray(style.match(/display.*?;/, ''));
 	          }
 	        },
-
+	
 	        set: {
 	          animating: function(animation) {
 	            var
@@ -17834,22 +17834,22 @@
 	            ;
 	            // remove previous callbacks
 	            module.remove.completeCallback();
-
+	
 	            // determine exact animation
 	            animation      = animation || settings.animation;
 	            animationClass = module.get.animationClass(animation);
-
+	
 	            // save animation class in cache to restore class names
 	            module.save.animation(animationClass);
-
+	
 	            // override display if necessary so animation appears visibly
 	            module.force.visible();
-
+	
 	            module.remove.hidden();
 	            module.remove.direction();
-
+	
 	            module.start.animation(animationClass);
-
+	
 	          },
 	          duration: function(animationName, duration) {
 	            duration = duration || settings.duration;
@@ -17908,7 +17908,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        start: {
 	          animation: function(animationClass) {
 	            animationClass = animationClass || module.get.animationClass();
@@ -17924,7 +17924,7 @@
 	            settings.onStart.call(element);
 	          }
 	        },
-
+	
 	        save: {
 	          animation: function(animation) {
 	            if(!module.cache) {
@@ -17942,7 +17942,7 @@
 	            module.verbose('Saving existence of transition', animation, exists);
 	          }
 	        },
-
+	
 	        restore: {
 	          conditions: function() {
 	            var
@@ -17957,7 +17957,7 @@
 	            module.remove.duration();
 	          }
 	        },
-
+	
 	        add: {
 	          failSafe: function() {
 	            var
@@ -17969,7 +17969,7 @@
 	            module.verbose('Adding fail safe timer', module.timer);
 	          }
 	        },
-
+	
 	        remove: {
 	          animating: function() {
 	            $module.removeClass(className.animating);
@@ -18187,9 +18187,9 @@
 	            }
 	            return false;
 	          }
-
+	
 	        },
-
+	
 	        can: {
 	          transition: function(forced) {
 	            var
@@ -18207,7 +18207,7 @@
 	              module.verbose('Determining whether animation exists');
 	              elementClass = $module.attr('class');
 	              tagName      = $module.prop('tagName');
-
+	
 	              $clone = $('<' + tagName + ' />').addClass( elementClass ).insertAfter($module);
 	              currentAnimation = $clone
 	                .addClass(animation)
@@ -18231,7 +18231,7 @@
 	              ;
 	              module.verbose('Determining final display state', displayType);
 	              module.save.displayType(displayType);
-
+	
 	              $clone.remove();
 	              if(currentAnimation != inAnimation) {
 	                module.debug('Direction exists for animation', animation);
@@ -18257,7 +18257,7 @@
 	            return (module.can.transition() !== undefined);
 	          }
 	        },
-
+	
 	        is: {
 	          animating: function() {
 	            return $module.hasClass(className.animating);
@@ -18286,7 +18286,7 @@
 	            return(animationEnd !== false);
 	          }
 	        },
-
+	
 	        hide: function() {
 	          module.verbose('Hiding element');
 	          if( module.is.animating() ) {
@@ -18301,7 +18301,7 @@
 	          settings.onComplete.call(element);
 	          // module.repaint();
 	        },
-
+	
 	        show: function(display) {
 	          module.verbose('Showing element', display);
 	          module.remove.hidden();
@@ -18311,7 +18311,7 @@
 	          settings.onComplete.call(element);
 	          // module.repaint();
 	        },
-
+	
 	        toggle: function() {
 	          if( module.is.visible() ) {
 	            module.hide();
@@ -18320,35 +18320,35 @@
 	            module.show();
 	          }
 	        },
-
+	
 	        stop: function() {
 	          module.debug('Stopping current animation');
 	          $module.triggerHandler(animationEnd);
 	        },
-
+	
 	        stopAll: function() {
 	          module.debug('Stopping all animation');
 	          module.remove.queueCallback();
 	          $module.triggerHandler(animationEnd);
 	        },
-
+	
 	        clear: {
 	          queue: function() {
 	            module.debug('Clearing animation queue');
 	            module.remove.queueCallback();
 	          }
 	        },
-
+	
 	        enable: function() {
 	          module.verbose('Starting animation');
 	          $module.removeClass(className.disabled);
 	        },
-
+	
 	        disable: function() {
 	          module.debug('Stopping animation');
 	          $module.addClass(className.disabled);
 	        },
-
+	
 	        setting: function(name, value) {
 	          module.debug('Changing setting', name, value);
 	          if( $.isPlainObject(name) ) {
@@ -18495,7 +18495,7 @@
 	          else if(found !== undefined) {
 	            response = found;
 	          }
-
+	
 	          if($.isArray(returnedValue)) {
 	            returnedValue.push(response);
 	          }
@@ -18519,62 +18519,62 @@
 	    : this
 	  ;
 	};
-
+	
 	// Records if CSS transition is available
 	$.fn.transition.exists = {};
-
+	
 	$.fn.transition.settings = {
-
+	
 	  // module info
 	  name          : 'Transition',
-
+	
 	  // debug content outputted to console
 	  debug         : false,
-
+	
 	  // verbose debug output
 	  verbose       : false,
-
+	
 	  // performance data output
 	  performance   : true,
-
+	
 	  // event namespace
 	  namespace     : 'transition',
-
+	
 	  // delay between animations in group
 	  interval      : 0,
-
+	
 	  // whether group animations should be reversed
 	  reverse       : 'auto',
-
+	
 	  // animation callback event
 	  onStart       : function() {},
 	  onComplete    : function() {},
 	  onShow        : function() {},
 	  onHide        : function() {},
-
+	
 	  // whether timeout should be used to ensure callback fires in cases animationend does not
 	  useFailSafe   : true,
-
+	
 	  // delay in ms for fail safe
 	  failSafeDelay : 100,
-
+	
 	  // whether EXACT animation can occur twice in a row
 	  allowRepeats  : false,
-
+	
 	  // Override final display type on visible
 	  displayType   : false,
-
+	
 	  // animation duration
 	  animation     : 'fade',
 	  duration      : false,
-
+	
 	  // new animations will occur after previous ones
 	  queue         : true,
-
+	
 	  metadata : {
 	    displayType: 'display'
 	  },
-
+	
 	  className   : {
 	    animating  : 'animating',
 	    disabled   : 'disabled',
@@ -18586,7 +18586,7 @@
 	    transition : 'transition',
 	    visible    : 'visible'
 	  },
-
+	
 	  // possible errors
 	  error: {
 	    noAnimation : 'Element is no longer attached to DOM. Unable to animate.',
@@ -18594,12 +18594,12 @@
 	    method      : 'The method you called is not defined',
 	    support     : 'This browser does not support CSS animations'
 	  }
-
+	
 	};
-
-
+	
+	
 	})( jQuery, window, document );
-
+	
 	/*!
 	 * # Semantic UI 2.1.7 - API
 	 * http://github.com/semantic-org/semantic-ui/
@@ -18610,13 +18610,13 @@
 	 * http://opensource.org/licenses/MIT
 	 *
 	 */
-
+	
 	;(function ( $, window, document, undefined ) {
-
+	
 	"use strict";
-
+	
 	$.api = $.fn.api = function(parameters) {
-
+	
 	  var
 	    // use window context if none specified
 	    $allModules     = $.isFunction(this)
@@ -18625,64 +18625,64 @@
 	    moduleSelector = $allModules.selector || '',
 	    time           = new Date().getTime(),
 	    performance    = [],
-
+	
 	    query          = arguments[0],
 	    methodInvoked  = (typeof query == 'string'),
 	    queryArguments = [].slice.call(arguments, 1),
-
+	
 	    returnedValue
 	  ;
-
+	
 	  $allModules
 	    .each(function() {
 	      var
 	        settings          = ( $.isPlainObject(parameters) )
 	          ? $.extend(true, {}, $.fn.api.settings, parameters)
 	          : $.extend({}, $.fn.api.settings),
-
+	
 	        // internal aliases
 	        namespace       = settings.namespace,
 	        metadata        = settings.metadata,
 	        selector        = settings.selector,
 	        error           = settings.error,
 	        className       = settings.className,
-
+	
 	        // define namespaces for modules
 	        eventNamespace  = '.' + namespace,
 	        moduleNamespace = 'module-' + namespace,
-
+	
 	        // element that creates request
 	        $module         = $(this),
 	        $form           = $module.closest(selector.form),
-
+	
 	        // context used for state
 	        $context        = (settings.stateContext)
 	          ? $(settings.stateContext)
 	          : $module,
-
+	
 	        // request details
 	        ajaxSettings,
 	        requestSettings,
 	        url,
 	        data,
 	        requestStartTime,
-
+	
 	        // standard module
 	        element         = this,
 	        context         = $context[0],
 	        instance        = $module.data(moduleNamespace),
 	        module
 	      ;
-
+	
 	      module = {
-
+	
 	        initialize: function() {
 	          if(!methodInvoked) {
 	            module.bind.events();
 	          }
 	          module.instantiate();
 	        },
-
+	
 	        instantiate: function() {
 	          module.verbose('Storing instance of module', module);
 	          instance = module;
@@ -18690,7 +18690,7 @@
 	            .data(moduleNamespace, instance)
 	          ;
 	        },
-
+	
 	        destroy: function() {
 	          module.verbose('Destroying previous module for', element);
 	          $module
@@ -18698,7 +18698,7 @@
 	            .off(eventNamespace)
 	          ;
 	        },
-
+	
 	        bind: {
 	          events: function() {
 	            var
@@ -18716,7 +18716,7 @@
 	            }
 	          }
 	        },
-
+	
 	        decode: {
 	          json: function(response) {
 	            if(response !== undefined && typeof response == 'string') {
@@ -18730,7 +18730,7 @@
 	            return response;
 	          }
 	        },
-
+	
 	        read: {
 	          cachedResponse: function(url) {
 	            var
@@ -18763,14 +18763,14 @@
 	            module.verbose('Storing cached response for url', url, response);
 	          }
 	        },
-
+	
 	        query: function() {
-
+	
 	          if(module.is.disabled()) {
 	            module.debug('Element is disabled API request aborted');
 	            return;
 	          }
-
+	
 	          if(module.is.loading()) {
 	            if(settings.interruptRequests) {
 	              module.debug('Interrupting previous request');
@@ -18781,20 +18781,20 @@
 	              return;
 	            }
 	          }
-
+	
 	          // pass element metadata to url (value, text)
 	          if(settings.defaultData) {
 	            $.extend(true, settings.urlData, module.get.defaultData());
 	          }
-
+	
 	          // Add form content
 	          if(settings.serializeForm) {
 	            settings.data = module.add.formData(settings.data);
 	          }
-
+	
 	          // call beforesend and get any settings changes
 	          requestSettings = module.get.settings();
-
+	
 	          // check if before send cancelled request
 	          if(requestSettings === false) {
 	            module.cancelled = true;
@@ -18804,24 +18804,24 @@
 	          else {
 	            module.cancelled = false;
 	          }
-
+	
 	          // get url
 	          url = module.get.templatedURL();
-
+	
 	          if(!url && !module.is.mocked()) {
 	            module.error(error.missingURL);
 	            return;
 	          }
-
+	
 	          // replace variables
 	          url = module.add.urlData( url );
 	          // missing url parameters
 	          if( !url && !module.is.mocked()) {
 	            return;
 	          }
-
+	
 	          requestSettings.url = settings.base + url;
-
+	
 	          // look for jQuery ajax parameters in settings
 	          ajaxSettings = $.extend(true, {}, settings, {
 	            type       : settings.method || settings.type,
@@ -18832,17 +18832,17 @@
 	            failure    : function() {},
 	            complete   : function() {}
 	          });
-
+	
 	          module.debug('Querying URL', ajaxSettings.url);
 	          module.verbose('Using AJAX settings', ajaxSettings);
-
+	
 	          if(settings.cache === 'local' && module.read.cachedResponse(url)) {
 	            module.debug('Response returned from local cache');
 	            module.request = module.create.request();
 	            module.request.resolveWith(context, [ module.read.cachedResponse(url) ]);
 	            return;
 	          }
-
+	
 	          if( !settings.throttle ) {
 	            module.debug('Sending request', data, ajaxSettings.method);
 	            module.send.request();
@@ -18865,15 +18865,15 @@
 	              }, settings.throttle);
 	            }
 	          }
-
+	
 	        },
-
+	
 	        should: {
 	          removeError: function() {
 	            return ( settings.hideError === true || (settings.hideError === 'auto' && !module.is.form()) );
 	          }
 	        },
-
+	
 	        is: {
 	          disabled: function() {
 	            return ($module.filter(selector.disabled).length > 0);
@@ -18916,7 +18916,7 @@
 	            }
 	          }
 	        },
-
+	
 	        was: {
 	          cancelled: function() {
 	            return (module.cancelled || false);
@@ -18931,7 +18931,7 @@
 	            return (module.request && (module.request.state() == 'resolved' || module.request.state() == 'rejected') );
 	          }
 	        },
-
+	
 	        add: {
 	          urlData: function(url, urlData) {
 	            var
@@ -19020,7 +19020,7 @@
 	            ;
 	            data         = data || settings.data;
 	            hasOtherData = $.isPlainObject(data);
-
+	
 	            if(hasOtherData) {
 	              if(canSerialize) {
 	                module.debug('Extending existing data with form data', data, formData);
@@ -19039,7 +19039,7 @@
 	            return data;
 	          }
 	        },
-
+	
 	        send: {
 	          request: function() {
 	            module.set.loading();
@@ -19053,7 +19053,7 @@
 	            settings.onRequest.call(context, module.request, module.xhr);
 	          }
 	        },
-
+	
 	        event: {
 	          trigger: function(event) {
 	            module.query();
@@ -19166,7 +19166,7 @@
 	                  settings.onError.call(context, errorMessage, $module, xhr);
 	                }
 	              }
-
+	
 	              if(settings.errorDuration && status !== 'aborted') {
 	                module.debug('Adding error state');
 	                module.set.error();
@@ -19179,9 +19179,9 @@
 	            }
 	          }
 	        },
-
+	
 	        create: {
-
+	
 	          request: function() {
 	            // api request promise
 	            return $.Deferred()
@@ -19190,7 +19190,7 @@
 	              .fail(module.event.request.fail)
 	            ;
 	          },
-
+	
 	          mockedXHR: function () {
 	            var
 	              // xhr does not simulate these properties of xhr but must return them
@@ -19203,13 +19203,13 @@
 	              response,
 	              mockedXHR
 	            ;
-
+	
 	            mockedXHR = $.Deferred()
 	              .always(module.event.xhr.complete)
 	              .done(module.event.xhr.done)
 	              .fail(module.event.xhr.fail)
 	            ;
-
+	
 	            if(responder) {
 	              if( $.isFunction(responder) ) {
 	                module.debug('Using specified synchronous callback', responder);
@@ -19225,7 +19225,7 @@
 	            else if( $.isFunction(asyncResponder) ) {
 	              asyncCallback = function(response) {
 	                module.debug('Async callback returned response', response);
-
+	
 	                if(response) {
 	                  mockedXHR.resolveWith(context, [ response, textStatus, { responseText: response }]);
 	                }
@@ -19238,7 +19238,7 @@
 	            }
 	            return mockedXHR;
 	          },
-
+	
 	          xhr: function() {
 	            var
 	              xhr
@@ -19253,7 +19253,7 @@
 	            return xhr;
 	          }
 	        },
-
+	
 	        set: {
 	          error: function() {
 	            module.verbose('Adding error state to element', $context);
@@ -19265,7 +19265,7 @@
 	            requestStartTime = new Date().getTime();
 	          }
 	        },
-
+	
 	        remove: {
 	          error: function() {
 	            module.verbose('Removing error state from element', $context);
@@ -19276,7 +19276,7 @@
 	            $context.removeClass(className.loading);
 	          }
 	        },
-
+	
 	        get: {
 	          responseFromXHR: function(xhr) {
 	            return $.isPlainObject(xhr)
@@ -19352,7 +19352,7 @@
 	                data.value = $module.val();
 	              }
 	              else if( !module.is.form() ) {
-
+	
 	              }
 	              else {
 	                data.text = $module.text();
@@ -19407,7 +19407,7 @@
 	            return url;
 	          }
 	        },
-
+	
 	        abort: function() {
 	          var
 	            xhr = module.get.xhr()
@@ -19417,13 +19417,13 @@
 	            xhr.abort();
 	          }
 	        },
-
+	
 	        // reset state
 	        reset: function() {
 	          module.remove.error();
 	          module.remove.loading();
 	        },
-
+	
 	        setting: function(name, value) {
 	          module.debug('Changing setting', name, value);
 	          if( $.isPlainObject(name) ) {
@@ -19579,7 +19579,7 @@
 	          return found;
 	        }
 	      };
-
+	
 	      if(methodInvoked) {
 	        if(instance === undefined) {
 	          module.initialize();
@@ -19594,111 +19594,111 @@
 	      }
 	    })
 	  ;
-
+	
 	  return (returnedValue !== undefined)
 	    ? returnedValue
 	    : this
 	  ;
 	};
-
+	
 	$.api.settings = {
-
+	
 	  name              : 'API',
 	  namespace         : 'api',
-
+	
 	  debug             : false,
 	  verbose           : false,
 	  performance       : true,
-
+	
 	  // object containing all templates endpoints
 	  api               : {},
-
+	
 	  // whether to cache responses
 	  cache             : true,
-
+	
 	  // whether new requests should abort previous requests
 	  interruptRequests : true,
-
+	
 	  // event binding
 	  on                : 'auto',
-
+	
 	  // context for applying state classes
 	  stateContext      : false,
-
+	
 	  // duration for loading state
 	  loadingDuration   : 0,
-
+	
 	  // whether to hide errors after a period of time
 	  hideError         : 'auto',
-
+	
 	  // duration for error state
 	  errorDuration     : 2000,
-
+	
 	  // whether parameters should be encoded with encodeURIComponent
 	  encodeParameters  : true,
-
+	
 	  // API action to use
 	  action            : false,
-
+	
 	  // templated URL to use
 	  url               : false,
-
+	
 	  // base URL to apply to all endpoints
 	  base              : '',
-
+	
 	  // data that will
 	  urlData           : {},
-
+	
 	  // whether to add default data to url data
 	  defaultData          : true,
-
+	
 	  // whether to serialize closest form
 	  serializeForm        : false,
-
+	
 	  // how long to wait before request should occur
 	  throttle             : 0,
-
+	
 	  // whether to throttle first request or only repeated
 	  throttleFirstRequest : true,
-
+	
 	  // standard ajax settings
 	  method            : 'get',
 	  data              : {},
 	  dataType          : 'json',
-
+	
 	  // mock response
 	  mockResponse      : false,
 	  mockResponseAsync : false,
-
+	
 	  // aliases for mock
 	  response          : false,
 	  responseAsync     : false,
-
+	
 	  // callbacks before request
 	  beforeSend  : function(settings) { return settings; },
 	  beforeXHR   : function(xhr) {},
 	  onRequest   : function(promise, xhr) {},
-
+	
 	  // after request
 	  onResponse  : false, // function(response) { },
-
+	
 	  // response was successful, if JSON passed validation
 	  onSuccess   : function(response, $module) {},
-
+	
 	  // request finished without aborting
 	  onComplete  : function(response, $module) {},
-
+	
 	  // failed JSON success test
 	  onFailure   : function(response, $module) {},
-
+	
 	  // server error
 	  onError     : function(errorMessage, $module) {},
-
+	
 	  // request aborted
 	  onAbort     : function(errorMessage, $module) {},
-
+	
 	  successTest : false,
-
+	
 	  // errors
 	  error : {
 	    beforeSend        : 'The before send function has aborted the request',
@@ -19717,32 +19717,32 @@
 	    statusMessage     : 'Server gave an error: ',
 	    timeout           : 'Your request timed out'
 	  },
-
+	
 	  regExp  : {
 	    required : /\{\$*[A-z0-9]+\}/g,
 	    optional : /\{\/\$*[A-z0-9]+\}/g,
 	  },
-
+	
 	  className: {
 	    loading : 'loading',
 	    error   : 'error'
 	  },
-
+	
 	  selector: {
 	    disabled : '.disabled',
 	    form      : 'form'
 	  },
-
+	
 	  metadata: {
 	    action  : 'action',
 	    url     : 'url'
 	  }
 	};
-
-
-
+	
+	
+	
 	})( jQuery, window, document );
-
+	
 	/*!
 	 * # Semantic UI 2.1.7 - State
 	 * http://github.com/semantic-org/semantic-ui/
@@ -19753,25 +19753,25 @@
 	 * http://opensource.org/licenses/MIT
 	 *
 	 */
-
+	
 	;(function ( $, window, document, undefined ) {
-
+	
 	"use strict";
-
+	
 	$.fn.state = function(parameters) {
 	  var
 	    $allModules     = $(this),
-
+	
 	    moduleSelector  = $allModules.selector || '',
-
+	
 	    hasTouch        = ('ontouchstart' in document.documentElement),
 	    time            = new Date().getTime(),
 	    performance     = [],
-
+	
 	    query           = arguments[0],
 	    methodInvoked   = (typeof query == 'string'),
 	    queryArguments  = [].slice.call(arguments, 1),
-
+	
 	    returnedValue
 	  ;
 	  $allModules
@@ -19780,34 +19780,34 @@
 	        settings          = ( $.isPlainObject(parameters) )
 	          ? $.extend(true, {}, $.fn.state.settings, parameters)
 	          : $.extend({}, $.fn.state.settings),
-
+	
 	        error           = settings.error,
 	        metadata        = settings.metadata,
 	        className       = settings.className,
 	        namespace       = settings.namespace,
 	        states          = settings.states,
 	        text            = settings.text,
-
+	
 	        eventNamespace  = '.' + namespace,
 	        moduleNamespace = namespace + '-module',
-
+	
 	        $module         = $(this),
-
+	
 	        element         = this,
 	        instance        = $module.data(moduleNamespace),
-
+	
 	        module
 	      ;
 	      module = {
-
+	
 	        initialize: function() {
 	          module.verbose('Initializing module');
-
+	
 	          // allow module to guess desired state based on element
 	          if(settings.automatic) {
 	            module.add.defaults();
 	          }
-
+	
 	          // bind events with delegated events
 	          if(settings.context && moduleSelector !== '') {
 	            $(settings.context)
@@ -19825,7 +19825,7 @@
 	          }
 	          module.instantiate();
 	        },
-
+	
 	        instantiate: function() {
 	          module.verbose('Storing instance of module', module);
 	          instance = module;
@@ -19833,7 +19833,7 @@
 	            .data(moduleNamespace, module)
 	          ;
 	        },
-
+	
 	        destroy: function() {
 	          module.verbose('Destroying previous module', instance);
 	          $module
@@ -19841,12 +19841,12 @@
 	            .removeData(moduleNamespace)
 	          ;
 	        },
-
+	
 	        refresh: function() {
 	          module.verbose('Refreshing selector cache');
 	          $module = $(element);
 	        },
-
+	
 	        add: {
 	          defaults: function() {
 	            var
@@ -19862,9 +19862,9 @@
 	            });
 	          }
 	        },
-
+	
 	        is: {
-
+	
 	          active: function() {
 	            return $module.hasClass(className.active);
 	          },
@@ -19880,7 +19880,7 @@
 	            }
 	            return $module.hasClass( className[state] );
 	          },
-
+	
 	          enabled: function() {
 	            return !( $module.is(settings.filter.active) );
 	          },
@@ -19890,7 +19890,7 @@
 	          textEnabled: function() {
 	            return !( $module.is(settings.filter.text) );
 	          },
-
+	
 	          // definitions for automatic type detection
 	          button: function() {
 	            return $module.is('.button:not(a, .submit)');
@@ -19902,7 +19902,7 @@
 	            return $module.is('.ui.progress');
 	          }
 	        },
-
+	
 	        allow: function(state) {
 	          module.debug('Now allowing state', state);
 	          states[state] = true;
@@ -19911,31 +19911,31 @@
 	          module.debug('No longer allowing', state);
 	          states[state] = false;
 	        },
-
+	
 	        allows: function(state) {
 	          return states[state] || false;
 	        },
-
+	
 	        enable: function() {
 	          $module.removeClass(className.disabled);
 	        },
-
+	
 	        disable: function() {
 	          $module.addClass(className.disabled);
 	        },
-
+	
 	        setState: function(state) {
 	          if(module.allows(state)) {
 	            $module.addClass( className[state] );
 	          }
 	        },
-
+	
 	        removeState: function(state) {
 	          if(module.allows(state)) {
 	            $module.removeClass( className[state] );
 	          }
 	        },
-
+	
 	        toggle: {
 	          state: function() {
 	            var
@@ -19961,7 +19961,7 @@
 	            }
 	          }
 	        },
-
+	
 	        listenTo: function(apiRequest) {
 	          module.debug('API request detected, waiting for state signal', apiRequest);
 	          if(apiRequest) {
@@ -19985,10 +19985,10 @@
 	            ;
 	          }
 	        },
-
+	
 	        // checks whether active/inactive state can be given
 	        change: {
-
+	
 	          state: function() {
 	            module.debug('Determining state change direction');
 	            // inactive to active change
@@ -20003,7 +20003,7 @@
 	            }
 	            settings.onChange.call(element);
 	          },
-
+	
 	          text: function() {
 	            if( module.is.textEnabled() ) {
 	              if(module.is.disabled() ) {
@@ -20032,9 +20032,9 @@
 	              }
 	            }
 	          }
-
+	
 	        },
-
+	
 	        activate: function() {
 	          if( settings.activateTest.call(element) ) {
 	            module.debug('Setting state to active');
@@ -20045,7 +20045,7 @@
 	            settings.onActivate.call(element);
 	          }
 	        },
-
+	
 	        deactivate: function() {
 	          if( settings.deactivateTest.call(element) ) {
 	            module.debug('Setting state to inactive');
@@ -20056,7 +20056,7 @@
 	            settings.onDeactivate.call(element);
 	          }
 	        },
-
+	
 	        sync: function() {
 	          module.verbose('Syncing other buttons to current state');
 	          if( module.is.active() ) {
@@ -20071,7 +20071,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        get: {
 	          text: function() {
 	            return (settings.selector.text)
@@ -20083,7 +20083,7 @@
 	            return text[state] || false;
 	          }
 	        },
-
+	
 	        flash: {
 	          text: function(text, duration, callback) {
 	            var
@@ -20100,7 +20100,7 @@
 	            }, duration);
 	          }
 	        },
-
+	
 	        reset: {
 	          // on mouseout sets text to previous value
 	          text: function() {
@@ -20120,7 +20120,7 @@
 	            }
 	          }
 	        },
-
+	
 	        update: {
 	          text: function(text) {
 	            var
@@ -20147,7 +20147,7 @@
 	            }
 	          }
 	        },
-
+	
 	        setting: function(name, value) {
 	          module.debug('Changing setting', name, value);
 	          if( $.isPlainObject(name) ) {
@@ -20303,7 +20303,7 @@
 	          return found;
 	        }
 	      };
-
+	
 	      if(methodInvoked) {
 	        if(instance === undefined) {
 	          module.initialize();
@@ -20318,68 +20318,68 @@
 	      }
 	    })
 	  ;
-
+	
 	  return (returnedValue !== undefined)
 	    ? returnedValue
 	    : this
 	  ;
 	};
-
+	
 	$.fn.state.settings = {
-
+	
 	  // module info
 	  name           : 'State',
-
+	
 	  // debug output
 	  debug          : false,
-
+	
 	  // verbose debug output
 	  verbose        : false,
-
+	
 	  // namespace for events
 	  namespace      : 'state',
-
+	
 	  // debug data includes performance
 	  performance    : true,
-
+	
 	  // callback occurs on state change
 	  onActivate     : function() {},
 	  onDeactivate   : function() {},
 	  onChange       : function() {},
-
+	
 	  // state test functions
 	  activateTest   : function() { return true; },
 	  deactivateTest : function() { return true; },
-
+	
 	  // whether to automatically map default states
 	  automatic      : true,
-
+	
 	  // activate / deactivate changes all elements instantiated at same time
 	  sync           : false,
-
+	
 	  // default flash text duration, used for temporarily changing text of an element
 	  flashDuration  : 1000,
-
+	
 	  // selector filter
 	  filter     : {
 	    text   : '.loading, .disabled',
 	    active : '.disabled'
 	  },
-
+	
 	  context    : false,
-
+	
 	  // error
 	  error: {
 	    beforeSend : 'The before send function has cancelled state change',
 	    method     : 'The method you called is not defined.'
 	  },
-
+	
 	  // metadata
 	  metadata: {
 	    promise    : 'promise',
 	    storedText : 'stored-text'
 	  },
-
+	
 	  // change class on state
 	  className: {
 	    active   : 'active',
@@ -20389,12 +20389,12 @@
 	    success  : 'success',
 	    warning  : 'warning'
 	  },
-
+	
 	  selector: {
 	    // selector for text node
 	    text: false
 	  },
-
+	
 	  defaults : {
 	    input: {
 	      disabled : true,
@@ -20413,7 +20413,7 @@
 	      error    : true
 	    }
 	  },
-
+	
 	  states     : {
 	    active   : true,
 	    disabled : true,
@@ -20422,7 +20422,7 @@
 	    success  : true,
 	    warning  : true
 	  },
-
+	
 	  text     : {
 	    disabled   : false,
 	    flash      : false,
@@ -20432,13 +20432,13 @@
 	    activate   : false,
 	    deactivate : false
 	  }
-
+	
 	};
-
-
-
+	
+	
+	
 	})( jQuery, window, document );
-
+	
 	/*!
 	 * # Semantic UI 2.1.7 - Visibility
 	 * http://github.com/semantic-org/semantic-ui/
@@ -20449,96 +20449,96 @@
 	 * http://opensource.org/licenses/MIT
 	 *
 	 */
-
+	
 	;(function ( $, window, document, undefined ) {
-
+	
 	"use strict";
-
+	
 	$.fn.visibility = function(parameters) {
 	  var
 	    $allModules    = $(this),
 	    moduleSelector = $allModules.selector || '',
-
+	
 	    time           = new Date().getTime(),
 	    performance    = [],
-
+	
 	    query          = arguments[0],
 	    methodInvoked  = (typeof query == 'string'),
 	    queryArguments = [].slice.call(arguments, 1),
 	    returnedValue
 	  ;
-
+	
 	  $allModules
 	    .each(function() {
 	      var
 	        settings        = ( $.isPlainObject(parameters) )
 	          ? $.extend(true, {}, $.fn.visibility.settings, parameters)
 	          : $.extend({}, $.fn.visibility.settings),
-
+	
 	        className       = settings.className,
 	        namespace       = settings.namespace,
 	        error           = settings.error,
 	        metadata        = settings.metadata,
-
+	
 	        eventNamespace  = '.' + namespace,
 	        moduleNamespace = 'module-' + namespace,
-
+	
 	        $window         = $(window),
-
+	
 	        $module         = $(this),
 	        $context        = $(settings.context),
-
+	
 	        $placeholder,
-
+	
 	        selector        = $module.selector || '',
 	        instance        = $module.data(moduleNamespace),
-
+	
 	        requestAnimationFrame = window.requestAnimationFrame
 	          || window.mozRequestAnimationFrame
 	          || window.webkitRequestAnimationFrame
 	          || window.msRequestAnimationFrame
 	          || function(callback) { setTimeout(callback, 0); },
-
+	
 	        element         = this,
 	        disabled        = false,
-
+	
 	        observer,
 	        module
 	      ;
-
+	
 	      module = {
-
+	
 	        initialize: function() {
 	          module.debug('Initializing', settings);
-
+	
 	          module.setup.cache();
-
+	
 	          if( module.should.trackChanges() ) {
-
+	
 	            if(settings.type == 'image') {
 	              module.setup.image();
 	            }
 	            if(settings.type == 'fixed') {
 	              module.setup.fixed();
 	            }
-
+	
 	            if(settings.observeChanges) {
 	              module.observeChanges();
 	            }
 	            module.bind.events();
 	          }
-
+	
 	          module.save.position();
 	          if( !module.is.visible() ) {
 	            module.error(error.visible, $module);
 	          }
-
+	
 	          if(settings.initialCheck) {
 	            module.checkVisibility();
 	          }
 	          module.instantiate();
 	        },
-
+	
 	        instantiate: function() {
 	          module.debug('Storing instance', module);
 	          $module
@@ -20546,7 +20546,7 @@
 	          ;
 	          instance = module;
 	        },
-
+	
 	        destroy: function() {
 	          module.verbose('Destroying previous module');
 	          if(observer) {
@@ -20564,7 +20564,7 @@
 	            .removeData(moduleNamespace)
 	          ;
 	        },
-
+	
 	        observeChanges: function() {
 	          if('MutationObserver' in window) {
 	            observer = new MutationObserver(function(mutations) {
@@ -20581,7 +20581,7 @@
 	            module.debug('Setting up mutation observer', observer);
 	          }
 	        },
-
+	
 	        bind: {
 	          events: function() {
 	            module.verbose('Binding visibility events to scroll and resize');
@@ -20601,7 +20601,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        event: {
 	          resize: function() {
 	            module.debug('Window resized');
@@ -20632,7 +20632,7 @@
 	            module.checkVisibility(scrollPosition);
 	          },
 	        },
-
+	
 	        precache: function(images, callback) {
 	          if (!(images instanceof Array)) {
 	            images = [images];
@@ -20659,17 +20659,17 @@
 	            cache.push(cacheImage);
 	          }
 	        },
-
+	
 	        enableCallbacks: function() {
 	          module.debug('Allowing callbacks to occur');
 	          disabled = false;
 	        },
-
+	
 	        disableCallbacks: function() {
 	          module.debug('Disabling all callbacks temporarily');
 	          disabled = true;
 	        },
-
+	
 	        should: {
 	          trackChanges: function() {
 	            if(methodInvoked) {
@@ -20680,7 +20680,7 @@
 	            return true;
 	          }
 	        },
-
+	
 	        setup: {
 	          cache: function() {
 	            module.cache = {
@@ -20697,7 +20697,7 @@
 	              module.verbose('Lazy loading image', src);
 	              settings.once           = true;
 	              settings.observeChanges = false;
-
+	
 	              // show when top visible
 	              settings.onOnScreen = function() {
 	                module.debug('Image on screen', element);
@@ -20735,7 +20735,7 @@
 	            };
 	          }
 	        },
-
+	
 	        create: {
 	          placeholder: function() {
 	            module.verbose('Creating fixed position placeholder');
@@ -20747,7 +20747,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        show: {
 	          placeholder: function() {
 	            module.verbose('Showing placeholder');
@@ -20766,7 +20766,7 @@
 	            ;
 	          }
 	        },
-
+	
 	        set: {
 	          fixed: function() {
 	            module.verbose('Setting element to fixed position');
@@ -20797,7 +20797,7 @@
 	            }
 	          }
 	        },
-
+	
 	        is: {
 	          onScreen: function() {
 	            var
@@ -20818,7 +20818,7 @@
 	            return false;
 	          }
 	        },
-
+	
 	        refresh: function() {
 	          module.debug('Refreshing constants (width/height)');
 	          if(settings.type == 'fixed') {
@@ -20832,7 +20832,7 @@
 	          }
 	          settings.onRefresh.call(element);
 	        },
-
+	
 	        reset: function() {
 	          module.verbose('Reseting all cached values');
 	          if( $.isPlainObject(module.cache) ) {
@@ -20840,28 +20840,28 @@
 	            module.cache.element = {};
 	          }
 	        },
-
+	
 	        checkVisibility: function(scroll) {
 	          module.verbose('Checking visibility of element', module.cache.element);
-
+	
 	          if( !disabled && module.is.visible() ) {
-
+	
 	            // save scroll position
 	            module.save.scroll(scroll);
-
+	
 	            // update calculations derived from scroll
 	            module.save.calculations();
-
+	
 	            // percentage
 	            module.passed();
-
+	
 	            // reverse (must be first)
 	            module.passingReverse();
 	            module.topVisibleReverse();
 	            module.bottomVisibleReverse();
 	            module.topPassedReverse();
 	            module.bottomPassedReverse();
-
+	
 	            // one time
 	            module.onScreen();
 	            module.offScreen();
@@ -20870,14 +20870,14 @@
 	            module.bottomVisible();
 	            module.topPassed();
 	            module.bottomPassed();
-
+	
 	            // on update callback
 	            if(settings.onUpdate) {
 	              settings.onUpdate.call(element, module.get.elementCalculations());
 	            }
 	          }
 	        },
-
+	
 	        passed: function(amount, newCallback) {
 	          var
 	            calculations   = module.get.elementCalculations(),
@@ -20901,7 +20901,7 @@
 	            });
 	          }
 	        },
-
+	
 	        onScreen: function(newCallback) {
 	          var
 	            calculations = module.get.elementCalculations(),
@@ -20922,7 +20922,7 @@
 	            return calculations.onOnScreen;
 	          }
 	        },
-
+	
 	        offScreen: function(newCallback) {
 	          var
 	            calculations = module.get.elementCalculations(),
@@ -20943,7 +20943,7 @@
 	            return calculations.onOffScreen;
 	          }
 	        },
-
+	
 	        passing: function(newCallback) {
 	          var
 	            calculations = module.get.elementCalculations(),
@@ -20964,8 +20964,8 @@
 	            return calculations.passing;
 	          }
 	        },
-
-
+	
+	
 	        topVisible: function(newCallback) {
 	          var
 	            calculations = module.get.elementCalculations(),
@@ -20986,7 +20986,7 @@
 	            return calculations.topVisible;
 	          }
 	        },
-
+	
 	        bottomVisible: function(newCallback) {
 	          var
 	            calculations = module.get.elementCalculations(),
@@ -21007,7 +21007,7 @@
 	            return calculations.bottomVisible;
 	          }
 	        },
-
+	
 	        topPassed: function(newCallback) {
 	          var
 	            calculations = module.get.elementCalculations(),
@@ -21028,7 +21028,7 @@
 	            return calculations.topPassed;
 	          }
 	        },
-
+	
 	        bottomPassed: function(newCallback) {
 	          var
 	            calculations = module.get.elementCalculations(),
@@ -21049,7 +21049,7 @@
 	            return calculations.bottomPassed;
 	          }
 	        },
-
+	
 	        passingReverse: function(newCallback) {
 	          var
 	            calculations = module.get.elementCalculations(),
@@ -21072,8 +21072,8 @@
 	            return !calculations.passing;
 	          }
 	        },
-
-
+	
+	
 	        topVisibleReverse: function(newCallback) {
 	          var
 	            calculations = module.get.elementCalculations(),
@@ -21096,7 +21096,7 @@
 	            return !calculations.topVisible;
 	          }
 	        },
-
+	
 	        bottomVisibleReverse: function(newCallback) {
 	          var
 	            calculations = module.get.elementCalculations(),
@@ -21119,7 +21119,7 @@
 	            return !calculations.bottomVisible;
 	          }
 	        },
-
+	
 	        topPassedReverse: function(newCallback) {
 	          var
 	            calculations = module.get.elementCalculations(),
@@ -21142,7 +21142,7 @@
 	            return !calculations.onTopPassed;
 	          }
 	        },
-
+	
 	        bottomPassedReverse: function(newCallback) {
 	          var
 	            calculations = module.get.elementCalculations(),
@@ -21165,7 +21165,7 @@
 	            return !calculations.bottomPassed;
 	          }
 	        },
-
+	
 	        execute: function(callback, callbackName) {
 	          var
 	            calculations = module.get.elementCalculations(),
@@ -21184,7 +21184,7 @@
 	          }
 	          module.save.occurred(callbackName);
 	        },
-
+	
 	        remove: {
 	          fixed: function() {
 	            module.debug('Removing fixed position');
@@ -21213,7 +21213,7 @@
 	            }
 	          }
 	        },
-
+	
 	        save: {
 	          calculations: function() {
 	            module.verbose('Saving all calculations necessary to determine positioning');
@@ -21283,7 +21283,7 @@
 	              element.top    = element.offset.top;
 	              element.bottom = element.offset.top + element.height;
 	            }
-
+	
 	            // visibility
 	            element.topVisible       = (screen.bottom >= element.top);
 	            element.topPassed        = (screen.top >= element.top);
@@ -21291,12 +21291,12 @@
 	            element.bottomPassed     = (screen.top >= element.bottom);
 	            element.pixelsPassed     = 0;
 	            element.percentagePassed = 0;
-
+	
 	            // meta calculations
 	            element.onScreen  = (element.topVisible && !element.bottomPassed);
 	            element.passing   = (element.topPassed && !element.bottomPassed);
 	            element.offScreen = (!element.onScreen);
-
+	
 	            // passing calculations
 	            if(element.passing) {
 	              element.pixelsPassed     = (screen.top - element.top);
@@ -21326,7 +21326,7 @@
 	            module.save.elementPosition();
 	          }
 	        },
-
+	
 	        get: {
 	          pixelsPassed: function(amount) {
 	            var
@@ -21387,7 +21387,7 @@
 	            return module.cache.screen.top;
 	          }
 	        },
-
+	
 	        setting: function(name, value) {
 	          if( $.isPlainObject(name) ) {
 	            $.extend(true, settings, name);
@@ -21542,7 +21542,7 @@
 	          return found;
 	        }
 	      };
-
+	
 	      if(methodInvoked) {
 	        if(instance === undefined) {
 	          module.initialize();
@@ -21559,65 +21559,65 @@
 	      }
 	    })
 	  ;
-
+	
 	  return (returnedValue !== undefined)
 	    ? returnedValue
 	    : this
 	  ;
 	};
-
+	
 	$.fn.visibility.settings = {
-
+	
 	  name                   : 'Visibility',
 	  namespace              : 'visibility',
-
+	
 	  debug                  : false,
 	  verbose                : false,
 	  performance            : true,
-
+	
 	  // whether to use mutation observers to follow changes
 	  observeChanges         : true,
-
+	
 	  // check position immediately on init
 	  initialCheck           : true,
-
+	
 	  // whether to refresh calculations after all page images load
 	  refreshOnLoad          : true,
-
+	
 	  // whether to refresh calculations after page resize event
 	  refreshOnResize        : true,
-
+	
 	  // should call callbacks on refresh event (resize, etc)
 	  checkOnRefresh         : true,
-
+	
 	  // callback should only occur one time
 	  once                   : true,
-
+	
 	  // callback should fire continuously whe evaluates to true
 	  continuous             : false,
-
+	
 	  // offset to use with scroll top
 	  offset                 : 0,
-
+	
 	  // whether to include margin in elements position
 	  includeMargin          : false,
-
+	
 	  // scroll context for visibility checks
 	  context                : window,
-
+	
 	  // visibility check delay in ms (defaults to animationFrame)
 	  throttle               : false,
-
+	
 	  // special visibility type (image, fixed)
 	  type                   : false,
-
+	
 	  // image only animation settings
 	  transition             : 'fade in',
 	  duration               : 1000,
-
+	
 	  // array of callbacks for percentage
 	  onPassed               : {},
-
+	
 	  // standard callbacks
 	  onOnScreen             : false,
 	  onOffScreen            : false,
@@ -21626,34 +21626,34 @@
 	  onBottomVisible        : false,
 	  onTopPassed            : false,
 	  onBottomPassed         : false,
-
+	
 	  // reverse callbacks
 	  onPassingReverse       : false,
 	  onTopVisibleReverse    : false,
 	  onBottomVisibleReverse : false,
 	  onTopPassedReverse     : false,
 	  onBottomPassedReverse  : false,
-
+	
 	  // utility callbacks
 	  onUpdate               : false, // disabled by default for performance
 	  onRefresh              : function(){},
-
+	
 	  metadata : {
 	    src: 'src'
 	  },
-
+	
 	  className: {
 	    fixed       : 'fixed',
 	    placeholder : 'placeholder'
 	  },
-
+	
 	  error : {
 	    method  : 'The method you called is not defined.',
 	    visible : 'Element is hidden, you must call refresh after element becomes visible'
 	  }
-
+	
 	};
-
+	
 	})( jQuery, window, document );
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
@@ -21674,7 +21674,7 @@
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
-
+	
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ },
@@ -21722,25 +21722,25 @@
 	 * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 */
 	;(function() {
-
+	
 	  /** Used as a safe reference for `undefined` in pre-ES5 environments. */
 	  var undefined;
-
+	
 	  /** Used as the semantic version number. */
 	  var VERSION = '4.11.1';
-
+	
 	  /** Used as the size to enable large array optimizations. */
 	  var LARGE_ARRAY_SIZE = 200;
-
+	
 	  /** Used as the `TypeError` message for "Functions" methods. */
 	  var FUNC_ERROR_TEXT = 'Expected a function';
-
+	
 	  /** Used to stand-in for `undefined` hash values. */
 	  var HASH_UNDEFINED = '__lodash_hash_undefined__';
-
+	
 	  /** Used as the internal argument placeholder. */
 	  var PLACEHOLDER = '__lodash_placeholder__';
-
+	
 	  /** Used to compose bitmasks for wrapper metadata. */
 	  var BIND_FLAG = 1,
 	      BIND_KEY_FLAG = 2,
@@ -21752,35 +21752,35 @@
 	      ARY_FLAG = 128,
 	      REARG_FLAG = 256,
 	      FLIP_FLAG = 512;
-
+	
 	  /** Used to compose bitmasks for comparison styles. */
 	  var UNORDERED_COMPARE_FLAG = 1,
 	      PARTIAL_COMPARE_FLAG = 2;
-
+	
 	  /** Used as default options for `_.truncate`. */
 	  var DEFAULT_TRUNC_LENGTH = 30,
 	      DEFAULT_TRUNC_OMISSION = '...';
-
+	
 	  /** Used to detect hot functions by number of calls within a span of milliseconds. */
 	  var HOT_COUNT = 150,
 	      HOT_SPAN = 16;
-
+	
 	  /** Used to indicate the type of lazy iteratees. */
 	  var LAZY_FILTER_FLAG = 1,
 	      LAZY_MAP_FLAG = 2,
 	      LAZY_WHILE_FLAG = 3;
-
+	
 	  /** Used as references for various `Number` constants. */
 	  var INFINITY = 1 / 0,
 	      MAX_SAFE_INTEGER = 9007199254740991,
 	      MAX_INTEGER = 1.7976931348623157e+308,
 	      NAN = 0 / 0;
-
+	
 	  /** Used as references for the maximum length and index of an array. */
 	  var MAX_ARRAY_LENGTH = 4294967295,
 	      MAX_ARRAY_INDEX = MAX_ARRAY_LENGTH - 1,
 	      HALF_MAX_ARRAY_LENGTH = MAX_ARRAY_LENGTH >>> 1;
-
+	
 	  /** `Object#toString` result references. */
 	  var argsTag = '[object Arguments]',
 	      arrayTag = '[object Array]',
@@ -21799,7 +21799,7 @@
 	      symbolTag = '[object Symbol]',
 	      weakMapTag = '[object WeakMap]',
 	      weakSetTag = '[object WeakSet]';
-
+	
 	  var arrayBufferTag = '[object ArrayBuffer]',
 	      dataViewTag = '[object DataView]',
 	      float32Tag = '[object Float32Array]',
@@ -21811,82 +21811,82 @@
 	      uint8ClampedTag = '[object Uint8ClampedArray]',
 	      uint16Tag = '[object Uint16Array]',
 	      uint32Tag = '[object Uint32Array]';
-
+	
 	  /** Used to match empty string literals in compiled template source. */
 	  var reEmptyStringLeading = /\b__p \+= '';/g,
 	      reEmptyStringMiddle = /\b(__p \+=) '' \+/g,
 	      reEmptyStringTrailing = /(__e\(.*?\)|\b__t\)) \+\n'';/g;
-
+	
 	  /** Used to match HTML entities and HTML characters. */
 	  var reEscapedHtml = /&(?:amp|lt|gt|quot|#39|#96);/g,
 	      reUnescapedHtml = /[&<>"'`]/g,
 	      reHasEscapedHtml = RegExp(reEscapedHtml.source),
 	      reHasUnescapedHtml = RegExp(reUnescapedHtml.source);
-
+	
 	  /** Used to match template delimiters. */
 	  var reEscape = /<%-([\s\S]+?)%>/g,
 	      reEvaluate = /<%([\s\S]+?)%>/g,
 	      reInterpolate = /<%=([\s\S]+?)%>/g;
-
+	
 	  /** Used to match property names within property paths. */
 	  var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
 	      reIsPlainProp = /^\w*$/,
 	      rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]/g;
-
+	
 	  /**
 	   * Used to match `RegExp`
 	   * [syntax characters](http://ecma-international.org/ecma-262/6.0/#sec-patterns).
 	   */
 	  var reRegExpChar = /[\\^$.*+?()[\]{}|]/g,
 	      reHasRegExpChar = RegExp(reRegExpChar.source);
-
+	
 	  /** Used to match leading and trailing whitespace. */
 	  var reTrim = /^\s+|\s+$/g,
 	      reTrimStart = /^\s+/,
 	      reTrimEnd = /\s+$/;
-
+	
 	  /** Used to match non-compound words composed of alphanumeric characters. */
 	  var reBasicWord = /[a-zA-Z0-9]+/g;
-
+	
 	  /** Used to match backslashes in property paths. */
 	  var reEscapeChar = /\\(\\)?/g;
-
+	
 	  /**
 	   * Used to match
 	   * [ES template delimiters](http://ecma-international.org/ecma-262/6.0/#sec-template-literal-lexical-components).
 	   */
 	  var reEsTemplate = /\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g;
-
+	
 	  /** Used to match `RegExp` flags from their coerced string values. */
 	  var reFlags = /\w*$/;
-
+	
 	  /** Used to detect hexadecimal string values. */
 	  var reHasHexPrefix = /^0x/i;
-
+	
 	  /** Used to detect bad signed hexadecimal string values. */
 	  var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
-
+	
 	  /** Used to detect binary string values. */
 	  var reIsBinary = /^0b[01]+$/i;
-
+	
 	  /** Used to detect host constructors (Safari). */
 	  var reIsHostCtor = /^\[object .+?Constructor\]$/;
-
+	
 	  /** Used to detect octal string values. */
 	  var reIsOctal = /^0o[0-7]+$/i;
-
+	
 	  /** Used to detect unsigned integer values. */
 	  var reIsUint = /^(?:0|[1-9]\d*)$/;
-
+	
 	  /** Used to match latin-1 supplementary letters (excluding mathematical operators). */
 	  var reLatin1 = /[\xc0-\xd6\xd8-\xde\xdf-\xf6\xf8-\xff]/g;
-
+	
 	  /** Used to ensure capturing order of template delimiters. */
 	  var reNoMatch = /($^)/;
-
+	
 	  /** Used to match unescaped characters in compiled string literals. */
 	  var reUnescapedString = /['\n\r\u2028\u2029\\]/g;
-
+	
 	  /** Used to compose unicode character classes. */
 	  var rsAstralRange = '\\ud800-\\udfff',
 	      rsComboMarksRange = '\\u0300-\\u036f\\ufe20-\\ufe23',
@@ -21900,7 +21900,7 @@
 	      rsUpperRange = 'A-Z\\xc0-\\xd6\\xd8-\\xde',
 	      rsVarRange = '\\ufe0e\\ufe0f',
 	      rsBreakRange = rsMathOpRange + rsNonCharRange + rsQuoteRange + rsSpaceRange;
-
+	
 	  /** Used to compose unicode capture groups. */
 	  var rsApos = "['\u2019]",
 	      rsAstral = '[' + rsAstralRange + ']',
@@ -21917,7 +21917,7 @@
 	      rsSurrPair = '[\\ud800-\\udbff][\\udc00-\\udfff]',
 	      rsUpper = '[' + rsUpperRange + ']',
 	      rsZWJ = '\\u200d';
-
+	
 	  /** Used to compose unicode regexes. */
 	  var rsLowerMisc = '(?:' + rsLower + '|' + rsMisc + ')',
 	      rsUpperMisc = '(?:' + rsUpper + '|' + rsMisc + ')',
@@ -21929,19 +21929,19 @@
 	      rsSeq = rsOptVar + reOptMod + rsOptJoin,
 	      rsEmoji = '(?:' + [rsDingbat, rsRegional, rsSurrPair].join('|') + ')' + rsSeq,
 	      rsSymbol = '(?:' + [rsNonAstral + rsCombo + '?', rsCombo, rsRegional, rsSurrPair, rsAstral].join('|') + ')';
-
+	
 	  /** Used to match apostrophes. */
 	  var reApos = RegExp(rsApos, 'g');
-
+	
 	  /**
 	   * Used to match [combining diacritical marks](https://en.wikipedia.org/wiki/Combining_Diacritical_Marks) and
 	   * [combining diacritical marks for symbols](https://en.wikipedia.org/wiki/Combining_Diacritical_Marks_for_Symbols).
 	   */
 	  var reComboMark = RegExp(rsCombo, 'g');
-
+	
 	  /** Used to match [string symbols](https://mathiasbynens.be/notes/javascript-unicode). */
 	  var reComplexSymbol = RegExp(rsFitz + '(?=' + rsFitz + ')|' + rsSymbol + rsSeq, 'g');
-
+	
 	  /** Used to match complex or compound words. */
 	  var reComplexWord = RegExp([
 	    rsUpper + '?' + rsLower + '+' + rsOptLowerContr + '(?=' + [rsBreak, rsUpper, '$'].join('|') + ')',
@@ -21951,13 +21951,13 @@
 	    rsDigits,
 	    rsEmoji
 	  ].join('|'), 'g');
-
+	
 	  /** Used to detect strings with [zero-width joiners or code points from the astral planes](http://eev.ee/blog/2015/09/12/dark-corners-of-unicode/). */
 	  var reHasComplexSymbol = RegExp('[' + rsZWJ + rsAstralRange  + rsComboMarksRange + rsComboSymbolsRange + rsVarRange + ']');
-
+	
 	  /** Used to detect strings that need a more robust regexp to match words. */
 	  var reHasComplexWord = /[a-z][A-Z]|[A-Z]{2,}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
-
+	
 	  /** Used to assign default `context` object properties. */
 	  var contextProps = [
 	    'Array', 'Buffer', 'DataView', 'Date', 'Error', 'Float32Array', 'Float64Array',
@@ -21966,10 +21966,10 @@
 	    'Uint8Array', 'Uint8ClampedArray', 'Uint16Array', 'Uint32Array', 'WeakMap',
 	    '_', 'clearTimeout', 'isFinite', 'parseInt', 'setTimeout'
 	  ];
-
+	
 	  /** Used to make template sourceURLs easier to identify. */
 	  var templateCounter = -1;
-
+	
 	  /** Used to identify `toStringTag` values of typed arrays. */
 	  var typedArrayTags = {};
 	  typedArrayTags[float32Tag] = typedArrayTags[float64Tag] =
@@ -21985,7 +21985,7 @@
 	  typedArrayTags[objectTag] = typedArrayTags[regexpTag] =
 	  typedArrayTags[setTag] = typedArrayTags[stringTag] =
 	  typedArrayTags[weakMapTag] = false;
-
+	
 	  /** Used to identify `toStringTag` values supported by `_.clone`. */
 	  var cloneableTags = {};
 	  cloneableTags[argsTag] = cloneableTags[arrayTag] =
@@ -22001,7 +22001,7 @@
 	  cloneableTags[uint16Tag] = cloneableTags[uint32Tag] = true;
 	  cloneableTags[errorTag] = cloneableTags[funcTag] =
 	  cloneableTags[weakMapTag] = false;
-
+	
 	  /** Used to map latin-1 supplementary letters to basic latin letters. */
 	  var deburredLetters = {
 	    '\xc0': 'A',  '\xc1': 'A', '\xc2': 'A', '\xc3': 'A', '\xc4': 'A', '\xc5': 'A',
@@ -22022,7 +22022,7 @@
 	    '\xde': 'Th', '\xfe': 'th',
 	    '\xdf': 'ss'
 	  };
-
+	
 	  /** Used to map characters to HTML entities. */
 	  var htmlEscapes = {
 	    '&': '&amp;',
@@ -22032,7 +22032,7 @@
 	    "'": '&#39;',
 	    '`': '&#96;'
 	  };
-
+	
 	  /** Used to map HTML entities to characters. */
 	  var htmlUnescapes = {
 	    '&amp;': '&',
@@ -22042,13 +22042,13 @@
 	    '&#39;': "'",
 	    '&#96;': '`'
 	  };
-
+	
 	  /** Used to determine if values are of the language type `Object`. */
 	  var objectTypes = {
 	    'function': true,
 	    'object': true
 	  };
-
+	
 	  /** Used to escape characters for inclusion in compiled string literals. */
 	  var stringEscapes = {
 	    '\\': '\\',
@@ -22058,38 +22058,38 @@
 	    '\u2028': 'u2028',
 	    '\u2029': 'u2029'
 	  };
-
+	
 	  /** Built-in method references without a dependency on `root`. */
 	  var freeParseFloat = parseFloat,
 	      freeParseInt = parseInt;
-
+	
 	  /** Detect free variable `exports`. */
 	  var freeExports = (objectTypes[typeof exports] && exports && !exports.nodeType)
 	    ? exports
 	    : undefined;
-
+	
 	  /** Detect free variable `module`. */
 	  var freeModule = (objectTypes[typeof module] && module && !module.nodeType)
 	    ? module
 	    : undefined;
-
+	
 	  /** Detect the popular CommonJS extension `module.exports`. */
 	  var moduleExports = (freeModule && freeModule.exports === freeExports)
 	    ? freeExports
 	    : undefined;
-
+	
 	  /** Detect free variable `global` from Node.js. */
 	  var freeGlobal = checkGlobal(freeExports && freeModule && typeof global == 'object' && global);
-
+	
 	  /** Detect free variable `self`. */
 	  var freeSelf = checkGlobal(objectTypes[typeof self] && self);
-
+	
 	  /** Detect free variable `window`. */
 	  var freeWindow = checkGlobal(objectTypes[typeof window] && window);
-
+	
 	  /** Detect `this` as the global object. */
 	  var thisGlobal = checkGlobal(objectTypes[typeof this] && this);
-
+	
 	  /**
 	   * Used as a reference to the global object.
 	   *
@@ -22099,9 +22099,9 @@
 	  var root = freeGlobal ||
 	    ((freeWindow !== (thisGlobal && thisGlobal.window)) && freeWindow) ||
 	      freeSelf || thisGlobal || Function('return this')();
-
+	
 	  /*--------------------------------------------------------------------------*/
-
+	
 	  /**
 	   * Adds the key-value `pair` to `map`.
 	   *
@@ -22115,7 +22115,7 @@
 	    map.set(pair[0], pair[1]);
 	    return map;
 	  }
-
+	
 	  /**
 	   * Adds `value` to `set`.
 	   *
@@ -22128,7 +22128,7 @@
 	    set.add(value);
 	    return set;
 	  }
-
+	
 	  /**
 	   * A faster alternative to `Function#apply`, this function invokes `func`
 	   * with the `this` binding of `thisArg` and the arguments of `args`.
@@ -22149,7 +22149,7 @@
 	    }
 	    return func.apply(thisArg, args);
 	  }
-
+	
 	  /**
 	   * A specialized version of `baseAggregator` for arrays.
 	   *
@@ -22163,14 +22163,14 @@
 	  function arrayAggregator(array, setter, iteratee, accumulator) {
 	    var index = -1,
 	        length = array.length;
-
+	
 	    while (++index < length) {
 	      var value = array[index];
 	      setter(accumulator, value, iteratee(value), array);
 	    }
 	    return accumulator;
 	  }
-
+	
 	  /**
 	   * Creates a new array concatenating `array` with `other`.
 	   *
@@ -22185,7 +22185,7 @@
 	        othIndex = -1,
 	        othLength = other.length,
 	        result = Array(length + othLength);
-
+	
 	    while (++index < length) {
 	      result[index] = array[index];
 	    }
@@ -22194,7 +22194,7 @@
 	    }
 	    return result;
 	  }
-
+	
 	  /**
 	   * A specialized version of `_.forEach` for arrays without support for
 	   * iteratee shorthands.
@@ -22207,7 +22207,7 @@
 	  function arrayEach(array, iteratee) {
 	    var index = -1,
 	        length = array.length;
-
+	
 	    while (++index < length) {
 	      if (iteratee(array[index], index, array) === false) {
 	        break;
@@ -22215,7 +22215,7 @@
 	    }
 	    return array;
 	  }
-
+	
 	  /**
 	   * A specialized version of `_.forEachRight` for arrays without support for
 	   * iteratee shorthands.
@@ -22227,7 +22227,7 @@
 	   */
 	  function arrayEachRight(array, iteratee) {
 	    var length = array.length;
-
+	
 	    while (length--) {
 	      if (iteratee(array[length], length, array) === false) {
 	        break;
@@ -22235,7 +22235,7 @@
 	    }
 	    return array;
 	  }
-
+	
 	  /**
 	   * A specialized version of `_.every` for arrays without support for
 	   * iteratee shorthands.
@@ -22249,7 +22249,7 @@
 	  function arrayEvery(array, predicate) {
 	    var index = -1,
 	        length = array.length;
-
+	
 	    while (++index < length) {
 	      if (!predicate(array[index], index, array)) {
 	        return false;
@@ -22257,7 +22257,7 @@
 	    }
 	    return true;
 	  }
-
+	
 	  /**
 	   * A specialized version of `_.filter` for arrays without support for
 	   * iteratee shorthands.
@@ -22272,7 +22272,7 @@
 	        length = array.length,
 	        resIndex = 0,
 	        result = [];
-
+	
 	    while (++index < length) {
 	      var value = array[index];
 	      if (predicate(value, index, array)) {
@@ -22281,7 +22281,7 @@
 	    }
 	    return result;
 	  }
-
+	
 	  /**
 	   * A specialized version of `_.includes` for arrays without support for
 	   * specifying an index to search from.
@@ -22294,7 +22294,7 @@
 	  function arrayIncludes(array, value) {
 	    return !!array.length && baseIndexOf(array, value, 0) > -1;
 	  }
-
+	
 	  /**
 	   * This function is like `arrayIncludes` except that it accepts a comparator.
 	   *
@@ -22307,7 +22307,7 @@
 	  function arrayIncludesWith(array, value, comparator) {
 	    var index = -1,
 	        length = array.length;
-
+	
 	    while (++index < length) {
 	      if (comparator(value, array[index])) {
 	        return true;
@@ -22315,7 +22315,7 @@
 	    }
 	    return false;
 	  }
-
+	
 	  /**
 	   * A specialized version of `_.map` for arrays without support for iteratee
 	   * shorthands.
@@ -22329,13 +22329,13 @@
 	    var index = -1,
 	        length = array.length,
 	        result = Array(length);
-
+	
 	    while (++index < length) {
 	      result[index] = iteratee(array[index], index, array);
 	    }
 	    return result;
 	  }
-
+	
 	  /**
 	   * Appends the elements of `values` to `array`.
 	   *
@@ -22348,13 +22348,13 @@
 	    var index = -1,
 	        length = values.length,
 	        offset = array.length;
-
+	
 	    while (++index < length) {
 	      array[offset + index] = values[index];
 	    }
 	    return array;
 	  }
-
+	
 	  /**
 	   * A specialized version of `_.reduce` for arrays without support for
 	   * iteratee shorthands.
@@ -22370,7 +22370,7 @@
 	  function arrayReduce(array, iteratee, accumulator, initAccum) {
 	    var index = -1,
 	        length = array.length;
-
+	
 	    if (initAccum && length) {
 	      accumulator = array[++index];
 	    }
@@ -22379,7 +22379,7 @@
 	    }
 	    return accumulator;
 	  }
-
+	
 	  /**
 	   * A specialized version of `_.reduceRight` for arrays without support for
 	   * iteratee shorthands.
@@ -22402,7 +22402,7 @@
 	    }
 	    return accumulator;
 	  }
-
+	
 	  /**
 	   * A specialized version of `_.some` for arrays without support for iteratee
 	   * shorthands.
@@ -22416,7 +22416,7 @@
 	  function arraySome(array, predicate) {
 	    var index = -1,
 	        length = array.length;
-
+	
 	    while (++index < length) {
 	      if (predicate(array[index], index, array)) {
 	        return true;
@@ -22424,7 +22424,7 @@
 	    }
 	    return false;
 	  }
-
+	
 	  /**
 	   * The base implementation of methods like `_.max` and `_.min` which accepts a
 	   * `comparator` to determine the extremum value.
@@ -22438,11 +22438,11 @@
 	  function baseExtremum(array, iteratee, comparator) {
 	    var index = -1,
 	        length = array.length;
-
+	
 	    while (++index < length) {
 	      var value = array[index],
 	          current = iteratee(value);
-
+	
 	      if (current != null && (computed === undefined
 	            ? current === current
 	            : comparator(current, computed)
@@ -22453,7 +22453,7 @@
 	    }
 	    return result;
 	  }
-
+	
 	  /**
 	   * The base implementation of methods like `_.find` and `_.findKey`, without
 	   * support for iteratee shorthands, which iterates over `collection` using
@@ -22477,7 +22477,7 @@
 	    });
 	    return result;
 	  }
-
+	
 	  /**
 	   * The base implementation of `_.findIndex` and `_.findLastIndex` without
 	   * support for iteratee shorthands.
@@ -22491,7 +22491,7 @@
 	  function baseFindIndex(array, predicate, fromRight) {
 	    var length = array.length,
 	        index = fromRight ? length : -1;
-
+	
 	    while ((fromRight ? index-- : ++index < length)) {
 	      if (predicate(array[index], index, array)) {
 	        return index;
@@ -22499,7 +22499,7 @@
 	    }
 	    return -1;
 	  }
-
+	
 	  /**
 	   * The base implementation of `_.indexOf` without `fromIndex` bounds checks.
 	   *
@@ -22515,7 +22515,7 @@
 	    }
 	    var index = fromIndex - 1,
 	        length = array.length;
-
+	
 	    while (++index < length) {
 	      if (array[index] === value) {
 	        return index;
@@ -22523,7 +22523,7 @@
 	    }
 	    return -1;
 	  }
-
+	
 	  /**
 	   * This function is like `baseIndexOf` except that it accepts a comparator.
 	   *
@@ -22537,7 +22537,7 @@
 	  function baseIndexOfWith(array, value, fromIndex, comparator) {
 	    var index = fromIndex - 1,
 	        length = array.length;
-
+	
 	    while (++index < length) {
 	      if (comparator(array[index], value)) {
 	        return index;
@@ -22545,7 +22545,7 @@
 	    }
 	    return -1;
 	  }
-
+	
 	  /**
 	   * The base implementation of `_.mean` and `_.meanBy` without support for
 	   * iteratee shorthands.
@@ -22559,7 +22559,7 @@
 	    var length = array ? array.length : 0;
 	    return length ? (baseSum(array, iteratee) / length) : NAN;
 	  }
-
+	
 	  /**
 	   * The base implementation of `_.reduce` and `_.reduceRight`, without support
 	   * for iteratee shorthands, which iterates over `collection` using `eachFunc`.
@@ -22581,7 +22581,7 @@
 	    });
 	    return accumulator;
 	  }
-
+	
 	  /**
 	   * The base implementation of `_.sortBy` which uses `comparer` to define the
 	   * sort order of `array` and replaces criteria objects with their corresponding
@@ -22594,14 +22594,14 @@
 	   */
 	  function baseSortBy(array, comparer) {
 	    var length = array.length;
-
+	
 	    array.sort(comparer);
 	    while (length--) {
 	      array[length] = array[length].value;
 	    }
 	    return array;
 	  }
-
+	
 	  /**
 	   * The base implementation of `_.sum` and `_.sumBy` without support for
 	   * iteratee shorthands.
@@ -22615,7 +22615,7 @@
 	    var result,
 	        index = -1,
 	        length = array.length;
-
+	
 	    while (++index < length) {
 	      var current = iteratee(array[index]);
 	      if (current !== undefined) {
@@ -22624,7 +22624,7 @@
 	    }
 	    return result;
 	  }
-
+	
 	  /**
 	   * The base implementation of `_.times` without support for iteratee shorthands
 	   * or max array length checks.
@@ -22637,13 +22637,13 @@
 	  function baseTimes(n, iteratee) {
 	    var index = -1,
 	        result = Array(n);
-
+	
 	    while (++index < n) {
 	      result[index] = iteratee(index);
 	    }
 	    return result;
 	  }
-
+	
 	  /**
 	   * The base implementation of `_.toPairs` and `_.toPairsIn` which creates an array
 	   * of key-value pairs for `object` corresponding to the property names of `props`.
@@ -22658,7 +22658,7 @@
 	      return [key, object[key]];
 	    });
 	  }
-
+	
 	  /**
 	   * The base implementation of `_.unary` without support for storing wrapper metadata.
 	   *
@@ -22671,7 +22671,7 @@
 	      return func(value);
 	    };
 	  }
-
+	
 	  /**
 	   * The base implementation of `_.values` and `_.valuesIn` which creates an
 	   * array of `object` property values corresponding to the property names
@@ -22687,7 +22687,7 @@
 	      return object[key];
 	    });
 	  }
-
+	
 	  /**
 	   * Used by `_.trim` and `_.trimStart` to get the index of the first string symbol
 	   * that is not found in the character symbols.
@@ -22700,11 +22700,11 @@
 	  function charsStartIndex(strSymbols, chrSymbols) {
 	    var index = -1,
 	        length = strSymbols.length;
-
+	
 	    while (++index < length && baseIndexOf(chrSymbols, strSymbols[index], 0) > -1) {}
 	    return index;
 	  }
-
+	
 	  /**
 	   * Used by `_.trim` and `_.trimEnd` to get the index of the last string symbol
 	   * that is not found in the character symbols.
@@ -22716,11 +22716,11 @@
 	   */
 	  function charsEndIndex(strSymbols, chrSymbols) {
 	    var index = strSymbols.length;
-
+	
 	    while (index-- && baseIndexOf(chrSymbols, strSymbols[index], 0) > -1) {}
 	    return index;
 	  }
-
+	
 	  /**
 	   * Checks if `value` is a global object.
 	   *
@@ -22731,7 +22731,7 @@
 	  function checkGlobal(value) {
 	    return (value && value.Object === Object) ? value : null;
 	  }
-
+	
 	  /**
 	   * Compares values to sort them in ascending order.
 	   *
@@ -22745,11 +22745,11 @@
 	      var valIsNull = value === null,
 	          valIsUndef = value === undefined,
 	          valIsReflexive = value === value;
-
+	
 	      var othIsNull = other === null,
 	          othIsUndef = other === undefined,
 	          othIsReflexive = other === other;
-
+	
 	      if ((value > other && !othIsNull) || !valIsReflexive ||
 	          (valIsNull && !othIsUndef && othIsReflexive) ||
 	          (valIsUndef && othIsReflexive)) {
@@ -22763,7 +22763,7 @@
 	    }
 	    return 0;
 	  }
-
+	
 	  /**
 	   * Used by `_.orderBy` to compare multiple properties of a value to another
 	   * and stable sort them.
@@ -22784,7 +22784,7 @@
 	        othCriteria = other.criteria,
 	        length = objCriteria.length,
 	        ordersLength = orders.length;
-
+	
 	    while (++index < length) {
 	      var result = compareAscending(objCriteria[index], othCriteria[index]);
 	      if (result) {
@@ -22804,7 +22804,7 @@
 	    // See https://bugs.chromium.org/p/v8/issues/detail?id=90 for more details.
 	    return object.index - other.index;
 	  }
-
+	
 	  /**
 	   * Gets the number of `placeholder` occurrences in `array`.
 	   *
@@ -22816,7 +22816,7 @@
 	  function countHolders(array, placeholder) {
 	    var length = array.length,
 	        result = 0;
-
+	
 	    while (length--) {
 	      if (array[length] === placeholder) {
 	        result++;
@@ -22824,7 +22824,7 @@
 	    }
 	    return result;
 	  }
-
+	
 	  /**
 	   * Creates a function that performs a mathematical operation on two values.
 	   *
@@ -22847,7 +22847,7 @@
 	      return result;
 	    };
 	  }
-
+	
 	  /**
 	   * Used by `_.deburr` to convert latin-1 supplementary letters to basic latin letters.
 	   *
@@ -22858,7 +22858,7 @@
 	  function deburrLetter(letter) {
 	    return deburredLetters[letter];
 	  }
-
+	
 	  /**
 	   * Used by `_.escape` to convert characters to HTML entities.
 	   *
@@ -22869,7 +22869,7 @@
 	  function escapeHtmlChar(chr) {
 	    return htmlEscapes[chr];
 	  }
-
+	
 	  /**
 	   * Used by `_.template` to escape characters for inclusion in compiled string literals.
 	   *
@@ -22880,7 +22880,7 @@
 	  function escapeStringChar(chr) {
 	    return '\\' + stringEscapes[chr];
 	  }
-
+	
 	  /**
 	   * Gets the index at which the first occurrence of `NaN` is found in `array`.
 	   *
@@ -22893,7 +22893,7 @@
 	  function indexOfNaN(array, fromIndex, fromRight) {
 	    var length = array.length,
 	        index = fromIndex + (fromRight ? 0 : -1);
-
+	
 	    while ((fromRight ? index-- : ++index < length)) {
 	      var other = array[index];
 	      if (other !== other) {
@@ -22902,7 +22902,7 @@
 	    }
 	    return -1;
 	  }
-
+	
 	  /**
 	   * Checks if `value` is a host object in IE < 9.
 	   *
@@ -22921,7 +22921,7 @@
 	    }
 	    return result;
 	  }
-
+	
 	  /**
 	   * Checks if `value` is a valid array-like index.
 	   *
@@ -22935,7 +22935,7 @@
 	    length = length == null ? MAX_SAFE_INTEGER : length;
 	    return value > -1 && value % 1 == 0 && value < length;
 	  }
-
+	
 	  /**
 	   * Converts `iterator` to an array.
 	   *
@@ -22946,13 +22946,13 @@
 	  function iteratorToArray(iterator) {
 	    var data,
 	        result = [];
-
+	
 	    while (!(data = iterator.next()).done) {
 	      result.push(data.value);
 	    }
 	    return result;
 	  }
-
+	
 	  /**
 	   * Converts `map` to an array.
 	   *
@@ -22963,13 +22963,13 @@
 	  function mapToArray(map) {
 	    var index = -1,
 	        result = Array(map.size);
-
+	
 	    map.forEach(function(value, key) {
 	      result[++index] = [key, value];
 	    });
 	    return result;
 	  }
-
+	
 	  /**
 	   * Replaces all `placeholder` elements in `array` with an internal placeholder
 	   * and returns an array of their indexes.
@@ -22984,7 +22984,7 @@
 	        length = array.length,
 	        resIndex = 0,
 	        result = [];
-
+	
 	    while (++index < length) {
 	      var value = array[index];
 	      if (value === placeholder || value === PLACEHOLDER) {
@@ -22994,7 +22994,7 @@
 	    }
 	    return result;
 	  }
-
+	
 	  /**
 	   * Converts `set` to an array.
 	   *
@@ -23005,13 +23005,13 @@
 	  function setToArray(set) {
 	    var index = -1,
 	        result = Array(set.size);
-
+	
 	    set.forEach(function(value) {
 	      result[++index] = value;
 	    });
 	    return result;
 	  }
-
+	
 	  /**
 	   * Gets the number of symbols in `string`.
 	   *
@@ -23029,7 +23029,7 @@
 	    }
 	    return result;
 	  }
-
+	
 	  /**
 	   * Converts `string` to an array.
 	   *
@@ -23040,7 +23040,7 @@
 	  function stringToArray(string) {
 	    return string.match(reComplexSymbol);
 	  }
-
+	
 	  /**
 	   * Used by `_.unescape` to convert HTML entities to characters.
 	   *
@@ -23051,9 +23051,9 @@
 	  function unescapeHtmlChar(chr) {
 	    return htmlUnescapes[chr];
 	  }
-
+	
 	  /*--------------------------------------------------------------------------*/
-
+	
 	  /**
 	   * Create a new pristine `lodash` function using the `context` object.
 	   *
@@ -23092,47 +23092,47 @@
 	   */
 	  function runInContext(context) {
 	    context = context ? _.defaults({}, context, _.pick(root, contextProps)) : root;
-
+	
 	    /** Built-in constructor references. */
 	    var Date = context.Date,
 	        Error = context.Error,
 	        Math = context.Math,
 	        RegExp = context.RegExp,
 	        TypeError = context.TypeError;
-
+	
 	    /** Used for built-in method references. */
 	    var arrayProto = context.Array.prototype,
 	        objectProto = context.Object.prototype,
 	        stringProto = context.String.prototype;
-
+	
 	    /** Used to resolve the decompiled source of functions. */
 	    var funcToString = context.Function.prototype.toString;
-
+	
 	    /** Used to check objects for own properties. */
 	    var hasOwnProperty = objectProto.hasOwnProperty;
-
+	
 	    /** Used to generate unique IDs. */
 	    var idCounter = 0;
-
+	
 	    /** Used to infer the `Object` constructor. */
 	    var objectCtorString = funcToString.call(Object);
-
+	
 	    /**
 	     * Used to resolve the
 	     * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
 	     * of values.
 	     */
 	    var objectToString = objectProto.toString;
-
+	
 	    /** Used to restore the original `_` reference in `_.noConflict`. */
 	    var oldDash = root._;
-
+	
 	    /** Used to detect if a method is native. */
 	    var reIsNative = RegExp('^' +
 	      funcToString.call(hasOwnProperty).replace(reRegExpChar, '\\$&')
 	      .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
 	    );
-
+	
 	    /** Built-in value references. */
 	    var Buffer = moduleExports ? context.Buffer : undefined,
 	        Reflect = context.Reflect,
@@ -23146,7 +23146,7 @@
 	        propertyIsEnumerable = objectProto.propertyIsEnumerable,
 	        setTimeout = context.setTimeout,
 	        splice = arrayProto.splice;
-
+	
 	    /* Built-in method references for those with the same name as other `lodash` methods. */
 	    var nativeCeil = Math.ceil,
 	        nativeFloor = Math.floor,
@@ -23161,7 +23161,7 @@
 	        nativeReplace = stringProto.replace,
 	        nativeReverse = arrayProto.reverse,
 	        nativeSplit = stringProto.split;
-
+	
 	    /* Built-in method references that are verified to be native. */
 	    var DataView = getNative(context, 'DataView'),
 	        Map = getNative(context, 'Map'),
@@ -23169,30 +23169,30 @@
 	        Set = getNative(context, 'Set'),
 	        WeakMap = getNative(context, 'WeakMap'),
 	        nativeCreate = getNative(Object, 'create');
-
+	
 	    /** Used to store function metadata. */
 	    var metaMap = WeakMap && new WeakMap;
-
+	
 	    /** Detect if properties shadowing those on `Object.prototype` are non-enumerable. */
 	    var nonEnumShadows = !propertyIsEnumerable.call({ 'valueOf': 1 }, 'valueOf');
-
+	
 	    /** Used to lookup unminified function names. */
 	    var realNames = {};
-
+	
 	    /** Used to detect maps, sets, and weakmaps. */
 	    var dataViewCtorString = toSource(DataView),
 	        mapCtorString = toSource(Map),
 	        promiseCtorString = toSource(Promise),
 	        setCtorString = toSource(Set),
 	        weakMapCtorString = toSource(WeakMap);
-
+	
 	    /** Used to convert symbols to primitives and strings. */
 	    var symbolProto = Symbol ? Symbol.prototype : undefined,
 	        symbolValueOf = symbolProto ? symbolProto.valueOf : undefined,
 	        symbolToString = symbolProto ? symbolProto.toString : undefined;
-
+	
 	    /*------------------------------------------------------------------------*/
-
+	
 	    /**
 	     * Creates a `lodash` object which wraps `value` to enable implicit method
 	     * chain sequences. Methods that operate on and return arrays, collections,
@@ -23319,7 +23319,7 @@
 	      }
 	      return new LodashWrapper(value);
 	    }
-
+	
 	    /**
 	     * The function whose prototype chain sequence wrappers inherit from.
 	     *
@@ -23328,7 +23328,7 @@
 	    function baseLodash() {
 	      // No operation performed.
 	    }
-
+	
 	    /**
 	     * The base constructor for creating `lodash` wrapper objects.
 	     *
@@ -23343,7 +23343,7 @@
 	      this.__index__ = 0;
 	      this.__values__ = undefined;
 	    }
-
+	
 	    /**
 	     * By default, the template delimiters used by lodash are like those in
 	     * embedded Ruby (ERB). Change the following template settings to use
@@ -23354,7 +23354,7 @@
 	     * @type {Object}
 	     */
 	    lodash.templateSettings = {
-
+	
 	      /**
 	       * Used to detect `data` property values to be HTML-escaped.
 	       *
@@ -23362,7 +23362,7 @@
 	       * @type {RegExp}
 	       */
 	      'escape': reEscape,
-
+	
 	      /**
 	       * Used to detect code to be evaluated.
 	       *
@@ -23370,7 +23370,7 @@
 	       * @type {RegExp}
 	       */
 	      'evaluate': reEvaluate,
-
+	
 	      /**
 	       * Used to detect `data` property values to inject.
 	       *
@@ -23378,7 +23378,7 @@
 	       * @type {RegExp}
 	       */
 	      'interpolate': reInterpolate,
-
+	
 	      /**
 	       * Used to reference the data object in the template text.
 	       *
@@ -23386,7 +23386,7 @@
 	       * @type {string}
 	       */
 	      'variable': '',
-
+	
 	      /**
 	       * Used to import variables into the compiled template.
 	       *
@@ -23394,7 +23394,7 @@
 	       * @type {Object}
 	       */
 	      'imports': {
-
+	
 	        /**
 	         * A reference to the `lodash` function.
 	         *
@@ -23404,16 +23404,16 @@
 	        '_': lodash
 	      }
 	    };
-
+	
 	    // Ensure wrappers are instances of `baseLodash`.
 	    lodash.prototype = baseLodash.prototype;
 	    lodash.prototype.constructor = lodash;
-
+	
 	    LodashWrapper.prototype = baseCreate(baseLodash.prototype);
 	    LodashWrapper.prototype.constructor = LodashWrapper;
-
+	
 	    /*------------------------------------------------------------------------*/
-
+	
 	    /**
 	     * Creates a lazy wrapper object which wraps `value` to enable lazy evaluation.
 	     *
@@ -23430,7 +23430,7 @@
 	      this.__takeCount__ = MAX_ARRAY_LENGTH;
 	      this.__views__ = [];
 	    }
-
+	
 	    /**
 	     * Creates a clone of the lazy wrapper object.
 	     *
@@ -23449,7 +23449,7 @@
 	      result.__views__ = copyArray(this.__views__);
 	      return result;
 	    }
-
+	
 	    /**
 	     * Reverses the direction of lazy iteration.
 	     *
@@ -23469,7 +23469,7 @@
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * Extracts the unwrapped value from its lazy wrapper.
 	     *
@@ -23493,26 +23493,26 @@
 	          iterLength = iteratees.length,
 	          resIndex = 0,
 	          takeCount = nativeMin(length, this.__takeCount__);
-
+	
 	      if (!isArr || arrLength < LARGE_ARRAY_SIZE ||
 	          (arrLength == length && takeCount == length)) {
 	        return baseWrapperValue(array, this.__actions__);
 	      }
 	      var result = [];
-
+	
 	      outer:
 	      while (length-- && resIndex < takeCount) {
 	        index += dir;
-
+	
 	        var iterIndex = -1,
 	            value = array[index];
-
+	
 	        while (++iterIndex < iterLength) {
 	          var data = iteratees[iterIndex],
 	              iteratee = data.iteratee,
 	              type = data.type,
 	              computed = iteratee(value);
-
+	
 	          if (type == LAZY_MAP_FLAG) {
 	            value = computed;
 	          } else if (!computed) {
@@ -23527,13 +23527,13 @@
 	      }
 	      return result;
 	    }
-
+	
 	    // Ensure `LazyWrapper` is an instance of `baseLodash`.
 	    LazyWrapper.prototype = baseCreate(baseLodash.prototype);
 	    LazyWrapper.prototype.constructor = LazyWrapper;
-
+	
 	    /*------------------------------------------------------------------------*/
-
+	
 	    /**
 	     * Creates a hash object.
 	     *
@@ -23542,7 +23542,7 @@
 	     * @returns {Object} Returns the new hash object.
 	     */
 	    function Hash() {}
-
+	
 	    /**
 	     * Removes `key` and its value from the hash.
 	     *
@@ -23554,7 +23554,7 @@
 	    function hashDelete(hash, key) {
 	      return hashHas(hash, key) && delete hash[key];
 	    }
-
+	
 	    /**
 	     * Gets the hash value for `key`.
 	     *
@@ -23570,7 +23570,7 @@
 	      }
 	      return hasOwnProperty.call(hash, key) ? hash[key] : undefined;
 	    }
-
+	
 	    /**
 	     * Checks if a hash value for `key` exists.
 	     *
@@ -23582,7 +23582,7 @@
 	    function hashHas(hash, key) {
 	      return nativeCreate ? hash[key] !== undefined : hasOwnProperty.call(hash, key);
 	    }
-
+	
 	    /**
 	     * Sets the hash `key` to `value`.
 	     *
@@ -23594,12 +23594,12 @@
 	    function hashSet(hash, key, value) {
 	      hash[key] = (nativeCreate && value === undefined) ? HASH_UNDEFINED : value;
 	    }
-
+	
 	    // Avoid inheriting from `Object.prototype` when possible.
 	    Hash.prototype = nativeCreate ? nativeCreate(null) : objectProto;
-
+	
 	    /*------------------------------------------------------------------------*/
-
+	
 	    /**
 	     * Creates a map cache object to store key-value pairs.
 	     *
@@ -23610,14 +23610,14 @@
 	    function MapCache(values) {
 	      var index = -1,
 	          length = values ? values.length : 0;
-
+	
 	      this.clear();
 	      while (++index < length) {
 	        var entry = values[index];
 	        this.set(entry[0], entry[1]);
 	      }
 	    }
-
+	
 	    /**
 	     * Removes all key-value entries from the map.
 	     *
@@ -23632,7 +23632,7 @@
 	        'string': new Hash
 	      };
 	    }
-
+	
 	    /**
 	     * Removes `key` and its value from the map.
 	     *
@@ -23649,7 +23649,7 @@
 	      }
 	      return Map ? data.map['delete'](key) : assocDelete(data.map, key);
 	    }
-
+	
 	    /**
 	     * Gets the map value for `key`.
 	     *
@@ -23666,7 +23666,7 @@
 	      }
 	      return Map ? data.map.get(key) : assocGet(data.map, key);
 	    }
-
+	
 	    /**
 	     * Checks if a map value for `key` exists.
 	     *
@@ -23683,7 +23683,7 @@
 	      }
 	      return Map ? data.map.has(key) : assocHas(data.map, key);
 	    }
-
+	
 	    /**
 	     * Sets the map `key` to `value`.
 	     *
@@ -23705,16 +23705,16 @@
 	      }
 	      return this;
 	    }
-
+	
 	    // Add methods to `MapCache`.
 	    MapCache.prototype.clear = mapClear;
 	    MapCache.prototype['delete'] = mapDelete;
 	    MapCache.prototype.get = mapGet;
 	    MapCache.prototype.has = mapHas;
 	    MapCache.prototype.set = mapSet;
-
+	
 	    /*------------------------------------------------------------------------*/
-
+	
 	    /**
 	     *
 	     * Creates a set cache object to store unique values.
@@ -23726,13 +23726,13 @@
 	    function SetCache(values) {
 	      var index = -1,
 	          length = values ? values.length : 0;
-
+	
 	      this.__data__ = new MapCache;
 	      while (++index < length) {
 	        this.push(values[index]);
 	      }
 	    }
-
+	
 	    /**
 	     * Checks if `value` is in `cache`.
 	     *
@@ -23746,12 +23746,12 @@
 	      if (isKeyable(value)) {
 	        var data = map.__data__,
 	            hash = typeof value == 'string' ? data.string : data.hash;
-
+	
 	        return hash[value] === HASH_UNDEFINED;
 	      }
 	      return map.has(value);
 	    }
-
+	
 	    /**
 	     * Adds `value` to the set cache.
 	     *
@@ -23765,19 +23765,19 @@
 	      if (isKeyable(value)) {
 	        var data = map.__data__,
 	            hash = typeof value == 'string' ? data.string : data.hash;
-
+	
 	        hash[value] = HASH_UNDEFINED;
 	      }
 	      else {
 	        map.set(value, HASH_UNDEFINED);
 	      }
 	    }
-
+	
 	    // Add methods to `SetCache`.
 	    SetCache.prototype.push = cachePush;
-
+	
 	    /*------------------------------------------------------------------------*/
-
+	
 	    /**
 	     * Creates a stack cache object to store key-value pairs.
 	     *
@@ -23788,14 +23788,14 @@
 	    function Stack(values) {
 	      var index = -1,
 	          length = values ? values.length : 0;
-
+	
 	      this.clear();
 	      while (++index < length) {
 	        var entry = values[index];
 	        this.set(entry[0], entry[1]);
 	      }
 	    }
-
+	
 	    /**
 	     * Removes all key-value entries from the stack.
 	     *
@@ -23806,7 +23806,7 @@
 	    function stackClear() {
 	      this.__data__ = { 'array': [], 'map': null };
 	    }
-
+	
 	    /**
 	     * Removes `key` and its value from the stack.
 	     *
@@ -23819,10 +23819,10 @@
 	    function stackDelete(key) {
 	      var data = this.__data__,
 	          array = data.array;
-
+	
 	      return array ? assocDelete(array, key) : data.map['delete'](key);
 	    }
-
+	
 	    /**
 	     * Gets the stack value for `key`.
 	     *
@@ -23835,10 +23835,10 @@
 	    function stackGet(key) {
 	      var data = this.__data__,
 	          array = data.array;
-
+	
 	      return array ? assocGet(array, key) : data.map.get(key);
 	    }
-
+	
 	    /**
 	     * Checks if a stack value for `key` exists.
 	     *
@@ -23851,10 +23851,10 @@
 	    function stackHas(key) {
 	      var data = this.__data__,
 	          array = data.array;
-
+	
 	      return array ? assocHas(array, key) : data.map.has(key);
 	    }
-
+	
 	    /**
 	     * Sets the stack `key` to `value`.
 	     *
@@ -23868,7 +23868,7 @@
 	    function stackSet(key, value) {
 	      var data = this.__data__,
 	          array = data.array;
-
+	
 	      if (array) {
 	        if (array.length < (LARGE_ARRAY_SIZE - 1)) {
 	          assocSet(array, key, value);
@@ -23883,16 +23883,16 @@
 	      }
 	      return this;
 	    }
-
+	
 	    // Add methods to `Stack`.
 	    Stack.prototype.clear = stackClear;
 	    Stack.prototype['delete'] = stackDelete;
 	    Stack.prototype.get = stackGet;
 	    Stack.prototype.has = stackHas;
 	    Stack.prototype.set = stackSet;
-
+	
 	    /*------------------------------------------------------------------------*/
-
+	
 	    /**
 	     * Removes `key` and its value from the associative array.
 	     *
@@ -23914,7 +23914,7 @@
 	      }
 	      return true;
 	    }
-
+	
 	    /**
 	     * Gets the associative array value for `key`.
 	     *
@@ -23927,7 +23927,7 @@
 	      var index = assocIndexOf(array, key);
 	      return index < 0 ? undefined : array[index][1];
 	    }
-
+	
 	    /**
 	     * Checks if an associative array value for `key` exists.
 	     *
@@ -23939,7 +23939,7 @@
 	    function assocHas(array, key) {
 	      return assocIndexOf(array, key) > -1;
 	    }
-
+	
 	    /**
 	     * Gets the index at which the `key` is found in `array` of key-value pairs.
 	     *
@@ -23957,7 +23957,7 @@
 	      }
 	      return -1;
 	    }
-
+	
 	    /**
 	     * Sets the associative array `key` to `value`.
 	     *
@@ -23974,9 +23974,9 @@
 	        array[index][1] = value;
 	      }
 	    }
-
+	
 	    /*------------------------------------------------------------------------*/
-
+	
 	    /**
 	     * Used by `_.defaults` to customize its `_.assignIn` use.
 	     *
@@ -23994,7 +23994,7 @@
 	      }
 	      return objValue;
 	    }
-
+	
 	    /**
 	     * This function is like `assignValue` except that it doesn't assign
 	     * `undefined` values.
@@ -24010,7 +24010,7 @@
 	        object[key] = value;
 	      }
 	    }
-
+	
 	    /**
 	     * Assigns `value` to `key` of `object` if the existing value is not equivalent
 	     * using [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
@@ -24028,7 +24028,7 @@
 	        object[key] = value;
 	      }
 	    }
-
+	
 	    /**
 	     * Aggregates elements of `collection` on `accumulator` with keys transformed
 	     * by `iteratee` and values set by `setter`.
@@ -24046,7 +24046,7 @@
 	      });
 	      return accumulator;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.assign` without support for multiple sources
 	     * or `customizer` functions.
@@ -24059,7 +24059,7 @@
 	    function baseAssign(object, source) {
 	      return object && copyObject(source, keys(source), object);
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.at` without support for individual paths.
 	     *
@@ -24073,13 +24073,13 @@
 	          isNil = object == null,
 	          length = paths.length,
 	          result = Array(length);
-
+	
 	      while (++index < length) {
 	        result[index] = isNil ? undefined : get(object, paths[index]);
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.clamp` which doesn't coerce arguments to numbers.
 	     *
@@ -24100,7 +24100,7 @@
 	      }
 	      return number;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.clone` and `_.cloneDeep` which tracks
 	     * traversed objects.
@@ -24135,7 +24135,7 @@
 	      } else {
 	        var tag = getTag(value),
 	            isFunc = tag == funcTag || tag == genTag;
-
+	
 	        if (isBuffer(value)) {
 	          return cloneBuffer(value, isDeep);
 	        }
@@ -24161,7 +24161,7 @@
 	        return stacked;
 	      }
 	      stack.set(value, result);
-
+	
 	      if (!isArr) {
 	        var props = isFull ? getAllKeys(value) : keys(value);
 	      }
@@ -24175,7 +24175,7 @@
 	      });
 	      return result;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.conforms` which doesn't clone `source`.
 	     *
@@ -24186,7 +24186,7 @@
 	    function baseConforms(source) {
 	      var props = keys(source),
 	          length = props.length;
-
+	
 	      return function(object) {
 	        if (object == null) {
 	          return !length;
@@ -24196,7 +24196,7 @@
 	          var key = props[index],
 	              predicate = source[key],
 	              value = object[key];
-
+	
 	          if ((value === undefined &&
 	              !(key in Object(object))) || !predicate(value)) {
 	            return false;
@@ -24205,7 +24205,7 @@
 	        return true;
 	      };
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.create` without support for assigning
 	     * properties to the created object.
@@ -24217,7 +24217,7 @@
 	    function baseCreate(proto) {
 	      return isObject(proto) ? objectCreate(proto) : {};
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.delay` and `_.defer` which accepts an array
 	     * of `func` arguments.
@@ -24234,7 +24234,7 @@
 	      }
 	      return setTimeout(function() { func.apply(undefined, args); }, wait);
 	    }
-
+	
 	    /**
 	     * The base implementation of methods like `_.difference` without support
 	     * for excluding multiple arrays or iteratee shorthands.
@@ -24253,7 +24253,7 @@
 	          length = array.length,
 	          result = [],
 	          valuesLength = values.length;
-
+	
 	      if (!length) {
 	        return result;
 	      }
@@ -24273,7 +24273,7 @@
 	      while (++index < length) {
 	        var value = array[index],
 	            computed = iteratee ? iteratee(value) : value;
-
+	
 	        if (isCommon && computed === computed) {
 	          var valuesIndex = valuesLength;
 	          while (valuesIndex--) {
@@ -24289,7 +24289,7 @@
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.forEach` without support for iteratee shorthands.
 	     *
@@ -24299,7 +24299,7 @@
 	     * @returns {Array|Object} Returns `collection`.
 	     */
 	    var baseEach = createBaseEach(baseForOwn);
-
+	
 	    /**
 	     * The base implementation of `_.forEachRight` without support for iteratee shorthands.
 	     *
@@ -24309,7 +24309,7 @@
 	     * @returns {Array|Object} Returns `collection`.
 	     */
 	    var baseEachRight = createBaseEach(baseForOwnRight, true);
-
+	
 	    /**
 	     * The base implementation of `_.every` without support for iteratee shorthands.
 	     *
@@ -24327,7 +24327,7 @@
 	      });
 	      return result;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.fill` without an iteratee call guard.
 	     *
@@ -24340,7 +24340,7 @@
 	     */
 	    function baseFill(array, value, start, end) {
 	      var length = array.length;
-
+	
 	      start = toInteger(start);
 	      if (start < 0) {
 	        start = -start > length ? 0 : (length + start);
@@ -24355,7 +24355,7 @@
 	      }
 	      return array;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.filter` without support for iteratee shorthands.
 	     *
@@ -24373,7 +24373,7 @@
 	      });
 	      return result;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.flatten` with support for restricting flattening.
 	     *
@@ -24388,10 +24388,10 @@
 	    function baseFlatten(array, depth, predicate, isStrict, result) {
 	      var index = -1,
 	          length = array.length;
-
+	
 	      predicate || (predicate = isFlattenable);
 	      result || (result = []);
-
+	
 	      while (++index < length) {
 	        var value = array[index];
 	        if (depth > 0 && predicate(value)) {
@@ -24407,7 +24407,7 @@
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * The base implementation of `baseForOwn` which iterates over `object`
 	     * properties returned by `keysFunc` and invokes `iteratee` for each property.
@@ -24420,7 +24420,7 @@
 	     * @returns {Object} Returns `object`.
 	     */
 	    var baseFor = createBaseFor();
-
+	
 	    /**
 	     * This function is like `baseFor` except that it iterates over properties
 	     * in the opposite order.
@@ -24432,7 +24432,7 @@
 	     * @returns {Object} Returns `object`.
 	     */
 	    var baseForRight = createBaseFor(true);
-
+	
 	    /**
 	     * The base implementation of `_.forOwn` without support for iteratee shorthands.
 	     *
@@ -24444,7 +24444,7 @@
 	    function baseForOwn(object, iteratee) {
 	      return object && baseFor(object, iteratee, keys);
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.forOwnRight` without support for iteratee shorthands.
 	     *
@@ -24456,7 +24456,7 @@
 	    function baseForOwnRight(object, iteratee) {
 	      return object && baseForRight(object, iteratee, keys);
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.functions` which creates an array of
 	     * `object` function property names filtered from `props`.
@@ -24471,7 +24471,7 @@
 	        return isFunction(object[key]);
 	      });
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.get` without support for default values.
 	     *
@@ -24482,16 +24482,16 @@
 	     */
 	    function baseGet(object, path) {
 	      path = isKey(path, object) ? [path] : castPath(path);
-
+	
 	      var index = 0,
 	          length = path.length;
-
+	
 	      while (object != null && index < length) {
 	        object = object[path[index++]];
 	      }
 	      return (index && index == length) ? object : undefined;
 	    }
-
+	
 	    /**
 	     * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
 	     * `keysFunc` and `symbolsFunc` to get the enumerable property names and
@@ -24509,7 +24509,7 @@
 	        ? result
 	        : arrayPush(result, symbolsFunc(object));
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.has` without support for deep paths.
 	     *
@@ -24525,7 +24525,7 @@
 	      return hasOwnProperty.call(object, key) ||
 	        (typeof object == 'object' && key in object && getPrototype(object) === null);
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.hasIn` without support for deep paths.
 	     *
@@ -24537,7 +24537,7 @@
 	    function baseHasIn(object, key) {
 	      return key in Object(object);
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.inRange` which doesn't coerce arguments to numbers.
 	     *
@@ -24550,7 +24550,7 @@
 	    function baseInRange(number, start, end) {
 	      return number >= nativeMin(start, end) && number < nativeMax(start, end);
 	    }
-
+	
 	    /**
 	     * The base implementation of methods like `_.intersection`, without support
 	     * for iteratee shorthands, that accepts an array of arrays to inspect.
@@ -24569,7 +24569,7 @@
 	          caches = Array(othLength),
 	          maxLength = Infinity,
 	          result = [];
-
+	
 	      while (othIndex--) {
 	        var array = arrays[othIndex];
 	        if (othIndex && iteratee) {
@@ -24581,15 +24581,15 @@
 	          : undefined;
 	      }
 	      array = arrays[0];
-
+	
 	      var index = -1,
 	          seen = caches[0];
-
+	
 	      outer:
 	      while (++index < length && result.length < maxLength) {
 	        var value = array[index],
 	            computed = iteratee ? iteratee(value) : value;
-
+	
 	        if (!(seen
 	              ? cacheHas(seen, computed)
 	              : includes(result, computed, comparator)
@@ -24612,7 +24612,7 @@
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.invert` and `_.invertBy` which inverts
 	     * `object` with values transformed by `iteratee` and set by `setter`.
@@ -24630,7 +24630,7 @@
 	      });
 	      return accumulator;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.invoke` without support for individual
 	     * method arguments.
@@ -24650,7 +24650,7 @@
 	      var func = object == null ? object : object[path];
 	      return func == null ? undefined : apply(func, object, args);
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.isEqual` which supports partial comparisons
 	     * and tracks traversed objects.
@@ -24675,7 +24675,7 @@
 	      }
 	      return baseIsEqualDeep(value, other, baseIsEqual, customizer, bitmask, stack);
 	    }
-
+	
 	    /**
 	     * A specialized version of `baseIsEqual` for arrays and objects which performs
 	     * deep comparisons and tracks traversed objects enabling objects with circular
@@ -24696,7 +24696,7 @@
 	          othIsArr = isArray(other),
 	          objTag = arrayTag,
 	          othTag = arrayTag;
-
+	
 	      if (!objIsArr) {
 	        objTag = getTag(object);
 	        objTag = objTag == argsTag ? objectTag : objTag;
@@ -24708,7 +24708,7 @@
 	      var objIsObj = objTag == objectTag && !isHostObject(object),
 	          othIsObj = othTag == objectTag && !isHostObject(other),
 	          isSameTag = objTag == othTag;
-
+	
 	      if (isSameTag && !objIsObj) {
 	        stack || (stack = new Stack);
 	        return (objIsArr || isTypedArray(object))
@@ -24718,11 +24718,11 @@
 	      if (!(bitmask & PARTIAL_COMPARE_FLAG)) {
 	        var objIsWrapped = objIsObj && hasOwnProperty.call(object, '__wrapped__'),
 	            othIsWrapped = othIsObj && hasOwnProperty.call(other, '__wrapped__');
-
+	
 	        if (objIsWrapped || othIsWrapped) {
 	          var objUnwrapped = objIsWrapped ? object.value() : object,
 	              othUnwrapped = othIsWrapped ? other.value() : other;
-
+	
 	          stack || (stack = new Stack);
 	          return equalFunc(objUnwrapped, othUnwrapped, customizer, bitmask, stack);
 	        }
@@ -24733,7 +24733,7 @@
 	      stack || (stack = new Stack);
 	      return equalObjects(object, other, equalFunc, customizer, bitmask, stack);
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.isMatch` without support for iteratee shorthands.
 	     *
@@ -24748,7 +24748,7 @@
 	      var index = matchData.length,
 	          length = index,
 	          noCustomizer = !customizer;
-
+	
 	      if (object == null) {
 	        return !length;
 	      }
@@ -24767,7 +24767,7 @@
 	        var key = data[0],
 	            objValue = object[key],
 	            srcValue = data[1];
-
+	
 	        if (noCustomizer && data[2]) {
 	          if (objValue === undefined && !(key in object)) {
 	            return false;
@@ -24787,7 +24787,7 @@
 	      }
 	      return true;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.iteratee`.
 	     *
@@ -24811,7 +24811,7 @@
 	      }
 	      return property(value);
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.keys` which doesn't skip the constructor
 	     * property of prototypes or treat sparse arrays as dense.
@@ -24823,7 +24823,7 @@
 	    function baseKeys(object) {
 	      return nativeKeys(Object(object));
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.keysIn` which doesn't skip the constructor
 	     * property of prototypes or treat sparse arrays as dense.
@@ -24834,21 +24834,21 @@
 	     */
 	    function baseKeysIn(object) {
 	      object = object == null ? object : Object(object);
-
+	
 	      var result = [];
 	      for (var key in object) {
 	        result.push(key);
 	      }
 	      return result;
 	    }
-
+	
 	    // Fallback for IE < 9 with es6-shim.
 	    if (enumerate && !propertyIsEnumerable.call({ 'valueOf': 1 }, 'valueOf')) {
 	      baseKeysIn = function(object) {
 	        return iteratorToArray(enumerate(object));
 	      };
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.map` without support for iteratee shorthands.
 	     *
@@ -24860,13 +24860,13 @@
 	    function baseMap(collection, iteratee) {
 	      var index = -1,
 	          result = isArrayLike(collection) ? Array(collection.length) : [];
-
+	
 	      baseEach(collection, function(value, key, collection) {
 	        result[++index] = iteratee(value, key, collection);
 	      });
 	      return result;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.matches` which doesn't clone `source`.
 	     *
@@ -24883,7 +24883,7 @@
 	        return object === source || baseIsMatch(object, source, matchData);
 	      };
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.matchesProperty` which doesn't clone `srcValue`.
 	     *
@@ -24903,7 +24903,7 @@
 	          : baseIsEqual(srcValue, objValue, undefined, UNORDERED_COMPARE_FLAG | PARTIAL_COMPARE_FLAG);
 	      };
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.merge` without support for multiple sources.
 	     *
@@ -24935,7 +24935,7 @@
 	          var newValue = customizer
 	            ? customizer(object[key], srcValue, (key + ''), object, source, stack)
 	            : undefined;
-
+	
 	          if (newValue === undefined) {
 	            newValue = srcValue;
 	          }
@@ -24943,7 +24943,7 @@
 	        }
 	      });
 	    }
-
+	
 	    /**
 	     * A specialized version of `baseMerge` for arrays and objects which performs
 	     * deep merges and tracks traversed objects enabling objects with circular
@@ -24963,7 +24963,7 @@
 	      var objValue = object[key],
 	          srcValue = source[key],
 	          stacked = stack.get(srcValue);
-
+	
 	      if (stacked) {
 	        assignMergeValue(object, key, stacked);
 	        return;
@@ -24971,9 +24971,9 @@
 	      var newValue = customizer
 	        ? customizer(objValue, srcValue, (key + ''), object, source, stack)
 	        : undefined;
-
+	
 	      var isCommon = newValue === undefined;
-
+	
 	      if (isCommon) {
 	        newValue = srcValue;
 	        if (isArray(srcValue) || isTypedArray(srcValue)) {
@@ -25005,7 +25005,7 @@
 	        }
 	      }
 	      stack.set(srcValue, newValue);
-
+	
 	      if (isCommon) {
 	        // Recursively merge objects and arrays (susceptible to call stack limits).
 	        mergeFunc(newValue, srcValue, srcIndex, customizer, stack);
@@ -25013,7 +25013,7 @@
 	      stack['delete'](srcValue);
 	      assignMergeValue(object, key, newValue);
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.nth` which doesn't coerce `n` to an integer.
 	     *
@@ -25030,7 +25030,7 @@
 	      n += n < 0 ? length : 0;
 	      return isIndex(n, length) ? array[n] : undefined;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.orderBy` without param guards.
 	     *
@@ -25043,19 +25043,19 @@
 	    function baseOrderBy(collection, iteratees, orders) {
 	      var index = -1;
 	      iteratees = arrayMap(iteratees.length ? iteratees : [identity], baseUnary(getIteratee()));
-
+	
 	      var result = baseMap(collection, function(value, key, collection) {
 	        var criteria = arrayMap(iteratees, function(iteratee) {
 	          return iteratee(value);
 	        });
 	        return { 'criteria': criteria, 'index': ++index, 'value': value };
 	      });
-
+	
 	      return baseSortBy(result, function(object, other) {
 	        return compareMultiple(object, other, orders);
 	      });
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.pick` without support for individual
 	     * property identifiers.
@@ -25074,7 +25074,7 @@
 	        return result;
 	      }, {});
 	    }
-
+	
 	    /**
 	     * The base implementation of  `_.pickBy` without support for iteratee shorthands.
 	     *
@@ -25088,18 +25088,18 @@
 	          props = getAllKeysIn(object),
 	          length = props.length,
 	          result = {};
-
+	
 	      while (++index < length) {
 	        var key = props[index],
 	            value = object[key];
-
+	
 	        if (predicate(value, key)) {
 	          result[key] = value;
 	        }
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.property` without support for deep paths.
 	     *
@@ -25112,7 +25112,7 @@
 	        return object == null ? undefined : object[key];
 	      };
 	    }
-
+	
 	    /**
 	     * A specialized version of `baseProperty` which supports deep paths.
 	     *
@@ -25125,7 +25125,7 @@
 	        return baseGet(object, path);
 	      };
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.pullAllBy` without support for iteratee
 	     * shorthands.
@@ -25142,7 +25142,7 @@
 	          index = -1,
 	          length = values.length,
 	          seen = array;
-
+	
 	      if (iteratee) {
 	        seen = arrayMap(array, baseUnary(iteratee));
 	      }
@@ -25150,7 +25150,7 @@
 	        var fromIndex = 0,
 	            value = values[index],
 	            computed = iteratee ? iteratee(value) : value;
-
+	
 	        while ((fromIndex = indexOf(seen, computed, fromIndex, comparator)) > -1) {
 	          if (seen !== array) {
 	            splice.call(seen, fromIndex, 1);
@@ -25160,7 +25160,7 @@
 	      }
 	      return array;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.pullAt` without support for individual
 	     * indexes or capturing the removed elements.
@@ -25173,7 +25173,7 @@
 	    function basePullAt(array, indexes) {
 	      var length = array ? indexes.length : 0,
 	          lastIndex = length - 1;
-
+	
 	      while (length--) {
 	        var index = indexes[length];
 	        if (lastIndex == length || index != previous) {
@@ -25184,7 +25184,7 @@
 	          else if (!isKey(index, array)) {
 	            var path = castPath(index),
 	                object = parent(array, path);
-
+	
 	            if (object != null) {
 	              delete object[last(path)];
 	            }
@@ -25196,7 +25196,7 @@
 	      }
 	      return array;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.random` without support for returning
 	     * floating-point numbers.
@@ -25209,7 +25209,7 @@
 	    function baseRandom(lower, upper) {
 	      return lower + nativeFloor(nativeRandom() * (upper - lower + 1));
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.range` and `_.rangeRight` which doesn't
 	     * coerce arguments to numbers.
@@ -25225,14 +25225,14 @@
 	      var index = -1,
 	          length = nativeMax(nativeCeil((end - start) / (step || 1)), 0),
 	          result = Array(length);
-
+	
 	      while (length--) {
 	        result[fromRight ? length : ++index] = start;
 	        start += step;
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.repeat` which doesn't coerce arguments.
 	     *
@@ -25257,10 +25257,10 @@
 	          string += string;
 	        }
 	      } while (n);
-
+	
 	      return result;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.set`.
 	     *
@@ -25273,12 +25273,12 @@
 	     */
 	    function baseSet(object, path, value, customizer) {
 	      path = isKey(path, object) ? [path] : castPath(path);
-
+	
 	      var index = -1,
 	          length = path.length,
 	          lastIndex = length - 1,
 	          nested = object;
-
+	
 	      while (nested != null && ++index < length) {
 	        var key = path[index];
 	        if (isObject(nested)) {
@@ -25298,7 +25298,7 @@
 	      }
 	      return object;
 	    }
-
+	
 	    /**
 	     * The base implementation of `setData` without support for hot loop detection.
 	     *
@@ -25311,7 +25311,7 @@
 	      metaMap.set(func, data);
 	      return func;
 	    };
-
+	
 	    /**
 	     * The base implementation of `_.slice` without an iteratee call guard.
 	     *
@@ -25324,7 +25324,7 @@
 	    function baseSlice(array, start, end) {
 	      var index = -1,
 	          length = array.length;
-
+	
 	      if (start < 0) {
 	        start = -start > length ? 0 : (length + start);
 	      }
@@ -25334,14 +25334,14 @@
 	      }
 	      length = start > end ? 0 : ((end - start) >>> 0);
 	      start >>>= 0;
-
+	
 	      var result = Array(length);
 	      while (++index < length) {
 	        result[index] = array[index + start];
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.some` without support for iteratee shorthands.
 	     *
@@ -25353,14 +25353,14 @@
 	     */
 	    function baseSome(collection, predicate) {
 	      var result;
-
+	
 	      baseEach(collection, function(value, index, collection) {
 	        result = predicate(value, index, collection);
 	        return !result;
 	      });
 	      return !!result;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.sortedIndex` and `_.sortedLastIndex` which
 	     * performs a binary search of `array` to determine the index at which `value`
@@ -25376,12 +25376,12 @@
 	    function baseSortedIndex(array, value, retHighest) {
 	      var low = 0,
 	          high = array ? array.length : low;
-
+	
 	      if (typeof value == 'number' && value === value && high <= HALF_MAX_ARRAY_LENGTH) {
 	        while (low < high) {
 	          var mid = (low + high) >>> 1,
 	              computed = array[mid];
-
+	
 	          if ((retHighest ? (computed <= value) : (computed < value)) && computed !== null) {
 	            low = mid + 1;
 	          } else {
@@ -25392,7 +25392,7 @@
 	      }
 	      return baseSortedIndexBy(array, value, identity, retHighest);
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.sortedIndexBy` and `_.sortedLastIndexBy`
 	     * which invokes `iteratee` for `value` and each element of `array` to compute
@@ -25408,19 +25408,19 @@
 	     */
 	    function baseSortedIndexBy(array, value, iteratee, retHighest) {
 	      value = iteratee(value);
-
+	
 	      var low = 0,
 	          high = array ? array.length : 0,
 	          valIsNaN = value !== value,
 	          valIsNull = value === null,
 	          valIsUndef = value === undefined;
-
+	
 	      while (low < high) {
 	        var mid = nativeFloor((low + high) / 2),
 	            computed = iteratee(array[mid]),
 	            isDef = computed !== undefined,
 	            isReflexive = computed === computed;
-
+	
 	        if (valIsNaN) {
 	          var setLow = isReflexive || retHighest;
 	        } else if (valIsNull) {
@@ -25440,7 +25440,7 @@
 	      }
 	      return nativeMin(high, MAX_ARRAY_INDEX);
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.sortedUniq`.
 	     *
@@ -25451,7 +25451,7 @@
 	    function baseSortedUniq(array) {
 	      return baseSortedUniqBy(array);
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.sortedUniqBy` without support for iteratee
 	     * shorthands.
@@ -25469,11 +25469,11 @@
 	          seen = computed,
 	          resIndex = 1,
 	          result = [value];
-
+	
 	      while (++index < length) {
 	        value = array[index],
 	        computed = iteratee ? iteratee(value) : value;
-
+	
 	        if (!eq(computed, seen)) {
 	          seen = computed;
 	          result[resIndex++] = value;
@@ -25481,7 +25481,7 @@
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.uniqBy` without support for iteratee shorthands.
 	     *
@@ -25498,7 +25498,7 @@
 	          isCommon = true,
 	          result = [],
 	          seen = result;
-
+	
 	      if (comparator) {
 	        isCommon = false;
 	        includes = arrayIncludesWith;
@@ -25519,7 +25519,7 @@
 	      while (++index < length) {
 	        var value = array[index],
 	            computed = iteratee ? iteratee(value) : value;
-
+	
 	        if (isCommon && computed === computed) {
 	          var seenIndex = seen.length;
 	          while (seenIndex--) {
@@ -25541,7 +25541,7 @@
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.unset`.
 	     *
@@ -25556,7 +25556,7 @@
 	      var key = last(path);
 	      return (object != null && has(object, key)) ? delete object[key] : true;
 	    }
-
+	
 	    /**
 	     * The base implementation of `_.update`.
 	     *
@@ -25570,7 +25570,7 @@
 	    function baseUpdate(object, path, updater, customizer) {
 	      return baseSet(object, path, updater(baseGet(object, path)), customizer);
 	    }
-
+	
 	    /**
 	     * The base implementation of methods like `_.dropWhile` and `_.takeWhile`
 	     * without support for iteratee shorthands.
@@ -25585,15 +25585,15 @@
 	    function baseWhile(array, predicate, isDrop, fromRight) {
 	      var length = array.length,
 	          index = fromRight ? length : -1;
-
+	
 	      while ((fromRight ? index-- : ++index < length) &&
 	        predicate(array[index], index, array)) {}
-
+	
 	      return isDrop
 	        ? baseSlice(array, (fromRight ? 0 : index), (fromRight ? index + 1 : length))
 	        : baseSlice(array, (fromRight ? index + 1 : 0), (fromRight ? length : index));
 	    }
-
+	
 	    /**
 	     * The base implementation of `wrapperValue` which returns the result of
 	     * performing a sequence of actions on the unwrapped `value`, where each
@@ -25613,7 +25613,7 @@
 	        return action.func.apply(action.thisArg, arrayPush([result], action.args));
 	      }, result);
 	    }
-
+	
 	    /**
 	     * The base implementation of methods like `_.xor`, without support for
 	     * iteratee shorthands, that accepts an array of arrays to inspect.
@@ -25627,7 +25627,7 @@
 	    function baseXor(arrays, iteratee, comparator) {
 	      var index = -1,
 	          length = arrays.length;
-
+	
 	      while (++index < length) {
 	        var result = result
 	          ? arrayPush(
@@ -25638,7 +25638,7 @@
 	      }
 	      return (result && result.length) ? baseUniq(result, iteratee, comparator) : [];
 	    }
-
+	
 	    /**
 	     * This base implementation of `_.zipObject` which assigns values using `assignFunc`.
 	     *
@@ -25653,14 +25653,14 @@
 	          length = props.length,
 	          valsLength = values.length,
 	          result = {};
-
+	
 	      while (++index < length) {
 	        var value = index < valsLength ? values[index] : undefined;
 	        assignFunc(result, props[index], value);
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * Casts `value` to an empty array if it's not an array like object.
 	     *
@@ -25671,7 +25671,7 @@
 	    function castArrayLikeObject(value) {
 	      return isArrayLikeObject(value) ? value : [];
 	    }
-
+	
 	    /**
 	     * Casts `value` to `identity` if it's not a function.
 	     *
@@ -25682,7 +25682,7 @@
 	    function castFunction(value) {
 	      return typeof value == 'function' ? value : identity;
 	    }
-
+	
 	    /**
 	     * Casts `value` to a path array if it's not one.
 	     *
@@ -25693,7 +25693,7 @@
 	    function castPath(value) {
 	      return isArray(value) ? value : stringToPath(value);
 	    }
-
+	
 	    /**
 	     * Casts `array` to a slice if it's needed.
 	     *
@@ -25708,7 +25708,7 @@
 	      end = end === undefined ? length : end;
 	      return (!start && end >= length) ? array : baseSlice(array, start, end);
 	    }
-
+	
 	    /**
 	     * Creates a clone of  `buffer`.
 	     *
@@ -25725,7 +25725,7 @@
 	      buffer.copy(result);
 	      return result;
 	    }
-
+	
 	    /**
 	     * Creates a clone of `arrayBuffer`.
 	     *
@@ -25738,7 +25738,7 @@
 	      new Uint8Array(result).set(new Uint8Array(arrayBuffer));
 	      return result;
 	    }
-
+	
 	    /**
 	     * Creates a clone of `dataView`.
 	     *
@@ -25751,7 +25751,7 @@
 	      var buffer = isDeep ? cloneArrayBuffer(dataView.buffer) : dataView.buffer;
 	      return new dataView.constructor(buffer, dataView.byteOffset, dataView.byteLength);
 	    }
-
+	
 	    /**
 	     * Creates a clone of `map`.
 	     *
@@ -25765,7 +25765,7 @@
 	      var array = isDeep ? cloneFunc(mapToArray(map), true) : mapToArray(map);
 	      return arrayReduce(array, addMapEntry, new map.constructor);
 	    }
-
+	
 	    /**
 	     * Creates a clone of `regexp`.
 	     *
@@ -25778,7 +25778,7 @@
 	      result.lastIndex = regexp.lastIndex;
 	      return result;
 	    }
-
+	
 	    /**
 	     * Creates a clone of `set`.
 	     *
@@ -25792,7 +25792,7 @@
 	      var array = isDeep ? cloneFunc(setToArray(set), true) : setToArray(set);
 	      return arrayReduce(array, addSetEntry, new set.constructor);
 	    }
-
+	
 	    /**
 	     * Creates a clone of the `symbol` object.
 	     *
@@ -25803,7 +25803,7 @@
 	    function cloneSymbol(symbol) {
 	      return symbolValueOf ? Object(symbolValueOf.call(symbol)) : {};
 	    }
-
+	
 	    /**
 	     * Creates a clone of `typedArray`.
 	     *
@@ -25816,7 +25816,7 @@
 	      var buffer = isDeep ? cloneArrayBuffer(typedArray.buffer) : typedArray.buffer;
 	      return new typedArray.constructor(buffer, typedArray.byteOffset, typedArray.length);
 	    }
-
+	
 	    /**
 	     * Creates an array that is the composition of partially applied arguments,
 	     * placeholders, and provided arguments into a single array of arguments.
@@ -25837,7 +25837,7 @@
 	          rangeLength = nativeMax(argsLength - holdersLength, 0),
 	          result = Array(leftLength + rangeLength),
 	          isUncurried = !isCurried;
-
+	
 	      while (++leftIndex < leftLength) {
 	        result[leftIndex] = partials[leftIndex];
 	      }
@@ -25851,7 +25851,7 @@
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * This function is like `composeArgs` except that the arguments composition
 	     * is tailored for `_.partialRight`.
@@ -25873,7 +25873,7 @@
 	          rangeLength = nativeMax(argsLength - holdersLength, 0),
 	          result = Array(rangeLength + rightLength),
 	          isUncurried = !isCurried;
-
+	
 	      while (++argsIndex < rangeLength) {
 	        result[argsIndex] = args[argsIndex];
 	      }
@@ -25888,7 +25888,7 @@
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * Copies the values of `source` to `array`.
 	     *
@@ -25900,14 +25900,14 @@
 	    function copyArray(source, array) {
 	      var index = -1,
 	          length = source.length;
-
+	
 	      array || (array = Array(length));
 	      while (++index < length) {
 	        array[index] = source[index];
 	      }
 	      return array;
 	    }
-
+	
 	    /**
 	     * Copies properties of `source` to `object`.
 	     *
@@ -25920,22 +25920,22 @@
 	     */
 	    function copyObject(source, props, object, customizer) {
 	      object || (object = {});
-
+	
 	      var index = -1,
 	          length = props.length;
-
+	
 	      while (++index < length) {
 	        var key = props[index];
-
+	
 	        var newValue = customizer
 	          ? customizer(object[key], source[key], key, object, source)
 	          : source[key];
-
+	
 	        assignValue(object, key, newValue);
 	      }
 	      return object;
 	    }
-
+	
 	    /**
 	     * Copies own symbol properties of `source` to `object`.
 	     *
@@ -25947,7 +25947,7 @@
 	    function copySymbols(source, object) {
 	      return copyObject(source, getSymbols(source), object);
 	    }
-
+	
 	    /**
 	     * Creates a function like `_.groupBy`.
 	     *
@@ -25960,11 +25960,11 @@
 	      return function(collection, iteratee) {
 	        var func = isArray(collection) ? arrayAggregator : baseAggregator,
 	            accumulator = initializer ? initializer() : {};
-
+	
 	        return func(collection, setter, getIteratee(iteratee), accumulator);
 	      };
 	    }
-
+	
 	    /**
 	     * Creates a function like `_.assign`.
 	     *
@@ -25978,11 +25978,11 @@
 	            length = sources.length,
 	            customizer = length > 1 ? sources[length - 1] : undefined,
 	            guard = length > 2 ? sources[2] : undefined;
-
+	
 	        customizer = typeof customizer == 'function'
 	          ? (length--, customizer)
 	          : undefined;
-
+	
 	        if (guard && isIterateeCall(sources[0], sources[1], guard)) {
 	          customizer = length < 3 ? undefined : customizer;
 	          length = 1;
@@ -25997,7 +25997,7 @@
 	        return object;
 	      });
 	    }
-
+	
 	    /**
 	     * Creates a `baseEach` or `baseEachRight` function.
 	     *
@@ -26017,7 +26017,7 @@
 	        var length = collection.length,
 	            index = fromRight ? length : -1,
 	            iterable = Object(collection);
-
+	
 	        while ((fromRight ? index-- : ++index < length)) {
 	          if (iteratee(iterable[index], index, iterable) === false) {
 	            break;
@@ -26026,7 +26026,7 @@
 	        return collection;
 	      };
 	    }
-
+	
 	    /**
 	     * Creates a base function for methods like `_.forIn` and `_.forOwn`.
 	     *
@@ -26040,7 +26040,7 @@
 	            iterable = Object(object),
 	            props = keysFunc(object),
 	            length = props.length;
-
+	
 	        while (length--) {
 	          var key = props[fromRight ? length : ++index];
 	          if (iteratee(iterable[key], key, iterable) === false) {
@@ -26050,7 +26050,7 @@
 	        return object;
 	      };
 	    }
-
+	
 	    /**
 	     * Creates a function that wraps `func` to invoke it with the optional `this`
 	     * binding of `thisArg`.
@@ -26065,14 +26065,14 @@
 	    function createBaseWrapper(func, bitmask, thisArg) {
 	      var isBind = bitmask & BIND_FLAG,
 	          Ctor = createCtorWrapper(func);
-
+	
 	      function wrapper() {
 	        var fn = (this && this !== root && this instanceof wrapper) ? Ctor : func;
 	        return fn.apply(isBind ? thisArg : this, arguments);
 	      }
 	      return wrapper;
 	    }
-
+	
 	    /**
 	     * Creates a function like `_.lowerFirst`.
 	     *
@@ -26083,23 +26083,23 @@
 	    function createCaseFirst(methodName) {
 	      return function(string) {
 	        string = toString(string);
-
+	
 	        var strSymbols = reHasComplexSymbol.test(string)
 	          ? stringToArray(string)
 	          : undefined;
-
+	
 	        var chr = strSymbols
 	          ? strSymbols[0]
 	          : string.charAt(0);
-
+	
 	        var trailing = strSymbols
 	          ? castSlice(strSymbols, 1).join('')
 	          : string.slice(1);
-
+	
 	        return chr[methodName]() + trailing;
 	      };
 	    }
-
+	
 	    /**
 	     * Creates a function like `_.camelCase`.
 	     *
@@ -26112,7 +26112,7 @@
 	        return arrayReduce(words(deburr(string).replace(reApos, '')), callback, '');
 	      };
 	    }
-
+	
 	    /**
 	     * Creates a function that produces an instance of `Ctor` regardless of
 	     * whether it was invoked as part of a `new` expression or by `call` or `apply`.
@@ -26139,13 +26139,13 @@
 	        }
 	        var thisBinding = baseCreate(Ctor.prototype),
 	            result = Ctor.apply(thisBinding, args);
-
+	
 	        // Mimic the constructor's `return` behavior.
 	        // See https://es5.github.io/#x13.2.2 for more details.
 	        return isObject(result) ? result : thisBinding;
 	      };
 	    }
-
+	
 	    /**
 	     * Creates a function that wraps `func` to enable currying.
 	     *
@@ -26158,20 +26158,20 @@
 	     */
 	    function createCurryWrapper(func, bitmask, arity) {
 	      var Ctor = createCtorWrapper(func);
-
+	
 	      function wrapper() {
 	        var length = arguments.length,
 	            args = Array(length),
 	            index = length,
 	            placeholder = getPlaceholder(wrapper);
-
+	
 	        while (index--) {
 	          args[index] = arguments[index];
 	        }
 	        var holders = (length < 3 && args[0] !== placeholder && args[length - 1] !== placeholder)
 	          ? []
 	          : replaceHolders(args, placeholder);
-
+	
 	        length -= holders.length;
 	        if (length < arity) {
 	          return createRecurryWrapper(
@@ -26183,7 +26183,7 @@
 	      }
 	      return wrapper;
 	    }
-
+	
 	    /**
 	     * Creates a `_.flow` or `_.flowRight` function.
 	     *
@@ -26194,11 +26194,11 @@
 	    function createFlow(fromRight) {
 	      return rest(function(funcs) {
 	        funcs = baseFlatten(funcs, 1);
-
+	
 	        var length = funcs.length,
 	            index = length,
 	            prereq = LodashWrapper.prototype.thru;
-
+	
 	        if (fromRight) {
 	          funcs.reverse();
 	        }
@@ -26214,10 +26214,10 @@
 	        index = wrapper ? index : length;
 	        while (++index < length) {
 	          func = funcs[index];
-
+	
 	          var funcName = getFuncName(func),
 	              data = funcName == 'wrapper' ? getData(func) : undefined;
-
+	
 	          if (data && isLaziable(data[0]) &&
 	                data[1] == (ARY_FLAG | CURRY_FLAG | PARTIAL_FLAG | REARG_FLAG) &&
 	                !data[4].length && data[9] == 1
@@ -26232,14 +26232,14 @@
 	        return function() {
 	          var args = arguments,
 	              value = args[0];
-
+	
 	          if (wrapper && args.length == 1 &&
 	              isArray(value) && value.length >= LARGE_ARRAY_SIZE) {
 	            return wrapper.plant(value).value();
 	          }
 	          var index = 0,
 	              result = length ? funcs[index].apply(this, args) : value;
-
+	
 	          while (++index < length) {
 	            result = funcs[index].call(this, result);
 	          }
@@ -26247,7 +26247,7 @@
 	        };
 	      });
 	    }
-
+	
 	    /**
 	     * Creates a function that wraps `func` to invoke it with optional `this`
 	     * binding of `thisArg`, partial application, and currying.
@@ -26275,12 +26275,12 @@
 	          isCurried = bitmask & (CURRY_FLAG | CURRY_RIGHT_FLAG),
 	          isFlip = bitmask & FLIP_FLAG,
 	          Ctor = isBindKey ? undefined : createCtorWrapper(func);
-
+	
 	      function wrapper() {
 	        var length = arguments.length,
 	            index = length,
 	            args = Array(length);
-
+	
 	        while (index--) {
 	          args[index] = arguments[index];
 	        }
@@ -26304,7 +26304,7 @@
 	        }
 	        var thisBinding = isBind ? thisArg : this,
 	            fn = isBindKey ? thisBinding[func] : func;
-
+	
 	        length = args.length;
 	        if (argPos) {
 	          args = reorder(args, argPos);
@@ -26321,7 +26321,7 @@
 	      }
 	      return wrapper;
 	    }
-
+	
 	    /**
 	     * Creates a function like `_.invertBy`.
 	     *
@@ -26335,7 +26335,7 @@
 	        return baseInverter(object, setter, toIteratee(iteratee), {});
 	      };
 	    }
-
+	
 	    /**
 	     * Creates a function like `_.over`.
 	     *
@@ -26348,7 +26348,7 @@
 	        iteratees = (iteratees.length == 1 && isArray(iteratees[0]))
 	          ? arrayMap(iteratees[0], baseUnary(getIteratee()))
 	          : arrayMap(baseFlatten(iteratees, 1, isFlattenableIteratee), baseUnary(getIteratee()));
-
+	
 	        return rest(function(args) {
 	          var thisArg = this;
 	          return arrayFunc(iteratees, function(iteratee) {
@@ -26357,7 +26357,7 @@
 	        });
 	      });
 	    }
-
+	
 	    /**
 	     * Creates the padding for `string` based on `length`. The `chars` string
 	     * is truncated if the number of characters exceeds `length`.
@@ -26369,7 +26369,7 @@
 	     */
 	    function createPadding(length, chars) {
 	      chars = chars === undefined ? ' ' : (chars + '');
-
+	
 	      var charsLength = chars.length;
 	      if (charsLength < 2) {
 	        return charsLength ? baseRepeat(chars, length) : chars;
@@ -26379,7 +26379,7 @@
 	        ? castSlice(stringToArray(result), 0, length).join('')
 	        : result.slice(0, length);
 	    }
-
+	
 	    /**
 	     * Creates a function that wraps `func` to invoke it with the `this` binding
 	     * of `thisArg` and `partials` prepended to the arguments it receives.
@@ -26396,7 +26396,7 @@
 	    function createPartialWrapper(func, bitmask, thisArg, partials) {
 	      var isBind = bitmask & BIND_FLAG,
 	          Ctor = createCtorWrapper(func);
-
+	
 	      function wrapper() {
 	        var argsIndex = -1,
 	            argsLength = arguments.length,
@@ -26404,7 +26404,7 @@
 	            leftLength = partials.length,
 	            args = Array(leftLength + argsLength),
 	            fn = (this && this !== root && this instanceof wrapper) ? Ctor : func;
-
+	
 	        while (++leftIndex < leftLength) {
 	          args[leftIndex] = partials[leftIndex];
 	        }
@@ -26415,7 +26415,7 @@
 	      }
 	      return wrapper;
 	    }
-
+	
 	    /**
 	     * Creates a `_.range` or `_.rangeRight` function.
 	     *
@@ -26441,7 +26441,7 @@
 	        return baseRange(start, end, step, fromRight);
 	      };
 	    }
-
+	
 	    /**
 	     * Creates a function that wraps `func` to continue currying.
 	     *
@@ -26466,10 +26466,10 @@
 	          newHoldersRight = isCurry ? undefined : holders,
 	          newPartials = isCurry ? partials : undefined,
 	          newPartialsRight = isCurry ? undefined : partials;
-
+	
 	      bitmask |= (isCurry ? PARTIAL_FLAG : PARTIAL_RIGHT_FLAG);
 	      bitmask &= ~(isCurry ? PARTIAL_RIGHT_FLAG : PARTIAL_FLAG);
-
+	
 	      if (!(bitmask & CURRY_BOUND_FLAG)) {
 	        bitmask &= ~(BIND_FLAG | BIND_KEY_FLAG);
 	      }
@@ -26477,7 +26477,7 @@
 	        func, bitmask, thisArg, newPartials, newHolders, newPartialsRight,
 	        newHoldersRight, argPos, ary, arity
 	      ];
-
+	
 	      var result = wrapFunc.apply(undefined, newData);
 	      if (isLaziable(func)) {
 	        setData(result, newData);
@@ -26485,7 +26485,7 @@
 	      result.placeholder = placeholder;
 	      return result;
 	    }
-
+	
 	    /**
 	     * Creates a function like `_.round`.
 	     *
@@ -26503,14 +26503,14 @@
 	          // See [MDN](https://mdn.io/round#Examples) for more details.
 	          var pair = (toString(number) + 'e').split('e'),
 	              value = func(pair[0] + 'e' + (+pair[1] + precision));
-
+	
 	          pair = (toString(value) + 'e').split('e');
 	          return +(pair[0] + 'e' + (+pair[1] - precision));
 	        }
 	        return func(number);
 	      };
 	    }
-
+	
 	    /**
 	     * Creates a set of `values`.
 	     *
@@ -26521,7 +26521,7 @@
 	    var createSet = !(Set && new Set([1, 2]).size === 2) ? noop : function(values) {
 	      return new Set(values);
 	    };
-
+	
 	    /**
 	     * Creates a function that either curries or invokes `func` with optional
 	     * `this` binding and partially applied arguments.
@@ -26560,20 +26560,20 @@
 	      ary = ary === undefined ? ary : nativeMax(toInteger(ary), 0);
 	      arity = arity === undefined ? arity : toInteger(arity);
 	      length -= holders ? holders.length : 0;
-
+	
 	      if (bitmask & PARTIAL_RIGHT_FLAG) {
 	        var partialsRight = partials,
 	            holdersRight = holders;
-
+	
 	        partials = holders = undefined;
 	      }
 	      var data = isBindKey ? undefined : getData(func);
-
+	
 	      var newData = [
 	        func, bitmask, thisArg, partials, holders, partialsRight, holdersRight,
 	        argPos, ary, arity
 	      ];
-
+	
 	      if (data) {
 	        mergeData(newData, data);
 	      }
@@ -26585,7 +26585,7 @@
 	      arity = newData[9] = newData[9] == null
 	        ? (isBindKey ? 0 : func.length)
 	        : nativeMax(newData[9] - length, 0);
-
+	
 	      if (!arity && bitmask & (CURRY_FLAG | CURRY_RIGHT_FLAG)) {
 	        bitmask &= ~(CURRY_FLAG | CURRY_RIGHT_FLAG);
 	      }
@@ -26601,7 +26601,7 @@
 	      var setter = data ? baseSetData : setData;
 	      return setter(result, newData);
 	    }
-
+	
 	    /**
 	     * A specialized version of `baseIsEqualDeep` for arrays with support for
 	     * partial deep comparisons.
@@ -26622,7 +26622,7 @@
 	          isUnordered = bitmask & UNORDERED_COMPARE_FLAG,
 	          arrLength = array.length,
 	          othLength = other.length;
-
+	
 	      if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
 	        return false;
 	      }
@@ -26633,12 +26633,12 @@
 	      }
 	      var result = true;
 	      stack.set(array, other);
-
+	
 	      // Ignore non-index properties.
 	      while (++index < arrLength) {
 	        var arrValue = array[index],
 	            othValue = other[index];
-
+	
 	        if (customizer) {
 	          var compared = isPartial
 	            ? customizer(othValue, arrValue, index, other, array, stack)
@@ -26671,7 +26671,7 @@
 	      stack['delete'](array);
 	      return result;
 	    }
-
+	
 	    /**
 	     * A specialized version of `baseIsEqualDeep` for comparing objects of
 	     * the same `toStringTag`.
@@ -26699,42 +26699,42 @@
 	          }
 	          object = object.buffer;
 	          other = other.buffer;
-
+	
 	        case arrayBufferTag:
 	          if ((object.byteLength != other.byteLength) ||
 	              !equalFunc(new Uint8Array(object), new Uint8Array(other))) {
 	            return false;
 	          }
 	          return true;
-
+	
 	        case boolTag:
 	        case dateTag:
 	          // Coerce dates and booleans to numbers, dates to milliseconds and
 	          // booleans to `1` or `0` treating invalid dates coerced to `NaN` as
 	          // not equal.
 	          return +object == +other;
-
+	
 	        case errorTag:
 	          return object.name == other.name && object.message == other.message;
-
+	
 	        case numberTag:
 	          // Treat `NaN` vs. `NaN` as equal.
 	          return (object != +object) ? other != +other : object == +other;
-
+	
 	        case regexpTag:
 	        case stringTag:
 	          // Coerce regexes to strings and treat strings, primitives and objects,
 	          // as equal. See http://www.ecma-international.org/ecma-262/6.0/#sec-regexp.prototype.tostring
 	          // for more details.
 	          return object == (other + '');
-
+	
 	        case mapTag:
 	          var convert = mapToArray;
-
+	
 	        case setTag:
 	          var isPartial = bitmask & PARTIAL_COMPARE_FLAG;
 	          convert || (convert = setToArray);
-
+	
 	          if (object.size != other.size && !isPartial) {
 	            return false;
 	          }
@@ -26745,10 +26745,10 @@
 	          }
 	          bitmask |= UNORDERED_COMPARE_FLAG;
 	          stack.set(object, other);
-
+	
 	          // Recursively compare objects (susceptible to call stack limits).
 	          return equalArrays(convert(object), convert(other), equalFunc, customizer, bitmask, stack);
-
+	
 	        case symbolTag:
 	          if (symbolValueOf) {
 	            return symbolValueOf.call(object) == symbolValueOf.call(other);
@@ -26756,7 +26756,7 @@
 	      }
 	      return false;
 	    }
-
+	
 	    /**
 	     * A specialized version of `baseIsEqualDeep` for objects with support for
 	     * partial deep comparisons.
@@ -26777,7 +26777,7 @@
 	          objLength = objProps.length,
 	          othProps = keys(other),
 	          othLength = othProps.length;
-
+	
 	      if (objLength != othLength && !isPartial) {
 	        return false;
 	      }
@@ -26795,13 +26795,13 @@
 	      }
 	      var result = true;
 	      stack.set(object, other);
-
+	
 	      var skipCtor = isPartial;
 	      while (++index < objLength) {
 	        key = objProps[index];
 	        var objValue = object[key],
 	            othValue = other[key];
-
+	
 	        if (customizer) {
 	          var compared = isPartial
 	            ? customizer(othValue, objValue, key, other, object, stack)
@@ -26820,7 +26820,7 @@
 	      if (result && !skipCtor) {
 	        var objCtor = object.constructor,
 	            othCtor = other.constructor;
-
+	
 	        // Non `Object` object instances with different constructors are not equal.
 	        if (objCtor != othCtor &&
 	            ('constructor' in object && 'constructor' in other) &&
@@ -26832,7 +26832,7 @@
 	      stack['delete'](object);
 	      return result;
 	    }
-
+	
 	    /**
 	     * Creates an array of own enumerable property names and symbols of `object`.
 	     *
@@ -26843,7 +26843,7 @@
 	    function getAllKeys(object) {
 	      return baseGetAllKeys(object, keys, getSymbols);
 	    }
-
+	
 	    /**
 	     * Creates an array of own and inherited enumerable property names and
 	     * symbols of `object`.
@@ -26855,7 +26855,7 @@
 	    function getAllKeysIn(object) {
 	      return baseGetAllKeys(object, keysIn, getSymbolsIn);
 	    }
-
+	
 	    /**
 	     * Gets metadata for `func`.
 	     *
@@ -26866,7 +26866,7 @@
 	    var getData = !metaMap ? noop : function(func) {
 	      return metaMap.get(func);
 	    };
-
+	
 	    /**
 	     * Gets the name of `func`.
 	     *
@@ -26878,7 +26878,7 @@
 	      var result = (func.name + ''),
 	          array = realNames[result],
 	          length = hasOwnProperty.call(realNames, result) ? array.length : 0;
-
+	
 	      while (length--) {
 	        var data = array[length],
 	            otherFunc = data.func;
@@ -26888,7 +26888,7 @@
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * Gets the appropriate "iteratee" function. If `_.iteratee` is customized,
 	     * this function returns the custom method, otherwise it returns `baseIteratee`.
@@ -26905,7 +26905,7 @@
 	      result = result === iteratee ? baseIteratee : result;
 	      return arguments.length ? result(arguments[0], arguments[1]) : result;
 	    }
-
+	
 	    /**
 	     * Gets the "length" property value of `object`.
 	     *
@@ -26918,7 +26918,7 @@
 	     * @returns {*} Returns the "length" value.
 	     */
 	    var getLength = baseProperty('length');
-
+	
 	    /**
 	     * Gets the property names, values, and compare flags of `object`.
 	     *
@@ -26929,13 +26929,13 @@
 	    function getMatchData(object) {
 	      var result = toPairs(object),
 	          length = result.length;
-
+	
 	      while (length--) {
 	        result[length][2] = isStrictComparable(result[length][1]);
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * Gets the native function at `key` of `object`.
 	     *
@@ -26948,7 +26948,7 @@
 	      var value = object[key];
 	      return isNative(value) ? value : undefined;
 	    }
-
+	
 	    /**
 	     * Gets the argument placeholder value for `func`.
 	     *
@@ -26960,7 +26960,7 @@
 	      var object = hasOwnProperty.call(lodash, 'placeholder') ? lodash : func;
 	      return object.placeholder;
 	    }
-
+	
 	    /**
 	     * Gets the `[[Prototype]]` of `value`.
 	     *
@@ -26971,7 +26971,7 @@
 	    function getPrototype(value) {
 	      return nativeGetPrototype(Object(value));
 	    }
-
+	
 	    /**
 	     * Creates an array of the own enumerable symbol properties of `object`.
 	     *
@@ -26984,14 +26984,14 @@
 	      // See https://bugs.chromium.org/p/v8/issues/detail?id=3443 for more details.
 	      return getOwnPropertySymbols(Object(object));
 	    }
-
+	
 	    // Fallback for IE < 11.
 	    if (!getOwnPropertySymbols) {
 	      getSymbols = function() {
 	        return [];
 	      };
 	    }
-
+	
 	    /**
 	     * Creates an array of the own and inherited enumerable symbol properties
 	     * of `object`.
@@ -27008,7 +27008,7 @@
 	      }
 	      return result;
 	    };
-
+	
 	    /**
 	     * Gets the `toStringTag` of `value`.
 	     *
@@ -27019,7 +27019,7 @@
 	    function getTag(value) {
 	      return objectToString.call(value);
 	    }
-
+	
 	    // Fallback for data views, maps, sets, and weak maps in IE 11,
 	    // for data views in Edge, and promises in Node.js.
 	    if ((DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag) ||
@@ -27031,7 +27031,7 @@
 	        var result = objectToString.call(value),
 	            Ctor = result == objectTag ? value.constructor : undefined,
 	            ctorString = Ctor ? toSource(Ctor) : undefined;
-
+	
 	        if (ctorString) {
 	          switch (ctorString) {
 	            case dataViewCtorString: return dataViewTag;
@@ -27044,7 +27044,7 @@
 	        return result;
 	      };
 	    }
-
+	
 	    /**
 	     * Gets the view, applying any `transforms` to the `start` and `end` positions.
 	     *
@@ -27058,11 +27058,11 @@
 	    function getView(start, end, transforms) {
 	      var index = -1,
 	          length = transforms.length;
-
+	
 	      while (++index < length) {
 	        var data = transforms[index],
 	            size = data.size;
-
+	
 	        switch (data.type) {
 	          case 'drop':      start += size; break;
 	          case 'dropRight': end -= size; break;
@@ -27072,7 +27072,7 @@
 	      }
 	      return { 'start': start, 'end': end };
 	    }
-
+	
 	    /**
 	     * Checks if `path` exists on `object`.
 	     *
@@ -27084,11 +27084,11 @@
 	     */
 	    function hasPath(object, path, hasFunc) {
 	      path = isKey(path, object) ? [path] : castPath(path);
-
+	
 	      var result,
 	          index = -1,
 	          length = path.length;
-
+	
 	      while (++index < length) {
 	        var key = path[index];
 	        if (!(result = object != null && hasFunc(object, key))) {
@@ -27103,7 +27103,7 @@
 	      return !!length && isLength(length) && isIndex(key, length) &&
 	        (isArray(object) || isString(object) || isArguments(object));
 	    }
-
+	
 	    /**
 	     * Initializes an array clone.
 	     *
@@ -27114,7 +27114,7 @@
 	    function initCloneArray(array) {
 	      var length = array.length,
 	          result = array.constructor(length);
-
+	
 	      // Add properties assigned by `RegExp#exec`.
 	      if (length && typeof array[0] == 'string' && hasOwnProperty.call(array, 'index')) {
 	        result.index = array.index;
@@ -27122,7 +27122,7 @@
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * Initializes an object clone.
 	     *
@@ -27135,7 +27135,7 @@
 	        ? baseCreate(getPrototype(object))
 	        : {};
 	    }
-
+	
 	    /**
 	     * Initializes an object clone based on its `toStringTag`.
 	     *
@@ -27154,37 +27154,37 @@
 	      switch (tag) {
 	        case arrayBufferTag:
 	          return cloneArrayBuffer(object);
-
+	
 	        case boolTag:
 	        case dateTag:
 	          return new Ctor(+object);
-
+	
 	        case dataViewTag:
 	          return cloneDataView(object, isDeep);
-
+	
 	        case float32Tag: case float64Tag:
 	        case int8Tag: case int16Tag: case int32Tag:
 	        case uint8Tag: case uint8ClampedTag: case uint16Tag: case uint32Tag:
 	          return cloneTypedArray(object, isDeep);
-
+	
 	        case mapTag:
 	          return cloneMap(object, isDeep, cloneFunc);
-
+	
 	        case numberTag:
 	        case stringTag:
 	          return new Ctor(object);
-
+	
 	        case regexpTag:
 	          return cloneRegExp(object);
-
+	
 	        case setTag:
 	          return cloneSet(object, isDeep, cloneFunc);
-
+	
 	        case symbolTag:
 	          return cloneSymbol(object);
 	      }
 	    }
-
+	
 	    /**
 	     * Creates an array of index keys for `object` values of arrays,
 	     * `arguments` objects, and strings, otherwise `null` is returned.
@@ -27201,7 +27201,7 @@
 	      }
 	      return null;
 	    }
-
+	
 	    /**
 	     * Checks if `value` is a flattenable `arguments` object or array.
 	     *
@@ -27212,7 +27212,7 @@
 	    function isFlattenable(value) {
 	      return isArrayLikeObject(value) && (isArray(value) || isArguments(value));
 	    }
-
+	
 	    /**
 	     * Checks if `value` is a flattenable array and not a `_.matchesProperty`
 	     * iteratee shorthand.
@@ -27224,7 +27224,7 @@
 	    function isFlattenableIteratee(value) {
 	      return isArray(value) && !(value.length == 2 && !isFunction(value[0]));
 	    }
-
+	
 	    /**
 	     * Checks if the given arguments are from an iteratee call.
 	     *
@@ -27248,7 +27248,7 @@
 	      }
 	      return false;
 	    }
-
+	
 	    /**
 	     * Checks if `value` is a property name and not a property path.
 	     *
@@ -27266,7 +27266,7 @@
 	        (isSymbol(value) || reIsPlainProp.test(value) || !reIsDeepProp.test(value) ||
 	          (object != null && value in Object(object)));
 	    }
-
+	
 	    /**
 	     * Checks if `value` is suitable for use as unique object key.
 	     *
@@ -27279,7 +27279,7 @@
 	      return type == 'number' || type == 'boolean' ||
 	        (type == 'string' && value != '__proto__') || value == null;
 	    }
-
+	
 	    /**
 	     * Checks if `func` has a lazy counterpart.
 	     *
@@ -27291,7 +27291,7 @@
 	    function isLaziable(func) {
 	      var funcName = getFuncName(func),
 	          other = lodash[funcName];
-
+	
 	      if (typeof other != 'function' || !(funcName in LazyWrapper.prototype)) {
 	        return false;
 	      }
@@ -27301,7 +27301,7 @@
 	      var data = getData(other);
 	      return !!data && func === data[0];
 	    }
-
+	
 	    /**
 	     * Checks if `value` is likely a prototype object.
 	     *
@@ -27312,10 +27312,10 @@
 	    function isPrototype(value) {
 	      var Ctor = value && value.constructor,
 	          proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto;
-
+	
 	      return value === proto;
 	    }
-
+	
 	    /**
 	     * Checks if `value` is suitable for strict equality comparisons, i.e. `===`.
 	     *
@@ -27327,7 +27327,7 @@
 	    function isStrictComparable(value) {
 	      return value === value && !isObject(value);
 	    }
-
+	
 	    /**
 	     * A specialized version of `matchesProperty` for source values suitable
 	     * for strict equality comparisons, i.e. `===`.
@@ -27346,7 +27346,7 @@
 	          (srcValue !== undefined || (key in Object(object)));
 	      };
 	    }
-
+	
 	    /**
 	     * Merges the function metadata of `source` into `data`.
 	     *
@@ -27368,12 +27368,12 @@
 	          srcBitmask = source[1],
 	          newBitmask = bitmask | srcBitmask,
 	          isCommon = newBitmask < (BIND_FLAG | BIND_KEY_FLAG | ARY_FLAG);
-
+	
 	      var isCombo =
 	        ((srcBitmask == ARY_FLAG) && (bitmask == CURRY_FLAG)) ||
 	        ((srcBitmask == ARY_FLAG) && (bitmask == REARG_FLAG) && (data[7].length <= source[8])) ||
 	        ((srcBitmask == (ARY_FLAG | REARG_FLAG)) && (source[7].length <= source[8]) && (bitmask == CURRY_FLAG));
-
+	
 	      // Exit early if metadata can't be merged.
 	      if (!(isCommon || isCombo)) {
 	        return data;
@@ -27414,10 +27414,10 @@
 	      // Use source `func` and merge bitmasks.
 	      data[0] = source[0];
 	      data[1] = newBitmask;
-
+	
 	      return data;
 	    }
-
+	
 	    /**
 	     * Used by `_.defaultsDeep` to customize its `_.merge` use.
 	     *
@@ -27437,7 +27437,7 @@
 	      }
 	      return objValue;
 	    }
-
+	
 	    /**
 	     * Gets the parent value at `path` of `object`.
 	     *
@@ -27449,7 +27449,7 @@
 	    function parent(object, path) {
 	      return path.length == 1 ? object : baseGet(object, baseSlice(path, 0, -1));
 	    }
-
+	
 	    /**
 	     * Reorder `array` according to the specified indexes where the element at
 	     * the first index is assigned as the first element, the element at
@@ -27464,14 +27464,14 @@
 	      var arrLength = array.length,
 	          length = nativeMin(indexes.length, arrLength),
 	          oldArray = copyArray(array);
-
+	
 	      while (length--) {
 	        var index = indexes[length];
 	        array[length] = isIndex(index, arrLength) ? oldArray[index] : undefined;
 	      }
 	      return array;
 	    }
-
+	
 	    /**
 	     * Sets metadata for `func`.
 	     *
@@ -27489,11 +27489,11 @@
 	    var setData = (function() {
 	      var count = 0,
 	          lastCalled = 0;
-
+	
 	      return function(key, value) {
 	        var stamp = now(),
 	            remaining = HOT_SPAN - (stamp - lastCalled);
-
+	
 	        lastCalled = stamp;
 	        if (remaining > 0) {
 	          if (++count >= HOT_COUNT) {
@@ -27505,7 +27505,7 @@
 	        return baseSetData(key, value);
 	      };
 	    }());
-
+	
 	    /**
 	     * Converts `string` to a property path array.
 	     *
@@ -27520,7 +27520,7 @@
 	      });
 	      return result;
 	    });
-
+	
 	    /**
 	     * Converts `value` to a string key if it's not a string or symbol.
 	     *
@@ -27531,7 +27531,7 @@
 	    function toKey(key) {
 	      return (typeof key == 'string' || isSymbol(key)) ? key : (key + '');
 	    }
-
+	
 	    /**
 	     * Converts `func` to its source code.
 	     *
@@ -27550,7 +27550,7 @@
 	      }
 	      return '';
 	    }
-
+	
 	    /**
 	     * Creates a clone of `wrapper`.
 	     *
@@ -27568,9 +27568,9 @@
 	      result.__values__ = wrapper.__values__;
 	      return result;
 	    }
-
+	
 	    /*------------------------------------------------------------------------*/
-
+	
 	    /**
 	     * Creates an array of elements split into groups the length of `size`.
 	     * If `array` can't be split evenly, the final chunk will be the remaining
@@ -27605,13 +27605,13 @@
 	      var index = 0,
 	          resIndex = 0,
 	          result = Array(nativeCeil(length / size));
-
+	
 	      while (index < length) {
 	        result[resIndex++] = baseSlice(array, index, (index += size));
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * Creates an array with all falsey values removed. The values `false`, `null`,
 	     * `0`, `""`, `undefined`, and `NaN` are falsey.
@@ -27632,7 +27632,7 @@
 	          length = array ? array.length : 0,
 	          resIndex = 0,
 	          result = [];
-
+	
 	      while (++index < length) {
 	        var value = array[index];
 	        if (value) {
@@ -27641,7 +27641,7 @@
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * Creates a new array concatenating `array` with any additional arrays
 	     * and/or values.
@@ -27667,7 +27667,7 @@
 	    function concat() {
 	      var length = arguments.length,
 	          array = castArray(arguments[0]);
-
+	
 	      if (length < 2) {
 	        return length ? copyArray(array) : [];
 	      }
@@ -27677,7 +27677,7 @@
 	      }
 	      return arrayConcat(array, baseFlatten(args, 1));
 	    }
-
+	
 	    /**
 	     * Creates an array of unique `array` values not included in the other given
 	     * arrays using [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
@@ -27701,7 +27701,7 @@
 	        ? baseDifference(array, baseFlatten(values, 1, isArrayLikeObject, true))
 	        : [];
 	    });
-
+	
 	    /**
 	     * This method is like `_.difference` except that it accepts `iteratee` which
 	     * is invoked for each element of `array` and `values` to generate the criterion
@@ -27735,7 +27735,7 @@
 	        ? baseDifference(array, baseFlatten(values, 1, isArrayLikeObject, true), getIteratee(iteratee))
 	        : [];
 	    });
-
+	
 	    /**
 	     * This method is like `_.difference` except that it accepts `comparator`
 	     * which is invoked to compare elements of `array` to `values`. Result values
@@ -27766,7 +27766,7 @@
 	        ? baseDifference(array, baseFlatten(values, 1, isArrayLikeObject, true), undefined, comparator)
 	        : [];
 	    });
-
+	
 	    /**
 	     * Creates a slice of `array` with `n` elements dropped from the beginning.
 	     *
@@ -27800,7 +27800,7 @@
 	      n = (guard || n === undefined) ? 1 : toInteger(n);
 	      return baseSlice(array, n < 0 ? 0 : n, length);
 	    }
-
+	
 	    /**
 	     * Creates a slice of `array` with `n` elements dropped from the end.
 	     *
@@ -27835,7 +27835,7 @@
 	      n = length - n;
 	      return baseSlice(array, 0, n < 0 ? 0 : n);
 	    }
-
+	
 	    /**
 	     * Creates a slice of `array` excluding elements dropped from the end.
 	     * Elements are dropped until `predicate` returns falsey. The predicate is
@@ -27877,7 +27877,7 @@
 	        ? baseWhile(array, getIteratee(predicate, 3), true, true)
 	        : [];
 	    }
-
+	
 	    /**
 	     * Creates a slice of `array` excluding elements dropped from the beginning.
 	     * Elements are dropped until `predicate` returns falsey. The predicate is
@@ -27919,7 +27919,7 @@
 	        ? baseWhile(array, getIteratee(predicate, 3), true)
 	        : [];
 	    }
-
+	
 	    /**
 	     * Fills elements of `array` with `value` from `start` up to, but not
 	     * including, `end`.
@@ -27960,7 +27960,7 @@
 	      }
 	      return baseFill(array, value, start, end);
 	    }
-
+	
 	    /**
 	     * This method is like `_.find` except that it returns the index of the first
 	     * element `predicate` returns truthy for instead of the element itself.
@@ -28001,7 +28001,7 @@
 	        ? baseFindIndex(array, getIteratee(predicate, 3))
 	        : -1;
 	    }
-
+	
 	    /**
 	     * This method is like `_.findIndex` except that it iterates over elements
 	     * of `collection` from right to left.
@@ -28042,7 +28042,7 @@
 	        ? baseFindIndex(array, getIteratee(predicate, 3), true)
 	        : -1;
 	    }
-
+	
 	    /**
 	     * Flattens `array` a single level deep.
 	     *
@@ -28061,7 +28061,7 @@
 	      var length = array ? array.length : 0;
 	      return length ? baseFlatten(array, 1) : [];
 	    }
-
+	
 	    /**
 	     * Recursively flattens `array`.
 	     *
@@ -28080,7 +28080,7 @@
 	      var length = array ? array.length : 0;
 	      return length ? baseFlatten(array, INFINITY) : [];
 	    }
-
+	
 	    /**
 	     * Recursively flatten `array` up to `depth` times.
 	     *
@@ -28109,7 +28109,7 @@
 	      depth = depth === undefined ? 1 : toInteger(depth);
 	      return baseFlatten(array, depth);
 	    }
-
+	
 	    /**
 	     * The inverse of `_.toPairs`; this method returns an object composed
 	     * from key-value `pairs`.
@@ -28129,14 +28129,14 @@
 	      var index = -1,
 	          length = pairs ? pairs.length : 0,
 	          result = {};
-
+	
 	      while (++index < length) {
 	        var pair = pairs[index];
 	        result[pair[0]] = pair[1];
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * Gets the first element of `array`.
 	     *
@@ -28158,7 +28158,7 @@
 	    function head(array) {
 	      return (array && array.length) ? array[0] : undefined;
 	    }
-
+	
 	    /**
 	     * Gets the index at which the first occurrence of `value` is found in `array`
 	     * using [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
@@ -28193,7 +28193,7 @@
 	      }
 	      return baseIndexOf(array, value, fromIndex);
 	    }
-
+	
 	    /**
 	     * Gets all but the last element of `array`.
 	     *
@@ -28211,7 +28211,7 @@
 	    function initial(array) {
 	      return dropRight(array, 1);
 	    }
-
+	
 	    /**
 	     * Creates an array of unique values that are included in all given arrays
 	     * using [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
@@ -28235,7 +28235,7 @@
 	        ? baseIntersection(mapped)
 	        : [];
 	    });
-
+	
 	    /**
 	     * This method is like `_.intersection` except that it accepts `iteratee`
 	     * which is invoked for each element of each `arrays` to generate the criterion
@@ -28262,7 +28262,7 @@
 	    var intersectionBy = rest(function(arrays) {
 	      var iteratee = last(arrays),
 	          mapped = arrayMap(arrays, castArrayLikeObject);
-
+	
 	      if (iteratee === last(mapped)) {
 	        iteratee = undefined;
 	      } else {
@@ -28272,7 +28272,7 @@
 	        ? baseIntersection(mapped, getIteratee(iteratee))
 	        : [];
 	    });
-
+	
 	    /**
 	     * This method is like `_.intersection` except that it accepts `comparator`
 	     * which is invoked to compare elements of `arrays`. Result values are chosen
@@ -28297,7 +28297,7 @@
 	    var intersectionWith = rest(function(arrays) {
 	      var comparator = last(arrays),
 	          mapped = arrayMap(arrays, castArrayLikeObject);
-
+	
 	      if (comparator === last(mapped)) {
 	        comparator = undefined;
 	      } else {
@@ -28307,7 +28307,7 @@
 	        ? baseIntersection(mapped, undefined, comparator)
 	        : [];
 	    });
-
+	
 	    /**
 	     * Converts all elements in `array` into a string separated by `separator`.
 	     *
@@ -28326,7 +28326,7 @@
 	    function join(array, separator) {
 	      return array ? nativeJoin.call(array, separator) : '';
 	    }
-
+	
 	    /**
 	     * Gets the last element of `array`.
 	     *
@@ -28345,7 +28345,7 @@
 	      var length = array ? array.length : 0;
 	      return length ? array[length - 1] : undefined;
 	    }
-
+	
 	    /**
 	     * This method is like `_.indexOf` except that it iterates over elements of
 	     * `array` from right to left.
@@ -28391,7 +28391,7 @@
 	      }
 	      return -1;
 	    }
-
+	
 	    /**
 	     * Gets the nth element of `array`. If `n` is negative, the nth element
 	     * from the end is returned.
@@ -28416,7 +28416,7 @@
 	    function nth(array, n) {
 	      return (array && array.length) ? baseNth(array, toInteger(n)) : undefined;
 	    }
-
+	
 	    /**
 	     * Removes all given values from `array` using
 	     * [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
@@ -28441,7 +28441,7 @@
 	     * // => [1, 1]
 	     */
 	    var pull = rest(pullAll);
-
+	
 	    /**
 	     * This method is like `_.pull` except that it accepts an array of values to remove.
 	     *
@@ -28467,7 +28467,7 @@
 	        ? basePullAll(array, values)
 	        : array;
 	    }
-
+	
 	    /**
 	     * This method is like `_.pullAll` except that it accepts `iteratee` which is
 	     * invoked for each element of `array` and `values` to generate the criterion
@@ -28497,7 +28497,7 @@
 	        ? basePullAll(array, values, getIteratee(iteratee))
 	        : array;
 	    }
-
+	
 	    /**
 	     * This method is like `_.pullAll` except that it accepts `comparator` which
 	     * is invoked to compare elements of `array` to `values`. The comparator is
@@ -28526,7 +28526,7 @@
 	        ? basePullAll(array, values, undefined, comparator)
 	        : array;
 	    }
-
+	
 	    /**
 	     * Removes elements from `array` corresponding to `indexes` and returns an
 	     * array of removed elements.
@@ -28553,12 +28553,12 @@
 	     */
 	    var pullAt = rest(function(array, indexes) {
 	      indexes = arrayMap(baseFlatten(indexes, 1), String);
-
+	
 	      var result = baseAt(array, indexes);
 	      basePullAt(array, indexes.sort(compareAscending));
 	      return result;
 	    });
-
+	
 	    /**
 	     * Removes all elements from `array` that `predicate` returns truthy for
 	     * and returns an array of the removed elements. The predicate is invoked
@@ -28596,7 +28596,7 @@
 	      var index = -1,
 	          indexes = [],
 	          length = array.length;
-
+	
 	      predicate = getIteratee(predicate, 3);
 	      while (++index < length) {
 	        var value = array[index];
@@ -28608,7 +28608,7 @@
 	      basePullAt(array, indexes);
 	      return result;
 	    }
-
+	
 	    /**
 	     * Reverses `array` so that the first element becomes the last, the second
 	     * element becomes the second to last, and so on.
@@ -28635,7 +28635,7 @@
 	    function reverse(array) {
 	      return array ? nativeReverse.call(array) : array;
 	    }
-
+	
 	    /**
 	     * Creates a slice of `array` from `start` up to, but not including, `end`.
 	     *
@@ -28667,7 +28667,7 @@
 	      }
 	      return baseSlice(array, start, end);
 	    }
-
+	
 	    /**
 	     * Uses a binary search to determine the lowest index at which `value`
 	     * should be inserted into `array` in order to maintain its sort order.
@@ -28691,7 +28691,7 @@
 	    function sortedIndex(array, value) {
 	      return baseSortedIndex(array, value);
 	    }
-
+	
 	    /**
 	     * This method is like `_.sortedIndex` except that it accepts `iteratee`
 	     * which is invoked for `value` and each element of `array` to compute their
@@ -28721,7 +28721,7 @@
 	    function sortedIndexBy(array, value, iteratee) {
 	      return baseSortedIndexBy(array, value, getIteratee(iteratee));
 	    }
-
+	
 	    /**
 	     * This method is like `_.indexOf` except that it performs a binary
 	     * search on a sorted `array`.
@@ -28748,7 +28748,7 @@
 	      }
 	      return -1;
 	    }
-
+	
 	    /**
 	     * This method is like `_.sortedIndex` except that it returns the highest
 	     * index at which `value` should be inserted into `array` in order to
@@ -28770,7 +28770,7 @@
 	    function sortedLastIndex(array, value) {
 	      return baseSortedIndex(array, value, true);
 	    }
-
+	
 	    /**
 	     * This method is like `_.sortedLastIndex` except that it accepts `iteratee`
 	     * which is invoked for `value` and each element of `array` to compute their
@@ -28795,7 +28795,7 @@
 	    function sortedLastIndexBy(array, value, iteratee) {
 	      return baseSortedIndexBy(array, value, getIteratee(iteratee), true);
 	    }
-
+	
 	    /**
 	     * This method is like `_.lastIndexOf` except that it performs a binary
 	     * search on a sorted `array`.
@@ -28822,7 +28822,7 @@
 	      }
 	      return -1;
 	    }
-
+	
 	    /**
 	     * This method is like `_.uniq` except that it's designed and optimized
 	     * for sorted arrays.
@@ -28843,7 +28843,7 @@
 	        ? baseSortedUniq(array)
 	        : [];
 	    }
-
+	
 	    /**
 	     * This method is like `_.uniqBy` except that it's designed and optimized
 	     * for sorted arrays.
@@ -28865,7 +28865,7 @@
 	        ? baseSortedUniqBy(array, getIteratee(iteratee))
 	        : [];
 	    }
-
+	
 	    /**
 	     * Gets all but the first element of `array`.
 	     *
@@ -28883,7 +28883,7 @@
 	    function tail(array) {
 	      return drop(array, 1);
 	    }
-
+	
 	    /**
 	     * Creates a slice of `array` with `n` elements taken from the beginning.
 	     *
@@ -28916,7 +28916,7 @@
 	      n = (guard || n === undefined) ? 1 : toInteger(n);
 	      return baseSlice(array, 0, n < 0 ? 0 : n);
 	    }
-
+	
 	    /**
 	     * Creates a slice of `array` with `n` elements taken from the end.
 	     *
@@ -28951,7 +28951,7 @@
 	      n = length - n;
 	      return baseSlice(array, n < 0 ? 0 : n, length);
 	    }
-
+	
 	    /**
 	     * Creates a slice of `array` with elements taken from the end. Elements are
 	     * taken until `predicate` returns falsey. The predicate is invoked with
@@ -28993,7 +28993,7 @@
 	        ? baseWhile(array, getIteratee(predicate, 3), false, true)
 	        : [];
 	    }
-
+	
 	    /**
 	     * Creates a slice of `array` with elements taken from the beginning. Elements
 	     * are taken until `predicate` returns falsey. The predicate is invoked with
@@ -29035,7 +29035,7 @@
 	        ? baseWhile(array, getIteratee(predicate, 3))
 	        : [];
 	    }
-
+	
 	    /**
 	     * Creates an array of unique values, in order, from all given arrays using
 	     * [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
@@ -29055,7 +29055,7 @@
 	    var union = rest(function(arrays) {
 	      return baseUniq(baseFlatten(arrays, 1, isArrayLikeObject, true));
 	    });
-
+	
 	    /**
 	     * This method is like `_.union` except that it accepts `iteratee` which is
 	     * invoked for each element of each `arrays` to generate the criterion by
@@ -29086,7 +29086,7 @@
 	      }
 	      return baseUniq(baseFlatten(arrays, 1, isArrayLikeObject, true), getIteratee(iteratee));
 	    });
-
+	
 	    /**
 	     * This method is like `_.union` except that it accepts `comparator` which
 	     * is invoked to compare elements of `arrays`. The comparator is invoked
@@ -29114,7 +29114,7 @@
 	      }
 	      return baseUniq(baseFlatten(arrays, 1, isArrayLikeObject, true), undefined, comparator);
 	    });
-
+	
 	    /**
 	     * Creates a duplicate-free version of an array, using
 	     * [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
@@ -29137,7 +29137,7 @@
 	        ? baseUniq(array)
 	        : [];
 	    }
-
+	
 	    /**
 	     * This method is like `_.uniq` except that it accepts `iteratee` which is
 	     * invoked for each element in `array` to generate the criterion by which
@@ -29165,7 +29165,7 @@
 	        ? baseUniq(array, getIteratee(iteratee))
 	        : [];
 	    }
-
+	
 	    /**
 	     * This method is like `_.uniq` except that it accepts `comparator` which
 	     * is invoked to compare elements of `array`. The comparator is invoked with
@@ -29190,7 +29190,7 @@
 	        ? baseUniq(array, undefined, comparator)
 	        : [];
 	    }
-
+	
 	    /**
 	     * This method is like `_.zip` except that it accepts an array of grouped
 	     * elements and creates an array regrouping the elements to their pre-zip
@@ -29225,7 +29225,7 @@
 	        return arrayMap(array, baseProperty(index));
 	      });
 	    }
-
+	
 	    /**
 	     * This method is like `_.unzip` except that it accepts `iteratee` to specify
 	     * how regrouped values should be combined. The iteratee is invoked with the
@@ -29259,7 +29259,7 @@
 	        return apply(iteratee, undefined, group);
 	      });
 	    }
-
+	
 	    /**
 	     * Creates an array excluding all given values using
 	     * [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
@@ -29282,7 +29282,7 @@
 	        ? baseDifference(array, values)
 	        : [];
 	    });
-
+	
 	    /**
 	     * Creates an array of unique values that is the
 	     * [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference)
@@ -29303,7 +29303,7 @@
 	    var xor = rest(function(arrays) {
 	      return baseXor(arrayFilter(arrays, isArrayLikeObject));
 	    });
-
+	
 	    /**
 	     * This method is like `_.xor` except that it accepts `iteratee` which is
 	     * invoked for each element of each `arrays` to generate the criterion by
@@ -29334,7 +29334,7 @@
 	      }
 	      return baseXor(arrayFilter(arrays, isArrayLikeObject), getIteratee(iteratee));
 	    });
-
+	
 	    /**
 	     * This method is like `_.xor` except that it accepts `comparator` which is
 	     * invoked to compare elements of `arrays`. The comparator is invoked with
@@ -29362,7 +29362,7 @@
 	      }
 	      return baseXor(arrayFilter(arrays, isArrayLikeObject), undefined, comparator);
 	    });
-
+	
 	    /**
 	     * Creates an array of grouped elements, the first of which contains the
 	     * first elements of the given arrays, the second of which contains the
@@ -29380,7 +29380,7 @@
 	     * // => [['fred', 30, true], ['barney', 40, false]]
 	     */
 	    var zip = rest(unzip);
-
+	
 	    /**
 	     * This method is like `_.fromPairs` except that it accepts two arrays,
 	     * one of property identifiers and one of corresponding values.
@@ -29400,7 +29400,7 @@
 	    function zipObject(props, values) {
 	      return baseZipObject(props || [], values || [], assignValue);
 	    }
-
+	
 	    /**
 	     * This method is like `_.zipObject` except that it supports property paths.
 	     *
@@ -29419,7 +29419,7 @@
 	    function zipObjectDeep(props, values) {
 	      return baseZipObject(props || [], values || [], baseSet);
 	    }
-
+	
 	    /**
 	     * This method is like `_.zip` except that it accepts `iteratee` to specify
 	     * how grouped values should be combined. The iteratee is invoked with the
@@ -29442,13 +29442,13 @@
 	    var zipWith = rest(function(arrays) {
 	      var length = arrays.length,
 	          iteratee = length > 1 ? arrays[length - 1] : undefined;
-
+	
 	      iteratee = typeof iteratee == 'function' ? (arrays.pop(), iteratee) : undefined;
 	      return unzipWith(arrays, iteratee);
 	    });
-
+	
 	    /*------------------------------------------------------------------------*/
-
+	
 	    /**
 	     * Creates a `lodash` wrapper instance that wraps `value` with explicit method
 	     * chain sequences enabled. The result of such sequences must be unwrapped
@@ -29483,7 +29483,7 @@
 	      result.__chain__ = true;
 	      return result;
 	    }
-
+	
 	    /**
 	     * This method invokes `interceptor` and returns `value`. The interceptor
 	     * is invoked with one argument; (value). The purpose of this method is to
@@ -29511,7 +29511,7 @@
 	      interceptor(value);
 	      return value;
 	    }
-
+	
 	    /**
 	     * This method is like `_.tap` except that it returns the result of `interceptor`.
 	     * The purpose of this method is to "pass thru" values replacing intermediate
@@ -29538,7 +29538,7 @@
 	    function thru(value, interceptor) {
 	      return interceptor(value);
 	    }
-
+	
 	    /**
 	     * This method is the wrapper version of `_.at`.
 	     *
@@ -29564,7 +29564,7 @@
 	          start = length ? paths[0] : 0,
 	          value = this.__wrapped__,
 	          interceptor = function(object) { return baseAt(object, paths); };
-
+	
 	      if (length > 1 || this.__actions__.length ||
 	          !(value instanceof LazyWrapper) || !isIndex(start)) {
 	        return this.thru(interceptor);
@@ -29582,7 +29582,7 @@
 	        return array;
 	      });
 	    });
-
+	
 	    /**
 	     * Creates a `lodash` wrapper instance with explicit method chain sequences enabled.
 	     *
@@ -29613,7 +29613,7 @@
 	    function wrapperChain() {
 	      return chain(this);
 	    }
-
+	
 	    /**
 	     * Executes the chain sequence and returns the wrapped result.
 	     *
@@ -29643,7 +29643,7 @@
 	    function wrapperCommit() {
 	      return new LodashWrapper(this.value(), this.__chain__);
 	    }
-
+	
 	    /**
 	     * Gets the next value on a wrapped object following the
 	     * [iterator protocol](https://mdn.io/iteration_protocols#iterator).
@@ -29672,10 +29672,10 @@
 	      }
 	      var done = this.__index__ >= this.__values__.length,
 	          value = done ? undefined : this.__values__[this.__index__++];
-
+	
 	      return { 'done': done, 'value': value };
 	    }
-
+	
 	    /**
 	     * Enables the wrapper to be iterable.
 	     *
@@ -29697,7 +29697,7 @@
 	    function wrapperToIterator() {
 	      return this;
 	    }
-
+	
 	    /**
 	     * Creates a clone of the chain sequence planting `value` as the wrapped value.
 	     *
@@ -29725,7 +29725,7 @@
 	    function wrapperPlant(value) {
 	      var result,
 	          parent = this;
-
+	
 	      while (parent instanceof baseLodash) {
 	        var clone = wrapperClone(parent);
 	        clone.__index__ = 0;
@@ -29741,7 +29741,7 @@
 	      previous.__wrapped__ = value;
 	      return result;
 	    }
-
+	
 	    /**
 	     * This method is the wrapper version of `_.reverse`.
 	     *
@@ -29779,7 +29779,7 @@
 	      }
 	      return this.thru(reverse);
 	    }
-
+	
 	    /**
 	     * Executes the chain sequence to resolve the unwrapped value.
 	     *
@@ -29797,9 +29797,9 @@
 	    function wrapperValue() {
 	      return baseWrapperValue(this.__wrapped__, this.__actions__);
 	    }
-
+	
 	    /*------------------------------------------------------------------------*/
-
+	
 	    /**
 	     * Creates an object composed of keys generated from the results of running
 	     * each element of `collection` thru `iteratee`. The corresponding value of
@@ -29825,7 +29825,7 @@
 	    var countBy = createAggregator(function(result, value, key) {
 	      hasOwnProperty.call(result, key) ? ++result[key] : (result[key] = 1);
 	    });
-
+	
 	    /**
 	     * Checks if `predicate` returns truthy for **all** elements of `collection`.
 	     * Iteration is stopped once `predicate` returns falsey. The predicate is
@@ -29870,7 +29870,7 @@
 	      }
 	      return func(collection, getIteratee(predicate, 3));
 	    }
-
+	
 	    /**
 	     * Iterates over elements of `collection`, returning an array of all elements
 	     * `predicate` returns truthy for. The predicate is invoked with three
@@ -29910,7 +29910,7 @@
 	      var func = isArray(collection) ? arrayFilter : baseFilter;
 	      return func(collection, getIteratee(predicate, 3));
 	    }
-
+	
 	    /**
 	     * Iterates over elements of `collection`, returning the first element
 	     * `predicate` returns truthy for. The predicate is invoked with three
@@ -29955,7 +29955,7 @@
 	      }
 	      return baseFind(collection, predicate, baseEach);
 	    }
-
+	
 	    /**
 	     * This method is like `_.find` except that it iterates over elements of
 	     * `collection` from right to left.
@@ -29983,7 +29983,7 @@
 	      }
 	      return baseFind(collection, predicate, baseEachRight);
 	    }
-
+	
 	    /**
 	     * Creates a flattened array of values by running each element in `collection`
 	     * thru `iteratee` and flattening the mapped results. The iteratee is invoked
@@ -30009,7 +30009,7 @@
 	    function flatMap(collection, iteratee) {
 	      return baseFlatten(map(collection, iteratee), 1);
 	    }
-
+	
 	    /**
 	     * This method is like `_.flatMap` except that it recursively flattens the
 	     * mapped results.
@@ -30034,7 +30034,7 @@
 	    function flatMapDeep(collection, iteratee) {
 	      return baseFlatten(map(collection, iteratee), INFINITY);
 	    }
-
+	
 	    /**
 	     * This method is like `_.flatMap` except that it recursively flattens the
 	     * mapped results up to `depth` times.
@@ -30061,7 +30061,7 @@
 	      depth = depth === undefined ? 1 : toInteger(depth);
 	      return baseFlatten(map(collection, iteratee), depth);
 	    }
-
+	
 	    /**
 	     * Iterates over elements of `collection` and invokes `iteratee` for each element.
 	     * The iteratee is invoked with three arguments: (value, index|key, collection).
@@ -30096,7 +30096,7 @@
 	        ? arrayEach(collection, iteratee)
 	        : baseEach(collection, getIteratee(iteratee));
 	    }
-
+	
 	    /**
 	     * This method is like `_.forEach` except that it iterates over elements of
 	     * `collection` from right to left.
@@ -30121,7 +30121,7 @@
 	        ? arrayEachRight(collection, iteratee)
 	        : baseEachRight(collection, getIteratee(iteratee));
 	    }
-
+	
 	    /**
 	     * Creates an object composed of keys generated from the results of running
 	     * each element of `collection` thru `iteratee`. The order of grouped values
@@ -30153,7 +30153,7 @@
 	        result[key] = [value];
 	      }
 	    });
-
+	
 	    /**
 	     * Checks if `value` is in `collection`. If `collection` is a string, it's
 	     * checked for a substring of `value`, otherwise
@@ -30187,7 +30187,7 @@
 	    function includes(collection, value, fromIndex, guard) {
 	      collection = isArrayLike(collection) ? collection : values(collection);
 	      fromIndex = (fromIndex && !guard) ? toInteger(fromIndex) : 0;
-
+	
 	      var length = collection.length;
 	      if (fromIndex < 0) {
 	        fromIndex = nativeMax(length + fromIndex, 0);
@@ -30196,7 +30196,7 @@
 	        ? (fromIndex <= length && collection.indexOf(value, fromIndex) > -1)
 	        : (!!length && baseIndexOf(collection, value, fromIndex) > -1);
 	    }
-
+	
 	    /**
 	     * Invokes the method at `path` of each element in `collection`, returning
 	     * an array of the results of each invoked method. Any additional arguments
@@ -30225,14 +30225,14 @@
 	          isFunc = typeof path == 'function',
 	          isProp = isKey(path),
 	          result = isArrayLike(collection) ? Array(collection.length) : [];
-
+	
 	      baseEach(collection, function(value) {
 	        var func = isFunc ? path : ((isProp && value != null) ? value[path] : undefined);
 	        result[++index] = func ? apply(func, value, args) : baseInvoke(value, path, args);
 	      });
 	      return result;
 	    });
-
+	
 	    /**
 	     * Creates an object composed of keys generated from the results of running
 	     * each element of `collection` thru `iteratee`. The corresponding value of
@@ -30265,7 +30265,7 @@
 	    var keyBy = createAggregator(function(result, value, key) {
 	      result[key] = value;
 	    });
-
+	
 	    /**
 	     * Creates an array of values by running each element in `collection` thru
 	     * `iteratee`. The iteratee is invoked with three arguments:
@@ -30313,7 +30313,7 @@
 	      var func = isArray(collection) ? arrayMap : baseMap;
 	      return func(collection, getIteratee(iteratee, 3));
 	    }
-
+	
 	    /**
 	     * This method is like `_.sortBy` except that it allows specifying the sort
 	     * orders of the iteratees to sort by. If `orders` is unspecified, all values
@@ -30356,7 +30356,7 @@
 	      }
 	      return baseOrderBy(collection, iteratees, orders);
 	    }
-
+	
 	    /**
 	     * Creates an array of elements split into two groups, the first of which
 	     * contains elements `predicate` returns truthy for, the second of which
@@ -30397,7 +30397,7 @@
 	    var partition = createAggregator(function(result, value, key) {
 	      result[key ? 0 : 1].push(value);
 	    }, function() { return [[], []]; });
-
+	
 	    /**
 	     * Reduces `collection` to a value which is the accumulated result of running
 	     * each element in `collection` thru `iteratee`, where each successive
@@ -30437,10 +30437,10 @@
 	    function reduce(collection, iteratee, accumulator) {
 	      var func = isArray(collection) ? arrayReduce : baseReduce,
 	          initAccum = arguments.length < 3;
-
+	
 	      return func(collection, getIteratee(iteratee, 4), accumulator, initAccum, baseEach);
 	    }
-
+	
 	    /**
 	     * This method is like `_.reduce` except that it iterates over elements of
 	     * `collection` from right to left.
@@ -30465,10 +30465,10 @@
 	    function reduceRight(collection, iteratee, accumulator) {
 	      var func = isArray(collection) ? arrayReduceRight : baseReduce,
 	          initAccum = arguments.length < 3;
-
+	
 	      return func(collection, getIteratee(iteratee, 4), accumulator, initAccum, baseEachRight);
 	    }
-
+	
 	    /**
 	     * The opposite of `_.filter`; this method returns the elements of `collection`
 	     * that `predicate` does **not** return truthy for.
@@ -30510,7 +30510,7 @@
 	        return !predicate(value, index, collection);
 	      });
 	    }
-
+	
 	    /**
 	     * Gets a random element from `collection`.
 	     *
@@ -30528,10 +30528,10 @@
 	    function sample(collection) {
 	      var array = isArrayLike(collection) ? collection : values(collection),
 	          length = array.length;
-
+	
 	      return length > 0 ? array[baseRandom(0, length - 1)] : undefined;
 	    }
-
+	
 	    /**
 	     * Gets `n` random elements at unique keys from `collection` up to the
 	     * size of `collection`.
@@ -30557,7 +30557,7 @@
 	          result = toArray(collection),
 	          length = result.length,
 	          lastIndex = length - 1;
-
+	
 	      if ((guard ? isIterateeCall(collection, n, guard) : n === undefined)) {
 	        n = 1;
 	      } else {
@@ -30566,14 +30566,14 @@
 	      while (++index < n) {
 	        var rand = baseRandom(index, lastIndex),
 	            value = result[rand];
-
+	
 	        result[rand] = result[index];
 	        result[index] = value;
 	      }
 	      result.length = n;
 	      return result;
 	    }
-
+	
 	    /**
 	     * Creates an array of shuffled values, using a version of the
 	     * [Fisher-Yates shuffle](https://en.wikipedia.org/wiki/Fisher-Yates_shuffle).
@@ -30592,7 +30592,7 @@
 	    function shuffle(collection) {
 	      return sampleSize(collection, MAX_ARRAY_LENGTH);
 	    }
-
+	
 	    /**
 	     * Gets the size of `collection` by returning its length for array-like
 	     * values or the number of own enumerable string keyed properties for objects.
@@ -30630,7 +30630,7 @@
 	      }
 	      return keys(collection).length;
 	    }
-
+	
 	    /**
 	     * Checks if `predicate` returns truthy for **any** element of `collection`.
 	     * Iteration is stopped once `predicate` returns truthy. The predicate is
@@ -30675,7 +30675,7 @@
 	      }
 	      return func(collection, getIteratee(predicate, 3));
 	    }
-
+	
 	    /**
 	     * Creates an array of elements, sorted in ascending order by the results of
 	     * running each element in a collection thru each iteratee. This method
@@ -30723,12 +30723,12 @@
 	      iteratees = (iteratees.length == 1 && isArray(iteratees[0]))
 	        ? iteratees[0]
 	        : baseFlatten(iteratees, 1, isFlattenableIteratee);
-
+	
 	      return baseOrderBy(collection, iteratees, []);
 	    });
-
+	
 	    /*------------------------------------------------------------------------*/
-
+	
 	    /**
 	     * Gets the timestamp of the number of milliseconds that have elapsed since
 	     * the Unix epoch (1 January 1970 00:00:00 UTC).
@@ -30747,9 +30747,9 @@
 	     * // => Logs the number of milliseconds it took for the deferred function to be invoked.
 	     */
 	    var now = Date.now;
-
+	
 	    /*------------------------------------------------------------------------*/
-
+	
 	    /**
 	     * The opposite of `_.before`; this method creates a function that invokes
 	     * `func` once it's called `n` or more times.
@@ -30785,7 +30785,7 @@
 	        }
 	      };
 	    }
-
+	
 	    /**
 	     * Creates a function that invokes `func`, with up to `n` arguments,
 	     * ignoring any additional arguments.
@@ -30808,7 +30808,7 @@
 	      n = (func && n == null) ? func.length : n;
 	      return createWrapper(func, ARY_FLAG, undefined, undefined, undefined, undefined, n);
 	    }
-
+	
 	    /**
 	     * Creates a function that invokes `func`, with the `this` binding and arguments
 	     * of the created function, while it's called less than `n` times. Subsequent
@@ -30842,7 +30842,7 @@
 	        return result;
 	      };
 	    }
-
+	
 	    /**
 	     * Creates a function that invokes `func` with the `this` binding of `thisArg`
 	     * and `partials` prepended to the arguments it receives.
@@ -30886,7 +30886,7 @@
 	      }
 	      return createWrapper(func, bitmask, thisArg, partials, holders);
 	    });
-
+	
 	    /**
 	     * Creates a function that invokes the method at `object[key]` with `partials`
 	     * prepended to the arguments it receives.
@@ -30940,7 +30940,7 @@
 	      }
 	      return createWrapper(key, bitmask, object, partials, holders);
 	    });
-
+	
 	    /**
 	     * Creates a function that accepts arguments of `func` and either invokes
 	     * `func` returning its result, if at least `arity` number of arguments have
@@ -30988,7 +30988,7 @@
 	      result.placeholder = curry.placeholder;
 	      return result;
 	    }
-
+	
 	    /**
 	     * This method is like `_.curry` except that arguments are applied to `func`
 	     * in the manner of `_.partialRight` instead of `_.partial`.
@@ -31033,7 +31033,7 @@
 	      result.placeholder = curryRight.placeholder;
 	      return result;
 	    }
-
+	
 	    /**
 	     * Creates a debounced function that delays invoking `func` until after `wait`
 	     * milliseconds have elapsed since the last time the debounced function was
@@ -31095,7 +31095,7 @@
 	          leading = false,
 	          maxing = false,
 	          trailing = true;
-
+	
 	      if (typeof func != 'function') {
 	        throw new TypeError(FUNC_ERROR_TEXT);
 	      }
@@ -31106,17 +31106,17 @@
 	        maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
 	        trailing = 'trailing' in options ? !!options.trailing : trailing;
 	      }
-
+	
 	      function invokeFunc(time) {
 	        var args = lastArgs,
 	            thisArg = lastThis;
-
+	
 	        lastArgs = lastThis = undefined;
 	        lastInvokeTime = time;
 	        result = func.apply(thisArg, args);
 	        return result;
 	      }
-
+	
 	      function leadingEdge(time) {
 	        // Reset any `maxWait` timer.
 	        lastInvokeTime = time;
@@ -31125,26 +31125,26 @@
 	        // Invoke the leading edge.
 	        return leading ? invokeFunc(time) : result;
 	      }
-
+	
 	      function remainingWait(time) {
 	        var timeSinceLastCall = time - lastCallTime,
 	            timeSinceLastInvoke = time - lastInvokeTime,
 	            result = wait - timeSinceLastCall;
-
+	
 	        return maxing ? nativeMin(result, maxWait - timeSinceLastInvoke) : result;
 	      }
-
+	
 	      function shouldInvoke(time) {
 	        var timeSinceLastCall = time - lastCallTime,
 	            timeSinceLastInvoke = time - lastInvokeTime;
-
+	
 	        // Either this is the first call, activity has stopped and we're at the
 	        // trailing edge, the system time has gone backwards and we're treating
 	        // it as the trailing edge, or we've hit the `maxWait` limit.
 	        return (!lastCallTime || (timeSinceLastCall >= wait) ||
 	          (timeSinceLastCall < 0) || (maxing && timeSinceLastInvoke >= maxWait));
 	      }
-
+	
 	      function timerExpired() {
 	        var time = now();
 	        if (shouldInvoke(time)) {
@@ -31153,11 +31153,11 @@
 	        // Restart the timer.
 	        timerId = setTimeout(timerExpired, remainingWait(time));
 	      }
-
+	
 	      function trailingEdge(time) {
 	        clearTimeout(timerId);
 	        timerId = undefined;
-
+	
 	        // Only invoke if we have `lastArgs` which means `func` has been
 	        // debounced at least once.
 	        if (trailing && lastArgs) {
@@ -31166,7 +31166,7 @@
 	        lastArgs = lastThis = undefined;
 	        return result;
 	      }
-
+	
 	      function cancel() {
 	        if (timerId !== undefined) {
 	          clearTimeout(timerId);
@@ -31174,19 +31174,19 @@
 	        lastCallTime = lastInvokeTime = 0;
 	        lastArgs = lastThis = timerId = undefined;
 	      }
-
+	
 	      function flush() {
 	        return timerId === undefined ? result : trailingEdge(now());
 	      }
-
+	
 	      function debounced() {
 	        var time = now(),
 	            isInvoking = shouldInvoke(time);
-
+	
 	        lastArgs = arguments;
 	        lastThis = this;
 	        lastCallTime = time;
-
+	
 	        if (isInvoking) {
 	          if (timerId === undefined) {
 	            return leadingEdge(lastCallTime);
@@ -31207,7 +31207,7 @@
 	      debounced.flush = flush;
 	      return debounced;
 	    }
-
+	
 	    /**
 	     * Defers invoking the `func` until the current call stack has cleared. Any
 	     * additional arguments are provided to `func` when it's invoked.
@@ -31229,7 +31229,7 @@
 	    var defer = rest(function(func, args) {
 	      return baseDelay(func, 1, args);
 	    });
-
+	
 	    /**
 	     * Invokes `func` after `wait` milliseconds. Any additional arguments are
 	     * provided to `func` when it's invoked.
@@ -31252,7 +31252,7 @@
 	    var delay = rest(function(func, wait, args) {
 	      return baseDelay(func, toNumber(wait) || 0, args);
 	    });
-
+	
 	    /**
 	     * Creates a function that invokes `func` with arguments reversed.
 	     *
@@ -31274,7 +31274,7 @@
 	    function flip(func) {
 	      return createWrapper(func, FLIP_FLAG);
 	    }
-
+	
 	    /**
 	     * Creates a function that memoizes the result of `func`. If `resolver` is
 	     * provided, it determines the cache key for storing the result based on the
@@ -31327,7 +31327,7 @@
 	        var args = arguments,
 	            key = resolver ? resolver.apply(this, args) : args[0],
 	            cache = memoized.cache;
-
+	
 	        if (cache.has(key)) {
 	          return cache.get(key);
 	        }
@@ -31338,10 +31338,10 @@
 	      memoized.cache = new (memoize.Cache || MapCache);
 	      return memoized;
 	    }
-
+	
 	    // Assign cache to `_.memoize`.
 	    memoize.Cache = MapCache;
-
+	
 	    /**
 	     * Creates a function that negates the result of the predicate `func`. The
 	     * `func` predicate is invoked with the `this` binding and arguments of the
@@ -31370,7 +31370,7 @@
 	        return !predicate.apply(this, arguments);
 	      };
 	    }
-
+	
 	    /**
 	     * Creates a function that is restricted to invoking `func` once. Repeat calls
 	     * to the function return the value of the first invocation. The `func` is
@@ -31392,7 +31392,7 @@
 	    function once(func) {
 	      return before(2, func);
 	    }
-
+	
 	    /**
 	     * Creates a function that invokes `func` with arguments transformed by
 	     * corresponding `transforms`.
@@ -31429,19 +31429,19 @@
 	      transforms = (transforms.length == 1 && isArray(transforms[0]))
 	        ? arrayMap(transforms[0], baseUnary(getIteratee()))
 	        : arrayMap(baseFlatten(transforms, 1, isFlattenableIteratee), baseUnary(getIteratee()));
-
+	
 	      var funcsLength = transforms.length;
 	      return rest(function(args) {
 	        var index = -1,
 	            length = nativeMin(args.length, funcsLength);
-
+	
 	        while (++index < length) {
 	          args[index] = transforms[index].call(this, args[index]);
 	        }
 	        return apply(func, this, args);
 	      });
 	    });
-
+	
 	    /**
 	     * Creates a function that invokes `func` with `partials` prepended to the
 	     * arguments it receives. This method is like `_.bind` except it does **not**
@@ -31479,7 +31479,7 @@
 	      var holders = replaceHolders(partials, getPlaceholder(partial));
 	      return createWrapper(func, PARTIAL_FLAG, undefined, partials, holders);
 	    });
-
+	
 	    /**
 	     * This method is like `_.partial` except that partially applied arguments
 	     * are appended to the arguments it receives.
@@ -31516,7 +31516,7 @@
 	      var holders = replaceHolders(partials, getPlaceholder(partialRight));
 	      return createWrapper(func, PARTIAL_RIGHT_FLAG, undefined, partials, holders);
 	    });
-
+	
 	    /**
 	     * Creates a function that invokes `func` with arguments arranged according
 	     * to the specified `indexes` where the argument value at the first index is
@@ -31542,7 +31542,7 @@
 	    var rearg = rest(function(func, indexes) {
 	      return createWrapper(func, REARG_FLAG, undefined, undefined, undefined, baseFlatten(indexes, 1));
 	    });
-
+	
 	    /**
 	     * Creates a function that invokes `func` with the `this` binding of the
 	     * created function and arguments from `start` and beyond provided as
@@ -31578,7 +31578,7 @@
 	            index = -1,
 	            length = nativeMax(args.length - start, 0),
 	            array = Array(length);
-
+	
 	        while (++index < length) {
 	          array[index] = args[start + index];
 	        }
@@ -31596,7 +31596,7 @@
 	        return apply(func, this, otherArgs);
 	      };
 	    }
-
+	
 	    /**
 	     * Creates a function that invokes `func` with the `this` binding of the
 	     * create function and an array of arguments much like
@@ -31639,14 +31639,14 @@
 	      return rest(function(args) {
 	        var array = args[start],
 	            otherArgs = castSlice(args, 0, start);
-
+	
 	        if (array) {
 	          arrayPush(otherArgs, array);
 	        }
 	        return apply(func, this, otherArgs);
 	      });
 	    }
-
+	
 	    /**
 	     * Creates a throttled function that only invokes `func` at most once per
 	     * every `wait` milliseconds. The throttled function comes with a `cancel`
@@ -31691,7 +31691,7 @@
 	    function throttle(func, wait, options) {
 	      var leading = true,
 	          trailing = true;
-
+	
 	      if (typeof func != 'function') {
 	        throw new TypeError(FUNC_ERROR_TEXT);
 	      }
@@ -31705,7 +31705,7 @@
 	        'trailing': trailing
 	      });
 	    }
-
+	
 	    /**
 	     * Creates a function that accepts up to one argument, ignoring any
 	     * additional arguments.
@@ -31724,7 +31724,7 @@
 	    function unary(func) {
 	      return ary(func, 1);
 	    }
-
+	
 	    /**
 	     * Creates a function that provides `value` to the wrapper function as its
 	     * first argument. Any additional arguments provided to the function are
@@ -31751,9 +31751,9 @@
 	      wrapper = wrapper == null ? identity : wrapper;
 	      return partial(wrapper, value);
 	    }
-
+	
 	    /*------------------------------------------------------------------------*/
-
+	
 	    /**
 	     * Casts `value` as an array if it's not one.
 	     *
@@ -31794,7 +31794,7 @@
 	      var value = arguments[0];
 	      return isArray(value) ? value : [value];
 	    }
-
+	
 	    /**
 	     * Creates a shallow clone of `value`.
 	     *
@@ -31823,7 +31823,7 @@
 	    function clone(value) {
 	      return baseClone(value, false, true);
 	    }
-
+	
 	    /**
 	     * This method is like `_.clone` except that it accepts `customizer` which
 	     * is invoked to produce the cloned value. If `customizer` returns `undefined`,
@@ -31857,7 +31857,7 @@
 	    function cloneWith(value, customizer) {
 	      return baseClone(value, false, true, customizer);
 	    }
-
+	
 	    /**
 	     * This method is like `_.clone` except that it recursively clones `value`.
 	     *
@@ -31878,7 +31878,7 @@
 	    function cloneDeep(value) {
 	      return baseClone(value, true, true);
 	    }
-
+	
 	    /**
 	     * This method is like `_.cloneWith` except that it recursively clones `value`.
 	     *
@@ -31909,7 +31909,7 @@
 	    function cloneDeepWith(value, customizer) {
 	      return baseClone(value, true, true, customizer);
 	    }
-
+	
 	    /**
 	     * Performs a
 	     * [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
@@ -31945,7 +31945,7 @@
 	    function eq(value, other) {
 	      return value === other || (value !== value && other !== other);
 	    }
-
+	
 	    /**
 	     * Checks if `value` is greater than `other`.
 	     *
@@ -31971,7 +31971,7 @@
 	    function gt(value, other) {
 	      return value > other;
 	    }
-
+	
 	    /**
 	     * Checks if `value` is greater than or equal to `other`.
 	     *
@@ -31997,7 +31997,7 @@
 	    function gte(value, other) {
 	      return value >= other;
 	    }
-
+	
 	    /**
 	     * Checks if `value` is likely an `arguments` object.
 	     *
@@ -32021,7 +32021,7 @@
 	      return isArrayLikeObject(value) && hasOwnProperty.call(value, 'callee') &&
 	        (!propertyIsEnumerable.call(value, 'callee') || objectToString.call(value) == argsTag);
 	    }
-
+	
 	    /**
 	     * Checks if `value` is classified as an `Array` object.
 	     *
@@ -32048,7 +32048,7 @@
 	     * // => false
 	     */
 	    var isArray = Array.isArray;
-
+	
 	    /**
 	     * Checks if `value` is classified as an `ArrayBuffer` object.
 	     *
@@ -32070,7 +32070,7 @@
 	    function isArrayBuffer(value) {
 	      return isObjectLike(value) && objectToString.call(value) == arrayBufferTag;
 	    }
-
+	
 	    /**
 	     * Checks if `value` is array-like. A value is considered array-like if it's
 	     * not a function and has a `value.length` that's an integer greater than or
@@ -32099,7 +32099,7 @@
 	    function isArrayLike(value) {
 	      return value != null && isLength(getLength(value)) && !isFunction(value);
 	    }
-
+	
 	    /**
 	     * This method is like `_.isArrayLike` except that it also checks if `value`
 	     * is an object.
@@ -32128,7 +32128,7 @@
 	    function isArrayLikeObject(value) {
 	      return isObjectLike(value) && isArrayLike(value);
 	    }
-
+	
 	    /**
 	     * Checks if `value` is classified as a boolean primitive or object.
 	     *
@@ -32151,7 +32151,7 @@
 	      return value === true || value === false ||
 	        (isObjectLike(value) && objectToString.call(value) == boolTag);
 	    }
-
+	
 	    /**
 	     * Checks if `value` is a buffer.
 	     *
@@ -32172,7 +32172,7 @@
 	    var isBuffer = !Buffer ? constant(false) : function(value) {
 	      return value instanceof Buffer;
 	    };
-
+	
 	    /**
 	     * Checks if `value` is classified as a `Date` object.
 	     *
@@ -32194,7 +32194,7 @@
 	    function isDate(value) {
 	      return isObjectLike(value) && objectToString.call(value) == dateTag;
 	    }
-
+	
 	    /**
 	     * Checks if `value` is likely a DOM element.
 	     *
@@ -32216,7 +32216,7 @@
 	    function isElement(value) {
 	      return !!value && value.nodeType === 1 && isObjectLike(value) && !isPlainObject(value);
 	    }
-
+	
 	    /**
 	     * Checks if `value` is an empty object, collection, map, or set.
 	     *
@@ -32269,7 +32269,7 @@
 	      }
 	      return !(nonEnumShadows && keys(value).length);
 	    }
-
+	
 	    /**
 	     * Performs a deep comparison between two values to determine if they are
 	     * equivalent.
@@ -32302,7 +32302,7 @@
 	    function isEqual(value, other) {
 	      return baseIsEqual(value, other);
 	    }
-
+	
 	    /**
 	     * This method is like `_.isEqual` except that it accepts `customizer` which
 	     * is invoked to compare values. If `customizer` returns `undefined`, comparisons
@@ -32341,7 +32341,7 @@
 	      var result = customizer ? customizer(value, other) : undefined;
 	      return result === undefined ? baseIsEqual(value, other, customizer) : !!result;
 	    }
-
+	
 	    /**
 	     * Checks if `value` is an `Error`, `EvalError`, `RangeError`, `ReferenceError`,
 	     * `SyntaxError`, `TypeError`, or `URIError` object.
@@ -32368,7 +32368,7 @@
 	      return (objectToString.call(value) == errorTag) ||
 	        (typeof value.message == 'string' && typeof value.name == 'string');
 	    }
-
+	
 	    /**
 	     * Checks if `value` is a finite primitive number.
 	     *
@@ -32399,7 +32399,7 @@
 	    function isFinite(value) {
 	      return typeof value == 'number' && nativeIsFinite(value);
 	    }
-
+	
 	    /**
 	     * Checks if `value` is classified as a `Function` object.
 	     *
@@ -32425,7 +32425,7 @@
 	      var tag = isObject(value) ? objectToString.call(value) : '';
 	      return tag == funcTag || tag == genTag;
 	    }
-
+	
 	    /**
 	     * Checks if `value` is an integer.
 	     *
@@ -32455,7 +32455,7 @@
 	    function isInteger(value) {
 	      return typeof value == 'number' && value == toInteger(value);
 	    }
-
+	
 	    /**
 	     * Checks if `value` is a valid array-like length.
 	     *
@@ -32487,7 +32487,7 @@
 	      return typeof value == 'number' &&
 	        value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
 	    }
-
+	
 	    /**
 	     * Checks if `value` is the
 	     * [language type](http://www.ecma-international.org/ecma-262/6.0/#sec-ecmascript-language-types)
@@ -32517,7 +32517,7 @@
 	      var type = typeof value;
 	      return !!value && (type == 'object' || type == 'function');
 	    }
-
+	
 	    /**
 	     * Checks if `value` is object-like. A value is object-like if it's not `null`
 	     * and has a `typeof` result of "object".
@@ -32545,7 +32545,7 @@
 	    function isObjectLike(value) {
 	      return !!value && typeof value == 'object';
 	    }
-
+	
 	    /**
 	     * Checks if `value` is classified as a `Map` object.
 	     *
@@ -32567,7 +32567,7 @@
 	    function isMap(value) {
 	      return isObjectLike(value) && getTag(value) == mapTag;
 	    }
-
+	
 	    /**
 	     * Performs a partial deep comparison between `object` and `source` to
 	     * determine if `object` contains equivalent property values. This method is
@@ -32595,7 +32595,7 @@
 	    function isMatch(object, source) {
 	      return object === source || baseIsMatch(object, source, getMatchData(source));
 	    }
-
+	
 	    /**
 	     * This method is like `_.isMatch` except that it accepts `customizer` which
 	     * is invoked to compare values. If `customizer` returns `undefined`, comparisons
@@ -32632,7 +32632,7 @@
 	      customizer = typeof customizer == 'function' ? customizer : undefined;
 	      return baseIsMatch(object, source, getMatchData(source), customizer);
 	    }
-
+	
 	    /**
 	     * Checks if `value` is `NaN`.
 	     *
@@ -32667,7 +32667,7 @@
 	      // ActiveX objects in IE.
 	      return isNumber(value) && value != +value;
 	    }
-
+	
 	    /**
 	     * Checks if `value` is a native function.
 	     *
@@ -32693,7 +32693,7 @@
 	      var pattern = (isFunction(value) || isHostObject(value)) ? reIsNative : reIsHostCtor;
 	      return pattern.test(toSource(value));
 	    }
-
+	
 	    /**
 	     * Checks if `value` is `null`.
 	     *
@@ -32714,7 +32714,7 @@
 	    function isNull(value) {
 	      return value === null;
 	    }
-
+	
 	    /**
 	     * Checks if `value` is `null` or `undefined`.
 	     *
@@ -32738,7 +32738,7 @@
 	    function isNil(value) {
 	      return value == null;
 	    }
-
+	
 	    /**
 	     * Checks if `value` is classified as a `Number` primitive or object.
 	     *
@@ -32770,7 +32770,7 @@
 	      return typeof value == 'number' ||
 	        (isObjectLike(value) && objectToString.call(value) == numberTag);
 	    }
-
+	
 	    /**
 	     * Checks if `value` is a plain object, that is, an object created by the
 	     * `Object` constructor or one with a `[[Prototype]]` of `null`.
@@ -32813,7 +32813,7 @@
 	      return (typeof Ctor == 'function' &&
 	        Ctor instanceof Ctor && funcToString.call(Ctor) == objectCtorString);
 	    }
-
+	
 	    /**
 	     * Checks if `value` is classified as a `RegExp` object.
 	     *
@@ -32835,7 +32835,7 @@
 	    function isRegExp(value) {
 	      return isObject(value) && objectToString.call(value) == regexpTag;
 	    }
-
+	
 	    /**
 	     * Checks if `value` is a safe integer. An integer is safe if it's an IEEE-754
 	     * double precision number which isn't the result of a rounded unsafe integer.
@@ -32867,7 +32867,7 @@
 	    function isSafeInteger(value) {
 	      return isInteger(value) && value >= -MAX_SAFE_INTEGER && value <= MAX_SAFE_INTEGER;
 	    }
-
+	
 	    /**
 	     * Checks if `value` is classified as a `Set` object.
 	     *
@@ -32889,7 +32889,7 @@
 	    function isSet(value) {
 	      return isObjectLike(value) && getTag(value) == setTag;
 	    }
-
+	
 	    /**
 	     * Checks if `value` is classified as a `String` primitive or object.
 	     *
@@ -32912,7 +32912,7 @@
 	      return typeof value == 'string' ||
 	        (!isArray(value) && isObjectLike(value) && objectToString.call(value) == stringTag);
 	    }
-
+	
 	    /**
 	     * Checks if `value` is classified as a `Symbol` primitive or object.
 	     *
@@ -32935,7 +32935,7 @@
 	      return typeof value == 'symbol' ||
 	        (isObjectLike(value) && objectToString.call(value) == symbolTag);
 	    }
-
+	
 	    /**
 	     * Checks if `value` is classified as a typed array.
 	     *
@@ -32958,7 +32958,7 @@
 	      return isObjectLike(value) &&
 	        isLength(value.length) && !!typedArrayTags[objectToString.call(value)];
 	    }
-
+	
 	    /**
 	     * Checks if `value` is `undefined`.
 	     *
@@ -32979,7 +32979,7 @@
 	    function isUndefined(value) {
 	      return value === undefined;
 	    }
-
+	
 	    /**
 	     * Checks if `value` is classified as a `WeakMap` object.
 	     *
@@ -33001,7 +33001,7 @@
 	    function isWeakMap(value) {
 	      return isObjectLike(value) && getTag(value) == weakMapTag;
 	    }
-
+	
 	    /**
 	     * Checks if `value` is classified as a `WeakSet` object.
 	     *
@@ -33023,7 +33023,7 @@
 	    function isWeakSet(value) {
 	      return isObjectLike(value) && objectToString.call(value) == weakSetTag;
 	    }
-
+	
 	    /**
 	     * Checks if `value` is less than `other`.
 	     *
@@ -33049,7 +33049,7 @@
 	    function lt(value, other) {
 	      return value < other;
 	    }
-
+	
 	    /**
 	     * Checks if `value` is less than or equal to `other`.
 	     *
@@ -33075,7 +33075,7 @@
 	    function lte(value, other) {
 	      return value <= other;
 	    }
-
+	
 	    /**
 	     * Converts `value` to an array.
 	     *
@@ -33111,10 +33111,10 @@
 	      }
 	      var tag = getTag(value),
 	          func = tag == mapTag ? mapToArray : (tag == setTag ? setToArray : values);
-
+	
 	      return func(value);
 	    }
-
+	
 	    /**
 	     * Converts `value` to an integer.
 	     *
@@ -33153,7 +33153,7 @@
 	      var remainder = value % 1;
 	      return value === value ? (remainder ? value - remainder : value) : 0;
 	    }
-
+	
 	    /**
 	     * Converts `value` to an integer suitable for use as the length of an
 	     * array-like object.
@@ -33184,7 +33184,7 @@
 	    function toLength(value) {
 	      return value ? baseClamp(toInteger(value), 0, MAX_ARRAY_LENGTH) : 0;
 	    }
-
+	
 	    /**
 	     * Converts `value` to a number.
 	     *
@@ -33228,7 +33228,7 @@
 	        ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
 	        : (reIsBadHex.test(value) ? NAN : +value);
 	    }
-
+	
 	    /**
 	     * Converts `value` to a plain object flattening inherited enumerable string
 	     * keyed properties of `value` to own properties of the plain object.
@@ -33256,7 +33256,7 @@
 	    function toPlainObject(value) {
 	      return copyObject(value, keysIn(value));
 	    }
-
+	
 	    /**
 	     * Converts `value` to a safe integer. A safe integer can be compared and
 	     * represented correctly.
@@ -33284,7 +33284,7 @@
 	    function toSafeInteger(value) {
 	      return baseClamp(toInteger(value), -MAX_SAFE_INTEGER, MAX_SAFE_INTEGER);
 	    }
-
+	
 	    /**
 	     * Converts `value` to a string. An empty string is returned for `null`
 	     * and `undefined` values. The sign of `-0` is preserved.
@@ -33320,9 +33320,9 @@
 	      var result = (value + '');
 	      return (result == '0' && (1 / value) == -INFINITY) ? '-0' : result;
 	    }
-
+	
 	    /*------------------------------------------------------------------------*/
-
+	
 	    /**
 	     * Assigns own enumerable string keyed properties of source objects to the
 	     * destination object. Source objects are applied from left to right.
@@ -33365,7 +33365,7 @@
 	        }
 	      }
 	    });
-
+	
 	    /**
 	     * This method is like `_.assign` except that it iterates over own and
 	     * inherited source properties.
@@ -33405,7 +33405,7 @@
 	        assignValue(object, key, source[key]);
 	      }
 	    });
-
+	
 	    /**
 	     * This method is like `_.assignIn` except that it accepts `customizer`
 	     * which is invoked to produce the assigned values. If `customizer` returns
@@ -33437,7 +33437,7 @@
 	    var assignInWith = createAssigner(function(object, source, srcIndex, customizer) {
 	      copyObject(source, keysIn(source), object, customizer);
 	    });
-
+	
 	    /**
 	     * This method is like `_.assign` except that it accepts `customizer`
 	     * which is invoked to produce the assigned values. If `customizer` returns
@@ -33468,7 +33468,7 @@
 	    var assignWith = createAssigner(function(object, source, srcIndex, customizer) {
 	      copyObject(source, keys(source), object, customizer);
 	    });
-
+	
 	    /**
 	     * Creates an array of values corresponding to `paths` of `object`.
 	     *
@@ -33492,7 +33492,7 @@
 	    var at = rest(function(object, paths) {
 	      return baseAt(object, baseFlatten(paths, 1));
 	    });
-
+	
 	    /**
 	     * Creates an object that inherits from the `prototype` object. If a
 	     * `properties` object is given, its own enumerable string keyed properties
@@ -33531,7 +33531,7 @@
 	      var result = baseCreate(prototype);
 	      return properties ? baseAssign(result, properties) : result;
 	    }
-
+	
 	    /**
 	     * Assigns own and inherited enumerable string keyed properties of source
 	     * objects to the destination object for all destination properties that
@@ -33556,7 +33556,7 @@
 	      args.push(undefined, assignInDefaults);
 	      return apply(assignInWith, undefined, args);
 	    });
-
+	
 	    /**
 	     * This method is like `_.defaults` except that it recursively assigns
 	     * default properties.
@@ -33580,7 +33580,7 @@
 	      args.push(undefined, mergeDefaults);
 	      return apply(mergeWith, undefined, args);
 	    });
-
+	
 	    /**
 	     * This method is like `_.find` except that it returns the key of the first
 	     * element `predicate` returns truthy for instead of the element itself.
@@ -33620,7 +33620,7 @@
 	    function findKey(object, predicate) {
 	      return baseFind(object, getIteratee(predicate, 3), baseForOwn, true);
 	    }
-
+	
 	    /**
 	     * This method is like `_.findKey` except that it iterates over elements of
 	     * a collection in the opposite order.
@@ -33660,7 +33660,7 @@
 	    function findLastKey(object, predicate) {
 	      return baseFind(object, getIteratee(predicate, 3), baseForOwnRight, true);
 	    }
-
+	
 	    /**
 	     * Iterates over own and inherited enumerable string keyed properties of an
 	     * object and invokes `iteratee` for each property. The iteratee is invoked
@@ -33693,7 +33693,7 @@
 	        ? object
 	        : baseFor(object, getIteratee(iteratee), keysIn);
 	    }
-
+	
 	    /**
 	     * This method is like `_.forIn` except that it iterates over properties of
 	     * `object` in the opposite order.
@@ -33724,7 +33724,7 @@
 	        ? object
 	        : baseForRight(object, getIteratee(iteratee), keysIn);
 	    }
-
+	
 	    /**
 	     * Iterates over own enumerable string keyed properties of an object and
 	     * invokes `iteratee` for each property. The iteratee is invoked with three
@@ -33755,7 +33755,7 @@
 	    function forOwn(object, iteratee) {
 	      return object && baseForOwn(object, getIteratee(iteratee));
 	    }
-
+	
 	    /**
 	     * This method is like `_.forOwn` except that it iterates over properties of
 	     * `object` in the opposite order.
@@ -33784,7 +33784,7 @@
 	    function forOwnRight(object, iteratee) {
 	      return object && baseForOwnRight(object, getIteratee(iteratee));
 	    }
-
+	
 	    /**
 	     * Creates an array of function property names from own enumerable properties
 	     * of `object`.
@@ -33810,7 +33810,7 @@
 	    function functions(object) {
 	      return object == null ? [] : baseFunctions(object, keys(object));
 	    }
-
+	
 	    /**
 	     * Creates an array of function property names from own and inherited
 	     * enumerable properties of `object`.
@@ -33836,7 +33836,7 @@
 	    function functionsIn(object) {
 	      return object == null ? [] : baseFunctions(object, keysIn(object));
 	    }
-
+	
 	    /**
 	     * Gets the value at `path` of `object`. If the resolved value is
 	     * `undefined`, the `defaultValue` is used in its place.
@@ -33866,7 +33866,7 @@
 	      var result = object == null ? undefined : baseGet(object, path);
 	      return result === undefined ? defaultValue : result;
 	    }
-
+	
 	    /**
 	     * Checks if `path` is a direct property of `object`.
 	     *
@@ -33897,7 +33897,7 @@
 	    function has(object, path) {
 	      return object != null && hasPath(object, path, baseHas);
 	    }
-
+	
 	    /**
 	     * Checks if `path` is a direct or inherited property of `object`.
 	     *
@@ -33927,7 +33927,7 @@
 	    function hasIn(object, path) {
 	      return object != null && hasPath(object, path, baseHasIn);
 	    }
-
+	
 	    /**
 	     * Creates an object composed of the inverted keys and values of `object`.
 	     * If `object` contains duplicate values, subsequent values overwrite
@@ -33949,7 +33949,7 @@
 	    var invert = createInverter(function(result, value, key) {
 	      result[value] = key;
 	    }, constant(identity));
-
+	
 	    /**
 	     * This method is like `_.invert` except that the inverted object is generated
 	     * from the results of running each element of `object` thru `iteratee`. The
@@ -33984,7 +33984,7 @@
 	        result[value] = [key];
 	      }
 	    }, getIteratee);
-
+	
 	    /**
 	     * Invokes the method at `path` of `object`.
 	     *
@@ -34004,7 +34004,7 @@
 	     * // => [2, 3]
 	     */
 	    var invoke = rest(baseInvoke);
-
+	
 	    /**
 	     * Creates an array of the own enumerable property names of `object`.
 	     *
@@ -34042,7 +34042,7 @@
 	          skipIndexes = !!indexes,
 	          result = indexes || [],
 	          length = result.length;
-
+	
 	      for (var key in object) {
 	        if (baseHas(object, key) &&
 	            !(skipIndexes && (key == 'length' || isIndex(key, length))) &&
@@ -34052,7 +34052,7 @@
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * Creates an array of the own and inherited enumerable property names of `object`.
 	     *
@@ -34085,7 +34085,7 @@
 	          skipIndexes = !!indexes,
 	          result = indexes || [],
 	          length = result.length;
-
+	
 	      while (++index < propsLength) {
 	        var key = props[index];
 	        if (!(skipIndexes && (key == 'length' || isIndex(key, length))) &&
@@ -34095,7 +34095,7 @@
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * The opposite of `_.mapValues`; this method creates an object with the
 	     * same values as `object` and keys generated by running each own enumerable
@@ -34120,13 +34120,13 @@
 	    function mapKeys(object, iteratee) {
 	      var result = {};
 	      iteratee = getIteratee(iteratee, 3);
-
+	
 	      baseForOwn(object, function(value, key, object) {
 	        result[iteratee(value, key, object)] = value;
 	      });
 	      return result;
 	    }
-
+	
 	    /**
 	     * Creates an object with the same keys as `object` and values generated
 	     * by running each own enumerable string keyed property of `object` thru
@@ -34158,13 +34158,13 @@
 	    function mapValues(object, iteratee) {
 	      var result = {};
 	      iteratee = getIteratee(iteratee, 3);
-
+	
 	      baseForOwn(object, function(value, key, object) {
 	        result[key] = iteratee(value, key, object);
 	      });
 	      return result;
 	    }
-
+	
 	    /**
 	     * This method is like `_.assign` except that it recursively merges own and
 	     * inherited enumerable string keyed properties of source objects into the
@@ -34199,7 +34199,7 @@
 	    var merge = createAssigner(function(object, source, srcIndex) {
 	      baseMerge(object, source, srcIndex);
 	    });
-
+	
 	    /**
 	     * This method is like `_.merge` except that it accepts `customizer` which
 	     * is invoked to produce the merged values of the destination and source
@@ -34241,7 +34241,7 @@
 	    var mergeWith = createAssigner(function(object, source, srcIndex, customizer) {
 	      baseMerge(object, source, srcIndex, customizer);
 	    });
-
+	
 	    /**
 	     * The opposite of `_.pick`; this method creates an object composed of the
 	     * own and inherited enumerable string keyed properties of `object` that are
@@ -34268,7 +34268,7 @@
 	      props = arrayMap(baseFlatten(props, 1), toKey);
 	      return basePick(object, baseDifference(getAllKeysIn(object), props));
 	    });
-
+	
 	    /**
 	     * The opposite of `_.pickBy`; this method creates an object composed of
 	     * the own and inherited enumerable string keyed properties of `object` that
@@ -34296,7 +34296,7 @@
 	        return !predicate(value, key);
 	      });
 	    }
-
+	
 	    /**
 	     * Creates an object composed of the picked `object` properties.
 	     *
@@ -34317,7 +34317,7 @@
 	    var pick = rest(function(object, props) {
 	      return object == null ? {} : basePick(object, baseFlatten(props, 1));
 	    });
-
+	
 	    /**
 	     * Creates an object composed of the `object` properties `predicate` returns
 	     * truthy for. The predicate is invoked with two arguments: (value, key).
@@ -34340,7 +34340,7 @@
 	    function pickBy(object, predicate) {
 	      return object == null ? {} : basePickBy(object, getIteratee(predicate));
 	    }
-
+	
 	    /**
 	     * This method is like `_.get` except that if the resolved value is a
 	     * function it's invoked with the `this` binding of its parent object and
@@ -34372,10 +34372,10 @@
 	     */
 	    function result(object, path, defaultValue) {
 	      path = isKey(path, object) ? [path] : castPath(path);
-
+	
 	      var index = -1,
 	          length = path.length;
-
+	
 	      // Ensure the loop is entered when path is empty.
 	      if (!length) {
 	        object = undefined;
@@ -34391,7 +34391,7 @@
 	      }
 	      return object;
 	    }
-
+	
 	    /**
 	     * Sets the value at `path` of `object`. If a portion of `path` doesn't exist,
 	     * it's created. Arrays are created for missing index properties while objects
@@ -34423,7 +34423,7 @@
 	    function set(object, path, value) {
 	      return object == null ? object : baseSet(object, path, value);
 	    }
-
+	
 	    /**
 	     * This method is like `_.set` except that it accepts `customizer` which is
 	     * invoked to produce the objects of `path`.  If `customizer` returns `undefined`
@@ -34452,7 +34452,7 @@
 	      customizer = typeof customizer == 'function' ? customizer : undefined;
 	      return object == null ? object : baseSet(object, path, value, customizer);
 	    }
-
+	
 	    /**
 	     * Creates an array of own enumerable string keyed-value pairs for `object`
 	     * which can be consumed by `_.fromPairs`.
@@ -34479,7 +34479,7 @@
 	    function toPairs(object) {
 	      return baseToPairs(object, keys(object));
 	    }
-
+	
 	    /**
 	     * Creates an array of own and inherited enumerable string keyed-value pairs
 	     * for `object` which can be consumed by `_.fromPairs`.
@@ -34506,7 +34506,7 @@
 	    function toPairsIn(object) {
 	      return baseToPairs(object, keysIn(object));
 	    }
-
+	
 	    /**
 	     * An alternative to `_.reduce`; this method transforms `object` to a new
 	     * `accumulator` object which is the result of running each of its own
@@ -34539,7 +34539,7 @@
 	    function transform(object, iteratee, accumulator) {
 	      var isArr = isArray(object) || isTypedArray(object);
 	      iteratee = getIteratee(iteratee, 4);
-
+	
 	      if (accumulator == null) {
 	        if (isArr || isObject(object)) {
 	          var Ctor = object.constructor;
@@ -34557,7 +34557,7 @@
 	      });
 	      return accumulator;
 	    }
-
+	
 	    /**
 	     * Removes the property at `path` of `object`.
 	     *
@@ -34588,7 +34588,7 @@
 	    function unset(object, path) {
 	      return object == null ? true : baseUnset(object, path);
 	    }
-
+	
 	    /**
 	     * This method is like `_.set` except that accepts `updater` to produce the
 	     * value to set. Use `_.updateWith` to customize `path` creation. The `updater`
@@ -34619,7 +34619,7 @@
 	    function update(object, path, updater) {
 	      return object == null ? object : baseUpdate(object, path, castFunction(updater));
 	    }
-
+	
 	    /**
 	     * This method is like `_.update` except that it accepts `customizer` which is
 	     * invoked to produce the objects of `path`.  If `customizer` returns `undefined`
@@ -34648,7 +34648,7 @@
 	      customizer = typeof customizer == 'function' ? customizer : undefined;
 	      return object == null ? object : baseUpdate(object, path, castFunction(updater), customizer);
 	    }
-
+	
 	    /**
 	     * Creates an array of the own enumerable string keyed property values of `object`.
 	     *
@@ -34678,7 +34678,7 @@
 	    function values(object) {
 	      return object ? baseValues(object, keys(object)) : [];
 	    }
-
+	
 	    /**
 	     * Creates an array of the own and inherited enumerable string keyed property
 	     * values of `object`.
@@ -34706,9 +34706,9 @@
 	    function valuesIn(object) {
 	      return object == null ? [] : baseValues(object, keysIn(object));
 	    }
-
+	
 	    /*------------------------------------------------------------------------*/
-
+	
 	    /**
 	     * Clamps `number` within the inclusive `lower` and `upper` bounds.
 	     *
@@ -34743,7 +34743,7 @@
 	      }
 	      return baseClamp(toNumber(number), lower, upper);
 	    }
-
+	
 	    /**
 	     * Checks if `n` is between `start` and up to but not including, `end`. If
 	     * `end` is not specified, it's set to `start` with `start` then set to `0`.
@@ -34792,7 +34792,7 @@
 	      number = toNumber(number);
 	      return baseInRange(number, start, end);
 	    }
-
+	
 	    /**
 	     * Produces a random number between the inclusive `lower` and `upper` bounds.
 	     * If only one argument is provided a number between `0` and the given number
@@ -34862,9 +34862,9 @@
 	      }
 	      return baseRandom(lower, upper);
 	    }
-
+	
 	    /*------------------------------------------------------------------------*/
-
+	
 	    /**
 	     * Converts `string` to [camel case](https://en.wikipedia.org/wiki/CamelCase).
 	     *
@@ -34889,7 +34889,7 @@
 	      word = word.toLowerCase();
 	      return result + (index ? capitalize(word) : word);
 	    });
-
+	
 	    /**
 	     * Converts the first character of `string` to upper case and the remaining
 	     * to lower case.
@@ -34908,7 +34908,7 @@
 	    function capitalize(string) {
 	      return upperFirst(toString(string).toLowerCase());
 	    }
-
+	
 	    /**
 	     * Deburrs `string` by converting
 	     * [latin-1 supplementary letters](https://en.wikipedia.org/wiki/Latin-1_Supplement_(Unicode_block)#Character_table)
@@ -34930,7 +34930,7 @@
 	      string = toString(string);
 	      return string && string.replace(reLatin1, deburrLetter).replace(reComboMark, '');
 	    }
-
+	
 	    /**
 	     * Checks if `string` ends with the given target string.
 	     *
@@ -34957,16 +34957,16 @@
 	    function endsWith(string, target, position) {
 	      string = toString(string);
 	      target = typeof target == 'string' ? target : (target + '');
-
+	
 	      var length = string.length;
 	      position = position === undefined
 	        ? length
 	        : baseClamp(toInteger(position), 0, length);
-
+	
 	      position -= target.length;
 	      return position >= 0 && string.indexOf(target, position) == position;
 	    }
-
+	
 	    /**
 	     * Converts the characters "&", "<", ">", '"', "'", and "\`" in `string` to
 	     * their corresponding HTML entities.
@@ -35007,7 +35007,7 @@
 	        ? string.replace(reUnescapedHtml, escapeHtmlChar)
 	        : string;
 	    }
-
+	
 	    /**
 	     * Escapes the `RegExp` special characters "^", "$", "\", ".", "*", "+",
 	     * "?", "(", ")", "[", "]", "{", "}", and "|" in `string`.
@@ -35029,7 +35029,7 @@
 	        ? string.replace(reRegExpChar, '\\$&')
 	        : string;
 	    }
-
+	
 	    /**
 	     * Converts `string` to
 	     * [kebab case](https://en.wikipedia.org/wiki/Letter_case#Special_case_styles).
@@ -35054,7 +35054,7 @@
 	    var kebabCase = createCompounder(function(result, word, index) {
 	      return result + (index ? '-' : '') + word.toLowerCase();
 	    });
-
+	
 	    /**
 	     * Converts `string`, as space separated words, to lower case.
 	     *
@@ -35078,7 +35078,7 @@
 	    var lowerCase = createCompounder(function(result, word, index) {
 	      return result + (index ? ' ' : '') + word.toLowerCase();
 	    });
-
+	
 	    /**
 	     * Converts the first character of `string` to lower case.
 	     *
@@ -35097,7 +35097,7 @@
 	     * // => 'fRED'
 	     */
 	    var lowerFirst = createCaseFirst('toLowerCase');
-
+	
 	    /**
 	     * Pads `string` on the left and right sides if it's shorter than `length`.
 	     * Padding characters are truncated if they can't be evenly divided by `length`.
@@ -35124,7 +35124,7 @@
 	    function pad(string, length, chars) {
 	      string = toString(string);
 	      length = toInteger(length);
-
+	
 	      var strLength = length ? stringSize(string) : 0;
 	      if (!length || strLength >= length) {
 	        return string;
@@ -35136,7 +35136,7 @@
 	        createPadding(nativeCeil(mid), chars)
 	      );
 	    }
-
+	
 	    /**
 	     * Pads `string` on the right side if it's shorter than `length`. Padding
 	     * characters are truncated if they exceed `length`.
@@ -35163,13 +35163,13 @@
 	    function padEnd(string, length, chars) {
 	      string = toString(string);
 	      length = toInteger(length);
-
+	
 	      var strLength = length ? stringSize(string) : 0;
 	      return (length && strLength < length)
 	        ? (string + createPadding(length - strLength, chars))
 	        : string;
 	    }
-
+	
 	    /**
 	     * Pads `string` on the left side if it's shorter than `length`. Padding
 	     * characters are truncated if they exceed `length`.
@@ -35196,13 +35196,13 @@
 	    function padStart(string, length, chars) {
 	      string = toString(string);
 	      length = toInteger(length);
-
+	
 	      var strLength = length ? stringSize(string) : 0;
 	      return (length && strLength < length)
 	        ? (createPadding(length - strLength, chars) + string)
 	        : string;
 	    }
-
+	
 	    /**
 	     * Converts `string` to an integer of the specified radix. If `radix` is
 	     * `undefined` or `0`, a `radix` of `10` is used unless `value` is a
@@ -35238,7 +35238,7 @@
 	      string = toString(string).replace(reTrim, '');
 	      return nativeParseInt(string, radix || (reHasHexPrefix.test(string) ? 16 : 10));
 	    }
-
+	
 	    /**
 	     * Repeats the given string `n` times.
 	     *
@@ -35269,7 +35269,7 @@
 	      }
 	      return baseRepeat(toString(string), n);
 	    }
-
+	
 	    /**
 	     * Replaces matches for `pattern` in `string` with `replacement`.
 	     *
@@ -35292,10 +35292,10 @@
 	    function replace() {
 	      var args = arguments,
 	          string = toString(args[0]);
-
+	
 	      return args.length < 3 ? string : nativeReplace.call(string, args[1], args[2]);
 	    }
-
+	
 	    /**
 	     * Converts `string` to
 	     * [snake case](https://en.wikipedia.org/wiki/Snake_case).
@@ -35320,7 +35320,7 @@
 	    var snakeCase = createCompounder(function(result, word, index) {
 	      return result + (index ? '_' : '') + word.toLowerCase();
 	    });
-
+	
 	    /**
 	     * Splits `string` by `separator`.
 	     *
@@ -35360,7 +35360,7 @@
 	      }
 	      return nativeSplit.call(string, separator, limit);
 	    }
-
+	
 	    /**
 	     * Converts `string` to
 	     * [start case](https://en.wikipedia.org/wiki/Letter_case#Stylistic_or_specialised_usage).
@@ -35385,7 +35385,7 @@
 	    var startCase = createCompounder(function(result, word, index) {
 	      return result + (index ? ' ' : '') + upperFirst(word);
 	    });
-
+	
 	    /**
 	     * Checks if `string` starts with the given target string.
 	     *
@@ -35414,7 +35414,7 @@
 	      position = baseClamp(toInteger(position), 0, string.length);
 	      return string.lastIndexOf(target, position) == position;
 	    }
-
+	
 	    /**
 	     * Creates a compiled template function that can interpolate data properties
 	     * in "interpolate" delimiters, HTML-escape interpolated data properties in
@@ -35523,23 +35523,23 @@
 	      // (http://ejohn.org/blog/javascript-micro-templating/)
 	      // and Laura Doktorova's doT.js (https://github.com/olado/doT).
 	      var settings = lodash.templateSettings;
-
+	
 	      if (guard && isIterateeCall(string, options, guard)) {
 	        options = undefined;
 	      }
 	      string = toString(string);
 	      options = assignInWith({}, options, settings, assignInDefaults);
-
+	
 	      var imports = assignInWith({}, options.imports, settings.imports, assignInDefaults),
 	          importsKeys = keys(imports),
 	          importsValues = baseValues(imports, importsKeys);
-
+	
 	      var isEscaping,
 	          isEvaluating,
 	          index = 0,
 	          interpolate = options.interpolate || reNoMatch,
 	          source = "__p += '";
-
+	
 	      // Compile the regexp to match each delimiter.
 	      var reDelimiters = RegExp(
 	        (options.escape || reNoMatch).source + '|' +
@@ -35547,20 +35547,20 @@
 	        (interpolate === reInterpolate ? reEsTemplate : reNoMatch).source + '|' +
 	        (options.evaluate || reNoMatch).source + '|$'
 	      , 'g');
-
+	
 	      // Use a sourceURL for easier debugging.
 	      var sourceURL = '//# sourceURL=' +
 	        ('sourceURL' in options
 	          ? options.sourceURL
 	          : ('lodash.templateSources[' + (++templateCounter) + ']')
 	        ) + '\n';
-
+	
 	      string.replace(reDelimiters, function(match, escapeValue, interpolateValue, esTemplateValue, evaluateValue, offset) {
 	        interpolateValue || (interpolateValue = esTemplateValue);
-
+	
 	        // Escape characters that can't be included in string literals.
 	        source += string.slice(index, offset).replace(reUnescapedString, escapeStringChar);
-
+	
 	        // Replace delimiters with snippets.
 	        if (escapeValue) {
 	          isEscaping = true;
@@ -35574,14 +35574,14 @@
 	          source += "' +\n((__t = (" + interpolateValue + ")) == null ? '' : __t) +\n'";
 	        }
 	        index = offset + match.length;
-
+	
 	        // The JS engine embedded in Adobe products needs `match` returned in
 	        // order to produce the correct `offset` value.
 	        return match;
 	      });
-
+	
 	      source += "';\n";
-
+	
 	      // If `variable` is not specified wrap a with-statement around the generated
 	      // code to add the data object to the top of the scope chain.
 	      var variable = options.variable;
@@ -35592,7 +35592,7 @@
 	      source = (isEvaluating ? source.replace(reEmptyStringLeading, '') : source)
 	        .replace(reEmptyStringMiddle, '$1')
 	        .replace(reEmptyStringTrailing, '$1;');
-
+	
 	      // Frame code as the function body.
 	      source = 'function(' + (variable || 'obj') + ') {\n' +
 	        (variable
@@ -35611,12 +35611,12 @@
 	        ) +
 	        source +
 	        'return __p\n}';
-
+	
 	      var result = attempt(function() {
 	        return Function(importsKeys, sourceURL + 'return ' + source)
 	          .apply(undefined, importsValues);
 	      });
-
+	
 	      // Provide the compiled function's source by its `toString` method or
 	      // the `source` property as a convenience for inlining compiled templates.
 	      result.source = source;
@@ -35625,7 +35625,7 @@
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * Converts `string`, as a whole, to lower case just like
 	     * [String#toLowerCase](https://mdn.io/toLowerCase).
@@ -35650,7 +35650,7 @@
 	    function toLower(value) {
 	      return toString(value).toLowerCase();
 	    }
-
+	
 	    /**
 	     * Converts `string`, as a whole, to upper case just like
 	     * [String#toUpperCase](https://mdn.io/toUpperCase).
@@ -35675,7 +35675,7 @@
 	    function toUpper(value) {
 	      return toString(value).toUpperCase();
 	    }
-
+	
 	    /**
 	     * Removes leading and trailing whitespace or specified characters from `string`.
 	     *
@@ -35713,10 +35713,10 @@
 	          chrSymbols = stringToArray(chars),
 	          start = charsStartIndex(strSymbols, chrSymbols),
 	          end = charsEndIndex(strSymbols, chrSymbols) + 1;
-
+	
 	      return castSlice(strSymbols, start, end).join('');
 	    }
-
+	
 	    /**
 	     * Removes trailing whitespace or specified characters from `string`.
 	     *
@@ -35749,10 +35749,10 @@
 	      }
 	      var strSymbols = stringToArray(string),
 	          end = charsEndIndex(strSymbols, stringToArray(chars)) + 1;
-
+	
 	      return castSlice(strSymbols, 0, end).join('');
 	    }
-
+	
 	    /**
 	     * Removes leading whitespace or specified characters from `string`.
 	     *
@@ -35785,10 +35785,10 @@
 	      }
 	      var strSymbols = stringToArray(string),
 	          start = charsStartIndex(strSymbols, stringToArray(chars));
-
+	
 	      return castSlice(strSymbols, start).join('');
 	    }
-
+	
 	    /**
 	     * Truncates `string` if it's longer than the given maximum string length.
 	     * The last characters of the truncated string are replaced with the omission
@@ -35829,14 +35829,14 @@
 	    function truncate(string, options) {
 	      var length = DEFAULT_TRUNC_LENGTH,
 	          omission = DEFAULT_TRUNC_OMISSION;
-
+	
 	      if (isObject(options)) {
 	        var separator = 'separator' in options ? options.separator : separator;
 	        length = 'length' in options ? toInteger(options.length) : length;
 	        omission = 'omission' in options ? toString(options.omission) : omission;
 	      }
 	      string = toString(string);
-
+	
 	      var strLength = string.length;
 	      if (reHasComplexSymbol.test(string)) {
 	        var strSymbols = stringToArray(string);
@@ -35852,7 +35852,7 @@
 	      var result = strSymbols
 	        ? castSlice(strSymbols, 0, end).join('')
 	        : string.slice(0, end);
-
+	
 	      if (separator === undefined) {
 	        return result + omission;
 	      }
@@ -35863,7 +35863,7 @@
 	        if (string.slice(end).search(separator)) {
 	          var match,
 	              substring = result;
-
+	
 	          if (!separator.global) {
 	            separator = RegExp(separator.source, toString(reFlags.exec(separator)) + 'g');
 	          }
@@ -35881,7 +35881,7 @@
 	      }
 	      return result + omission;
 	    }
-
+	
 	    /**
 	     * The inverse of `_.escape`; this method converts the HTML entities
 	     * `&amp;`, `&lt;`, `&gt;`, `&quot;`, `&#39;`, and `&#96;` in `string` to
@@ -35907,7 +35907,7 @@
 	        ? string.replace(reEscapedHtml, unescapeHtmlChar)
 	        : string;
 	    }
-
+	
 	    /**
 	     * Converts `string`, as space separated words, to upper case.
 	     *
@@ -35931,7 +35931,7 @@
 	    var upperCase = createCompounder(function(result, word, index) {
 	      return result + (index ? ' ' : '') + word.toUpperCase();
 	    });
-
+	
 	    /**
 	     * Converts the first character of `string` to upper case.
 	     *
@@ -35950,7 +35950,7 @@
 	     * // => 'FRED'
 	     */
 	    var upperFirst = createCaseFirst('toUpperCase');
-
+	
 	    /**
 	     * Splits `string` into an array of its words.
 	     *
@@ -35973,15 +35973,15 @@
 	    function words(string, pattern, guard) {
 	      string = toString(string);
 	      pattern = guard ? undefined : pattern;
-
+	
 	      if (pattern === undefined) {
 	        pattern = reHasComplexWord.test(string) ? reComplexWord : reBasicWord;
 	      }
 	      return string.match(pattern) || [];
 	    }
-
+	
 	    /*------------------------------------------------------------------------*/
-
+	
 	    /**
 	     * Attempts to invoke `func`, returning either the result or the caught error
 	     * object. Any additional arguments are provided to `func` when it's invoked.
@@ -36011,7 +36011,7 @@
 	        return isError(e) ? e : new Error(e);
 	      }
 	    });
-
+	
 	    /**
 	     * Binds methods of an object to the object itself, overwriting the existing
 	     * method.
@@ -36044,7 +36044,7 @@
 	      });
 	      return object;
 	    });
-
+	
 	    /**
 	     * Creates a function that iterates over `pairs` and invokes the corresponding
 	     * function of the first predicate to return truthy. The predicate-function
@@ -36077,14 +36077,14 @@
 	    function cond(pairs) {
 	      var length = pairs ? pairs.length : 0,
 	          toIteratee = getIteratee();
-
+	
 	      pairs = !length ? [] : arrayMap(pairs, function(pair) {
 	        if (typeof pair[1] != 'function') {
 	          throw new TypeError(FUNC_ERROR_TEXT);
 	        }
 	        return [toIteratee(pair[0]), pair[1]];
 	      });
-
+	
 	      return rest(function(args) {
 	        var index = -1;
 	        while (++index < length) {
@@ -36095,7 +36095,7 @@
 	        }
 	      });
 	    }
-
+	
 	    /**
 	     * Creates a function that invokes the predicate properties of `source` with
 	     * the corresponding property values of a given object, returning `true` if
@@ -36120,7 +36120,7 @@
 	    function conforms(source) {
 	      return baseConforms(baseClone(source, true));
 	    }
-
+	
 	    /**
 	     * Creates a function that returns `value`.
 	     *
@@ -36143,7 +36143,7 @@
 	        return value;
 	      };
 	    }
-
+	
 	    /**
 	     * Creates a function that returns the result of invoking the given functions
 	     * with the `this` binding of the created function, where each successive
@@ -36166,7 +36166,7 @@
 	     * // => 9
 	     */
 	    var flow = createFlow();
-
+	
 	    /**
 	     * This method is like `_.flow` except that it creates a function that
 	     * invokes the given functions from right to left.
@@ -36188,7 +36188,7 @@
 	     * // => 9
 	     */
 	    var flowRight = createFlow(true);
-
+	
 	    /**
 	     * This method returns the first argument given to it.
 	     *
@@ -36208,7 +36208,7 @@
 	    function identity(value) {
 	      return value;
 	    }
-
+	
 	    /**
 	     * Creates a function that invokes `func` with the arguments of the created
 	     * function. If `func` is a property name, the created function returns the
@@ -36254,7 +36254,7 @@
 	    function iteratee(func) {
 	      return baseIteratee(typeof func == 'function' ? func : baseClone(func, true));
 	    }
-
+	
 	    /**
 	     * Creates a function that performs a partial deep comparison between a given
 	     * object and `source`, returning `true` if the given object has equivalent
@@ -36282,7 +36282,7 @@
 	    function matches(source) {
 	      return baseMatches(baseClone(source, true));
 	    }
-
+	
 	    /**
 	     * Creates a function that performs a partial deep comparison between the
 	     * value at `path` of a given object to `srcValue`, returning `true` if the
@@ -36310,7 +36310,7 @@
 	    function matchesProperty(path, srcValue) {
 	      return baseMatchesProperty(path, baseClone(srcValue, true));
 	    }
-
+	
 	    /**
 	     * Creates a function that invokes the method at `path` of a given object.
 	     * Any additional arguments are provided to the invoked method.
@@ -36340,7 +36340,7 @@
 	        return baseInvoke(object, path, args);
 	      };
 	    });
-
+	
 	    /**
 	     * The opposite of `_.method`; this method creates a function that invokes
 	     * the method at a given path of `object`. Any additional arguments are
@@ -36369,7 +36369,7 @@
 	        return baseInvoke(object, path, args);
 	      };
 	    });
-
+	
 	    /**
 	     * Adds all own enumerable string keyed function properties of a source
 	     * object to the destination object. If `object` is a function, then methods
@@ -36409,7 +36409,7 @@
 	    function mixin(object, source, options) {
 	      var props = keys(source),
 	          methodNames = baseFunctions(source, props);
-
+	
 	      if (options == null &&
 	          !(isObject(source) && (methodNames.length || !props.length))) {
 	        options = source;
@@ -36419,7 +36419,7 @@
 	      }
 	      var chain = !(isObject(options) && 'chain' in options) || !!options.chain,
 	          isFunc = isFunction(object);
-
+	
 	      arrayEach(methodNames, function(methodName) {
 	        var func = source[methodName];
 	        object[methodName] = func;
@@ -36429,7 +36429,7 @@
 	            if (chain || chainAll) {
 	              var result = object(this.__wrapped__),
 	                  actions = result.__actions__ = copyArray(this.__actions__);
-
+	
 	              actions.push({ 'func': func, 'args': arguments, 'thisArg': object });
 	              result.__chain__ = chainAll;
 	              return result;
@@ -36438,10 +36438,10 @@
 	          };
 	        }
 	      });
-
+	
 	      return object;
 	    }
-
+	
 	    /**
 	     * Reverts the `_` variable to its previous value and returns a reference to
 	     * the `lodash` function.
@@ -36461,7 +36461,7 @@
 	      }
 	      return this;
 	    }
-
+	
 	    /**
 	     * A no-operation function that returns `undefined` regardless of the
 	     * arguments it receives.
@@ -36480,7 +36480,7 @@
 	    function noop() {
 	      // No operation performed.
 	    }
-
+	
 	    /**
 	     * Creates a function that returns its nth argument. If `n` is negative,
 	     * the nth argument from the end is returned.
@@ -36507,7 +36507,7 @@
 	        return baseNth(args, n);
 	      });
 	    }
-
+	
 	    /**
 	     * Creates a function that invokes `iteratees` with the arguments it receives
 	     * and returns their results.
@@ -36527,7 +36527,7 @@
 	     * // => [4, 1]
 	     */
 	    var over = createOver(arrayMap);
-
+	
 	    /**
 	     * Creates a function that checks if **all** of the `predicates` return
 	     * truthy when invoked with the arguments it receives.
@@ -36553,7 +36553,7 @@
 	     * // => false
 	     */
 	    var overEvery = createOver(arrayEvery);
-
+	
 	    /**
 	     * Creates a function that checks if **any** of the `predicates` return
 	     * truthy when invoked with the arguments it receives.
@@ -36579,7 +36579,7 @@
 	     * // => false
 	     */
 	    var overSome = createOver(arraySome);
-
+	
 	    /**
 	     * Creates a function that returns the value at `path` of a given object.
 	     *
@@ -36605,7 +36605,7 @@
 	    function property(path) {
 	      return isKey(path) ? baseProperty(path) : basePropertyDeep(path);
 	    }
-
+	
 	    /**
 	     * The opposite of `_.property`; this method creates a function that returns
 	     * the value at a given path of `object`.
@@ -36632,7 +36632,7 @@
 	        return object == null ? undefined : baseGet(object, path);
 	      };
 	    }
-
+	
 	    /**
 	     * Creates an array of numbers (positive and/or negative) progressing from
 	     * `start` up to, but not including, `end`. A step of `-1` is used if a negative
@@ -36674,7 +36674,7 @@
 	     * // => []
 	     */
 	    var range = createRange();
-
+	
 	    /**
 	     * This method is like `_.range` except that it populates values in
 	     * descending order.
@@ -36711,7 +36711,7 @@
 	     * // => []
 	     */
 	    var rangeRight = createRange(true);
-
+	
 	    /**
 	     * Invokes the iteratee `n` times, returning an array of the results of
 	     * each invocation. The iteratee is invoked with one argument; (index).
@@ -36738,17 +36738,17 @@
 	      }
 	      var index = MAX_ARRAY_LENGTH,
 	          length = nativeMin(n, MAX_ARRAY_LENGTH);
-
+	
 	      iteratee = getIteratee(iteratee);
 	      n -= MAX_ARRAY_LENGTH;
-
+	
 	      var result = baseTimes(length, iteratee);
 	      while (++index < n) {
 	        iteratee(index);
 	      }
 	      return result;
 	    }
-
+	
 	    /**
 	     * Converts `value` to a property path array.
 	     *
@@ -36781,7 +36781,7 @@
 	      }
 	      return isSymbol(value) ? [value] : copyArray(stringToPath(value));
 	    }
-
+	
 	    /**
 	     * Generates a unique ID. If `prefix` is given, the ID is appended to it.
 	     *
@@ -36803,9 +36803,9 @@
 	      var id = ++idCounter;
 	      return toString(prefix) + id;
 	    }
-
+	
 	    /*------------------------------------------------------------------------*/
-
+	
 	    /**
 	     * Adds two numbers.
 	     *
@@ -36824,7 +36824,7 @@
 	    var add = createMathOperation(function(augend, addend) {
 	      return augend + addend;
 	    });
-
+	
 	    /**
 	     * Computes `number` rounded up to `precision`.
 	     *
@@ -36847,7 +36847,7 @@
 	     * // => 6100
 	     */
 	    var ceil = createRound('ceil');
-
+	
 	    /**
 	     * Divide two numbers.
 	     *
@@ -36866,7 +36866,7 @@
 	    var divide = createMathOperation(function(dividend, divisor) {
 	      return dividend / divisor;
 	    });
-
+	
 	    /**
 	     * Computes `number` rounded down to `precision`.
 	     *
@@ -36889,7 +36889,7 @@
 	     * // => 4000
 	     */
 	    var floor = createRound('floor');
-
+	
 	    /**
 	     * Computes the maximum value of `array`. If `array` is empty or falsey,
 	     * `undefined` is returned.
@@ -36913,7 +36913,7 @@
 	        ? baseExtremum(array, identity, gt)
 	        : undefined;
 	    }
-
+	
 	    /**
 	     * This method is like `_.max` except that it accepts `iteratee` which is
 	     * invoked for each element in `array` to generate the criterion by which
@@ -36943,7 +36943,7 @@
 	        ? baseExtremum(array, getIteratee(iteratee), gt)
 	        : undefined;
 	    }
-
+	
 	    /**
 	     * Computes the mean of the values in `array`.
 	     *
@@ -36961,7 +36961,7 @@
 	    function mean(array) {
 	      return baseMean(array, identity);
 	    }
-
+	
 	    /**
 	     * This method is like `_.mean` except that it accepts `iteratee` which is
 	     * invoked for each element in `array` to generate the value to be averaged.
@@ -36989,7 +36989,7 @@
 	    function meanBy(array, iteratee) {
 	      return baseMean(array, getIteratee(iteratee));
 	    }
-
+	
 	    /**
 	     * Computes the minimum value of `array`. If `array` is empty or falsey,
 	     * `undefined` is returned.
@@ -37013,7 +37013,7 @@
 	        ? baseExtremum(array, identity, lt)
 	        : undefined;
 	    }
-
+	
 	    /**
 	     * This method is like `_.min` except that it accepts `iteratee` which is
 	     * invoked for each element in `array` to generate the criterion by which
@@ -37043,7 +37043,7 @@
 	        ? baseExtremum(array, getIteratee(iteratee), lt)
 	        : undefined;
 	    }
-
+	
 	    /**
 	     * Multiply two numbers.
 	     *
@@ -37062,7 +37062,7 @@
 	    var multiply = createMathOperation(function(multiplier, multiplicand) {
 	      return multiplier * multiplicand;
 	    });
-
+	
 	    /**
 	     * Computes `number` rounded to `precision`.
 	     *
@@ -37085,7 +37085,7 @@
 	     * // => 4100
 	     */
 	    var round = createRound('round');
-
+	
 	    /**
 	     * Subtract two numbers.
 	     *
@@ -37104,7 +37104,7 @@
 	    var subtract = createMathOperation(function(minuend, subtrahend) {
 	      return minuend - subtrahend;
 	    });
-
+	
 	    /**
 	     * Computes the sum of the values in `array`.
 	     *
@@ -37124,7 +37124,7 @@
 	        ? baseSum(array, identity)
 	        : 0;
 	    }
-
+	
 	    /**
 	     * This method is like `_.sum` except that it accepts `iteratee` which is
 	     * invoked for each element in `array` to generate the value to be summed.
@@ -37154,9 +37154,9 @@
 	        ? baseSum(array, getIteratee(iteratee))
 	        : 0;
 	    }
-
+	
 	    /*------------------------------------------------------------------------*/
-
+	
 	    // Add methods that return wrapped values in chain sequences.
 	    lodash.after = after;
 	    lodash.ary = ary;
@@ -37307,18 +37307,18 @@
 	    lodash.zipObject = zipObject;
 	    lodash.zipObjectDeep = zipObjectDeep;
 	    lodash.zipWith = zipWith;
-
+	
 	    // Add aliases.
 	    lodash.entries = toPairs;
 	    lodash.entriesIn = toPairsIn;
 	    lodash.extend = assignIn;
 	    lodash.extendWith = assignInWith;
-
+	
 	    // Add methods to `lodash.prototype`.
 	    mixin(lodash, lodash);
-
+	
 	    /*------------------------------------------------------------------------*/
-
+	
 	    // Add methods that return unwrapped values in chain sequences.
 	    lodash.add = add;
 	    lodash.attempt = attempt;
@@ -37461,12 +37461,12 @@
 	    lodash.uniqueId = uniqueId;
 	    lodash.upperCase = upperCase;
 	    lodash.upperFirst = upperFirst;
-
+	
 	    // Add aliases.
 	    lodash.each = forEach;
 	    lodash.eachRight = forEachRight;
 	    lodash.first = head;
-
+	
 	    mixin(lodash, (function() {
 	      var source = {};
 	      baseForOwn(lodash, function(func, methodName) {
@@ -37476,9 +37476,9 @@
 	      });
 	      return source;
 	    }()), { 'chain': false });
-
+	
 	    /*------------------------------------------------------------------------*/
-
+	
 	    /**
 	     * The semantic version number.
 	     *
@@ -37487,12 +37487,12 @@
 	     * @type {string}
 	     */
 	    lodash.VERSION = VERSION;
-
+	
 	    // Assign default placeholders.
 	    arrayEach(['bind', 'bindKey', 'curry', 'curryRight', 'partial', 'partialRight'], function(methodName) {
 	      lodash[methodName].placeholder = lodash;
 	    });
-
+	
 	    // Add `LazyWrapper` methods for `_.drop` and `_.take` variants.
 	    arrayEach(['drop', 'take'], function(methodName, index) {
 	      LazyWrapper.prototype[methodName] = function(n) {
@@ -37501,7 +37501,7 @@
 	          return new LazyWrapper(this);
 	        }
 	        n = n === undefined ? 1 : nativeMax(toInteger(n), 0);
-
+	
 	        var result = this.clone();
 	        if (filtered) {
 	          result.__takeCount__ = nativeMin(n, result.__takeCount__);
@@ -37513,17 +37513,17 @@
 	        }
 	        return result;
 	      };
-
+	
 	      LazyWrapper.prototype[methodName + 'Right'] = function(n) {
 	        return this.reverse()[methodName](n).reverse();
 	      };
 	    });
-
+	
 	    // Add `LazyWrapper` methods that accept an `iteratee` value.
 	    arrayEach(['filter', 'map', 'takeWhile'], function(methodName, index) {
 	      var type = index + 1,
 	          isFilter = type == LAZY_FILTER_FLAG || type == LAZY_WHILE_FLAG;
-
+	
 	      LazyWrapper.prototype[methodName] = function(iteratee) {
 	        var result = this.clone();
 	        result.__iteratees__.push({
@@ -37534,37 +37534,37 @@
 	        return result;
 	      };
 	    });
-
+	
 	    // Add `LazyWrapper` methods for `_.head` and `_.last`.
 	    arrayEach(['head', 'last'], function(methodName, index) {
 	      var takeName = 'take' + (index ? 'Right' : '');
-
+	
 	      LazyWrapper.prototype[methodName] = function() {
 	        return this[takeName](1).value()[0];
 	      };
 	    });
-
+	
 	    // Add `LazyWrapper` methods for `_.initial` and `_.tail`.
 	    arrayEach(['initial', 'tail'], function(methodName, index) {
 	      var dropName = 'drop' + (index ? '' : 'Right');
-
+	
 	      LazyWrapper.prototype[methodName] = function() {
 	        return this.__filtered__ ? new LazyWrapper(this) : this[dropName](1);
 	      };
 	    });
-
+	
 	    LazyWrapper.prototype.compact = function() {
 	      return this.filter(identity);
 	    };
-
+	
 	    LazyWrapper.prototype.find = function(predicate) {
 	      return this.filter(predicate).head();
 	    };
-
+	
 	    LazyWrapper.prototype.findLast = function(predicate) {
 	      return this.reverse().find(predicate);
 	    };
-
+	
 	    LazyWrapper.prototype.invokeMap = rest(function(path, args) {
 	      if (typeof path == 'function') {
 	        return new LazyWrapper(this);
@@ -37573,17 +37573,17 @@
 	        return baseInvoke(value, path, args);
 	      });
 	    });
-
+	
 	    LazyWrapper.prototype.reject = function(predicate) {
 	      predicate = getIteratee(predicate, 3);
 	      return this.filter(function(value) {
 	        return !predicate(value);
 	      });
 	    };
-
+	
 	    LazyWrapper.prototype.slice = function(start, end) {
 	      start = toInteger(start);
-
+	
 	      var result = this;
 	      if (result.__filtered__ && (start > 0 || end < 0)) {
 	        return new LazyWrapper(result);
@@ -37599,22 +37599,22 @@
 	      }
 	      return result;
 	    };
-
+	
 	    LazyWrapper.prototype.takeRightWhile = function(predicate) {
 	      return this.reverse().takeWhile(predicate).reverse();
 	    };
-
+	
 	    LazyWrapper.prototype.toArray = function() {
 	      return this.take(MAX_ARRAY_LENGTH);
 	    };
-
+	
 	    // Add `LazyWrapper` methods to `lodash.prototype`.
 	    baseForOwn(LazyWrapper.prototype, function(func, methodName) {
 	      var checkIteratee = /^(?:filter|find|map|reject)|While$/.test(methodName),
 	          isTaker = /^(?:head|last)$/.test(methodName),
 	          lodashFunc = lodash[isTaker ? ('take' + (methodName == 'last' ? 'Right' : '')) : methodName],
 	          retUnwrapped = isTaker || /^find/.test(methodName);
-
+	
 	      if (!lodashFunc) {
 	        return;
 	      }
@@ -37624,12 +37624,12 @@
 	            isLazy = value instanceof LazyWrapper,
 	            iteratee = args[0],
 	            useLazy = isLazy || isArray(value);
-
+	
 	        var interceptor = function(value) {
 	          var result = lodashFunc.apply(lodash, arrayPush([value], args));
 	          return (isTaker && chainAll) ? result[0] : result;
 	        };
-
+	
 	        if (useLazy && checkIteratee && typeof iteratee == 'function' && iteratee.length != 1) {
 	          // Avoid lazy use if the iteratee has a "length" value other than `1`.
 	          isLazy = useLazy = false;
@@ -37638,7 +37638,7 @@
 	            isHybrid = !!this.__actions__.length,
 	            isUnwrapped = retUnwrapped && !chainAll,
 	            onlyLazy = isLazy && !isHybrid;
-
+	
 	        if (!retUnwrapped && useLazy) {
 	          value = onlyLazy ? value : new LazyWrapper(this);
 	          var result = func.apply(value, args);
@@ -37652,13 +37652,13 @@
 	        return isUnwrapped ? (isTaker ? result.value()[0] : result.value()) : result;
 	      };
 	    });
-
+	
 	    // Add `Array` methods to `lodash.prototype`.
 	    arrayEach(['pop', 'push', 'shift', 'sort', 'splice', 'unshift'], function(methodName) {
 	      var func = arrayProto[methodName],
 	          chainName = /^(?:push|sort|unshift)$/.test(methodName) ? 'tap' : 'thru',
 	          retUnwrapped = /^(?:pop|shift)$/.test(methodName);
-
+	
 	      lodash.prototype[methodName] = function() {
 	        var args = arguments;
 	        if (retUnwrapped && !this.__chain__) {
@@ -37670,28 +37670,28 @@
 	        });
 	      };
 	    });
-
+	
 	    // Map minified method names to their real names.
 	    baseForOwn(LazyWrapper.prototype, function(func, methodName) {
 	      var lodashFunc = lodash[methodName];
 	      if (lodashFunc) {
 	        var key = (lodashFunc.name + ''),
 	            names = realNames[key] || (realNames[key] = []);
-
+	
 	        names.push({ 'name': methodName, 'func': lodashFunc });
 	      }
 	    });
-
+	
 	    realNames[createHybridWrapper(undefined, BIND_KEY_FLAG).name] = [{
 	      'name': 'wrapper',
 	      'func': undefined
 	    }];
-
+	
 	    // Add methods to `LazyWrapper`.
 	    LazyWrapper.prototype.clone = lazyClone;
 	    LazyWrapper.prototype.reverse = lazyReverse;
 	    LazyWrapper.prototype.value = lazyValue;
-
+	
 	    // Add chain sequence methods to the `lodash` wrapper.
 	    lodash.prototype.at = wrapperAt;
 	    lodash.prototype.chain = wrapperChain;
@@ -37700,23 +37700,23 @@
 	    lodash.prototype.plant = wrapperPlant;
 	    lodash.prototype.reverse = wrapperReverse;
 	    lodash.prototype.toJSON = lodash.prototype.valueOf = lodash.prototype.value = wrapperValue;
-
+	
 	    if (iteratorSymbol) {
 	      lodash.prototype[iteratorSymbol] = wrapperToIterator;
 	    }
 	    return lodash;
 	  }
-
+	
 	  /*--------------------------------------------------------------------------*/
-
+	
 	  // Export lodash.
 	  var _ = runInContext();
-
+	
 	  // Expose lodash on the free variable `window` or `self` when available. This
 	  // prevents errors in cases where lodash is loaded by a script tag in the presence
 	  // of an AMD loader. See http://requirejs.org/docs/errors.html#mismatch for more details.
 	  (freeWindow || freeSelf || {})._ = _;
-
+	
 	  // Some AMD build optimizers like r.js check for condition patterns like the following:
 	  if (true) {
 	    // Define as an anonymous module so, through path mapping, it can be
@@ -37739,7 +37739,7 @@
 	    root._ = _;
 	  }
 	}.call(this));
-
+	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22)(module), (function() { return this; }()), __webpack_require__(21)))
 
 /***/ },
@@ -37794,21 +37794,21 @@
 	 *            See https://raw.githubusercontent.com/jakearchibald/es6-promise/master/LICENSE
 	 * @version   3.2.1
 	 */
-
+	
 	(function() {
 	    "use strict";
 	    function lib$es6$promise$utils$$objectOrFunction(x) {
 	      return typeof x === 'function' || (typeof x === 'object' && x !== null);
 	    }
-
+	
 	    function lib$es6$promise$utils$$isFunction(x) {
 	      return typeof x === 'function';
 	    }
-
+	
 	    function lib$es6$promise$utils$$isMaybeThenable(x) {
 	      return typeof x === 'object' && x !== null;
 	    }
-
+	
 	    var lib$es6$promise$utils$$_isArray;
 	    if (!Array.isArray) {
 	      lib$es6$promise$utils$$_isArray = function (x) {
@@ -37817,12 +37817,12 @@
 	    } else {
 	      lib$es6$promise$utils$$_isArray = Array.isArray;
 	    }
-
+	
 	    var lib$es6$promise$utils$$isArray = lib$es6$promise$utils$$_isArray;
 	    var lib$es6$promise$asap$$len = 0;
 	    var lib$es6$promise$asap$$vertxNext;
 	    var lib$es6$promise$asap$$customSchedulerFn;
-
+	
 	    var lib$es6$promise$asap$$asap = function asap(callback, arg) {
 	      lib$es6$promise$asap$$queue[lib$es6$promise$asap$$len] = callback;
 	      lib$es6$promise$asap$$queue[lib$es6$promise$asap$$len + 1] = arg;
@@ -37838,25 +37838,25 @@
 	        }
 	      }
 	    }
-
+	
 	    function lib$es6$promise$asap$$setScheduler(scheduleFn) {
 	      lib$es6$promise$asap$$customSchedulerFn = scheduleFn;
 	    }
-
+	
 	    function lib$es6$promise$asap$$setAsap(asapFn) {
 	      lib$es6$promise$asap$$asap = asapFn;
 	    }
-
+	
 	    var lib$es6$promise$asap$$browserWindow = (typeof window !== 'undefined') ? window : undefined;
 	    var lib$es6$promise$asap$$browserGlobal = lib$es6$promise$asap$$browserWindow || {};
 	    var lib$es6$promise$asap$$BrowserMutationObserver = lib$es6$promise$asap$$browserGlobal.MutationObserver || lib$es6$promise$asap$$browserGlobal.WebKitMutationObserver;
 	    var lib$es6$promise$asap$$isNode = typeof self === 'undefined' && typeof process !== 'undefined' && {}.toString.call(process) === '[object process]';
-
+	
 	    // test for web worker but not in IE10
 	    var lib$es6$promise$asap$$isWorker = typeof Uint8ClampedArray !== 'undefined' &&
 	      typeof importScripts !== 'undefined' &&
 	      typeof MessageChannel !== 'undefined';
-
+	
 	    // node
 	    function lib$es6$promise$asap$$useNextTick() {
 	      // node version 0.10.x displays a deprecation warning when nextTick is used recursively
@@ -37865,25 +37865,25 @@
 	        process.nextTick(lib$es6$promise$asap$$flush);
 	      };
 	    }
-
+	
 	    // vertx
 	    function lib$es6$promise$asap$$useVertxTimer() {
 	      return function() {
 	        lib$es6$promise$asap$$vertxNext(lib$es6$promise$asap$$flush);
 	      };
 	    }
-
+	
 	    function lib$es6$promise$asap$$useMutationObserver() {
 	      var iterations = 0;
 	      var observer = new lib$es6$promise$asap$$BrowserMutationObserver(lib$es6$promise$asap$$flush);
 	      var node = document.createTextNode('');
 	      observer.observe(node, { characterData: true });
-
+	
 	      return function() {
 	        node.data = (iterations = ++iterations % 2);
 	      };
 	    }
-
+	
 	    // web worker
 	    function lib$es6$promise$asap$$useMessageChannel() {
 	      var channel = new MessageChannel();
@@ -37892,28 +37892,28 @@
 	        channel.port2.postMessage(0);
 	      };
 	    }
-
+	
 	    function lib$es6$promise$asap$$useSetTimeout() {
 	      return function() {
 	        setTimeout(lib$es6$promise$asap$$flush, 1);
 	      };
 	    }
-
+	
 	    var lib$es6$promise$asap$$queue = new Array(1000);
 	    function lib$es6$promise$asap$$flush() {
 	      for (var i = 0; i < lib$es6$promise$asap$$len; i+=2) {
 	        var callback = lib$es6$promise$asap$$queue[i];
 	        var arg = lib$es6$promise$asap$$queue[i+1];
-
+	
 	        callback(arg);
-
+	
 	        lib$es6$promise$asap$$queue[i] = undefined;
 	        lib$es6$promise$asap$$queue[i+1] = undefined;
 	      }
-
+	
 	      lib$es6$promise$asap$$len = 0;
 	    }
-
+	
 	    function lib$es6$promise$asap$$attemptVertx() {
 	      try {
 	        var r = require;
@@ -37924,7 +37924,7 @@
 	        return lib$es6$promise$asap$$useSetTimeout();
 	      }
 	    }
-
+	
 	    var lib$es6$promise$asap$$scheduleFlush;
 	    // Decide what async method to use to triggering processing of queued callbacks:
 	    if (lib$es6$promise$asap$$isNode) {
@@ -37940,15 +37940,15 @@
 	    }
 	    function lib$es6$promise$then$$then(onFulfillment, onRejection) {
 	      var parent = this;
-
+	
 	      var child = new this.constructor(lib$es6$promise$$internal$$noop);
-
+	
 	      if (child[lib$es6$promise$$internal$$PROMISE_ID] === undefined) {
 	        lib$es6$promise$$internal$$makePromise(child);
 	      }
-
+	
 	      var state = parent._state;
-
+	
 	      if (state) {
 	        var callback = arguments[state - 1];
 	        lib$es6$promise$asap$$asap(function(){
@@ -37957,41 +37957,41 @@
 	      } else {
 	        lib$es6$promise$$internal$$subscribe(parent, child, onFulfillment, onRejection);
 	      }
-
+	
 	      return child;
 	    }
 	    var lib$es6$promise$then$$default = lib$es6$promise$then$$then;
 	    function lib$es6$promise$promise$resolve$$resolve(object) {
 	      /*jshint validthis:true */
 	      var Constructor = this;
-
+	
 	      if (object && typeof object === 'object' && object.constructor === Constructor) {
 	        return object;
 	      }
-
+	
 	      var promise = new Constructor(lib$es6$promise$$internal$$noop);
 	      lib$es6$promise$$internal$$resolve(promise, object);
 	      return promise;
 	    }
 	    var lib$es6$promise$promise$resolve$$default = lib$es6$promise$promise$resolve$$resolve;
 	    var lib$es6$promise$$internal$$PROMISE_ID = Math.random().toString(36).substring(16);
-
+	
 	    function lib$es6$promise$$internal$$noop() {}
-
+	
 	    var lib$es6$promise$$internal$$PENDING   = void 0;
 	    var lib$es6$promise$$internal$$FULFILLED = 1;
 	    var lib$es6$promise$$internal$$REJECTED  = 2;
-
+	
 	    var lib$es6$promise$$internal$$GET_THEN_ERROR = new lib$es6$promise$$internal$$ErrorObject();
-
+	
 	    function lib$es6$promise$$internal$$selfFulfillment() {
 	      return new TypeError("You cannot resolve a promise with itself");
 	    }
-
+	
 	    function lib$es6$promise$$internal$$cannotReturnOwn() {
 	      return new TypeError('A promises callback cannot return that same promise.');
 	    }
-
+	
 	    function lib$es6$promise$$internal$$getThen(promise) {
 	      try {
 	        return promise.then;
@@ -38000,7 +38000,7 @@
 	        return lib$es6$promise$$internal$$GET_THEN_ERROR;
 	      }
 	    }
-
+	
 	    function lib$es6$promise$$internal$$tryThen(then, value, fulfillmentHandler, rejectionHandler) {
 	      try {
 	        then.call(value, fulfillmentHandler, rejectionHandler);
@@ -38008,7 +38008,7 @@
 	        return e;
 	      }
 	    }
-
+	
 	    function lib$es6$promise$$internal$$handleForeignThenable(promise, thenable, then) {
 	       lib$es6$promise$asap$$asap(function(promise) {
 	        var sealed = false;
@@ -38023,17 +38023,17 @@
 	        }, function(reason) {
 	          if (sealed) { return; }
 	          sealed = true;
-
+	
 	          lib$es6$promise$$internal$$reject(promise, reason);
 	        }, 'Settle: ' + (promise._label || ' unknown promise'));
-
+	
 	        if (!sealed && error) {
 	          sealed = true;
 	          lib$es6$promise$$internal$$reject(promise, error);
 	        }
 	      }, promise);
 	    }
-
+	
 	    function lib$es6$promise$$internal$$handleOwnThenable(promise, thenable) {
 	      if (thenable._state === lib$es6$promise$$internal$$FULFILLED) {
 	        lib$es6$promise$$internal$$fulfill(promise, thenable._result);
@@ -38047,7 +38047,7 @@
 	        });
 	      }
 	    }
-
+	
 	    function lib$es6$promise$$internal$$handleMaybeThenable(promise, maybeThenable, then) {
 	      if (maybeThenable.constructor === promise.constructor &&
 	          then === lib$es6$promise$then$$default &&
@@ -38065,7 +38065,7 @@
 	        }
 	      }
 	    }
-
+	
 	    function lib$es6$promise$$internal$$resolve(promise, value) {
 	      if (promise === value) {
 	        lib$es6$promise$$internal$$reject(promise, lib$es6$promise$$internal$$selfFulfillment());
@@ -38075,77 +38075,77 @@
 	        lib$es6$promise$$internal$$fulfill(promise, value);
 	      }
 	    }
-
+	
 	    function lib$es6$promise$$internal$$publishRejection(promise) {
 	      if (promise._onerror) {
 	        promise._onerror(promise._result);
 	      }
-
+	
 	      lib$es6$promise$$internal$$publish(promise);
 	    }
-
+	
 	    function lib$es6$promise$$internal$$fulfill(promise, value) {
 	      if (promise._state !== lib$es6$promise$$internal$$PENDING) { return; }
-
+	
 	      promise._result = value;
 	      promise._state = lib$es6$promise$$internal$$FULFILLED;
-
+	
 	      if (promise._subscribers.length !== 0) {
 	        lib$es6$promise$asap$$asap(lib$es6$promise$$internal$$publish, promise);
 	      }
 	    }
-
+	
 	    function lib$es6$promise$$internal$$reject(promise, reason) {
 	      if (promise._state !== lib$es6$promise$$internal$$PENDING) { return; }
 	      promise._state = lib$es6$promise$$internal$$REJECTED;
 	      promise._result = reason;
-
+	
 	      lib$es6$promise$asap$$asap(lib$es6$promise$$internal$$publishRejection, promise);
 	    }
-
+	
 	    function lib$es6$promise$$internal$$subscribe(parent, child, onFulfillment, onRejection) {
 	      var subscribers = parent._subscribers;
 	      var length = subscribers.length;
-
+	
 	      parent._onerror = null;
-
+	
 	      subscribers[length] = child;
 	      subscribers[length + lib$es6$promise$$internal$$FULFILLED] = onFulfillment;
 	      subscribers[length + lib$es6$promise$$internal$$REJECTED]  = onRejection;
-
+	
 	      if (length === 0 && parent._state) {
 	        lib$es6$promise$asap$$asap(lib$es6$promise$$internal$$publish, parent);
 	      }
 	    }
-
+	
 	    function lib$es6$promise$$internal$$publish(promise) {
 	      var subscribers = promise._subscribers;
 	      var settled = promise._state;
-
+	
 	      if (subscribers.length === 0) { return; }
-
+	
 	      var child, callback, detail = promise._result;
-
+	
 	      for (var i = 0; i < subscribers.length; i += 3) {
 	        child = subscribers[i];
 	        callback = subscribers[i + settled];
-
+	
 	        if (child) {
 	          lib$es6$promise$$internal$$invokeCallback(settled, child, callback, detail);
 	        } else {
 	          callback(detail);
 	        }
 	      }
-
+	
 	      promise._subscribers.length = 0;
 	    }
-
+	
 	    function lib$es6$promise$$internal$$ErrorObject() {
 	      this.error = null;
 	    }
-
+	
 	    var lib$es6$promise$$internal$$TRY_CATCH_ERROR = new lib$es6$promise$$internal$$ErrorObject();
-
+	
 	    function lib$es6$promise$$internal$$tryCatch(callback, detail) {
 	      try {
 	        return callback(detail);
@@ -38154,14 +38154,14 @@
 	        return lib$es6$promise$$internal$$TRY_CATCH_ERROR;
 	      }
 	    }
-
+	
 	    function lib$es6$promise$$internal$$invokeCallback(settled, promise, callback, detail) {
 	      var hasCallback = lib$es6$promise$utils$$isFunction(callback),
 	          value, error, succeeded, failed;
-
+	
 	      if (hasCallback) {
 	        value = lib$es6$promise$$internal$$tryCatch(callback, detail);
-
+	
 	        if (value === lib$es6$promise$$internal$$TRY_CATCH_ERROR) {
 	          failed = true;
 	          error = value.error;
@@ -38169,17 +38169,17 @@
 	        } else {
 	          succeeded = true;
 	        }
-
+	
 	        if (promise === value) {
 	          lib$es6$promise$$internal$$reject(promise, lib$es6$promise$$internal$$cannotReturnOwn());
 	          return;
 	        }
-
+	
 	      } else {
 	        value = detail;
 	        succeeded = true;
 	      }
-
+	
 	      if (promise._state !== lib$es6$promise$$internal$$PENDING) {
 	        // noop
 	      } else if (hasCallback && succeeded) {
@@ -38192,7 +38192,7 @@
 	        lib$es6$promise$$internal$$reject(promise, value);
 	      }
 	    }
-
+	
 	    function lib$es6$promise$$internal$$initializePromise(promise, resolver) {
 	      try {
 	        resolver(function resolvePromise(value){
@@ -38204,19 +38204,19 @@
 	        lib$es6$promise$$internal$$reject(promise, e);
 	      }
 	    }
-
+	
 	    var lib$es6$promise$$internal$$id = 0;
 	    function lib$es6$promise$$internal$$nextId() {
 	      return lib$es6$promise$$internal$$id++;
 	    }
-
+	
 	    function lib$es6$promise$$internal$$makePromise(promise) {
 	      promise[lib$es6$promise$$internal$$PROMISE_ID] = lib$es6$promise$$internal$$id++;
 	      promise._state = undefined;
 	      promise._result = undefined;
 	      promise._subscribers = [];
 	    }
-
+	
 	    function lib$es6$promise$promise$all$$all(entries) {
 	      return new lib$es6$promise$enumerator$$default(this, entries).promise;
 	    }
@@ -38224,7 +38224,7 @@
 	    function lib$es6$promise$promise$race$$race(entries) {
 	      /*jshint validthis:true */
 	      var Constructor = this;
-
+	
 	      if (!lib$es6$promise$utils$$isArray(entries)) {
 	        return new Constructor(function(resolve, reject) {
 	          reject(new TypeError('You must pass an array to race.'));
@@ -38247,82 +38247,82 @@
 	      return promise;
 	    }
 	    var lib$es6$promise$promise$reject$$default = lib$es6$promise$promise$reject$$reject;
-
-
+	
+	
 	    function lib$es6$promise$promise$$needsResolver() {
 	      throw new TypeError('You must pass a resolver function as the first argument to the promise constructor');
 	    }
-
+	
 	    function lib$es6$promise$promise$$needsNew() {
 	      throw new TypeError("Failed to construct 'Promise': Please use the 'new' operator, this object constructor cannot be called as a function.");
 	    }
-
+	
 	    var lib$es6$promise$promise$$default = lib$es6$promise$promise$$Promise;
 	    /**
 	      Promise objects represent the eventual result of an asynchronous operation. The
 	      primary way of interacting with a promise is through its `then` method, which
 	      registers callbacks to receive either a promise's eventual value or the reason
 	      why the promise cannot be fulfilled.
-
+	
 	      Terminology
 	      -----------
-
+	
 	      - `promise` is an object or function with a `then` method whose behavior conforms to this specification.
 	      - `thenable` is an object or function that defines a `then` method.
 	      - `value` is any legal JavaScript value (including undefined, a thenable, or a promise).
 	      - `exception` is a value that is thrown using the throw statement.
 	      - `reason` is a value that indicates why a promise was rejected.
 	      - `settled` the final resting state of a promise, fulfilled or rejected.
-
+	
 	      A promise can be in one of three states: pending, fulfilled, or rejected.
-
+	
 	      Promises that are fulfilled have a fulfillment value and are in the fulfilled
 	      state.  Promises that are rejected have a rejection reason and are in the
 	      rejected state.  A fulfillment value is never a thenable.
-
+	
 	      Promises can also be said to *resolve* a value.  If this value is also a
 	      promise, then the original promise's settled state will match the value's
 	      settled state.  So a promise that *resolves* a promise that rejects will
 	      itself reject, and a promise that *resolves* a promise that fulfills will
 	      itself fulfill.
-
-
+	
+	
 	      Basic Usage:
 	      ------------
-
+	
 	      ```js
 	      var promise = new Promise(function(resolve, reject) {
 	        // on success
 	        resolve(value);
-
+	
 	        // on failure
 	        reject(reason);
 	      });
-
+	
 	      promise.then(function(value) {
 	        // on fulfillment
 	      }, function(reason) {
 	        // on rejection
 	      });
 	      ```
-
+	
 	      Advanced Usage:
 	      ---------------
-
+	
 	      Promises shine when abstracting away asynchronous interactions such as
 	      `XMLHttpRequest`s.
-
+	
 	      ```js
 	      function getJSON(url) {
 	        return new Promise(function(resolve, reject){
 	          var xhr = new XMLHttpRequest();
-
+	
 	          xhr.open('GET', url);
 	          xhr.onreadystatechange = handler;
 	          xhr.responseType = 'json';
 	          xhr.setRequestHeader('Accept', 'application/json');
 	          xhr.send();
-
+	
 	          function handler() {
 	            if (this.readyState === this.DONE) {
 	              if (this.status === 200) {
@@ -38334,16 +38334,16 @@
 	          };
 	        });
 	      }
-
+	
 	      getJSON('/posts.json').then(function(json) {
 	        // on fulfillment
 	      }, function(reason) {
 	        // on rejection
 	      });
 	      ```
-
+	
 	      Unlike callbacks, promises are great composable primitives.
-
+	
 	      ```js
 	      Promise.all([
 	        getJSON('/posts'),
@@ -38351,11 +38351,11 @@
 	      ]).then(function(values){
 	        values[0] // => postsJSON
 	        values[1] // => commentsJSON
-
+	
 	        return values;
 	      });
 	      ```
-
+	
 	      @class Promise
 	      @param {function} resolver
 	      Useful for tooling.
@@ -38365,13 +38365,13 @@
 	      this[lib$es6$promise$$internal$$PROMISE_ID] = lib$es6$promise$$internal$$nextId();
 	      this._result = this._state = undefined;
 	      this._subscribers = [];
-
+	
 	      if (lib$es6$promise$$internal$$noop !== resolver) {
 	        typeof resolver !== 'function' && lib$es6$promise$promise$$needsResolver();
 	        this instanceof lib$es6$promise$promise$$Promise ? lib$es6$promise$$internal$$initializePromise(this, resolver) : lib$es6$promise$promise$$needsNew();
 	      }
 	    }
-
+	
 	    lib$es6$promise$promise$$Promise.all = lib$es6$promise$promise$all$$default;
 	    lib$es6$promise$promise$$Promise.race = lib$es6$promise$promise$race$$default;
 	    lib$es6$promise$promise$$Promise.resolve = lib$es6$promise$promise$resolve$$default;
@@ -38379,15 +38379,15 @@
 	    lib$es6$promise$promise$$Promise._setScheduler = lib$es6$promise$asap$$setScheduler;
 	    lib$es6$promise$promise$$Promise._setAsap = lib$es6$promise$asap$$setAsap;
 	    lib$es6$promise$promise$$Promise._asap = lib$es6$promise$asap$$asap;
-
+	
 	    lib$es6$promise$promise$$Promise.prototype = {
 	      constructor: lib$es6$promise$promise$$Promise,
-
+	
 	    /**
 	      The primary way of interacting with a promise is through its `then` method,
 	      which registers callbacks to receive either a promise's eventual value or the
 	      reason why the promise cannot be fulfilled.
-
+	
 	      ```js
 	      findUser().then(function(user){
 	        // user is available
@@ -38395,14 +38395,14 @@
 	        // user is unavailable, and you are given the reason why
 	      });
 	      ```
-
+	
 	      Chaining
 	      --------
-
+	
 	      The return value of `then` is itself a promise.  This second, 'downstream'
 	      promise is resolved with the return value of the first promise's fulfillment
 	      or rejection handler, or rejected if the handler throws an exception.
-
+	
 	      ```js
 	      findUser().then(function (user) {
 	        return user.name;
@@ -38412,7 +38412,7 @@
 	        // If `findUser` fulfilled, `userName` will be the user's name, otherwise it
 	        // will be `'default name'`
 	      });
-
+	
 	      findUser().then(function (user) {
 	        throw new Error('Found user, but still unhappy');
 	      }, function (reason) {
@@ -38425,7 +38425,7 @@
 	      });
 	      ```
 	      If the downstream promise does not specify a rejection handler, rejection reasons will be propagated further downstream.
-
+	
 	      ```js
 	      findUser().then(function (user) {
 	        throw new PedagogicalException('Upstream error');
@@ -38437,15 +38437,15 @@
 	        // The `PedgagocialException` is propagated all the way down to here
 	      });
 	      ```
-
+	
 	      Assimilation
 	      ------------
-
+	
 	      Sometimes the value you want to propagate to a downstream promise can only be
 	      retrieved asynchronously. This can be achieved by returning a promise in the
 	      fulfillment or rejection handler. The downstream promise will then be pending
 	      until the returned promise is settled. This is called *assimilation*.
-
+	
 	      ```js
 	      findUser().then(function (user) {
 	        return findCommentsByAuthor(user);
@@ -38453,9 +38453,9 @@
 	        // The user's comments are now available
 	      });
 	      ```
-
+	
 	      If the assimliated promise rejects, then the downstream promise will also reject.
-
+	
 	      ```js
 	      findUser().then(function (user) {
 	        return findCommentsByAuthor(user);
@@ -38465,15 +38465,15 @@
 	        // If `findCommentsByAuthor` rejects, we'll have the reason here
 	      });
 	      ```
-
+	
 	      Simple Example
 	      --------------
-
+	
 	      Synchronous Example
-
+	
 	      ```javascript
 	      var result;
-
+	
 	      try {
 	        result = findResult();
 	        // success
@@ -38481,9 +38481,9 @@
 	        // failure
 	      }
 	      ```
-
+	
 	      Errback Example
-
+	
 	      ```js
 	      findResult(function(result, err){
 	        if (err) {
@@ -38493,9 +38493,9 @@
 	        }
 	      });
 	      ```
-
+	
 	      Promise Example;
-
+	
 	      ```javascript
 	      findResult().then(function(result){
 	        // success
@@ -38503,15 +38503,15 @@
 	        // failure
 	      });
 	      ```
-
+	
 	      Advanced Example
 	      --------------
-
+	
 	      Synchronous Example
-
+	
 	      ```javascript
 	      var author, books;
-
+	
 	      try {
 	        author = findAuthor();
 	        books  = findBooksByAuthor(author);
@@ -38520,19 +38520,19 @@
 	        // failure
 	      }
 	      ```
-
+	
 	      Errback Example
-
+	
 	      ```js
-
+	
 	      function foundBooks(books) {
-
+	
 	      }
-
+	
 	      function failure(reason) {
-
+	
 	      }
-
+	
 	      findAuthor(function(author, err){
 	        if (err) {
 	          failure(err);
@@ -38557,9 +38557,9 @@
 	        }
 	      });
 	      ```
-
+	
 	      Promise Example;
-
+	
 	      ```javascript
 	      findAuthor().
 	        then(findBooksByAuthor).
@@ -38569,7 +38569,7 @@
 	        // something went wrong
 	      });
 	      ```
-
+	
 	      @method then
 	      @param {Function} onFulfilled
 	      @param {Function} onRejected
@@ -38577,29 +38577,29 @@
 	      @return {Promise}
 	    */
 	      then: lib$es6$promise$then$$default,
-
+	
 	    /**
 	      `catch` is simply sugar for `then(undefined, onRejection)` which makes it the same
 	      as the catch block of a try/catch statement.
-
+	
 	      ```js
 	      function findAuthor(){
 	        throw new Error('couldn't find that author');
 	      }
-
+	
 	      // synchronous
 	      try {
 	        findAuthor();
 	      } catch(reason) {
 	        // something went wrong
 	      }
-
+	
 	      // async with promises
 	      findAuthor().catch(function(reason){
 	        // something went wrong
 	      });
 	      ```
-
+	
 	      @method catch
 	      @param {Function} onRejection
 	      Useful for tooling.
@@ -38613,18 +38613,18 @@
 	    function lib$es6$promise$enumerator$$Enumerator(Constructor, input) {
 	      this._instanceConstructor = Constructor;
 	      this.promise = new Constructor(lib$es6$promise$$internal$$noop);
-
+	
 	      if (!this.promise[lib$es6$promise$$internal$$PROMISE_ID]) {
 	        lib$es6$promise$$internal$$makePromise(this.promise);
 	      }
-
+	
 	      if (lib$es6$promise$utils$$isArray(input)) {
 	        this._input     = input;
 	        this.length     = input.length;
 	        this._remaining = input.length;
-
+	
 	        this._result = new Array(this.length);
-
+	
 	        if (this.length === 0) {
 	          lib$es6$promise$$internal$$fulfill(this.promise, this._result);
 	        } else {
@@ -38638,27 +38638,27 @@
 	        lib$es6$promise$$internal$$reject(this.promise, lib$es6$promise$enumerator$$validationError());
 	      }
 	    }
-
+	
 	    function lib$es6$promise$enumerator$$validationError() {
 	      return new Error('Array Methods must be provided an Array');
 	    }
-
+	
 	    lib$es6$promise$enumerator$$Enumerator.prototype._enumerate = function() {
 	      var length  = this.length;
 	      var input   = this._input;
-
+	
 	      for (var i = 0; this._state === lib$es6$promise$$internal$$PENDING && i < length; i++) {
 	        this._eachEntry(input[i], i);
 	      }
 	    };
-
+	
 	    lib$es6$promise$enumerator$$Enumerator.prototype._eachEntry = function(entry, i) {
 	      var c = this._instanceConstructor;
 	      var resolve = c.resolve;
-
+	
 	      if (resolve === lib$es6$promise$promise$resolve$$default) {
 	        var then = lib$es6$promise$$internal$$getThen(entry);
-
+	
 	        if (then === lib$es6$promise$then$$default &&
 	            entry._state !== lib$es6$promise$$internal$$PENDING) {
 	          this._settledAt(entry._state, i, entry._result);
@@ -38676,28 +38676,28 @@
 	        this._willSettleAt(resolve(entry), i);
 	      }
 	    };
-
+	
 	    lib$es6$promise$enumerator$$Enumerator.prototype._settledAt = function(state, i, value) {
 	      var promise = this.promise;
-
+	
 	      if (promise._state === lib$es6$promise$$internal$$PENDING) {
 	        this._remaining--;
-
+	
 	        if (state === lib$es6$promise$$internal$$REJECTED) {
 	          lib$es6$promise$$internal$$reject(promise, value);
 	        } else {
 	          this._result[i] = value;
 	        }
 	      }
-
+	
 	      if (this._remaining === 0) {
 	        lib$es6$promise$$internal$$fulfill(promise, this._result);
 	      }
 	    };
-
+	
 	    lib$es6$promise$enumerator$$Enumerator.prototype._willSettleAt = function(promise, i) {
 	      var enumerator = this;
-
+	
 	      lib$es6$promise$$internal$$subscribe(promise, undefined, function(value) {
 	        enumerator._settledAt(lib$es6$promise$$internal$$FULFILLED, i, value);
 	      }, function(reason) {
@@ -38706,7 +38706,7 @@
 	    };
 	    function lib$es6$promise$polyfill$$polyfill() {
 	      var local;
-
+	
 	      if (typeof global !== 'undefined') {
 	          local = global;
 	      } else if (typeof self !== 'undefined') {
@@ -38718,22 +38718,22 @@
 	              throw new Error('polyfill failed because global object is unavailable in this environment');
 	          }
 	      }
-
+	
 	      var P = local.Promise;
-
+	
 	      if (P && Object.prototype.toString.call(P.resolve()) === '[object Promise]' && !P.cast) {
 	        return;
 	      }
-
+	
 	      local.Promise = lib$es6$promise$promise$$default;
 	    }
 	    var lib$es6$promise$polyfill$$default = lib$es6$promise$polyfill$$polyfill;
-
+	
 	    var lib$es6$promise$umd$$ES6Promise = {
 	      'Promise': lib$es6$promise$promise$$default,
 	      'polyfill': lib$es6$promise$polyfill$$default
 	    };
-
+	
 	    /* global define:true module:true window: true */
 	    if ("function" === 'function' && __webpack_require__(37)['amd']) {
 	      !(__WEBPACK_AMD_DEFINE_RESULT__ = function() { return lib$es6$promise$umd$$ES6Promise; }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -38742,11 +38742,11 @@
 	    } else if (typeof this !== 'undefined') {
 	      this['ES6Promise'] = lib$es6$promise$umd$$ES6Promise;
 	    }
-
+	
 	    lib$es6$promise$polyfill$$default();
 	}).call(this);
-
-
+	
+	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), (function() { return this; }()), __webpack_require__(22)(module)))
 
 /***/ },
@@ -38756,15 +38756,15 @@
 
 	// shim for using process in browser
 	var process = module.exports = {};
-
+	
 	// cached from whatever global is present so that test runners that stub it
 	// don't break things.  But we need to wrap it in a try catch in case it is
 	// wrapped in strict mode code which doesn't define any globals.  It's inside a
 	// function because try/catches deoptimize in certain engines.
-
+	
 	var cachedSetTimeout;
 	var cachedClearTimeout;
-
+	
 	(function () {
 	    try {
 	        cachedSetTimeout = setTimeout;
@@ -38798,8 +38798,8 @@
 	            return cachedSetTimeout.call(this, fun, 0);
 	        }
 	    }
-
-
+	
+	
 	}
 	function runClearTimeout(marker) {
 	    if (cachedClearTimeout === clearTimeout) {
@@ -38819,15 +38819,15 @@
 	            return cachedClearTimeout.call(this, marker);
 	        }
 	    }
-
-
-
+	
+	
+	
 	}
 	var queue = [];
 	var draining = false;
 	var currentQueue;
 	var queueIndex = -1;
-
+	
 	function cleanUpNextTick() {
 	    if (!draining || !currentQueue) {
 	        return;
@@ -38842,14 +38842,14 @@
 	        drainQueue();
 	    }
 	}
-
+	
 	function drainQueue() {
 	    if (draining) {
 	        return;
 	    }
 	    var timeout = runTimeout(cleanUpNextTick);
 	    draining = true;
-
+	
 	    var len = queue.length;
 	    while(len) {
 	        currentQueue = queue;
@@ -38866,7 +38866,7 @@
 	    draining = false;
 	    runClearTimeout(timeout);
 	}
-
+	
 	process.nextTick = function (fun) {
 	    var args = new Array(arguments.length - 1);
 	    if (arguments.length > 1) {
@@ -38879,7 +38879,7 @@
 	        runTimeout(drainQueue);
 	    }
 	};
-
+	
 	// v8 likes predictible objects
 	function Item(fun, array) {
 	    this.fun = fun;
@@ -38894,9 +38894,9 @@
 	process.argv = [];
 	process.version = ''; // empty string to avoid regexp issues
 	process.versions = {};
-
+	
 	function noop() {}
-
+	
 	process.on = noop;
 	process.addListener = noop;
 	process.once = noop;
@@ -38904,11 +38904,11 @@
 	process.removeListener = noop;
 	process.removeAllListeners = noop;
 	process.emit = noop;
-
+	
 	process.binding = function (name) {
 	    throw new Error('process.binding is not supported');
 	};
-
+	
 	process.cwd = function () { return '/' };
 	process.chdir = function (dir) {
 	    throw new Error('process.chdir is not supported');
@@ -38988,13 +38988,13 @@
 	 * Global dependencies.
 	 * @global {Object} document - DOM
 	 */
-
+	
 	var devnull = function() {},
 	    bundleIdCache = {},
 	    bundleResultCache = {},
 	    bundleCallbackQueue = {};
-
-
+	
+	
 	/**
 	 * Subscribe to bundle load event.
 	 * @param {string[]} bundleIds - Bundle ids
@@ -39008,11 +39008,11 @@
 	      i = bundleIds.length,
 	      numWaiting = i,
 	      fn, bundleId, r, q;
-
+	
 	  // define callback function
 	  fn = function(bundleId, pathsNotFound) {
 	    if (pathsNotFound.length) depsNotFound.push(bundleId);
-
+	
 	    numWaiting--;
 	    if (!numWaiting) callbackFn(depsNotFound);
 	  };
@@ -39033,8 +39033,8 @@
 	    q.push(fn);
 	  }
 	}
-
-
+	
+	
 	/**
 	 * Publish bundle load event.
 	 * @param {string} bundleId - Bundle id
@@ -39058,8 +39058,8 @@
 	    q.splice(0, 1);
 	  }
 	}
-
-
+	
+	
 	/**
 	 * Load individual file.
 	 * @param {string} path - The file path
@@ -39068,7 +39068,7 @@
 	function loadFile(path, callbackFn, async) {
 	  var doc = document,
 	      e;
-
+	
 	  if (/\.css$/.test(path)) {
 	    // css
 	    e = doc.createElement('link');
@@ -39083,11 +39083,11 @@
 	  
 	  e.onload = e.onerror = e.onbeforeload = function(ev) {
 	    var result = ev.type[0];
-
+	
 	    // treat empty stylesheets as failures (to get around lack of onerror
 	    // support in IE
 	    if (e.sheet && !e.sheet.cssRules.length) result = 'e';
-
+	
 	    // execute callback
 	    callbackFn(path, result, ev.defaultPrevented);
 	  };
@@ -39095,8 +39095,8 @@
 	  // add to document
 	  doc.head.appendChild(e);
 	}
-
-
+	
+	
 	/**
 	 * Load multiple files.
 	 * @param {string[]} paths - The file paths
@@ -39112,7 +39112,7 @@
 	  fn = function(path, result, defaultPrevented) {
 	    // handle error
 	    if (result == 'e') pathsNotFound.push(path);
-
+	
 	    // handle beforeload event. If defaultPrevented then that means the load
 	    // will be blocked (ex. Ghostery/ABP on Safari)
 	    if (result == 'b') {
@@ -39127,8 +39127,8 @@
 	  // load scripts
 	  for (i=0; i < x; i++) loadFile(paths[i], fn, async);
 	}
-
-
+	
+	
 	/**
 	 * Initiate script load and register bundle.
 	 * @param {(string|string[])} paths - The file paths
@@ -39141,7 +39141,7 @@
 	  
 	  // bundleId (if string)
 	  if (arg1 && arg1.trim) bundleId = arg1;
-
+	
 	  // args (default is {})
 	  args = (bundleId ? arg2 : arg1) || {};
 	  
@@ -39159,13 +39159,13 @@
 	    // success and fail callbacks
 	    if (pathsNotFound.length) (args.fail || devnull)(pathsNotFound);
 	    else (args.success || devnull)();
-
+	
 	    // publish bundle load event
 	    publish(bundleId, pathsNotFound);
 	  }, args.async);
 	}
-
-
+	
+	
 	/**
 	 * Execute callbacks when dependencies have been satisfied.
 	 * @param {(string|string[])} deps - List of bundle ids
@@ -39181,8 +39181,8 @@
 	  
 	  return loadjs;
 	};
-
-
+	
+	
 	/**
 	 * Manually satisfy bundle dependencies.
 	 * @param {string} bundleId - The bundle id
@@ -39190,11 +39190,11 @@
 	loadjs.done = function done(bundleId) {
 	  publish(bundleId, []);
 	};
-
-
+	
+	
 	// export
 	return loadjs;
-
+	
 	}));
 
 
@@ -39281,7 +39281,7 @@
 	this.clone().normalize(),c,e,f;if(b._parts.urn)throw Error("URNs do not have any generally defined hierarchical components");a=(new d(a)).normalize();c=b._parts;e=a._parts;f=b.path();a=a.path();if("/"!==f.charAt(0))throw Error("URI is already relative");if("/"!==a.charAt(0))throw Error("Cannot calculate a URI relative to another relative URI");c.protocol===e.protocol&&(c.protocol=null);if(c.username===e.username&&c.password===e.password&&null===c.protocol&&null===c.username&&null===c.password&&c.hostname===
 	e.hostname&&c.port===e.port)c.hostname=null,c.port=null;else return b.build();if(f===a)return c.path="",b.build();f=d.commonPath(f,a);if(!f)return b.build();e=e.path.substring(f.length).replace(/[^\/]*$/,"").replace(/.*?\//g,"../");c.path=e+c.path.substring(f.length)||"./";return b.build()};e.equals=function(a){var b=this.clone(),c=new d(a),e;a={};var f,g;b.normalize();c.normalize();if(b.toString()===c.toString())return!0;f=b.query();e=c.query();b.query("");c.query("");if(b.toString()!==c.toString()||
 	f.length!==e.length)return!1;b=d.parseQuery(f,this._parts.escapeQuerySpace);e=d.parseQuery(e,this._parts.escapeQuerySpace);for(g in b)if(r.call(b,g)){if(!p(b[g])){if(b[g]!==e[g])return!1}else if(!B(b[g],e[g]))return!1;a[g]=!0}for(g in e)if(r.call(e,g)&&!a[g])return!1;return!0};e.duplicateQueryParameters=function(a){this._parts.duplicateQueryParameters=!!a;return this};e.escapeQuerySpace=function(a){this._parts.escapeQuerySpace=!!a;return this};return d});
-
+	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22)(module), (function() { return this; }())))
 
 /***/ },
@@ -39291,7 +39291,7 @@
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/*! https://mths.be/punycode v1.4.0 by @mathias */
 	;(function(root) {
-
+	
 		/** Detect free variables */
 		var freeExports = typeof exports == 'object' && exports &&
 			!exports.nodeType && exports;
@@ -39305,17 +39305,17 @@
 		) {
 			root = freeGlobal;
 		}
-
+	
 		/**
 		 * The `punycode` object.
 		 * @name punycode
 		 * @type Object
 		 */
 		var punycode,
-
+	
 		/** Highest positive signed 32-bit float value */
 		maxInt = 2147483647, // aka. 0x7FFFFFFF or 2^31-1
-
+	
 		/** Bootstring parameters */
 		base = 36,
 		tMin = 1,
@@ -39325,29 +39325,29 @@
 		initialBias = 72,
 		initialN = 128, // 0x80
 		delimiter = '-', // '\x2D'
-
+	
 		/** Regular expressions */
 		regexPunycode = /^xn--/,
 		regexNonASCII = /[^\x20-\x7E]/, // unprintable ASCII chars + non-ASCII chars
 		regexSeparators = /[\x2E\u3002\uFF0E\uFF61]/g, // RFC 3490 separators
-
+	
 		/** Error messages */
 		errors = {
 			'overflow': 'Overflow: input needs wider integers to process',
 			'not-basic': 'Illegal input >= 0x80 (not a basic code point)',
 			'invalid-input': 'Invalid input'
 		},
-
+	
 		/** Convenience shortcuts */
 		baseMinusTMin = base - tMin,
 		floor = Math.floor,
 		stringFromCharCode = String.fromCharCode,
-
+	
 		/** Temporary variable */
 		key;
-
+	
 		/*--------------------------------------------------------------------------*/
-
+	
 		/**
 		 * A generic error utility function.
 		 * @private
@@ -39357,7 +39357,7 @@
 		function error(type) {
 			throw new RangeError(errors[type]);
 		}
-
+	
 		/**
 		 * A generic `Array#map` utility function.
 		 * @private
@@ -39374,7 +39374,7 @@
 			}
 			return result;
 		}
-
+	
 		/**
 		 * A simple `Array#map`-like wrapper to work with domain name strings or email
 		 * addresses.
@@ -39400,7 +39400,7 @@
 			var encoded = map(labels, fn).join('.');
 			return result + encoded;
 		}
-
+	
 		/**
 		 * Creates an array containing the numeric code points of each Unicode
 		 * character in the string. While JavaScript uses UCS-2 internally,
@@ -39439,7 +39439,7 @@
 			}
 			return output;
 		}
-
+	
 		/**
 		 * Creates a string based on an array of numeric code points.
 		 * @see `punycode.ucs2.decode`
@@ -39460,7 +39460,7 @@
 				return output;
 			}).join('');
 		}
-
+	
 		/**
 		 * Converts a basic code point into a digit/integer.
 		 * @see `digitToBasic()`
@@ -39482,7 +39482,7 @@
 			}
 			return base;
 		}
-
+	
 		/**
 		 * Converts a digit/integer into a basic code point.
 		 * @see `basicToDigit()`
@@ -39499,7 +39499,7 @@
 			// 26..35 map to ASCII 0..9
 			return digit + 22 + 75 * (digit < 26) - ((flag != 0) << 5);
 		}
-
+	
 		/**
 		 * Bias adaptation function as per section 3.4 of RFC 3492.
 		 * https://tools.ietf.org/html/rfc3492#section-3.4
@@ -39514,7 +39514,7 @@
 			}
 			return floor(k + (baseMinusTMin + 1) * delta / (delta + skew));
 		}
-
+	
 		/**
 		 * Converts a Punycode string of ASCII-only symbols to a string of Unicode
 		 * symbols.
@@ -39540,16 +39540,16 @@
 			    t,
 			    /** Cached calculation results */
 			    baseMinusT;
-
+	
 			// Handle the basic code points: let `basic` be the number of input code
 			// points before the last delimiter, or `0` if there is none, then copy
 			// the first basic code points to the output.
-
+	
 			basic = input.lastIndexOf(delimiter);
 			if (basic < 0) {
 				basic = 0;
 			}
-
+	
 			for (j = 0; j < basic; ++j) {
 				// if it's not a basic code point
 				if (input.charCodeAt(j) >= 0x80) {
@@ -39557,65 +39557,65 @@
 				}
 				output.push(input.charCodeAt(j));
 			}
-
+	
 			// Main decoding loop: start just after the last delimiter if any basic code
 			// points were copied; start at the beginning otherwise.
-
+	
 			for (index = basic > 0 ? basic + 1 : 0; index < inputLength; /* no final expression */) {
-
+	
 				// `index` is the index of the next character to be consumed.
 				// Decode a generalized variable-length integer into `delta`,
 				// which gets added to `i`. The overflow checking is easier
 				// if we increase `i` as we go, then subtract off its starting
 				// value at the end to obtain `delta`.
 				for (oldi = i, w = 1, k = base; /* no condition */; k += base) {
-
+	
 					if (index >= inputLength) {
 						error('invalid-input');
 					}
-
+	
 					digit = basicToDigit(input.charCodeAt(index++));
-
+	
 					if (digit >= base || digit > floor((maxInt - i) / w)) {
 						error('overflow');
 					}
-
+	
 					i += digit * w;
 					t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
-
+	
 					if (digit < t) {
 						break;
 					}
-
+	
 					baseMinusT = base - t;
 					if (w > floor(maxInt / baseMinusT)) {
 						error('overflow');
 					}
-
+	
 					w *= baseMinusT;
-
+	
 				}
-
+	
 				out = output.length + 1;
 				bias = adapt(i - oldi, out, oldi == 0);
-
+	
 				// `i` was supposed to wrap around from `out` to `0`,
 				// incrementing `n` each time, so we'll fix that now:
 				if (floor(i / out) > maxInt - n) {
 					error('overflow');
 				}
-
+	
 				n += floor(i / out);
 				i %= out;
-
+	
 				// Insert `n` at position `i` of the output
 				output.splice(i++, 0, n);
-
+	
 			}
-
+	
 			return ucs2encode(output);
 		}
-
+	
 		/**
 		 * Converts a string of Unicode symbols (e.g. a domain name label) to a
 		 * Punycode string of ASCII-only symbols.
@@ -39642,18 +39642,18 @@
 			    handledCPCountPlusOne,
 			    baseMinusT,
 			    qMinusT;
-
+	
 			// Convert the input in UCS-2 to Unicode
 			input = ucs2decode(input);
-
+	
 			// Cache the length
 			inputLength = input.length;
-
+	
 			// Initialize the state
 			n = initialN;
 			delta = 0;
 			bias = initialBias;
-
+	
 			// Handle the basic code points
 			for (j = 0; j < inputLength; ++j) {
 				currentValue = input[j];
@@ -39661,20 +39661,20 @@
 					output.push(stringFromCharCode(currentValue));
 				}
 			}
-
+	
 			handledCPCount = basicLength = output.length;
-
+	
 			// `handledCPCount` is the number of code points that have been handled;
 			// `basicLength` is the number of basic code points.
-
+	
 			// Finish the basic string - if it is not empty - with a delimiter
 			if (basicLength) {
 				output.push(delimiter);
 			}
-
+	
 			// Main encoding loop:
 			while (handledCPCount < inputLength) {
-
+	
 				// All non-basic code points < n have been handled already. Find the next
 				// larger one:
 				for (m = maxInt, j = 0; j < inputLength; ++j) {
@@ -39683,24 +39683,24 @@
 						m = currentValue;
 					}
 				}
-
+	
 				// Increase `delta` enough to advance the decoder's <n,i> state to <m,0>,
 				// but guard against overflow
 				handledCPCountPlusOne = handledCPCount + 1;
 				if (m - n > floor((maxInt - delta) / handledCPCountPlusOne)) {
 					error('overflow');
 				}
-
+	
 				delta += (m - n) * handledCPCountPlusOne;
 				n = m;
-
+	
 				for (j = 0; j < inputLength; ++j) {
 					currentValue = input[j];
-
+	
 					if (currentValue < n && ++delta > maxInt) {
 						error('overflow');
 					}
-
+	
 					if (currentValue == n) {
 						// Represent delta as a generalized variable-length integer
 						for (q = delta, k = base; /* no condition */; k += base) {
@@ -39715,21 +39715,21 @@
 							);
 							q = floor(qMinusT / baseMinusT);
 						}
-
+	
 						output.push(stringFromCharCode(digitToBasic(q, 0)));
 						bias = adapt(delta, handledCPCountPlusOne, handledCPCount == basicLength);
 						delta = 0;
 						++handledCPCount;
 					}
 				}
-
+	
 				++delta;
 				++n;
-
+	
 			}
 			return output.join('');
 		}
-
+	
 		/**
 		 * Converts a Punycode string representing a domain name or an email address
 		 * to Unicode. Only the Punycoded parts of the input will be converted, i.e.
@@ -39748,7 +39748,7 @@
 					: string;
 			});
 		}
-
+	
 		/**
 		 * Converts a Unicode string representing a domain name or an email address to
 		 * Punycode. Only the non-ASCII parts of the domain name will be converted,
@@ -39767,9 +39767,9 @@
 					: string;
 			});
 		}
-
+	
 		/*--------------------------------------------------------------------------*/
-
+	
 		/** Define the public API */
 		punycode = {
 			/**
@@ -39794,7 +39794,7 @@
 			'toASCII': toASCII,
 			'toUnicode': toUnicode
 		};
-
+	
 		/** Expose `punycode` */
 		// Some AMD build optimizers, like r.js, check for specific condition patterns
 		// like the following:
@@ -39818,9 +39818,9 @@
 			// in Rhino or a web browser
 			root.punycode = punycode;
 		}
-
+	
 	}(this));
-
+	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22)(module), (function() { return this; }())))
 
 /***/ },
@@ -39841,7 +39841,7 @@
 	 *   MIT License http://www.opensource.org/licenses/mit-license
 	 *
 	 */
-
+	
 	(function (root, factory) {
 	  'use strict';
 	  // https://github.com/umdjs/umd/blob/master/returnExports.js
@@ -39857,18 +39857,18 @@
 	  }
 	}(this, function (root) {
 	  'use strict';
-
+	
 	  /*
 	  var _in = "fe80:0000:0000:0000:0204:61ff:fe9d:f156";
 	  var _out = IPv6.best(_in);
 	  var _expected = "fe80::204:61ff:fe9d:f156";
-
+	
 	  console.log(_in, _out, _expected, _out === _expected);
 	  */
-
+	
 	  // save current IPv6 variable, if any
 	  var _IPv6 = root && root.IPv6;
-
+	
 	  function bestPresentation(address) {
 	    // based on:
 	    // Javascript to test an IPv6 address for proper format, and to
@@ -39879,12 +39879,12 @@
 	    // http://www.intermapper.com
 	    // http://intermapper.com/support/tools/IPV6-Validator.aspx
 	    // http://download.dartware.com/thirdparty/ipv6validator.js
-
+	
 	    var _address = address.toLowerCase();
 	    var segments = _address.split(':');
 	    var length = segments.length;
 	    var total = 8;
-
+	
 	    // trim colons (:: or ::a:b:c… or …a:b:c::)
 	    if (segments[0] === '' && segments[1] === '' && segments[2] === '') {
 	      // must have been ::
@@ -39899,15 +39899,15 @@
 	      // must have been xxxx::
 	      segments.pop();
 	    }
-
+	
 	    length = segments.length;
-
+	
 	    // adjust total segments for IPv4 trailer
 	    if (segments[length - 1].indexOf('.') !== -1) {
 	      // found a "." which means IPv4
 	      total = 7;
 	    }
-
+	
 	    // fill empty segments them with "0000"
 	    var pos;
 	    for (pos = 0; pos < length; pos++) {
@@ -39915,14 +39915,14 @@
 	        break;
 	      }
 	    }
-
+	
 	    if (pos < total) {
 	      segments.splice(pos, 1, '0000');
 	      while (segments.length < total) {
 	        segments.splice(pos, 0, '0000');
 	      }
 	    }
-
+	
 	    // strip leading zeros
 	    var _segments;
 	    for (var i = 0; i < total; i++) {
@@ -39934,10 +39934,10 @@
 	          break;
 	        }
 	      }
-
+	
 	      segments[i] = _segments.join('');
 	    }
-
+	
 	    // find longest sequence of zeroes and coalesce them into one segment
 	    var best = -1;
 	    var _best = 0;
@@ -39945,7 +39945,7 @@
 	    var current = -1;
 	    var inzeroes = false;
 	    // i; already declared
-
+	
 	    for (i = 0; i < total; i++) {
 	      if (inzeroes) {
 	        if (segments[i] === '0') {
@@ -39965,40 +39965,40 @@
 	        }
 	      }
 	    }
-
+	
 	    if (_current > _best) {
 	      best = current;
 	      _best = _current;
 	    }
-
+	
 	    if (_best > 1) {
 	      segments.splice(best, _best, '');
 	    }
-
+	
 	    length = segments.length;
-
+	
 	    // assemble remaining segments
 	    var result = '';
 	    if (segments[0] === '')  {
 	      result = ':';
 	    }
-
+	
 	    for (i = 0; i < length; i++) {
 	      result += segments[i];
 	      if (i === length - 1) {
 	        break;
 	      }
-
+	
 	      result += ':';
 	    }
-
+	
 	    if (segments[length - 1] === '') {
 	      result += ':';
 	    }
-
+	
 	    return result;
 	  }
-
+	
 	  function noConflict() {
 	    /*jshint validthis: true */
 	    if (root.IPv6 === this) {
@@ -40007,7 +40007,7 @@
 	  
 	    return this;
 	  }
-
+	
 	  return {
 	    best: bestPresentation,
 	    noConflict: noConflict
@@ -40033,7 +40033,7 @@
 	 *   MIT License http://www.opensource.org/licenses/mit-license
 	 *
 	 */
-
+	
 	(function (root, factory) {
 	  'use strict';
 	  // https://github.com/umdjs/umd/blob/master/returnExports.js
@@ -40049,10 +40049,10 @@
 	  }
 	}(this, function (root) {
 	  'use strict';
-
+	
 	  // save current SecondLevelDomains variable, if any
 	  var _SecondLevelDomains = root && root.SecondLevelDomains;
-
+	
 	  var SLD = {
 	    // list of known Second Level Domains
 	    // converted list of SLDs from https://github.com/gavingmiller/second-level-domains
@@ -40257,7 +40257,7 @@
 	      return this;
 	    }
 	  };
-
+	
 	  return SLD;
 	}));
 
@@ -40280,44 +40280,44 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	exports.__esModule = true;
-
+	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
+	
 	var _react = __webpack_require__(20);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _lodash = __webpack_require__(74);
-
+	
 	var _lodash2 = _interopRequireDefault(_lodash);
-
+	
 	var _utils = __webpack_require__(75);
-
+	
 	var _GridItem = __webpack_require__(76);
-
+	
 	var _GridItem2 = _interopRequireDefault(_GridItem);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
+	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
+	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
+	
 	var noop = function noop() {};
-
+	
 	// Types
 	/*:: import type {ResizeEvent, DragEvent, Layout, LayoutItem} from './utils';*/
-
+	
 	// End Types
-
+	
 	/**
 	 * A reactive, fluid grid layout with draggable, resizable components.
 	 */
-
+	
 	/*:: type State = {
 	  activeDrag: ?LayoutItem,
 	  layout: Layout,
@@ -40325,44 +40325,44 @@
 	  oldDragItem: ?LayoutItem,
 	  oldResizeItem: ?LayoutItem
 	};*/
-
+	
 	var ReactGridLayout = function (_React$Component) {
 	  _inherits(ReactGridLayout, _React$Component);
-
+	
 	  // TODO publish internal ReactClass displayName transform
-
+	
 	  function ReactGridLayout(props /*: typeof ReactGridLayout.prototype.props*/, context /*: any*/) /*: void*/ {
 	    _classCallCheck(this, ReactGridLayout);
-
+	
 	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props, context));
-
+	
 	    _initialiseProps.call(_this);
-
+	
 	    (0, _utils.autoBindHandlers)(_this, ['onDragStart', 'onDrag', 'onDragStop', 'onResizeStart', 'onResize', 'onResizeStop']);
 	    return _this;
 	  }
-
+	
 	  ReactGridLayout.prototype.componentDidMount = function componentDidMount() {
 	    this.setState({ mounted: true });
 	    // Call back with layout on mount. This should be done after correcting the layout width
 	    // to ensure we don't rerender with the wrong width.
 	    this.props.onLayoutChange(this.state.layout);
 	  };
-
+	
 	  ReactGridLayout.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps /*: typeof ReactGridLayout.prototype.props*/) {
 	    var newLayoutBase = void 0;
 	    // Allow parent to set layout directly.
 	    if (!(0, _lodash2.default)(nextProps.layout, this.props.layout)) {
 	      newLayoutBase = nextProps.layout;
 	    }
-
+	
 	    // If children change, also regenerate the layout. Use our state
 	    // as the base in case because it may be more up to date than
 	    // what is in props.
 	    else if (nextProps.children.length !== this.props.children.length) {
 	        newLayoutBase = this.state.layout;
 	      }
-
+	
 	    // We need to regenerate the layout.
 	    if (newLayoutBase) {
 	      var newLayout = (0, _utils.synchronizeLayoutWithChildren)(newLayoutBase, nextProps.children, nextProps.cols, nextProps.verticalCompact);
@@ -40370,18 +40370,18 @@
 	      this.props.onLayoutChange(newLayout);
 	    }
 	  };
-
+	
 	  /**
 	   * Calculates a pixel value for the container.
 	   * @return {String} Container height in pixels.
 	   */
-
-
+	
+	
 	  ReactGridLayout.prototype.containerHeight = function containerHeight() {
 	    if (!this.props.autoSize) return;
 	    return (0, _utils.bottom)(this.state.layout) * (this.props.rowHeight + this.props.margin[1]) + this.props.margin[1] + 'px';
 	  };
-
+	
 	  /**
 	   * When dragging starts
 	   * @param {String} i Id of the child
@@ -40390,21 +40390,21 @@
 	   * @param {Event} e The mousedown event
 	   * @param {Element} node The current dragging DOM element
 	   */
-
-
+	
+	
 	  ReactGridLayout.prototype.onDragStart = function onDragStart(i /*:string*/, x /*:number*/, y /*:number*/, _ref) {
 	    var e = _ref.e;
 	    var node = _ref.node;
 	    var layout = this.state.layout;
-
+	
 	    var l = (0, _utils.getLayoutItem)(layout, i);
 	    if (!l) return;
-
+	
 	    this.setState({ oldDragItem: (0, _utils.cloneLayoutItem)(l) });
-
+	
 	    this.props.onDragStart(layout, l, l, null, e, node);
 	  };
-
+	
 	  /**
 	   * Each drag movement create a new dragelement and move the element to the dragged location
 	   * @param {String} i Id of the child
@@ -40413,33 +40413,33 @@
 	   * @param {Event} e The mousedown event
 	   * @param {Element} node The current dragging DOM element
 	   */
-
-
+	
+	
 	  ReactGridLayout.prototype.onDrag = function onDrag(i /*:string*/, x /*:number*/, y /*:number*/, _ref2) {
 	    var e = _ref2.e;
 	    var node = _ref2.node;
 	    var oldDragItem = this.state.oldDragItem;
 	    var layout = this.state.layout;
-
+	
 	    var l = (0, _utils.getLayoutItem)(layout, i);
 	    if (!l) return;
-
+	
 	    // Create placeholder (display only)
 	    var placeholder = {
 	      w: l.w, h: l.h, x: l.x, y: l.y, placeholder: true, i: i
 	    };
-
+	
 	    // Move the element to the dragged location.
 	    layout = (0, _utils.moveElement)(layout, l, x, y, true /* isUserAction */);
-
+	
 	    this.props.onDrag(layout, oldDragItem, l, placeholder, e, node);
-
+	
 	    this.setState({
 	      layout: (0, _utils.compact)(layout, this.props.verticalCompact),
 	      activeDrag: placeholder
 	    });
 	  };
-
+	
 	  /**
 	   * When dragging stops, figure out which position the element is closest to and update its x and y.
 	   * @param  {String} i Index of the child.
@@ -40448,100 +40448,100 @@
 	   * @param {Event} e The mousedown event
 	   * @param {Element} node The current dragging DOM element
 	   */
-
-
+	
+	
 	  ReactGridLayout.prototype.onDragStop = function onDragStop(i /*:string*/, x /*:number*/, y /*:number*/, _ref3) {
 	    var e = _ref3.e;
 	    var node = _ref3.node;
 	    var oldDragItem = this.state.oldDragItem;
 	    var layout = this.state.layout;
-
+	
 	    var l = (0, _utils.getLayoutItem)(layout, i);
 	    if (!l) return;
-
+	
 	    // Move the element here
 	    layout = (0, _utils.moveElement)(layout, l, x, y, true /* isUserAction */);
-
+	
 	    this.props.onDragStop(layout, oldDragItem, l, null, e, node);
-
+	
 	    // Set state
 	    this.setState({
 	      activeDrag: null,
 	      layout: (0, _utils.compact)(layout, this.props.verticalCompact),
 	      oldDragItem: null
 	    });
-
+	
 	    this.props.onLayoutChange(this.state.layout);
 	  };
-
+	
 	  ReactGridLayout.prototype.onResizeStart = function onResizeStart(i /*:string*/, w /*:number*/, h /*:number*/, _ref4) {
 	    var e = _ref4.e;
 	    var node = _ref4.node;
 	    var layout = this.state.layout;
-
+	
 	    var l = (0, _utils.getLayoutItem)(layout, i);
 	    if (!l) return;
-
+	
 	    this.setState({ oldResizeItem: (0, _utils.cloneLayoutItem)(l) });
-
+	
 	    this.props.onResizeStart(layout, l, l, null, e, node);
 	  };
-
+	
 	  ReactGridLayout.prototype.onResize = function onResize(i /*:string*/, w /*:number*/, h /*:number*/, _ref5) {
 	    var e = _ref5.e;
 	    var node = _ref5.node;
 	    var _state = this.state;
 	    var layout = _state.layout;
 	    var oldResizeItem = _state.oldResizeItem;
-
+	
 	    var l = (0, _utils.getLayoutItem)(layout, i);
 	    if (!l) return;
-
+	
 	    // Set new width and height.
 	    l.w = w;
 	    l.h = h;
-
+	
 	    // Create placeholder element (display only)
 	    var placeholder = {
 	      w: w, h: h, x: l.x, y: l.y, static: true, i: i
 	    };
-
+	
 	    this.props.onResize(layout, oldResizeItem, l, placeholder, e, node);
-
+	
 	    // Re-compact the layout and set the drag placeholder.
 	    this.setState({ layout: (0, _utils.compact)(layout, this.props.verticalCompact), activeDrag: placeholder });
 	  };
-
+	
 	  ReactGridLayout.prototype.onResizeStop = function onResizeStop(i /*:string*/, w /*:number*/, h /*:number*/, _ref6) {
 	    var e = _ref6.e;
 	    var node = _ref6.node;
 	    var _state2 = this.state;
 	    var layout = _state2.layout;
 	    var oldResizeItem = _state2.oldResizeItem;
-
+	
 	    var l = (0, _utils.getLayoutItem)(layout, i);
-
+	
 	    this.props.onResizeStop(layout, oldResizeItem, l, null, e, node);
-
+	
 	    // Set state
 	    this.setState({
 	      activeDrag: null,
 	      layout: (0, _utils.compact)(layout, this.props.verticalCompact),
 	      oldResizeItem: null
 	    });
-
+	
 	    this.props.onLayoutChange(this.state.layout);
 	  };
-
+	
 	  /**
 	   * Create a placeholder object.
 	   * @return {Element} Placeholder div.
 	   */
-
-
+	
+	
 	  ReactGridLayout.prototype.placeholder = function placeholder() {
 	    var activeDrag = this.state.activeDrag;
-
+	
 	    if (!activeDrag) return null;
 	    var _props = this.props;
 	    var width = _props.width;
@@ -40550,9 +40550,9 @@
 	    var rowHeight = _props.rowHeight;
 	    var maxRows = _props.maxRows;
 	    var useCSSTransforms = _props.useCSSTransforms;
-
+	
 	    // {...this.state.activeDrag} is pretty slow, actually
-
+	
 	    return _react2.default.createElement(
 	      _GridItem2.default,
 	      {
@@ -40573,14 +40573,14 @@
 	      _react2.default.createElement('div', null)
 	    );
 	  };
-
+	
 	  /**
 	   * Given a grid item, set its style attributes & surround in a <Draggable>.
 	   * @param  {Element} child React element.
 	   * @return {Element}       Element wrapped in draggable and properly placed.
 	   */
-
-
+	
+	
 	  ReactGridLayout.prototype.processGridItem = function processGridItem(child /*: React.Element*/) {
 	    if (!child.key) return;
 	    var l = (0, _utils.getLayoutItem)(this.state.layout, child.key);
@@ -40597,12 +40597,12 @@
 	    var draggableCancel = _props2.draggableCancel;
 	    var draggableHandle = _props2.draggableHandle;
 	    var mounted = this.state.mounted;
-
+	
 	    // Parse 'static'. Any properties defined directly on the grid item will take precedence.
-
+	
 	    var draggable = Boolean(!l.static && isDraggable && (l.isDraggable || l.isDraggable == null));
 	    var resizable = Boolean(!l.static && isResizable && (l.isResizable || l.isResizable == null));
-
+	
 	    return _react2.default.createElement(
 	      _GridItem2.default,
 	      {
@@ -40623,7 +40623,7 @@
 	        isResizable: resizable,
 	        useCSSTransforms: useCSSTransforms && mounted,
 	        usePercentages: !mounted,
-
+	
 	        w: l.w,
 	        h: l.h,
 	        x: l.x,
@@ -40638,20 +40638,20 @@
 	      child
 	    );
 	  };
-
+	
 	  ReactGridLayout.prototype.render = function render() {
 	    var _this2 = this;
-
+	
 	    var _props3 = this.props;
 	    var className = _props3.className;
 	    var style = _props3.style;
-
-
+	
+	
 	    var mergedClassName = 'react-grid-layout ' + className;
 	    var mergedStyle = _extends({
 	      height: this.containerHeight()
 	    }, style);
-
+	
 	    return _react2.default.createElement(
 	      'div',
 	      { className: mergedClassName, style: mergedStyle },
@@ -40661,10 +40661,10 @@
 	      this.placeholder()
 	    );
 	  };
-
+	
 	  return ReactGridLayout;
 	}(_react2.default.Component);
-
+	
 	ReactGridLayout.displayName = "ReactGridLayout";
 	ReactGridLayout.propTypes = {
 	  //
@@ -40672,25 +40672,25 @@
 	  //
 	  className: _react.PropTypes.string,
 	  style: _react.PropTypes.object,
-
+	
 	  // This can be set explicitly. If it is not set, it will automatically
 	  // be set to the container width. Note that resizes will *not* cause this to adjust.
 	  // If you need that behavior, use WidthProvider.
 	  width: _react.PropTypes.number,
-
+	
 	  // If true, the container height swells and contracts to fit contents
 	  autoSize: _react.PropTypes.bool,
 	  // # of cols.
 	  cols: _react.PropTypes.number,
-
+	
 	  // A selector that will not be draggable.
 	  draggableCancel: _react.PropTypes.string,
 	  // A selector for the draggable handler
 	  draggableHandle: _react.PropTypes.string,
-
+	
 	  // If true, the layout will compact vertically
 	  verticalCompact: _react.PropTypes.bool,
-
+	
 	  // layout is an array of object with the format:
 	  // {x: Number, y: Number, w: Number, h: Number, i: String}
 	  layout: function layout(props) {
@@ -40699,11 +40699,11 @@
 	    if (layout === undefined) return;
 	    (0, _utils.validateLayout)(layout, 'layout');
 	  },
-
+	
 	  //
 	  // Grid Dimensions
 	  //
-
+	
 	  // Margin between items [x, y] in px
 	  margin: _react.PropTypes.arrayOf(_react.PropTypes.number),
 	  // Rows have a static height, but you can change this based on breakpoints if you like
@@ -40714,7 +40714,7 @@
 	  // an item past the barrier. They can push items beyond the barrier, though.
 	  // Intentionally not documented for this reason.
 	  maxRows: _react.PropTypes.number,
-
+	
 	  //
 	  // Flags
 	  //
@@ -40722,14 +40722,14 @@
 	  isResizable: _react.PropTypes.bool,
 	  // Use CSS transforms instead of top/left
 	  useCSSTransforms: _react.PropTypes.bool,
-
+	
 	  //
 	  // Callbacks
 	  //
-
+	
 	  // Callback so you can save the layout. Calls after each drag & resize stops.
 	  onLayoutChange: _react.PropTypes.func,
-
+	
 	  // Calls when drag starts. Callback is of the signature (layout, oldItem, newItem, placeholder, e).
 	  // All callbacks below have the same signature. 'start' and 'stop' callbacks omit the 'placeholder'.
 	  onDragStart: _react.PropTypes.func,
@@ -40743,16 +40743,16 @@
 	  onResize: _react.PropTypes.func,
 	  // Calls when resize is complete.
 	  onResizeStop: _react.PropTypes.func,
-
+	
 	  //
 	  // Other validations
 	  //
-
+	
 	  // Children must not have duplicate keys.
 	  children: function children(props, propName, _componentName) {
 	    _react.PropTypes.node.apply(this, arguments);
 	    var children = props[propName];
-
+	
 	    // Check children keys for duplicates. Throw if found.
 	    var keys = {};
 	    _react2.default.Children.forEach(children, function (child) {
@@ -40783,7 +40783,7 @@
 	  onResize: noop,
 	  onResizeStop: noop
 	};
-
+	
 	var _initialiseProps = function _initialiseProps() {
 	  this.state = {
 	    activeDrag: null,
@@ -40793,7 +40793,7 @@
 	    oldResizeItem: null
 	  };
 	};
-
+	
 	exports.default = ReactGridLayout;
 
 /***/ },
@@ -40809,20 +40809,20 @@
 	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
 	 * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 */
-
+	
 	/** Used as the size to enable large array optimizations. */
 	var LARGE_ARRAY_SIZE = 200;
-
+	
 	/** Used to stand-in for `undefined` hash values. */
 	var HASH_UNDEFINED = '__lodash_hash_undefined__';
-
+	
 	/** Used to compose bitmasks for comparison styles. */
 	var UNORDERED_COMPARE_FLAG = 1,
 	    PARTIAL_COMPARE_FLAG = 2;
-
+	
 	/** Used as references for various `Number` constants. */
 	var MAX_SAFE_INTEGER = 9007199254740991;
-
+	
 	/** `Object#toString` result references. */
 	var argsTag = '[object Arguments]',
 	    arrayTag = '[object Array]',
@@ -40840,7 +40840,7 @@
 	    stringTag = '[object String]',
 	    symbolTag = '[object Symbol]',
 	    weakMapTag = '[object WeakMap]';
-
+	
 	var arrayBufferTag = '[object ArrayBuffer]',
 	    dataViewTag = '[object DataView]',
 	    float32Tag = '[object Float32Array]',
@@ -40852,19 +40852,19 @@
 	    uint8ClampedTag = '[object Uint8ClampedArray]',
 	    uint16Tag = '[object Uint16Array]',
 	    uint32Tag = '[object Uint32Array]';
-
+	
 	/**
 	 * Used to match `RegExp`
 	 * [syntax characters](http://ecma-international.org/ecma-262/6.0/#sec-patterns).
 	 */
 	var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
-
+	
 	/** Used to detect host constructors (Safari). */
 	var reIsHostCtor = /^\[object .+?Constructor\]$/;
-
+	
 	/** Used to detect unsigned integer values. */
 	var reIsUint = /^(?:0|[1-9]\d*)$/;
-
+	
 	/** Used to identify `toStringTag` values of typed arrays. */
 	var typedArrayTags = {};
 	typedArrayTags[float32Tag] = typedArrayTags[float64Tag] =
@@ -40880,38 +40880,38 @@
 	typedArrayTags[objectTag] = typedArrayTags[regexpTag] =
 	typedArrayTags[setTag] = typedArrayTags[stringTag] =
 	typedArrayTags[weakMapTag] = false;
-
+	
 	/** Detect free variable `global` from Node.js. */
 	var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
-
+	
 	/** Detect free variable `self`. */
 	var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
-
+	
 	/** Used as a reference to the global object. */
 	var root = freeGlobal || freeSelf || Function('return this')();
-
+	
 	/** Detect free variable `exports`. */
 	var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
-
+	
 	/** Detect free variable `module`. */
 	var freeModule = freeExports && typeof module == 'object' && module && !module.nodeType && module;
-
+	
 	/** Detect the popular CommonJS extension `module.exports`. */
 	var moduleExports = freeModule && freeModule.exports === freeExports;
-
+	
 	/** Detect free variable `process` from Node.js. */
 	var freeProcess = moduleExports && freeGlobal.process;
-
+	
 	/** Used to access faster Node.js helpers. */
 	var nodeUtil = (function() {
 	  try {
 	    return freeProcess && freeProcess.binding('util');
 	  } catch (e) {}
 	}());
-
+	
 	/* Node.js helper references. */
 	var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
-
+	
 	/**
 	 * A specialized version of `_.some` for arrays without support for iteratee
 	 * shorthands.
@@ -40925,7 +40925,7 @@
 	function arraySome(array, predicate) {
 	  var index = -1,
 	      length = array ? array.length : 0;
-
+	
 	  while (++index < length) {
 	    if (predicate(array[index], index, array)) {
 	      return true;
@@ -40933,7 +40933,7 @@
 	  }
 	  return false;
 	}
-
+	
 	/**
 	 * The base implementation of `_.property` without support for deep paths.
 	 *
@@ -40946,7 +40946,7 @@
 	    return object == null ? undefined : object[key];
 	  };
 	}
-
+	
 	/**
 	 * The base implementation of `_.times` without support for iteratee shorthands
 	 * or max array length checks.
@@ -40959,13 +40959,13 @@
 	function baseTimes(n, iteratee) {
 	  var index = -1,
 	      result = Array(n);
-
+	
 	  while (++index < n) {
 	    result[index] = iteratee(index);
 	  }
 	  return result;
 	}
-
+	
 	/**
 	 * The base implementation of `_.unary` without support for storing metadata.
 	 *
@@ -40978,7 +40978,7 @@
 	    return func(value);
 	  };
 	}
-
+	
 	/**
 	 * Gets the value at `key` of `object`.
 	 *
@@ -40990,7 +40990,7 @@
 	function getValue(object, key) {
 	  return object == null ? undefined : object[key];
 	}
-
+	
 	/**
 	 * Checks if `value` is a host object in IE < 9.
 	 *
@@ -41009,7 +41009,7 @@
 	  }
 	  return result;
 	}
-
+	
 	/**
 	 * Converts `map` to its key-value pairs.
 	 *
@@ -41020,13 +41020,13 @@
 	function mapToArray(map) {
 	  var index = -1,
 	      result = Array(map.size);
-
+	
 	  map.forEach(function(value, key) {
 	    result[++index] = [key, value];
 	  });
 	  return result;
 	}
-
+	
 	/**
 	 * Creates a function that invokes `func` with its first argument transformed.
 	 *
@@ -41040,7 +41040,7 @@
 	    return func(transform(arg));
 	  };
 	}
-
+	
 	/**
 	 * Converts `set` to an array of its values.
 	 *
@@ -41051,55 +41051,55 @@
 	function setToArray(set) {
 	  var index = -1,
 	      result = Array(set.size);
-
+	
 	  set.forEach(function(value) {
 	    result[++index] = value;
 	  });
 	  return result;
 	}
-
+	
 	/** Used for built-in method references. */
 	var arrayProto = Array.prototype,
 	    objectProto = Object.prototype;
-
+	
 	/** Used to detect overreaching core-js shims. */
 	var coreJsData = root['__core-js_shared__'];
-
+	
 	/** Used to detect methods masquerading as native. */
 	var maskSrcKey = (function() {
 	  var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || '');
 	  return uid ? ('Symbol(src)_1.' + uid) : '';
 	}());
-
+	
 	/** Used to resolve the decompiled source of functions. */
 	var funcToString = Function.prototype.toString;
-
+	
 	/** Used to check objects for own properties. */
 	var hasOwnProperty = objectProto.hasOwnProperty;
-
+	
 	/**
 	 * Used to resolve the
 	 * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
 	 * of values.
 	 */
 	var objectToString = objectProto.toString;
-
+	
 	/** Used to detect if a method is native. */
 	var reIsNative = RegExp('^' +
 	  funcToString.call(hasOwnProperty).replace(reRegExpChar, '\\$&')
 	  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
 	);
-
+	
 	/** Built-in value references. */
 	var Symbol = root.Symbol,
 	    Uint8Array = root.Uint8Array,
 	    propertyIsEnumerable = objectProto.propertyIsEnumerable,
 	    splice = arrayProto.splice;
-
+	
 	/* Built-in method references for those with the same name as other `lodash` methods. */
 	var nativeGetPrototype = Object.getPrototypeOf,
 	    nativeKeys = Object.keys;
-
+	
 	/* Built-in method references that are verified to be native. */
 	var DataView = getNative(root, 'DataView'),
 	    Map = getNative(root, 'Map'),
@@ -41107,18 +41107,18 @@
 	    Set = getNative(root, 'Set'),
 	    WeakMap = getNative(root, 'WeakMap'),
 	    nativeCreate = getNative(Object, 'create');
-
+	
 	/** Used to detect maps, sets, and weakmaps. */
 	var dataViewCtorString = toSource(DataView),
 	    mapCtorString = toSource(Map),
 	    promiseCtorString = toSource(Promise),
 	    setCtorString = toSource(Set),
 	    weakMapCtorString = toSource(WeakMap);
-
+	
 	/** Used to convert symbols to primitives and strings. */
 	var symbolProto = Symbol ? Symbol.prototype : undefined,
 	    symbolValueOf = symbolProto ? symbolProto.valueOf : undefined;
-
+	
 	/**
 	 * Creates a hash object.
 	 *
@@ -41129,14 +41129,14 @@
 	function Hash(entries) {
 	  var index = -1,
 	      length = entries ? entries.length : 0;
-
+	
 	  this.clear();
 	  while (++index < length) {
 	    var entry = entries[index];
 	    this.set(entry[0], entry[1]);
 	  }
 	}
-
+	
 	/**
 	 * Removes all key-value entries from the hash.
 	 *
@@ -41147,7 +41147,7 @@
 	function hashClear() {
 	  this.__data__ = nativeCreate ? nativeCreate(null) : {};
 	}
-
+	
 	/**
 	 * Removes `key` and its value from the hash.
 	 *
@@ -41161,7 +41161,7 @@
 	function hashDelete(key) {
 	  return this.has(key) && delete this.__data__[key];
 	}
-
+	
 	/**
 	 * Gets the hash value for `key`.
 	 *
@@ -41179,7 +41179,7 @@
 	  }
 	  return hasOwnProperty.call(data, key) ? data[key] : undefined;
 	}
-
+	
 	/**
 	 * Checks if a hash value for `key` exists.
 	 *
@@ -41193,7 +41193,7 @@
 	  var data = this.__data__;
 	  return nativeCreate ? data[key] !== undefined : hasOwnProperty.call(data, key);
 	}
-
+	
 	/**
 	 * Sets the hash `key` to `value`.
 	 *
@@ -41209,14 +41209,14 @@
 	  data[key] = (nativeCreate && value === undefined) ? HASH_UNDEFINED : value;
 	  return this;
 	}
-
+	
 	// Add methods to `Hash`.
 	Hash.prototype.clear = hashClear;
 	Hash.prototype['delete'] = hashDelete;
 	Hash.prototype.get = hashGet;
 	Hash.prototype.has = hashHas;
 	Hash.prototype.set = hashSet;
-
+	
 	/**
 	 * Creates an list cache object.
 	 *
@@ -41227,14 +41227,14 @@
 	function ListCache(entries) {
 	  var index = -1,
 	      length = entries ? entries.length : 0;
-
+	
 	  this.clear();
 	  while (++index < length) {
 	    var entry = entries[index];
 	    this.set(entry[0], entry[1]);
 	  }
 	}
-
+	
 	/**
 	 * Removes all key-value entries from the list cache.
 	 *
@@ -41245,7 +41245,7 @@
 	function listCacheClear() {
 	  this.__data__ = [];
 	}
-
+	
 	/**
 	 * Removes `key` and its value from the list cache.
 	 *
@@ -41258,7 +41258,7 @@
 	function listCacheDelete(key) {
 	  var data = this.__data__,
 	      index = assocIndexOf(data, key);
-
+	
 	  if (index < 0) {
 	    return false;
 	  }
@@ -41270,7 +41270,7 @@
 	  }
 	  return true;
 	}
-
+	
 	/**
 	 * Gets the list cache value for `key`.
 	 *
@@ -41283,10 +41283,10 @@
 	function listCacheGet(key) {
 	  var data = this.__data__,
 	      index = assocIndexOf(data, key);
-
+	
 	  return index < 0 ? undefined : data[index][1];
 	}
-
+	
 	/**
 	 * Checks if a list cache value for `key` exists.
 	 *
@@ -41299,7 +41299,7 @@
 	function listCacheHas(key) {
 	  return assocIndexOf(this.__data__, key) > -1;
 	}
-
+	
 	/**
 	 * Sets the list cache `key` to `value`.
 	 *
@@ -41313,7 +41313,7 @@
 	function listCacheSet(key, value) {
 	  var data = this.__data__,
 	      index = assocIndexOf(data, key);
-
+	
 	  if (index < 0) {
 	    data.push([key, value]);
 	  } else {
@@ -41321,14 +41321,14 @@
 	  }
 	  return this;
 	}
-
+	
 	// Add methods to `ListCache`.
 	ListCache.prototype.clear = listCacheClear;
 	ListCache.prototype['delete'] = listCacheDelete;
 	ListCache.prototype.get = listCacheGet;
 	ListCache.prototype.has = listCacheHas;
 	ListCache.prototype.set = listCacheSet;
-
+	
 	/**
 	 * Creates a map cache object to store key-value pairs.
 	 *
@@ -41339,14 +41339,14 @@
 	function MapCache(entries) {
 	  var index = -1,
 	      length = entries ? entries.length : 0;
-
+	
 	  this.clear();
 	  while (++index < length) {
 	    var entry = entries[index];
 	    this.set(entry[0], entry[1]);
 	  }
 	}
-
+	
 	/**
 	 * Removes all key-value entries from the map.
 	 *
@@ -41361,7 +41361,7 @@
 	    'string': new Hash
 	  };
 	}
-
+	
 	/**
 	 * Removes `key` and its value from the map.
 	 *
@@ -41374,7 +41374,7 @@
 	function mapCacheDelete(key) {
 	  return getMapData(this, key)['delete'](key);
 	}
-
+	
 	/**
 	 * Gets the map value for `key`.
 	 *
@@ -41387,7 +41387,7 @@
 	function mapCacheGet(key) {
 	  return getMapData(this, key).get(key);
 	}
-
+	
 	/**
 	 * Checks if a map value for `key` exists.
 	 *
@@ -41400,7 +41400,7 @@
 	function mapCacheHas(key) {
 	  return getMapData(this, key).has(key);
 	}
-
+	
 	/**
 	 * Sets the map `key` to `value`.
 	 *
@@ -41415,14 +41415,14 @@
 	  getMapData(this, key).set(key, value);
 	  return this;
 	}
-
+	
 	// Add methods to `MapCache`.
 	MapCache.prototype.clear = mapCacheClear;
 	MapCache.prototype['delete'] = mapCacheDelete;
 	MapCache.prototype.get = mapCacheGet;
 	MapCache.prototype.has = mapCacheHas;
 	MapCache.prototype.set = mapCacheSet;
-
+	
 	/**
 	 *
 	 * Creates an array cache object to store unique values.
@@ -41434,13 +41434,13 @@
 	function SetCache(values) {
 	  var index = -1,
 	      length = values ? values.length : 0;
-
+	
 	  this.__data__ = new MapCache;
 	  while (++index < length) {
 	    this.add(values[index]);
 	  }
 	}
-
+	
 	/**
 	 * Adds `value` to the array cache.
 	 *
@@ -41455,7 +41455,7 @@
 	  this.__data__.set(value, HASH_UNDEFINED);
 	  return this;
 	}
-
+	
 	/**
 	 * Checks if `value` is in the array cache.
 	 *
@@ -41468,11 +41468,11 @@
 	function setCacheHas(value) {
 	  return this.__data__.has(value);
 	}
-
+	
 	// Add methods to `SetCache`.
 	SetCache.prototype.add = SetCache.prototype.push = setCacheAdd;
 	SetCache.prototype.has = setCacheHas;
-
+	
 	/**
 	 * Creates a stack cache object to store key-value pairs.
 	 *
@@ -41483,7 +41483,7 @@
 	function Stack(entries) {
 	  this.__data__ = new ListCache(entries);
 	}
-
+	
 	/**
 	 * Removes all key-value entries from the stack.
 	 *
@@ -41494,7 +41494,7 @@
 	function stackClear() {
 	  this.__data__ = new ListCache;
 	}
-
+	
 	/**
 	 * Removes `key` and its value from the stack.
 	 *
@@ -41507,7 +41507,7 @@
 	function stackDelete(key) {
 	  return this.__data__['delete'](key);
 	}
-
+	
 	/**
 	 * Gets the stack value for `key`.
 	 *
@@ -41520,7 +41520,7 @@
 	function stackGet(key) {
 	  return this.__data__.get(key);
 	}
-
+	
 	/**
 	 * Checks if a stack value for `key` exists.
 	 *
@@ -41533,7 +41533,7 @@
 	function stackHas(key) {
 	  return this.__data__.has(key);
 	}
-
+	
 	/**
 	 * Sets the stack `key` to `value`.
 	 *
@@ -41557,14 +41557,14 @@
 	  cache.set(key, value);
 	  return this;
 	}
-
+	
 	// Add methods to `Stack`.
 	Stack.prototype.clear = stackClear;
 	Stack.prototype['delete'] = stackDelete;
 	Stack.prototype.get = stackGet;
 	Stack.prototype.has = stackHas;
 	Stack.prototype.set = stackSet;
-
+	
 	/**
 	 * Gets the index at which the `key` is found in `array` of key-value pairs.
 	 *
@@ -41582,7 +41582,7 @@
 	  }
 	  return -1;
 	}
-
+	
 	/**
 	 * The base implementation of `getTag`.
 	 *
@@ -41593,7 +41593,7 @@
 	function baseGetTag(value) {
 	  return objectToString.call(value);
 	}
-
+	
 	/**
 	 * The base implementation of `_.has` without support for deep paths.
 	 *
@@ -41610,7 +41610,7 @@
 	    (hasOwnProperty.call(object, key) ||
 	      (typeof object == 'object' && key in object && getPrototype(object) === null));
 	}
-
+	
 	/**
 	 * The base implementation of `_.isEqual` which supports partial comparisons
 	 * and tracks traversed objects.
@@ -41635,7 +41635,7 @@
 	  }
 	  return baseIsEqualDeep(value, other, baseIsEqual, customizer, bitmask, stack);
 	}
-
+	
 	/**
 	 * A specialized version of `baseIsEqual` for arrays and objects which performs
 	 * deep comparisons and tracks traversed objects enabling objects with circular
@@ -41656,7 +41656,7 @@
 	      othIsArr = isArray(other),
 	      objTag = arrayTag,
 	      othTag = arrayTag;
-
+	
 	  if (!objIsArr) {
 	    objTag = getTag(object);
 	    objTag = objTag == argsTag ? objectTag : objTag;
@@ -41668,7 +41668,7 @@
 	  var objIsObj = objTag == objectTag && !isHostObject(object),
 	      othIsObj = othTag == objectTag && !isHostObject(other),
 	      isSameTag = objTag == othTag;
-
+	
 	  if (isSameTag && !objIsObj) {
 	    stack || (stack = new Stack);
 	    return (objIsArr || isTypedArray(object))
@@ -41678,11 +41678,11 @@
 	  if (!(bitmask & PARTIAL_COMPARE_FLAG)) {
 	    var objIsWrapped = objIsObj && hasOwnProperty.call(object, '__wrapped__'),
 	        othIsWrapped = othIsObj && hasOwnProperty.call(other, '__wrapped__');
-
+	
 	    if (objIsWrapped || othIsWrapped) {
 	      var objUnwrapped = objIsWrapped ? object.value() : object,
 	          othUnwrapped = othIsWrapped ? other.value() : other;
-
+	
 	      stack || (stack = new Stack);
 	      return equalFunc(objUnwrapped, othUnwrapped, customizer, bitmask, stack);
 	    }
@@ -41693,7 +41693,7 @@
 	  stack || (stack = new Stack);
 	  return equalObjects(object, other, equalFunc, customizer, bitmask, stack);
 	}
-
+	
 	/**
 	 * The base implementation of `_.isNative` without bad shim checks.
 	 *
@@ -41709,7 +41709,7 @@
 	  var pattern = (isFunction(value) || isHostObject(value)) ? reIsNative : reIsHostCtor;
 	  return pattern.test(toSource(value));
 	}
-
+	
 	/**
 	 * The base implementation of `_.isTypedArray` without Node.js optimizations.
 	 *
@@ -41721,7 +41721,7 @@
 	  return isObjectLike(value) &&
 	    isLength(value.length) && !!typedArrayTags[objectToString.call(value)];
 	}
-
+	
 	/**
 	 * The base implementation of `_.keys` which doesn't skip the constructor
 	 * property of prototypes or treat sparse arrays as dense.
@@ -41731,7 +41731,7 @@
 	 * @returns {Array} Returns the array of property names.
 	 */
 	var baseKeys = overArg(nativeKeys, Object);
-
+	
 	/**
 	 * A specialized version of `baseIsEqualDeep` for arrays with support for
 	 * partial deep comparisons.
@@ -41750,7 +41750,7 @@
 	  var isPartial = bitmask & PARTIAL_COMPARE_FLAG,
 	      arrLength = array.length,
 	      othLength = other.length;
-
+	
 	  if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
 	    return false;
 	  }
@@ -41762,15 +41762,15 @@
 	  var index = -1,
 	      result = true,
 	      seen = (bitmask & UNORDERED_COMPARE_FLAG) ? new SetCache : undefined;
-
+	
 	  stack.set(array, other);
 	  stack.set(other, array);
-
+	
 	  // Ignore non-index properties.
 	  while (++index < arrLength) {
 	    var arrValue = array[index],
 	        othValue = other[index];
-
+	
 	    if (customizer) {
 	      var compared = isPartial
 	        ? customizer(othValue, arrValue, index, other, array, stack)
@@ -41806,7 +41806,7 @@
 	  stack['delete'](other);
 	  return result;
 	}
-
+	
 	/**
 	 * A specialized version of `baseIsEqualDeep` for comparing objects of
 	 * the same `toStringTag`.
@@ -41834,38 +41834,38 @@
 	      }
 	      object = object.buffer;
 	      other = other.buffer;
-
+	
 	    case arrayBufferTag:
 	      if ((object.byteLength != other.byteLength) ||
 	          !equalFunc(new Uint8Array(object), new Uint8Array(other))) {
 	        return false;
 	      }
 	      return true;
-
+	
 	    case boolTag:
 	    case dateTag:
 	    case numberTag:
 	      // Coerce booleans to `1` or `0` and dates to milliseconds.
 	      // Invalid dates are coerced to `NaN`.
 	      return eq(+object, +other);
-
+	
 	    case errorTag:
 	      return object.name == other.name && object.message == other.message;
-
+	
 	    case regexpTag:
 	    case stringTag:
 	      // Coerce regexes to strings and treat strings, primitives and objects,
 	      // as equal. See http://www.ecma-international.org/ecma-262/6.0/#sec-regexp.prototype.tostring
 	      // for more details.
 	      return object == (other + '');
-
+	
 	    case mapTag:
 	      var convert = mapToArray;
-
+	
 	    case setTag:
 	      var isPartial = bitmask & PARTIAL_COMPARE_FLAG;
 	      convert || (convert = setToArray);
-
+	
 	      if (object.size != other.size && !isPartial) {
 	        return false;
 	      }
@@ -41875,13 +41875,13 @@
 	        return stacked == other;
 	      }
 	      bitmask |= UNORDERED_COMPARE_FLAG;
-
+	
 	      // Recursively compare objects (susceptible to call stack limits).
 	      stack.set(object, other);
 	      var result = equalArrays(convert(object), convert(other), equalFunc, customizer, bitmask, stack);
 	      stack['delete'](object);
 	      return result;
-
+	
 	    case symbolTag:
 	      if (symbolValueOf) {
 	        return symbolValueOf.call(object) == symbolValueOf.call(other);
@@ -41889,7 +41889,7 @@
 	  }
 	  return false;
 	}
-
+	
 	/**
 	 * A specialized version of `baseIsEqualDeep` for objects with support for
 	 * partial deep comparisons.
@@ -41910,7 +41910,7 @@
 	      objLength = objProps.length,
 	      othProps = keys(other),
 	      othLength = othProps.length;
-
+	
 	  if (objLength != othLength && !isPartial) {
 	    return false;
 	  }
@@ -41929,13 +41929,13 @@
 	  var result = true;
 	  stack.set(object, other);
 	  stack.set(other, object);
-
+	
 	  var skipCtor = isPartial;
 	  while (++index < objLength) {
 	    key = objProps[index];
 	    var objValue = object[key],
 	        othValue = other[key];
-
+	
 	    if (customizer) {
 	      var compared = isPartial
 	        ? customizer(othValue, objValue, key, other, object, stack)
@@ -41954,7 +41954,7 @@
 	  if (result && !skipCtor) {
 	    var objCtor = object.constructor,
 	        othCtor = other.constructor;
-
+	
 	    // Non `Object` object instances with different constructors are not equal.
 	    if (objCtor != othCtor &&
 	        ('constructor' in object && 'constructor' in other) &&
@@ -41967,7 +41967,7 @@
 	  stack['delete'](other);
 	  return result;
 	}
-
+	
 	/**
 	 * Gets the "length" property value of `object`.
 	 *
@@ -41980,7 +41980,7 @@
 	 * @returns {*} Returns the "length" value.
 	 */
 	var getLength = baseProperty('length');
-
+	
 	/**
 	 * Gets the data for `map`.
 	 *
@@ -41995,7 +41995,7 @@
 	    ? data[typeof key == 'string' ? 'string' : 'hash']
 	    : data.map;
 	}
-
+	
 	/**
 	 * Gets the native function at `key` of `object`.
 	 *
@@ -42008,7 +42008,7 @@
 	  var value = getValue(object, key);
 	  return baseIsNative(value) ? value : undefined;
 	}
-
+	
 	/**
 	 * Gets the `[[Prototype]]` of `value`.
 	 *
@@ -42017,7 +42017,7 @@
 	 * @returns {null|Object} Returns the `[[Prototype]]`.
 	 */
 	var getPrototype = overArg(nativeGetPrototype, Object);
-
+	
 	/**
 	 * Gets the `toStringTag` of `value`.
 	 *
@@ -42026,7 +42026,7 @@
 	 * @returns {string} Returns the `toStringTag`.
 	 */
 	var getTag = baseGetTag;
-
+	
 	// Fallback for data views, maps, sets, and weak maps in IE 11,
 	// for data views in Edge, and promises in Node.js.
 	if ((DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag) ||
@@ -42038,7 +42038,7 @@
 	    var result = objectToString.call(value),
 	        Ctor = result == objectTag ? value.constructor : undefined,
 	        ctorString = Ctor ? toSource(Ctor) : undefined;
-
+	
 	    if (ctorString) {
 	      switch (ctorString) {
 	        case dataViewCtorString: return dataViewTag;
@@ -42051,7 +42051,7 @@
 	    return result;
 	  };
 	}
-
+	
 	/**
 	 * Creates an array of index keys for `object` values of arrays,
 	 * `arguments` objects, and strings, otherwise `null` is returned.
@@ -42068,7 +42068,7 @@
 	  }
 	  return null;
 	}
-
+	
 	/**
 	 * Checks if `value` is a valid array-like index.
 	 *
@@ -42083,7 +42083,7 @@
 	    (typeof value == 'number' || reIsUint.test(value)) &&
 	    (value > -1 && value % 1 == 0 && value < length);
 	}
-
+	
 	/**
 	 * Checks if `value` is suitable for use as unique object key.
 	 *
@@ -42097,7 +42097,7 @@
 	    ? (value !== '__proto__')
 	    : (value === null);
 	}
-
+	
 	/**
 	 * Checks if `func` has its source masked.
 	 *
@@ -42108,7 +42108,7 @@
 	function isMasked(func) {
 	  return !!maskSrcKey && (maskSrcKey in func);
 	}
-
+	
 	/**
 	 * Checks if `value` is likely a prototype object.
 	 *
@@ -42119,10 +42119,10 @@
 	function isPrototype(value) {
 	  var Ctor = value && value.constructor,
 	      proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto;
-
+	
 	  return value === proto;
 	}
-
+	
 	/**
 	 * Converts `func` to its source code.
 	 *
@@ -42141,7 +42141,7 @@
 	  }
 	  return '';
 	}
-
+	
 	/**
 	 * Performs a
 	 * [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
@@ -42177,7 +42177,7 @@
 	function eq(value, other) {
 	  return value === other || (value !== value && other !== other);
 	}
-
+	
 	/**
 	 * Checks if `value` is likely an `arguments` object.
 	 *
@@ -42201,7 +42201,7 @@
 	  return isArrayLikeObject(value) && hasOwnProperty.call(value, 'callee') &&
 	    (!propertyIsEnumerable.call(value, 'callee') || objectToString.call(value) == argsTag);
 	}
-
+	
 	/**
 	 * Checks if `value` is classified as an `Array` object.
 	 *
@@ -42226,7 +42226,7 @@
 	 * // => false
 	 */
 	var isArray = Array.isArray;
-
+	
 	/**
 	 * Checks if `value` is array-like. A value is considered array-like if it's
 	 * not a function and has a `value.length` that's an integer greater than or
@@ -42255,7 +42255,7 @@
 	function isArrayLike(value) {
 	  return value != null && isLength(getLength(value)) && !isFunction(value);
 	}
-
+	
 	/**
 	 * This method is like `_.isArrayLike` except that it also checks if `value`
 	 * is an object.
@@ -42284,7 +42284,7 @@
 	function isArrayLikeObject(value) {
 	  return isObjectLike(value) && isArrayLike(value);
 	}
-
+	
 	/**
 	 * Performs a deep comparison between two values to determine if they are
 	 * equivalent.
@@ -42317,7 +42317,7 @@
 	function isEqual(value, other) {
 	  return baseIsEqual(value, other);
 	}
-
+	
 	/**
 	 * Checks if `value` is classified as a `Function` object.
 	 *
@@ -42342,7 +42342,7 @@
 	  var tag = isObject(value) ? objectToString.call(value) : '';
 	  return tag == funcTag || tag == genTag;
 	}
-
+	
 	/**
 	 * Checks if `value` is a valid array-like length.
 	 *
@@ -42374,7 +42374,7 @@
 	  return typeof value == 'number' &&
 	    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
 	}
-
+	
 	/**
 	 * Checks if `value` is the
 	 * [language type](http://www.ecma-international.org/ecma-262/6.0/#sec-ecmascript-language-types)
@@ -42404,7 +42404,7 @@
 	  var type = typeof value;
 	  return !!value && (type == 'object' || type == 'function');
 	}
-
+	
 	/**
 	 * Checks if `value` is object-like. A value is object-like if it's not `null`
 	 * and has a `typeof` result of "object".
@@ -42432,7 +42432,7 @@
 	function isObjectLike(value) {
 	  return !!value && typeof value == 'object';
 	}
-
+	
 	/**
 	 * Checks if `value` is classified as a `String` primitive or object.
 	 *
@@ -42454,7 +42454,7 @@
 	  return typeof value == 'string' ||
 	    (!isArray(value) && isObjectLike(value) && objectToString.call(value) == stringTag);
 	}
-
+	
 	/**
 	 * Checks if `value` is classified as a typed array.
 	 *
@@ -42473,7 +42473,7 @@
 	 * // => false
 	 */
 	var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedArray;
-
+	
 	/**
 	 * Creates an array of the own enumerable property names of `object`.
 	 *
@@ -42511,7 +42511,7 @@
 	      skipIndexes = !!indexes,
 	      result = indexes || [],
 	      length = result.length;
-
+	
 	  for (var key in object) {
 	    if (baseHas(object, key) &&
 	        !(skipIndexes && (key == 'length' || isIndex(key, length))) &&
@@ -42521,9 +42521,9 @@
 	  }
 	  return result;
 	}
-
+	
 	module.exports = isEqual;
-
+	
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(22)(module)))
 
 /***/ },
@@ -42532,11 +42532,11 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
-
+	
 	exports.__esModule = true;
-
+	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
+	
 	exports.bottom = bottom;
 	exports.cloneLayout = cloneLayout;
 	exports.cloneLayoutItem = cloneLayoutItem;
@@ -42574,10 +42574,10 @@
 	/*:: export type Size = {width: number, height: number};*/
 	/*:: export type ResizeEvent = {e: Event, node: HTMLElement, size: Size};*/
 	/*:: import type React from 'react';*/
-
-
+	
+	
 	var isProduction = process.env.NODE_ENV === 'production';
-
+	
 	/**
 	 * Return the bottom coordinate of the layout.
 	 *
@@ -42593,7 +42593,7 @@
 	  }
 	  return max;
 	}
-
+	
 	function cloneLayout(layout /*: Layout*/) /*: Layout*/ {
 	  var newLayout = Array(layout.length);
 	  for (var _i2 = 0, len = layout.length; _i2 < len; _i2++) {
@@ -42601,7 +42601,7 @@
 	  }
 	  return newLayout;
 	}
-
+	
 	// Fast path to cloning, since this is monomorphic
 	function cloneLayoutItem(layoutItem /*: LayoutItem*/) /*: LayoutItem*/ {
 	  return {
@@ -42612,7 +42612,7 @@
 	    isDraggable: layoutItem.isDraggable, isResizable: layoutItem.isResizable
 	  };
 	}
-
+	
 	/**
 	 * Given two layoutitems, check if they collide.
 	 *
@@ -42626,7 +42626,7 @@
 	  if (l1.y >= l2.y + l2.h) return false; // l1 is below l2
 	  return true; // boxes overlap
 	}
-
+	
 	/**
 	 * Given a layout, compact it. This involves going down each y coordinate and removing gaps
 	 * between items.
@@ -42643,29 +42643,29 @@
 	  var sorted = sortLayoutItemsByRowCol(layout);
 	  // Holding for new items.
 	  var out = Array(layout.length);
-
+	
 	  for (var _i3 = 0, len = sorted.length; _i3 < len; _i3++) {
 	    var l = sorted[_i3];
-
+	
 	    // Don't move static elements
 	    if (!l.static) {
 	      l = compactItem(compareWith, l, verticalCompact);
-
+	
 	      // Add to comparison array. We only collide with items before this one.
 	      // Statics are already in this array.
 	      compareWith.push(l);
 	    }
-
+	
 	    // Add to output array to make sure they still come out in the right order.
 	    out[layout.indexOf(l)] = l;
-
+	
 	    // Clear moved flag, if it exists.
 	    l.moved = false;
 	  }
-
+	
 	  return out;
 	}
-
+	
 	/**
 	 * Compact an item in the layout.
 	 */
@@ -42676,7 +42676,7 @@
 	      l.y--;
 	    }
 	  }
-
+	
 	  // Move it down, and keep moving it down if it's colliding.
 	  var collides = void 0;
 	  while (collides = getFirstCollision(compareWith, l)) {
@@ -42684,7 +42684,7 @@
 	  }
 	  return l;
 	}
-
+	
 	/**
 	 * Given a layout, make sure all elements fit within its bounds.
 	 *
@@ -42712,7 +42712,7 @@
 	  }
 	  return layout;
 	}
-
+	
 	/**
 	 * Get a layout item by ID. Used so we can override later on if necessary.
 	 *
@@ -42725,7 +42725,7 @@
 	    if (layout[_i5].i === id) return layout[_i5];
 	  }
 	}
-
+	
 	/**
 	 * Returns the first item this layout collides with.
 	 * It doesn't appear to matter which order we approach this from, although
@@ -42739,13 +42739,13 @@
 	    if (collides(layout[_i6], layoutItem)) return layout[_i6];
 	  }
 	}
-
+	
 	function getAllCollisions(layout /*: Layout*/, layoutItem /*: LayoutItem*/) /*: Array<LayoutItem>*/ {
 	  return layout.filter(function (l) {
 	    return collides(l, layoutItem);
 	  });
 	}
-
+	
 	/**
 	 * Get all static elements.
 	 * @param  {Array} layout Array of layout objects.
@@ -42756,7 +42756,7 @@
 	    return l.static;
 	  });
 	}
-
+	
 	/**
 	 * Move an element. Responsible for doing cascading movements of other elements.
 	 *
@@ -42769,16 +42769,16 @@
 	 */
 	function moveElement(layout /*: Layout*/, l /*: LayoutItem*/, x /*: ?number*/, y /*: ?number*/, isUserAction /*: ?boolean*/) /*: Layout*/ {
 	  if (l.static) return layout;
-
+	
 	  // Short-circuit if nothing to do.
 	  if (l.y === y && l.x === x) return layout;
-
+	
 	  var movingUp = y && l.y > y;
 	  // This is quite a bit faster than extending the object
 	  if (typeof x === 'number') l.x = x;
 	  if (typeof y === 'number') l.y = y;
 	  l.moved = true;
-
+	
 	  // If this collides with anything, move it.
 	  // When doing this comparison, we have to sort the items we compare with
 	  // to ensure, in the case of multiple collisions, that we're getting the
@@ -42786,18 +42786,18 @@
 	  var sorted = sortLayoutItemsByRowCol(layout);
 	  if (movingUp) sorted = sorted.reverse();
 	  var collisions = getAllCollisions(sorted, l);
-
+	
 	  // Move each item that collides away from this element.
 	  for (var _i7 = 0, len = collisions.length; _i7 < len; _i7++) {
 	    var collision = collisions[_i7];
 	    // console.log('resolving collision between', l.i, 'at', l.y, 'and', collision.i, 'at', collision.y);
-
+	
 	    // Short circuit so we can't infinite loop
 	    if (collision.moved) continue;
-
+	
 	    // This makes it feel a bit more precise by waiting to swap for just a bit when moving up.
 	    if (l.y > collision.y && l.y - collision.y > collision.h / 4) continue;
-
+	
 	    // Don't move static items - we have to move *this* element away
 	    if (collision.static) {
 	      layout = moveElementAwayFromCollision(layout, collision, l, isUserAction);
@@ -42805,10 +42805,10 @@
 	      layout = moveElementAwayFromCollision(layout, l, collision, isUserAction);
 	    }
 	  }
-
+	
 	  return layout;
 	}
-
+	
 	/**
 	 * This is where the magic needs to happen - given a collision, move an element away from the collision.
 	 * We attempt to move it up if there's room, otherwise it goes below.
@@ -42820,7 +42820,7 @@
 	 *                                   by the user.
 	 */
 	function moveElementAwayFromCollision(layout /*: Layout*/, collidesWith /*: LayoutItem*/, itemToMove /*: LayoutItem*/, isUserAction /*: ?boolean*/) /*: Layout*/ {
-
+	
 	  // If there is enough space above the collision to put this element, move it there.
 	  // We only do this on the main collision as this can get funky in cascades and cause
 	  // unwanted swapping behavior.
@@ -42838,12 +42838,12 @@
 	      return moveElement(layout, itemToMove, undefined, fakeItem.y);
 	    }
 	  }
-
+	
 	  // Previously this was optimized to move below the collision directly, but this can cause problems
 	  // with cascading moves, as an item may actually leapflog a collision and cause a reversal in order.
 	  return moveElement(layout, itemToMove, undefined, itemToMove.y + 1);
 	}
-
+	
 	/**
 	 * Helper to convert a number to a percentage string.
 	 *
@@ -42853,13 +42853,13 @@
 	function perc(num /*: number*/) /*: string*/ {
 	  return num * 100 + '%';
 	}
-
+	
 	function setTransform(_ref) /*: Object*/ {
 	  var top = _ref.top;
 	  var left = _ref.left;
 	  var width = _ref.width;
 	  var height = _ref.height;
-
+	
 	  // Replace unitless items with px
 	  var translate = 'translate(' + left + 'px,' + top + 'px)';
 	  return {
@@ -42873,13 +42873,13 @@
 	    position: 'absolute'
 	  };
 	}
-
+	
 	function setTopLeft(_ref2) /*: Object*/ {
 	  var top = _ref2.top;
 	  var left = _ref2.left;
 	  var width = _ref2.width;
 	  var height = _ref2.height;
-
+	
 	  return {
 	    top: top + 'px',
 	    left: left + 'px',
@@ -42888,7 +42888,7 @@
 	    position: 'absolute'
 	  };
 	}
-
+	
 	/**
 	 * Get layout items sorted from top left to right and down.
 	 *
@@ -42903,7 +42903,7 @@
 	    return -1;
 	  });
 	}
-
+	
 	/**
 	 * Generate a layout using the initialLayout and children as a template.
 	 * Missing entries will be added, extraneous ones will be truncated.
@@ -42919,20 +42919,20 @@
 	    children = [children];
 	  }
 	  initialLayout = initialLayout || [];
-
+	
 	  // Generate one layout item per child.
 	  var layout /*: Layout*/ = [];
 	  for (var _i8 = 0, len = children.length; _i8 < len; _i8++) {
 	    var newItem = void 0;
 	    var child = children[_i8];
-
+	
 	    // Don't overwrite if it already exists.
 	    var exists = getLayoutItem(initialLayout, child.key || "1" /* FIXME satisfies Flow */);
 	    if (exists) {
 	      newItem = exists;
 	    } else {
 	      var g = child.props._grid;
-
+	
 	      // Hey, this item has a _grid property, use it.
 	      if (g) {
 	        if (!isProduction) {
@@ -42953,14 +42953,14 @@
 	    }
 	    layout[_i8] = newItem;
 	  }
-
+	
 	  // Correct the layout.
 	  layout = correctBounds(layout, { cols: cols });
 	  layout = compact(layout, verticalCompact);
-
+	
 	  return layout;
 	}
-
+	
 	/**
 	 * Validate a layout. Throws errors.
 	 *
@@ -42987,7 +42987,7 @@
 	    }
 	  }
 	}
-
+	
 	// Flow can't really figure this out, so we just use Object
 	function autoBindHandlers(el /*: Object*/, fns /*: Array<string>*/) /*: void*/ {
 	  fns.forEach(function (key) {
@@ -43002,32 +43002,32 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	exports.__esModule = true;
-
+	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
+	
 	var _react = __webpack_require__(20);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _reactDraggable = __webpack_require__(77);
-
+	
 	var _reactResizable = __webpack_require__(78);
-
+	
 	var _utils = __webpack_require__(75);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
+	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
+	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
+	
 	/*:: import type {DragCallbackData, Position} from './utils';*/
-
-
+	
+	
 	/**
 	 * An individual item within a ReactGridLayout.
 	 */
@@ -43036,37 +43036,37 @@
 	  dragging: ?{top: number, left: number},
 	  className: string
 	};*/
-
+	
 	var GridItem = function (_React$Component) {
 	  _inherits(GridItem, _React$Component);
-
+	
 	  function GridItem() {
 	    var _temp, _this, _ret;
-
+	
 	    _classCallCheck(this, GridItem);
-
+	
 	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
 	      args[_key] = arguments[_key];
 	    }
-
+	
 	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
 	      resizing: null,
 	      dragging: null,
 	      className: ''
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
-
+	
 	  // Helper for generating column width
-
+	
 	  GridItem.prototype.calcColWidth = function calcColWidth() {
 	    var _props = this.props;
 	    var margin = _props.margin;
 	    var containerWidth = _props.containerWidth;
 	    var cols = _props.cols;
-
+	
 	    return (containerWidth - margin[0] * (cols + 1)) / cols;
 	  };
-
+	
 	  /**
 	   * Return position on the page given an x, y, w, h.
 	   * left, top, width, height are all in pixels.
@@ -43076,15 +43076,15 @@
 	   * @param  {Number}  h             H coordinate in grid units.
 	   * @return {Object}                Object containing coords.
 	   */
-
-
+	
+	
 	  GridItem.prototype.calcPosition = function calcPosition(x /*: number*/, y /*: number*/, w /*: number*/, h /*: number*/, state /*: ?Object*/) {
 	    var _props2 = this.props;
 	    var margin = _props2.margin;
 	    var rowHeight = _props2.rowHeight;
-
+	
 	    var colWidth = this.calcColWidth();
-
+	
 	    var out = {
 	      left: Math.round(colWidth * x + (x + 1) * margin[0]),
 	      top: Math.round(rowHeight * y + (y + 1) * margin[1]),
@@ -43094,28 +43094,28 @@
 	      width: w === Infinity ? w : Math.round(colWidth * w + Math.max(0, w - 1) * margin[0]),
 	      height: h === Infinity ? h : Math.round(rowHeight * h + Math.max(0, h - 1) * margin[1])
 	    };
-
+	
 	    if (state && state.resizing) {
 	      out.width = Math.round(state.resizing.width);
 	      out.height = Math.round(state.resizing.height);
 	    }
-
+	
 	    if (state && state.dragging) {
 	      out.top = Math.round(state.dragging.top);
 	      out.left = Math.round(state.dragging.left);
 	    }
-
+	
 	    return out;
 	  };
-
+	
 	  /**
 	   * Translate x and y coordinates from pixels to grid units.
 	   * @param  {Number} top  Top position (relative to parent) in pixels.
 	   * @param  {Number} left Left position (relative to parent) in pixels.
 	   * @return {Object} x and y in grid units.
 	   */
-
-
+	
+	
 	  GridItem.prototype.calcXY = function calcXY(top /*: number*/, left /*: number*/) {
 	    var _props3 = this.props;
 	    var margin = _props3.margin;
@@ -43124,9 +43124,9 @@
 	    var w = _props3.w;
 	    var h = _props3.h;
 	    var maxRows = _props3.maxRows;
-
+	
 	    var colWidth = this.calcColWidth();
-
+	
 	    // left = colWidth * x + margin * (x + 1)
 	    // l = cx + m(x+1)
 	    // l = cx + mx + m
@@ -43136,22 +43136,22 @@
 	    // x = (left - margin) / (coldWidth + margin)
 	    var x = Math.round((left - margin[0]) / (colWidth + margin[0]));
 	    var y = Math.round((top - margin[1]) / (rowHeight + margin[1]));
-
+	
 	    // Capping
 	    x = Math.max(Math.min(x, cols - w), 0);
 	    y = Math.max(Math.min(y, maxRows - h), 0);
-
+	
 	    return { x: x, y: y };
 	  };
-
+	
 	  /**
 	   * Given a height and width in pixel values, calculate grid units.
 	   * @param  {Number} height Height in pixels.
 	   * @param  {Number} width  Width in pixels.
 	   * @return {Object} w, h as grid units.
 	   */
-
-
+	
+	
 	  GridItem.prototype.calcWH = function calcWH(_ref) {
 	    var height = _ref.height;
 	    var width = _ref.width;
@@ -43162,21 +43162,21 @@
 	    var rowHeight = _props4.rowHeight;
 	    var x = _props4.x;
 	    var y = _props4.y;
-
+	
 	    var colWidth = this.calcColWidth();
-
+	
 	    // width = colWidth * w - (margin * (w - 1))
 	    // ...
 	    // w = (width + margin) / (colWidth + margin)
 	    var w = Math.round((width + margin[0]) / (colWidth + margin[0]));
 	    var h = Math.round((height + margin[1]) / (rowHeight + margin[1]));
-
+	
 	    // Capping
 	    w = Math.max(Math.min(w, cols - x), 0);
 	    h = Math.max(Math.min(h, maxRows - y), 0);
 	    return { w: w, h: h };
 	  };
-
+	
 	  /**
 	   * This is where we set the grid item's absolute placement. It gets a little tricky because we want to do it
 	   * well when server rendering, and the only way to do that properly is to use percentage width/left because
@@ -43187,15 +43187,15 @@
 	   * @param  {Object} pos Position object with width, height, left, top.
 	   * @return {Object}     Style object.
 	   */
-
-
+	
+	
 	  GridItem.prototype.createStyle = function createStyle(pos /*: Position*/) {
 	    var _props5 = this.props;
 	    var usePercentages = _props5.usePercentages;
 	    var containerWidth = _props5.containerWidth;
 	    var useCSSTransforms = _props5.useCSSTransforms;
-
-
+	
+	
 	    var style = void 0;
 	    // CSS Transforms support (default)
 	    if (useCSSTransforms) {
@@ -43204,24 +43204,24 @@
 	    // top,left (slow)
 	    else {
 	        style = (0, _utils.setTopLeft)(pos);
-
+	
 	        // This is used for server rendering.
 	        if (usePercentages) {
 	          style.left = (0, _utils.perc)(pos.left / containerWidth);
 	          style.width = (0, _utils.perc)(pos.width / containerWidth);
 	        }
 	      }
-
+	
 	    return style;
 	  };
-
+	
 	  /**
 	   * Mix a Draggable instance into a child.
 	   * @param  {Element} child    Child element.
 	   * @return {Element}          Child wrapped in Draggable.
 	   */
-
-
+	
+	
 	  GridItem.prototype.mixinDraggable = function mixinDraggable(child /*: React.Element*/) {
 	    return _react2.default.createElement(
 	      _reactDraggable.DraggableCore,
@@ -43234,15 +43234,15 @@
 	      child
 	    );
 	  };
-
+	
 	  /**
 	   * Mix a Resizable instance into a child.
 	   * @param  {Element} child    Child element.
 	   * @param  {Object} position  Position object (pixel values)
 	   * @return {Element}          Child wrapped in Resizable.
 	   */
-
-
+	
+	
 	  GridItem.prototype.mixinResizable = function mixinResizable(child /*: React.Element*/, position /*: Position*/) {
 	    var _props6 = this.props;
 	    var cols = _props6.cols;
@@ -43251,11 +43251,11 @@
 	    var minH = _props6.minH;
 	    var maxW = _props6.maxW;
 	    var maxH = _props6.maxH;
-
+	
 	    // This is the max possible width - doesn't go to infinity because of the width of the window
-
+	
 	    var maxWidth = this.calcPosition(0, 0, cols - x, 0).width;
-
+	
 	    // Calculate min/max constraints using our min & maxes
 	    var mins = this.calcPosition(0, 0, minW, minH);
 	    var maxes = this.calcPosition(0, 0, maxW, maxH);
@@ -43274,7 +43274,7 @@
 	      child
 	    );
 	  };
-
+	
 	  /**
 	   * Wrapper around drag events to provide more useful data.
 	   * All drag events call the function with the given handler name,
@@ -43283,20 +43283,20 @@
 	   * @param  {String} handlerName Handler name to wrap.
 	   * @return {Function}           Handler function.
 	   */
-
-
+	
+	
 	  GridItem.prototype.onDragHandler = function onDragHandler(handlerName /*:string*/) {
 	    var _this2 = this;
-
+	
 	    return function (e /*:Event*/, _ref2) {
 	      var node = _ref2.node;
 	      var deltaX = _ref2.deltaX;
 	      var deltaY = _ref2.deltaY;
-
+	
 	      if (!_this2.props[handlerName]) return;
-
+	
 	      var newPosition /*: {top: number, left: number}*/ = { top: 0, left: 0 };
-
+	
 	      // Get new XY
 	      switch (handlerName) {
 	        case 'onDragStart':
@@ -43322,17 +43322,17 @@
 	        default:
 	          throw new Error('onDragHandler called with unrecognized handlerName: ' + handlerName);
 	      }
-
+	
 	      var _calcXY = _this2.calcXY(newPosition.top, newPosition.left);
-
+	
 	      var x = _calcXY.x;
 	      var y = _calcXY.y;
-
-
+	
+	
 	      _this2.props[handlerName](_this2.props.i, x, y, { e: e, node: node, newPosition: newPosition });
 	    };
 	  };
-
+	
 	  /**
 	   * Wrapper around drag events to provide more useful data.
 	   * All drag events call the function with the given handler name,
@@ -43341,15 +43341,15 @@
 	   * @param  {String} handlerName Handler name to wrap.
 	   * @return {Function}           Handler function.
 	   */
-
-
+	
+	
 	  GridItem.prototype.onResizeHandler = function onResizeHandler(handlerName /*:string*/) {
 	    var _this3 = this;
-
+	
 	    return function (e /*:Event*/, _ref3) {
 	      var element = _ref3.element;
 	      var size = _ref3.size;
-
+	
 	      if (!_this3.props[handlerName]) return;
 	      var _props7 = _this3.props;
 	      var cols = _props7.cols;
@@ -43359,30 +43359,30 @@
 	      var minW = _props7.minW;
 	      var maxH = _props7.maxH;
 	      var minH = _props7.minH;
-
+	
 	      // Get new XY
-
+	
 	      var _calcWH = _this3.calcWH(size);
-
+	
 	      var w = _calcWH.w;
 	      var h = _calcWH.h;
-
+	
 	      // Cap w at numCols
-
+	
 	      w = Math.min(w, cols - x);
 	      // Ensure w is at least 1
 	      w = Math.max(w, 1);
-
+	
 	      // Min/max capping
 	      w = Math.max(Math.min(w, maxW), minW);
 	      h = Math.max(Math.min(h, maxH), minH);
-
+	
 	      _this3.setState({ resizing: handlerName === 'onResizeStop' ? null : size });
-
+	
 	      _this3.props[handlerName](i, w, h, { e: e, element: element, size: size });
 	    };
 	  };
-
+	
 	  GridItem.prototype.render = function render() {
 	    var _props8 = this.props;
 	    var x = _props8.x;
@@ -43392,11 +43392,11 @@
 	    var isDraggable = _props8.isDraggable;
 	    var isResizable = _props8.isResizable;
 	    var useCSSTransforms = _props8.useCSSTransforms;
-
-
+	
+	
 	    var pos = this.calcPosition(x, y, w, h, this.state);
 	    var child = _react2.default.Children.only(this.props.children);
-
+	
 	    // Create the child element. We clone the existing element but modify its className and style.
 	    var newChild = _react2.default.cloneElement(child, {
 	      // Munge a classname. Use passed in classnames and resizing.
@@ -43405,36 +43405,36 @@
 	      // We can set the width and height on the child, but unfortunately we can't set the position.
 	      style: _extends({}, this.props.style, child.props.style, this.createStyle(pos))
 	    });
-
+	
 	    // Resizable support. This is usually on but the user can toggle it off.
 	    if (isResizable) newChild = this.mixinResizable(newChild, pos);
-
+	
 	    // Draggable support. This is always on, except for with placeholders.
 	    if (isDraggable) newChild = this.mixinDraggable(newChild);
-
+	
 	    return newChild;
 	  };
-
+	
 	  return GridItem;
 	}(_react2.default.Component);
-
+	
 	GridItem.propTypes = {
 	  // Children must be only a single element
 	  children: _react.PropTypes.element,
-
+	
 	  // General grid attributes
 	  cols: _react.PropTypes.number.isRequired,
 	  containerWidth: _react.PropTypes.number.isRequired,
 	  rowHeight: _react.PropTypes.number.isRequired,
 	  margin: _react.PropTypes.array.isRequired,
 	  maxRows: _react.PropTypes.number.isRequired,
-
+	
 	  // These are all in grid units
 	  x: _react.PropTypes.number.isRequired,
 	  y: _react.PropTypes.number.isRequired,
 	  w: _react.PropTypes.number.isRequired,
 	  h: _react.PropTypes.number.isRequired,
-
+	
 	  // All optional
 	  minW: function minW(props, propName, componentName, location, propFullName) {
 	    _react.PropTypes.number(props, propName, componentName, location, propFullName);
@@ -43456,10 +43456,10 @@
 	    var value = props[propName];
 	    if (value < props.h || value < props.minH) return new Error('maxHeight smaller than item height/minHeight');
 	  },
-
+	
 	  // ID is nice to have for callbacks
 	  i: _react.PropTypes.string.isRequired,
-
+	
 	  // Functions
 	  onDragStop: _react.PropTypes.func,
 	  onDragStart: _react.PropTypes.func,
@@ -43467,15 +43467,15 @@
 	  onResizeStop: _react.PropTypes.func,
 	  onResizeStart: _react.PropTypes.func,
 	  onResize: _react.PropTypes.func,
-
+	
 	  // Flags
 	  isDraggable: _react.PropTypes.bool.isRequired,
 	  isResizable: _react.PropTypes.bool.isRequired,
 	  static: _react.PropTypes.bool,
-
+	
 	  // Use CSS transforms instead of top/left
 	  useCSSTransforms: _react.PropTypes.bool.isRequired,
-
+	
 	  // Others
 	  className: _react.PropTypes.string,
 	  // Selector for draggable handle
@@ -43553,16 +43553,16 @@
 	/******/ ([
 	/* 0 */
 	/***/ function(module, exports, __webpack_require__) {
-
+	
 		'use strict';
 		
 		module.exports = __webpack_require__(1).default;
 		module.exports.DraggableCore = __webpack_require__(9).default;
-
+	
 	/***/ },
 	/* 1 */
 	/***/ function(module, exports, __webpack_require__) {
-
+	
 		/* WEBPACK VAR INJECTION */(function(global) {'use strict';
 		
 		Object.defineProperty(exports, "__esModule", {
@@ -43961,23 +43961,23 @@
 		});
 		exports.default = Draggable;
 		/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
+	
 	/***/ },
 	/* 2 */
 	/***/ function(module, exports) {
-
+	
 		module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
-
+	
 	/***/ },
 	/* 3 */
 	/***/ function(module, exports) {
-
+	
 		module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
-
+	
 	/***/ },
 	/* 4 */
 	/***/ function(module, exports, __webpack_require__) {
-
+	
 		var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 		  Copyright (c) 2016 Jed Watson.
 		  Licensed under the MIT License (MIT), see
@@ -44026,12 +44026,12 @@
 				window.classNames = classNames;
 			}
 		}());
-
-
+	
+	
 	/***/ },
 	/* 5 */
 	/***/ function(module, exports, __webpack_require__) {
-
+	
 		'use strict';
 		
 		Object.defineProperty(exports, "__esModule", {
@@ -44224,11 +44224,11 @@
 		    touchAction: 'none'
 		  }, childStyle);
 		}
-
+	
 	/***/ },
 	/* 6 */
 	/***/ function(module, exports) {
-
+	
 		'use strict';
 		
 		Object.defineProperty(exports, "__esModule", {
@@ -44264,11 +44264,11 @@
 		    return new Error('Invalid prop ' + propName + ' passed to ' + componentName + ' - do not set this, set it on the child.');
 		  }
 		}
-
+	
 	/***/ },
 	/* 7 */
 	/***/ function(module, exports) {
-
+	
 		'use strict';
 		
 		Object.defineProperty(exports, "__esModule", {
@@ -44326,11 +44326,11 @@
 		// Note that you may have to re-test for certain things; for instance, Chrome 50
 		// can handle unprefixed `transform`, but not unprefixed `user-select`
 		exports.default = getPrefix();
-
+	
 	/***/ },
 	/* 8 */
 	/***/ function(module, exports, __webpack_require__) {
-
+	
 		'use strict';
 		
 		Object.defineProperty(exports, "__esModule", {
@@ -44471,11 +44471,11 @@
 		    bottom: bounds.bottom
 		  };
 		}
-
+	
 	/***/ },
 	/* 9 */
 	/***/ function(module, exports, __webpack_require__) {
-
+	
 		/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 		
 		Object.defineProperty(exports, "__esModule", {
@@ -44897,11 +44897,11 @@
 		};
 		exports.default = DraggableCore;
 		/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
-
+	
 	/***/ },
 	/* 10 */
 	/***/ function(module, exports) {
-
+	
 		// shim for using process in browser
 		
 		var process = module.exports = {};
@@ -45021,12 +45021,12 @@
 		    throw new Error('process.chdir is not supported');
 		};
 		process.umask = function() { return 0; };
-
-
+	
+	
 	/***/ },
 	/* 11 */
 	/***/ function(module, exports, __webpack_require__) {
-
+	
 		"use strict";
 		
 		Object.defineProperty(exports, "__esModule", {
@@ -45040,7 +45040,7 @@
 		
 		  if ((undefined)) (_console = console).log.apply(_console, arguments);
 		}
-
+	
 	/***/ }
 	/******/ ])
 	});
@@ -45056,7 +45056,7 @@
 	module.exports = function() {
 	  throw new Error("Don't instantiate Resizable directly! Use require('react-resizable').Resizable");
 	};
-
+	
 	module.exports.Resizable = __webpack_require__(79).default;
 	module.exports.ResizableBox = __webpack_require__(81).default;
 
@@ -45067,33 +45067,33 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	exports.__esModule = true;
-
+	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
+	
 	var _react = __webpack_require__(20);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _reactDraggable = __webpack_require__(77);
-
+	
 	var _cloneElement = __webpack_require__(80);
-
+	
 	var _cloneElement2 = _interopRequireDefault(_cloneElement);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
+	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
+	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
+	
 	/*:: type Position = {
-
+	
 	};*/
 	/*:: type State = {
 	  resizing: boolean,
@@ -45106,26 +45106,26 @@
 	  deltaX: number, deltaY: number,
 	  lastX: number, lastY: number
 	};*/
-
+	
 	var Resizable = function (_React$Component) {
 	  _inherits(Resizable, _React$Component);
-
+	
 	  function Resizable() {
 	    var _temp, _this, _ret;
-
+	
 	    _classCallCheck(this, Resizable);
-
+	
 	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
 	      args[_key] = arguments[_key];
 	    }
-
+	
 	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
 	      resizing: false,
 	      width: _this.props.width, height: _this.props.height,
 	      slackW: 0, slackH: 0
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
-
+	
 	  Resizable.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps /*: Object*/) {
 	    // If parent changes height/width, set that in our state.
 	    if (!this.state.resizing && (nextProps.width !== this.props.width || nextProps.height !== this.props.height)) {
@@ -45135,43 +45135,43 @@
 	      });
 	    }
 	  };
-
+	
 	  Resizable.prototype.lockAspectRatio = function lockAspectRatio(width /*: number*/, height /*: number*/, aspectRatio /*: number*/) {
 	    height = width / aspectRatio;
 	    width = height * aspectRatio;
 	    return [width, height];
 	  };
-
+	
 	  // If you do this, be careful of constraints
-
-
+	
+	
 	  Resizable.prototype.runConstraints = function runConstraints(width /*: number*/, height /*: number*/) {
 	    var min = this.props.minConstraints;
 	    var max = this.props.maxConstraints;
-
-
+	
+	
 	    if (this.props.lockAspectRatio) {
 	      var ratio = this.state.width / this.state.height;
 	      height = width / ratio;
 	      width = height * ratio;
 	    }
-
+	
 	    if (!min && !max) return [width, height];
-
+	
 	    var oldW = width;
 	    var oldH = height;
-
+	
 	    // Add slack to the values used to calculate bound position. This will ensure that if
 	    // we start removing slack, the element won't react to it right away until it's been
 	    // completely removed.
-
+	
 	    var _state = this.state;
 	    var slackW = _state.slackW;
 	    var slackH = _state.slackH;
-
+	
 	    width += slackW;
 	    height += slackH;
-
+	
 	    if (min) {
 	      width = Math.max(min[0], width);
 	      height = Math.max(min[1], height);
@@ -45180,45 +45180,45 @@
 	      width = Math.min(max[0], width);
 	      height = Math.min(max[1], height);
 	    }
-
+	
 	    // If the numbers changed, we must have introduced some slack. Record it for the next iteration.
 	    slackW += oldW - width;
 	    slackH += oldH - height;
 	    if (slackW !== this.state.slackW || slackH !== this.state.slackH) {
 	      this.setState({ slackW: slackW, slackH: slackH });
 	    }
-
+	
 	    return [width, height];
 	  };
-
+	
 	  /**
 	   * Wrapper around drag events to provide more useful data.
 	   *
 	   * @param  {String} handlerName Handler name to wrap.
 	   * @return {Function}           Handler function.
 	   */
-
-
+	
+	
 	  Resizable.prototype.resizeHandler = function resizeHandler(handlerName /*: string*/) {
 	    var _this2 = this;
-
+	
 	    return function (e, _ref) {
 	      var node = _ref.node;
 	      var deltaX = _ref.deltaX;
 	      var deltaY = _ref.deltaY;
-
+	
 	      var width = _this2.state.width + deltaX;
 	      var height = _this2.state.height + deltaY;
-
+	
 	      // Early return if no change
 	      var widthChanged = width !== _this2.state.width,
 	          heightChanged = height !== _this2.state.height;
 	      if (handlerName === 'onResize' && !widthChanged && !heightChanged) return;
-
+	
 	      // Set the appropriate state for this handler.
-
+	
 	      var _runConstraints = _this2.runConstraints(width, height);
-
+	
 	      width = _runConstraints[0];
 	      height = _runConstraints[1];
 	      var newState = {};
@@ -45233,13 +45233,13 @@
 	        newState.width = width;
 	        newState.height = height;
 	      }
-
+	
 	      _this2.setState(newState, function () {
 	        _this2.props[handlerName] && _this2.props[handlerName](e, { node: node, size: { width: width, height: height } });
 	      });
 	    };
 	  };
-
+	
 	  Resizable.prototype.render = function render() {
 	    // eslint-disable-next-line no-unused-vars
 	    var _props = this.props;
@@ -45254,11 +45254,11 @@
 	    var onResize = _props.onResize;
 	    var onResizeStop = _props.onResizeStop;
 	    var onResizeStart = _props.onResizeStart;
-
+	
 	    var p = _objectWithoutProperties(_props, ['children', 'draggableOpts', 'width', 'height', 'handleSize', 'lockAspectRatio', 'minConstraints', 'maxConstraints', 'onResize', 'onResizeStop', 'onResizeStart']);
-
+	
 	    var className = p.className ? p.className + ' react-resizable' : 'react-resizable';
-
+	
 	    // What we're doing here is getting the child of this element, and cloning it with this element's props.
 	    // We are then defining its children as:
 	    // Its original children (resizable's child's children), and
@@ -45278,41 +45278,41 @@
 	      )]
 	    }));
 	  };
-
+	
 	  return Resizable;
 	}(_react2.default.Component);
-
+	
 	Resizable.propTypes = {
 	  //
 	  // Required Props
 	  //
-
+	
 	  // Require that one and only one child be present.
 	  children: _react.PropTypes.element.isRequired,
-
+	
 	  // Initial w/h
 	  width: _react.PropTypes.number.isRequired,
 	  height: _react.PropTypes.number.isRequired,
-
+	
 	  //
 	  // Optional props
 	  //
-
+	
 	  // If you change this, be sure to update your css
 	  handleSize: _react.PropTypes.array,
-
+	
 	  // If true, will only allow width/height to move in lockstep
 	  lockAspectRatio: _react.PropTypes.bool,
-
+	
 	  // Min/max size
 	  minConstraints: _react.PropTypes.arrayOf(_react.PropTypes.number),
 	  maxConstraints: _react.PropTypes.arrayOf(_react.PropTypes.number),
-
+	
 	  // Callbacks
 	  onResizeStop: _react.PropTypes.func,
 	  onResizeStart: _react.PropTypes.func,
 	  onResize: _react.PropTypes.func,
-
+	
 	  // These will be passed wholesale to react-draggable's DraggableCore
 	  draggableOpts: _react.PropTypes.object
 	};
@@ -45330,15 +45330,15 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
+	
 	var _react = __webpack_require__(20);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	// React.addons.cloneWithProps look-alike that merges style & className.
 	module.exports = function cloneElement(element /*: React.Element*/, props /*: Object*/) /*: React.Element*/ {
 	  if (props.style && element.props.style) {
@@ -45356,48 +45356,48 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	exports.__esModule = true;
-
+	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
+	
 	var _react = __webpack_require__(20);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _Resizable = __webpack_require__(79);
-
+	
 	var _Resizable2 = _interopRequireDefault(_Resizable);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
+	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
+	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
+	
 	/*:: type State = {width: number, height: number, aspectRatio: number};*/
 	/*:: type Size = {width: number, height: number};*/
-
-
+	
+	
 	// An example use of Resizable.
 	/*:: type ResizeData = {element: Element, size: Size};*/
-
+	
 	var ResizableBox = function (_React$Component) {
 	  _inherits(ResizableBox, _React$Component);
-
+	
 	  function ResizableBox() {
 	    var _temp, _this, _ret;
-
+	
 	    _classCallCheck(this, ResizableBox);
-
+	
 	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
 	      args[_key] = arguments[_key];
 	    }
-
+	
 	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
 	      width: _this.props.width,
 	      height: _this.props.height
@@ -45406,14 +45406,14 @@
 	      var size = _ref.size;
 	      var width = size.width;
 	      var height = size.height;
-
-
+	
+	
 	      _this.setState(size, function () {
 	        _this.props.onResize && _this.props.onResize(event, { element: element, size: size });
 	      });
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
-
+	
 	  ResizableBox.prototype.render = function render() {
 	    // Basic wrapper around a Resizable instance.
 	    // If you use Resizable directly, you are responsible for updating the child component
@@ -45428,9 +45428,9 @@
 	    var lockAspectRatio = _props.lockAspectRatio;
 	    var width = _props.width;
 	    var height = _props.height;
-
+	
 	    var props = _objectWithoutProperties(_props, ['handleSize', 'onResizeStart', 'onResizeStop', 'draggableOpts', 'minConstraints', 'maxConstraints', 'lockAspectRatio', 'width', 'height']);
-
+	
 	    return _react2.default.createElement(
 	      _Resizable2.default,
 	      {
@@ -45448,10 +45448,10 @@
 	      _react2.default.createElement('div', _extends({ style: { width: this.state.width + 'px', height: this.state.height + 'px' } }, props))
 	    );
 	  };
-
+	
 	  return ResizableBox;
 	}(_react2.default.Component);
-
+	
 	ResizableBox.propTypes = {
 	  height: _react.PropTypes.number,
 	  width: _react.PropTypes.number
@@ -45467,69 +45467,69 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	exports.__esModule = true;
-
+	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
+	
 	var _react = __webpack_require__(20);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _lodash = __webpack_require__(74);
-
+	
 	var _lodash2 = _interopRequireDefault(_lodash);
-
+	
 	var _utils = __webpack_require__(75);
-
+	
 	var _responsiveUtils = __webpack_require__(83);
-
+	
 	var _ReactGridLayout = __webpack_require__(73);
-
+	
 	var _ReactGridLayout2 = _interopRequireDefault(_ReactGridLayout);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
+	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
+	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
+	
 	var noop = function noop() {};
-
+	
 	/*:: import type {Layout} from './utils';*/
 	/*:: type State = {
 	  layout: Layout,
 	  breakpoint: string,
 	  cols: number
 	};*/
-
+	
 	var ResponsiveReactGridLayout = function (_React$Component) {
 	  _inherits(ResponsiveReactGridLayout, _React$Component);
-
+	
 	  function ResponsiveReactGridLayout() {
 	    var _temp, _this, _ret;
-
+	
 	    _classCallCheck(this, ResponsiveReactGridLayout);
-
+	
 	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
 	      args[_key] = arguments[_key];
 	    }
-
+	
 	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = _this.generateInitialState(), _this.onLayoutChange = function (layout) {
 	      var _extends2;
-
+	
 	      _this.props.onLayoutChange(layout, _extends({}, _this.props.layouts, (_extends2 = {}, _extends2[_this.state.breakpoint] = layout, _extends2)));
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
-
+	
 	  // This should only include propTypes needed in this code; RGL itself
 	  // will do validation of the rest props passed to it.
-
-
+	
+	
 	  ResponsiveReactGridLayout.prototype.generateInitialState = function generateInitialState() {
 	    var _props = this.props;
 	    var width = _props.width;
@@ -45537,85 +45537,85 @@
 	    var layouts = _props.layouts;
 	    var verticalCompact = _props.verticalCompact;
 	    var cols = _props.cols;
-
+	
 	    var breakpoint = (0, _responsiveUtils.getBreakpointFromWidth)(breakpoints, width);
 	    var colNo = (0, _responsiveUtils.getColsFromBreakpoint)(breakpoint, cols);
 	    // Get the initial layout. This can tricky; we try to generate one however possible if one doesn't exist
 	    // for this layout.
 	    var initialLayout = (0, _responsiveUtils.findOrGenerateResponsiveLayout)(layouts, breakpoints, breakpoint, breakpoint, colNo, verticalCompact);
-
+	
 	    return {
 	      layout: initialLayout,
 	      breakpoint: breakpoint,
 	      cols: colNo
 	    };
 	  };
-
+	
 	  ResponsiveReactGridLayout.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps /*: Object*/) {
-
+	
 	    // Allow parent to set width or breakpoint directly.
 	    if (nextProps.width != this.props.width || nextProps.breakpoint !== this.props.breakpoint || nextProps.breakpoints !== this.props.breakpoints || nextProps.cols !== this.props.cols) {
 	      this.onWidthChange(nextProps);
 	    }
-
+	
 	    // Allow parent to set layouts directly.
 	    else if (!(0, _lodash2.default)(nextProps.layouts, this.props.layouts)) {
 	        var _state = this.state;
 	        var _breakpoint = _state.breakpoint;
 	        var _cols = _state.cols;
-
+	
 	        // Since we're setting an entirely new layout object, we must generate a new responsive layout
 	        // if one does not exist.
-
+	
 	        var newLayout = (0, _responsiveUtils.findOrGenerateResponsiveLayout)(nextProps.layouts, nextProps.breakpoints, _breakpoint, _breakpoint, _cols, nextProps.verticalLayout);
 	        this.setState({ layout: newLayout });
 	      }
 	  };
-
+	
 	  // wrap layouts so we do not need to pass layouts to child
-
-
+	
+	
 	  /**
 	   * When the width changes work through breakpoints and reset state with the new width & breakpoint.
 	   * Width changes are necessary to figure out the widget widths.
 	   */
-
+	
 	  ResponsiveReactGridLayout.prototype.onWidthChange = function onWidthChange(nextProps /*: typeof ResponsiveReactGridLayout.prototype.props*/) {
 	    var breakpoints = nextProps.breakpoints;
 	    var verticalLayout = nextProps.verticalLayout;
 	    var verticalCompact = nextProps.verticalCompact;
 	    var cols = nextProps.cols;
-
+	
 	    var newBreakpoint = nextProps.breakpoint || (0, _responsiveUtils.getBreakpointFromWidth)(nextProps.breakpoints, nextProps.width);
-
+	
 	    var lastBreakpoint = this.state.breakpoint;
-
+	
 	    // Breakpoint change
 	    if (lastBreakpoint !== newBreakpoint || this.props.breakpoints !== breakpoints || this.props.cols !== cols) {
-
+	
 	      // Store the current layout
 	      var layouts = nextProps.layouts;
 	      layouts[lastBreakpoint] = (0, _utils.cloneLayout)(this.state.layout);
-
+	
 	      // Find or generate a new one.
 	      var newCols /*: number*/ = (0, _responsiveUtils.getColsFromBreakpoint)(newBreakpoint, cols);
 	      var _layout = (0, _responsiveUtils.findOrGenerateResponsiveLayout)(layouts, breakpoints, newBreakpoint, lastBreakpoint, newCols, verticalLayout);
-
+	
 	      // This adds missing items.
 	      _layout = (0, _utils.synchronizeLayoutWithChildren)(_layout, nextProps.children, newCols, verticalCompact);
-
+	
 	      // Store this new layout as well.
 	      layouts[newBreakpoint] = _layout;
-
+	
 	      // callbacks
 	      this.props.onLayoutChange(_layout, layouts);
 	      this.props.onBreakpointChange(newBreakpoint, newCols);
 	      this.props.onWidthChange(nextProps.width, nextProps.margin, newCols);
-
+	
 	      this.setState({ breakpoint: newBreakpoint, layout: _layout, cols: newCols });
 	    }
 	  };
-
+	
 	  ResponsiveReactGridLayout.prototype.render = function render() {
 	    var _props2 = this.props;
 	    var breakpoint = _props2.breakpoint;
@@ -45625,35 +45625,35 @@
 	    var onBreakpointChange = _props2.onBreakpointChange;
 	    var onLayoutChange = _props2.onLayoutChange;
 	    var onWidthChange = _props2.onWidthChange;
-
+	
 	    var other = _objectWithoutProperties(_props2, ['breakpoint', 'breakpoints', 'cols', 'layouts', 'onBreakpointChange', 'onLayoutChange', 'onWidthChange']);
-
+	
 	    return _react2.default.createElement(_ReactGridLayout2.default, _extends({}, other, {
 	      onLayoutChange: this.onLayoutChange,
 	      layout: this.state.layout,
 	      cols: this.state.cols
 	    }));
 	  };
-
+	
 	  return ResponsiveReactGridLayout;
 	}(_react2.default.Component);
-
+	
 	ResponsiveReactGridLayout.propTypes = {
-
+	
 	  //
 	  // Basic props
 	  //
-
+	
 	  // Optional, but if you are managing width yourself you may want to set the breakpoint
 	  // yourself as well.
 	  breakpoint: _react2.default.PropTypes.string,
-
+	
 	  // {name: pxVal}, e.g. {lg: 1200, md: 996, sm: 768, xs: 480}
 	  breakpoints: _react2.default.PropTypes.object,
-
+	
 	  // # of cols. This is a breakpoint -> cols map
 	  cols: _react2.default.PropTypes.object,
-
+	
 	  // layouts is an object mapping breakpoints to layouts.
 	  // e.g. {lg: Layout, md: Layout, ...}
 	  layouts: function layouts(props) {
@@ -45662,22 +45662,22 @@
 	      return (0, _utils.validateLayout)(props.layouts[key], 'layouts.' + key);
 	    });
 	  },
-
+	
 	  // The width of this component.
 	  // Required in this propTypes stanza because generateInitialState() will fail without it.
 	  width: _react2.default.PropTypes.number.isRequired,
-
+	
 	  //
 	  // Callbacks
 	  //
-
+	
 	  // Calls back with breakpoint and new # cols
 	  onBreakpointChange: _react2.default.PropTypes.func,
-
+	
 	  // Callback so you can save the layout.
 	  // Calls back with (currentLayout, allLayouts). allLayouts are keyed by breakpoint.
 	  onLayoutChange: _react2.default.PropTypes.func,
-
+	
 	  // Calls back with (containerWidth, margin, cols)
 	  onWidthChange: _react2.default.PropTypes.func
 	};
@@ -45697,20 +45697,20 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	exports.__esModule = true;
 	exports.getBreakpointFromWidth = getBreakpointFromWidth;
 	exports.getColsFromBreakpoint = getColsFromBreakpoint;
 	exports.findOrGenerateResponsiveLayout = findOrGenerateResponsiveLayout;
 	exports.sortBreakpoints = sortBreakpoints;
-
+	
 	var _utils = __webpack_require__(75);
-
+	
 	/*:: import type {Layout} from './utils';*/
 	/*:: export type ResponsiveLayout = {lg?: Layout, md?: Layout, sm?: Layout, xs?: Layout, xxs?: Layout};*/
 	/*:: type Breakpoint = string;*/
-
-
+	
+	
 	/**
 	 * Given a width, find the highest breakpoint that matches is valid for it (width > breakpoint).
 	 *
@@ -45728,7 +45728,7 @@
 	  }
 	  return matching;
 	}
-
+	
 	/**
 	 * Given a breakpoint, get the # of cols set for it.
 	 * @param  {String} breakpoint Breakpoint name.
@@ -45741,7 +45741,7 @@
 	  }
 	  return cols[breakpoint];
 	}
-
+	
 	/**
 	 * Given existing layouts and a new breakpoint, find or generate a new layout.
 	 *
@@ -45773,7 +45773,7 @@
 	  layout = (0, _utils.cloneLayout)(layout || []); // clone layout so we don't modify existing items
 	  return (0, _utils.compact)((0, _utils.correctBounds)(layout, { cols: cols }), verticalCompact);
 	}
-
+	
 	/**
 	 * Given breakpoints, return an array of breakpoints sorted by width. This is usually
 	 * e.g. ['xxs', 'xs', 'sm', ...]
@@ -45794,29 +45794,29 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	exports.__esModule = true;
-
+	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
+	
 	var _react = __webpack_require__(20);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _reactDom = __webpack_require__(41);
-
+	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
+	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
+	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // @noflow
 	// Intentional; Flow can't handle the bind on L20
-
-
+	
+	
 	/*
 	 * A simple HOC that provides facility for listening to container resizes.
 	 */
@@ -45824,22 +45824,22 @@
 	  mounted: boolean,
 	  width: number
 	};*/
-
+	
 	exports.default = function (ComposedComponent /*: ReactClass*/) /*: ReactClass*/ {
 	  var _class, _temp2;
-
+	
 	  return _temp2 = _class = function (_React$Component) {
 	    _inherits(_class, _React$Component);
-
+	
 	    function _class() {
 	      var _temp, _this, _ret;
-
+	
 	      _classCallCheck(this, _class);
-
+	
 	      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
 	        args[_key] = arguments[_key];
 	      }
-
+	
 	      return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
 	        mounted: false,
 	        width: 1280
@@ -45848,26 +45848,26 @@
 	        _this.setState({ width: node.offsetWidth }, cb);
 	      }, _temp), _possibleConstructorReturn(_this, _ret);
 	    }
-
+	
 	    _class.prototype.componentDidMount = function componentDidMount() {
 	      this.setState({ mounted: true });
-
+	
 	      window.addEventListener('resize', this.onWindowResize);
 	      // Call to properly set the breakpoint and resize the elements.
 	      // Note that if you're doing a full-width element, this can get a little wonky if a scrollbar
 	      // appears because of the grid. In that case, fire your own resize event, or set `overflow: scroll` on your body.
 	      this.onWindowResize();
 	    };
-
+	
 	    _class.prototype.componentWillUnmount = function componentWillUnmount() {
 	      window.removeEventListener('resize', this.onWindowResize);
 	    };
-
+	
 	    _class.prototype.render = function render() {
 	      if (this.props.measureBeforeMount && !this.state.mounted) return _react2.default.createElement('div', _extends({}, this.props, this.state));
 	      return _react2.default.createElement(ComposedComponent, _extends({}, this.props, this.state));
 	    };
-
+	
 	    return _class;
 	  }(_react2.default.Component), _class.defaultProps = {
 	    measureBeforeMount: false
@@ -45893,19 +45893,19 @@
 /***/ function(module, exports) {
 
 	'use strict';
-
+	
 	exports.__esModule = true;
 	exports['default'] = thunkMiddleware;
 	function thunkMiddleware(_ref) {
 	  var dispatch = _ref.dispatch;
 	  var getState = _ref.getState;
-
+	
 	  return function (next) {
 	    return function (action) {
 	      if (typeof action === 'function') {
 	        return action(dispatch, getState);
 	      }
-
+	
 	      return next(action);
 	    };
 	  };
@@ -45917,11 +45917,11 @@
 /***/ function(module, exports) {
 
 	"use strict";
-
+	
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
+	
 	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
-
+	
 	var repeat = function repeat(str, times) {
 	  return new Array(times + 1).join(str);
 	};
@@ -45931,10 +45931,10 @@
 	var formatTime = function formatTime(time) {
 	  return "@ " + pad(time.getHours(), 2) + ":" + pad(time.getMinutes(), 2) + ":" + pad(time.getSeconds(), 2) + "." + pad(time.getMilliseconds(), 3);
 	};
-
+	
 	// Use the new performance api to get better precision if available
 	var timer = typeof performance !== "undefined" && typeof performance.now === "function" ? performance : Date;
-
+	
 	/**
 	 * parse the level option of createLogger
 	 *
@@ -45943,7 +45943,7 @@
 	 * @property {array} payload
 	 * @property {string} type
 	 */
-
+	
 	function getLogLevel(level, action, payload, type) {
 	  switch (typeof level === "undefined" ? "undefined" : _typeof(level)) {
 	    case "object":
@@ -45954,7 +45954,7 @@
 	      return level;
 	  }
 	}
-
+	
 	/**
 	 * Creates logger with followed options
 	 *
@@ -45972,7 +45972,7 @@
 	 * @property {function} options.actionTransformer - transform action before print
 	 * @property {function} options.errorTransformer - transform error before print
 	 */
-
+	
 	function createLogger() {
 	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 	  var _options$level = options.level;
@@ -46019,9 +46019,9 @@
 	      return "#F20404";
 	    }
 	  } : _options$colors;
-
+	
 	  // exit if console undefined
-
+	
 	  if (typeof logger === "undefined") {
 	    return function () {
 	      return function (next) {
@@ -46031,11 +46031,11 @@
 	      };
 	    };
 	  }
-
+	
 	  if (transformer) {
 	    console.error("Option 'transformer' is deprecated, use stateTransformer instead");
 	  }
-
+	
 	  var logBuffer = [];
 	  function printBuffer() {
 	    logBuffer.forEach(function (logEntry, key) {
@@ -46046,7 +46046,7 @@
 	      var error = logEntry.error;
 	      var took = logEntry.took;
 	      var nextState = logEntry.nextState;
-
+	
 	      var nextEntry = logBuffer[key + 1];
 	      if (nextEntry) {
 	        nextState = nextEntry.prevState;
@@ -46057,11 +46057,11 @@
 	      var isCollapsed = typeof collapsed === "function" ? collapsed(function () {
 	        return nextState;
 	      }, action) : collapsed;
-
+	
 	      var formattedTime = formatTime(startedTime);
 	      var titleCSS = colors.title ? "color: " + colors.title(formattedAction) + ";" : null;
 	      var title = "action " + (timestamp ? formattedTime : "") + " " + formattedAction.type + " " + (duration ? "(in " + took.toFixed(2) + " ms)" : "");
-
+	
 	      // render
 	      try {
 	        if (isCollapsed) {
@@ -46072,28 +46072,28 @@
 	      } catch (e) {
 	        logger.log(title);
 	      }
-
+	
 	      var prevStateLevel = getLogLevel(level, formattedAction, [prevState], "prevState");
 	      var actionLevel = getLogLevel(level, formattedAction, [formattedAction], "action");
 	      var errorLevel = getLogLevel(level, formattedAction, [error, prevState], "error");
 	      var nextStateLevel = getLogLevel(level, formattedAction, [nextState], "nextState");
-
+	
 	      if (prevStateLevel) {
 	        if (colors.prevState) logger[prevStateLevel]("%c prev state", "color: " + colors.prevState(prevState) + "; font-weight: bold", prevState);else logger[prevStateLevel]("prev state", prevState);
 	      }
-
+	
 	      if (actionLevel) {
 	        if (colors.action) logger[actionLevel]("%c action", "color: " + colors.action(formattedAction) + "; font-weight: bold", formattedAction);else logger[actionLevel]("action", formattedAction);
 	      }
-
+	
 	      if (error && errorLevel) {
 	        if (colors.error) logger[errorLevel]("%c error", "color: " + colors.error(error, prevState) + "; font-weight: bold", error);else logger[errorLevel]("error", error);
 	      }
-
+	
 	      if (nextStateLevel) {
 	        if (colors.nextState) logger[nextStateLevel]("%c next state", "color: " + colors.nextState(nextState) + "; font-weight: bold", nextState);else logger[nextStateLevel]("next state", nextState);
 	      }
-
+	
 	      try {
 	        logger.groupEnd();
 	      } catch (e) {
@@ -46102,7 +46102,7 @@
 	    });
 	    logBuffer.length = 0;
 	  }
-
+	
 	  return function (_ref) {
 	    var getState = _ref.getState;
 	    return function (next) {
@@ -46111,15 +46111,15 @@
 	        if (typeof predicate === "function" && !predicate(getState, action)) {
 	          return next(action);
 	        }
-
+	
 	        var logEntry = {};
 	        logBuffer.push(logEntry);
-
+	
 	        logEntry.started = timer.now();
 	        logEntry.startedTime = new Date();
 	        logEntry.prevState = stateTransformer(getState());
 	        logEntry.action = action;
-
+	
 	        var returnedValue = undefined;
 	        if (logErrors) {
 	          try {
@@ -46130,39 +46130,39 @@
 	        } else {
 	          returnedValue = next(action);
 	        }
-
+	
 	        logEntry.took = timer.now() - logEntry.started;
 	        logEntry.nextState = stateTransformer(getState());
-
+	
 	        printBuffer();
-
+	
 	        if (logEntry.error) throw logEntry.error;
 	        return returnedValue;
 	      };
 	    };
 	  };
 	}
-
+	
 	module.exports = createLogger;
 
 /***/ },
 
-/***/ 185:
+/***/ 175:
 /***/ function(module, exports) {
 
 	// get successful control from form and assemble into object
 	// http://www.w3.org/TR/html401/interact/forms.html#h-17.13.2
-
+	
 	// types which indicate a submit action and are not successful controls
 	// these will be ignored
 	var k_r_submitter = /^(?:submit|button|image|reset|file)$/i;
-
+	
 	// node names which could be successful controls
 	var k_r_success_contrls = /^(?:input|select|textarea|keygen)/i;
-
+	
 	// Matches bracket notation.
 	var brackets = /(\[[^\[\]]*\])/g;
-
+	
 	// serializes form fields
 	// @param form MUST be an HTMLForm element
 	// @param options is an optional argument to configure the serialization. Default output
@@ -46181,18 +46181,18 @@
 	    else if (options.hash === undefined) {
 	        options.hash = true;
 	    }
-
+	
 	    var result = (options.hash) ? {} : '';
 	    var serializer = options.serializer || ((options.hash) ? hash_serializer : str_serialize);
-
+	
 	    var elements = form && form.elements ? form.elements : [];
-
+	
 	    //Object store each radio and set if it's empty or not
 	    var radio_store = Object.create(null);
-
+	
 	    for (var i=0 ; i<elements.length ; ++i) {
 	        var element = elements[i];
-
+	
 	        // ingore disabled fields
 	        if ((!options.disabled && element.disabled) || !element.name) {
 	            continue;
@@ -46202,23 +46202,23 @@
 	            k_r_submitter.test(element.type)) {
 	            continue;
 	        }
-
+	
 	        var key = element.name;
 	        var val = element.value;
-
+	
 	        // we can't just use element.value for checkboxes cause some browsers lie to us
 	        // they say "on" for value when the box isn't checked
 	        if ((element.type === 'checkbox' || element.type === 'radio') && !element.checked) {
 	            val = undefined;
 	        }
-
+	
 	        // If we want empty elements
 	        if (options.empty) {
 	            // for checkbox
 	            if (element.type === 'checkbox' && !element.checked) {
 	                val = '';
 	            }
-
+	
 	            // for radio
 	            if (element.type === 'radio') {
 	                if (!radio_store[element.name] && !element.checked) {
@@ -46228,7 +46228,7 @@
 	                    radio_store[element.name] = true;
 	                }
 	            }
-
+	
 	            // if options empty is true, continue only if its radio
 	            if (!val && element.type == 'radio') {
 	                continue;
@@ -46240,11 +46240,11 @@
 	                continue;
 	            }
 	        }
-
+	
 	        // multi select boxes
 	        if (element.type === 'select-multiple') {
 	            val = [];
-
+	
 	            var selectOptions = element.options;
 	            var isSelectedOptions = false;
 	            for (var j=0 ; j<selectOptions.length ; ++j) {
@@ -46253,7 +46253,7 @@
 	                var hasValue = (option.value || allowedEmpty);
 	                if (option.selected && hasValue) {
 	                    isSelectedOptions = true;
-
+	
 	                    // If using a hash serializer be sure to add the
 	                    // correct notation for an array in the multi-select
 	                    // context. Here the name attribute on the select element
@@ -46267,18 +46267,18 @@
 	                    }
 	                }
 	            }
-
+	
 	            // Serialize if no selected options and options.empty is true
 	            if (!isSelectedOptions && options.empty) {
 	                result = serializer(result, key, '');
 	            }
-
+	
 	            continue;
 	        }
-
+	
 	        result = serializer(result, key, val);
 	    }
-
+	
 	    // Check for all empty radio buttons and serialize them with key=""
 	    if (options.empty) {
 	        for (var key in radio_store) {
@@ -46287,39 +46287,39 @@
 	            }
 	        }
 	    }
-
+	
 	    return result;
 	}
-
+	
 	function parse_keys(string) {
 	    var keys = [];
 	    var prefix = /^([^\[\]]*)/;
 	    var children = new RegExp(brackets);
 	    var match = prefix.exec(string);
-
+	
 	    if (match[1]) {
 	        keys.push(match[1]);
 	    }
-
+	
 	    while ((match = children.exec(string)) !== null) {
 	        keys.push(match[1]);
 	    }
-
+	
 	    return keys;
 	}
-
+	
 	function hash_assign(result, keys, value) {
 	    if (keys.length === 0) {
 	        result = value;
 	        return result;
 	    }
-
+	
 	    var key = keys.shift();
 	    var between = key.match(/^\[(.+?)\]$/);
-
+	
 	    if (key === '[]') {
 	        result = result || [];
-
+	
 	        if (Array.isArray(result)) {
 	            result.push(hash_assign(null, keys, value));
 	        }
@@ -46332,10 +46332,10 @@
 	            result._values = result._values || [];
 	            result._values.push(hash_assign(null, keys, value));
 	        }
-
+	
 	        return result;
 	    }
-
+	
 	    // Key is an attribute name and can be assigned directly.
 	    if (!between) {
 	        result[key] = hash_assign(result[key], keys, value);
@@ -46346,7 +46346,7 @@
 	        // better than parseInt because it doesn't truncate away trailing
 	        // letters and actually fails if whole thing is not a number
 	        var index = +string;
-
+	
 	        // If the characters between the brackets is not a number it is an
 	        // attribute name and can be assigned directly.
 	        if (isNaN(index)) {
@@ -46358,14 +46358,14 @@
 	            result[index] = hash_assign(result[index], keys, value);
 	        }
 	    }
-
+	
 	    return result;
 	}
-
+	
 	// Object/hash encoding serializer.
 	function hash_serializer(result, key, value) {
 	    var matches = key.match(brackets);
-
+	
 	    // Has brackets? Use the recursive assignment function to walk the keys,
 	    // construct any missing objects in the result tree and make the assignment
 	    // at the end of the chain.
@@ -46376,7 +46376,7 @@
 	    else {
 	        // Non bracket notation can make assignments directly.
 	        var existing = result[key];
-
+	
 	        // If the value has been assigned already (for instance when a radio and
 	        // a checkbox have the same name attribute) convert the previous value
 	        // into an array before pushing into it.
@@ -46387,31 +46387,32 @@
 	            if (!Array.isArray(existing)) {
 	                result[key] = [ existing ];
 	            }
-
+	
 	            result[key].push(value);
 	        }
 	        else {
 	            result[key] = value;
 	        }
 	    }
-
+	
 	    return result;
 	}
-
+	
 	// urlform encoding serializer
 	function str_serialize(result, key, value) {
 	    // encode newlines as \r\n cause the html spec says so
 	    value = value.replace(/(\r)?\n/g, '\r\n');
 	    value = encodeURIComponent(value);
-
+	
 	    // spaces should be '+' rather than '%20'.
 	    value = value.replace(/%20/g, '+');
 	    return result + (result ? '&' : '') + encodeURIComponent(key) + '=' + value;
 	}
-
+	
 	module.exports = serialize;
 
 
 /***/ }
 
 /******/ });
+//# sourceMappingURL=vendor.bundle.js.map
