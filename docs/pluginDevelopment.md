@@ -81,8 +81,9 @@ All additional information is passed via an `props` object into the constructor.
 
 The datasource has a props object which contains Settings and other information. Ist must not be changed by the datasource!
 
-    interface Props {
+    interface DatasourceProps {
         state: DatasourceState
+        setFetchInterval: (intervalInMs: number) => void
     }
 
     interface DatasourceState {
@@ -140,7 +141,7 @@ In both cases the same `props` object is available.
 The widget has a props object which contains Settings and other information. Ist must not be changed by the widget!
 
 
-    interface Props {
+    interface WidgetProps {
         state: WidgetState
         getData(datasourceId: string): any[]
     }
