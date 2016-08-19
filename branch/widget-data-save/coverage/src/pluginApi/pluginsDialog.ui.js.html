@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/pluginApi/pluginsDialog.ui.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">src/pluginApi/</a> pluginsDialog.ui.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75.64% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>59/78</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">52.94% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>9/17</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">64.29% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>18/28</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">79.45% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>58/73</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+"use strict";
+var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
+    for (var p in b) <span class="cstat-no" title="statement not covered" >if (b.hasOwnProperty(p)) <span class="cstat-no" title="statement not covered" >d[p] = b[p];</span></span>
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? <span class="branch-0 cbranch-no" title="branch not covered" >Object.create(b) </span>: (__.prototype = b.prototype, new __());
+};
+var __assign = (this &amp;&amp; this.__assign) || Object.assign || <span class="fstat-no" title="function not covered" ><span class="branch-3 cbranch-no" title="branch not covered" >function(t) {</span></span>
+<span class="cstat-no" title="statement not covered" >    for (var s, i = 1, n = arguments.length; i &lt; n; i++) {</span>
+<span class="cstat-no" title="statement not covered" >        s = arguments[i];</span>
+<span class="cstat-no" title="statement not covered" >        for (var p in s) <span class="cstat-no" title="statement not covered" >if (Object.prototype.hasOwnProperty.call(s, p))</span></span>
+<span class="cstat-no" title="statement not covered" >            t[p] = s[p];</span>
+    }
+<span class="cstat-no" title="statement not covered" >    return t;</span>
+};
+var React = require('react');
+var modalDialog_ui_js_1 = require('../modal/modalDialog.ui.js');
+var react_redux_1 = require('react-redux');
+var _ = require('lodash');
+var ModalIds = require('../modal/modalDialogIds');
+var Modal = require('../modal/modalDialog');
+var Plugins = require('../pluginApi/plugins');
+var WidgetsPlugins = require('../widgets/widgetPlugins');
+var DatasourcePlugins = require('../datasource/datasourcePlugins');
+var react_1 = require("react");
+var PluginsModal = (function (_super) {
+    __extends(PluginsModal, _super);
+    function PluginsModal() {
+        _super.apply(this, arguments);
+    }
+    PluginsModal.prototype.render = function () {
+        var _this = this;
+        var props = this.props;
+        var actions = [
+            {
+                className: "ui right labeled icon positive button",
+                iconClass: "save icon",
+                label: "Close",
+                onClick: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                    props.closeDialog();</span>
+                }
+            }
+        ];
+        var datasourcePluginStates = _.valuesIn(props.datasourcePlugins);
+        var widgetPluginStates = _.valuesIn(props.widgetPlugins);
+        return React.createElement(modalDialog_ui_js_1.default, {id: ModalIds.PLUGINS, title: "Plugins", actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, React.createElement("form", {className: "ui form"}, React.createElement("h4", {className: "ui dividing header"}, "Load Plugin"), React.createElement("div", {className: "field"}, React.createElement("label", null, "From URL"), React.createElement("input", {ref: "pluginUrl", type: "text", name: "plugin-url", placeholder: "http://my-page.com/myPlugin.js", defaultValue: "plugins/TestWidgetPlugin.js"})), React.createElement("div", {className: "ui button", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return props.loadPlugin(_this.refs.pluginUrl.value); </span>}, tabIndex: "0"}, "Load Plugin")), React.createElement("h4", {className: "ui dividing header"}, "Datasource Plugins"), React.createElement(DatasourcePluginList, __assign({datasourceStates: datasourcePluginStates}, props)), React.createElement("h4", {className: "ui dividing header"}, "Widget Plugins"), React.createElement(WidgetPluginList, __assign({widgetPluginStates: widgetPluginStates}, props)))));
+    };
+    return PluginsModal;
+}(React.Component));
+PluginsModal.propTypes = {
+    datasourcePlugins: react_1.PropTypes.object.isRequired,
+    widgetPlugins: react_1.PropTypes.object.isRequired,
+    closeDialog: react_1.PropTypes.func.isRequired,
+    loadPlugin: react_1.PropTypes.func.isRequired
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = react_redux_1.connect(function (state) {
+    return {
+        widgetPlugins: state.widgetPlugins,
+        datasourcePlugins: state.datasourcePlugins
+    };
+}, function (dispatch) {
+    return {
+        closeDialog: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return dispatch(Modal.closeModal()); </span>},
+        // TODO: Render loading indicator while Plugin loads
+        // maybe build some generic solution for Ajax calls where the state can hold all information to render loading indicators / retry buttons etc...
+        loadPlugin: <span class="fstat-no" title="function not covered" >function (url) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(Plugins.startLoadingPluginFromUrl(url)); </span>}
+    };
+})(PluginsModal);
+var DatasourcePluginList = function (props) {
+    return React.createElement("div", {className: "ui five cards"}, props.datasourceStates.map(function (dsState) {
+        return React.createElement(DatasourcePluginCard, __assign({key: dsState.id, pluginState: dsState}, props));
+    }));
+};
+DatasourcePluginList.propTypes = {
+    datasourceStates: react_1.PropTypes.arrayOf(react_1.PropTypes.shape({
+        id: react_1.PropTypes.string.isRequired
+    })).isRequired
+};
+var WidgetPluginList = function (props) {
+    return React.createElement("div", {className: "ui five cards"}, props.widgetPluginStates.map(function (dsState) {
+        return React.createElement(WidgetPluginCard, __assign({key: dsState.id, pluginState: dsState}, props));
+    }));
+};
+WidgetPluginList.propTypes = {
+    widgetPluginStates: react_1.PropTypes.arrayOf(WidgetsPlugins.widgetPluginType)
+};
+var PluginCard = (function (_super) {
+    __extends(PluginCard, _super);
+    function PluginCard() {
+        _super.apply(this, arguments);
+    }
+    PluginCard.prototype._copyUrl = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        this.refs.url.focus();</span>
+<span class="cstat-no" title="statement not covered" >        this.refs.url.select();</span>
+<span class="cstat-no" title="statement not covered" >        document.execCommand('copy');</span>
+    };
+    PluginCard.prototype.render = function () {
+        var _this = this;
+        var props = this.props;
+        var pluginState = props.pluginState;
+        return React.createElement("div", {className: "card"}, React.createElement("div", {className: "content"}, React.createElement("div", {className: "header"}, pluginState.typeInfo.name), React.createElement("div", {className: "description"}, React.createElement("p", null, "Type: ", pluginState.typeInfo.type), React.createElement("p", null, pluginState.typeInfo.description ? <span class="branch-0 cbranch-no" title="branch not covered" >pluginState.typeInfo.description </span>: "No Description."))), React.createElement("div", {className: "extra content"}, React.createElement("i", {className: "copy outline icon", onClick: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            _this._copyUrl();</span>
+        }, style: { display: "inline" }}), React.createElement("div", {className: "ui large transparent input"}, React.createElement("input", {type: "text", ref: "url", readOnly: true, style: { width: "100%", paddingLeft: 0, paddingRight: 0 }, placeholder: "Plugin Url ...", defaultValue: pluginState.url ? pluginState.url : <span class="branch-1 cbranch-no" title="branch not covered" >"Packaged"}</span>))), React.createElement("div", {className: "ui bottom attached button", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return props.removePlugin(pluginState.id); </span>}}, React.createElement("i", {className: "trash icon"}), "Remove"));
+    };
+    return PluginCard;
+}(React.Component));
+PluginCard.propTypes = {
+    pluginState: react_1.PropTypes.object.isRequired,
+    removePlugin: react_1.PropTypes.func.isRequired
+};
+var WidgetPluginCard = react_redux_1.connect(function (state) {
+    return {};
+}, function (dispatch) {
+    return {
+        removePlugin: <span class="fstat-no" title="function not covered" >function (type) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(WidgetsPlugins.unloadPlugin(type)); </span>}
+    };
+})(PluginCard);
+var DatasourcePluginCard = react_redux_1.connect(function (state) {
+    return {};
+}, function (dispatch) {
+    return {
+        removePlugin: <span class="fstat-no" title="function not covered" >function (type) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(DatasourcePlugins.unloadPlugin(type)); </span>}
+    };
+})(PluginCard);
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Aug 19 2016 16:54:12 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
