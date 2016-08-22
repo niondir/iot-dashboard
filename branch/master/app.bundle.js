@@ -4249,10 +4249,10 @@ webpackJsonp([0],[
 /***/ function(module, exports) {
 
 	module.exports = {
-		"version": "0.1.4",
-		"revision": "e1da9d6f337c454f59309625c40bd67276199b35",
-		"revisionShort": "e1da9d6",
-		"branch": "Detatched: e1da9d6f337c454f59309625c40bd67276199b35"
+		"version": "0.1.5",
+		"revision": "f9dd8328b88b49c8f86dbdb0cd8b82ae0189a4eb",
+		"revisionShort": "f9dd832",
+		"branch": "Detatched: f9dd8328b88b49c8f86dbdb0cd8b82ae0189a4eb"
 	};
 
 /***/ }
