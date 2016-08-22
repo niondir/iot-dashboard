@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/widgets/widgetConfigDialog.ui.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">src/widgets/</a> widgetConfigDialog.ui.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">55.22% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>37/67</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">23.81% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>5/21</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">38.89% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>7/18</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">60% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>36/60</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+"use strict";
+var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
+    for (var p in b) <span class="cstat-no" title="statement not covered" >if (b.hasOwnProperty(p)) <span class="cstat-no" title="statement not covered" >d[p] = b[p];</span></span>
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? <span class="branch-0 cbranch-no" title="branch not covered" >Object.create(b) </span>: (__.prototype = b.prototype, new __());
+};
+var React = require('react');
+var modalDialog_ui_js_1 = require("../modal/modalDialog.ui.js");
+var WidgetPlugins = require("./widgetPlugins");
+var WidgetConfig = require("./widgetConfig");
+var react_redux_1 = require("react-redux");
+var settingsForm_ui_1 = require("../ui/settingsForm.ui");
+var redux_form_1 = require("redux-form");
+var ModalIds = require('../modal/modalDialogIds');
+var react_1 = require("react");
+var DIALOG_ID = ModalIds.WIDGET_CONFIG;
+var FORM_ID = "widget-settings-form";
+<span class="fstat-no" title="function not covered" >function unshiftIfNotExists(array, element, isEqual) {</span>
+<span class="cstat-no" title="statement not covered" >    if (isEqual === void 0) { <span class="cstat-no" title="statement not covered" >isEqual = <span class="fstat-no" title="function not covered" >function (a, b) {</span> <span class="cstat-no" title="statement not covered" >return a.id == b.id; </span>}; </span>}</span>
+<span class="cstat-no" title="statement not covered" >    if (array.find(<span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return isEqual(e, element); </span>}) == undefined) {</span>
+<span class="cstat-no" title="statement not covered" >        array.unshift(element);</span>
+    }
+}
+exports.unshiftIfNotExists = unshiftIfNotExists;
+var WidgetConfigModal = (function (_super) {
+    __extends(WidgetConfigModal, _super);
+    function WidgetConfigModal(props) {
+        _super.call(this, props);
+    }
+    WidgetConfigModal.prototype.onSubmit = <span class="fstat-no" title="function not covered" >function (formData, dispatch) {</span>
+<span class="cstat-no" title="statement not covered" >        dispatch(WidgetConfig.createOrUpdateWidget(this.props.widgetId, this.props.widgetType, formData));</span>
+<span class="cstat-no" title="statement not covered" >        return true;</span>
+    };
+    WidgetConfigModal.prototype.resetForm = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        this.props.resetForm(FORM_ID);</span>
+    };
+    WidgetConfigModal.prototype.render = function () {
+        var _this = this;
+        var props = this.props;
+        var actions = [
+            {
+                className: "ui right button",
+                label: "Reset",
+                onClick: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                    _this.resetForm();</span>
+<span class="cstat-no" title="statement not covered" >                    return false;</span>
+                }
+            },
+            {
+                className: "ui right red button",
+                label: "Cancel",
+                onClick: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                    _this.resetForm();</span>
+<span class="cstat-no" title="statement not covered" >                    return true;</span>
+                }
+            },
+            {
+                className: "ui right labeled icon positive button",
+                iconClass: "save icon",
+                label: "Save",
+                onClick: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                    var success = _this.refs.form.submit();</span>
+<span class="cstat-no" title="statement not covered" >                    if (success)</span>
+<span class="cstat-no" title="statement not covered" >                        _this.resetForm();</span>
+<span class="cstat-no" title="statement not covered" >                    return success;</span>
+                }
+            }
+        ];
+        //const selectedWidgetPlugin = WidgetPlugins.getPlugin(this.props.widgetType) || {settings: []};
+        var selectedWidgetPlugin = props.widgetPlugin;
+        // TODO: Get typeInfo from selectedWidgetPlugin.typeInfo
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (!selectedWidgetPlugin) {
+            // TODO: Find a better (more generic way) to deal with uninitialized data for modals
+            // TODO: The widgetConfig in the state is a bad idea. Solve this via state.modalDialog.data
+            // This is needed for the very first time the page is rendered and the selected widget type is undefined
+            return React.createElement(modalDialog_ui_js_1.default, {id: DIALOG_ID, title: "Configure Widget: " + props.widgetType, actions: actions}, React.createElement("div", null, "Unknown WidgetType: ", props.widgetType));
+        }
+        // Add additional fields
+<span class="cstat-no" title="statement not covered" >        var settings = selectedWidgetPlugin ? selectedWidgetPlugin.typeInfo.settings.slice() : [];</span>
+<span class="cstat-no" title="statement not covered" >        unshiftIfNotExists(settings, {</span>
+            id: 'name',
+            name: 'Name',
+            type: 'string',
+            defaultValue: selectedWidgetPlugin.typeInfo.name
+        });
+<span class="cstat-no" title="statement not covered" >        var fields = settings.map(<span class="fstat-no" title="function not covered" >function (setting) {</span> <span class="cstat-no" title="statement not covered" >return setting.id; </span>});</span>
+<span class="cstat-no" title="statement not covered" >        var initialValues = settings.reduce(<span class="fstat-no" title="function not covered" >function (initialValues, setting) {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (setting.defaultValue !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                initialValues[setting.id] = setting.defaultValue;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            return initialValues;</span>
+        }, {});
+        // Overwrite with current widget props
+<span class="cstat-no" title="statement not covered" >        initialValues = Object.assign({}, initialValues, props.widgetSettings);</span>
+<span class="cstat-no" title="statement not covered" >        return React.createElement(modalDialog_ui_js_1.default, {id: DIALOG_ID, title: "Configure Widget: " + selectedWidgetPlugin.typeInfo.name, actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, selectedWidgetPlugin.description ?</span>
+            React.createElement("div", {className: "ui icon message"}, React.createElement("i", {className: "idea icon"}), React.createElement("div", {className: "content"}, selectedWidgetPlugin.description))
+            : null, React.createElement(settingsForm_ui_1.default, {ref: "form", form: FORM_ID, settings: settings, onSubmit: this.onSubmit.bind(this), fields: fields.slice(), initialValues: initialValues}))));
+    };
+    return WidgetConfigModal;
+}(React.Component));
+WidgetConfigModal.propTypes = {
+    widgetId: react_1.PropTypes.string,
+    resetForm: react_1.PropTypes.func.isRequired,
+    widgetType: react_1.PropTypes.string,
+    widgetSettings: react_1.PropTypes.object.isRequired,
+    widgetPlugin: WidgetPlugins.widgetPluginType
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = react_redux_1.connect(function (state) {
+    return {
+        widgetId: state.widgetConfig.id,
+        widgetType: state.widgetConfig.type,
+        widgetSettings: state.widgetConfig.settings,
+        widgetPlugin: state.widgetPlugins[state.widgetConfig.type]
+    };
+}, function (dispatch) {
+    return {
+        resetForm: <span class="fstat-no" title="function not covered" >function (id) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(redux_form_1.reset(id)); </span>}
+    };
+})(WidgetConfigModal);
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Aug 22 2016 15:36:30 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
