@@ -26918,7 +26918,12 @@
 	    }
 	}
 	function saveToServer(target, state) {
-	    $.post(target, state);
+	    $.post({
+	        url: target,
+	        data: JSON.stringify(state),
+	        dataType: 'json',
+	        contentType: "application/json; charset=utf-8"
+	    });
 	}
 	function saveToLocalStorage(state) {
 	    if (typeof window === 'undefined') {
@@ -27362,9 +27367,9 @@
 
 	module.exports = {
 		"version": "0.1.7",
-		"revision": "586ecbf5d8ba26d3d3b55743a7ae477782c5a7b9",
-		"revisionShort": "586ecbf",
-		"branch": "Detatched: 586ecbf5d8ba26d3d3b55743a7ae477782c5a7b9"
+		"revision": "5153ad717528489bd50bf3c58353bf941a61c523",
+		"revisionShort": "5153ad7",
+		"branch": "Detatched: 5153ad717528489bd50bf3c58353bf941a61c523"
 	};
 
 /***/ },
