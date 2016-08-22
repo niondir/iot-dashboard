@@ -4246,11 +4246,20 @@ webpackJsonp([0],[
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	var _ = __webpack_require__(21);
 	var configJson = __webpack_require__(109);
+	var defaultConfig = {
+	    version: "",
+	    revision: "",
+	    revisionShort: "",
+	    branch: "",
+	    persistenceTarget: "local-storage",
+	    devMode: true
+	};
 	function config(state, action) {
 	    if (state === void 0) { state = configJson; }
 	    switch (action.type) {
 	        default:
-	            return _.assign({}, state, configJson);
+	            // Content of configJson overrides everything else!
+	            return _.assign({}, defaultConfig, state, configJson);
 	    }
 	}
 	exports.config = config;
@@ -4263,11 +4272,10 @@ webpackJsonp([0],[
 /***/ function(module, exports) {
 
 	module.exports = {
-		"version": "0.1.6",
-		"revision": "5e642e2172d20cdee51da25c95ad51f88b7e542d",
-		"revisionShort": "5e642e2",
-		"branch": "Detatched: 5e642e2172d20cdee51da25c95ad51f88b7e542d",
-		"persistenceTarget": "local-storage"
+		"version": "0.1.7",
+		"revision": "586ecbf5d8ba26d3d3b55743a7ae477782c5a7b9",
+		"revisionShort": "586ecbf",
+		"branch": "Detatched: 586ecbf5d8ba26d3d3b55743a7ae477782c5a7b9"
 	};
 
 /***/ }
