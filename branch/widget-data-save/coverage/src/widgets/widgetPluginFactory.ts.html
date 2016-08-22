@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/widgets/widgetPlugin.ts</title>
+    <title>Code coverage report for src/widgets/widgetPluginFactory.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">all files</a> / <a href="index.html">src/widgets/</a> widgetPlugin.ts
+      <a href="../../index.html">all files</a> / <a href="index.html">src/widgets/</a> widgetPluginFactory.ts
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">42.11% </span>
+        <span class="strong">42.86% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>16/38</span>
+        <span class='fraction'>18/42</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/12</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">28.57% </span>
+        <span class="strong">25% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/7</span>
+        <span class='fraction'>2/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">42.11% </span>
+        <span class="strong">42.86% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>16/38</span>
+        <span class='fraction'>18/42</span>
       </div>
     </div>
   </div>
@@ -110,14 +110,18 @@
 65
 66
 67
-68</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+68
+69
+70
+71
+72
+73</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -125,14 +129,7 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -140,6 +137,18 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -156,6 +165,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -184,9 +194,9 @@
 var react_redux_1 = require("react-redux");
 var React = require("react");
 var domWidgetContainer_1 = require("./domWidgetContainer");
-// TODO: Rename to ...Factory
-var WidgetPlugin = (function () {
-    function WidgetPlugin(type, widget, store) {
+var Widgets = require("./widgets");
+var WidgetPluginFactory = (function () {
+    function WidgetPluginFactory(type, widget, store) {
         this.type = type;
         this.widget = widget;
         this.store = store;
@@ -201,7 +211,11 @@ var WidgetPlugin = (function () {
 <span class="cstat-no" title="statement not covered" >            return ds.data || [];</span>
         }.bind(this, this.store.getState);
     }
-    WidgetPlugin.prototype.getInstance = <span class="fstat-no" title="function not covered" >function (id) {</span>
+    WidgetPluginFactory.prototype.updateSetting = <span class="fstat-no" title="function not covered" >function (widgetId, settingId, value) {</span>
+<span class="cstat-no" title="statement not covered" >        console.log("update", settingId, "to", value, 'of', widgetId);</span>
+<span class="cstat-no" title="statement not covered" >        this.store.dispatch(Widgets.updatedSingleSetting(widgetId, settingId, value));</span>
+    };
+    WidgetPluginFactory.prototype.getInstance = <span class="fstat-no" title="function not covered" >function (id) {</span>
 <span class="cstat-no" title="statement not covered" >        var _this = this;</span>
 <span class="cstat-no" title="statement not covered" >        if (this.disposed === true) {</span>
 <span class="cstat-no" title="statement not covered" >            throw new Error("Try to create widget of destroyed type: " + this.type);</span>
@@ -227,7 +241,8 @@ var WidgetPlugin = (function () {
                     // This is used to trigger re-rendering on Datasource change
                     // TODO: in future only the datasources the Widget is interested in should trigger re-rendering
                     _datasources: state.datasources,
-                    getData: _this.getData
+                    getData: _this.getData,
+                    updateSetting: _this.updateSetting.bind(_this, id)
                 };
             };
         })(widgetComponent); // TODO: get rid of the any?
@@ -235,14 +250,14 @@ var WidgetPlugin = (function () {
         // Should we create here or always outside?
 <span class="cstat-no" title="statement not covered" >        return this.instances[id];</span>
     };
-    WidgetPlugin.prototype.dispose = <span class="fstat-no" title="function not covered" >function () {</span>
+    WidgetPluginFactory.prototype.dispose = <span class="fstat-no" title="function not covered" >function () {</span>
 <span class="cstat-no" title="statement not covered" >        this.disposed = true;</span>
 <span class="cstat-no" title="statement not covered" >        this.instances = {};</span>
     };
-    return WidgetPlugin;
+    return WidgetPluginFactory;
 }());
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = WidgetPlugin;
+exports.default = WidgetPluginFactory;
 &nbsp;
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -250,7 +265,7 @@ exports.default = WidgetPlugin;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Aug 19 2016 16:54:12 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Aug 22 2016 09:48:55 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

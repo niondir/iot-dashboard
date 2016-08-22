@@ -30,26 +30,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
     var Widget = function (_React$Component) {
         _inherits(Widget, _React$Component);
 
-        function Widget(props) {
+        function Widget() {
             _classCallCheck(this, Widget);
 
-            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Widget).call(this, props));
-
-            _this.state = { value: 0 };
-            return _this;
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Widget).apply(this, arguments));
         }
 
         _createClass(Widget, [{
-            key: "componentWillUpdate",
-            value: function componentWillUpdate(nextProps, nextState) {
-                this.props.updateSetting("counter", nextState.value);
-            }
-        }, {
             key: "render",
             value: function render() {
                 var _this2 = this;
 
-                var value = this.state.value;
+                var value = this.counterValue;
                 return React.createElement(
                     "div",
                     { style: { width: '100%', height: '100%' } },
@@ -62,11 +54,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                     React.createElement(
                         "button",
                         { onClick: function onClick() {
-                                _this2.setState({ value: value + 1 });
+                                _this2.props.updateSetting("counter", value + 1);
                             } },
                         "+1"
                     )
                 );
+            }
+        }, {
+            key: "counterValue",
+            get: function get() {
+                return parseInt(this.props.state.settings.counter);
             }
         }]);
 

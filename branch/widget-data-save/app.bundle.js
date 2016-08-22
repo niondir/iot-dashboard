@@ -522,7 +522,8 @@ webpackJsonp([0],[
 	exports.SET_CURRENT_LAYOUT = "SET_CURRENT_LAYOUT";
 	// Widgets
 	exports.ADD_WIDGET = "ADD_WIDGET";
-	exports.UPDATE_WIDGET_PROPS = "UPDATE_WIDGET_PROPS";
+	exports.UPDATE_WIDGET_SETTINGS = "UPDATE_WIDGET_SETTINGS";
+	exports.UPDATED_SINGLE_WIDGET_SETTING = "UPDATED_SINGLE_WIDGET_SETTING";
 	exports.DELETE_WIDGET = "DELETE_WIDGET";
 	exports.UPDATE_WIDGET_LAYOUT = "UPDATE_WIDGET_LAYOUT";
 	exports.START_CREATE_WIDGET = "START_CREATE_WIDGET";
@@ -590,7 +591,7 @@ webpackJsonp([0],[
 	            /*
 	             if (!widgetPlugin) {
 	             // TODO: Render widget with error message - currently a loading indicator is displayed and the setting button is hidden
-	             console.warn("No WidgetPlugin for type '" + widgetState.type + "'! Skipping rendering.");
+	             console.warn("No WidgetPluginFactory for type '" + widgetState.type + "'! Skipping rendering.");
 	             return null;
 	             } */
 	            // WidgetFrame must be loaded as function, else the grid is not working properly.
@@ -639,7 +640,6 @@ webpackJsonp([0],[
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var react_1 = __webpack_require__(20);
 	var Uuid = __webpack_require__(49);
 	var _ = __webpack_require__(21);
 	var reducer_js_1 = __webpack_require__(50);
@@ -697,16 +697,6 @@ webpackJsonp([0],[
 	        "availableHeightPx": 123
 	    }
 	};
-	exports.widgetPropType = react_1.PropTypes.shape({
-	    id: react_1.PropTypes.string.isRequired,
-	    col: react_1.PropTypes.number.isRequired,
-	    row: react_1.PropTypes.number.isRequired,
-	    width: react_1.PropTypes.number.isRequired,
-	    height: react_1.PropTypes.number.isRequired,
-	    settings: react_1.PropTypes.shape({
-	        name: react_1.PropTypes.string.isRequired
-	    }).isRequired
-	});
 	/* // TODO: better explicitly create initial state? But when? ...
 	 export function createInitialWidgets() {
 	 return function(dispatch: AppState.Dispatch) {
@@ -746,13 +736,16 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.createWidget = createWidget;
-	function addWidget(widgetType, widgetSettings, row, col, width, height) {
+	function addWidget(widgetType, widgetSettings, row, col, width, height, id) {
 	    if (widgetSettings === void 0) { widgetSettings = {}; }
 	    if (width === void 0) { width = 3; }
 	    if (height === void 0) { height = 3; }
+	    if (!id) {
+	        id = Uuid.generate();
+	    }
 	    return {
 	        type: Action.ADD_WIDGET,
-	        id: Uuid.generate(),
+	        id: id,
 	        col: col,
 	        row: row,
 	        width: width,
@@ -764,12 +757,21 @@ webpackJsonp([0],[
 	exports.addWidget = addWidget;
 	function updateWidgetSettings(id, widgetSettings) {
 	    return {
-	        type: Action.UPDATE_WIDGET_PROPS,
+	        type: Action.UPDATE_WIDGET_SETTINGS,
 	        id: id,
 	        widgetSettings: widgetSettings
 	    };
 	}
 	exports.updateWidgetSettings = updateWidgetSettings;
+	function updatedSingleSetting(id, settingId, settingValue) {
+	    return {
+	        type: Action.UPDATED_SINGLE_WIDGET_SETTING,
+	        id: id,
+	        settingId: settingId,
+	        settingValue: settingValue
+	    };
+	}
+	exports.updatedSingleSetting = updatedSingleSetting;
 	function deleteWidget(id) {
 	    return {
 	        type: Action.DELETE_WIDGET,
@@ -830,8 +832,13 @@ webpackJsonp([0],[
 	                height: action.height,
 	                availableHeightPx: calcAvaliableHeight(action.height)
 	            };
-	        case Action.UPDATE_WIDGET_PROPS:
+	        case Action.UPDATE_WIDGET_SETTINGS:
 	            return _.assign({}, state, { settings: action.widgetSettings });
+	        case Action.UPDATED_SINGLE_WIDGET_SETTING: {
+	            var newSettings = _.clone(state.settings);
+	            newSettings[action.settingId] = action.settingValue;
+	            return _.assign({}, state, { settings: newSettings });
+	        }
 	        case Action.UPDATE_WIDGET_LAYOUT:
 	            var layout = layoutById(action.layouts, state.id);
 	            if (layout == null) {
@@ -977,7 +984,6 @@ webpackJsonp([0],[
 	var WidgetConfig = __webpack_require__(52);
 	var WidgetPlugins = __webpack_require__(55);
 	var widgets_1 = __webpack_require__(48);
-	var Widgets = __webpack_require__(48);
 	var react_1 = __webpack_require__(20);
 	var dashboard_1 = __webpack_require__(56);
 	/**
@@ -996,8 +1002,18 @@ webpackJsonp([0],[
 	        React.createElement("div", {className: "ui tiny horizontal right floated inverted list"}, React.createElement(ConfigWidgetButton, {className: "right item no-drag", widgetState: widgetState, visible: (props.widgetPlugin && props.widgetPlugin.typeInfo.settings ? true : false), icon: "configure"}), React.createElement(DeleteWidgetButton, {className: "right floated item no-drag", widgetState: widgetState, icon: "remove"})), React.createElement("div", {className: "ui item top attached" + (props.isReadOnly ? "" : " drag")}, widgetState.settings.name || "\u00a0")), React.createElement("div", {className: "ui segment", style: { height: widgetState.availableHeightPx, padding: 0, border: "red dashed 0px" }}, pluginLoaded ? widgetFactory.getInstance(widgetState.id)
 	        : React.createElement(LoadingWidget, {widget: widgetState}))));
 	};
+	exports.widgetPropType = react_1.PropTypes.shape({
+	    id: react_1.PropTypes.string.isRequired,
+	    col: react_1.PropTypes.number.isRequired,
+	    row: react_1.PropTypes.number.isRequired,
+	    width: react_1.PropTypes.number.isRequired,
+	    height: react_1.PropTypes.number.isRequired,
+	    settings: react_1.PropTypes.shape({
+	        name: react_1.PropTypes.string.isRequired
+	    }).isRequired
+	});
 	WidgetFrame.propTypes = {
-	    widget: Widgets.widgetPropType.isRequired,
+	    widget: exports.widgetPropType.isRequired,
 	    widgetPlugin: WidgetPlugins.widgetPluginType.isRequired,
 	    isReadOnly: react_1.PropTypes.bool.isRequired
 	};
@@ -1007,7 +1023,7 @@ webpackJsonp([0],[
 	    return React.createElement("div", {className: "ui active text loader"}, "Loading ", props.widget.type, " Widget ...");
 	};
 	LoadingWidget.propTypes = {
-	    widget: Widgets.widgetPropType.isRequired
+	    widget: exports.widgetPropType.isRequired
 	};
 	var WidgetButton = (function (_super) {
 	    __extends(WidgetButton, _super);
@@ -1022,7 +1038,7 @@ webpackJsonp([0],[
 	    return WidgetButton;
 	}(React.Component));
 	WidgetButton.propTypes = {
-	    widgetState: Widgets.widgetPropType.isRequired,
+	    widgetState: exports.widgetPropType.isRequired,
 	    icon: react_1.PropTypes.string.isRequired,
 	    visible: react_1.PropTypes.bool,
 	    className: react_1.PropTypes.string.isRequired,
@@ -2307,7 +2323,7 @@ webpackJsonp([0],[
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var pluginRegistry_1 = __webpack_require__(58);
-	var widgetPlugin_1 = __webpack_require__(71);
+	var widgetPluginFactory_1 = __webpack_require__(71);
 	var WidgetPluginRegistry = (function (_super) {
 	    __extends(WidgetPluginRegistry, _super);
 	    function WidgetPluginRegistry(store) {
@@ -2315,7 +2331,7 @@ webpackJsonp([0],[
 	    }
 	    WidgetPluginRegistry.prototype.createPluginFromModule = function (module) {
 	        console.assert(_.isObject(module.TYPE_INFO), "Missing TYPE_INFO on datasource module. Every module must export TYPE_INFO");
-	        return new widgetPlugin_1.default(module.TYPE_INFO.type, module.Widget, this.store);
+	        return new widgetPluginFactory_1.default(module.TYPE_INFO.type, module.Widget, this.store);
 	    };
 	    return WidgetPluginRegistry;
 	}(pluginRegistry_1.default));
@@ -2335,9 +2351,9 @@ webpackJsonp([0],[
 	var react_redux_1 = __webpack_require__(42);
 	var React = __webpack_require__(20);
 	var domWidgetContainer_1 = __webpack_require__(72);
-	// TODO: Rename to ...Factory
-	var WidgetPlugin = (function () {
-	    function WidgetPlugin(type, widget, store) {
+	var Widgets = __webpack_require__(48);
+	var WidgetPluginFactory = (function () {
+	    function WidgetPluginFactory(type, widget, store) {
 	        this.type = type;
 	        this.widget = widget;
 	        this.store = store;
@@ -2352,7 +2368,11 @@ webpackJsonp([0],[
 	            return ds.data || [];
 	        }.bind(this, this.store.getState);
 	    }
-	    WidgetPlugin.prototype.getInstance = function (id) {
+	    WidgetPluginFactory.prototype.updateSetting = function (widgetId, settingId, value) {
+	        console.log("update", settingId, "to", value, 'of', widgetId);
+	        this.store.dispatch(Widgets.updatedSingleSetting(widgetId, settingId, value));
+	    };
+	    WidgetPluginFactory.prototype.getInstance = function (id) {
 	        var _this = this;
 	        if (this.disposed === true) {
 	            throw new Error("Try to create widget of destroyed type: " + this.type);
@@ -2378,7 +2398,8 @@ webpackJsonp([0],[
 	                    // This is used to trigger re-rendering on Datasource change
 	                    // TODO: in future only the datasources the Widget is interested in should trigger re-rendering
 	                    _datasources: state.datasources,
-	                    getData: _this.getData
+	                    getData: _this.getData,
+	                    updateSetting: _this.updateSetting.bind(_this, id)
 	                };
 	            };
 	        })(widgetComponent); // TODO: get rid of the any?
@@ -2386,14 +2407,14 @@ webpackJsonp([0],[
 	        // Should we create here or always outside?
 	        return this.instances[id];
 	    };
-	    WidgetPlugin.prototype.dispose = function () {
+	    WidgetPluginFactory.prototype.dispose = function () {
 	        this.disposed = true;
 	        this.instances = {};
 	    };
-	    return WidgetPlugin;
+	    return WidgetPluginFactory;
 	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = WidgetPlugin;
+	exports.default = WidgetPluginFactory;
 
 
 /***/ },
@@ -4229,9 +4250,9 @@ webpackJsonp([0],[
 
 	module.exports = {
 		"version": "0.1.4",
-		"revision": "c9637b7c1ef51c1b1516b6bda4da7e13e057d10a",
-		"revisionShort": "c9637b7",
-		"branch": "Detatched: c9637b7c1ef51c1b1516b6bda4da7e13e057d10a"
+		"revision": "e1da9d6f337c454f59309625c40bd67276199b35",
+		"revisionShort": "e1da9d6",
+		"branch": "Detatched: e1da9d6f337c454f59309625c40bd67276199b35"
 	};
 
 /***/ }
