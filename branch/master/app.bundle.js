@@ -4024,13 +4024,15 @@ webpackJsonp([0],[
 
 /***/ },
 /* 104 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var lastAction = "NONE";
+	var _ = __webpack_require__(21);
+	var $ = __webpack_require__(13);
+	var lastAction = { type: "NONE" };
 	var allowSave = true;
 	var saveTimeout;
 	function clearData() {
@@ -4043,6 +4045,7 @@ webpackJsonp([0],[
 	    }
 	}
 	exports.clearData = clearData;
+	// TODO: type middleware
 	function persistenceMiddleware(_a) {
 	    var getState = _a.getState;
 	    return function (next) { return function (action) {
@@ -4057,7 +4060,7 @@ webpackJsonp([0],[
 	            // if we would just block saving for some time after saving an action we would loose the last actions
 	            allowSave = false;
 	            saveTimeout = setTimeout(function () {
-	                saveToLocalStorage(getState());
+	                save(getState());
 	                console.log('Saved state @' + lastAction.type);
 	                allowSave = true;
 	            }, 100);
@@ -4067,17 +4070,33 @@ webpackJsonp([0],[
 	    }; };
 	}
 	exports.persistenceMiddleware = persistenceMiddleware;
+	function save(state) {
+	    var target = state.config.persistenceTarget;
+	    var savableState = _.assign({}, state);
+	    delete savableState.form;
+	    delete savableState.modalDialog;
+	    if (target === "local-storage") {
+	        saveToLocalStorage(savableState);
+	    }
+	    else if (target) {
+	        saveToServer(target, savableState);
+	    }
+	}
+	function saveToServer(target, state) {
+	    $.post({
+	        url: target,
+	        data: JSON.stringify(state),
+	        dataType: 'json',
+	        contentType: "application/json; charset=utf-8"
+	    });
+	}
 	function saveToLocalStorage(state) {
 	    if (typeof window === 'undefined') {
 	        console.warn("Can not save to local storage in current environment.");
 	        return;
 	    }
-	    var savableState = Object.assign({}, state);
-	    delete savableState.form;
-	    delete savableState.modalDialog;
-	    window.localStorage.setItem("appState", JSON.stringify(savableState));
+	    window.localStorage.setItem("appState", JSON.stringify(state));
 	}
-	exports.saveToLocalStorage = saveToLocalStorage;
 	function loadFromLocalStorage() {
 	    if (typeof window === 'undefined') {
 	        console.warn("Can not load from local storage in current environment.");
@@ -4232,11 +4251,20 @@ webpackJsonp([0],[
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	var _ = __webpack_require__(21);
 	var configJson = __webpack_require__(109);
+	var defaultConfig = {
+	    version: "",
+	    revision: "",
+	    revisionShort: "",
+	    branch: "",
+	    persistenceTarget: "local-storage",
+	    devMode: true
+	};
 	function config(state, action) {
 	    if (state === void 0) { state = configJson; }
 	    switch (action.type) {
 	        default:
-	            return _.assign({}, state, configJson);
+	            // Content of configJson overrides everything else!
+	            return _.assign({}, defaultConfig, state, configJson);
 	    }
 	}
 	exports.config = config;
@@ -4249,10 +4277,10 @@ webpackJsonp([0],[
 /***/ function(module, exports) {
 
 	module.exports = {
-		"version": "0.1.5",
-		"revision": "f9dd8328b88b49c8f86dbdb0cd8b82ae0189a4eb",
-		"revisionShort": "f9dd832",
-		"branch": "Detatched: f9dd8328b88b49c8f86dbdb0cd8b82ae0189a4eb"
+		"version": "0.1.7",
+		"revision": "5153ad717528489bd50bf3c58353bf941a61c523",
+		"revisionShort": "5153ad7",
+		"branch": "Detatched: 5153ad717528489bd50bf3c58353bf941a61c523"
 	};
 
 /***/ }

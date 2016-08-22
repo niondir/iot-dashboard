@@ -25,9 +25,9 @@
         <span class='fraction'>39/55</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">36.36% </span>
+        <span class="strong">40.91% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>8/22</span>
+        <span class='fraction'>9/22</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">41.18% </span>
@@ -203,7 +203,7 @@ var datasourceNavItem_ui_js_1 = require("./datasource/datasourceNavItem.ui.js");
 var widgetsNavItem_ui_js_1 = require("./widgets/widgetsNavItem.ui.js");
 var pluginNavItem_ui_js_1 = require("./pluginApi/pluginNavItem.ui.js");
 var pluginsDialog_ui_js_1 = require("./pluginApi/pluginsDialog.ui.js");
-var Persistence = require("./persistence.js");
+var Persistence = require("./persistence");
 var Layout = (function (_super) {
     __extends(Layout, _super);
     function Layout(props) {
@@ -228,8 +228,8 @@ var Layout = (function (_super) {
     Layout.prototype.render = function () {
         var _this = this;
         var props = this.props;
-        var showMenu = props.devMode &amp;&amp; (<span class="branch-1 cbranch-no" title="branch not covered" >!props.isReadOnly </span>|| <span class="branch-2 cbranch-no" title="branch not covered" >this.state.hover)</span>;
-        return React.createElement("div", {onKeyUp: <span class="fstat-no" title="function not covered" >function (event) {</span> <span class="cstat-no" title="statement not covered" >return _this.onReadOnlyModeKeyPress(event); </span>}}, React.createElement("div", null, React.createElement(widgetConfigDialog_ui_js_1.default, null), React.createElement(importExportDialog_ui_js_1.default, null), React.createElement(datasourceConfigDialog_ui_js_1.default, null), React.createElement(pluginsDialog_ui_js_1.default, null)), React.createElement("div", {className: "container"}, React.createElement("div", {className: showMenu ? <span class="branch-0 cbranch-no" title="branch not covered" >"menu-trigger" </span>: "menu-trigger", onMouseOver: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: true }); </span>}, onMouseEnter: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: true }); </span>}}), React.createElement("div", {className: "ui inverted fixed main menu " + (showMenu ? <span class="branch-0 cbranch-no" title="branch not covered" >"topnav--visible" </span>: "topnav--hidden"), onMouseOver: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: true }); </span>}, onMouseLeave: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: false }); </span>}}, React.createElement("div", {className: "ui container"}, React.createElement("a", {href: "#", className: "header item"}, "Dashboard"), React.createElement(dashboardMenuEntry_ui_js_1.default, null), React.createElement(widgetsNavItem_ui_js_1.default, null), React.createElement(datasourceNavItem_ui_js_1.default, null), React.createElement(pluginNavItem_ui_js_1.default, null), React.createElement(layouts_ui_js_1.default, null), React.createElement("a", {className: "item", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return Persistence.clearData(); </span>}}, React.createElement("i", {className: "red bomb icon"}), "Reset Everything!"), React.createElement("a", {className: "item", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return props.setReadOnly(!props.isReadOnly); </span>}}, React.createElement("i", {className: (props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >"lock" </span>: "unlock alternate") + " icon"}), " "), React.createElement("div", {className: "header selectable right item"}, "v", this.props.config.version, " ", this.props.config.revisionShort))), React.createElement("div", {className: "ui grid"}, React.createElement(widgetGrid_ui_js_1.default, null))));
+        var showMenu = props.devMode &amp;&amp; (!props.isReadOnly || <span class="branch-2 cbranch-no" title="branch not covered" >this.state.hover)</span>;
+        return React.createElement("div", {onKeyUp: <span class="fstat-no" title="function not covered" >function (event) {</span> <span class="cstat-no" title="statement not covered" >return _this.onReadOnlyModeKeyPress(event); </span>}}, React.createElement("div", null, React.createElement(widgetConfigDialog_ui_js_1.default, null), React.createElement(importExportDialog_ui_js_1.default, null), React.createElement(datasourceConfigDialog_ui_js_1.default, null), React.createElement(pluginsDialog_ui_js_1.default, null)), React.createElement("div", {className: "container"}, React.createElement("div", {className: showMenu ? "menu-trigger" : <span class="branch-1 cbranch-no" title="branch not covered" >"menu-trigger",</span> onMouseOver: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: true }); </span>}, onMouseEnter: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: true }); </span>}}), React.createElement("div", {className: "ui inverted fixed main menu " + (showMenu ? "topnav--visible" : <span class="branch-1 cbranch-no" title="branch not covered" >"topnav--hidden")</span>, onMouseOver: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: true }); </span>}, onMouseLeave: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: false }); </span>}}, React.createElement("div", {className: "ui container"}, React.createElement("a", {href: "#", className: "header item"}, "Dashboard"), React.createElement(dashboardMenuEntry_ui_js_1.default, null), React.createElement(widgetsNavItem_ui_js_1.default, null), React.createElement(datasourceNavItem_ui_js_1.default, null), React.createElement(pluginNavItem_ui_js_1.default, null), React.createElement(layouts_ui_js_1.default, null), React.createElement("a", {className: "item", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return Persistence.clearData(); </span>}}, React.createElement("i", {className: "red bomb icon"}), "Reset Everything!"), React.createElement("a", {className: "item", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return props.setReadOnly(!props.isReadOnly); </span>}}, React.createElement("i", {className: (props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >"lock" </span>: "unlock alternate") + " icon"}), " "), React.createElement("div", {className: "header selectable right item"}, "v", this.props.config.version, " ", this.props.config.revisionShort))), React.createElement("div", {className: "ui grid"}, React.createElement(widgetGrid_ui_js_1.default, null))));
     };
     return Layout;
 }(react_1.Component));
@@ -253,7 +253,7 @@ exports.default = react_redux_1.connect(function (state) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Aug 22 2016 15:06:07 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Aug 22 2016 17:47:06 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../prettify.js"></script>
