@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/pluginApi/pluginNavItem.ui.js</title>
+    <title>Code coverage report for src/widgets/widgetPluginRegistry.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,28 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">all files</a> / <a href="index.html">src/pluginApi/</a> pluginNavItem.ui.js
+      <a href="../../index.html">all files</a> / <a href="index.html">src/widgets/</a> widgetPluginRegistry.ts
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">85.71% </span>
+        <span class="strong">89.47% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>12/14</span>
+        <span class='fraction'>17/19</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">57.14% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>4/7</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
-        <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">60% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>3/5</span>
+        <span class='fraction'>5/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">92.31% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>12/13</span>
+        <span class='fraction'>16/16</span>
       </div>
     </div>
   </div>
@@ -68,8 +68,7 @@
 23
 24
 25
-26
-27</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+26</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -77,49 +76,47 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this
-* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
-var React = require('react');
-var react_redux_1 = require('react-redux');
-var ModalIds = require('../modal/modalDialogIds');
-var Modal = require('../modal/modalDialog');
-var react_1 = require("react");
-var PluginsTopNavItem = function (props) {
-    return React.createElement("a", {className: "item", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return props.showPluginsDialog(); </span>}}, "Plugins");
+var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
+    for (var p in b) <span class="cstat-no" title="statement not covered" >if (b.hasOwnProperty(p)) <span class="cstat-no" title="statement not covered" >d[p] = b[p];</span></span>
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? <span class="branch-0 cbranch-no" title="branch not covered" >Object.create(b) </span>: (__.prototype = b.prototype, new __());
 };
-PluginsTopNavItem.propTypes = {
-    showPluginsDialog: react_1.PropTypes.func.isRequired
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = react_redux_1.connect(function (state) {
-    return {};
-}, function (dispatch) {
-    return {
-        showPluginsDialog: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >            dispatch(Modal.showModal(ModalIds.PLUGINS));</span>
-        }
+var pluginRegistry_1 = require("../pluginApi/pluginRegistry");
+var widgetPluginFactory_1 = require("./widgetPluginFactory");
+var WidgetPluginRegistry = (function (_super) {
+    __extends(WidgetPluginRegistry, _super);
+    function WidgetPluginRegistry(store) {
+        _super.call(this, store);
+    }
+    WidgetPluginRegistry.prototype.createPluginFromModule = function (module) {
+        console.assert(_.isObject(module.TYPE_INFO), "Missing TYPE_INFO on datasource module. Every module must export TYPE_INFO");
+        return new widgetPluginFactory_1.default(module.TYPE_INFO.type, module.Widget, this.store);
     };
-})(PluginsTopNavItem);
+    return WidgetPluginRegistry;
+}(pluginRegistry_1.default));
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = WidgetPluginRegistry;
 &nbsp;
 &nbsp;</pre></td></tr>
 </table></pre>

@@ -127,7 +127,16 @@
 82
 83
 84
-85</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -136,7 +145,6 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -157,6 +165,16 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -225,7 +243,6 @@ var react_redux_1 = require('react-redux');
 var WidgetConfig = require('./widgetConfig');
 var WidgetPlugins = require('./widgetPlugins');
 var widgets_1 = require('./widgets');
-var Widgets = require('./widgets');
 var react_1 = require("react");
 var dashboard_1 = require('../dashboard');
 /**
@@ -241,11 +258,21 @@ var WidgetFrame = function (props) {
 <span class="cstat-no" title="statement not covered" >        widgetFactory = dashboard_1.default.getInstance().widgetPluginRegistry.getPlugin(widgetState.type);</span>
     }
     return (React.createElement("div", {className: "ui raised segments", style: { margin: 0, overflow: "hidden" }, key: widgetState.id, _grid: { x: widgetState.col, y: widgetState.row, w: widgetState.width, h: widgetState.height }}, React.createElement("div", {className: "ui inverted segment" + (props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >"" </span>: " drag")}, props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >null </span>:
-        React.createElement("div", {className: "ui tiny horizontal right floated inverted list"}, React.createElement(ConfigWidgetButton, {className: "right item no-drag", widgetState: widgetState, visible: (props.widgetPlugin &amp;&amp; props.widgetPlugin.typeInfo.settings ? <span class="branch-0 cbranch-no" title="branch not covered" >true </span>: false), icon: "configure"}), React.createElement(DeleteWidgetButton, {className: "right floated item no-drag", widgetState: widgetState, icon: "remove"})), React.createElement("div", {className: "ui item top attached" + (props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >"" </span>: " drag")}, widgetState.settings.name || <span class="branch-1 cbranch-no" title="branch not covered" >"\u00a0")</span>), React.createElement("div", {className: "ui segment", style: { height: widgetState.availableHeightPx, padding: 0, border: "red dashed 0px" }}, pluginLoaded ? <span class="branch-0 cbranch-no" title="branch not covered" >widgetFactory.getOrCreateInstance(widgetState.id)</span>
+        React.createElement("div", {className: "ui tiny horizontal right floated inverted list"}, React.createElement(ConfigWidgetButton, {className: "right item no-drag", widgetState: widgetState, visible: (props.widgetPlugin &amp;&amp; props.widgetPlugin.typeInfo.settings ? <span class="branch-0 cbranch-no" title="branch not covered" >true </span>: false), icon: "configure"}), React.createElement(DeleteWidgetButton, {className: "right floated item no-drag", widgetState: widgetState, icon: "remove"})), React.createElement("div", {className: "ui item top attached" + (props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >"" </span>: " drag")}, widgetState.settings.name || <span class="branch-1 cbranch-no" title="branch not covered" >"\u00a0")</span>), React.createElement("div", {className: "ui segment", style: { height: widgetState.availableHeightPx, padding: 0, border: "red dashed 0px" }}, pluginLoaded ? <span class="branch-0 cbranch-no" title="branch not covered" >widgetFactory.getInstance(widgetState.id)</span>
         : React.createElement(LoadingWidget, {widget: widgetState}))));
 };
+exports.widgetPropType = react_1.PropTypes.shape({
+    id: react_1.PropTypes.string.isRequired,
+    col: react_1.PropTypes.number.isRequired,
+    row: react_1.PropTypes.number.isRequired,
+    width: react_1.PropTypes.number.isRequired,
+    height: react_1.PropTypes.number.isRequired,
+    settings: react_1.PropTypes.shape({
+        name: react_1.PropTypes.string.isRequired
+    }).isRequired
+});
 WidgetFrame.propTypes = {
-    widget: Widgets.widgetPropType.isRequired,
+    widget: exports.widgetPropType.isRequired,
     widgetPlugin: WidgetPlugins.widgetPluginType.isRequired,
     isReadOnly: react_1.PropTypes.bool.isRequired
 };
@@ -255,7 +282,7 @@ var LoadingWidget = function (props) {
     return React.createElement("div", {className: "ui active text loader"}, "Loading ", props.widget.type, " Widget ...");
 };
 LoadingWidget.propTypes = {
-    widget: Widgets.widgetPropType.isRequired
+    widget: exports.widgetPropType.isRequired
 };
 var WidgetButton = (function (_super) {
     __extends(WidgetButton, _super);
@@ -270,7 +297,7 @@ var WidgetButton = (function (_super) {
     return WidgetButton;
 }(React.Component));
 WidgetButton.propTypes = {
-    widgetState: Widgets.widgetPropType.isRequired,
+    widgetState: exports.widgetPropType.isRequired,
     icon: react_1.PropTypes.string.isRequired,
     visible: react_1.PropTypes.bool,
     className: react_1.PropTypes.string.isRequired,
@@ -301,7 +328,7 @@ var ConfigWidgetButton = react_redux_1.connect(function (state) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Aug 18 2016 13:00:36 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Aug 22 2016 10:46:10 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/widgets/widgetPlugins.js</title>
+    <title>Code coverage report for src/widgets/widgetPlugins.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,28 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">all files</a> / <a href="index.html">src/widgets/</a> widgetPlugins.js
+      <a href="../../index.html">all files</a> / <a href="index.html">src/widgets/</a> widgetPlugins.ts
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">70% </span>
+        <span class="strong">60.61% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>35/50</span>
+        <span class='fraction'>20/33</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">45.45% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>9/18</span>
+        <span class='fraction'>5/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">60% </span>
+        <span class="strong">20% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>6/10</span>
+        <span class='fraction'>1/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">71.74% </span>
+        <span class="strong">59.38% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>33/46</span>
+        <span class='fraction'>19/32</span>
       </div>
     </div>
   </div>
@@ -138,22 +138,7 @@
 93
 94
 95
-96
-97
-98
-99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+96</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -163,13 +148,9 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -195,17 +176,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">8×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -222,9 +192,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">55×</span>
-<span class="cline-any cline-yes">55×</span>
-<span class="cline-any cline-yes">55×</span>
+<span class="cline-any cline-yes">59×</span>
+<span class="cline-any cline-yes">59×</span>
+<span class="cline-any cline-yes">59×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -236,7 +206,7 @@
 <span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">51×</span>
+<span class="cline-any cline-yes">55×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -267,17 +237,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
-var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
-    for (var p in b) <span class="cstat-no" title="statement not covered" >if (b.hasOwnProperty(p)) <span class="cstat-no" title="statement not covered" >d[p] = b[p];</span></span>
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? <span class="branch-0 cbranch-no" title="branch not covered" >Object.create(b) </span>: (__.prototype = b.prototype, new __());
-};
-var widgetPlugin_1 = require('./widgetPlugin');
-var pluginRegistry_1 = require('../pluginApi/pluginRegistry');
 var Action = require("../actionNames");
-var reducer_1 = require("../util/reducer");
+var reducer_js_1 = require("../util/reducer.js");
 var react_1 = require("react");
-var dashboard_1 = require('../dashboard');
+var dashboard_1 = require("../dashboard");
 // TODO: Later load all plugins from external URL's ?
 var initialState = {
     "chart": {
@@ -286,7 +249,8 @@ var initialState = {
         typeInfo: {
             type: "will-be-loaded",
             name: "chart (not loaded yet)"
-        }
+        },
+        isLoading: true
     },
     "text": {
         id: "text",
@@ -294,9 +258,11 @@ var initialState = {
         typeInfo: {
             type: "will-be-loaded",
             name: "text (not loaded yet)"
-        }
+        },
+        isLoading: true
     }
 };
+// TODO: Remove when not used anymore
 exports.widgetPluginType = react_1.PropTypes.shape({
     id: react_1.PropTypes.string.isRequired,
     typeInfo: react_1.PropTypes.shape({
@@ -305,17 +271,6 @@ exports.widgetPluginType = react_1.PropTypes.shape({
         settings: react_1.PropTypes.array
     })
 });
-var WidgetPluginRegistry = (function (_super) {
-    __extends(WidgetPluginRegistry, _super);
-    function WidgetPluginRegistry(store) {
-        _super.call(this, store);
-    }
-    WidgetPluginRegistry.prototype.createPluginFromModule = function (module) {
-        return new widgetPlugin_1.default(module, this.store);
-    };
-    return WidgetPluginRegistry;
-}(pluginRegistry_1.default));
-exports.WidgetPluginRegistry = WidgetPluginRegistry;
 <span class="fstat-no" title="function not covered" >function unloadPlugin(type) {</span>
 <span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >function (dispatch) {</span></span>
 <span class="cstat-no" title="statement not covered" >        var widgetPlugin = dashboard_1.default.getInstance().widgetPluginRegistry.getPlugin(type);</span>
@@ -330,7 +285,7 @@ exports.unloadPlugin = unloadPlugin;
         id: type
     };
 }
-var pluginsCrudReducer = reducer_1.genCrudReducer([Action.WIDGET_PLUGIN_FINISHED_LOADING, Action.DELETE_WIDGET_PLUGIN], widgetPlugin);
+var pluginsCrudReducer = reducer_js_1.genCrudReducer([Action.WIDGET_PLUGIN_FINISHED_LOADING, Action.DELETE_WIDGET_PLUGIN], widgetPlugin);
 function widgetPlugins(state, action) {
     if (state === void 0) { state = initialState; }
     state = pluginsCrudReducer(state, action);
@@ -379,7 +334,7 @@ exports.widgetPlugins = widgetPlugins;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Aug 18 2016 13:00:36 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Aug 22 2016 10:46:10 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
