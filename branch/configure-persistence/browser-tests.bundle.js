@@ -27352,10 +27352,10 @@
 /***/ function(module, exports) {
 
 	module.exports = {
-		"version": "0.1.5",
-		"revision": "70fd62d418fece6d01513edff65539532f841e4d",
-		"revisionShort": "70fd62d",
-		"branch": "Detatched: 70fd62d418fece6d01513edff65539532f841e4d",
+		"version": "0.1.6",
+		"revision": "5e642e2172d20cdee51da25c95ad51f88b7e542d",
+		"revisionShort": "5e642e2",
+		"branch": "Detatched: 5e642e2172d20cdee51da25c95ad51f88b7e542d",
 		"persistenceTarget": "local-storage"
 	};
 
