@@ -26318,9 +26318,9 @@
 
 	module.exports = {
 		"version": "0.1.8",
-		"revision": "ce7a462d6eb2ec6183135a34aef2234aab01073b",
-		"revisionShort": "ce7a462",
-		"branch": "Detatched: ce7a462d6eb2ec6183135a34aef2234aab01073b"
+		"revision": "ffcfbbf30a3ced7ad02875ff4d282d39677cf401",
+		"revisionShort": "ffcfbbf",
+		"branch": "Detatched: ffcfbbf30a3ced7ad02875ff4d282d39677cf401"
 	};
 
 /***/ },
