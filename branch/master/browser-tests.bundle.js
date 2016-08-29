@@ -16631,7 +16631,7 @@
 	         key={data.id}
 	         _grid={{x: data.col, y: data.row, w: data.width, h: data.height}}
 	         />);*/
-	        return (React.createElement(ResponsiveGrid, {className: "column", rowHeight: Widgets.ROW_HEIGHT, breakpoints: breakpoints, cols: cols, draggableCancel: ".no-drag", draggableHandle: ".drag", onLayoutChange: this.onLayoutChange.bind(this)}, widgets));
+	        return (React.createElement(ResponsiveGrid, {className: "column", rowHeight: Widgets.ROW_HEIGHT, breakpoints: breakpoints, cols: cols, draggableCancel: ".no-drag", draggableHandle: ".drag", onLayoutChange: this.onLayoutChange.bind(this), isDraggable: !props.isReadOnly, isResizable: !props.isReadOnly}, widgets));
 	    };
 	    return WidgetGrid;
 	}(react_1.Component));
@@ -17027,8 +17027,8 @@
 	    if (pluginLoaded) {
 	        widgetFactory = dashboard_1.default.getInstance().widgetPluginRegistry.getPlugin(widgetState.type);
 	    }
-	    return (React.createElement("div", {className: "ui raised segments", style: { margin: 0, overflow: "hidden" }, key: widgetState.id, _grid: { x: widgetState.col, y: widgetState.row, w: widgetState.width, h: widgetState.height }}, React.createElement("div", {className: "ui inverted segment" + (props.isReadOnly ? "" : " drag")}, props.isReadOnly ? null :
-	        React.createElement("div", {className: "ui tiny horizontal right floated inverted list"}, React.createElement(ConfigWidgetButton, {className: "right item no-drag", widgetState: widgetState, visible: (props.widgetPlugin && props.widgetPlugin.typeInfo.settings ? true : false), icon: "configure"}), React.createElement(DeleteWidgetButton, {className: "right floated item no-drag", widgetState: widgetState, icon: "remove"})), React.createElement("div", {className: "ui item top attached" + (props.isReadOnly ? "" : " drag")}, widgetState.settings.name || "\u00a0")), React.createElement("div", {className: "ui segment", style: { height: widgetState.availableHeightPx, padding: 0, border: "red dashed 0px" }}, pluginLoaded ? widgetFactory.getInstance(widgetState.id)
+	    return (React.createElement("div", {className: "ui raised segments", style: { margin: 0, overflow: "hidden" }, key: widgetState.id, _grid: { x: widgetState.col, y: widgetState.row, w: widgetState.width, h: widgetState.height }}, React.createElement("div", {className: "ui stacked segment" + (props.isReadOnly ? "" : " drag")}, props.isReadOnly ? null :
+	        React.createElement("div", {className: "ui tiny horizontal right floated list"}, React.createElement(ConfigWidgetButton, {className: "right item no-drag", widgetState: widgetState, visible: (props.widgetPlugin && props.widgetPlugin.typeInfo.settings ? true : false), icon: "configure"}), React.createElement(DeleteWidgetButton, {className: "right floated item no-drag", widgetState: widgetState, icon: "remove"})), React.createElement("div", {className: "ui item top attached" + (props.isReadOnly ? "" : " drag")}, widgetState.settings.name || "\u00a0")), React.createElement("div", {className: "ui segment", style: { height: widgetState.availableHeightPx, padding: 0, border: "red dashed 0px" }}, pluginLoaded ? widgetFactory.getInstance(widgetState.id)
 	        : React.createElement(LoadingWidget, {widget: widgetState}))));
 	};
 	exports.widgetPropType = react_1.PropTypes.shape({
@@ -17446,6 +17446,13 @@
 	        }
 	        return Dashboard._instance;
 	    };
+	    Object.defineProperty(Dashboard.prototype, "store", {
+	        get: function () {
+	            return this._store;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    Object.defineProperty(Dashboard.prototype, "datasourcePluginRegistry", {
 	        get: function () {
 	            return this._datasourcePluginRegistry;
@@ -17477,7 +17484,7 @@
 	    };
 	    Dashboard.prototype.dispose = function () {
 	        this._datasourcePluginRegistry.dispose();
-	        // TODO: this._widgetPluginRegistry.dispose();
+	        this._widgetPluginRegistry.dispose();
 	    };
 	    Dashboard.prototype.loadPluginScript = function (url) {
 	        var _this = this;
@@ -26261,13 +26268,14 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
 	var Action = __webpack_require__(46);
 	var actionNames_1 = __webpack_require__(46);
-	var layouts_1 = __webpack_require__(88);
-	var Plugins = __webpack_require__(63);
+	var layouts_js_1 = __webpack_require__(88);
+	var _ = __webpack_require__(21);
+	var dashboard_1 = __webpack_require__(56);
 	/**
 	 * To extend the import/export by another property you just need to add the property to the exported data
 	 * See: serialize()
@@ -26285,12 +26293,15 @@
 	}
 	exports.serialize = serialize;
 	function afterImport(dispatch, getState) {
-	    dispatch(Plugins.initializeExternalPlugins());
+	    var oldDashboard = dashboard_1.default.getInstance();
+	    oldDashboard.dispose();
+	    var newDashboard = new dashboard_1.default(oldDashboard.store);
+	    newDashboard.init();
 	}
 	function importReducer(state, action) {
 	    switch (action.type) {
 	        case Action.DASHBOARD_IMPORT:
-	            var newState = Object.assign({}, state, action.state);
+	            var newState = _.assign({}, state, action.state);
 	            console.log("new State:", state, action.state, newState);
 	            return newState;
 	        default:
@@ -26311,7 +26322,7 @@
 	    var state = deserialize(data);
 	    return function (dispatch, getState) {
 	        // Bad hack to force the grid layout to update correctly
-	        dispatch(layouts_1.loadEmptyLayout());
+	        dispatch(layouts_js_1.loadEmptyLayout());
 	        setTimeout(function () {
 	            dispatch({
 	                type: actionNames_1.DASHBOARD_IMPORT,
@@ -27367,9 +27378,9 @@
 
 	module.exports = {
 		"version": "0.1.8",
-		"revision": "75c17c3c1f726cb1754e08a888658528cfcdc147",
-		"revisionShort": "75c17c3",
-		"branch": "Detatched: 75c17c3c1f726cb1754e08a888658528cfcdc147"
+		"revision": "79495f34b5e14e81b1a82e4833cacec4179a09bc",
+		"revisionShort": "79495f3",
+		"branch": "Detatched: 79495f34b5e14e81b1a82e4833cacec4179a09bc"
 	};
 
 /***/ },

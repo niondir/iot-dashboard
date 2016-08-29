@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/dashboard/import.js</title>
+    <title>Code coverage report for src/dashboard/import.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">all files</a> / <a href="index.html">src/dashboard/</a> import.js
+      <a href="../../index.html">all files</a> / <a href="index.html">src/dashboard/</a> import.ts
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">51.72% </span>
+        <span class="strong">48.48% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>15/29</span>
+        <span class='fraction'>16/33</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">25% </span>
@@ -35,13 +35,13 @@
         <span class='fraction'>1/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">51.72% </span>
+        <span class="strong">48.48% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>15/29</span>
+        <span class='fraction'>16/33</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -106,10 +106,15 @@
 61
 62
 63
-64</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+64
+65
+66
+67
+68</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -131,6 +136,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -170,13 +178,14 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this
-* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 var Action = require("../actionNames");
 var actionNames_1 = require("../actionNames");
-var layouts_1 = require("../layouts/layouts");
-var Plugins = require("../pluginApi/plugins");
+var layouts_js_1 = require("../layouts/layouts.js");
+var _ = require("lodash");
+var dashboard_1 = require("../dashboard");
 /**
  * To extend the import/export by another property you just need to add the property to the exported data
  * See: serialize()
@@ -194,12 +203,15 @@ var Plugins = require("../pluginApi/plugins");
 }
 exports.serialize = serialize;
 <span class="fstat-no" title="function not covered" >function afterImport(dispatch, getState) {</span>
-<span class="cstat-no" title="statement not covered" >    dispatch(Plugins.initializeExternalPlugins());</span>
+<span class="cstat-no" title="statement not covered" >    var oldDashboard = dashboard_1.default.getInstance();</span>
+<span class="cstat-no" title="statement not covered" >    oldDashboard.dispose();</span>
+<span class="cstat-no" title="statement not covered" >    var newDashboard = new dashboard_1.default(oldDashboard.store);</span>
+<span class="cstat-no" title="statement not covered" >    newDashboard.init();</span>
 }
 function importReducer(state, action) {
     switch (action.type) {
 <span class="branch-0 cbranch-no" title="branch not covered" >        case Action.DASHBOARD_IMPORT:</span>
-<span class="cstat-no" title="statement not covered" >            var newState = Object.assign({}, state, action.state);</span>
+<span class="cstat-no" title="statement not covered" >            var newState = _.assign({}, state, action.state);</span>
 <span class="cstat-no" title="statement not covered" >            console.log("new State:", state, action.state, newState);</span>
 <span class="cstat-no" title="statement not covered" >            return newState;</span>
         default:
@@ -220,7 +232,7 @@ exports.deserialize = deserialize;
 <span class="cstat-no" title="statement not covered" >    var state = deserialize(data);</span>
 <span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >function (dispatch, getState) {</span></span>
         // Bad hack to force the grid layout to update correctly
-<span class="cstat-no" title="statement not covered" >        dispatch(layouts_1.loadEmptyLayout());</span>
+<span class="cstat-no" title="statement not covered" >        dispatch(layouts_js_1.loadEmptyLayout());</span>
 <span class="cstat-no" title="statement not covered" >        setTimeout(<span class="fstat-no" title="function not covered" >function () {</span></span>
 <span class="cstat-no" title="statement not covered" >            dispatch({</span>
                 type: actionNames_1.DASHBOARD_IMPORT,
@@ -238,7 +250,7 @@ exports.doImport = doImport;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Aug 25 2016 21:33:05 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Aug 29 2016 10:00:21 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
