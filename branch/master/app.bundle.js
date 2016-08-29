@@ -2282,16 +2282,22 @@ webpackJsonp([0],[
 /* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	/* WEBPACK VAR INJECTION */(function($) {"use strict";
 	var loadjs = __webpack_require__(65);
+	var _ = __webpack_require__(21);
 	// This is a class because we can not mock it on module level.
 	var ScriptLoader = (function () {
 	    function ScriptLoader() {
 	    }
 	    ScriptLoader.loadScript = function (paths) {
+	        var jsPaths = _.filter(paths, function (p) { return _.endsWith(p, ".js"); });
+	        var cssPaths = _.filter(paths, function (p) { return _.endsWith(p, ".css"); });
+	        _.forEach(cssPaths, function (path) {
+	            $('head').append($('<link rel="stylesheet" type="text/css" />').attr('href', path));
+	        });
 	        return new Promise(function (resolve, reject) {
 	            try {
-	                loadjs(paths, {
+	                loadjs(jsPaths, {
 	                    success: function () {
 	                        resolve();
 	                    },
@@ -2309,7 +2315,8 @@ webpackJsonp([0],[
 	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = ScriptLoader;
-
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
 /* 65 */,
@@ -4289,9 +4296,9 @@ webpackJsonp([0],[
 
 	module.exports = {
 		"version": "0.1.9",
-		"revision": "2aced3afd393f63534e34d957bf9d981a86dd223",
-		"revisionShort": "2aced3a",
-		"branch": "Detatched: 2aced3afd393f63534e34d957bf9d981a86dd223"
+		"revision": "7a1fbe9094d6312d0d5c6dd35ef29a3109591676",
+		"revisionShort": "7a1fbe9",
+		"branch": "Detatched: 7a1fbe9094d6312d0d5c6dd35ef29a3109591676"
 	};
 
 /***/ }
