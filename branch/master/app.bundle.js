@@ -998,7 +998,7 @@ webpackJsonp([0],[
 	    if (pluginLoaded) {
 	        widgetFactory = dashboard_1.default.getInstance().widgetPluginRegistry.getPlugin(widgetState.type);
 	    }
-	    return (React.createElement("div", {className: "ui raised segments", style: { margin: 0, overflow: "hidden" }, key: widgetState.id, _grid: { x: widgetState.col, y: widgetState.row, w: widgetState.width, h: widgetState.height }}, React.createElement("div", {className: "ui stacked segment" + (props.isReadOnly ? "" : " drag")}, props.isReadOnly ? null :
+	    return (React.createElement("div", {className: "ui raised segments", style: { margin: 0, overflow: "hidden" }, key: widgetState.id, _grid: { x: widgetState.col, y: widgetState.row, w: widgetState.width, h: widgetState.height }}, React.createElement("div", {className: "ui stacked segment" + (props.isReadOnly ? "" : " drag"), style: { padding: 8 }}, props.isReadOnly ? null :
 	        React.createElement("div", {className: "ui tiny horizontal right floated list"}, React.createElement(ConfigWidgetButton, {className: "right item no-drag", widgetState: widgetState, visible: (props.widgetPlugin && props.widgetPlugin.typeInfo.settings ? true : false), icon: "configure"}), React.createElement(DeleteWidgetButton, {className: "right floated item no-drag", widgetState: widgetState, icon: "remove"})), React.createElement("div", {className: "ui item top attached" + (props.isReadOnly ? "" : " drag")}, widgetState.settings.name || "\u00a0")), React.createElement("div", {className: "ui segment", style: { height: widgetState.availableHeightPx, padding: 0, border: "red dashed 0px" }}, pluginLoaded ? widgetFactory.getInstance(widgetState.id)
 	        : React.createElement(LoadingWidget, {widget: widgetState}))));
 	};
@@ -4289,9 +4289,9 @@ webpackJsonp([0],[
 
 	module.exports = {
 		"version": "0.1.8",
-		"revision": "79495f34b5e14e81b1a82e4833cacec4179a09bc",
-		"revisionShort": "79495f3",
-		"branch": "Detatched: 79495f34b5e14e81b1a82e4833cacec4179a09bc"
+		"revision": "d68ea0a54e311ac282b1cd8687a3456afa96a2a5",
+		"revisionShort": "d68ea0a",
+		"branch": "Detatched: d68ea0a54e311ac282b1cd8687a3456afa96a2a5"
 	};
 
 /***/ }
