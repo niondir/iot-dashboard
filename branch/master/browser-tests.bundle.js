@@ -16416,8 +16416,8 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
 	var __extends = (this && this.__extends) || function (d, b) {
 	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -16465,7 +16465,11 @@
 	        var _this = this;
 	        var props = this.props;
 	        var showMenu = props.devMode && (!props.isReadOnly || this.state.hover);
-	        return React.createElement("div", {onKeyUp: function (event) { return _this.onReadOnlyModeKeyPress(event); }}, React.createElement("div", null, React.createElement(widgetConfigDialog_ui_js_1.default, null), React.createElement(importExportDialog_ui_js_1.default, null), React.createElement(datasourceConfigDialog_ui_js_1.default, null), React.createElement(pluginsDialog_ui_js_1.default, null)), React.createElement("div", {className: "container"}, React.createElement("div", {className: showMenu ? "menu-trigger" : "menu-trigger", onMouseOver: function () { _this.setState({ hover: true }); }, onMouseEnter: function () { _this.setState({ hover: true }); }}), React.createElement("div", {className: "ui inverted fixed main menu " + (showMenu ? "topnav--visible" : "topnav--hidden"), onMouseOver: function () { _this.setState({ hover: true }); }, onMouseLeave: function () { _this.setState({ hover: false }); }}, React.createElement("div", {className: "ui container"}, React.createElement("a", {href: "#", className: "header item"}, "Dashboard"), React.createElement(dashboardMenuEntry_ui_js_1.default, null), React.createElement(widgetsNavItem_ui_js_1.default, null), React.createElement(datasourceNavItem_ui_js_1.default, null), React.createElement(pluginNavItem_ui_js_1.default, null), React.createElement(layouts_ui_js_1.default, null), React.createElement("a", {className: "item", onClick: function () { return Persistence.clearData(); }}, React.createElement("i", {className: "red bomb icon"}), "Reset Everything!"), React.createElement("a", {className: "item", onClick: function () { return props.setReadOnly(!props.isReadOnly); }}, React.createElement("i", {className: (props.isReadOnly ? "lock" : "unlock alternate") + " icon"}), " "), React.createElement("div", {className: "header selectable right item"}, "v", this.props.config.version, " ", this.props.config.revisionShort))), React.createElement("div", {className: "ui grid"}, React.createElement(widgetGrid_ui_js_1.default, null))));
+	        return React.createElement("div", {onKeyUp: function (event) { return _this.onReadOnlyModeKeyPress(event); }}, React.createElement("div", null, React.createElement(widgetConfigDialog_ui_js_1.default, null), React.createElement(importExportDialog_ui_js_1.default, null), React.createElement(datasourceConfigDialog_ui_js_1.default, null), React.createElement(pluginsDialog_ui_js_1.default, null)), React.createElement("div", {className: "container"}, React.createElement("div", {className: showMenu ? "menu-trigger" : "menu-trigger", onMouseOver: function () { _this.setState({ hover: true }); }, onMouseEnter: function () { _this.setState({ hover: true }); }}), React.createElement("div", {className: "ui inverted fixed main menu " + (showMenu ? "topnav--visible" : "topnav--hidden"), onMouseOver: function () { _this.setState({ hover: true }); }, onMouseLeave: function () { _this.setState({ hover: false }); }}, React.createElement("div", {className: "ui container"}, React.createElement("a", {href: "#", className: "header item"}, "Dashboard"), React.createElement(dashboardMenuEntry_ui_js_1.default, null), React.createElement(widgetsNavItem_ui_js_1.default, null), React.createElement(datasourceNavItem_ui_js_1.default, null), React.createElement(pluginNavItem_ui_js_1.default, null), React.createElement(layouts_ui_js_1.default, null), React.createElement("a", {className: "item", onClick: function () { return Persistence.clearData(); }}, React.createElement("i", {className: "red bomb icon"}), "Reset Everything!"), React.createElement("a", {className: "item", onClick: function () { return props.setReadOnly(!props.isReadOnly); }}, React.createElement("i", {className: (props.isReadOnly ? "lock" : "unlock alternate") + " icon"}), " "), React.createElement("div", {className: "header selectable right item"}, "v", this.props.config.version, " ", this.props.config.revisionShort), props.config.auth && props.config.auth.username ?
+	            React.createElement("div", {className: "header selectable right item"}, props.config.auth.username)
+	            : null, props.config.auth && props.config.auth.logoutUrl ?
+	            React.createElement("div", {className: "header selectable right item"}, React.createElement("a", {className: "ui button", href: props.config.auth.logoutUrl}, "Logout"))
+	            : null)), React.createElement("div", {className: "ui grid"}, React.createElement(widgetGrid_ui_js_1.default, null))));
 	    };
 	    return Layout;
 	}(react_1.Component));
@@ -16482,6 +16486,16 @@
 	        setReadOnly: function (isReadOnly) { return dispatch(Global.setReadOnly(isReadOnly)); }
 	    };
 	})(Layout);
+	var UserNavItem = (function (_super) {
+	    __extends(UserNavItem, _super);
+	    function UserNavItem() {
+	        _super.apply(this, arguments);
+	    }
+	    UserNavItem.prototype.render = function () {
+	        return React.createElement("div", null, React.createElement("div", {className: "header selectable right item"}, "Tobias"), React.createElement("div", {className: "header selectable right item"}, React.createElement("a", {className: "ui button"}, "Logout")));
+	    };
+	    return UserNavItem;
+	}(React.Component));
 
 
 /***/ },
@@ -27364,7 +27378,11 @@
 	    revisionShort: "",
 	    branch: "",
 	    persistenceTarget: "local-storage",
-	    devMode: true
+	    devMode: true,
+	    auth: {
+	        username: null,
+	        logoutUrl: null
+	    }
 	};
 	function config(state, action) {
 	    if (state === void 0) { state = configJson; }
@@ -27384,10 +27402,10 @@
 /***/ function(module, exports) {
 
 	module.exports = {
-		"version": "0.1.10",
-		"revision": "7f07b67fc9fbef99f8eb521d9dcb424b79d8fdcb",
-		"revisionShort": "7f07b67",
-		"branch": "Detatched: 7f07b67fc9fbef99f8eb521d9dcb424b79d8fdcb"
+		"version": "0.1.11",
+		"revision": "c71894bdfcd0cd92541751352a9d3893950545be",
+		"revisionShort": "c71894b",
+		"branch": "Detatched: c71894bdfcd0cd92541751352a9d3893950545be"
 	};
 
 /***/ },
