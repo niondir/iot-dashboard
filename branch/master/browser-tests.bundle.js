@@ -18325,22 +18325,16 @@
 /* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function($) {"use strict";
+	"use strict";
 	var loadjs = __webpack_require__(65);
-	var _ = __webpack_require__(21);
 	// This is a class because we can not mock it on module level.
 	var ScriptLoader = (function () {
 	    function ScriptLoader() {
 	    }
 	    ScriptLoader.loadScript = function (paths) {
-	        var jsPaths = _.filter(paths, function (p) { return _.endsWith(p, ".js"); });
-	        var cssPaths = _.filter(paths, function (p) { return _.endsWith(p, ".css"); });
-	        _.forEach(cssPaths, function (path) {
-	            $('head').append($('<link rel="stylesheet" type="text/css" />').attr('href', path));
-	        });
 	        return new Promise(function (resolve, reject) {
 	            try {
-	                loadjs(jsPaths, {
+	                loadjs(paths, {
 	                    success: function () {
 	                        resolve();
 	                    },
@@ -18358,8 +18352,7 @@
 	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = ScriptLoader;
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
+
 
 /***/ },
 /* 65 */
@@ -18457,9 +18450,12 @@
 	 */
 	function loadFile(path, callbackFn, async) {
 	  var doc = document,
+	      isCss,
 	      e;
 	
 	  if (/\.css$/.test(path)) {
+	    isCss = true;
+	
 	    // css
 	    e = doc.createElement('link');
 	    e.rel = 'stylesheet';
@@ -18470,13 +18466,21 @@
 	    e.src = path;
 	    e.async = (async === undefined) ? true : async;
 	  }
-	  
+	
 	  e.onload = e.onerror = e.onbeforeload = function(ev) {
 	    var result = ev.type[0];
 	
-	    // treat empty stylesheets as failures (to get around lack of onerror
-	    // support in IE
-	    if (e.sheet && !e.sheet.cssRules.length) result = 'e';
+	    // Note: The following code isolates IE using `hideFocus` and treats empty
+	    // stylesheets as failures to get around lack of onerror support
+	    if (isCss && 'hideFocus' in e) {
+	      try {
+	        if (!e.sheet.cssText.length) result = 'e';
+	      } catch (x) {
+	        // sheets objects created from load errors don't allow access to
+	        // `cssText`
+	        result = 'e';
+	      }
+	    }
 	
 	    // execute callback
 	    callbackFn(path, result, ev.defaultPrevented);
@@ -18523,8 +18527,8 @@
 	 * Initiate script load and register bundle.
 	 * @param {(string|string[])} paths - The file paths
 	 * @param {(string|Function)} [arg1] - The bundleId or success callback
-	 * @param {Function} [arg2] - The success or fail callback
-	 * @param {Function} [arg3] - The fail callback
+	 * @param {Function} [arg2] - The success or error callback
+	 * @param {Function} [arg3] - The error callback
 	 */
 	function loadjs(paths, arg1, arg2) {
 	  var bundleId, args;
@@ -18546,8 +18550,8 @@
 	  
 	  // load scripts
 	  loadFiles(paths, function(pathsNotFound) {
-	    // success and fail callbacks
-	    if (pathsNotFound.length) (args.fail || devnull)(pathsNotFound);
+	    // success and error callbacks
+	    if (pathsNotFound.length) (args.error || devnull)(pathsNotFound);
 	    else (args.success || devnull)();
 	
 	    // publish bundle load event
@@ -18559,13 +18563,13 @@
 	/**
 	 * Execute callbacks when dependencies have been satisfied.
 	 * @param {(string|string[])} deps - List of bundle ids
-	 * @param {Object} args - success/fail arguments
+	 * @param {Object} args - success/error arguments
 	 */
 	loadjs.ready = function (deps, args) {
 	  // subscribe to bundle load event
 	  subscribe(deps, function(depsNotFound) {
 	    // execute callbacks
-	    if (depsNotFound.length) (args.fail || devnull)(depsNotFound);
+	    if (depsNotFound.length) (args.error || devnull)(depsNotFound);
 	    else (args.success || devnull)();
 	  });
 	  
@@ -27403,9 +27407,9 @@
 
 	module.exports = {
 		"version": "0.1.11",
-		"revision": "c71894bdfcd0cd92541751352a9d3893950545be",
-		"revisionShort": "c71894b",
-		"branch": "Detatched: c71894bdfcd0cd92541751352a9d3893950545be"
+		"revision": "dbf81affc95f81965e5462557b1c6ab0cfd5c71e",
+		"revisionShort": "dbf81af",
+		"branch": "Detatched: dbf81affc95f81965e5462557b1c6ab0cfd5c71e"
 	};
 
 /***/ },

@@ -24870,17 +24870,16 @@
 /* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function($) {"use strict";
+	"use strict";
 	var __cov_eicnF7JK3dRr3qGq0r94vA = (Function('return this'))();
 	if (!__cov_eicnF7JK3dRr3qGq0r94vA.__coverage__) { __cov_eicnF7JK3dRr3qGq0r94vA.__coverage__ = {}; }
 	__cov_eicnF7JK3dRr3qGq0r94vA = __cov_eicnF7JK3dRr3qGq0r94vA.__coverage__;
 	if (!(__cov_eicnF7JK3dRr3qGq0r94vA['/builds/lobaro/iot-dashboard/src/util/scriptLoader.ts'])) {
-	   __cov_eicnF7JK3dRr3qGq0r94vA['/builds/lobaro/iot-dashboard/src/util/scriptLoader.ts'] = {"path":"/builds/lobaro/iot-dashboard/src/util/scriptLoader.ts","s":{"1":0,"2":0,"3":0,"4":1,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0},"b":{},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0},"fnMap":{"1":{"name":"(anonymous_1)","line":5,"loc":{"start":{"line":5,"column":20},"end":{"line":5,"column":32}}},"2":{"name":"ScriptLoader","line":6,"loc":{"start":{"line":6,"column":4},"end":{"line":6,"column":28}}},"3":{"name":"(anonymous_3)","line":8,"loc":{"start":{"line":8,"column":30},"end":{"line":8,"column":47}}},"4":{"name":"(anonymous_4)","line":9,"loc":{"start":{"line":9,"column":38},"end":{"line":9,"column":51}}},"5":{"name":"(anonymous_5)","line":10,"loc":{"start":{"line":10,"column":39},"end":{"line":10,"column":52}}},"6":{"name":"(anonymous_6)","line":11,"loc":{"start":{"line":11,"column":28},"end":{"line":11,"column":44}}},"7":{"name":"(anonymous_7)","line":14,"loc":{"start":{"line":14,"column":27},"end":{"line":14,"column":54}}},"8":{"name":"(anonymous_8)","line":17,"loc":{"start":{"line":17,"column":29},"end":{"line":17,"column":41}}},"9":{"name":"(anonymous_9)","line":20,"loc":{"start":{"line":20,"column":27},"end":{"line":20,"column":44}}}},"statementMap":{"1":{"start":{"line":2,"column":0},"end":{"line":2,"column":31}},"2":{"start":{"line":3,"column":0},"end":{"line":3,"column":26}},"3":{"start":{"line":5,"column":0},"end":{"line":31,"column":5}},"4":{"start":{"line":6,"column":4},"end":{"line":7,"column":5}},"5":{"start":{"line":8,"column":4},"end":{"line":29,"column":6}},"6":{"start":{"line":9,"column":8},"end":{"line":9,"column":85}},"7":{"start":{"line":9,"column":53},"end":{"line":9,"column":81}},"8":{"start":{"line":10,"column":8},"end":{"line":10,"column":87}},"9":{"start":{"line":10,"column":54},"end":{"line":10,"column":83}},"10":{"start":{"line":11,"column":8},"end":{"line":13,"column":11}},"11":{"start":{"line":12,"column":12},"end":{"line":12,"column":96}},"12":{"start":{"line":14,"column":8},"end":{"line":28,"column":11}},"13":{"start":{"line":15,"column":12},"end":{"line":27,"column":13}},"14":{"start":{"line":16,"column":16},"end":{"line":23,"column":19}},"15":{"start":{"line":18,"column":24},"end":{"line":18,"column":34}},"16":{"start":{"line":21,"column":24},"end":{"line":21,"column":38}},"17":{"start":{"line":26,"column":16},"end":{"line":26,"column":30}},"18":{"start":{"line":30,"column":4},"end":{"line":30,"column":24}},"19":{"start":{"line":32,"column":0},"end":{"line":32,"column":62}},"20":{"start":{"line":33,"column":0},"end":{"line":33,"column":31}}},"branchMap":{},"code":["\"use strict\";","var loadjs = require('loadjs');","var _ = require('lodash');","// This is a class because we can not mock it on module level.","var ScriptLoader = (function () {","    function ScriptLoader() {","    }","    ScriptLoader.loadScript = function (paths) {","        var jsPaths = _.filter(paths, function (p) { return _.endsWith(p, \".js\"); });","        var cssPaths = _.filter(paths, function (p) { return _.endsWith(p, \".css\"); });","        _.forEach(cssPaths, function (path) {","            $('head').append($('<link rel=\"stylesheet\" type=\"text/css\" />').attr('href', path));","        });","        return new Promise(function (resolve, reject) {","            try {","                loadjs(jsPaths, {","                    success: function () {","                        resolve();","                    },","                    error: function (error) {","                        reject(error);","                    }","                });","            }","            catch (error) {","                reject(error);","            }","        });","    };","    return ScriptLoader;","}());","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = ScriptLoader;",""]};
+	   __cov_eicnF7JK3dRr3qGq0r94vA['/builds/lobaro/iot-dashboard/src/util/scriptLoader.ts'] = {"path":"/builds/lobaro/iot-dashboard/src/util/scriptLoader.ts","s":{"1":0,"2":0,"3":1,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0},"b":{},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0},"fnMap":{"1":{"name":"(anonymous_1)","line":4,"loc":{"start":{"line":4,"column":20},"end":{"line":4,"column":32}}},"2":{"name":"ScriptLoader","line":5,"loc":{"start":{"line":5,"column":4},"end":{"line":5,"column":28}}},"3":{"name":"(anonymous_3)","line":7,"loc":{"start":{"line":7,"column":30},"end":{"line":7,"column":47}}},"4":{"name":"(anonymous_4)","line":8,"loc":{"start":{"line":8,"column":27},"end":{"line":8,"column":54}}},"5":{"name":"(anonymous_5)","line":11,"loc":{"start":{"line":11,"column":29},"end":{"line":11,"column":41}}},"6":{"name":"(anonymous_6)","line":14,"loc":{"start":{"line":14,"column":27},"end":{"line":14,"column":44}}}},"statementMap":{"1":{"start":{"line":2,"column":0},"end":{"line":2,"column":31}},"2":{"start":{"line":4,"column":0},"end":{"line":25,"column":5}},"3":{"start":{"line":5,"column":4},"end":{"line":6,"column":5}},"4":{"start":{"line":7,"column":4},"end":{"line":23,"column":6}},"5":{"start":{"line":8,"column":8},"end":{"line":22,"column":11}},"6":{"start":{"line":9,"column":12},"end":{"line":21,"column":13}},"7":{"start":{"line":10,"column":16},"end":{"line":17,"column":19}},"8":{"start":{"line":12,"column":24},"end":{"line":12,"column":34}},"9":{"start":{"line":15,"column":24},"end":{"line":15,"column":38}},"10":{"start":{"line":20,"column":16},"end":{"line":20,"column":30}},"11":{"start":{"line":24,"column":4},"end":{"line":24,"column":24}},"12":{"start":{"line":26,"column":0},"end":{"line":26,"column":62}},"13":{"start":{"line":27,"column":0},"end":{"line":27,"column":31}}},"branchMap":{},"code":["\"use strict\";","var loadjs = require('loadjs');","// This is a class because we can not mock it on module level.","var ScriptLoader = (function () {","    function ScriptLoader() {","    }","    ScriptLoader.loadScript = function (paths) {","        return new Promise(function (resolve, reject) {","            try {","                loadjs(paths, {","                    success: function () {","                        resolve();","                    },","                    error: function (error) {","                        reject(error);","                    }","                });","            }","            catch (error) {","                reject(error);","            }","        });","    };","    return ScriptLoader;","}());","Object.defineProperty(exports, \"__esModule\", { value: true });","exports.default = ScriptLoader;",""]};
 	}
 	__cov_eicnF7JK3dRr3qGq0r94vA = __cov_eicnF7JK3dRr3qGq0r94vA['/builds/lobaro/iot-dashboard/src/util/scriptLoader.ts'];
-	__cov_eicnF7JK3dRr3qGq0r94vA.s['1']++;var loadjs=__webpack_require__(71);__cov_eicnF7JK3dRr3qGq0r94vA.s['2']++;var _=__webpack_require__(47);__cov_eicnF7JK3dRr3qGq0r94vA.s['3']++;var ScriptLoader=function(){__cov_eicnF7JK3dRr3qGq0r94vA.f['1']++;function ScriptLoader(){__cov_eicnF7JK3dRr3qGq0r94vA.f['2']++;}__cov_eicnF7JK3dRr3qGq0r94vA.s['5']++;ScriptLoader.loadScript=function(paths){__cov_eicnF7JK3dRr3qGq0r94vA.f['3']++;__cov_eicnF7JK3dRr3qGq0r94vA.s['6']++;var jsPaths=_.filter(paths,function(p){__cov_eicnF7JK3dRr3qGq0r94vA.f['4']++;__cov_eicnF7JK3dRr3qGq0r94vA.s['7']++;return _.endsWith(p,'.js');});__cov_eicnF7JK3dRr3qGq0r94vA.s['8']++;var cssPaths=_.filter(paths,function(p){__cov_eicnF7JK3dRr3qGq0r94vA.f['5']++;__cov_eicnF7JK3dRr3qGq0r94vA.s['9']++;return _.endsWith(p,'.css');});__cov_eicnF7JK3dRr3qGq0r94vA.s['10']++;_.forEach(cssPaths,function(path){__cov_eicnF7JK3dRr3qGq0r94vA.f['6']++;__cov_eicnF7JK3dRr3qGq0r94vA.s['11']++;$('head').append($('<link rel="stylesheet" type="text/css" />').attr('href',path));});__cov_eicnF7JK3dRr3qGq0r94vA.s['12']++;return new Promise(function(resolve,reject){__cov_eicnF7JK3dRr3qGq0r94vA.f['7']++;__cov_eicnF7JK3dRr3qGq0r94vA.s['13']++;try{__cov_eicnF7JK3dRr3qGq0r94vA.s['14']++;loadjs(jsPaths,{success:function(){__cov_eicnF7JK3dRr3qGq0r94vA.f['8']++;__cov_eicnF7JK3dRr3qGq0r94vA.s['15']++;resolve();},error:function(error){__cov_eicnF7JK3dRr3qGq0r94vA.f['9']++;__cov_eicnF7JK3dRr3qGq0r94vA.s['16']++;reject(error);}});}catch(error){__cov_eicnF7JK3dRr3qGq0r94vA.s['17']++;reject(error);}});};__cov_eicnF7JK3dRr3qGq0r94vA.s['18']++;return ScriptLoader;}();__cov_eicnF7JK3dRr3qGq0r94vA.s['19']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_eicnF7JK3dRr3qGq0r94vA.s['20']++;exports.default=ScriptLoader;
+	__cov_eicnF7JK3dRr3qGq0r94vA.s['1']++;var loadjs=__webpack_require__(71);__cov_eicnF7JK3dRr3qGq0r94vA.s['2']++;var ScriptLoader=function(){__cov_eicnF7JK3dRr3qGq0r94vA.f['1']++;function ScriptLoader(){__cov_eicnF7JK3dRr3qGq0r94vA.f['2']++;}__cov_eicnF7JK3dRr3qGq0r94vA.s['4']++;ScriptLoader.loadScript=function(paths){__cov_eicnF7JK3dRr3qGq0r94vA.f['3']++;__cov_eicnF7JK3dRr3qGq0r94vA.s['5']++;return new Promise(function(resolve,reject){__cov_eicnF7JK3dRr3qGq0r94vA.f['4']++;__cov_eicnF7JK3dRr3qGq0r94vA.s['6']++;try{__cov_eicnF7JK3dRr3qGq0r94vA.s['7']++;loadjs(paths,{success:function(){__cov_eicnF7JK3dRr3qGq0r94vA.f['5']++;__cov_eicnF7JK3dRr3qGq0r94vA.s['8']++;resolve();},error:function(error){__cov_eicnF7JK3dRr3qGq0r94vA.f['6']++;__cov_eicnF7JK3dRr3qGq0r94vA.s['9']++;reject(error);}});}catch(error){__cov_eicnF7JK3dRr3qGq0r94vA.s['10']++;reject(error);}});};__cov_eicnF7JK3dRr3qGq0r94vA.s['11']++;return ScriptLoader;}();__cov_eicnF7JK3dRr3qGq0r94vA.s['12']++;Object.defineProperty(exports,'__esModule',{value:true});__cov_eicnF7JK3dRr3qGq0r94vA.s['13']++;exports.default=ScriptLoader;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(51)))
 
 /***/ },
 /* 71 */
@@ -24978,9 +24977,12 @@
 	 */
 	function loadFile(path, callbackFn, async) {
 	  var doc = document,
+	      isCss,
 	      e;
 
 	  if (/\.css$/.test(path)) {
+	    isCss = true;
+
 	    // css
 	    e = doc.createElement('link');
 	    e.rel = 'stylesheet';
@@ -24991,13 +24993,21 @@
 	    e.src = path;
 	    e.async = (async === undefined) ? true : async;
 	  }
-	  
+
 	  e.onload = e.onerror = e.onbeforeload = function(ev) {
 	    var result = ev.type[0];
 
-	    // treat empty stylesheets as failures (to get around lack of onerror
-	    // support in IE
-	    if (e.sheet && !e.sheet.cssRules.length) result = 'e';
+	    // Note: The following code isolates IE using `hideFocus` and treats empty
+	    // stylesheets as failures to get around lack of onerror support
+	    if (isCss && 'hideFocus' in e) {
+	      try {
+	        if (!e.sheet.cssText.length) result = 'e';
+	      } catch (x) {
+	        // sheets objects created from load errors don't allow access to
+	        // `cssText`
+	        result = 'e';
+	      }
+	    }
 
 	    // execute callback
 	    callbackFn(path, result, ev.defaultPrevented);
@@ -25044,8 +25054,8 @@
 	 * Initiate script load and register bundle.
 	 * @param {(string|string[])} paths - The file paths
 	 * @param {(string|Function)} [arg1] - The bundleId or success callback
-	 * @param {Function} [arg2] - The success or fail callback
-	 * @param {Function} [arg3] - The fail callback
+	 * @param {Function} [arg2] - The success or error callback
+	 * @param {Function} [arg3] - The error callback
 	 */
 	function loadjs(paths, arg1, arg2) {
 	  var bundleId, args;
@@ -25067,8 +25077,8 @@
 	  
 	  // load scripts
 	  loadFiles(paths, function(pathsNotFound) {
-	    // success and fail callbacks
-	    if (pathsNotFound.length) (args.fail || devnull)(pathsNotFound);
+	    // success and error callbacks
+	    if (pathsNotFound.length) (args.error || devnull)(pathsNotFound);
 	    else (args.success || devnull)();
 
 	    // publish bundle load event
@@ -25080,13 +25090,13 @@
 	/**
 	 * Execute callbacks when dependencies have been satisfied.
 	 * @param {(string|string[])} deps - List of bundle ids
-	 * @param {Object} args - success/fail arguments
+	 * @param {Object} args - success/error arguments
 	 */
 	loadjs.ready = function (deps, args) {
 	  // subscribe to bundle load event
 	  subscribe(deps, function(depsNotFound) {
 	    // execute callbacks
-	    if (depsNotFound.length) (args.fail || devnull)(depsNotFound);
+	    if (depsNotFound.length) (args.error || devnull)(depsNotFound);
 	    else (args.success || devnull)();
 	  });
 	  
@@ -26319,9 +26329,9 @@
 
 	module.exports = {
 		"version": "0.1.11",
-		"revision": "c71894bdfcd0cd92541751352a9d3893950545be",
-		"revisionShort": "c71894b",
-		"branch": "Detatched: c71894bdfcd0cd92541751352a9d3893950545be"
+		"revision": "dbf81affc95f81965e5462557b1c6ab0cfd5c71e",
+		"revisionShort": "dbf81af",
+		"branch": "Detatched: dbf81affc95f81965e5462557b1c6ab0cfd5c71e"
 	};
 
 /***/ },
