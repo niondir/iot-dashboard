@@ -78,6 +78,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 }
             }
         }, {
+            key: "getLatestRecivedAt",
+            value: function getLatestRecivedAt() {}
+        }, {
             key: "fetchData",
             value: function fetchData(resolve, reject) {
 
@@ -86,13 +89,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 var receivedAfter = null;
 
                 if (oldData.length > 0) {
-                    receivedAfter = _.reduce(oldData, function (result, value) {
-                        if (result == null) {
-                            return value.received_at;
-                        } else if (moment(value.received_at).isAfter(moment(result))) {
-                            return value.received_at;
+                    var latestPacket = _.reduce(oldData, function (result, value) {
+                        if (moment(value.received_at).isAfter(moment(result.received_at))) {
+                            return value;
                         }
-                    }, null);
+                        return result;
+                    });
+
+                    if (latestPacket) {
+                        receivedAfter = latestPacket.received_at;
+                    }
                 }
 
                 var request = new Request("http://firefly.lobaro.com/api/v1/devices/eui/" + settings.deviceEui + "/packets" + "?auth=" + settings.auth + (settings.limitToLast ? "&limit_to_last=" + settings.limitToLast : "") + (settings.offset ? "&offset=" + settings.offset : "") + (settings.direction ? "&direction=" + settings.direction : "") + (receivedAfter ? "&received_after=" + receivedAfter : "") + "&payloadonly=true", {
