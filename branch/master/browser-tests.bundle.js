@@ -16602,6 +16602,7 @@
 	exports.UPDATED_FETCH_REPLACE_DATA = "UPDATED_FETCH_REPLACE_DATA";
 	// Plugins
 	exports.WIDGET_PLUGIN_FINISHED_LOADING = "WIDGET_PLUGIN_FINISHED_LOADING";
+	exports.PLUGIN_FAILED_LOADING = "PLUGIN_FAILED_LOADING";
 	exports.DATASOURCE_PLUGIN_FINISHED_LOADING = "DATASOURCE_PLUGIN_FINISHED_LOADING";
 	exports.DELETE_WIDGET_PLUGIN = "DELETE_WIDGET_PLUGIN";
 	exports.DELETE_DATASOURCE_PLUGIN = "DELETE_DATASOURCE_PLUGIN";
@@ -17523,9 +17524,6 @@
 	    Dashboard.prototype.loadPluginScript = function (url) {
 	        var _this = this;
 	        var loadScriptsPromise = scriptLoader_1.default.loadScript([url]);
-	        loadScriptsPromise.catch(function (error) {
-	            console.warn("Failed to load script: " + error.message);
-	        });
 	        this._scriptsLoading[url] = loadScriptsPromise.then(function () {
 	            if (PluginCache.hasPlugin()) {
 	                // TODO: use a reference to the pluginCache and only bind that instance to the window object while the script is loaded
@@ -17547,6 +17545,9 @@
 	            }
 	            delete _this._scriptsLoading[url];
 	            return Promise.resolve();
+	        }).catch(function (error) {
+	            console.warn("Failed to load script: ", error);
+	            _this._store.dispatch(Plugins.pluginFailedLoading(url));
 	        });
 	        /*.catch((error) => {
 	         console.error(error.message);
@@ -18281,6 +18282,13 @@
 	    };
 	}
 	exports.startLoadingPluginFromUrl = startLoadingPluginFromUrl;
+	function pluginFailedLoading(url) {
+	    return {
+	        type: Action.PLUGIN_FAILED_LOADING,
+	        url: url
+	    };
+	}
+	exports.pluginFailedLoading = pluginFailedLoading;
 	function widgetPluginFinishedLoading(plugin, url) {
 	    if (url === void 0) { url = null; }
 	    return {
@@ -18305,34 +18313,23 @@
 	exports.datasourcePluginFinishedLoading = datasourcePluginFinishedLoading;
 	function pluginLoaderReducer(state, action) {
 	    if (state === void 0) { state = initialState; }
-	    switch (action.type) {
-	        case Action.STARTED_LOADING_PLUGIN_FROM_URL:
-	            {
-	                var newState = _.assign({}, state);
-	                newState.loadingUrls = urlsReducer(state.loadingUrls, action);
-	                return newState;
-	            }
-	        case Action.WIDGET_PLUGIN_FINISHED_LOADING:
-	        case Action.DATASOURCE_PLUGIN_FINISHED_LOADING:
-	            {
-	                var newState = _.assign({}, state);
-	                newState.loadingUrls = urlsReducer(state.loadingUrls, action);
-	                return newState;
-	            }
-	        default:
-	            return state;
-	    }
+	    var newState = _.assign({}, state);
+	    newState.loadingUrls = urlsReducer(state.loadingUrls, action);
+	    return newState;
 	}
 	exports.pluginLoaderReducer = pluginLoaderReducer;
 	function urlsReducer(state, action) {
 	    switch (action.type) {
 	        case Action.STARTED_LOADING_PLUGIN_FROM_URL:
+	            console.log("add url to pluginLoader: ", action.url);
 	            if (!action.url) {
 	                throw new Error("Can not load plugin from empty URL");
 	            }
 	            return state.slice().concat([action.url]);
+	        case Action.PLUGIN_FAILED_LOADING:
 	        case Action.WIDGET_PLUGIN_FINISHED_LOADING:
 	        case Action.DATASOURCE_PLUGIN_FINISHED_LOADING:
+	            console.log("remove url from pluginLoader: ", action.url);
 	            return state.slice().filter(function (url) { return url !== action.url; });
 	        default:
 	            return state;
@@ -26455,6 +26452,8 @@
 	    DatasourceConfigModal.prototype._getEditingDatasource = function () {
 	        return this.props.dialogData.datasource;
 	    };
+	    DatasourceConfigModal.prototype.clearData = function () {
+	    };
 	    DatasourceConfigModal.prototype.render = function () {
 	        var _this = this;
 	        var props = this.props;
@@ -26530,7 +26529,11 @@
 	        }
 	        return React.createElement(modalDialog_ui_js_1.default, {id: DIALOG_ID, title: title, actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, selectedDsPluginState && selectedDsPluginState.typeInfo.description ?
 	            React.createElement("div", {className: "ui icon message"}, React.createElement("i", {className: "idea icon"}), React.createElement("div", {className: "content"}, selectedDsPluginState.typeInfo.description))
-	            : null, React.createElement("div", {className: "field"}, React.createElement("label", null, "Type"), React.createElement("select", __assign({className: "ui fluid dropdown", name: "type", value: this.state.selectedType, onChange: function (e) { _this.setState({ selectedType: e.target.value }); }}, fields.type), React.createElement("option", {key: "none", value: ""}, "Select Type..."), _.valuesIn(props.datasourcePlugins).map(function (dsPlugin) {
+	            : null, this._isEditing() ?
+	            React.createElement("div", {className: "ui right red button", onClick: function (e) { return _this.clearData(); }}, "Clear Data")
+	            : null, React.createElement("div", {className: "field"}, React.createElement("label", null, "Type"), React.createElement("select", __assign({className: "ui fluid dropdown", name: "type", value: this.state.selectedType, onChange: function (e) {
+	            _this.setState({ selectedType: e.target.value });
+	        }}, fields.type), React.createElement("option", {key: "none", value: ""}, "Select Type..."), _.valuesIn(props.datasourcePlugins).map(function (dsPlugin) {
 	            return React.createElement("option", {key: dsPlugin.id, value: dsPlugin.id}, dsPlugin.typeInfo.name);
 	        }))), React.createElement(ui.Divider, null), React.createElement(settingsForm_ui_1.default, {ref: "form", form: FORM_ID, onSubmit: this.onSubmit.bind(this), fields: ["type", "name", "interval"].concat(fields), settings: settings, initialValues: initialValues}))));
 	    };
@@ -27427,9 +27430,9 @@
 
 	module.exports = {
 		"version": "0.1.13",
-		"revision": "104456c46d8a5d4becfe2f70f2dbd9707ed636e2",
-		"revisionShort": "104456c",
-		"branch": "Detatched: 104456c46d8a5d4becfe2f70f2dbd9707ed636e2"
+		"revision": "120d31efec95fb3936b938bf288d86dd812bb27c",
+		"revisionShort": "120d31e",
+		"branch": "Detatched: 120d31efec95fb3936b938bf288d86dd812bb27c"
 	};
 
 /***/ },
