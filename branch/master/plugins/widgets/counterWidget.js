@@ -33,7 +33,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
         function Widget() {
             _classCallCheck(this, Widget);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Widget).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Widget.__proto__ || Object.getPrototypeOf(Widget)).apply(this, arguments));
         }
 
         _createClass(Widget, [{

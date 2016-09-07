@@ -28,7 +28,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
         function Plugin() {
             _classCallCheck(this, Plugin);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Plugin).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Plugin.__proto__ || Object.getPrototypeOf(Plugin)).apply(this, arguments));
         }
 
         _createClass(Plugin, [{
