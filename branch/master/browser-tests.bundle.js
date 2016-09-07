@@ -18126,7 +18126,7 @@
 	    DatasourcePluginInstance.prototype.datasourceWillReceiveProps = function (newProps) {
 	        if (newProps.state.settings !== this.props.state.settings) {
 	            if (_.isFunction(this.dsInstance.datasourceWillReceiveSettings)) {
-	                this.dsInstance.datasourceWillReceiveSettings(this.props.state.settings);
+	                this.dsInstance.datasourceWillReceiveSettings(newProps.state.settings);
 	            }
 	        }
 	        if (_.isFunction(this.dsInstance.datasourceWillReceiveProps)) {
@@ -18174,7 +18174,6 @@
 	                console.warn("Datasource has fetch interval below 1000ms, it was forced to 1000ms\n" +
 	                    "Please do not set intervals shorter than 1000ms. If you really need this, file a ticket with explanation!");
 	            }
-	            this.clearFetchTimeout();
 	            this.scheduleFetch(this._fetchInterval);
 	        },
 	        enumerable: true,
@@ -18196,6 +18195,7 @@
 	    };
 	    DatasourceScheduler.prototype.scheduleFetch = function (ms) {
 	        var _this = this;
+	        this.clearFetchTimeout();
 	        if (ms === Infinity) {
 	            return;
 	        }
@@ -26847,9 +26847,9 @@
 	            type: "will-be-loaded"
 	        }
 	    },
-	    "digimondo-gps-datasource": {
-	        id: "digimondo-gps-datasource",
-	        url: "./plugins/datasources/DigimondoGpsDatasource.js",
+	    "digimondo-firefly-datasource": {
+	        id: "digimondo-firefly-datasource",
+	        url: "./plugins/datasources/digimondoFirefly.js",
 	        typeInfo: {
 	            type: "will-be-loaded"
 	        }
@@ -27426,10 +27426,10 @@
 /***/ function(module, exports) {
 
 	module.exports = {
-		"version": "0.1.12",
-		"revision": "37f46304fafa8f5a4418056ae339f52a5fd0df4e",
-		"revisionShort": "37f4630",
-		"branch": "Detatched: 37f46304fafa8f5a4418056ae339f52a5fd0df4e"
+		"version": "0.1.13",
+		"revision": "836ec4297bada49a5c0d176ab3f95a6db025c4b1",
+		"revisionShort": "836ec42",
+		"branch": "Detatched: 836ec4297bada49a5c0d176ab3f95a6db025c4b1"
 	};
 
 /***/ },
