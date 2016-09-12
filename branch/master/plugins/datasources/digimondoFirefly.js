@@ -55,6 +55,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             description: "How ofter should data be fetched in ms",
             defaultValue: "1000",
             type: "number"
+        }, {
+            id: "baseUrl",
+            name: "Base Url (trailing slash)",
+            description: "Digimondo API Base Url",
+            defaultValue: "http://firefly.lobaro.com/api/v1/",
+            required: true,
+            type: "string"
         }]
     };
 
@@ -101,7 +108,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }
                 }
 
-                var request = new Request("http://firefly.lobaro.com/api/v1/devices/eui/" + settings.deviceEui + "/packets" + "?auth=" + settings.auth + (settings.limitToLast ? "&limit_to_last=" + settings.limitToLast : "") + (settings.offset ? "&offset=" + settings.offset : "") + (settings.direction ? "&direction=" + settings.direction : "") + (receivedAfter ? "&received_after=" + receivedAfter : "") + "&payloadonly=true", {
+                var request = new Request(settings.baseUrl + "devices/eui/" + settings.deviceEui + "/packets" + "?auth=" + settings.auth + (settings.limitToLast ? "&limit_to_last=" + settings.limitToLast : "") + (settings.offset ? "&offset=" + settings.offset : "") + (settings.direction ? "&direction=" + settings.direction : "") + (receivedAfter ? "&received_after=" + receivedAfter : "") + "&payloadonly=true", {
                     //mode: "no-cors"
                 });
                 fetch(request).then(function (response) {
