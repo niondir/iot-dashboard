@@ -2168,8 +2168,9 @@ webpackJsonp([0],[
 	        var _this = this;
 	        var dsState = this.store.getState().datasources[this.dsInstance.id];
 	        if (!dsState) {
-	            console.log("Skipping fetchData because plugin does not exists - it's time to dispose?");
-	            this.scheduleFetch(this._fetchInterval);
+	            console.log("Disposing Scheduler because datasource instance does not anymore.");
+	            this.dispose();
+	            return;
 	        }
 	        if (dsState.isLoading) {
 	            console.log("Skipping fetchData because plugin is still loading");
@@ -4310,9 +4311,9 @@ webpackJsonp([0],[
 
 	module.exports = {
 		"version": "0.1.14",
-		"revision": "4544657cb7d95b5f99bf218ba1a09e4932ee8c78",
-		"revisionShort": "4544657",
-		"branch": "Detatched: 4544657cb7d95b5f99bf218ba1a09e4932ee8c78"
+		"revision": "131a735b72c2199de709a9cbd9d1afed30519e76",
+		"revisionShort": "131a735",
+		"branch": "Detatched: 131a735b72c2199de709a9cbd9d1afed30519e76"
 	};
 
 /***/ }
