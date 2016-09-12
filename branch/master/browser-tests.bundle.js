@@ -16600,6 +16600,7 @@
 	exports.DATASOURCE_FINISHED_LOADING = "DATASOURCE_FINISHED_LOADING";
 	exports.UPDATED_MAX_VALUES = "UPDATED_MAX_VALUES";
 	exports.UPDATED_FETCH_REPLACE_DATA = "UPDATED_FETCH_REPLACE_DATA";
+	exports.CLEAR_DATASOURCE_DATA = "CLEAR_DATASOURCE_DATA";
 	// Plugins
 	exports.WIDGET_PLUGIN_FINISHED_LOADING = "WIDGET_PLUGIN_FINISHED_LOADING";
 	exports.PLUGIN_FAILED_LOADING = "PLUGIN_FAILED_LOADING";
@@ -17911,6 +17912,13 @@
 	    };
 	}
 	exports.fetchedDatasourceData = fetchedDatasourceData;
+	function clearData(id) {
+	    return {
+	        type: ActionNames.CLEAR_DATASOURCE_DATA,
+	        id: id
+	    };
+	}
+	exports.clearData = clearData;
 	function updatedMaxValues(id, maxValues) {
 	    return {
 	        type: ActionNames.UPDATED_MAX_VALUES,
@@ -17956,10 +17964,17 @@
 	                _b
 	            ));
 	        }
+	        case ActionNames.CLEAR_DATASOURCE_DATA: {
+	            var newState = _.assign({}, state);
+	            return _.assign({}, state, (_c = {},
+	                _c[action.id] = datasource(newState[action.id], action),
+	                _c
+	            ));
+	        }
 	        default:
 	            return state;
 	    }
-	    var _a, _b;
+	    var _a, _b, _c;
 	}
 	exports.datasources = datasources;
 	function datasource(state, action) {
@@ -17976,6 +17991,10 @@
 	        case ActionNames.SET_DATASOURCE_DATA:
 	            return _.assign({}, state, {
 	                data: action.data || []
+	            });
+	        case ActionNames.CLEAR_DATASOURCE_DATA:
+	            return _.assign({}, state, {
+	                data: []
 	            });
 	        case ActionNames.UPDATED_MAX_VALUES:
 	            var maxValues = action.maxValues;
@@ -26454,14 +26473,30 @@
 	        return this.props.dialogData.datasource;
 	    };
 	    DatasourceConfigModal.prototype.clearData = function () {
+	        this.props.clearData(this._getEditingDatasource().id);
 	    };
 	    DatasourceConfigModal.prototype.render = function () {
+	        /*
+	         { this._isEditing() ?
+	         <div className="ui right red button" onClick={(e) => this.clearData()}>
+	         Clear Data
+	         </div>
+	         : null }
+	         */
 	        var _this = this;
 	        var props = this.props;
 	        var actions = [
 	            {
+	                className: "ui button",
+	                label: "Clear Data",
+	                onClick: function () {
+	                    _this.clearData();
+	                    return false;
+	                }
+	            },
+	            {
 	                className: "ui right button",
-	                label: "Reset",
+	                label: "Reset Form",
 	                onClick: function () {
 	                    _this.resetForm();
 	                    return false;
@@ -26530,8 +26565,6 @@
 	        }
 	        return React.createElement(modalDialog_ui_js_1.default, {id: DIALOG_ID, title: title, actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, selectedDsPluginState && selectedDsPluginState.typeInfo.description ?
 	            React.createElement("div", {className: "ui icon message"}, React.createElement("i", {className: "idea icon"}), React.createElement("div", {className: "content"}, selectedDsPluginState.typeInfo.description))
-	            : null, this._isEditing() ?
-	            React.createElement("div", {className: "ui right red button", onClick: function (e) { return _this.clearData(); }}, "Clear Data")
 	            : null, React.createElement("div", {className: "field"}, React.createElement("label", null, "Type"), React.createElement("select", __assign({className: "ui fluid dropdown", name: "type", value: this.state.selectedType, onChange: function (e) {
 	            _this.setState({ selectedType: e.target.value });
 	        }}, fields.type), React.createElement("option", {key: "none", value: ""}, "Select Type..."), _.valuesIn(props.datasourcePlugins).map(function (dsPlugin) {
@@ -26556,6 +26589,7 @@
 	}, function (dispatch) {
 	    return {
 	        resetForm: function (id) { return dispatch(redux_form_1.reset(id)); },
+	        clearData: function (id) { return dispatch(Datasource.clearData(id)); },
 	        createDatasource: function (type, dsSettings) {
 	            dispatch(Datasource.createDatasource(type, dsSettings));
 	        },
@@ -27431,9 +27465,9 @@
 
 	module.exports = {
 		"version": "0.1.14",
-		"revision": "f41d25b26f78eb6db99dc6bd8789a09ff6f1eeb6",
-		"revisionShort": "f41d25b",
-		"branch": "Detatched: f41d25b26f78eb6db99dc6bd8789a09ff6f1eeb6"
+		"revision": "389935b6c3d3578c5bda38c93a11c70ac2973268",
+		"revisionShort": "389935b",
+		"branch": "Detatched: 389935b6c3d3578c5bda38c93a11c70ac2973268"
 	};
 
 /***/ },

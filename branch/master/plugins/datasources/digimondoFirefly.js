@@ -110,6 +110,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     var parsedData = _.map(data.packets, function (d) {
                         return _.assign({}, d.parsed, { received_at: d.received_at });
                     });
+                    parsedData = _.sortBy(parsedData, function (d) {
+                        return d.received_at;
+                    });
                     resolve(parsedData);
                 });
             }

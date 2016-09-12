@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">61.76% </span>
+        <span class="strong">60.19% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>63/102</span>
+        <span class='fraction'>65/108</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">44.12% </span>
+        <span class="strong">41.67% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>15/34</span>
+        <span class='fraction'>15/36</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">41.18% </span>
+        <span class="strong">38.89% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>7/17</span>
+        <span class='fraction'>7/18</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">63.27% </span>
+        <span class="strong">61.54% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>62/98</span>
+        <span class='fraction'>64/104</span>
       </div>
     </div>
   </div>
@@ -257,7 +257,25 @@
 212
 213
 214
-215</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -370,6 +388,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -405,6 +430,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -424,6 +456,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -578,6 +614,13 @@ function fetchedDatasourceData(id, data) {
     };
 }
 exports.fetchedDatasourceData = fetchedDatasourceData;
+<span class="fstat-no" title="function not covered" >function clearData(id) {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+        type: ActionNames.CLEAR_DATASOURCE_DATA,
+        id: id
+    };
+}
+exports.clearData = clearData;
 <span class="fstat-no" title="function not covered" >function updatedMaxValues(id, maxValues) {</span>
 <span class="cstat-no" title="statement not covered" >    return {</span>
         type: ActionNames.UPDATED_MAX_VALUES,
@@ -623,10 +666,17 @@ function datasources(state, action) {
                 _b
             ));
         }
+<span class="branch-3 cbranch-no" title="branch not covered" >        case ActionNames.CLEAR_DATASOURCE_DATA: {</span>
+<span class="cstat-no" title="statement not covered" >            var newState = _.assign({}, state);</span>
+<span class="cstat-no" title="statement not covered" >            return _.assign({}, state, (_c = {},</span>
+                _c[action.id] = datasource(newState[action.id], action),
+                _c
+            ));
+        }
         default:
             return state;
     }
-<span class="cstat-no" title="statement not covered" >    var _a, _b;</span>
+<span class="cstat-no" title="statement not covered" >    var _a, _b, _c;</span>
 }
 exports.datasources = datasources;
 function datasource(state, action) {
@@ -644,7 +694,11 @@ function datasource(state, action) {
 <span class="cstat-no" title="statement not covered" >            return _.assign({}, state, {</span>
                 data: action.data || []
             });
-<span class="branch-2 cbranch-no" title="branch not covered" >        case ActionNames.UPDATED_MAX_VALUES:</span>
+<span class="branch-2 cbranch-no" title="branch not covered" >        case ActionNames.CLEAR_DATASOURCE_DATA:</span>
+<span class="cstat-no" title="statement not covered" >            return _.assign({}, state, {</span>
+                data: []
+            });
+<span class="branch-3 cbranch-no" title="branch not covered" >        case ActionNames.UPDATED_MAX_VALUES:</span>
 <span class="cstat-no" title="statement not covered" >            var maxValues = action.maxValues;</span>
 <span class="cstat-no" title="statement not covered" >            if (maxValues &lt; 1) {</span>
 <span class="cstat-no" title="statement not covered" >                maxValues = 1;</span>
@@ -666,7 +720,7 @@ function datasource(state, action) {
             return _.assign({}, state, {
                 data: newData
             });
-<span class="branch-4 cbranch-no" title="branch not covered" >        case ActionNames.UPDATE_DATASOURCE:</span>
+<span class="branch-5 cbranch-no" title="branch not covered" >        case ActionNames.UPDATE_DATASOURCE:</span>
 <span class="cstat-no" title="statement not covered" >            return _.assign({}, state, {</span>
                 settings: action.settings
             });
@@ -680,7 +734,7 @@ function datasource(state, action) {
             newState.replaceData = action.replaceData;
             return newState;
         }
-<span class="branch-7 cbranch-no" title="branch not covered" >        default:</span>
+<span class="branch-8 cbranch-no" title="branch not covered" >        default:</span>
 <span class="cstat-no" title="statement not covered" >            return state;</span>
     }
 }
@@ -691,7 +745,7 @@ function datasource(state, action) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 12 2016 13:51:48 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 12 2016 15:46:54 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

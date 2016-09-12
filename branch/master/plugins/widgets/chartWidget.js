@@ -109,7 +109,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                 var data = props.getData(config.datasource);
                 if (data.length > 0 && config.chartType == "gauge") {
                     data = [data[data.length - 1]];
-                    console.log("gauge data: ", data);
                 }
                 return data;
             }
