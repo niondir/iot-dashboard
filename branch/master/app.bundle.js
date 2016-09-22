@@ -25,11 +25,11 @@ webpackJsonp([0],[
 	__webpack_require__(31);
 	__webpack_require__(33);
 	__webpack_require__(34);
-	__webpack_require__(38);
-	var Renderer = __webpack_require__(40);
-	var Store = __webpack_require__(105);
-	var Persist = __webpack_require__(104);
-	var dashboard_1 = __webpack_require__(56);
+	__webpack_require__(37);
+	var Renderer = __webpack_require__(39);
+	var Store = __webpack_require__(104);
+	var Persist = __webpack_require__(103);
+	var dashboard_1 = __webpack_require__(55);
 	var $ = __webpack_require__(13);
 	var loadPredefinedState = $.get('./dashboard.json');
 	loadPredefinedState.then(function (data) {
@@ -361,17 +361,16 @@ webpackJsonp([0],[
 /* 36 */,
 /* 37 */,
 /* 38 */,
-/* 39 */,
-/* 40 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(React) {/* This Source Code Form is subject to the terms of the Mozilla Public
 	* License, v. 2.0. If a copy of the MPL was not distributed with this
 	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var ReactDOM = __webpack_require__(41);
-	var react_redux_1 = __webpack_require__(42);
-	var pageLayout_1 = __webpack_require__(44);
+	var ReactDOM = __webpack_require__(40);
+	var react_redux_1 = __webpack_require__(41);
+	var pageLayout_1 = __webpack_require__(43);
 	function render(element, store) {
 	    ReactDOM.render(React.createElement(react_redux_1.Provider, {store: store}, React.createElement(pageLayout_1.default, null)), element);
 	}
@@ -380,10 +379,10 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ },
+/* 40 */,
 /* 41 */,
 /* 42 */,
-/* 43 */,
-/* 44 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -397,20 +396,20 @@ webpackJsonp([0],[
 	};
 	var React = __webpack_require__(20);
 	var react_1 = __webpack_require__(20);
-	var ReactDOM = __webpack_require__(41);
-	var react_redux_1 = __webpack_require__(42);
-	var Global = __webpack_require__(45);
-	var widgetGrid_ui_js_1 = __webpack_require__(47);
-	var layouts_ui_js_1 = __webpack_require__(87);
-	var widgetConfigDialog_ui_js_1 = __webpack_require__(90);
-	var dashboardMenuEntry_ui_js_1 = __webpack_require__(95);
-	var importExportDialog_ui_js_1 = __webpack_require__(96);
-	var datasourceConfigDialog_ui_js_1 = __webpack_require__(98);
-	var datasourceNavItem_ui_js_1 = __webpack_require__(99);
-	var widgetsNavItem_ui_js_1 = __webpack_require__(100);
-	var pluginNavItem_ui_js_1 = __webpack_require__(101);
-	var pluginsDialog_ui_js_1 = __webpack_require__(102);
-	var Persistence = __webpack_require__(104);
+	var ReactDOM = __webpack_require__(40);
+	var react_redux_1 = __webpack_require__(41);
+	var Global = __webpack_require__(44);
+	var widgetGrid_ui_js_1 = __webpack_require__(46);
+	var layouts_ui_js_1 = __webpack_require__(86);
+	var widgetConfigDialog_ui_js_1 = __webpack_require__(89);
+	var dashboardMenuEntry_ui_js_1 = __webpack_require__(94);
+	var importExportDialog_ui_js_1 = __webpack_require__(95);
+	var datasourceConfigDialog_ui_js_1 = __webpack_require__(97);
+	var datasourceNavItem_ui_js_1 = __webpack_require__(98);
+	var widgetsNavItem_ui_js_1 = __webpack_require__(99);
+	var pluginNavItem_ui_js_1 = __webpack_require__(100);
+	var pluginsDialog_ui_js_1 = __webpack_require__(101);
+	var Persistence = __webpack_require__(103);
 	var Layout = (function (_super) {
 	    __extends(Layout, _super);
 	    function Layout(props) {
@@ -470,14 +469,14 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 45 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
 	* License, v. 2.0. If a copy of the MPL was not distributed with this
 	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Action = __webpack_require__(46);
+	var Action = __webpack_require__(45);
 	exports.initialState = {
 	    isReadOnly: false,
 	    devMode: true
@@ -509,7 +508,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 46 */
+/* 45 */
 /***/ function(module, exports) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -565,7 +564,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 47 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -579,12 +578,12 @@ webpackJsonp([0],[
 	};
 	var React = __webpack_require__(20);
 	var react_1 = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(42);
+	var react_redux_1 = __webpack_require__(41);
 	var _ = __webpack_require__(21);
-	var Widgets = __webpack_require__(48);
-	var widgetFrame_ui_1 = __webpack_require__(51);
-	var widthProvider_ui_1 = __webpack_require__(73);
-	var react_grid_layout_1 = __webpack_require__(74);
+	var Widgets = __webpack_require__(47);
+	var widgetFrame_ui_1 = __webpack_require__(50);
+	var widthProvider_ui_1 = __webpack_require__(72);
+	var react_grid_layout_1 = __webpack_require__(73);
 	var ResponsiveGrid = widthProvider_ui_1.default(react_grid_layout_1.Responsive);
 	var breakpoints = { lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 };
 	var cols = { lg: 12, md: 12, sm: 12, xs: 6, xxs: 3 };
@@ -649,17 +648,17 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 48 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Uuid = __webpack_require__(49);
+	var Uuid = __webpack_require__(48);
 	var _ = __webpack_require__(21);
-	var reducer_js_1 = __webpack_require__(50);
-	var Action = __webpack_require__(46);
+	var reducer_js_1 = __webpack_require__(49);
+	var Action = __webpack_require__(45);
 	exports.HEADER_HEIGHT = 77;
 	exports.ROW_HEIGHT = 100;
 	exports.initialWidgets = {
@@ -906,7 +905,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 49 */
+/* 48 */
 /***/ function(module, exports) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -924,7 +923,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 50 */
+/* 49 */
 /***/ function(module, exports) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -983,7 +982,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 51 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -996,12 +995,12 @@ webpackJsonp([0],[
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(42);
-	var WidgetConfig = __webpack_require__(52);
-	var WidgetPlugins = __webpack_require__(55);
-	var widgets_1 = __webpack_require__(48);
+	var react_redux_1 = __webpack_require__(41);
+	var WidgetConfig = __webpack_require__(51);
+	var WidgetPlugins = __webpack_require__(54);
+	var widgets_1 = __webpack_require__(47);
 	var react_1 = __webpack_require__(20);
-	var dashboard_1 = __webpack_require__(56);
+	var dashboard_1 = __webpack_require__(55);
 	/**
 	 * The Dragable Frame of a Widget.
 	 * Contains generic UI controls, shared by all Widgets
@@ -1081,17 +1080,17 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 52 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
 	* License, v. 2.0. If a copy of the MPL was not distributed with this
 	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Widgets = __webpack_require__(48);
-	var actionNames_1 = __webpack_require__(46);
-	var Modal = __webpack_require__(53);
-	var ModalIds = __webpack_require__(54);
+	var Widgets = __webpack_require__(47);
+	var actionNames_1 = __webpack_require__(45);
+	var Modal = __webpack_require__(52);
+	var ModalIds = __webpack_require__(53);
 	var initialState = {
 	    type: null,
 	    name: null,
@@ -1181,14 +1180,14 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 53 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {/* This Source Code Form is subject to the terms of the Mozilla Public
 	* License, v. 2.0. If a copy of the MPL was not distributed with this
 	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Action = __webpack_require__(46);
+	var Action = __webpack_require__(45);
 	var initialState = {
 	    dialogId: null,
 	    isVisible: false,
@@ -1269,7 +1268,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 54 */
+/* 53 */
 /***/ function(module, exports) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -1283,17 +1282,17 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 55 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(_) {/* This Source Code Form is subject to the terms of the Mozilla Public
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Action = __webpack_require__(46);
-	var reducer_js_1 = __webpack_require__(50);
+	var Action = __webpack_require__(45);
+	var reducer_js_1 = __webpack_require__(49);
 	var react_1 = __webpack_require__(20);
-	var dashboard_1 = __webpack_require__(56);
+	var dashboard_1 = __webpack_require__(55);
 	// TODO: Later load all plugins from external URL's ?
 	var initialState = {
 	    "chart": {
@@ -1384,17 +1383,17 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)))
 
 /***/ },
-/* 56 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var datasourcePluginRegistry_1 = __webpack_require__(57);
+	var datasourcePluginRegistry_1 = __webpack_require__(56);
 	var _ = __webpack_require__(21);
-	var Plugins = __webpack_require__(63);
+	var Plugins = __webpack_require__(62);
 	var PluginCache = __webpack_require__(29);
-	var scriptLoader_1 = __webpack_require__(64);
-	var URI = __webpack_require__(66);
-	var widgetPluginRegistry_1 = __webpack_require__(70);
+	var scriptLoader_1 = __webpack_require__(63);
+	var URI = __webpack_require__(65);
+	var widgetPluginRegistry_1 = __webpack_require__(69);
 	/**
 	 * The root of the Dashboard business Logic
 	 * Defines the lifecycle of the Dashboard from creation till disposal
@@ -1530,7 +1529,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 57 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(_) {"use strict";
@@ -1539,9 +1538,9 @@ webpackJsonp([0],[
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var pluginRegistry_1 = __webpack_require__(58);
-	var datasourcePluginFactory_1 = __webpack_require__(59);
-	var Plugins = __webpack_require__(63);
+	var pluginRegistry_1 = __webpack_require__(57);
+	var datasourcePluginFactory_1 = __webpack_require__(58);
+	var Plugins = __webpack_require__(62);
 	var DatasourcePluginRegistry = (function (_super) {
 	    __extends(DatasourcePluginRegistry, _super);
 	    function DatasourcePluginRegistry(_store) {
@@ -1579,7 +1578,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)))
 
 /***/ },
-/* 58 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -1642,7 +1641,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 59 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -1650,8 +1649,8 @@ webpackJsonp([0],[
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
 	var _ = __webpack_require__(21);
-	var Datasource = __webpack_require__(60);
-	var datasourcePluginInstance_1 = __webpack_require__(61);
+	var Datasource = __webpack_require__(59);
+	var datasourcePluginInstance_1 = __webpack_require__(60);
 	/**
 	 * Connects a datasource to the application state
 	 */
@@ -1753,19 +1752,19 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 60 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var reducer_js_1 = __webpack_require__(50);
-	var ActionNames = __webpack_require__(46);
-	var Uuid = __webpack_require__(49);
+	var reducer_js_1 = __webpack_require__(49);
+	var ActionNames = __webpack_require__(45);
+	var Uuid = __webpack_require__(48);
 	var _ = __webpack_require__(21);
-	var ModalIds = __webpack_require__(54);
-	var Modal = __webpack_require__(53);
+	var ModalIds = __webpack_require__(53);
+	var Modal = __webpack_require__(52);
 	var initialDatasources = {
 	    "initial_random_source": {
 	        id: "initial_random_source",
@@ -1990,15 +1989,15 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 61 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(_) {/* This Source Code Form is subject to the terms of the Mozilla Public
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var datasourceScheduler_1 = __webpack_require__(62);
-	var Datasource = __webpack_require__(60);
+	var datasourceScheduler_1 = __webpack_require__(61);
+	var Datasource = __webpack_require__(59);
 	/**
 	 * Represents a plugin instance, state should be saved in store!
 	 */
@@ -2121,14 +2120,14 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)))
 
 /***/ },
-/* 62 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Datasource = __webpack_require__(60);
+	var Datasource = __webpack_require__(59);
 	var DatasourceScheduler = (function () {
 	    function DatasourceScheduler(dsInstance, store) {
 	        this.dsInstance = dsInstance;
@@ -2234,14 +2233,14 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 63 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(_) {/* This Source Code Form is subject to the terms of the Mozilla Public
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Action = __webpack_require__(46);
+	var Action = __webpack_require__(45);
 	var initialState = {
 	    loadingUrls: []
 	};
@@ -2310,11 +2309,11 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)))
 
 /***/ },
-/* 64 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var loadjs = __webpack_require__(65);
+	var loadjs = __webpack_require__(64);
 	// This is a class because we can not mock it on module level.
 	var ScriptLoader = (function () {
 	    function ScriptLoader() {
@@ -2343,12 +2342,12 @@ webpackJsonp([0],[
 
 
 /***/ },
+/* 64 */,
 /* 65 */,
 /* 66 */,
 /* 67 */,
 /* 68 */,
-/* 69 */,
-/* 70 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(_) {/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -2360,8 +2359,8 @@ webpackJsonp([0],[
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var pluginRegistry_1 = __webpack_require__(58);
-	var widgetPluginFactory_1 = __webpack_require__(71);
+	var pluginRegistry_1 = __webpack_require__(57);
+	var widgetPluginFactory_1 = __webpack_require__(70);
 	var WidgetPluginRegistry = (function (_super) {
 	    __extends(WidgetPluginRegistry, _super);
 	    function WidgetPluginRegistry(store) {
@@ -2379,17 +2378,17 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)))
 
 /***/ },
-/* 71 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var react_redux_1 = __webpack_require__(42);
+	var react_redux_1 = __webpack_require__(41);
 	var React = __webpack_require__(20);
-	var domWidgetContainer_1 = __webpack_require__(72);
-	var Widgets = __webpack_require__(48);
+	var domWidgetContainer_1 = __webpack_require__(71);
+	var Widgets = __webpack_require__(47);
 	var WidgetPluginFactory = (function () {
 	    function WidgetPluginFactory(type, widget, store) {
 	        this.type = type;
@@ -2456,7 +2455,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 72 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -2536,7 +2535,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 73 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -2559,7 +2558,7 @@ webpackJsonp([0],[
 	// @noflow
 	// Intentional; Flow can't handle the bind on L20
 	var React = __webpack_require__(20);
-	var ReactDOM = __webpack_require__(41);
+	var ReactDOM = __webpack_require__(40);
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = function (ComposedComponent) {
 	    var WidthProvider = (function (_super) {
@@ -2610,6 +2609,7 @@ webpackJsonp([0],[
 
 
 /***/ },
+/* 73 */,
 /* 74 */,
 /* 75 */,
 /* 76 */,
@@ -2622,8 +2622,7 @@ webpackJsonp([0],[
 /* 83 */,
 /* 84 */,
 /* 85 */,
-/* 86 */,
-/* 87 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -2636,10 +2635,10 @@ webpackJsonp([0],[
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(42);
+	var react_redux_1 = __webpack_require__(41);
 	var _ = __webpack_require__(21);
-	var Layouts = __webpack_require__(88);
-	var ui = __webpack_require__(89);
+	var Layouts = __webpack_require__(87);
+	var ui = __webpack_require__(88);
 	var react_1 = __webpack_require__(20);
 	/*TODO: Add remove button next to each loadable layout
 	 * - Connect with Actions
@@ -2764,17 +2763,17 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 88 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
 	* License, v. 2.0. If a copy of the MPL was not distributed with this
 	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Widgets = __webpack_require__(48);
-	var uuid_1 = __webpack_require__(49);
-	var reducer_1 = __webpack_require__(50);
-	var actionNames_1 = __webpack_require__(46);
+	var Widgets = __webpack_require__(47);
+	var uuid_1 = __webpack_require__(48);
+	var reducer_1 = __webpack_require__(49);
+	var actionNames_1 = __webpack_require__(45);
 	var initialLayouts = {
 	    "default": {
 	        id: "default",
@@ -2894,7 +2893,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 89 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -2956,7 +2955,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 90 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -2969,13 +2968,13 @@ webpackJsonp([0],[
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(20);
-	var modalDialog_ui_js_1 = __webpack_require__(91);
-	var WidgetPlugins = __webpack_require__(55);
-	var WidgetConfig = __webpack_require__(52);
-	var react_redux_1 = __webpack_require__(42);
-	var settingsForm_ui_1 = __webpack_require__(92);
-	var redux_form_1 = __webpack_require__(93);
-	var ModalIds = __webpack_require__(54);
+	var modalDialog_ui_js_1 = __webpack_require__(90);
+	var WidgetPlugins = __webpack_require__(54);
+	var WidgetConfig = __webpack_require__(51);
+	var react_redux_1 = __webpack_require__(41);
+	var settingsForm_ui_1 = __webpack_require__(91);
+	var redux_form_1 = __webpack_require__(92);
+	var ModalIds = __webpack_require__(53);
 	var react_1 = __webpack_require__(20);
 	var DIALOG_ID = ModalIds.WIDGET_CONFIG;
 	var FORM_ID = "widget-settings-form";
@@ -3085,7 +3084,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 91 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3098,8 +3097,8 @@ webpackJsonp([0],[
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(42);
-	var Modal = __webpack_require__(53);
+	var react_redux_1 = __webpack_require__(41);
+	var Modal = __webpack_require__(52);
 	var react_1 = __webpack_require__(20);
 	var ModalDialog = (function (_super) {
 	    __extends(ModalDialog, _super);
@@ -3169,7 +3168,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 92 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3190,10 +3189,10 @@ webpackJsonp([0],[
 	    return t;
 	};
 	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(42);
-	var ui = __webpack_require__(89);
-	var redux_form_1 = __webpack_require__(93);
-	var collection_1 = __webpack_require__(94);
+	var react_redux_1 = __webpack_require__(41);
+	var ui = __webpack_require__(88);
+	var redux_form_1 = __webpack_require__(92);
+	var collection_1 = __webpack_require__(93);
 	var _ = __webpack_require__(21);
 	var react_1 = __webpack_require__(20);
 	var SettingsForm = (function (_super) {
@@ -3221,7 +3220,7 @@ webpackJsonp([0],[
 	        var fields = props.fields;
 	        return React.createElement("form", {className: "ui form"}, collection_1.chunk(this.props.settings, 1).map(function (chunk) {
 	            return React.createElement("div", {key: chunk[0].id, className: "field"}, chunk.map(function (setting) {
-	                return React.createElement(Field, __assign({key: setting.id}, setting, {field: fields[setting.id]}));
+	                return React.createElement(FormField, __assign({key: setting.id}, setting, {field: fields[setting.id]}));
 	            }));
 	        }));
 	    };
@@ -3236,11 +3235,11 @@ webpackJsonp([0],[
 	};
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = redux_form_1.reduxForm({})(SettingsForm);
-	function Field(props) {
+	function FormField(props) {
 	    return React.createElement("div", {className: "field"}, React.createElement("label", null, props.name, props.description && props.type !== 'boolean' ?
 	        React.createElement(ui.Icon, {type: "help circle", "data-content": props.description}) : null), React.createElement(SettingsInput, __assign({}, props)));
 	}
-	Field.propTypes = {
+	FormField.propTypes = {
 	    field: react_1.PropTypes.object.isRequired,
 	    name: react_1.PropTypes.string.isRequired,
 	    type: react_1.PropTypes.string.isRequired,
@@ -3309,8 +3308,8 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 93 */,
-/* 94 */
+/* 92 */,
+/* 93 */
 /***/ function(module, exports) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3338,7 +3337,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 95 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3346,9 +3345,9 @@ webpackJsonp([0],[
 	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
 	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(42);
-	var Modal = __webpack_require__(53);
-	var ModalIds = __webpack_require__(54);
+	var react_redux_1 = __webpack_require__(41);
+	var Modal = __webpack_require__(52);
+	var ModalIds = __webpack_require__(53);
 	var react_1 = __webpack_require__(20);
 	var DashboardTopNavItem = function (props) {
 	    return React.createElement("div", {className: "ui simple dropdown item"}, "Board", React.createElement("i", {className: "dropdown icon"}), React.createElement("div", {className: "ui menu"}, React.createElement("a", {className: "item", onClick: function () { return props.showModal(ModalIds.DASHBOARD_IMPORT_EXPORT); }}, React.createElement("i", {className: "folder open outline icon"}), "Import / Export")));
@@ -3369,7 +3368,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 96 */
+/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3382,10 +3381,10 @@ webpackJsonp([0],[
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(42);
-	var Import = __webpack_require__(97);
-	var modalDialog_ui_js_1 = __webpack_require__(91);
-	var ModalIds = __webpack_require__(54);
+	var react_redux_1 = __webpack_require__(41);
+	var Import = __webpack_require__(96);
+	var modalDialog_ui_js_1 = __webpack_require__(90);
+	var ModalIds = __webpack_require__(53);
 	var react_1 = __webpack_require__(20);
 	var ImportExportDialog = (function (_super) {
 	    __extends(ImportExportDialog, _super);
@@ -3460,18 +3459,18 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 97 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Action = __webpack_require__(46);
-	var actionNames_1 = __webpack_require__(46);
-	var layouts_js_1 = __webpack_require__(88);
+	var Action = __webpack_require__(45);
+	var actionNames_1 = __webpack_require__(45);
+	var layouts_js_1 = __webpack_require__(87);
 	var _ = __webpack_require__(21);
-	var dashboard_1 = __webpack_require__(56);
+	var dashboard_1 = __webpack_require__(55);
 	/**
 	 * To extend the import/export by another property you just need to add the property to the exported data
 	 * See: serialize()
@@ -3532,7 +3531,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 98 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3553,14 +3552,14 @@ webpackJsonp([0],[
 	    return t;
 	};
 	var React = __webpack_require__(20);
-	var modalDialog_ui_js_1 = __webpack_require__(91);
-	var Datasource = __webpack_require__(60);
-	var react_redux_1 = __webpack_require__(42);
+	var modalDialog_ui_js_1 = __webpack_require__(90);
+	var Datasource = __webpack_require__(59);
+	var react_redux_1 = __webpack_require__(41);
 	var _ = __webpack_require__(21);
-	var ui = __webpack_require__(89);
-	var settingsForm_ui_1 = __webpack_require__(92);
-	var redux_form_1 = __webpack_require__(93);
-	var ModalIds = __webpack_require__(54);
+	var ui = __webpack_require__(88);
+	var settingsForm_ui_1 = __webpack_require__(91);
+	var redux_form_1 = __webpack_require__(92);
+	var ModalIds = __webpack_require__(53);
 	var react_1 = __webpack_require__(20);
 	var DIALOG_ID = ModalIds.DATASOURCE_CONFIG;
 	var FORM_ID = "datasource-settings-form";
@@ -3735,7 +3734,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 99 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3743,10 +3742,10 @@ webpackJsonp([0],[
 	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
 	var React = __webpack_require__(20);
-	var Datasource = __webpack_require__(60);
-	var react_redux_1 = __webpack_require__(42);
+	var Datasource = __webpack_require__(59);
+	var react_redux_1 = __webpack_require__(41);
 	var _ = __webpack_require__(21);
-	var ui = __webpack_require__(89);
+	var ui = __webpack_require__(88);
 	var react_1 = __webpack_require__(20);
 	var DatasourceTopNavItem = function (props) {
 	    return React.createElement("div", {className: "ui simple dropdown item"}, "Datasources", React.createElement("i", {className: "dropdown icon"}), React.createElement("div", {className: "ui menu"}, React.createElement(ui.LinkItem, {icon: "plus", onClick: function () { props.createDatasource(); }}, "Add Datasource"), React.createElement(ui.Divider, null), _.valuesIn(props.datasources).map(function (ds) {
@@ -3782,7 +3781,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 100 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3790,11 +3789,11 @@ webpackJsonp([0],[
 	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
 	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(42);
-	var WidgetConfig = __webpack_require__(52);
+	var react_redux_1 = __webpack_require__(41);
+	var WidgetConfig = __webpack_require__(51);
 	var _ = __webpack_require__(21);
-	var ui = __webpack_require__(89);
-	var WidgetPlugins = __webpack_require__(55);
+	var ui = __webpack_require__(88);
+	var WidgetPlugins = __webpack_require__(54);
 	var react_1 = __webpack_require__(20);
 	var WidgetsNavItem = function (props) {
 	    return React.createElement("div", {className: "ui simple dropdown item"}, "Add Widget", React.createElement("i", {className: "dropdown icon"}), React.createElement("div", {className: "ui menu"}, React.createElement(ui.Divider, null), _.valuesIn(props.widgetPlugins).map(function (widgetPlugin) {
@@ -3822,7 +3821,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 101 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3830,9 +3829,9 @@ webpackJsonp([0],[
 	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
 	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(42);
-	var ModalIds = __webpack_require__(54);
-	var Modal = __webpack_require__(53);
+	var react_redux_1 = __webpack_require__(41);
+	var ModalIds = __webpack_require__(53);
+	var Modal = __webpack_require__(52);
 	var react_1 = __webpack_require__(20);
 	var PluginsTopNavItem = function (props) {
 	    return React.createElement("a", {className: "item", onClick: function () { return props.showPluginsDialog(); }}, "Plugins");
@@ -3853,7 +3852,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 102 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3874,14 +3873,14 @@ webpackJsonp([0],[
 	    return t;
 	};
 	var React = __webpack_require__(20);
-	var modalDialog_ui_js_1 = __webpack_require__(91);
-	var react_redux_1 = __webpack_require__(42);
+	var modalDialog_ui_js_1 = __webpack_require__(90);
+	var react_redux_1 = __webpack_require__(41);
 	var _ = __webpack_require__(21);
-	var ModalIds = __webpack_require__(54);
-	var Modal = __webpack_require__(53);
-	var Plugins = __webpack_require__(63);
-	var WidgetsPlugins = __webpack_require__(55);
-	var DatasourcePlugins = __webpack_require__(103);
+	var ModalIds = __webpack_require__(53);
+	var Modal = __webpack_require__(52);
+	var Plugins = __webpack_require__(62);
+	var WidgetsPlugins = __webpack_require__(54);
+	var DatasourcePlugins = __webpack_require__(102);
 	var react_1 = __webpack_require__(20);
 	var PluginsModal = (function (_super) {
 	    __extends(PluginsModal, _super);
@@ -3986,16 +3985,16 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 103 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(_) {/* This Source Code Form is subject to the terms of the Mozilla Public
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Action = __webpack_require__(46);
-	var reducer_js_1 = __webpack_require__(50);
-	var dashboard_1 = __webpack_require__(56);
+	var Action = __webpack_require__(45);
+	var reducer_js_1 = __webpack_require__(49);
+	var dashboard_1 = __webpack_require__(55);
 	// TODO: does it work to have the URL as ID?
 	var initialState = {
 	    "random": {
@@ -4086,7 +4085,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)))
 
 /***/ },
-/* 104 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -4182,30 +4181,30 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 105 */
+/* 104 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Redux = __webpack_require__(43);
-	var redux_thunk_1 = __webpack_require__(106);
-	var createLogger = __webpack_require__(107);
-	var Widgets = __webpack_require__(48);
-	var WidgetConfig = __webpack_require__(52);
-	var Layouts = __webpack_require__(88);
-	var Datasource = __webpack_require__(60);
-	var Global = __webpack_require__(45);
-	var Import = __webpack_require__(97);
-	var Modal = __webpack_require__(53);
-	var Persist = __webpack_require__(104);
-	var Plugins = __webpack_require__(63);
-	var redux_form_1 = __webpack_require__(93);
-	var Action = __webpack_require__(46);
-	var WidgetPlugins = __webpack_require__(55);
-	var DatasourcePlugins = __webpack_require__(103);
-	var Config = __webpack_require__(108);
+	var Redux = __webpack_require__(42);
+	var redux_thunk_1 = __webpack_require__(105);
+	var createLogger = __webpack_require__(106);
+	var Widgets = __webpack_require__(47);
+	var WidgetConfig = __webpack_require__(51);
+	var Layouts = __webpack_require__(87);
+	var Datasource = __webpack_require__(59);
+	var Global = __webpack_require__(44);
+	var Import = __webpack_require__(96);
+	var Modal = __webpack_require__(52);
+	var Persist = __webpack_require__(103);
+	var Plugins = __webpack_require__(62);
+	var redux_form_1 = __webpack_require__(92);
+	var Action = __webpack_require__(45);
+	var WidgetPlugins = __webpack_require__(54);
+	var DatasourcePlugins = __webpack_require__(102);
+	var Config = __webpack_require__(107);
 	// TODO: name all reducers ***Reducer
 	var appReducer = Redux.combineReducers({
 	    config: Config.config,
@@ -4303,9 +4302,9 @@ webpackJsonp([0],[
 
 
 /***/ },
+/* 105 */,
 /* 106 */,
-/* 107 */,
-/* 108 */
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -4313,7 +4312,7 @@ webpackJsonp([0],[
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	var _ = __webpack_require__(21);
-	var configJson = __webpack_require__(109);
+	var configJson = __webpack_require__(108);
 	var defaultConfig = {
 	    version: "",
 	    revision: "",
@@ -4340,14 +4339,14 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 109 */
+/* 108 */
 /***/ function(module, exports) {
 
 	module.exports = {
 		"version": "0.1.17",
-		"revision": "9134067241a88961cad6832993410334a13b97c6",
-		"revisionShort": "9134067",
-		"branch": "Detatched: 9134067241a88961cad6832993410334a13b97c6"
+		"revision": "53d6cdbc8c93ae0d2253b15c16d52c97f1d83dd1",
+		"revisionShort": "53d6cdb",
+		"branch": "Detatched: 53d6cdbc8c93ae0d2253b15c16d52c97f1d83dd1"
 	};
 
 /***/ }
