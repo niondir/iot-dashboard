@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/layouts/layouts.ui.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">src/layouts/</a> layouts.ui.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">78.79% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>52/66</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">44.44% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>4/9</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">66.67% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>20/30</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">83.61% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>51/61</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+"use strict";
+var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
+    for (var p in b) <span class="cstat-no" title="statement not covered" >if (b.hasOwnProperty(p)) <span class="cstat-no" title="statement not covered" >d[p] = b[p];</span></span>
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? <span class="branch-0 cbranch-no" title="branch not covered" >Object.create(b) </span>: (__.prototype = b.prototype, new __());
+};
+var React = require('react');
+var react_redux_1 = require('react-redux');
+var _ = require('lodash');
+var Layouts = require('./layouts');
+var ui = require('../ui/elements.ui');
+var react_1 = require("react");
+var LayoutsTopNavItem = function (props) {
+    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Menu Item"}, React.createElement("span", {className: "slds-truncate"}, "Layout")), React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, React.createElement("use", {xlinkHref: "/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})), React.createElement("span", {className: "slds-assistive-text"}, "Open Layout submenu"))), React.createElement("div", {className: "slds-dropdown slds-dropdown--right"}, React.createElement("ul", {className: "dropdown__list", role: "menu"}, React.createElement(SaveLayout, null), React.createElement(ResetLayoutButton, {text: "Reset Current Layout", icon: "undo"}), React.createElement(SaveLayoutButton, {text: "Save Layout", icon: "package"}), React.createElement("li", {className: "slds-dropdown__header slds-has-divider--top-space", role: "separator"}, React.createElement("span", {className: "slds-text-title--caps"}, "Layouts")), props.layouts.map(function (layout) {
+        return React.createElement(LayoutItem, {text: layout.name, icon: "plus", layout: layout, key: layout.id});
+    }))));
+};
+LayoutsTopNavItem.propTypes = {
+    layouts: react_1.PropTypes.arrayOf(react_1.PropTypes.shape({
+        name: react_1.PropTypes.string
+    })),
+    widgets: react_1.PropTypes.object,
+    currentLayout: react_1.PropTypes.object
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = react_redux_1.connect(function (state) {
+    return {
+        layouts: _.valuesIn(state.layouts),
+        currentLayout: state.currentLayout,
+        widgets: state.widgets
+    };
+}, function (dispatch) {
+    return {};
+})(LayoutsTopNavItem);
+var SaveInput = (function (_super) {
+    __extends(SaveInput, _super);
+    function SaveInput() {
+        _super.apply(this, arguments);
+    }
+    SaveInput.prototype.onEnter = <span class="fstat-no" title="function not covered" >function (e) {</span>
+<span class="cstat-no" title="statement not covered" >        if (e.key === 'Enter') {</span>
+<span class="cstat-no" title="statement not covered" >            this.save();</span>
+        }
+    };
+    SaveInput.prototype.save = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        this.props.onEnter(this.refs.input.value, this.props);</span>
+<span class="cstat-no" title="statement not covered" >        this.refs.input.value = '';</span>
+    };
+    SaveInput.prototype.render = function () {
+        var _this = this;
+        return React.createElement("div", {className: "slds-form-element"}, React.createElement("div", {className: "slds-form-element__control slds-input-has-icon slds-input-has-icon--right"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-input__icon slds-icon-text-default", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return _this.save(); </span>}}, React.createElement("use", {xlinkHref: "/assets/icons/utility-sprite/svg/symbols.svg#add"})), React.createElement("input", {id: "text-input-save-layout", className: "slds-input", type: "text", placeholder: "Save as ...", ref: "input", onKeyPress: this.onEnter.bind(this)})));
+    };
+    return SaveInput;
+}(React.Component));
+SaveInput.propTypes = {
+    onEnter: react_1.PropTypes.func,
+    widgets: react_1.PropTypes.object
+};
+var SaveLayout = react_redux_1.connect(function (state) {
+    return {
+        layouts: _.valuesIn(state.layouts),
+        widgets: state.widgets
+    };
+}, function (dispatch, props) {
+    return {
+        onEnter: <span class="fstat-no" title="function not covered" >function (name, props) {</span>
+<span class="cstat-no" title="statement not covered" >            dispatch(Layouts.addLayout(name, props.widgets));</span>
+        }
+    };
+})(SaveInput);
+var MyLayoutItem = (function (_super) {
+    __extends(MyLayoutItem, _super);
+    function MyLayoutItem() {
+        _super.apply(this, arguments);
+    }
+    MyLayoutItem.prototype.render = function () {
+        var props = this.props;
+        var selected = props.currentLayout.id == props.layout.id;
+        return React.createElement(ui.DropdownItem, {onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return props.onClick(props); </span>}, selected: selected, isCheckbox: "true", icon: "check", iconRight: "delete", iconRightClick: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            props.deleteLayout(props);</span>
+        }, text: props.text});
+    };
+    return MyLayoutItem;
+}(React.Component));
+MyLayoutItem.propTypes = {
+    deleteLayout: react_1.PropTypes.func.isRequired,
+    onClick: react_1.PropTypes.func.isRequired,
+    layout: react_1.PropTypes.object.isRequired,
+    currentLayout: react_1.PropTypes.object
+};
+var LayoutItem = react_redux_1.connect(function (state) {
+    return {
+        currentLayout: state.currentLayout
+    };
+}, function (dispatch, props) {
+    return {
+        deleteLayout: <span class="fstat-no" title="function not covered" >function (props) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(Layouts.deleteLayout(props.layout.id)); </span>},
+        onClick: <span class="fstat-no" title="function not covered" >function (props) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(Layouts.loadLayout(props.layout.id)); </span>}
+    };
+})(MyLayoutItem);
+var ResetLayoutButton = react_redux_1.connect(function (state) {
+    return {
+        id: state.currentLayout.id,
+        disabled: !state.currentLayout.id
+    };
+}, function (dispatch, props) {
+    return {
+        onClick: <span class="fstat-no" title="function not covered" >function (props) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(Layouts.loadLayout(props.id)); </span>}
+    };
+})(ui.DropdownItem);
+var SaveLayoutButton = react_redux_1.connect(function (state) {
+    return {
+        id: state.currentLayout.id,
+        widgets: state.widgets,
+        disabled: !state.currentLayout.id
+    };
+}, function (dispatch) {
+    return {
+        onClick: <span class="fstat-no" title="function not covered" >function (props) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(Layouts.updateLayout(props.id, props.widgets)); </span>}
+    };
+})(ui.DropdownItem);
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Sep 23 2016 17:11:23 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

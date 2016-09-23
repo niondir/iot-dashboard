@@ -1,0 +1,93 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+* License, v. 2.0. If a copy of the MPL was not distributed with this
+* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* BEGIN app.css */
+
+/* Normalize Font Size to make semantic-ui work with lightning design
+ TODO: remove html and boy decl when semantic-ui is replaced
+ */
+
+html {
+    font-size: 14px;
+
+    /* Salesforce values */
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    font-family: "Salesforce Sans", Arial, sans-serif;
+    line-height: 1.5;
+    background: white;
+    color: #16325c;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-size: 1rem;
+    /*Salesforce values*/
+    margin: 0;
+    background: transparent;
+}
+
+/*
+Custom classes
+*/
+
+.drag {
+    cursor: move;
+    /*
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    cursor: grab;  */
+}
+
+.selectable {
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+}
+
+.menu-trigger {
+    position: fixed;
+    top: 0;
+    height: 11px;
+    width: 100%;
+    z-index: 1;
+    /*border: red dashed 1px;*/
+}
+
+.topnav--hidden {
+    /*display: none !important;*/
+    min-height: 0 !important;
+    height: 0;
+    overflow: hidden;
+    -webkit-transition: all 1s, transform 1s;
+    transition: all 1s, transform 1s;
+}
+
+.topnav--visible {
+    min-height: 0 !important;
+    /*height: 40px;*/
+    overflow: visible; /*else not popups :( */
+    -webkit-transition: all 1s, transform 1s;
+    transition: all 1s, transform 1s;
+}
+
+/* Utility classes */
+
+.monospace {
+    font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+}
+
+.ui.lob-shadow--raised.segments,
+.ui.lob-shadow--raised.segment,
+.lob-shadow--raised {
+    box-shadow: 0px 2px 4px 0px rgba(34, 36, 38, 0.12), 0px 2px 10px 0px rgba(34, 36, 38, 0.08);
+}
+
+.lob-shadow--normal {
+    box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+}
+
+/* END app.css */
+
+/*# sourceMappingURL=app.bundle.css.map*/
