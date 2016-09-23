@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">94.44% </span>
+        <span class="strong">88.24% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>17/18</span>
+        <span class='fraction'>15/17</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">83.33% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>5/6</span>
+        <span class='fraction'>4/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">94.44% </span>
+        <span class="strong">93.75% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>17/18</span>
+        <span class='fraction'>15/16</span>
       </div>
     </div>
   </div>
@@ -75,10 +75,7 @@
 30
 31
 32
-33
-34
-35
-36</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+33</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -104,9 +101,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -114,20 +108,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this
-* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
-var React = require('react');
-var react_redux_1 = require("react-redux");
-var WidgetConfig = require('./widgetConfig');
-var _ = require('lodash');
-var ui = require("../ui/elements.ui");
-var WidgetPlugins = require('./widgetPlugins');
+var React = require("react");
 var react_1 = require("react");
+var react_redux_1 = require("react-redux");
+var WidgetConfig = require("./widgetConfig");
+var _ = require("lodash");
+var ui = require("../ui/elements.ui");
+var WidgetPlugins = require("./widgetPlugins");
 var WidgetsNavItem = function (props) {
-    return React.createElement("div", {className: "ui simple dropdown item"}, "Add Widget", React.createElement("i", {className: "dropdown icon"}), React.createElement("div", {className: "ui menu"}, React.createElement(ui.Divider, null), _.valuesIn(props.widgetPlugins).map(function (widgetPlugin) {
-        return React.createElement(AddWidget, {key: widgetPlugin.id, text: widgetPlugin.typeInfo.name, type: widgetPlugin.typeInfo.type});
-    })));
+    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Menu Item"}, React.createElement("span", {className: "slds-truncate"}, "Add Widget")), React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, React.createElement("use", {xlinkHref: "/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})), React.createElement("span", {className: "slds-assistive-text"}, "Open Add Widget submenu"))), React.createElement("div", {className: "slds-dropdown slds-dropdown--right"}, React.createElement("ul", {className: "dropdown__list", role: "menu"}, _.valuesIn(props.widgetPlugins).map(function (widgetPlugin) {
+        return React.createElement(ui.DropdownItem, {key: widgetPlugin.id, text: widgetPlugin.typeInfo.name, icon: "add", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return props.createWidget(widgetPlugin.typeInfo.type); </span>}});
+    }))));
 };
 WidgetsNavItem.propTypes = {
     widgetPlugins: react_1.PropTypes.objectOf(WidgetPlugins.widgetPluginType)
@@ -137,16 +131,13 @@ exports.default = react_redux_1.connect(function (state) {
     return {
         widgetPlugins: state.widgetPlugins
     };
-})(WidgetsNavItem);
-var AddWidget = react_redux_1.connect(function (state) {
-    return {};
 }, function (dispatch) {
     return {
-        onClick: <span class="fstat-no" title="function not covered" >function (props) {</span>
-<span class="cstat-no" title="statement not covered" >            dispatch(WidgetConfig.createWidget(props.type));</span>
+        createWidget: <span class="fstat-no" title="function not covered" >function (type) {</span>
+<span class="cstat-no" title="statement not covered" >            dispatch(WidgetConfig.createWidget(type));</span>
         }
     };
-})(ui.LinkItem);
+})(WidgetsNavItem);
 &nbsp;
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -154,7 +145,7 @@ var AddWidget = react_redux_1.connect(function (state) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 22 2016 11:02:18 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Sep 23 2016 17:19:19 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">70.97% </span>
+        <span class="strong">71.93% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>44/62</span>
+        <span class='fraction'>41/57</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>15/30</span>
+        <span class='fraction'>16/32</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">40% </span>
+        <span class="strong">41.18% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>8/20</span>
+        <span class='fraction'>7/17</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">82.69% </span>
+        <span class="strong">83.33% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>43/52</span>
+        <span class='fraction'>40/48</span>
       </div>
     </div>
   </div>
@@ -120,19 +120,14 @@
 75
 76
 77
-78
-79
-80
-81
-82
-83</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+78</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -175,7 +170,12 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -195,16 +195,6 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -256,12 +246,17 @@ var Layout = (function (_super) {
     Layout.prototype.render = function () {
         var _this = this;
         var props = this.props;
+        props.config.auth = { username: "Tobias", logoutUrl: "/" };
+        //props.config.auth = null
+        var devMode = true;
         var showMenu = props.devMode &amp;&amp; (!props.isReadOnly || <span class="branch-2 cbranch-no" title="branch not covered" >this.state.hover)</span>;
-        return React.createElement("div", {onKeyUp: <span class="fstat-no" title="function not covered" >function (event) {</span> <span class="cstat-no" title="statement not covered" >return _this.onReadOnlyModeKeyPress(event); </span>}}, React.createElement("div", null, React.createElement(widgetConfigDialog_ui_js_1.default, null), React.createElement(importExportDialog_ui_js_1.default, null), React.createElement(datasourceConfigDialog_ui_js_1.default, null), React.createElement(pluginsDialog_ui_js_1.default, null)), React.createElement("div", {className: "container"}, React.createElement("div", {className: showMenu ? "menu-trigger" : <span class="branch-1 cbranch-no" title="branch not covered" >"menu-trigger",</span> onMouseOver: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: true }); </span>}, onMouseEnter: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: true }); </span>}}), React.createElement("div", {className: "ui inverted fixed main menu " + (showMenu ? "topnav--visible" : <span class="branch-1 cbranch-no" title="branch not covered" >"topnav--hidden")</span>, onMouseOver: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: true }); </span>}, onMouseLeave: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: false }); </span>}}, React.createElement("div", {className: "ui container"}, React.createElement("a", {href: "#", className: "header item"}, "Dashboard"), React.createElement(dashboardMenuEntry_ui_js_1.default, null), React.createElement(widgetsNavItem_ui_js_1.default, null), React.createElement(datasourceNavItem_ui_js_1.default, null), React.createElement(pluginNavItem_ui_js_1.default, null), React.createElement(layouts_ui_js_1.default, null), React.createElement("a", {className: "item", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return Persistence.clearData(); </span>}}, React.createElement("i", {className: "red bomb icon"}), "Reset Everything!"), React.createElement("a", {className: "item", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return props.setReadOnly(!props.isReadOnly); </span>}}, React.createElement("i", {className: (props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >"lock" </span>: "unlock alternate") + " icon"}), " "), React.createElement("div", {className: "header selectable right item"}, "v", this.props.config.version, " ", this.props.config.revisionShort), props.config.auth &amp;&amp; props.config.auth.username ?
-<span class="branch-0 cbranch-no" title="branch not covered" >            React.createElement("div", {className: "header selectable right item"}, props.config.auth.username)</span>
-            : null, props.config.auth &amp;&amp; props.config.auth.logoutUrl ?
-<span class="branch-0 cbranch-no" title="branch not covered" >            React.createElement("div", {className: "header selectable right item"}, React.createElement("a", {className: "ui button", href: props.config.auth.logoutUrl}, "Logout"))</span>
-            : null)), React.createElement("div", {className: "ui grid"}, React.createElement(widgetGrid_ui_js_1.default, null))));
+        return React.createElement("div", {className: "slds-grid slds-wrap", onKeyUp: <span class="fstat-no" title="function not covered" >function (event) {</span> <span class="cstat-no" title="statement not covered" >return _this.onReadOnlyModeKeyPress(event); </span>}}, React.createElement("div", null, React.createElement(widgetConfigDialog_ui_js_1.default, null), React.createElement(importExportDialog_ui_js_1.default, null), React.createElement(datasourceConfigDialog_ui_js_1.default, null), React.createElement(pluginsDialog_ui_js_1.default, null)), React.createElement("div", {className: showMenu ? "menu-trigger" : <span class="branch-1 cbranch-no" title="branch not covered" >"menu-trigger",</span> onMouseOver: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: true }); </span>}, onMouseEnter: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: true }); </span>}}), devMode ?
+            React.createElement("div", {className: "slds-size--1-of-1 slds-context-bar" + (showMenu ? " topnav--visible" : <span class="branch-1 cbranch-no" title="branch not covered" >" topnav--hidden")</span>, onMouseOver: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: true }); </span>}, onMouseLeave: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: false }); </span>}}, React.createElement("div", {className: "slds-context-bar__primary slds-context-bar__item--divider-right"}, React.createElement("div", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--click slds-no-hover"}, React.createElement("span", {className: "slds-context-bar__label-action slds-context-bar__app-name"}, React.createElement("span", {className: "slds-truncate"}, React.createElement("a", {href: "http://iot-dashboard.org"}, " IoT-Dashboard"))))), React.createElement("div", {className: "slds-context-bar__secondary", role: "navigation"}, React.createElement("ul", {className: "slds-grid"}, React.createElement(dashboardMenuEntry_ui_js_1.default, null), React.createElement(widgetsNavItem_ui_js_1.default, null), React.createElement(datasourceNavItem_ui_js_1.default, null), React.createElement(pluginNavItem_ui_js_1.default, null), React.createElement(layouts_ui_js_1.default, null), React.createElement("div", {className: "slds-context-bar__vertical-divider"}), React.createElement("li", {className: "slds-context-bar__item"}, React.createElement("a", {href: "javascript:void(0);", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return Persistence.clearData(); </span>}, className: "slds-context-bar__label-action", title: "Reset Everything!"}, React.createElement("span", {className: "slds-truncate"}, "Reset Everything!"))), React.createElement("li", {className: "slds-context-bar__item"}, React.createElement("div", {className: "slds-context-bar__icon-action", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return props.setReadOnly(!props.isReadOnly); </span>}}, React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--small slds-icon-text-default"}, React.createElement("use", {xlinkHref: "/assets/icons/utility-sprite/svg/symbols.svg#" + (props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >"lock" </span>: "unlock")})), React.createElement("span", {className: "slds-assistive-text"}, "Lock / Unlock"))))), React.createElement("div", {className: "slds-context-bar__tertiary"}, React.createElement("ul", {className: "slds-grid slds-grid--vertical-align-center"}, props.config.auth &amp;&amp; props.config.auth.username ?
+                React.createElement("div", {className: "slds-m-right--small"}, "Tobias")
+                : <span class="branch-1 cbranch-no" title="branch not covered" >null,</span> props.config.auth &amp;&amp; props.config.auth.logoutUrl ?
+                React.createElement("a", {className: "slds-button slds-button--neutral", href: props.config.auth.logoutUrl}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon slds-button__icon--left"}, React.createElement("use", {xlinkHref: "/assets/icons/utility-sprite/svg/symbols.svg#logout"})), "Logout")
+                : <span class="branch-1 cbranch-no" title="branch not covered" >null,</span> React.createElement("div", {className: "slds-context-bar__vertical-divider"}), React.createElement("span", {className: "slds-truncate slds-m-left--small"}, "v", this.props.config.version))))
+            : <span class="branch-1 cbranch-no" title="branch not covered" >null,</span> React.createElement("div", {className: "slds-size--1-of-1"}, React.createElement(widgetGrid_ui_js_1.default, null)));
     };
     return Layout;
 }(react_1.Component));
@@ -278,16 +273,6 @@ exports.default = react_redux_1.connect(function (state) {
         setReadOnly: <span class="fstat-no" title="function not covered" >function (isReadOnly) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(Global.setReadOnly(isReadOnly)); </span>}
     };
 })(Layout);
-var UserNavItem = (function (_super) {
-    __extends(UserNavItem, _super);
-<span class="fstat-no" title="function not covered" >    function UserNavItem() {</span>
-<span class="cstat-no" title="statement not covered" >        _super.apply(this, arguments);</span>
-    }
-    UserNavItem.prototype.render = <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >        return React.createElement("div", null, React.createElement("div", {className: "header selectable right item"}, "Tobias"), React.createElement("div", {className: "header selectable right item"}, React.createElement("a", {className: "ui button"}, "Logout")));</span>
-    };
-    return UserNavItem;
-}(React.Component));
 &nbsp;
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -295,7 +280,7 @@ var UserNavItem = (function (_super) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 22 2016 11:02:18 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Sep 23 2016 17:19:19 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../prettify.js"></script>

@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">87.23% </span>
+        <span class="strong">87.5% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>41/47</span>
+        <span class='fraction'>42/48</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">60% </span>
+        <span class="strong">62.96% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>15/25</span>
+        <span class='fraction'>17/27</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">78.57% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>11/14</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">93.02% </span>
+        <span class="strong">93.18% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>40/43</span>
+        <span class='fraction'>41/44</span>
       </div>
     </div>
   </div>
@@ -136,7 +136,10 @@
 91
 92
 93
-94</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+94
+95
+96
+97</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -200,10 +203,13 @@
 <span class="cline-any cline-yes">6×</span>
 <span class="cline-any cline-yes">6×</span>
 <span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -257,9 +263,9 @@ var WidgetFrame = function (props) {
     <span class="missing-if-branch" title="if path not taken" >I</span>if (pluginLoaded) {
 <span class="cstat-no" title="statement not covered" >        widgetFactory = dashboard_1.default.getInstance().widgetPluginRegistry.getPlugin(widgetState.type);</span>
     }
-    return (React.createElement("div", {className: "ui raised segments", style: { margin: 0, overflow: "hidden" }, key: widgetState.id, _grid: { x: widgetState.col, y: widgetState.row, w: widgetState.width, h: widgetState.height }}, React.createElement("div", {className: "ui stacked segment" + (props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >"" </span>: " drag"), style: { padding: 8 }}, props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >null </span>:
-        React.createElement("div", {className: "ui tiny horizontal right floated list"}, React.createElement(ConfigWidgetButton, {className: "right item no-drag", widgetState: widgetState, visible: (props.widgetPlugin &amp;&amp; props.widgetPlugin.typeInfo.settings ? <span class="branch-0 cbranch-no" title="branch not covered" >true </span>: false), icon: "configure"}), React.createElement(DeleteWidgetButton, {className: "right floated item no-drag", widgetState: widgetState, icon: "remove"})), React.createElement("div", {className: "ui item top attached" + (props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >"" </span>: " drag")}, widgetState.settings.name || <span class="branch-1 cbranch-no" title="branch not covered" >"\u00a0")</span>), React.createElement("div", {className: "ui segment", style: { height: widgetState.availableHeightPx, padding: 0, border: "red dashed 0px" }}, pluginLoaded ? <span class="branch-0 cbranch-no" title="branch not covered" >widgetFactory.getInstance(widgetState.id)</span>
-        : React.createElement(LoadingWidget, {widget: widgetState}))));
+    return (React.createElement("div", {className: "lob-shadow--raised slds-card", style: { margin: 0, overflow: "hidden", backgroundColor: "#fff" }, key: widgetState.id, _grid: { x: widgetState.col, y: widgetState.row, w: widgetState.width, h: widgetState.height }}, React.createElement("div", {className: "slds-grid slds-wrap slds-has-dividers--bottom", style: { height: "100%" }}, React.createElement("div", {className: "slds-size--1-of-1 slds-item" + (props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >"" </span>: " drag"), style: { padding: 8 }}, props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >null </span>:
+        React.createElement("div", {className: "slds-float--right"}, React.createElement(ConfigWidgetButton, {widgetState: widgetState, description: "settings", visible: (props.widgetPlugin &amp;&amp; props.widgetPlugin.typeInfo.settings ? <span class="branch-0 cbranch-no" title="branch not covered" >true </span>: false), icon: "settings"}), React.createElement(DeleteWidgetButton, {widgetState: widgetState, description: "remove", icon: "remove", iconType: "action"})), React.createElement("div", {className: "" + (props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >"" </span>: " drag")}, widgetState.settings.name || <span class="branch-1 cbranch-no" title="branch not covered" >"\u00a0")</span>), React.createElement("div", {className: "slds-size--1-of-1 slds-is-relative", style: { height: widgetState.availableHeightPx, padding: 0, border: "red dashed 0px" }}, pluginLoaded ? <span class="branch-0 cbranch-no" title="branch not covered" >widgetFactory.getInstance(widgetState.id)</span>
+        : React.createElement(LoadingWidget, {widget: widgetState})))));
 };
 exports.widgetPropType = react_1.PropTypes.shape({
     id: react_1.PropTypes.string.isRequired,
@@ -279,7 +285,7 @@ WidgetFrame.propTypes = {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = WidgetFrame;
 var LoadingWidget = function (props) {
-    return React.createElement("div", {className: "ui active text loader"}, "Loading ", props.widget.type, " Widget ...");
+    return React.createElement("div", {className: "slds-is-relative", style: { height: "100%", padding: "10px" }}, "Loading ", props.widget.type, " Widget ...", React.createElement("div", {className: "slds-spinner_container"}, React.createElement("div", {className: "slds-spinner slds-spinner--medium", role: "alert"}, React.createElement("span", {className: "slds-assistive-text"}, "Loading"), React.createElement("div", {className: "slds-spinner__dot-a"}), React.createElement("div", {className: "slds-spinner__dot-b"}))));
 };
 LoadingWidget.propTypes = {
     widget: exports.widgetPropType.isRequired
@@ -291,14 +297,17 @@ var WidgetButton = (function (_super) {
     }
     WidgetButton.prototype.render = function () {
         var _this = this;
+        var iconType = this.props.iconType || "utility";
         var data = this.props.widgetState;
-        return React.createElement("a", {className: this.props.className + (this.props.visible !== false ? "" : " hidden transition"), onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return _this.props.onClick(data); </span>}}, React.createElement("i", {className: this.props.icon + " icon"}));
+        return React.createElement("button", {className: "slds-button slds-button--icon no-drag" + (this.props.visible !== false ? "" : " slds-hide")}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon slds-button__icon--small", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return _this.props.onClick(data); </span>}}, React.createElement("use", {xlinkHref: "/assets/icons/" + iconType + "-sprite/svg/symbols.svg#" + this.props.icon})), React.createElement("span", {className: "slds-assistive-text"}, this.props.description));
     };
     return WidgetButton;
 }(React.Component));
 WidgetButton.propTypes = {
     widgetState: exports.widgetPropType.isRequired,
     icon: react_1.PropTypes.string.isRequired,
+    description: react_1.PropTypes.string,
+    iconType: react_1.PropTypes.string,
     visible: react_1.PropTypes.bool,
     className: react_1.PropTypes.string.isRequired,
     onClick: react_1.PropTypes.func.isRequired
@@ -328,7 +337,7 @@ var ConfigWidgetButton = react_redux_1.connect(function (state) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 22 2016 11:02:18 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Sep 23 2016 17:19:19 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
