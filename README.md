@@ -5,6 +5,8 @@
 For help, questions, feedback, ... try:  [![Gitter](https://badges.gitter.im/Niondir/iot-dashboard.svg)](https://gitter.im/Niondir/iot-dashboard?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge)
 
 # Individual Open Technology - Dashboard
+
+[![Join the chat at https://gitter.im/Niondir/iot-dashboard](https://badges.gitter.im/Niondir/iot-dashboard.svg)](https://gitter.im/Niondir/iot-dashboard?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Free Dashboard for your Data
 
 A generic dashboard application based on JavaScript, HTML and CSS that runs in modern browsers.
