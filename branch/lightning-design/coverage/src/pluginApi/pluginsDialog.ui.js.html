@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75.64% </span>
+        <span class="strong">71.91% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>59/78</span>
+        <span class='fraction'>64/89</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">52.94% </span>
+        <span class="strong">52.63% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>9/17</span>
+        <span class='fraction'>10/19</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">64.29% </span>
+        <span class="strong">54.55% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>18/28</span>
+        <span class='fraction'>18/33</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">79.45% </span>
+        <span class="strong">78.75% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>58/73</span>
+        <span class='fraction'>63/80</span>
       </div>
     </div>
   </div>
@@ -171,7 +171,17 @@
 126
 127
 128
-129</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -219,6 +229,9 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -264,6 +277,7 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -271,12 +285,18 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">6×</span>
-<span class="cline-any cline-yes">6×</span>
-<span class="cline-any cline-yes">6×</span>
-<span class="cline-any cline-yes">6×</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -346,7 +366,10 @@ var PluginsModal = (function (_super) {
         ];
         var datasourcePluginStates = _.valuesIn(props.datasourcePlugins);
         var widgetPluginStates = _.valuesIn(props.widgetPlugins);
-        return React.createElement(modalDialog_ui_js_1.default, {id: ModalIds.PLUGINS, title: "Plugins", actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, React.createElement("form", {className: "ui form"}, React.createElement("h4", {className: "ui dividing header"}, "Load Plugin"), React.createElement("div", {className: "field"}, React.createElement("label", null, "From URL"), React.createElement("input", {ref: "pluginUrl", type: "text", name: "plugin-url", placeholder: "http://my-page.com/myPlugin.js", defaultValue: "plugins/TestWidgetPlugin.js"})), React.createElement("div", {className: "ui button", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return props.loadPlugin(_this.refs.pluginUrl.value); </span>}, tabIndex: "0"}, "Load Plugin")), React.createElement("h4", {className: "ui dividing header"}, "Datasource Plugins"), React.createElement(DatasourcePluginList, __assign({datasourceStates: datasourcePluginStates}, props)), React.createElement("h4", {className: "ui dividing header"}, "Widget Plugins"), React.createElement(WidgetPluginList, __assign({widgetPluginStates: widgetPluginStates}, props)))));
+        return React.createElement(modalDialog_ui_js_1.default, {id: ModalIds.PLUGINS, title: "Plugins", actions: actions}, React.createElement("div", {className: "slds-grid"}, React.createElement("div", {className: "slds-size--1-of-1"}, React.createElement("h2", {className: "slds-section-title--divider slds-m-bottom--medium"}, "Load Plugin"), React.createElement("form", {className: "slds-form--inline slds-grid", onSubmit: <span class="fstat-no" title="function not covered" >function (e) {</span>
+<span class="cstat-no" title="statement not covered" >            props.loadPlugin(_this.refs.pluginUrl.value);</span>
+<span class="cstat-no" title="statement not covered" >            e.preventDefault();</span>
+        }}, React.createElement("div", {className: "slds-form-element slds-has-flexi-truncate"}, React.createElement("div", {className: "slds-form-element__control slds-size--1-of-1"}, React.createElement("div", {className: "slds-input-has-icon slds-input-has-icon--right"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-input__icon"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#search"})), React.createElement("input", {className: "slds-lookup__search-input slds-input", type: "search", placeholder: "URL or Id from Plugin Registry", id: "plugin-url-input", ref: "pluginUrl", name: "plugin-url", defaultValue: "plugins/TestWidgetPlugin.js"})))), React.createElement("div", {className: "slds-form-element slds-no-flex"}, React.createElement("button", {className: "slds-button slds-button--brand", type: "submit", tabIndex: "0"}, "Load Plugin"))), React.createElement("h4", {className: "slds-section-title--divider slds-m-top--medium slds-m-bottom--medium"}, "Datasource Plugins (Installed)"), React.createElement(DatasourcePluginList, __assign({datasourceStates: datasourcePluginStates}, props)), React.createElement("h4", {className: "slds-section-title--divider slds-m-top--medium slds-m-bottom--medium"}, "Widget Plugins (Installed)"), React.createElement(WidgetPluginList, __assign({widgetPluginStates: widgetPluginStates}, props)))));
     };
     return PluginsModal;
 }(React.Component));
@@ -371,8 +394,8 @@ exports.default = react_redux_1.connect(function (state) {
     };
 })(PluginsModal);
 var DatasourcePluginList = function (props) {
-    return React.createElement("div", {className: "ui five cards"}, props.datasourceStates.map(function (dsState) {
-        return React.createElement(DatasourcePluginCard, __assign({key: dsState.id, pluginState: dsState}, props));
+    return React.createElement("div", {className: "slds-grid slds-grid--vertical-stretch slds-wrap slds-has-dividers--around-space"}, props.datasourceStates.map(function (dsState) {
+        return React.createElement(DatasourcePluginTile, __assign({key: dsState.id, pluginState: dsState}, props));
     }));
 };
 DatasourcePluginList.propTypes = {
@@ -381,51 +404,58 @@ DatasourcePluginList.propTypes = {
     })).isRequired
 };
 var WidgetPluginList = function (props) {
-    return React.createElement("div", {className: "ui five cards"}, props.widgetPluginStates.map(function (dsState) {
-        return React.createElement(WidgetPluginCard, __assign({key: dsState.id, pluginState: dsState}, props));
+    return React.createElement("div", {className: "slds-grid slds-grid--vertical-stretch slds-wrap slds-has-dividers--around-space"}, props.widgetPluginStates.map(function (dsState) {
+        return React.createElement(WidgetPluginTile, __assign({key: dsState.id, pluginState: dsState}, props));
     }));
 };
 WidgetPluginList.propTypes = {
     widgetPluginStates: react_1.PropTypes.arrayOf(WidgetsPlugins.widgetPluginType)
 };
-var PluginCard = (function (_super) {
-    __extends(PluginCard, _super);
-    function PluginCard() {
-        _super.apply(this, arguments);
+var PluginTile = (function (_super) {
+    __extends(PluginTile, _super);
+    function PluginTile(props) {
+        _super.call(this, props);
+        this.state = { actionMenuOpen: false };
     }
-    PluginCard.prototype._copyUrl = <span class="fstat-no" title="function not covered" >function () {</span>
+    PluginTile.prototype._copyUrl = <span class="fstat-no" title="function not covered" >function () {</span>
 <span class="cstat-no" title="statement not covered" >        this.refs.url.focus();</span>
 <span class="cstat-no" title="statement not covered" >        this.refs.url.select();</span>
 <span class="cstat-no" title="statement not covered" >        document.execCommand('copy');</span>
     };
-    PluginCard.prototype.render = function () {
+    PluginTile.prototype.toggleActionMenu = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        this.setState({ actionMenuOpen: !this.state.actionMenuOpen });</span>
+    };
+    PluginTile.prototype.closeActionMenu = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        this.setState({ actionMenuOpen: false });</span>
+    };
+    PluginTile.prototype.render = function () {
         var _this = this;
         var props = this.props;
         var pluginState = props.pluginState;
-        return React.createElement("div", {className: "card"}, React.createElement("div", {className: "content"}, React.createElement("div", {className: "header"}, pluginState.typeInfo.name), React.createElement("div", {className: "description"}, React.createElement("p", null, "Type: ", pluginState.typeInfo.type), React.createElement("p", null, pluginState.typeInfo.description ? <span class="branch-0 cbranch-no" title="branch not covered" >pluginState.typeInfo.description </span>: "No Description."))), React.createElement("div", {className: "extra content"}, React.createElement("i", {className: "copy outline icon", onClick: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >            _this._copyUrl();</span>
-        }, style: { display: "inline" }}), React.createElement("div", {className: "ui large transparent input"}, React.createElement("input", {type: "text", ref: "url", readOnly: true, style: { width: "100%", paddingLeft: 0, paddingRight: 0 }, placeholder: "Plugin Url ...", defaultValue: pluginState.url ? pluginState.url : <span class="branch-1 cbranch-no" title="branch not covered" >"Packaged"}</span>))), React.createElement("div", {className: "ui bottom attached button", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return props.removePlugin(pluginState.id); </span>}}, React.createElement("i", {className: "trash icon"}), "Remove"));
+        var description = pluginState.typeInfo.description ? <span class="branch-0 cbranch-no" title="branch not covered" >pluginState.typeInfo.description </span>: "No Description.";
+        var url = pluginState.url ? pluginState.url : <span class="branch-1 cbranch-no" title="branch not covered" >"Packaged";</span>
+        return React.createElement("div", {className: "slds-tile slds-item slds-size--1-of-5 slds-m-around--x-small xxslds-p-left--small xxslds-p-right--small", style: { marginTop: "0.5rem" }}, React.createElement("div", {className: "slds-grid slds-grid--align-spread slds-has-flexi-truncate slds-m-bottom--x-small"}, React.createElement("h3", {className: "slds-text-heading--medium"}, pluginState.typeInfo.name), React.createElement("div", {className: "slds-shrink-none slds-dropdown-trigger slds-dropdown-trigger--click" + (this.state.actionMenuOpen ? <span class="branch-0 cbranch-no" title="branch not covered" >" slds-is-open" </span>: "")}, React.createElement("button", {className: "slds-button slds-button--icon-border-filled slds-button--icon-x-small", "aria-haspopup": "true", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return _this.toggleActionMenu(); </span>}, onBlur: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return setTimeout(<span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return _this.closeActionMenu(); </span>}, 50); </span>}}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon slds-button__icon--hint"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#down"})), React.createElement("span", {className: "slds-assistive-text"}, "Actions")), React.createElement("div", {className: "slds-dropdown slds-dropdown--left slds-dropdown--actions"}, React.createElement("ul", {className: "dropdown__list", role: "menu"}, React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, React.createElement("a", {href: "javascript:void(0);", role: "menuitem", tabIndex: "0", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return props.removePlugin(pluginState.id); </span>}}, React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default slds-m-right--x-small slds-shrink-none"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#delete"})), React.createElement("span", {className: "slds-truncate"}, "Remove"))))))), React.createElement("div", {className: "slds-tile__detail"}, React.createElement("dl", {className: "slds-dl--horizontal"}, React.createElement("dt", {className: "slds-dl--horizontal__label"}, React.createElement("p", {className: "slds-truncate", title: "Type"}, "Type:")), React.createElement("dd", {className: "slds-dl--horizontal__detail slds-tile__meta"}, React.createElement("p", {className: "slds-truncate", title: pluginState.typeInfo.type}, pluginState.typeInfo.type)), React.createElement("dt", {className: "slds-dl--horizontal__label"}, React.createElement("p", {className: "slds-truncate", title: "Type"}, "Url:")), React.createElement("dd", {className: "slds-dl--horizontal__detail slds-tile__meta"}, React.createElement("div", {className: "slds-form-element__control slds-input-has-icon slds-input-has-icon--left", title: url}, React.createElement("svg", {"aria-hidden": "true", className: "slds-input__icon slds-icon-text-default", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return _this._copyUrl(); </span>}}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#copy"})), React.createElement("input", {className: "slds-input", type: "text", ref: "url", readOnly: true, style: { width: "100%", paddingRight: 0 }, placeholder: "Plugin Url ...", defaultValue: url})))), React.createElement("p", null, description)));
     };
-    return PluginCard;
+    return PluginTile;
 }(React.Component));
-PluginCard.propTypes = {
+PluginTile.propTypes = {
     pluginState: react_1.PropTypes.object.isRequired,
     removePlugin: react_1.PropTypes.func.isRequired
 };
-var WidgetPluginCard = react_redux_1.connect(function (state) {
+var WidgetPluginTile = react_redux_1.connect(function (state) {
     return {};
 }, function (dispatch) {
     return {
         removePlugin: <span class="fstat-no" title="function not covered" >function (type) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(WidgetsPlugins.unloadPlugin(type)); </span>}
     };
-})(PluginCard);
-var DatasourcePluginCard = react_redux_1.connect(function (state) {
+})(PluginTile);
+var DatasourcePluginTile = react_redux_1.connect(function (state) {
     return {};
 }, function (dispatch) {
     return {
         removePlugin: <span class="fstat-no" title="function not covered" >function (type) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(DatasourcePlugins.unloadPlugin(type)); </span>}
     };
-})(PluginCard);
+})(PluginTile);
 &nbsp;
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -433,7 +463,7 @@ var DatasourcePluginCard = react_redux_1.connect(function (state) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Sep 23 2016 17:25:40 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 26 2016 12:24:19 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

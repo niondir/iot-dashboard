@@ -3928,7 +3928,10 @@ webpackJsonp([0],[
 	        ];
 	        var datasourcePluginStates = _.valuesIn(props.datasourcePlugins);
 	        var widgetPluginStates = _.valuesIn(props.widgetPlugins);
-	        return React.createElement(modalDialog_ui_js_1.default, {id: ModalIds.PLUGINS, title: "Plugins", actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, React.createElement("form", {className: "ui form"}, React.createElement("h4", {className: "ui dividing header"}, "Load Plugin"), React.createElement("div", {className: "field"}, React.createElement("label", null, "From URL"), React.createElement("input", {ref: "pluginUrl", type: "text", name: "plugin-url", placeholder: "http://my-page.com/myPlugin.js", defaultValue: "plugins/TestWidgetPlugin.js"})), React.createElement("div", {className: "ui button", onClick: function () { return props.loadPlugin(_this.refs.pluginUrl.value); }, tabIndex: "0"}, "Load Plugin")), React.createElement("h4", {className: "ui dividing header"}, "Datasource Plugins"), React.createElement(DatasourcePluginList, __assign({datasourceStates: datasourcePluginStates}, props)), React.createElement("h4", {className: "ui dividing header"}, "Widget Plugins"), React.createElement(WidgetPluginList, __assign({widgetPluginStates: widgetPluginStates}, props)))));
+	        return React.createElement(modalDialog_ui_js_1.default, {id: ModalIds.PLUGINS, title: "Plugins", actions: actions}, React.createElement("div", {className: "slds-grid"}, React.createElement("div", {className: "slds-size--1-of-1"}, React.createElement("h2", {className: "slds-section-title--divider slds-m-bottom--medium"}, "Load Plugin"), React.createElement("form", {className: "slds-form--inline slds-grid", onSubmit: function (e) {
+	            props.loadPlugin(_this.refs.pluginUrl.value);
+	            e.preventDefault();
+	        }}, React.createElement("div", {className: "slds-form-element slds-has-flexi-truncate"}, React.createElement("div", {className: "slds-form-element__control slds-size--1-of-1"}, React.createElement("div", {className: "slds-input-has-icon slds-input-has-icon--right"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-input__icon"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#search"})), React.createElement("input", {className: "slds-lookup__search-input slds-input", type: "search", placeholder: "URL or Id from Plugin Registry", id: "plugin-url-input", ref: "pluginUrl", name: "plugin-url", defaultValue: "plugins/TestWidgetPlugin.js"})))), React.createElement("div", {className: "slds-form-element slds-no-flex"}, React.createElement("button", {className: "slds-button slds-button--brand", type: "submit", tabIndex: "0"}, "Load Plugin"))), React.createElement("h4", {className: "slds-section-title--divider slds-m-top--medium slds-m-bottom--medium"}, "Datasource Plugins (Installed)"), React.createElement(DatasourcePluginList, __assign({datasourceStates: datasourcePluginStates}, props)), React.createElement("h4", {className: "slds-section-title--divider slds-m-top--medium slds-m-bottom--medium"}, "Widget Plugins (Installed)"), React.createElement(WidgetPluginList, __assign({widgetPluginStates: widgetPluginStates}, props)))));
 	    };
 	    return PluginsModal;
 	}(React.Component));
@@ -3953,8 +3956,8 @@ webpackJsonp([0],[
 	    };
 	})(PluginsModal);
 	var DatasourcePluginList = function (props) {
-	    return React.createElement("div", {className: "ui five cards"}, props.datasourceStates.map(function (dsState) {
-	        return React.createElement(DatasourcePluginCard, __assign({key: dsState.id, pluginState: dsState}, props));
+	    return React.createElement("div", {className: "slds-grid slds-grid--vertical-stretch slds-wrap slds-has-dividers--around-space"}, props.datasourceStates.map(function (dsState) {
+	        return React.createElement(DatasourcePluginTile, __assign({key: dsState.id, pluginState: dsState}, props));
 	    }));
 	};
 	DatasourcePluginList.propTypes = {
@@ -3963,51 +3966,58 @@ webpackJsonp([0],[
 	    })).isRequired
 	};
 	var WidgetPluginList = function (props) {
-	    return React.createElement("div", {className: "ui five cards"}, props.widgetPluginStates.map(function (dsState) {
-	        return React.createElement(WidgetPluginCard, __assign({key: dsState.id, pluginState: dsState}, props));
+	    return React.createElement("div", {className: "slds-grid slds-grid--vertical-stretch slds-wrap slds-has-dividers--around-space"}, props.widgetPluginStates.map(function (dsState) {
+	        return React.createElement(WidgetPluginTile, __assign({key: dsState.id, pluginState: dsState}, props));
 	    }));
 	};
 	WidgetPluginList.propTypes = {
 	    widgetPluginStates: react_1.PropTypes.arrayOf(WidgetsPlugins.widgetPluginType)
 	};
-	var PluginCard = (function (_super) {
-	    __extends(PluginCard, _super);
-	    function PluginCard() {
-	        _super.apply(this, arguments);
+	var PluginTile = (function (_super) {
+	    __extends(PluginTile, _super);
+	    function PluginTile(props) {
+	        _super.call(this, props);
+	        this.state = { actionMenuOpen: false };
 	    }
-	    PluginCard.prototype._copyUrl = function () {
+	    PluginTile.prototype._copyUrl = function () {
 	        this.refs.url.focus();
 	        this.refs.url.select();
 	        document.execCommand('copy');
 	    };
-	    PluginCard.prototype.render = function () {
+	    PluginTile.prototype.toggleActionMenu = function () {
+	        this.setState({ actionMenuOpen: !this.state.actionMenuOpen });
+	    };
+	    PluginTile.prototype.closeActionMenu = function () {
+	        this.setState({ actionMenuOpen: false });
+	    };
+	    PluginTile.prototype.render = function () {
 	        var _this = this;
 	        var props = this.props;
 	        var pluginState = props.pluginState;
-	        return React.createElement("div", {className: "card"}, React.createElement("div", {className: "content"}, React.createElement("div", {className: "header"}, pluginState.typeInfo.name), React.createElement("div", {className: "description"}, React.createElement("p", null, "Type: ", pluginState.typeInfo.type), React.createElement("p", null, pluginState.typeInfo.description ? pluginState.typeInfo.description : "No Description."))), React.createElement("div", {className: "extra content"}, React.createElement("i", {className: "copy outline icon", onClick: function () {
-	            _this._copyUrl();
-	        }, style: { display: "inline" }}), React.createElement("div", {className: "ui large transparent input"}, React.createElement("input", {type: "text", ref: "url", readOnly: true, style: { width: "100%", paddingLeft: 0, paddingRight: 0 }, placeholder: "Plugin Url ...", defaultValue: pluginState.url ? pluginState.url : "Packaged"}))), React.createElement("div", {className: "ui bottom attached button", onClick: function () { return props.removePlugin(pluginState.id); }}, React.createElement("i", {className: "trash icon"}), "Remove"));
+	        var description = pluginState.typeInfo.description ? pluginState.typeInfo.description : "No Description.";
+	        var url = pluginState.url ? pluginState.url : "Packaged";
+	        return React.createElement("div", {className: "slds-tile slds-item slds-size--1-of-5 slds-m-around--x-small xxslds-p-left--small xxslds-p-right--small", style: { marginTop: "0.5rem" }}, React.createElement("div", {className: "slds-grid slds-grid--align-spread slds-has-flexi-truncate slds-m-bottom--x-small"}, React.createElement("h3", {className: "slds-text-heading--medium"}, pluginState.typeInfo.name), React.createElement("div", {className: "slds-shrink-none slds-dropdown-trigger slds-dropdown-trigger--click" + (this.state.actionMenuOpen ? " slds-is-open" : "")}, React.createElement("button", {className: "slds-button slds-button--icon-border-filled slds-button--icon-x-small", "aria-haspopup": "true", onClick: function () { return _this.toggleActionMenu(); }, onBlur: function () { return setTimeout(function () { return _this.closeActionMenu(); }, 50); }}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon slds-button__icon--hint"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#down"})), React.createElement("span", {className: "slds-assistive-text"}, "Actions")), React.createElement("div", {className: "slds-dropdown slds-dropdown--left slds-dropdown--actions"}, React.createElement("ul", {className: "dropdown__list", role: "menu"}, React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, React.createElement("a", {href: "javascript:void(0);", role: "menuitem", tabIndex: "0", onClick: function () { return props.removePlugin(pluginState.id); }}, React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default slds-m-right--x-small slds-shrink-none"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#delete"})), React.createElement("span", {className: "slds-truncate"}, "Remove"))))))), React.createElement("div", {className: "slds-tile__detail"}, React.createElement("dl", {className: "slds-dl--horizontal"}, React.createElement("dt", {className: "slds-dl--horizontal__label"}, React.createElement("p", {className: "slds-truncate", title: "Type"}, "Type:")), React.createElement("dd", {className: "slds-dl--horizontal__detail slds-tile__meta"}, React.createElement("p", {className: "slds-truncate", title: pluginState.typeInfo.type}, pluginState.typeInfo.type)), React.createElement("dt", {className: "slds-dl--horizontal__label"}, React.createElement("p", {className: "slds-truncate", title: "Type"}, "Url:")), React.createElement("dd", {className: "slds-dl--horizontal__detail slds-tile__meta"}, React.createElement("div", {className: "slds-form-element__control slds-input-has-icon slds-input-has-icon--left", title: url}, React.createElement("svg", {"aria-hidden": "true", className: "slds-input__icon slds-icon-text-default", onClick: function () { return _this._copyUrl(); }}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#copy"})), React.createElement("input", {className: "slds-input", type: "text", ref: "url", readOnly: true, style: { width: "100%", paddingRight: 0 }, placeholder: "Plugin Url ...", defaultValue: url})))), React.createElement("p", null, description)));
 	    };
-	    return PluginCard;
+	    return PluginTile;
 	}(React.Component));
-	PluginCard.propTypes = {
+	PluginTile.propTypes = {
 	    pluginState: react_1.PropTypes.object.isRequired,
 	    removePlugin: react_1.PropTypes.func.isRequired
 	};
-	var WidgetPluginCard = react_redux_1.connect(function (state) {
+	var WidgetPluginTile = react_redux_1.connect(function (state) {
 	    return {};
 	}, function (dispatch) {
 	    return {
 	        removePlugin: function (type) { return dispatch(WidgetsPlugins.unloadPlugin(type)); }
 	    };
-	})(PluginCard);
-	var DatasourcePluginCard = react_redux_1.connect(function (state) {
+	})(PluginTile);
+	var DatasourcePluginTile = react_redux_1.connect(function (state) {
 	    return {};
 	}, function (dispatch) {
 	    return {
 	        removePlugin: function (type) { return dispatch(DatasourcePlugins.unloadPlugin(type)); }
 	    };
-	})(PluginCard);
+	})(PluginTile);
 
 
 /***/ },
@@ -4370,9 +4380,9 @@ webpackJsonp([0],[
 
 	module.exports = {
 		"version": "0.1.17",
-		"revision": "9f26f55c6056a8696987b138f39290c618d110c7",
-		"revisionShort": "9f26f55",
-		"branch": "Detatched: 9f26f55c6056a8696987b138f39290c618d110c7"
+		"revision": "a660cd6dfdca86e5bd6473b43c237f0e088680a6",
+		"revisionShort": "a660cd6",
+		"branch": "Detatched: a660cd6dfdca86e5bd6473b43c237f0e088680a6"
 	};
 
 /***/ }
