@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">34.88% </span>
+        <span class="strong">34.55% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>15/43</span>
+        <span class='fraction'>19/55</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">16.67% </span>
+        <span class="strong">13.64% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>3/18</span>
+        <span class='fraction'>3/22</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">12.5% </span>
+        <span class="strong">9.09% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/8</span>
+        <span class='fraction'>1/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">34.15% </span>
+        <span class="strong">34.62% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>14/41</span>
+        <span class='fraction'>18/52</span>
       </div>
     </div>
   </div>
@@ -125,7 +125,36 @@
 80
 81
 82
-83</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -183,6 +212,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -196,8 +239,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -268,6 +326,20 @@ exports.showModal = showModal;
     };
 }
 exports.closeModal = closeModal;
+<span class="fstat-no" title="function not covered" >function addError(message) {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+        type: Action.MODAL_ADD_ERROR,
+        message: message
+    };
+}
+exports.addError = addError;
+<span class="fstat-no" title="function not covered" >function deleteError(message) {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+        type: Action.MODAL_DELETE_ERROR,
+        message: message
+    };
+}
+exports.deleteError = deleteError;
 function modalDialog(state, action) {
     if (state === void 0) { state = initialState; }
     switch (action.type) {
@@ -275,14 +347,29 @@ function modalDialog(state, action) {
 <span class="cstat-no" title="statement not covered" >            return Object.assign({}, state, {</span>
                 dialogId: action.dialogId,
                 data: action.data,
-                isVisible: true
+                isVisible: true,
+                errors: []
             });
 <span class="branch-1 cbranch-no" title="branch not covered" >        case Action.HIDE_MODAL:</span>
 <span class="cstat-no" title="statement not covered" >            return Object.assign({}, state, {</span>
                 dialogId: null,
                 data: null,
-                isVisible: false
+                isVisible: false,
+                errors: []
             });
+<span class="branch-2 cbranch-no" title="branch not covered" >        case Action.MODAL_ADD_ERROR: {</span>
+<span class="cstat-no" title="statement not covered" >            var stateErrors = state.errors || [];</span>
+<span class="cstat-no" title="statement not covered" >            var errors = stateErrors.concat([action.message]);</span>
+<span class="cstat-no" title="statement not covered" >            return Object.assign({}, state, {</span>
+                errors: errors
+            });
+        }
+<span class="branch-3 cbranch-no" title="branch not covered" >        case Action.MODAL_DELETE_ERROR: {</span>
+<span class="cstat-no" title="statement not covered" >            var errors = _.filter(state.errors.slice(), <span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return e != action.message; </span>});</span>
+<span class="cstat-no" title="statement not covered" >            return Object.assign({}, state, {</span>
+                errors: errors
+            });
+        }
         default:
             return state;
     }
@@ -295,7 +382,7 @@ exports.modalDialog = modalDialog;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 26 2016 12:24:19 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Sep 28 2016 11:44:48 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

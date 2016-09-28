@@ -25,13 +25,15 @@ webpackJsonp([0],[
 	__webpack_require__(31);
 	__webpack_require__(33);
 	__webpack_require__(34);
-	__webpack_require__(37);
-	var Renderer = __webpack_require__(39);
-	var Store = __webpack_require__(104);
-	var Persist = __webpack_require__(103);
-	var dashboard_1 = __webpack_require__(55);
+	__webpack_require__(36);
+	var es6promise = __webpack_require__(38);
+	var Renderer = __webpack_require__(41);
+	var Store = __webpack_require__(106);
+	var Persist = __webpack_require__(105);
+	var dashboard_1 = __webpack_require__(56);
 	var $ = __webpack_require__(13);
 	var loadPredefinedState = $.get('./dashboard.json');
+	es6promise.polyfill();
 	loadPredefinedState.then(function (data) {
 	    console.log("Starting dashboard with predefined state");
 	    runWithState(data);
@@ -310,7 +312,6 @@ webpackJsonp([0],[
 	    });
 	}
 	exports.registerDatasourcePlugin = registerDatasourcePlugin;
-	// TODO: type Widget as soon as it is in typescript
 	function registerWidgetPlugin(typeInfo, widget) {
 	    console.assert(!hasPlugin(), "Plugin must be finished loading before another can be registered", pluginCache);
 	    pluginCache = ({
@@ -358,19 +359,470 @@ webpackJsonp([0],[
 /***/ },
 /* 34 */,
 /* 35 */,
-/* 36 */,
-/* 37 */,
+/* 36 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// the whatwg-fetch polyfill installs the fetch() function
+	// on the global object (window or self)
+	//
+	// Return that as the export for use in Webpack, Browserify etc.
+	__webpack_require__(37);
+	module.exports = self.fetch.bind(self);
+
+
+/***/ },
+/* 37 */
+/***/ function(module, exports) {
+
+	(function(self) {
+	  'use strict';
+	
+	  if (self.fetch) {
+	    return
+	  }
+	
+	  var support = {
+	    searchParams: 'URLSearchParams' in self,
+	    iterable: 'Symbol' in self && 'iterator' in Symbol,
+	    blob: 'FileReader' in self && 'Blob' in self && (function() {
+	      try {
+	        new Blob()
+	        return true
+	      } catch(e) {
+	        return false
+	      }
+	    })(),
+	    formData: 'FormData' in self,
+	    arrayBuffer: 'ArrayBuffer' in self
+	  }
+	
+	  function normalizeName(name) {
+	    if (typeof name !== 'string') {
+	      name = String(name)
+	    }
+	    if (/[^a-z0-9\-#$%&'*+.\^_`|~]/i.test(name)) {
+	      throw new TypeError('Invalid character in header field name')
+	    }
+	    return name.toLowerCase()
+	  }
+	
+	  function normalizeValue(value) {
+	    if (typeof value !== 'string') {
+	      value = String(value)
+	    }
+	    return value
+	  }
+	
+	  // Build a destructive iterator for the value list
+	  function iteratorFor(items) {
+	    var iterator = {
+	      next: function() {
+	        var value = items.shift()
+	        return {done: value === undefined, value: value}
+	      }
+	    }
+	
+	    if (support.iterable) {
+	      iterator[Symbol.iterator] = function() {
+	        return iterator
+	      }
+	    }
+	
+	    return iterator
+	  }
+	
+	  function Headers(headers) {
+	    this.map = {}
+	
+	    if (headers instanceof Headers) {
+	      headers.forEach(function(value, name) {
+	        this.append(name, value)
+	      }, this)
+	
+	    } else if (headers) {
+	      Object.getOwnPropertyNames(headers).forEach(function(name) {
+	        this.append(name, headers[name])
+	      }, this)
+	    }
+	  }
+	
+	  Headers.prototype.append = function(name, value) {
+	    name = normalizeName(name)
+	    value = normalizeValue(value)
+	    var list = this.map[name]
+	    if (!list) {
+	      list = []
+	      this.map[name] = list
+	    }
+	    list.push(value)
+	  }
+	
+	  Headers.prototype['delete'] = function(name) {
+	    delete this.map[normalizeName(name)]
+	  }
+	
+	  Headers.prototype.get = function(name) {
+	    var values = this.map[normalizeName(name)]
+	    return values ? values[0] : null
+	  }
+	
+	  Headers.prototype.getAll = function(name) {
+	    return this.map[normalizeName(name)] || []
+	  }
+	
+	  Headers.prototype.has = function(name) {
+	    return this.map.hasOwnProperty(normalizeName(name))
+	  }
+	
+	  Headers.prototype.set = function(name, value) {
+	    this.map[normalizeName(name)] = [normalizeValue(value)]
+	  }
+	
+	  Headers.prototype.forEach = function(callback, thisArg) {
+	    Object.getOwnPropertyNames(this.map).forEach(function(name) {
+	      this.map[name].forEach(function(value) {
+	        callback.call(thisArg, value, name, this)
+	      }, this)
+	    }, this)
+	  }
+	
+	  Headers.prototype.keys = function() {
+	    var items = []
+	    this.forEach(function(value, name) { items.push(name) })
+	    return iteratorFor(items)
+	  }
+	
+	  Headers.prototype.values = function() {
+	    var items = []
+	    this.forEach(function(value) { items.push(value) })
+	    return iteratorFor(items)
+	  }
+	
+	  Headers.prototype.entries = function() {
+	    var items = []
+	    this.forEach(function(value, name) { items.push([name, value]) })
+	    return iteratorFor(items)
+	  }
+	
+	  if (support.iterable) {
+	    Headers.prototype[Symbol.iterator] = Headers.prototype.entries
+	  }
+	
+	  function consumed(body) {
+	    if (body.bodyUsed) {
+	      return Promise.reject(new TypeError('Already read'))
+	    }
+	    body.bodyUsed = true
+	  }
+	
+	  function fileReaderReady(reader) {
+	    return new Promise(function(resolve, reject) {
+	      reader.onload = function() {
+	        resolve(reader.result)
+	      }
+	      reader.onerror = function() {
+	        reject(reader.error)
+	      }
+	    })
+	  }
+	
+	  function readBlobAsArrayBuffer(blob) {
+	    var reader = new FileReader()
+	    reader.readAsArrayBuffer(blob)
+	    return fileReaderReady(reader)
+	  }
+	
+	  function readBlobAsText(blob) {
+	    var reader = new FileReader()
+	    reader.readAsText(blob)
+	    return fileReaderReady(reader)
+	  }
+	
+	  function Body() {
+	    this.bodyUsed = false
+	
+	    this._initBody = function(body) {
+	      this._bodyInit = body
+	      if (typeof body === 'string') {
+	        this._bodyText = body
+	      } else if (support.blob && Blob.prototype.isPrototypeOf(body)) {
+	        this._bodyBlob = body
+	      } else if (support.formData && FormData.prototype.isPrototypeOf(body)) {
+	        this._bodyFormData = body
+	      } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
+	        this._bodyText = body.toString()
+	      } else if (!body) {
+	        this._bodyText = ''
+	      } else if (support.arrayBuffer && ArrayBuffer.prototype.isPrototypeOf(body)) {
+	        // Only support ArrayBuffers for POST method.
+	        // Receiving ArrayBuffers happens via Blobs, instead.
+	      } else {
+	        throw new Error('unsupported BodyInit type')
+	      }
+	
+	      if (!this.headers.get('content-type')) {
+	        if (typeof body === 'string') {
+	          this.headers.set('content-type', 'text/plain;charset=UTF-8')
+	        } else if (this._bodyBlob && this._bodyBlob.type) {
+	          this.headers.set('content-type', this._bodyBlob.type)
+	        } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
+	          this.headers.set('content-type', 'application/x-www-form-urlencoded;charset=UTF-8')
+	        }
+	      }
+	    }
+	
+	    if (support.blob) {
+	      this.blob = function() {
+	        var rejected = consumed(this)
+	        if (rejected) {
+	          return rejected
+	        }
+	
+	        if (this._bodyBlob) {
+	          return Promise.resolve(this._bodyBlob)
+	        } else if (this._bodyFormData) {
+	          throw new Error('could not read FormData body as blob')
+	        } else {
+	          return Promise.resolve(new Blob([this._bodyText]))
+	        }
+	      }
+	
+	      this.arrayBuffer = function() {
+	        return this.blob().then(readBlobAsArrayBuffer)
+	      }
+	
+	      this.text = function() {
+	        var rejected = consumed(this)
+	        if (rejected) {
+	          return rejected
+	        }
+	
+	        if (this._bodyBlob) {
+	          return readBlobAsText(this._bodyBlob)
+	        } else if (this._bodyFormData) {
+	          throw new Error('could not read FormData body as text')
+	        } else {
+	          return Promise.resolve(this._bodyText)
+	        }
+	      }
+	    } else {
+	      this.text = function() {
+	        var rejected = consumed(this)
+	        return rejected ? rejected : Promise.resolve(this._bodyText)
+	      }
+	    }
+	
+	    if (support.formData) {
+	      this.formData = function() {
+	        return this.text().then(decode)
+	      }
+	    }
+	
+	    this.json = function() {
+	      return this.text().then(JSON.parse)
+	    }
+	
+	    return this
+	  }
+	
+	  // HTTP methods whose capitalization should be normalized
+	  var methods = ['DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT']
+	
+	  function normalizeMethod(method) {
+	    var upcased = method.toUpperCase()
+	    return (methods.indexOf(upcased) > -1) ? upcased : method
+	  }
+	
+	  function Request(input, options) {
+	    options = options || {}
+	    var body = options.body
+	    if (Request.prototype.isPrototypeOf(input)) {
+	      if (input.bodyUsed) {
+	        throw new TypeError('Already read')
+	      }
+	      this.url = input.url
+	      this.credentials = input.credentials
+	      if (!options.headers) {
+	        this.headers = new Headers(input.headers)
+	      }
+	      this.method = input.method
+	      this.mode = input.mode
+	      if (!body) {
+	        body = input._bodyInit
+	        input.bodyUsed = true
+	      }
+	    } else {
+	      this.url = input
+	    }
+	
+	    this.credentials = options.credentials || this.credentials || 'omit'
+	    if (options.headers || !this.headers) {
+	      this.headers = new Headers(options.headers)
+	    }
+	    this.method = normalizeMethod(options.method || this.method || 'GET')
+	    this.mode = options.mode || this.mode || null
+	    this.referrer = null
+	
+	    if ((this.method === 'GET' || this.method === 'HEAD') && body) {
+	      throw new TypeError('Body not allowed for GET or HEAD requests')
+	    }
+	    this._initBody(body)
+	  }
+	
+	  Request.prototype.clone = function() {
+	    return new Request(this)
+	  }
+	
+	  function decode(body) {
+	    var form = new FormData()
+	    body.trim().split('&').forEach(function(bytes) {
+	      if (bytes) {
+	        var split = bytes.split('=')
+	        var name = split.shift().replace(/\+/g, ' ')
+	        var value = split.join('=').replace(/\+/g, ' ')
+	        form.append(decodeURIComponent(name), decodeURIComponent(value))
+	      }
+	    })
+	    return form
+	  }
+	
+	  function headers(xhr) {
+	    var head = new Headers()
+	    var pairs = (xhr.getAllResponseHeaders() || '').trim().split('\n')
+	    pairs.forEach(function(header) {
+	      var split = header.trim().split(':')
+	      var key = split.shift().trim()
+	      var value = split.join(':').trim()
+	      head.append(key, value)
+	    })
+	    return head
+	  }
+	
+	  Body.call(Request.prototype)
+	
+	  function Response(bodyInit, options) {
+	    if (!options) {
+	      options = {}
+	    }
+	
+	    this.type = 'default'
+	    this.status = options.status
+	    this.ok = this.status >= 200 && this.status < 300
+	    this.statusText = options.statusText
+	    this.headers = options.headers instanceof Headers ? options.headers : new Headers(options.headers)
+	    this.url = options.url || ''
+	    this._initBody(bodyInit)
+	  }
+	
+	  Body.call(Response.prototype)
+	
+	  Response.prototype.clone = function() {
+	    return new Response(this._bodyInit, {
+	      status: this.status,
+	      statusText: this.statusText,
+	      headers: new Headers(this.headers),
+	      url: this.url
+	    })
+	  }
+	
+	  Response.error = function() {
+	    var response = new Response(null, {status: 0, statusText: ''})
+	    response.type = 'error'
+	    return response
+	  }
+	
+	  var redirectStatuses = [301, 302, 303, 307, 308]
+	
+	  Response.redirect = function(url, status) {
+	    if (redirectStatuses.indexOf(status) === -1) {
+	      throw new RangeError('Invalid status code')
+	    }
+	
+	    return new Response(null, {status: status, headers: {location: url}})
+	  }
+	
+	  self.Headers = Headers
+	  self.Request = Request
+	  self.Response = Response
+	
+	  self.fetch = function(input, init) {
+	    return new Promise(function(resolve, reject) {
+	      var request
+	      if (Request.prototype.isPrototypeOf(input) && !init) {
+	        request = input
+	      } else {
+	        request = new Request(input, init)
+	      }
+	
+	      var xhr = new XMLHttpRequest()
+	
+	      function responseURL() {
+	        if ('responseURL' in xhr) {
+	          return xhr.responseURL
+	        }
+	
+	        // Avoid security warnings on getResponseHeader when not allowed by CORS
+	        if (/^X-Request-URL:/m.test(xhr.getAllResponseHeaders())) {
+	          return xhr.getResponseHeader('X-Request-URL')
+	        }
+	
+	        return
+	      }
+	
+	      xhr.onload = function() {
+	        var options = {
+	          status: xhr.status,
+	          statusText: xhr.statusText,
+	          headers: headers(xhr),
+	          url: responseURL()
+	        }
+	        var body = 'response' in xhr ? xhr.response : xhr.responseText
+	        resolve(new Response(body, options))
+	      }
+	
+	      xhr.onerror = function() {
+	        reject(new TypeError('Network request failed'))
+	      }
+	
+	      xhr.ontimeout = function() {
+	        reject(new TypeError('Network request failed'))
+	      }
+	
+	      xhr.open(request.method, request.url, true)
+	
+	      if (request.credentials === 'include') {
+	        xhr.withCredentials = true
+	      }
+	
+	      if ('responseType' in xhr && support.blob) {
+	        xhr.responseType = 'blob'
+	      }
+	
+	      request.headers.forEach(function(value, name) {
+	        xhr.setRequestHeader(name, value)
+	      })
+	
+	      xhr.send(typeof request._bodyInit === 'undefined' ? null : request._bodyInit)
+	    })
+	  }
+	  self.fetch.polyfill = true
+	})(typeof self !== 'undefined' ? self : this);
+
+
+/***/ },
 /* 38 */,
-/* 39 */
+/* 39 */,
+/* 40 */,
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(React) {/* This Source Code Form is subject to the terms of the Mozilla Public
 	* License, v. 2.0. If a copy of the MPL was not distributed with this
 	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var ReactDOM = __webpack_require__(40);
-	var react_redux_1 = __webpack_require__(41);
-	var pageLayout_1 = __webpack_require__(43);
+	var ReactDOM = __webpack_require__(42);
+	var react_redux_1 = __webpack_require__(43);
+	var pageLayout_1 = __webpack_require__(45);
 	function render(element, store) {
 	    ReactDOM.render(React.createElement(react_redux_1.Provider, {store: store}, React.createElement(pageLayout_1.default, null)), element);
 	}
@@ -379,10 +831,10 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ },
-/* 40 */,
-/* 41 */,
 /* 42 */,
-/* 43 */
+/* 43 */,
+/* 44 */,
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -396,20 +848,20 @@ webpackJsonp([0],[
 	};
 	var React = __webpack_require__(20);
 	var react_1 = __webpack_require__(20);
-	var ReactDOM = __webpack_require__(40);
-	var react_redux_1 = __webpack_require__(41);
-	var Global = __webpack_require__(44);
-	var widgetGrid_ui_js_1 = __webpack_require__(46);
-	var layouts_ui_js_1 = __webpack_require__(86);
-	var widgetConfigDialog_ui_js_1 = __webpack_require__(89);
-	var dashboardMenuEntry_ui_js_1 = __webpack_require__(94);
-	var importExportDialog_ui_js_1 = __webpack_require__(95);
-	var datasourceConfigDialog_ui_js_1 = __webpack_require__(97);
-	var datasourceNavItem_ui_js_1 = __webpack_require__(98);
-	var widgetsNavItem_ui_js_1 = __webpack_require__(99);
-	var pluginNavItem_ui_js_1 = __webpack_require__(100);
-	var pluginsDialog_ui_js_1 = __webpack_require__(101);
-	var Persistence = __webpack_require__(103);
+	var ReactDOM = __webpack_require__(42);
+	var react_redux_1 = __webpack_require__(43);
+	var Global = __webpack_require__(46);
+	var widgetGrid_ui_js_1 = __webpack_require__(48);
+	var layouts_ui_js_1 = __webpack_require__(89);
+	var widgetConfigDialog_ui_js_1 = __webpack_require__(92);
+	var dashboardMenuEntry_ui_js_1 = __webpack_require__(97);
+	var importExportDialog_ui_js_1 = __webpack_require__(98);
+	var datasourceConfigDialog_ui_js_1 = __webpack_require__(100);
+	var datasourceNavItem_ui_js_1 = __webpack_require__(101);
+	var widgetsNavItem_ui_js_1 = __webpack_require__(102);
+	var pluginNavItem_ui_1 = __webpack_require__(103);
+	var pluginsDialog_ui_1 = __webpack_require__(104);
+	var Persistence = __webpack_require__(105);
 	var Layout = (function (_super) {
 	    __extends(Layout, _super);
 	    function Layout(props) {
@@ -436,8 +888,8 @@ webpackJsonp([0],[
 	        var props = this.props;
 	        var devMode = true;
 	        var showMenu = props.devMode && (!props.isReadOnly || this.state.hover);
-	        return React.createElement("div", {className: "slds-grid slds-wrap", onKeyUp: function (event) { return _this.onReadOnlyModeKeyPress(event); }}, React.createElement("div", null, React.createElement(widgetConfigDialog_ui_js_1.default, null), React.createElement(importExportDialog_ui_js_1.default, null), React.createElement(datasourceConfigDialog_ui_js_1.default, null), React.createElement(pluginsDialog_ui_js_1.default, null)), React.createElement("div", {className: showMenu ? "menu-trigger" : "menu-trigger", onMouseOver: function () { _this.setState({ hover: true }); }, onMouseEnter: function () { _this.setState({ hover: true }); }}), devMode ?
-	            React.createElement("div", {className: "slds-size--1-of-1 slds-context-bar" + (showMenu ? " topnav--visible" : " topnav--hidden"), onMouseOver: function () { _this.setState({ hover: true }); }, onMouseLeave: function () { _this.setState({ hover: false }); }}, React.createElement("div", {className: "slds-context-bar__primary slds-context-bar__item--divider-right"}, React.createElement("div", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--click slds-no-hover"}, React.createElement("span", {className: "slds-context-bar__label-action slds-context-bar__app-name"}, React.createElement("span", {className: "slds-truncate"}, React.createElement("a", {href: "http://iot-dashboard.org"}, " IoT-Dashboard"))))), React.createElement("div", {className: "slds-context-bar__secondary", role: "navigation"}, React.createElement("ul", {className: "slds-grid"}, React.createElement(dashboardMenuEntry_ui_js_1.default, null), React.createElement(widgetsNavItem_ui_js_1.default, null), React.createElement(datasourceNavItem_ui_js_1.default, null), React.createElement(pluginNavItem_ui_js_1.default, null), React.createElement(layouts_ui_js_1.default, null), React.createElement("div", {className: "slds-context-bar__vertical-divider"}), React.createElement("li", {className: "slds-context-bar__item"}, React.createElement("a", {href: "javascript:void(0);", onClick: function () { return Persistence.clearData(); }, className: "slds-context-bar__label-action", title: "Reset Everything!"}, React.createElement("span", {className: "slds-truncate"}, "Reset Everything!"))), React.createElement("li", {className: "slds-context-bar__item"}, React.createElement("div", {className: "slds-context-bar__icon-action", onClick: function () { return props.setReadOnly(!props.isReadOnly); }}, React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--small slds-icon-text-default"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#" + (props.isReadOnly ? "lock" : "unlock")})), React.createElement("span", {className: "slds-assistive-text"}, "Lock / Unlock"))))), React.createElement("div", {className: "slds-context-bar__tertiary"}, React.createElement("ul", {className: "slds-grid slds-grid--vertical-align-center"}, props.config.auth && props.config.auth.username ?
+	        return React.createElement("div", {className: "slds-grid slds-wrap", onKeyUp: function (event) { return _this.onReadOnlyModeKeyPress(event); }}, React.createElement("div", null, React.createElement(widgetConfigDialog_ui_js_1.default, null), React.createElement(importExportDialog_ui_js_1.default, null), React.createElement(datasourceConfigDialog_ui_js_1.default, null), React.createElement(pluginsDialog_ui_1.default, null)), React.createElement("div", {className: showMenu ? "menu-trigger" : "menu-trigger", onMouseOver: function () { _this.setState({ hover: true }); }, onMouseEnter: function () { _this.setState({ hover: true }); }}), devMode ?
+	            React.createElement("div", {className: "slds-size--1-of-1 slds-context-bar" + (showMenu ? " topnav--visible" : " topnav--hidden"), onMouseOver: function () { _this.setState({ hover: true }); }, onMouseLeave: function () { _this.setState({ hover: false }); }}, React.createElement("div", {className: "slds-context-bar__primary slds-context-bar__item--divider-right"}, React.createElement("div", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--click slds-no-hover"}, React.createElement("span", {className: "slds-context-bar__label-action slds-context-bar__app-name"}, React.createElement("span", {className: "slds-truncate"}, React.createElement("a", {href: "http://iot-dashboard.org"}, " IoT-Dashboard"))))), React.createElement("div", {className: "slds-context-bar__secondary", role: "navigation"}, React.createElement("ul", {className: "slds-grid"}, React.createElement(dashboardMenuEntry_ui_js_1.default, null), React.createElement(widgetsNavItem_ui_js_1.default, null), React.createElement(datasourceNavItem_ui_js_1.default, null), React.createElement(pluginNavItem_ui_1.default, null), React.createElement(layouts_ui_js_1.default, null), React.createElement("div", {className: "slds-context-bar__vertical-divider"}), React.createElement("li", {className: "slds-context-bar__item"}, React.createElement("a", {href: "javascript:void(0);", onClick: function () { return Persistence.clearData(); }, className: "slds-context-bar__label-action", title: "Reset Everything!"}, React.createElement("span", {className: "slds-truncate"}, "Reset Everything!"))), React.createElement("li", {className: "slds-context-bar__item"}, React.createElement("div", {className: "slds-context-bar__icon-action", onClick: function () { return props.setReadOnly(!props.isReadOnly); }}, React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--small slds-icon-text-default"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#" + (props.isReadOnly ? "lock" : "unlock")})), React.createElement("span", {className: "slds-assistive-text"}, "Lock / Unlock"))))), React.createElement("div", {className: "slds-context-bar__tertiary"}, React.createElement("ul", {className: "slds-grid slds-grid--vertical-align-center"}, props.config.auth && props.config.auth.username ?
 	                React.createElement("div", {className: "slds-m-right--small"}, "Tobias")
 	                : null, props.config.auth && props.config.auth.logoutUrl ?
 	                React.createElement("a", {className: "slds-button slds-button--neutral", href: props.config.auth.logoutUrl}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon slds-button__icon--left"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#logout"})), "Logout")
@@ -462,14 +914,14 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 44 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
 	* License, v. 2.0. If a copy of the MPL was not distributed with this
 	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Action = __webpack_require__(45);
+	var Action = __webpack_require__(47);
 	exports.initialState = {
 	    isReadOnly: false,
 	    devMode: true
@@ -501,7 +953,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 45 */
+/* 47 */
 /***/ function(module, exports) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -550,14 +1002,18 @@ webpackJsonp([0],[
 	exports.DATASOURCE_PLUGIN_FINISHED_LOADING = "DATASOURCE_PLUGIN_FINISHED_LOADING";
 	exports.DELETE_WIDGET_PLUGIN = "DELETE_WIDGET_PLUGIN";
 	exports.DELETE_DATASOURCE_PLUGIN = "DELETE_DATASOURCE_PLUGIN";
+	exports.PUBLISHED_DATASOURCE_PLUGIN = "PUBLISHED_DATASOURCE_PLUGIN";
+	exports.PUBLISHED_WIDGET_PLUGIN = "PUBLISHED_WIDGET_PLUGIN";
 	exports.STARTED_LOADING_PLUGIN_FROM_URL = "STARTED_LOADING_PLUGIN_FROM_URL";
 	// Modal
 	exports.SHOW_MODAL = "SHOW_MODAL";
 	exports.HIDE_MODAL = "HIDE_MODAL";
+	exports.MODAL_ADD_ERROR = "MODAL_ADD_ERROR";
+	exports.MODAL_DELETE_ERROR = "MODAL_DELETE_ERROR";
 
 
 /***/ },
-/* 46 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -571,12 +1027,12 @@ webpackJsonp([0],[
 	};
 	var React = __webpack_require__(20);
 	var react_1 = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(41);
+	var react_redux_1 = __webpack_require__(43);
 	var _ = __webpack_require__(21);
-	var Widgets = __webpack_require__(47);
-	var widgetFrame_ui_1 = __webpack_require__(50);
-	var widthProvider_ui_1 = __webpack_require__(72);
-	var react_grid_layout_1 = __webpack_require__(73);
+	var Widgets = __webpack_require__(49);
+	var widgetFrame_ui_1 = __webpack_require__(52);
+	var widthProvider_ui_1 = __webpack_require__(75);
+	var react_grid_layout_1 = __webpack_require__(76);
 	var ResponsiveGrid = widthProvider_ui_1.default(react_grid_layout_1.Responsive);
 	var breakpoints = { lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 };
 	var cols = { lg: 12, md: 12, sm: 12, xs: 6, xxs: 3 };
@@ -641,17 +1097,17 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 47 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Uuid = __webpack_require__(48);
+	var Uuid = __webpack_require__(50);
 	var _ = __webpack_require__(21);
-	var reducer_js_1 = __webpack_require__(49);
-	var Action = __webpack_require__(45);
+	var reducer_js_1 = __webpack_require__(51);
+	var Action = __webpack_require__(47);
 	exports.HEADER_HEIGHT = 34;
 	exports.ROW_HEIGHT = 100;
 	exports.initialWidgets = {
@@ -690,7 +1146,7 @@ webpackJsonp([0],[
 	        "id": "106913f4-44fb-4f69-ab89-5d5ae857cf3c",
 	        "type": "chart",
 	        "settings": {
-	            "name": "Bars",
+	            "name": "Random Values",
 	            "datasource": "initial_random_source",
 	            "chartType": "spline",
 	            "dataKeys": "[\"value\", \"value2\"]",
@@ -898,7 +1354,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 48 */
+/* 50 */
 /***/ function(module, exports) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -916,7 +1372,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 49 */
+/* 51 */
 /***/ function(module, exports) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -975,7 +1431,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 50 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -988,12 +1444,11 @@ webpackJsonp([0],[
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(41);
-	var WidgetConfig = __webpack_require__(51);
-	var WidgetPlugins = __webpack_require__(54);
-	var widgets_1 = __webpack_require__(47);
+	var react_redux_1 = __webpack_require__(43);
+	var WidgetConfig = __webpack_require__(53);
+	var widgets_1 = __webpack_require__(49);
 	var react_1 = __webpack_require__(20);
-	var dashboard_1 = __webpack_require__(55);
+	var dashboard_1 = __webpack_require__(56);
 	/**
 	 * The Dragable Frame of a Widget.
 	 * Contains generic UI controls, shared by all Widgets
@@ -1022,7 +1477,14 @@ webpackJsonp([0],[
 	});
 	WidgetFrame.propTypes = {
 	    widget: exports.widgetPropType.isRequired,
-	    widgetPlugin: WidgetPlugins.widgetPluginType.isRequired,
+	    widgetPlugin: react_1.PropTypes.shape({
+	        id: react_1.PropTypes.string.isRequired,
+	        typeInfo: react_1.PropTypes.shape({
+	            type: react_1.PropTypes.string.isRequired,
+	            name: react_1.PropTypes.string.isRequired,
+	            settings: react_1.PropTypes.array
+	        })
+	    }).isRequired,
 	    isReadOnly: react_1.PropTypes.bool.isRequired
 	};
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1052,7 +1514,6 @@ webpackJsonp([0],[
 	    description: react_1.PropTypes.string,
 	    iconType: react_1.PropTypes.string,
 	    visible: react_1.PropTypes.bool,
-	    className: react_1.PropTypes.string.isRequired,
 	    onClick: react_1.PropTypes.func.isRequired
 	};
 	var DeleteWidgetButton = react_redux_1.connect(function (state) {
@@ -1076,17 +1537,17 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 51 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
 	* License, v. 2.0. If a copy of the MPL was not distributed with this
 	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Widgets = __webpack_require__(47);
-	var actionNames_1 = __webpack_require__(45);
-	var Modal = __webpack_require__(52);
-	var ModalIds = __webpack_require__(53);
+	var Widgets = __webpack_require__(49);
+	var actionNames_1 = __webpack_require__(47);
+	var Modal = __webpack_require__(54);
+	var ModalIds = __webpack_require__(55);
 	var initialState = {
 	    type: null,
 	    name: null,
@@ -1176,14 +1637,14 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 52 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function($) {/* This Source Code Form is subject to the terms of the Mozilla Public
+	/* WEBPACK VAR INJECTION */(function($, _) {/* This Source Code Form is subject to the terms of the Mozilla Public
 	* License, v. 2.0. If a copy of the MPL was not distributed with this
 	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Action = __webpack_require__(45);
+	var Action = __webpack_require__(47);
 	var initialState = {
 	    dialogId: null,
 	    isVisible: false,
@@ -1240,6 +1701,20 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.closeModal = closeModal;
+	function addError(message) {
+	    return {
+	        type: Action.MODAL_ADD_ERROR,
+	        message: message
+	    };
+	}
+	exports.addError = addError;
+	function deleteError(message) {
+	    return {
+	        type: Action.MODAL_DELETE_ERROR,
+	        message: message
+	    };
+	}
+	exports.deleteError = deleteError;
 	function modalDialog(state, action) {
 	    if (state === void 0) { state = initialState; }
 	    switch (action.type) {
@@ -1247,24 +1722,39 @@ webpackJsonp([0],[
 	            return Object.assign({}, state, {
 	                dialogId: action.dialogId,
 	                data: action.data,
-	                isVisible: true
+	                isVisible: true,
+	                errors: []
 	            });
 	        case Action.HIDE_MODAL:
 	            return Object.assign({}, state, {
 	                dialogId: null,
 	                data: null,
-	                isVisible: false
+	                isVisible: false,
+	                errors: []
 	            });
+	        case Action.MODAL_ADD_ERROR: {
+	            var stateErrors = state.errors || [];
+	            var errors = stateErrors.concat([action.message]);
+	            return Object.assign({}, state, {
+	                errors: errors
+	            });
+	        }
+	        case Action.MODAL_DELETE_ERROR: {
+	            var errors = _.filter(state.errors.slice(), function (e) { return e != action.message; });
+	            return Object.assign({}, state, {
+	                errors: errors
+	            });
+	        }
 	        default:
 	            return state;
 	    }
 	}
 	exports.modalDialog = modalDialog;
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13), __webpack_require__(21)))
 
 /***/ },
-/* 53 */
+/* 55 */
 /***/ function(module, exports) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -1278,118 +1768,17 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 54 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(_) {/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
-	"use strict";
-	var Action = __webpack_require__(45);
-	var reducer_js_1 = __webpack_require__(49);
-	var react_1 = __webpack_require__(20);
-	var dashboard_1 = __webpack_require__(55);
-	// TODO: Later load all plugins from external URL's ?
-	var initialState = {
-	    "chart": {
-	        id: "chart",
-	        url: "./plugins/widgets/chartWidget.js",
-	        typeInfo: {
-	            type: "will-be-loaded",
-	            name: "chart (not loaded yet)"
-	        },
-	        isLoading: true
-	    },
-	    "text": {
-	        id: "text",
-	        url: "./plugins/widgets/textWidget.js",
-	        typeInfo: {
-	            type: "will-be-loaded",
-	            name: "text (not loaded yet)"
-	        },
-	        isLoading: true
-	    }
-	};
-	// TODO: Remove when not used anymore
-	exports.widgetPluginType = react_1.PropTypes.shape({
-	    id: react_1.PropTypes.string.isRequired,
-	    typeInfo: react_1.PropTypes.shape({
-	        type: react_1.PropTypes.string.isRequired,
-	        name: react_1.PropTypes.string.isRequired,
-	        settings: react_1.PropTypes.array
-	    })
-	});
-	function unloadPlugin(type) {
-	    return function (dispatch) {
-	        var widgetPlugin = dashboard_1.default.getInstance().widgetPluginRegistry.getPlugin(type);
-	        widgetPlugin.dispose();
-	        dispatch(deletePlugin(type));
-	    };
-	}
-	exports.unloadPlugin = unloadPlugin;
-	function deletePlugin(type) {
-	    return {
-	        type: Action.DELETE_WIDGET_PLUGIN,
-	        id: type
-	    };
-	}
-	var pluginsCrudReducer = reducer_js_1.genCrudReducer([Action.WIDGET_PLUGIN_FINISHED_LOADING, Action.DELETE_WIDGET_PLUGIN], widgetPlugin);
-	function widgetPlugins(state, action) {
-	    if (state === void 0) { state = initialState; }
-	    state = pluginsCrudReducer(state, action);
-	    switch (action.type) {
-	        case Action.STARTED_LOADING_PLUGIN_FROM_URL:
-	            if (state[action.id]) {
-	                return _.assign({}, state, (_a = {},
-	                    _a[action.id] = widgetPlugin(state[action.id], action),
-	                    _a
-	                ));
-	            }
-	            else {
-	                return state;
-	            }
-	        default:
-	            return state;
-	    }
-	    var _a;
-	}
-	exports.widgetPlugins = widgetPlugins;
-	function widgetPlugin(state, action) {
-	    switch (action.type) {
-	        case Action.WIDGET_PLUGIN_FINISHED_LOADING:
-	            if (!action.typeInfo.type) {
-	                // TODO: Catch this earlier
-	                throw new Error("A Plugin needs a type name.");
-	            }
-	            return {
-	                id: action.typeInfo.type,
-	                url: action.url,
-	                typeInfo: action.typeInfo,
-	                isLoading: false
-	            };
-	        case Action.STARTED_LOADING_PLUGIN_FROM_URL:
-	            return _.assign({}, state, {
-	                isLoading: true
-	            });
-	        default:
-	            return state;
-	    }
-	}
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)))
-
-/***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var datasourcePluginRegistry_1 = __webpack_require__(56);
+	var datasourcePluginRegistry_1 = __webpack_require__(57);
 	var _ = __webpack_require__(21);
-	var Plugins = __webpack_require__(62);
+	var Plugins = __webpack_require__(63);
 	var PluginCache = __webpack_require__(29);
-	var scriptLoader_1 = __webpack_require__(63);
-	var URI = __webpack_require__(65);
-	var widgetPluginRegistry_1 = __webpack_require__(69);
+	var scriptLoader_1 = __webpack_require__(66);
+	var URI = __webpack_require__(68);
+	var widgetPluginRegistry_1 = __webpack_require__(72);
 	/**
 	 * The root of the Dashboard business Logic
 	 * Defines the lifecycle of the Dashboard from creation till disposal
@@ -1405,6 +1794,10 @@ webpackJsonp([0],[
 	        _store.subscribe(function () {
 	            // Whenever a datasource is added that is still loading, we create an instance and update the loading state
 	            var state = _store.getState();
+	            if (_this._lastLoadingUrls === state.pluginLoader.loadingUrls) {
+	                return;
+	            }
+	            _this._lastLoadingUrls = state.pluginLoader.loadingUrls;
 	            state.pluginLoader.loadingUrls.forEach(function (urlToLoad) {
 	                if (!_this._scriptsLoading[urlToLoad]) {
 	                    _this.loadPluginScript(urlToLoad);
@@ -1461,13 +1854,16 @@ webpackJsonp([0],[
 	        var plugins = _.valuesIn(state.datasourcePlugins)
 	            .concat(_.valuesIn(state.widgetPlugins));
 	        plugins.forEach(function (plugin) {
-	            _this._store.dispatch(Plugins.startLoadingPluginFromUrl(plugin.url, plugin.id));
+	            _this._store.dispatch(Plugins.reloadExistingPlugin(plugin.url, plugin.id));
 	        });
 	    };
 	    Dashboard.prototype.dispose = function () {
 	        this._datasourcePluginRegistry.dispose();
 	        this._widgetPluginRegistry.dispose();
 	    };
+	    /**
+	     * Load plugin from URL
+	     */
 	    Dashboard.prototype.loadPluginScript = function (url) {
 	        var _this = this;
 	        var loadScriptsPromise = scriptLoader_1.default.loadScript([url]);
@@ -1481,8 +1877,7 @@ webpackJsonp([0],[
 	            else {
 	                return Promise.reject(new Error("Failed to load Plugin. Make sure it called window.iotDashboardApi.register***Plugin from url " + url));
 	            }
-	        })
-	            .then(function (plugin) {
+	        }).then(function (plugin) {
 	            if (plugin.Datasource) {
 	                _this._datasourcePluginRegistry.registerDatasourcePlugin(plugin, url);
 	            }
@@ -1494,13 +1889,9 @@ webpackJsonp([0],[
 	            return Promise.resolve();
 	        }).catch(function (error) {
 	            console.warn("Failed to load script: ", error);
+	            delete _this._scriptsLoading[url];
 	            _this._store.dispatch(Plugins.pluginFailedLoading(url));
 	        });
-	        /*.catch((error) => {
-	         console.error(error.message);
-	         delete this._scriptsLoading[url];
-	         throw error;
-	         }); */
 	        return this._scriptsLoading[url];
 	    };
 	    Dashboard.prototype.loadPluginScriptDependencies = function (plugin, url) {
@@ -1525,7 +1916,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(_) {"use strict";
@@ -1534,9 +1925,9 @@ webpackJsonp([0],[
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var pluginRegistry_1 = __webpack_require__(57);
-	var datasourcePluginFactory_1 = __webpack_require__(58);
-	var Plugins = __webpack_require__(62);
+	var pluginRegistry_1 = __webpack_require__(58);
+	var datasourcePluginFactory_1 = __webpack_require__(59);
+	var Plugins = __webpack_require__(63);
 	var DatasourcePluginRegistry = (function (_super) {
 	    __extends(DatasourcePluginRegistry, _super);
 	    function DatasourcePluginRegistry(_store) {
@@ -1574,7 +1965,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)))
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -1637,7 +2028,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 58 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -1645,8 +2036,8 @@ webpackJsonp([0],[
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
 	var _ = __webpack_require__(21);
-	var Datasource = __webpack_require__(59);
-	var datasourcePluginInstance_1 = __webpack_require__(60);
+	var Datasource = __webpack_require__(60);
+	var datasourcePluginInstance_1 = __webpack_require__(61);
 	/**
 	 * Connects a datasource to the application state
 	 */
@@ -1748,19 +2139,19 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 59 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var reducer_js_1 = __webpack_require__(49);
-	var ActionNames = __webpack_require__(45);
-	var Uuid = __webpack_require__(48);
+	var reducer_js_1 = __webpack_require__(51);
+	var ActionNames = __webpack_require__(47);
+	var Uuid = __webpack_require__(50);
 	var _ = __webpack_require__(21);
-	var ModalIds = __webpack_require__(53);
-	var Modal = __webpack_require__(52);
+	var ModalIds = __webpack_require__(55);
+	var Modal = __webpack_require__(54);
 	var initialDatasources = {
 	    "initial_random_source": {
 	        id: "initial_random_source",
@@ -1985,15 +2376,15 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(_) {/* This Source Code Form is subject to the terms of the Mozilla Public
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var datasourceScheduler_1 = __webpack_require__(61);
-	var Datasource = __webpack_require__(59);
+	var datasourceScheduler_1 = __webpack_require__(62);
+	var Datasource = __webpack_require__(60);
 	/**
 	 * Represents a plugin instance, state should be saved in store!
 	 */
@@ -2116,14 +2507,14 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)))
 
 /***/ },
-/* 61 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Datasource = __webpack_require__(59);
+	var Datasource = __webpack_require__(60);
 	var DatasourceScheduler = (function () {
 	    function DatasourceScheduler(dsInstance, store) {
 	        this.dsInstance = dsInstance;
@@ -2229,29 +2620,64 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 62 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(_) {/* This Source Code Form is subject to the terms of the Mozilla Public
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Action = __webpack_require__(45);
+	var Action = __webpack_require__(47);
+	var ModalDialog = __webpack_require__(54);
+	var DatasourcePlugins = __webpack_require__(64);
+	var WidgetPlugins = __webpack_require__(65);
 	var initialState = {
 	    loadingUrls: []
 	};
-	function startLoadingPluginFromUrl(url, id) {
+	/**
+	 *  Load plugin from URL or registry when starting with plugin://
+	 */
+	function startLoadingPluginFromUrl(url) {
+	    var registryBaseUrl = "http://localhost:8081"; // TODO: Configure in UI
+	    if (_.startsWith(url, "plugin://")) {
+	        url = url.replace("plugin://", registryBaseUrl + "/plugins/");
+	    }
+	    // No absolute or relative URL
+	    if (!_.startsWith(url, "/") && !_.startsWith(url, ".") && !_.startsWith(url, "http:") && !_.startsWith(url, "https:")) {
+	        url = registryBaseUrl + "/plugins/" + url;
+	    }
+	    return function (dispatch, getState) {
+	        var state = getState();
+	        if (_.some(_.valuesIn(state.datasourcePlugins), function (p) { return p.url === url && !p.isLoading; })) {
+	            dispatch(ModalDialog.addError("Plugin already loaded: " + url));
+	            return;
+	        }
+	        if (_.some(_.valuesIn(state.widgetPlugins), function (p) { return p.url === url && !p.isLoading; })) {
+	            dispatch(ModalDialog.addError("Plugin already loaded: " + url));
+	            return;
+	        }
+	        dispatch({
+	            type: Action.STARTED_LOADING_PLUGIN_FROM_URL,
+	            url: url
+	        });
+	    };
+	}
+	exports.startLoadingPluginFromUrl = startLoadingPluginFromUrl;
+	function reloadExistingPlugin(url, id) {
 	    return {
 	        type: Action.STARTED_LOADING_PLUGIN_FROM_URL,
 	        id: id,
 	        url: url
 	    };
 	}
-	exports.startLoadingPluginFromUrl = startLoadingPluginFromUrl;
+	exports.reloadExistingPlugin = reloadExistingPlugin;
 	function pluginFailedLoading(url) {
-	    return {
-	        type: Action.PLUGIN_FAILED_LOADING,
-	        url: url
+	    return function (dispatch) {
+	        dispatch(ModalDialog.addError("Failed to load plugin from " + url));
+	        dispatch({
+	            type: Action.PLUGIN_FAILED_LOADING,
+	            url: url
+	        });
 	    };
 	}
 	exports.pluginFailedLoading = pluginFailedLoading;
@@ -2284,10 +2710,57 @@ webpackJsonp([0],[
 	    return newState;
 	}
 	exports.pluginLoaderReducer = pluginLoaderReducer;
+	function publishPlugin(id) {
+	    return function (dispatch, getState) {
+	        var state = getState();
+	        var dsPlugin = state.datasourcePlugins[id];
+	        var widgetPlugin = state.widgetPlugins[id];
+	        var isDatasource = !!dsPlugin;
+	        var plugin = isDatasource ? dsPlugin : widgetPlugin;
+	        var registryBaseUrl = "http://localhost:8081"; // TODO: Configure in UI
+	        var apiKey = 'f1566816767de275ff898dd36a0ee608'; // TODO: Configure in UI
+	        fetch(plugin.url, {
+	            method: 'get'
+	        }).then(function (response) {
+	            return response.text();
+	        }).then(function (scriptContent) {
+	            var data = {
+	                "MetaInfo": plugin.typeInfo,
+	                "Code": scriptContent
+	            };
+	            return fetch(registryBaseUrl + '/api/plugins/' + id, {
+	                method: 'post',
+	                body: JSON.stringify(data),
+	                headers: {
+	                    Authorization: apiKey
+	                }
+	            });
+	        }).then(function (response) {
+	            if (response.status >= 400) {
+	                return response.json().then(function (json) {
+	                    if (json.error) {
+	                        throw new Error("Failed to publish Plugin: " + json.error);
+	                    }
+	                    throw new Error("Failed to publish Plugin");
+	                });
+	            }
+	            return response.json();
+	        }).then(function (json) {
+	            if (isDatasource) {
+	                dispatch(DatasourcePlugins.publishedDatasourcePlugin(id, registryBaseUrl + json.url, json.typeInfo));
+	            }
+	            else {
+	                dispatch(WidgetPlugins.publishedWidgetPlugin(id, registryBaseUrl + json.url, json.typeInfo));
+	            }
+	        }).catch(function (err) {
+	            dispatch(ModalDialog.addError(err.message));
+	        });
+	    };
+	}
+	exports.publishPlugin = publishPlugin;
 	function urlsReducer(state, action) {
 	    switch (action.type) {
 	        case Action.STARTED_LOADING_PLUGIN_FROM_URL:
-	            console.log("add url to pluginLoader: ", action.url);
 	            if (!action.url) {
 	                throw new Error("Can not load plugin from empty URL");
 	            }
@@ -2295,7 +2768,6 @@ webpackJsonp([0],[
 	        case Action.PLUGIN_FAILED_LOADING:
 	        case Action.WIDGET_PLUGIN_FINISHED_LOADING:
 	        case Action.DATASOURCE_PLUGIN_FINISHED_LOADING:
-	            console.log("remove url from pluginLoader: ", action.url);
 	            return state.slice().filter(function (url) { return url !== action.url; });
 	        default:
 	            return state;
@@ -2305,11 +2777,254 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)))
 
 /***/ },
-/* 63 */
+/* 64 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(_) {/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+	"use strict";
+	var Action = __webpack_require__(47);
+	var reducer_js_1 = __webpack_require__(51);
+	var dashboard_1 = __webpack_require__(56);
+	// TODO: does it work to have the URL as ID?
+	var initialState = {
+	    "random": {
+	        id: "random",
+	        url: "./plugins/datasources/randomDatasource.js",
+	        typeInfo: {
+	            type: "will-be-loaded"
+	        },
+	        isLoading: true
+	    },
+	    "time": {
+	        id: "time",
+	        url: "./plugins/datasources/timeDatasource.js",
+	        typeInfo: {
+	            type: "will-be-loaded"
+	        },
+	        isLoading: true
+	    },
+	    "static-data": {
+	        id: "static-data",
+	        url: "./plugins/datasources/staticData.js",
+	        typeInfo: {
+	            type: "will-be-loaded"
+	        },
+	        isLoading: true
+	    },
+	    "digimondo-firefly-datasource": {
+	        id: "digimondo-firefly-datasource",
+	        url: "./plugins/datasources/digimondoFirefly.js",
+	        typeInfo: {
+	            type: "will-be-loaded"
+	        },
+	        isLoading: true
+	    }
+	};
+	function unloadPlugin(type) {
+	    return function (dispatch) {
+	        var dsFactory = dashboard_1.default.getInstance().datasourcePluginRegistry.getPlugin(type);
+	        dsFactory.dispose();
+	        dispatch(deletePlugin(type));
+	    };
+	}
+	exports.unloadPlugin = unloadPlugin;
+	function publishedDatasourcePlugin(type, url, typeInfo) {
+	    return {
+	        type: Action.PUBLISHED_DATASOURCE_PLUGIN,
+	        id: type,
+	        url: url,
+	        typeInfo: typeInfo
+	    };
+	}
+	exports.publishedDatasourcePlugin = publishedDatasourcePlugin;
+	function deletePlugin(type) {
+	    return {
+	        type: Action.DELETE_DATASOURCE_PLUGIN,
+	        id: type
+	    };
+	}
+	var pluginsCrudReducer = reducer_js_1.genCrudReducer([Action.DATASOURCE_PLUGIN_FINISHED_LOADING, Action.DELETE_DATASOURCE_PLUGIN], datasourcePlugin);
+	function datasourcePlugins(state, action) {
+	    if (state === void 0) { state = initialState; }
+	    state = pluginsCrudReducer(state, action);
+	    switch (action.type) {
+	        case Action.PUBLISHED_DATASOURCE_PLUGIN: {
+	            if (state[action.id]) {
+	                return _.assign({}, state, (_a = {},
+	                    _a[action.id] = datasourcePlugin(state[action.id], action),
+	                    _a
+	                ));
+	            }
+	            return state;
+	        }
+	        case Action.STARTED_LOADING_PLUGIN_FROM_URL: {
+	            if (state[action.id]) {
+	                return _.assign({}, state, (_b = {},
+	                    _b[action.id] = datasourcePlugin(state[action.id], action),
+	                    _b
+	                ));
+	            }
+	            return state;
+	        }
+	        default:
+	            return state;
+	    }
+	    var _a, _b;
+	}
+	exports.datasourcePlugins = datasourcePlugins;
+	function datasourcePlugin(state, action) {
+	    switch (action.type) {
+	        case Action.PUBLISHED_DATASOURCE_PLUGIN: {
+	            return _.assign({}, state, {
+	                url: action.url,
+	                typeInfo: action.typeInfo
+	            });
+	        }
+	        case Action.DATASOURCE_PLUGIN_FINISHED_LOADING:
+	            if (!action.typeInfo.type) {
+	                // TODO: Catch this earlier
+	                throw new Error("A Plugin needs a type name. Please define TYPE_INFO.type");
+	            }
+	            return {
+	                id: action.typeInfo.type,
+	                url: action.url,
+	                typeInfo: action.typeInfo,
+	                isLoading: false
+	            };
+	        case Action.STARTED_LOADING_PLUGIN_FROM_URL:
+	            return _.assign({}, state, {
+	                isLoading: true
+	            });
+	        default:
+	            return state;
+	    }
+	}
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)))
+
+/***/ },
+/* 65 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(_) {/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+	"use strict";
+	var Action = __webpack_require__(47);
+	var reducer_js_1 = __webpack_require__(51);
+	var dashboard_1 = __webpack_require__(56);
+	// TODO: Later load all plugins from external URL's ?
+	var initialState = {
+	    "chart": {
+	        id: "chart",
+	        url: "./plugins/widgets/chartWidget.js",
+	        typeInfo: {
+	            type: "will-be-loaded",
+	            name: "chart (not loaded yet)"
+	        },
+	        isLoading: true
+	    },
+	    "text": {
+	        id: "text",
+	        url: "./plugins/widgets/textWidget.js",
+	        typeInfo: {
+	            type: "will-be-loaded",
+	            name: "text (not loaded yet)"
+	        },
+	        isLoading: true
+	    }
+	};
+	function unloadPlugin(type) {
+	    return function (dispatch) {
+	        var widgetPlugin = dashboard_1.default.getInstance().widgetPluginRegistry.getPlugin(type);
+	        widgetPlugin.dispose();
+	        dispatch(deletePlugin(type));
+	    };
+	}
+	exports.unloadPlugin = unloadPlugin;
+	function deletePlugin(type) {
+	    return {
+	        type: Action.DELETE_WIDGET_PLUGIN,
+	        id: type
+	    };
+	}
+	function publishedWidgetPlugin(type, url, typeInfo) {
+	    return {
+	        type: Action.PUBLISHED_WIDGET_PLUGIN,
+	        id: type,
+	        url: url,
+	        typeInfo: typeInfo
+	    };
+	}
+	exports.publishedWidgetPlugin = publishedWidgetPlugin;
+	var pluginsCrudReducer = reducer_js_1.genCrudReducer([Action.WIDGET_PLUGIN_FINISHED_LOADING, Action.DELETE_WIDGET_PLUGIN], widgetPlugin);
+	function widgetPlugins(state, action) {
+	    if (state === void 0) { state = initialState; }
+	    state = pluginsCrudReducer(state, action);
+	    switch (action.type) {
+	        case Action.PUBLISHED_WIDGET_PLUGIN: {
+	            if (state[action.id]) {
+	                return _.assign({}, state, (_a = {},
+	                    _a[action.id] = widgetPlugin(state[action.id], action),
+	                    _a
+	                ));
+	            }
+	            return state;
+	        }
+	        case Action.STARTED_LOADING_PLUGIN_FROM_URL:
+	            if (state[action.id]) {
+	                return _.assign({}, state, (_b = {},
+	                    _b[action.id] = widgetPlugin(state[action.id], action),
+	                    _b
+	                ));
+	            }
+	            else {
+	                return state;
+	            }
+	        default:
+	            return state;
+	    }
+	    var _a, _b;
+	}
+	exports.widgetPlugins = widgetPlugins;
+	function widgetPlugin(state, action) {
+	    switch (action.type) {
+	        case Action.PUBLISHED_WIDGET_PLUGIN: {
+	            return _.assign({}, state, {
+	                url: action.url,
+	                typeInfo: action.typeInfo
+	            });
+	        }
+	        case Action.WIDGET_PLUGIN_FINISHED_LOADING:
+	            if (!action.typeInfo.type) {
+	                // TODO: Catch this earlier
+	                throw new Error("A Plugin needs a type name.");
+	            }
+	            return {
+	                id: action.typeInfo.type,
+	                url: action.url,
+	                typeInfo: action.typeInfo,
+	                isLoading: false
+	            };
+	        case Action.STARTED_LOADING_PLUGIN_FROM_URL:
+	            return _.assign({}, state, {
+	                isLoading: true
+	            });
+	        default:
+	            return state;
+	    }
+	}
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)))
+
+/***/ },
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var loadjs = __webpack_require__(64);
+	var loadjs = __webpack_require__(67);
 	// This is a class because we can not mock it on module level.
 	var ScriptLoader = (function () {
 	    function ScriptLoader() {
@@ -2338,12 +3053,12 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 64 */,
-/* 65 */,
-/* 66 */,
 /* 67 */,
 /* 68 */,
-/* 69 */
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(_) {/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -2355,8 +3070,8 @@ webpackJsonp([0],[
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var pluginRegistry_1 = __webpack_require__(57);
-	var widgetPluginFactory_1 = __webpack_require__(70);
+	var pluginRegistry_1 = __webpack_require__(58);
+	var widgetPluginFactory_1 = __webpack_require__(73);
 	var WidgetPluginRegistry = (function (_super) {
 	    __extends(WidgetPluginRegistry, _super);
 	    function WidgetPluginRegistry(store) {
@@ -2374,17 +3089,17 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)))
 
 /***/ },
-/* 70 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var react_redux_1 = __webpack_require__(41);
+	var react_redux_1 = __webpack_require__(43);
 	var React = __webpack_require__(20);
-	var domWidgetContainer_1 = __webpack_require__(71);
-	var Widgets = __webpack_require__(47);
+	var domWidgetContainer_1 = __webpack_require__(74);
+	var Widgets = __webpack_require__(49);
 	var WidgetPluginFactory = (function () {
 	    function WidgetPluginFactory(type, widget, store) {
 	        this.type = type;
@@ -2451,7 +3166,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 71 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -2531,7 +3246,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 72 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -2554,7 +3269,7 @@ webpackJsonp([0],[
 	// @noflow
 	// Intentional; Flow can't handle the bind on L20
 	var React = __webpack_require__(20);
-	var ReactDOM = __webpack_require__(40);
+	var ReactDOM = __webpack_require__(42);
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = function (ComposedComponent) {
 	    var WidthProvider = (function (_super) {
@@ -2605,9 +3320,6 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 73 */,
-/* 74 */,
-/* 75 */,
 /* 76 */,
 /* 77 */,
 /* 78 */,
@@ -2618,7 +3330,10 @@ webpackJsonp([0],[
 /* 83 */,
 /* 84 */,
 /* 85 */,
-/* 86 */
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -2631,13 +3346,13 @@ webpackJsonp([0],[
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(41);
+	var react_redux_1 = __webpack_require__(43);
 	var _ = __webpack_require__(21);
-	var Layouts = __webpack_require__(87);
-	var ui = __webpack_require__(88);
+	var Layouts = __webpack_require__(90);
+	var ui = __webpack_require__(91);
 	var react_1 = __webpack_require__(20);
 	var LayoutsTopNavItem = function (props) {
-	    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Menu Item"}, React.createElement("span", {className: "slds-truncate"}, "Layout")), React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})), React.createElement("span", {className: "slds-assistive-text"}, "Open Layout submenu"))), React.createElement("div", {className: "slds-dropdown slds-dropdown--right"}, React.createElement("ul", {className: "dropdown__list", role: "menu"}, React.createElement(SaveLayout, null), React.createElement(ResetLayoutButton, {text: "Reset Current Layout", icon: "undo"}), React.createElement(SaveLayoutButton, {text: "Save Layout", icon: "package"}), React.createElement("li", {className: "slds-dropdown__header slds-has-divider--top-space", role: "separator"}, React.createElement("span", {className: "slds-text-title--caps"}, "Layouts")), props.layouts.map(function (layout) {
+	    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Layouts"}, React.createElement("span", {className: "slds-truncate"}, "Layout")), React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})), React.createElement("span", {className: "slds-assistive-text"}, "Open Layout submenu"))), React.createElement("div", {className: "slds-dropdown slds-dropdown--right"}, React.createElement("ul", {className: "dropdown__list", role: "menu"}, React.createElement(SaveLayout, null), React.createElement(ResetLayoutButton, {text: "Reset Current Layout", icon: "undo"}), React.createElement(SaveLayoutButton, {text: "Save Layout", icon: "package"}), React.createElement("li", {className: "slds-dropdown__header slds-has-divider--top-space", role: "separator"}, React.createElement("span", {className: "slds-text-title--caps"}, "Layouts")), props.layouts.map(function (layout) {
 	        return React.createElement(LayoutItem, {text: layout.name, icon: "plus", layout: layout, key: layout.id});
 	    }))));
 	};
@@ -2748,17 +3463,17 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 87 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
 	* License, v. 2.0. If a copy of the MPL was not distributed with this
 	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Widgets = __webpack_require__(47);
-	var uuid_1 = __webpack_require__(48);
-	var reducer_1 = __webpack_require__(49);
-	var actionNames_1 = __webpack_require__(45);
+	var Widgets = __webpack_require__(49);
+	var uuid_1 = __webpack_require__(50);
+	var reducer_1 = __webpack_require__(51);
+	var actionNames_1 = __webpack_require__(47);
 	var initialLayouts = {
 	    "default": {
 	        id: "default",
@@ -2878,7 +3593,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 88 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -2971,7 +3686,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 89 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -2984,13 +3699,12 @@ webpackJsonp([0],[
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(20);
-	var modalDialog_ui_js_1 = __webpack_require__(90);
-	var WidgetPlugins = __webpack_require__(54);
-	var WidgetConfig = __webpack_require__(51);
-	var react_redux_1 = __webpack_require__(41);
-	var settingsForm_ui_1 = __webpack_require__(91);
-	var redux_form_1 = __webpack_require__(92);
-	var ModalIds = __webpack_require__(53);
+	var modalDialog_ui_tsx_1 = __webpack_require__(93);
+	var WidgetConfig = __webpack_require__(53);
+	var react_redux_1 = __webpack_require__(43);
+	var settingsForm_ui_1 = __webpack_require__(94);
+	var redux_form_1 = __webpack_require__(95);
+	var ModalIds = __webpack_require__(55);
 	var react_1 = __webpack_require__(20);
 	var DIALOG_ID = ModalIds.WIDGET_CONFIG;
 	var FORM_ID = "widget-settings-form";
@@ -3052,7 +3766,7 @@ webpackJsonp([0],[
 	            // TODO: Find a better (more generic way) to deal with uninitialized data for modals
 	            // TODO: The widgetConfig in the state is a bad idea. Solve this via state.modalDialog.data
 	            // This is needed for the very first time the page is rendered and the selected widget type is undefined
-	            return React.createElement(modalDialog_ui_js_1.default, {id: DIALOG_ID, title: "Configure Widget: " + props.widgetType, actions: actions}, React.createElement("div", null, "Unknown WidgetType: ", props.widgetType));
+	            return React.createElement(modalDialog_ui_tsx_1.default, {id: DIALOG_ID, title: "Configure Widget: " + props.widgetType, actions: actions}, React.createElement("div", null, "Unknown WidgetType: ", props.widgetType));
 	        }
 	        // Add additional fields
 	        var settings = selectedWidgetPlugin ? selectedWidgetPlugin.typeInfo.settings.slice() : [];
@@ -3071,7 +3785,7 @@ webpackJsonp([0],[
 	        }, {});
 	        // Overwrite with current widget props
 	        initialValues = Object.assign({}, initialValues, props.widgetSettings);
-	        return React.createElement(modalDialog_ui_js_1.default, {id: DIALOG_ID, title: "Configure Widget: " + selectedWidgetPlugin.typeInfo.name, actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, selectedWidgetPlugin.description ?
+	        return React.createElement(modalDialog_ui_tsx_1.default, {id: DIALOG_ID, title: "Configure Widget: " + selectedWidgetPlugin.typeInfo.name, actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, selectedWidgetPlugin.description ?
 	            React.createElement("div", {className: "ui icon message"}, React.createElement("i", {className: "idea icon"}), React.createElement("div", {className: "content"}, selectedWidgetPlugin.description))
 	            : null, React.createElement(settingsForm_ui_1.default, {ref: "form", form: FORM_ID, settings: settings, onSubmit: this.onSubmit.bind(this), fields: fields.slice(), initialValues: initialValues}))));
 	    };
@@ -3082,7 +3796,14 @@ webpackJsonp([0],[
 	    resetForm: react_1.PropTypes.func.isRequired,
 	    widgetType: react_1.PropTypes.string,
 	    widgetSettings: react_1.PropTypes.object.isRequired,
-	    widgetPlugin: WidgetPlugins.widgetPluginType
+	    widgetPlugin: react_1.PropTypes.shape({
+	        id: react_1.PropTypes.string.isRequired,
+	        typeInfo: react_1.PropTypes.shape({
+	            type: react_1.PropTypes.string.isRequired,
+	            name: react_1.PropTypes.string.isRequired,
+	            settings: react_1.PropTypes.array
+	        })
+	    })
 	};
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = react_redux_1.connect(function (state) {
@@ -3100,7 +3821,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 90 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3113,9 +3834,8 @@ webpackJsonp([0],[
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(41);
-	var Modal = __webpack_require__(52);
-	var react_1 = __webpack_require__(20);
+	var react_redux_1 = __webpack_require__(43);
+	var Modal = __webpack_require__(54);
 	var ModalDialog = (function (_super) {
 	    __extends(ModalDialog, _super);
 	    function ModalDialog(props) {
@@ -3177,26 +3897,16 @@ webpackJsonp([0],[
 	        //const isOpen = props.dialogState.dialogId == props.id && props.dialogState.isVisible;
 	        var height = this.state.screen.height;
 	        var width = this.state.screen.width;
-	        return React.createElement("div", {id: this.props.id, className: 'ui modal ' + this.props.id, style: { width: width - 80, top: 40, left: 40, margin: 1 }}, React.createElement("div", {className: "header"}, props.title), React.createElement("div", {className: "content", style: { overflowY: 'scroll', height: height - 300 }}, props.children), React.createElement("div", {className: "actions"}, actions));
+	        return React.createElement("div", {id: this.props.id, className: 'ui modal ' + this.props.id, style: { width: width - 80, top: 40, left: 40, margin: 1, minHeight: "500px" }}, React.createElement("div", {className: "header"}, props.title), React.createElement("div", {className: "content", style: { overflowY: 'scroll', height: height - 300, minHeight: "500px" }}, this.props.dialogState.errors ?
+	            this.props.dialogState.errors.map(function (message, i) {
+	                return React.createElement(ModalErrorComponent, {key: i, errorMessage: message});
+	            })
+	            : null, props.children), React.createElement("div", {className: "actions"}, actions));
 	    };
 	    return ModalDialog;
 	}(React.Component));
-	ModalDialog.propTypes = {
-	    children: React.PropTypes.element.isRequired,
-	    title: react_1.PropTypes.string.isRequired,
-	    id: react_1.PropTypes.string.isRequired,
-	    actions: react_1.PropTypes.arrayOf(react_1.PropTypes.shape({
-	        className: react_1.PropTypes.string.isRequired,
-	        iconClass: react_1.PropTypes.string,
-	        label: react_1.PropTypes.string.isRequired,
-	        onClick: react_1.PropTypes.func.isRequired
-	    })).isRequired,
-	    handlePositive: react_1.PropTypes.func,
-	    handleDeny: react_1.PropTypes.func,
-	    closeDialog: react_1.PropTypes.func
-	};
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = react_redux_1.connect(function (state) {
+	exports.default = react_redux_1.connect(function (state, ownProps) {
 	    return {
 	        dialogState: state.modalDialog
 	    };
@@ -3205,11 +3915,36 @@ webpackJsonp([0],[
 	        closeDialog: function () { return dispatch(Modal.closeModal()); }
 	    };
 	})(ModalDialog);
+	var ModalError = (function (_super) {
+	    __extends(ModalError, _super);
+	    function ModalError() {
+	        _super.apply(this, arguments);
+	    }
+	    ModalError.prototype.close = function () {
+	        this.props.close(this.props.errorMessage);
+	    };
+	    ModalError.prototype.render = function () {
+	        var _this = this;
+	        return React.createElement("div", {className: "slds-notify_container slds-is-relative slds-m-bottom--x-small"}, React.createElement("div", {className: "slds-notify slds-notify--alert slds-theme--error slds-theme--alert-texture", role: "alert"}, React.createElement("button", {className: "slds-button slds-notify__close slds-button--icon-inverse", onClick: function () { return _this.close(); }}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, React.createElement("use", {xlinkHref: "/assets/icons/utility-sprite/svg/symbols.svg#close"})), React.createElement("span", {className: "slds-assistive-text"}, "Close")), React.createElement("span", {className: "slds-assistive-text"}, "Error"), React.createElement("h2", null, this.props.errorMessage)));
+	    };
+	    return ModalError;
+	}(React.Component));
+	var ModalErrorComponent = react_redux_1.connect(function (state, ownProps) {
+	    return {
+	        errorMessage: ownProps.errorMessage
+	    };
+	}, function (dispatch) {
+	    return {
+	        close: function (message) {
+	            dispatch(Modal.deleteError(message));
+	        }
+	    };
+	})(ModalError);
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 91 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3222,10 +3957,10 @@ webpackJsonp([0],[
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(41);
-	var ui = __webpack_require__(88);
-	var redux_form_1 = __webpack_require__(92);
-	var collection_1 = __webpack_require__(93);
+	var react_redux_1 = __webpack_require__(43);
+	var ui = __webpack_require__(91);
+	var redux_form_1 = __webpack_require__(95);
+	var collection_1 = __webpack_require__(96);
 	var _ = __webpack_require__(21);
 	var react_1 = __webpack_require__(20);
 	var SettingsForm = (function (_super) {
@@ -3349,8 +4084,8 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 92 */,
-/* 93 */
+/* 95 */,
+/* 96 */
 /***/ function(module, exports) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3378,7 +4113,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 94 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3386,13 +4121,13 @@ webpackJsonp([0],[
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
 	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(41);
-	var ui = __webpack_require__(88);
-	var Modal = __webpack_require__(52);
-	var ModalIds = __webpack_require__(53);
+	var react_redux_1 = __webpack_require__(43);
+	var ui = __webpack_require__(91);
+	var Modal = __webpack_require__(54);
+	var ModalIds = __webpack_require__(55);
 	var react_1 = __webpack_require__(20);
 	var DashboardTopNavItem = function (props) {
-	    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Menu Item"}, React.createElement("span", {className: "slds-truncate"}, "Board")), React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})), React.createElement("span", {className: "slds-assistive-text"}, "Open Board submenu"))), React.createElement("div", {className: "slds-dropdown slds-dropdown--right"}, React.createElement("ul", {className: "dropdown__list", role: "menu"}, React.createElement(ui.DropdownItem, {text: "Import / Export", icon: "change_record_type", onClick: function () { return props.showModal(ModalIds.DASHBOARD_IMPORT_EXPORT); }}))));
+	    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Dashboard"}, React.createElement("span", {className: "slds-truncate"}, "Board")), React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})), React.createElement("span", {className: "slds-assistive-text"}, "Open Board submenu"))), React.createElement("div", {className: "slds-dropdown slds-dropdown--right"}, React.createElement("ul", {className: "dropdown__list", role: "menu"}, React.createElement(ui.DropdownItem, {text: "Import / Export", icon: "change_record_type", onClick: function () { return props.showModal(ModalIds.DASHBOARD_IMPORT_EXPORT); }}))));
 	};
 	DashboardTopNavItem.propTypes = {
 	    showModal: react_1.PropTypes.func.isRequired
@@ -3410,7 +4145,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 95 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3423,10 +4158,9 @@ webpackJsonp([0],[
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(41);
-	var Import = __webpack_require__(96);
-	var modalDialog_ui_js_1 = __webpack_require__(90);
-	var ModalIds = __webpack_require__(53);
+	var react_redux_1 = __webpack_require__(43);
+	var Import = __webpack_require__(99);
+	var modalDialog_ui_1 = __webpack_require__(93);
 	var react_1 = __webpack_require__(20);
 	var ImportExportDialog = (function (_super) {
 	    __extends(ImportExportDialog, _super);
@@ -3480,7 +4214,7 @@ webpackJsonp([0],[
 	                }
 	            }
 	        ];
-	        return React.createElement(modalDialog_ui_js_1.default, {id: ModalIds.DASHBOARD_IMPORT_EXPORT, title: "Import / Export Dashboard", actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, React.createElement("button", {className: "ui compact labeled icon button", onClick: this._loadData.bind(this)}, React.createElement("i", {className: "refresh icon"}), "Load Data"), React.createElement("button", {className: "ui compact labeled icon button", onClick: this._exportToClipboard.bind(this)}, React.createElement("i", {className: "upload icon"}), "Copy to Clipboard"), React.createElement("button", {className: "ui compact labeled icon button", onClick: this._clearData.bind(this)}, React.createElement("i", {className: "erase icon"}), "Clear Data")), React.createElement("div", {className: "column"}, React.createElement("form", {className: "ui form"}, React.createElement("div", {className: "field"}, React.createElement("label", null, "Data"), React.createElement("textarea", {className: "monospace", ref: "data", rows: "10", onFocus: function (e) { return e.target.select(); }, placeholder: 'Click "Load Data" to get data for export or paste your data here ...'}))))));
+	        return React.createElement(modalDialog_ui_1.default, {id: "dashboard-import-export-dialog", title: "Import / Export Dashboard", actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, React.createElement("button", {className: "ui compact labeled icon button", onClick: this._loadData.bind(this)}, React.createElement("i", {className: "refresh icon"}), "Load Data"), React.createElement("button", {className: "ui compact labeled icon button", onClick: this._exportToClipboard.bind(this)}, React.createElement("i", {className: "upload icon"}), "Copy to Clipboard"), React.createElement("button", {className: "ui compact labeled icon button", onClick: this._clearData.bind(this)}, React.createElement("i", {className: "erase icon"}), "Clear Data")), React.createElement("div", {className: "column"}, React.createElement("form", {className: "ui form"}, React.createElement("div", {className: "field"}, React.createElement("label", null, "Data"), React.createElement("textarea", {className: "monospace", ref: "data", rows: "10", onFocus: function (e) { return e.target.select(); }, placeholder: 'Click "Load Data" to get data for export or paste your data here ...'}))))));
 	    };
 	    return ImportExportDialog;
 	}(React.Component));
@@ -3501,18 +4235,18 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 96 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Action = __webpack_require__(45);
-	var actionNames_1 = __webpack_require__(45);
-	var layouts_js_1 = __webpack_require__(87);
+	var Action = __webpack_require__(47);
+	var actionNames_1 = __webpack_require__(47);
+	var layouts_js_1 = __webpack_require__(90);
 	var _ = __webpack_require__(21);
-	var dashboard_1 = __webpack_require__(55);
+	var dashboard_1 = __webpack_require__(56);
 	/**
 	 * To extend the import/export by another property you just need to add the property to the exported data
 	 * See: serialize()
@@ -3573,7 +4307,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 97 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3586,14 +4320,14 @@ webpackJsonp([0],[
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(20);
-	var modalDialog_ui_js_1 = __webpack_require__(90);
-	var Datasource = __webpack_require__(59);
-	var react_redux_1 = __webpack_require__(41);
+	var modalDialog_ui_1 = __webpack_require__(93);
+	var Datasource = __webpack_require__(60);
+	var react_redux_1 = __webpack_require__(43);
 	var _ = __webpack_require__(21);
-	var ui = __webpack_require__(88);
-	var settingsForm_ui_1 = __webpack_require__(91);
-	var redux_form_1 = __webpack_require__(92);
-	var ModalIds = __webpack_require__(53);
+	var ui = __webpack_require__(91);
+	var settingsForm_ui_1 = __webpack_require__(94);
+	var redux_form_1 = __webpack_require__(95);
+	var ModalIds = __webpack_require__(55);
 	var react_1 = __webpack_require__(20);
 	var DIALOG_ID = ModalIds.DATASOURCE_CONFIG;
 	var FORM_ID = "datasource-settings-form";
@@ -3729,7 +4463,7 @@ webpackJsonp([0],[
 	        if (this._isEditing()) {
 	            title = "Edit Datasource";
 	        }
-	        return React.createElement(modalDialog_ui_js_1.default, {id: DIALOG_ID, title: title, actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, selectedDsPluginState && selectedDsPluginState.typeInfo.description ?
+	        return React.createElement(modalDialog_ui_1.default, {id: DIALOG_ID, title: title, actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, selectedDsPluginState && selectedDsPluginState.typeInfo.description ?
 	            React.createElement("div", {className: "ui icon message"}, React.createElement("i", {className: "idea icon"}), React.createElement("div", {className: "content"}, selectedDsPluginState.typeInfo.description))
 	            : null, React.createElement("div", {className: "field"}, React.createElement("label", null, "Type"), React.createElement("select", {className: "ui fluid dropdown", name: "type", value: this.state.selectedType, onChange: function (e) {
 	            _this.setState({ selectedType: e.target.value });
@@ -3767,7 +4501,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 98 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3775,13 +4509,13 @@ webpackJsonp([0],[
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
 	var React = __webpack_require__(20);
-	var Datasource = __webpack_require__(59);
-	var react_redux_1 = __webpack_require__(41);
+	var Datasource = __webpack_require__(60);
+	var react_redux_1 = __webpack_require__(43);
 	var _ = __webpack_require__(21);
-	var ui = __webpack_require__(88);
+	var ui = __webpack_require__(91);
 	var react_1 = __webpack_require__(20);
 	var DatasourceTopNavItem = function (props) {
-	    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Menu Item"}, React.createElement("span", {className: "slds-truncate"}, "Datasources")), React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})), React.createElement("span", {className: "slds-assistive-text"}, "Open Datasources submenu"))), React.createElement("div", {className: "slds-dropdown slds-dropdown--right"}, React.createElement("ul", {className: "dropdown__list", role: "menu"}, React.createElement(ui.DropdownItem, {text: "Add Datasource", icon: "add", onClick: function () { return props.createDatasource(); }}), React.createElement("li", {className: "slds-dropdown__header slds-has-divider--top-space", role: "separator"}, React.createElement("span", {className: "slds-text-title--caps"}, "Datasources")), _.valuesIn(props.datasources).map(function (ds) {
+	    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Datasources"}, React.createElement("span", {className: "slds-truncate"}, "Datasources")), React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})), React.createElement("span", {className: "slds-assistive-text"}, "Open Datasources submenu"))), React.createElement("div", {className: "slds-dropdown slds-dropdown--right"}, React.createElement("ul", {className: "dropdown__list", role: "menu"}, React.createElement(ui.DropdownItem, {text: "Add Datasource", icon: "add", onClick: function () { return props.createDatasource(); }}), React.createElement("li", {className: "slds-dropdown__header slds-has-divider--top-space", role: "separator"}, React.createElement("span", {className: "slds-text-title--caps"}, "Datasources")), _.valuesIn(props.datasources).map(function (ds) {
 	        return React.createElement(ui.DropdownItem, {key: ds.id, text: ds.settings.name, iconRight: "delete", iconRightClick: function () { return props.deleteDatasource(ds.id); }, onClick: function () { return props.editDatasource(ds.id); }});
 	    }))));
 	};
@@ -3810,7 +4544,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 99 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3819,18 +4553,24 @@ webpackJsonp([0],[
 	"use strict";
 	var React = __webpack_require__(20);
 	var react_1 = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(41);
-	var WidgetConfig = __webpack_require__(51);
+	var react_redux_1 = __webpack_require__(43);
+	var WidgetConfig = __webpack_require__(53);
 	var _ = __webpack_require__(21);
-	var ui = __webpack_require__(88);
-	var WidgetPlugins = __webpack_require__(54);
+	var ui = __webpack_require__(91);
 	var WidgetsNavItem = function (props) {
-	    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Menu Item"}, React.createElement("span", {className: "slds-truncate"}, "Add Widget")), React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})), React.createElement("span", {className: "slds-assistive-text"}, "Open Add Widget submenu"))), React.createElement("div", {className: "slds-dropdown slds-dropdown--right"}, React.createElement("ul", {className: "dropdown__list", role: "menu"}, _.valuesIn(props.widgetPlugins).map(function (widgetPlugin) {
+	    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Widgets"}, React.createElement("span", {className: "slds-truncate"}, "Add Widget")), React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})), React.createElement("span", {className: "slds-assistive-text"}, "Open Add Widget submenu"))), React.createElement("div", {className: "slds-dropdown slds-dropdown--right"}, React.createElement("ul", {className: "dropdown__list", role: "menu"}, _.valuesIn(props.widgetPlugins).map(function (widgetPlugin) {
 	        return React.createElement(ui.DropdownItem, {key: widgetPlugin.id, text: widgetPlugin.typeInfo.name, icon: "add", onClick: function () { return props.createWidget(widgetPlugin.typeInfo.type); }});
 	    }))));
 	};
 	WidgetsNavItem.propTypes = {
-	    widgetPlugins: react_1.PropTypes.objectOf(WidgetPlugins.widgetPluginType)
+	    widgetPlugins: react_1.PropTypes.objectOf(react_1.PropTypes.shape({
+	        id: react_1.PropTypes.string.isRequired,
+	        typeInfo: react_1.PropTypes.shape({
+	            type: react_1.PropTypes.string.isRequired,
+	            name: react_1.PropTypes.string.isRequired,
+	            settings: react_1.PropTypes.array
+	        })
+	    }))
 	};
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = react_redux_1.connect(function (state) {
@@ -3847,7 +4587,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 100 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3855,15 +4595,11 @@ webpackJsonp([0],[
 	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
 	var React = __webpack_require__(20);
-	var react_redux_1 = __webpack_require__(41);
-	var ModalIds = __webpack_require__(53);
-	var Modal = __webpack_require__(52);
-	var react_1 = __webpack_require__(20);
+	var react_redux_1 = __webpack_require__(43);
+	var ModalIds = __webpack_require__(55);
+	var Modal = __webpack_require__(54);
 	var PluginsTopNavItem = function (props) {
-	    return React.createElement("li", {className: "slds-context-bar__item"}, React.createElement("a", {href: "javascript:void(0);", onClick: function () { return props.showPluginsDialog(); }, className: "slds-context-bar__label-action", title: "Menu Item 1"}, React.createElement("span", {className: "slds-truncate"}, "Plugins")));
-	};
-	PluginsTopNavItem.propTypes = {
-	    showPluginsDialog: react_1.PropTypes.func.isRequired
+	    return React.createElement("li", {className: "slds-context-bar__item"}, React.createElement("a", {href: "javascript:void(0);", onClick: function () { return props.showPluginsDialog(); }, className: "slds-context-bar__label-action", title: "Plugins"}, React.createElement("span", {className: "slds-truncate"}, "Plugins")));
 	};
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = react_redux_1.connect(function (state) {
@@ -3878,7 +4614,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 101 */
+/* 104 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3890,29 +4626,36 @@ webpackJsonp([0],[
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var __assign = (this && this.__assign) || Object.assign || function(t) {
-	    for (var s, i = 1, n = arguments.length; i < n; i++) {
-	        s = arguments[i];
-	        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-	            t[p] = s[p];
-	    }
-	    return t;
-	};
 	var React = __webpack_require__(20);
-	var modalDialog_ui_js_1 = __webpack_require__(90);
-	var react_redux_1 = __webpack_require__(41);
+	var modalDialog_ui_1 = __webpack_require__(93);
+	var react_redux_1 = __webpack_require__(43);
 	var _ = __webpack_require__(21);
-	var ModalIds = __webpack_require__(53);
-	var Modal = __webpack_require__(52);
-	var Plugins = __webpack_require__(62);
-	var WidgetsPlugins = __webpack_require__(54);
-	var DatasourcePlugins = __webpack_require__(102);
-	var react_1 = __webpack_require__(20);
+	var Modal = __webpack_require__(54);
+	var Plugins = __webpack_require__(63);
+	var WidgetsPlugins = __webpack_require__(65);
+	var DatasourcePlugins = __webpack_require__(64);
 	var PluginsModal = (function (_super) {
 	    __extends(PluginsModal, _super);
-	    function PluginsModal() {
-	        _super.apply(this, arguments);
+	    function PluginsModal(props) {
+	        _super.call(this, props);
+	        this.state = {
+	            pluginUrl: "",
+	            isSearchOpen: false
+	        };
 	    }
+	    PluginsModal.prototype.pluginSearchValueChange = function (e) {
+	        var pluginUrlInput = this.refs['pluginUrl']; // HTMLInputElement
+	        this.setState({ pluginUrl: pluginUrlInput.value });
+	    };
+	    PluginsModal.prototype.onBlurPluginSearchInput = function (e) {
+	        var _this = this;
+	        setTimeout(function () {
+	            _this.setState({ isSearchOpen: false });
+	        }, 300);
+	    };
+	    PluginsModal.prototype.onFocusPluginSearchInput = function (e) {
+	        this.setState({ isSearchOpen: true });
+	    };
 	    PluginsModal.prototype.render = function () {
 	        var _this = this;
 	        var props = this.props;
@@ -3928,19 +4671,19 @@ webpackJsonp([0],[
 	        ];
 	        var datasourcePluginStates = _.valuesIn(props.datasourcePlugins);
 	        var widgetPluginStates = _.valuesIn(props.widgetPlugins);
-	        return React.createElement(modalDialog_ui_js_1.default, {id: ModalIds.PLUGINS, title: "Plugins", actions: actions}, React.createElement("div", {className: "slds-grid"}, React.createElement("div", {className: "slds-size--1-of-1"}, React.createElement("h2", {className: "slds-section-title--divider slds-m-bottom--medium"}, "Load Plugin"), React.createElement("form", {className: "slds-form--inline slds-grid", onSubmit: function (e) {
-	            props.loadPlugin(_this.refs.pluginUrl.value);
+	        var pluginUrlInput = this.refs['pluginUrl']; // HTMLInputElement
+	        return React.createElement(modalDialog_ui_1.default, {id: "plugins-dialog", title: "Plugins", actions: actions}, React.createElement("div", {className: "slds-grid"}, React.createElement("div", {className: "slds-size--1-of-1"}, React.createElement("h2", {className: "slds-section-title--divider slds-m-bottom--medium"}, "Load Plugin"), React.createElement("form", {className: "slds-form--inline slds-grid", onSubmit: function (e) {
+	            props.loadPlugin(pluginUrlInput.value);
+	            pluginUrlInput.value = "";
 	            e.preventDefault();
-	        }}, React.createElement("div", {className: "slds-form-element slds-has-flexi-truncate"}, React.createElement("div", {className: "slds-form-element__control slds-size--1-of-1"}, React.createElement("div", {className: "slds-input-has-icon slds-input-has-icon--right"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-input__icon"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#search"})), React.createElement("input", {className: "slds-lookup__search-input slds-input", type: "search", placeholder: "URL or Id from Plugin Registry", id: "plugin-url-input", ref: "pluginUrl", name: "plugin-url", defaultValue: "plugins/TestWidgetPlugin.js"})))), React.createElement("div", {className: "slds-form-element slds-no-flex"}, React.createElement("button", {className: "slds-button slds-button--brand", type: "submit", tabIndex: "0"}, "Load Plugin"))), React.createElement("h4", {className: "slds-section-title--divider slds-m-top--medium slds-m-bottom--medium"}, "Datasource Plugins (Installed)"), React.createElement(DatasourcePluginList, __assign({datasourceStates: datasourcePluginStates}, props)), React.createElement("h4", {className: "slds-section-title--divider slds-m-top--medium slds-m-bottom--medium"}, "Widget Plugins (Installed)"), React.createElement(WidgetPluginList, __assign({widgetPluginStates: widgetPluginStates}, props)))));
+	        }}, React.createElement("div", {className: "slds-form-element slds-has-flexi-truncate slds-lookup" + (this.state.isSearchOpen ? " slds-is-open" : ""), "data-select": "single"}, React.createElement("div", {className: "slds-form-element__control slds-size--1-of-1"}, React.createElement("div", {className: "slds-input-has-icon slds-input-has-icon--right"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-input__icon"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#search"})), React.createElement("input", {className: "slds-lookup__search-input slds-input", type: "search", placeholder: "URL or Id from Plugin Registry", id: "plugin-lookup-menu", ref: "pluginUrl", autoComplete: "off", defaultValue: "", onChange: function (e) { return _this.pluginSearchValueChange(e); }, onBlur: function (e) { return _this.onBlurPluginSearchInput(e); }, onFocus: function (e) { return _this.onFocusPluginSearchInput(e); }, "aria-owns": "plugin-lookup-menu", role: "combobox", "aria-activedescendent": "", "aria-expanded": (this.state.isSearchOpen ? "true" : "false"), "aria-autocomplete": "list"}))), React.createElement(LookupMenu, {id: "plugin-lookup-menu", searchString: this.state.pluginUrl, onItemClicked: function (item) { return props.loadPlugin('plugin://' + item.type); }})), React.createElement("div", {className: "slds-form-element slds-no-flex"}, React.createElement("button", {className: "slds-button slds-button--brand", type: "submit", tabIndex: "0"}, "Load Plugin"))), React.createElement("h4", {className: "slds-section-title--divider slds-m-top--medium slds-m-bottom--medium"}, "Datasource Plugins (Installed)"), React.createElement("div", {className: "slds-grid slds-grid--vertical-stretch slds-wrap slds-has-dividers--around-space"}, datasourcePluginStates.map(function (dsState) {
+	            return React.createElement(DatasourcePluginTile, {key: dsState.id, pluginId: dsState.id});
+	        })), React.createElement("h4", {className: "slds-section-title--divider slds-m-top--medium slds-m-bottom--medium"}, "Widget Plugins (Installed)"), React.createElement("div", {className: "slds-grid slds-grid--vertical-stretch slds-wrap slds-has-dividers--around-space"}, widgetPluginStates.map(function (dsState) {
+	            return React.createElement(WidgetPluginTile, {key: dsState.id, pluginId: dsState.id});
+	        })))));
 	    };
 	    return PluginsModal;
 	}(React.Component));
-	PluginsModal.propTypes = {
-	    datasourcePlugins: react_1.PropTypes.object.isRequired,
-	    widgetPlugins: react_1.PropTypes.object.isRequired,
-	    closeDialog: react_1.PropTypes.func.isRequired,
-	    loadPlugin: react_1.PropTypes.func.isRequired
-	};
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = react_redux_1.connect(function (state) {
 	    return {
@@ -3955,24 +4698,11 @@ webpackJsonp([0],[
 	        loadPlugin: function (url) { return dispatch(Plugins.startLoadingPluginFromUrl(url)); }
 	    };
 	})(PluginsModal);
-	var DatasourcePluginList = function (props) {
-	    return React.createElement("div", {className: "slds-grid slds-grid--vertical-stretch slds-wrap slds-has-dividers--around-space"}, props.datasourceStates.map(function (dsState) {
-	        return React.createElement(DatasourcePluginTile, __assign({key: dsState.id, pluginState: dsState}, props));
-	    }));
-	};
-	DatasourcePluginList.propTypes = {
-	    datasourceStates: react_1.PropTypes.arrayOf(react_1.PropTypes.shape({
-	        id: react_1.PropTypes.string.isRequired
-	    })).isRequired
-	};
-	var WidgetPluginList = function (props) {
-	    return React.createElement("div", {className: "slds-grid slds-grid--vertical-stretch slds-wrap slds-has-dividers--around-space"}, props.widgetPluginStates.map(function (dsState) {
-	        return React.createElement(WidgetPluginTile, __assign({key: dsState.id, pluginState: dsState}, props));
-	    }));
-	};
-	WidgetPluginList.propTypes = {
-	    widgetPluginStates: react_1.PropTypes.arrayOf(WidgetsPlugins.widgetPluginType)
-	};
+	var PluginTileProps = (function () {
+	    function PluginTileProps() {
+	    }
+	    return PluginTileProps;
+	}());
 	var PluginTile = (function (_super) {
 	    __extends(PluginTile, _super);
 	    function PluginTile(props) {
@@ -3980,8 +4710,9 @@ webpackJsonp([0],[
 	        this.state = { actionMenuOpen: false };
 	    }
 	    PluginTile.prototype._copyUrl = function () {
-	        this.refs.url.focus();
-	        this.refs.url.select();
+	        var urlInput = this.refs['url'];
+	        urlInput.focus();
+	        urlInput.select();
 	        document.execCommand('copy');
 	    };
 	    PluginTile.prototype.toggleActionMenu = function () {
@@ -3996,132 +4727,70 @@ webpackJsonp([0],[
 	        var pluginState = props.pluginState;
 	        var description = pluginState.typeInfo.description ? pluginState.typeInfo.description : "No Description.";
 	        var url = pluginState.url ? pluginState.url : "Packaged";
-	        return React.createElement("div", {className: "slds-tile slds-item slds-size--1-of-5 slds-m-around--x-small xxslds-p-left--small xxslds-p-right--small", style: { marginTop: "0.5rem" }}, React.createElement("div", {className: "slds-grid slds-grid--align-spread slds-has-flexi-truncate slds-m-bottom--x-small"}, React.createElement("h3", {className: "slds-text-heading--medium"}, pluginState.typeInfo.name), React.createElement("div", {className: "slds-shrink-none slds-dropdown-trigger slds-dropdown-trigger--click" + (this.state.actionMenuOpen ? " slds-is-open" : "")}, React.createElement("button", {className: "slds-button slds-button--icon-border-filled slds-button--icon-x-small", "aria-haspopup": "true", onClick: function () { return _this.toggleActionMenu(); }, onBlur: function () { return setTimeout(function () { return _this.closeActionMenu(); }, 50); }}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon slds-button__icon--hint"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#down"})), React.createElement("span", {className: "slds-assistive-text"}, "Actions")), React.createElement("div", {className: "slds-dropdown slds-dropdown--left slds-dropdown--actions"}, React.createElement("ul", {className: "dropdown__list", role: "menu"}, React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, React.createElement("a", {href: "javascript:void(0);", role: "menuitem", tabIndex: "0", onClick: function () { return props.removePlugin(pluginState.id); }}, React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default slds-m-right--x-small slds-shrink-none"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#delete"})), React.createElement("span", {className: "slds-truncate"}, "Remove"))))))), React.createElement("div", {className: "slds-tile__detail"}, React.createElement("dl", {className: "slds-dl--horizontal"}, React.createElement("dt", {className: "slds-dl--horizontal__label"}, React.createElement("p", {className: "slds-truncate", title: "Type"}, "Type:")), React.createElement("dd", {className: "slds-dl--horizontal__detail slds-tile__meta"}, React.createElement("p", {className: "slds-truncate", title: pluginState.typeInfo.type}, pluginState.typeInfo.type)), React.createElement("dt", {className: "slds-dl--horizontal__label"}, React.createElement("p", {className: "slds-truncate", title: "Type"}, "Url:")), React.createElement("dd", {className: "slds-dl--horizontal__detail slds-tile__meta"}, React.createElement("div", {className: "slds-form-element__control slds-input-has-icon slds-input-has-icon--left", title: url}, React.createElement("svg", {"aria-hidden": "true", className: "slds-input__icon slds-icon-text-default", onClick: function () { return _this._copyUrl(); }}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#copy"})), React.createElement("input", {className: "slds-input", type: "text", ref: "url", readOnly: true, style: { width: "100%", paddingRight: 0 }, placeholder: "Plugin Url ...", defaultValue: url})))), React.createElement("p", null, description)));
+	        return React.createElement("div", {className: "slds-tile slds-item slds-size--1-of-5 slds-m-around--x-small", style: { marginTop: "0.5rem" }}, React.createElement("div", {className: "slds-grid slds-grid--align-spread slds-has-flexi-truncate slds-m-bottom--x-small"}, React.createElement("h3", {className: "slds-text-heading--medium"}, pluginState.typeInfo.name), React.createElement("div", {className: "slds-shrink-none slds-dropdown-trigger slds-dropdown-trigger--click" + (this.state.actionMenuOpen ? " slds-is-open" : "")}, React.createElement("button", {className: "slds-button slds-button--icon-border-filled slds-button--icon-x-small", "aria-haspopup": "true", onClick: function () { return _this.toggleActionMenu(); }, onBlur: function () { return setTimeout(function () { return _this.closeActionMenu(); }, 200); }}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon slds-button__icon--hint"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#down"})), React.createElement("span", {className: "slds-assistive-text"}, "Actions")), React.createElement("div", {className: "slds-dropdown slds-dropdown--left slds-dropdown--actions"}, React.createElement("ul", {className: "dropdown__list", role: "menu"}, React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, React.createElement("a", {href: "javascript:void(0);", role: "menuitem", tabIndex: "0", onClick: function () { return props.publishPlugin(pluginState.id); }}, React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default slds-m-right--x-small slds-shrink-none"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#upload"})), React.createElement("span", {className: "slds-truncate"}, "Publish"))), React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, React.createElement("a", {href: "javascript:void(0);", role: "menuitem", tabIndex: "0", onClick: function () { return props.removePlugin(pluginState.id); }}, React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default slds-m-right--x-small slds-shrink-none"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#delete"})), React.createElement("span", {className: "slds-truncate"}, "Remove"))))))), React.createElement("div", {className: "slds-tile__detail"}, React.createElement("dl", {className: "slds-dl--horizontal"}, React.createElement("dt", {className: "slds-dl--horizontal__label"}, React.createElement("p", {className: "slds-truncate", title: "Type"}, "Type:")), React.createElement("dd", {className: "slds-dl--horizontal__detail slds-tile__meta"}, React.createElement("p", {className: "slds-truncate", title: pluginState.typeInfo.type}, pluginState.typeInfo.type)), React.createElement("dt", {className: "slds-dl--horizontal__label"}, React.createElement("p", {className: "slds-truncate", title: "Version"}, "Version:")), React.createElement("dd", {className: "slds-dl--horizontal__detail slds-tile__meta"}, React.createElement("p", {className: "slds-truncate", title: pluginState.typeInfo.version}, pluginState.typeInfo.version)), React.createElement("dt", {className: "slds-dl--horizontal__label"}, React.createElement("p", {className: "slds-truncate", title: "Author"}, "Author:")), React.createElement("dd", {className: "slds-dl--horizontal__detail slds-tile__meta"}, React.createElement("p", {className: "slds-truncate", title: pluginState.typeInfo.author}, pluginState.typeInfo.author)), React.createElement("dt", {className: "slds-dl--horizontal__label"}, React.createElement("p", {className: "slds-truncate", title: "Type"}, "Url:")), React.createElement("dd", {className: "slds-dl--horizontal__detail slds-tile__meta"}, React.createElement("div", {className: "slds-form-element__control slds-input-has-icon slds-input-has-icon--left", title: url}, React.createElement("svg", {"aria-hidden": "true", className: "slds-input__icon slds-icon-text-default", onClick: function () { return _this._copyUrl(); }}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#copy"})), React.createElement("input", {className: "slds-input", type: "text", ref: "url", readOnly: true, style: { width: "100%", paddingRight: 0 }, placeholder: "Plugin Url ...", value: url})))), React.createElement("p", {className: "slds-m-top--x-small"}, description)));
 	    };
 	    return PluginTile;
 	}(React.Component));
-	PluginTile.propTypes = {
-	    pluginState: react_1.PropTypes.object.isRequired,
-	    removePlugin: react_1.PropTypes.func.isRequired
-	};
-	var WidgetPluginTile = react_redux_1.connect(function (state) {
-	    return {};
+	var WidgetPluginTile = react_redux_1.connect(function (state, ownProps) {
+	    return {
+	        pluginState: state.widgetPlugins[ownProps.pluginId]
+	    };
 	}, function (dispatch) {
 	    return {
-	        removePlugin: function (type) { return dispatch(WidgetsPlugins.unloadPlugin(type)); }
+	        removePlugin: function (type) { return dispatch(WidgetsPlugins.unloadPlugin(type)); },
+	        publishPlugin: function (type) { return dispatch(Plugins.publishPlugin(type)); }
 	    };
 	})(PluginTile);
-	var DatasourcePluginTile = react_redux_1.connect(function (state) {
-	    return {};
+	var DatasourcePluginTile = react_redux_1.connect(function (state, ownProps) {
+	    return {
+	        pluginState: state.datasourcePlugins[ownProps.pluginId]
+	    };
 	}, function (dispatch) {
 	    return {
-	        removePlugin: function (type) { return dispatch(DatasourcePlugins.unloadPlugin(type)); }
+	        removePlugin: function (type) { return dispatch(DatasourcePlugins.unloadPlugin(type)); },
+	        publishPlugin: function (type) { return dispatch(Plugins.publishPlugin(type)); }
 	    };
 	})(PluginTile);
-
-
-/***/ },
-/* 102 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(_) {/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
-	"use strict";
-	var Action = __webpack_require__(45);
-	var reducer_js_1 = __webpack_require__(49);
-	var dashboard_1 = __webpack_require__(55);
-	// TODO: does it work to have the URL as ID?
-	var initialState = {
-	    "random": {
-	        id: "random",
-	        url: "./plugins/datasources/randomDatasource.js",
-	        typeInfo: {
-	            type: "will-be-loaded"
-	        }
-	    },
-	    "time": {
-	        id: "time",
-	        url: "./plugins/datasources/timeDatasource.js",
-	        typeInfo: {
-	            type: "will-be-loaded"
-	        }
-	    },
-	    "static-data": {
-	        id: "static-data",
-	        url: "./plugins/datasources/staticData.js",
-	        typeInfo: {
-	            type: "will-be-loaded"
-	        }
-	    },
-	    "digimondo-firefly-datasource": {
-	        id: "digimondo-firefly-datasource",
-	        url: "./plugins/datasources/digimondoFirefly.js",
-	        typeInfo: {
-	            type: "will-be-loaded"
-	        }
+	var LookupMenu = (function (_super) {
+	    __extends(LookupMenu, _super);
+	    function LookupMenu(props) {
+	        _super.call(this, props);
+	        this.state = {
+	            searchResult: []
+	        };
 	    }
-	};
-	function unloadPlugin(type) {
-	    return function (dispatch) {
-	        var dsFactory = dashboard_1.default.getInstance().datasourcePluginRegistry.getPlugin(type);
-	        dsFactory.dispose();
-	        dispatch(deletePlugin(type));
-	    };
-	}
-	exports.unloadPlugin = unloadPlugin;
-	function deletePlugin(type) {
-	    return {
-	        type: Action.DELETE_DATASOURCE_PLUGIN,
-	        id: type
-	    };
-	}
-	var pluginsCrudReducer = reducer_js_1.genCrudReducer([Action.DATASOURCE_PLUGIN_FINISHED_LOADING, Action.DELETE_DATASOURCE_PLUGIN], datasourcePlugin);
-	function datasourcePlugins(state, action) {
-	    if (state === void 0) { state = initialState; }
-	    state = pluginsCrudReducer(state, action);
-	    switch (action.type) {
-	        case Action.STARTED_LOADING_PLUGIN_FROM_URL:
-	            if (state[action.id]) {
-	                return _.assign({}, state, (_a = {},
-	                    _a[action.id] = datasourcePlugin(state[action.id], action),
-	                    _a
-	                ));
-	            }
-	            else {
-	                return state;
-	            }
-	        default:
-	            return state;
-	    }
-	    var _a;
-	}
-	exports.datasourcePlugins = datasourcePlugins;
-	function datasourcePlugin(state, action) {
-	    switch (action.type) {
-	        case Action.DATASOURCE_PLUGIN_FINISHED_LOADING:
-	            if (!action.typeInfo.type) {
-	                // TODO: Catch this earlier
-	                throw new Error("A Plugin needs a type name. Please define TYPE_INFO.type");
-	            }
-	            return {
-	                id: action.typeInfo.type,
-	                url: action.url,
-	                typeInfo: action.typeInfo
-	            };
-	        case Action.STARTED_LOADING_PLUGIN_FROM_URL:
-	            return _.assign({}, state, {
-	                isLoading: true
+	    LookupMenu.prototype.componentWillReceiveProps = function (nextProps) {
+	        var _this = this;
+	        if (!nextProps.searchString) {
+	            this.setState({
+	                searchResult: []
 	            });
-	        default:
-	            return state;
-	    }
-	}
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)))
+	            return;
+	        }
+	        fetch("http://localhost:8081/api/plugins/?q=" + nextProps.searchString)
+	            .then(function (result) {
+	            return result.json();
+	        })
+	            .then(function (json) {
+	            _this.setState({
+	                searchResult: json.plugins
+	            });
+	        });
+	    };
+	    LookupMenu.prototype.render = function () {
+	        var _this = this;
+	        var props = this.props;
+	        /*Icons for Widget = dashboard, report, poll / Datasource = feed */
+	        return React.createElement("div", {className: "slds-lookup__menu", id: props.id}, React.createElement("ul", {className: "slds-lookup__list", role: "presentation"}, React.createElement("li", {role: "presentation"}, React.createElement("span", {className: "slds-lookup__item-action slds-lookup__item-action--label", id: props.id + "-header", role: "option"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default"}, React.createElement("use", {xlinkHref: "/assets/icons/utility-sprite/svg/symbols.svg#search"})), React.createElement("span", {className: "slds-truncate"}, "\"", props.searchString, "\" in plugin registry"))), this.state.searchResult.map(function (item, i) {
+	            return React.createElement("li", {role: "presentation", key: item.type, onClick: function (e) { return _this.props.onItemClicked(item); }}, React.createElement("span", {className: "slds-lookup__item-action slds-media slds-media--center", id: props.id + "-" + i, role: "option"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon-standard-account slds-icon--small slds-media__figure"}, React.createElement("use", {xlinkHref: "/assets/icons/standard-sprite/svg/symbols.svg#dashboard"})), React.createElement("div", {className: "slds-media__body"}, React.createElement("div", {className: "slds-lookup__result-text"}, React.createElement("mark", null, item.name), " (", item.type, ")"), React.createElement("span", {className: "slds-lookup__result-meta slds-text-body--small"}, "DS/Widget • by ", item.author, " • ", item.description))));
+	        })));
+	    };
+	    return LookupMenu;
+	}(React.Component));
+
 
 /***/ },
-/* 103 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -4217,30 +4886,30 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 104 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var Redux = __webpack_require__(42);
-	var redux_thunk_1 = __webpack_require__(105);
-	var createLogger = __webpack_require__(106);
-	var Widgets = __webpack_require__(47);
-	var WidgetConfig = __webpack_require__(51);
-	var Layouts = __webpack_require__(87);
-	var Datasource = __webpack_require__(59);
-	var Global = __webpack_require__(44);
-	var Import = __webpack_require__(96);
-	var Modal = __webpack_require__(52);
-	var Persist = __webpack_require__(103);
-	var Plugins = __webpack_require__(62);
-	var redux_form_1 = __webpack_require__(92);
-	var Action = __webpack_require__(45);
-	var WidgetPlugins = __webpack_require__(54);
-	var DatasourcePlugins = __webpack_require__(102);
-	var Config = __webpack_require__(107);
+	var Redux = __webpack_require__(44);
+	var redux_thunk_1 = __webpack_require__(107);
+	var createLogger = __webpack_require__(108);
+	var Widgets = __webpack_require__(49);
+	var WidgetConfig = __webpack_require__(53);
+	var Layouts = __webpack_require__(90);
+	var Datasource = __webpack_require__(60);
+	var Global = __webpack_require__(46);
+	var Import = __webpack_require__(99);
+	var Modal = __webpack_require__(54);
+	var Persist = __webpack_require__(105);
+	var Plugins = __webpack_require__(63);
+	var redux_form_1 = __webpack_require__(95);
+	var Action = __webpack_require__(47);
+	var WidgetPlugins = __webpack_require__(65);
+	var DatasourcePlugins = __webpack_require__(64);
+	var Config = __webpack_require__(109);
 	// TODO: name all reducers ***Reducer
 	var appReducer = Redux.combineReducers({
 	    config: Config.config,
@@ -4338,9 +5007,9 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 105 */,
-/* 106 */,
-/* 107 */
+/* 107 */,
+/* 108 */,
+/* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -4348,7 +5017,7 @@ webpackJsonp([0],[
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	var _ = __webpack_require__(21);
-	var configJson = __webpack_require__(108);
+	var configJson = __webpack_require__(110);
 	var defaultConfig = {
 	    version: "",
 	    revision: "",
@@ -4375,14 +5044,14 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 108 */
+/* 110 */
 /***/ function(module, exports) {
 
 	module.exports = {
 		"version": "0.1.17",
-		"revision": "a660cd6dfdca86e5bd6473b43c237f0e088680a6",
-		"revisionShort": "a660cd6",
-		"branch": "Detatched: a660cd6dfdca86e5bd6473b43c237f0e088680a6"
+		"revision": "329ea8df7c8bf1916f180da6c62788daa002f130",
+		"revisionShort": "329ea8d",
+		"branch": "Detatched: 329ea8df7c8bf1916f180da6c62788daa002f130"
 	};
 
 /***/ }

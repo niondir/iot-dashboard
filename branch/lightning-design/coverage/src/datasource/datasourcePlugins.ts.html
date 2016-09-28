@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">74.19% </span>
+        <span class="strong">65.79% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>23/31</span>
+        <span class='fraction'>25/38</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">81.82% </span>
+        <span class="strong">60% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>9/11</span>
+        <span class='fraction'>9/15</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">40% </span>
+        <span class="strong">33.33% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/5</span>
+        <span class='fraction'>2/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">73.33% </span>
+        <span class="strong">64.86% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>22/30</span>
+        <span class='fraction'>24/37</span>
       </div>
     </div>
   </div>
@@ -137,7 +137,35 @@
 92
 93
 94
-95</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -146,6 +174,10 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -180,6 +212,15 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -194,10 +235,18 @@
 <span class="cline-any cline-yes">61×</span>
 <span class="cline-any cline-yes">61×</span>
 <span class="cline-any cline-yes">61×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -213,11 +262,18 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">7×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -245,28 +301,32 @@ var initialState = {
         url: "./plugins/datasources/randomDatasource.js",
         typeInfo: {
             type: "will-be-loaded"
-        }
+        },
+        isLoading: true
     },
     "time": {
         id: "time",
         url: "./plugins/datasources/timeDatasource.js",
         typeInfo: {
             type: "will-be-loaded"
-        }
+        },
+        isLoading: true
     },
     "static-data": {
         id: "static-data",
         url: "./plugins/datasources/staticData.js",
         typeInfo: {
             type: "will-be-loaded"
-        }
+        },
+        isLoading: true
     },
     "digimondo-firefly-datasource": {
         id: "digimondo-firefly-datasource",
         url: "./plugins/datasources/digimondoFirefly.js",
         typeInfo: {
             type: "will-be-loaded"
-        }
+        },
+        isLoading: true
     }
 };
 <span class="fstat-no" title="function not covered" >function unloadPlugin(type) {</span>
@@ -277,6 +337,15 @@ var initialState = {
     };
 }
 exports.unloadPlugin = unloadPlugin;
+<span class="fstat-no" title="function not covered" >function publishedDatasourcePlugin(type, url, typeInfo) {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+        type: Action.PUBLISHED_DATASOURCE_PLUGIN,
+        id: type,
+        url: url,
+        typeInfo: typeInfo
+    };
+}
+exports.publishedDatasourcePlugin = publishedDatasourcePlugin;
 <span class="fstat-no" title="function not covered" >function deletePlugin(type) {</span>
 <span class="cstat-no" title="statement not covered" >    return {</span>
         type: Action.DELETE_DATASOURCE_PLUGIN,
@@ -288,24 +357,38 @@ function datasourcePlugins(state, action) {
     if (state === void 0) { state = initialState; }
     state = pluginsCrudReducer(state, action);
     switch (action.type) {
-        case Action.STARTED_LOADING_PLUGIN_FROM_URL:
-            if (state[action.id]) {
-                return _.assign({}, state, (_a = {},
+<span class="branch-0 cbranch-no" title="branch not covered" >        case Action.PUBLISHED_DATASOURCE_PLUGIN: {</span>
+<span class="cstat-no" title="statement not covered" >            if (state[action.id]) {</span>
+<span class="cstat-no" title="statement not covered" >                return _.assign({}, state, (_a = {},</span>
                     _a[action.id] = datasourcePlugin(state[action.id], action),
                     _a
                 ));
             }
-            else {
-                return state;
+<span class="cstat-no" title="statement not covered" >            return state;</span>
+        }
+        case Action.STARTED_LOADING_PLUGIN_FROM_URL: {
+            if (state[action.id]) {
+                return _.assign({}, state, (_b = {},
+                    _b[action.id] = datasourcePlugin(state[action.id], action),
+                    _b
+                ));
             }
+            return state;
+        }
         default:
             return state;
     }
-<span class="cstat-no" title="statement not covered" >    var _a;</span>
+<span class="cstat-no" title="statement not covered" >    var _a, _b;</span>
 }
 exports.datasourcePlugins = datasourcePlugins;
 function datasourcePlugin(state, action) {
     switch (action.type) {
+<span class="branch-0 cbranch-no" title="branch not covered" >        case Action.PUBLISHED_DATASOURCE_PLUGIN: {</span>
+<span class="cstat-no" title="statement not covered" >            return _.assign({}, state, {</span>
+                url: action.url,
+                typeInfo: action.typeInfo
+            });
+        }
         case Action.DATASOURCE_PLUGIN_FINISHED_LOADING:
             <span class="missing-if-branch" title="if path not taken" >I</span>if (!action.typeInfo.type) {
                 // TODO: Catch this earlier
@@ -314,13 +397,14 @@ function datasourcePlugin(state, action) {
             return {
                 id: action.typeInfo.type,
                 url: action.url,
-                typeInfo: action.typeInfo
+                typeInfo: action.typeInfo,
+                isLoading: false
             };
         case Action.STARTED_LOADING_PLUGIN_FROM_URL:
             return _.assign({}, state, {
                 isLoading: true
             });
-<span class="branch-2 cbranch-no" title="branch not covered" >        default:</span>
+<span class="branch-3 cbranch-no" title="branch not covered" >        default:</span>
 <span class="cstat-no" title="statement not covered" >            return state;</span>
     }
 }
@@ -331,7 +415,7 @@ function datasourcePlugin(state, action) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 26 2016 12:24:19 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Sep 28 2016 11:44:48 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
