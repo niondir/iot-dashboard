@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/pluginApi/plugins.ts</title>
+    <title>Code coverage report for src/pluginApi/pluginLoader.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">all files</a> / <a href="index.html">src/pluginApi/</a> plugins.ts
+      <a href="../../index.html">all files</a> / <a href="index.html">src/pluginApi/</a> pluginLoader.ts
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
@@ -212,13 +212,13 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -360,16 +360,16 @@ var initialState = {
  *  Load plugin from URL or registry when starting with plugin://
  */
 <span class="fstat-no" title="function not covered" >function startLoadingPluginFromUrl(url) {</span>
-<span class="cstat-no" title="statement not covered" >    var registryBaseUrl = "http://localhost:8081"; </span>// TODO: Configure in UI
-<span class="cstat-no" title="statement not covered" >    if (_.startsWith(url, "plugin://")) {</span>
-<span class="cstat-no" title="statement not covered" >        url = url.replace("plugin://", registryBaseUrl + "/plugins/");</span>
-    }
-    // No absolute or relative URL
-<span class="cstat-no" title="statement not covered" >    if (!_.startsWith(url, "/") &amp;&amp; !_.startsWith(url, ".") &amp;&amp; !_.startsWith(url, "http:") &amp;&amp; !_.startsWith(url, "https:")) {</span>
-<span class="cstat-no" title="statement not covered" >        url = registryBaseUrl + "/plugins/" + url;</span>
-    }
 <span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >function (dispatch, getState) {</span></span>
 <span class="cstat-no" title="statement not covered" >        var state = getState();</span>
+<span class="cstat-no" title="statement not covered" >        var registryBaseUrl = state.config.pluginRegistryUrl;</span>
+<span class="cstat-no" title="statement not covered" >        if (_.startsWith(url, "plugin://")) {</span>
+<span class="cstat-no" title="statement not covered" >            url = url.replace("plugin://", registryBaseUrl + "/plugins/");</span>
+        }
+        // No absolute or relative URL
+<span class="cstat-no" title="statement not covered" >        if (!_.startsWith(url, "/") &amp;&amp; !_.startsWith(url, ".") &amp;&amp; !_.startsWith(url, "http:") &amp;&amp; !_.startsWith(url, "https:")) {</span>
+<span class="cstat-no" title="statement not covered" >            url = registryBaseUrl + "/plugins/" + url;</span>
+        }
 <span class="cstat-no" title="statement not covered" >        if (_.some(_.valuesIn(state.datasourcePlugins), <span class="fstat-no" title="function not covered" >function (p) {</span> <span class="cstat-no" title="statement not covered" >return p.url === url &amp;&amp; !p.isLoading; </span>})) {</span>
 <span class="cstat-no" title="statement not covered" >            dispatch(ModalDialog.addError("Plugin already loaded: " + url));</span>
 <span class="cstat-no" title="statement not covered" >            return;</span>
@@ -439,8 +439,8 @@ exports.pluginLoaderReducer = pluginLoaderReducer;
 <span class="cstat-no" title="statement not covered" >        var widgetPlugin = state.widgetPlugins[id];</span>
 <span class="cstat-no" title="statement not covered" >        var isDatasource = !!dsPlugin;</span>
 <span class="cstat-no" title="statement not covered" >        var plugin = isDatasource ? dsPlugin : widgetPlugin;</span>
-<span class="cstat-no" title="statement not covered" >        var registryBaseUrl = "http://localhost:8081"; </span>// TODO: Configure in UI
-<span class="cstat-no" title="statement not covered" >        var apiKey = 'f1566816767de275ff898dd36a0ee608'; </span>// TODO: Configure in UI
+<span class="cstat-no" title="statement not covered" >        var registryBaseUrl = state.config.pluginRegistryUrl;</span>
+<span class="cstat-no" title="statement not covered" >        var apiKey = state.config.pluginRegistryApiKey;</span>
 <span class="cstat-no" title="statement not covered" >        fetch(plugin.url, {</span>
             method: 'get'
         }).then(<span class="fstat-no" title="function not covered" >function (response) {</span>
@@ -502,7 +502,7 @@ function urlsReducer(state, action) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Sep 28 2016 11:44:48 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Sep 28 2016 13:59:06 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

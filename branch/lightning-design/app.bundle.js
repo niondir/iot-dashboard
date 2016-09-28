@@ -28,8 +28,8 @@ webpackJsonp([0],[
 	__webpack_require__(36);
 	var es6promise = __webpack_require__(38);
 	var Renderer = __webpack_require__(41);
-	var Store = __webpack_require__(106);
-	var Persist = __webpack_require__(105);
+	var Store = __webpack_require__(108);
+	var Persist = __webpack_require__(107);
 	var dashboard_1 = __webpack_require__(56);
 	var $ = __webpack_require__(13);
 	var loadPredefinedState = $.get('./dashboard.json');
@@ -861,7 +861,7 @@ webpackJsonp([0],[
 	var widgetsNavItem_ui_js_1 = __webpack_require__(102);
 	var pluginNavItem_ui_1 = __webpack_require__(103);
 	var pluginsDialog_ui_1 = __webpack_require__(104);
-	var Persistence = __webpack_require__(105);
+	var Persistence = __webpack_require__(107);
 	var Layout = (function (_super) {
 	    __extends(Layout, _super);
 	    function Layout(props) {
@@ -923,8 +923,7 @@ webpackJsonp([0],[
 	"use strict";
 	var Action = __webpack_require__(47);
 	exports.initialState = {
-	    isReadOnly: false,
-	    devMode: true
+	    isReadOnly: false
 	};
 	function setReadOnly(isReadOnly) {
 	    return function (dispatch) {
@@ -969,6 +968,8 @@ webpackJsonp([0],[
 	 * -- i.e. "STARTED_LOADING_PLUGIN" rather than "START_LOADING_PLUGIN"
 	 */
 	exports.CLEAR_STATE = "CLEAR_STATE";
+	// Config
+	exports.SET_CONFIG_VALUE = "SET_CONFIG_VALUE";
 	// Dashboard
 	exports.DASHBOARD_IMPORT = "DASHBOARD_IMPORT";
 	exports.SET_READONLY = "SET_READONLY";
@@ -2638,16 +2639,16 @@ webpackJsonp([0],[
 	 *  Load plugin from URL or registry when starting with plugin://
 	 */
 	function startLoadingPluginFromUrl(url) {
-	    var registryBaseUrl = "http://localhost:8081"; // TODO: Configure in UI
-	    if (_.startsWith(url, "plugin://")) {
-	        url = url.replace("plugin://", registryBaseUrl + "/plugins/");
-	    }
-	    // No absolute or relative URL
-	    if (!_.startsWith(url, "/") && !_.startsWith(url, ".") && !_.startsWith(url, "http:") && !_.startsWith(url, "https:")) {
-	        url = registryBaseUrl + "/plugins/" + url;
-	    }
 	    return function (dispatch, getState) {
 	        var state = getState();
+	        var registryBaseUrl = state.config.pluginRegistryUrl;
+	        if (_.startsWith(url, "plugin://")) {
+	            url = url.replace("plugin://", registryBaseUrl + "/plugins/");
+	        }
+	        // No absolute or relative URL
+	        if (!_.startsWith(url, "/") && !_.startsWith(url, ".") && !_.startsWith(url, "http:") && !_.startsWith(url, "https:")) {
+	            url = registryBaseUrl + "/plugins/" + url;
+	        }
 	        if (_.some(_.valuesIn(state.datasourcePlugins), function (p) { return p.url === url && !p.isLoading; })) {
 	            dispatch(ModalDialog.addError("Plugin already loaded: " + url));
 	            return;
@@ -2717,8 +2718,8 @@ webpackJsonp([0],[
 	        var widgetPlugin = state.widgetPlugins[id];
 	        var isDatasource = !!dsPlugin;
 	        var plugin = isDatasource ? dsPlugin : widgetPlugin;
-	        var registryBaseUrl = "http://localhost:8081"; // TODO: Configure in UI
-	        var apiKey = 'f1566816767de275ff898dd36a0ee608'; // TODO: Configure in UI
+	        var registryBaseUrl = state.config.pluginRegistryUrl;
+	        var apiKey = state.config.pluginRegistryApiKey;
 	        fetch(plugin.url, {
 	            method: 'get'
 	        }).then(function (response) {
@@ -4631,6 +4632,7 @@ webpackJsonp([0],[
 	var react_redux_1 = __webpack_require__(43);
 	var _ = __webpack_require__(21);
 	var Modal = __webpack_require__(54);
+	var Config = __webpack_require__(105);
 	var Plugins = __webpack_require__(63);
 	var WidgetsPlugins = __webpack_require__(65);
 	var DatasourcePlugins = __webpack_require__(64);
@@ -4672,7 +4674,7 @@ webpackJsonp([0],[
 	        var datasourcePluginStates = _.valuesIn(props.datasourcePlugins);
 	        var widgetPluginStates = _.valuesIn(props.widgetPlugins);
 	        var pluginUrlInput = this.refs['pluginUrl']; // HTMLInputElement
-	        return React.createElement(modalDialog_ui_1.default, {id: "plugins-dialog", title: "Plugins", actions: actions}, React.createElement("div", {className: "slds-grid"}, React.createElement("div", {className: "slds-size--1-of-1"}, React.createElement("h2", {className: "slds-section-title--divider slds-m-bottom--medium"}, "Load Plugin"), React.createElement("form", {className: "slds-form--inline slds-grid", onSubmit: function (e) {
+	        return React.createElement(modalDialog_ui_1.default, {id: "plugins-dialog", title: "Plugins", actions: actions}, React.createElement("div", {className: "slds-grid"}, React.createElement("div", {className: "slds-size--1-of-1"}, React.createElement("h2", {className: "slds-section-title--divider slds-m-bottom--medium"}, "Load Plugin ", React.createElement(PluginRegistrySettings, {pluginRegistryApiKey: props.pluginRegistryApiKey, pluginRegistryUrl: props.pluginRegistryUrl, onApiKeyChanged: function (key) { return _this.props.setConfigValue("pluginRegistryApiKey", key); }, onRegistryUrlChanged: function (url) { return _this.props.setConfigValue("pluginRegistryUrl", url); }})), React.createElement("form", {className: "slds-form--inline slds-grid", onSubmit: function (e) {
 	            props.loadPlugin(pluginUrlInput.value);
 	            pluginUrlInput.value = "";
 	            e.preventDefault();
@@ -4688,14 +4690,17 @@ webpackJsonp([0],[
 	exports.default = react_redux_1.connect(function (state) {
 	    return {
 	        widgetPlugins: state.widgetPlugins,
-	        datasourcePlugins: state.datasourcePlugins
+	        datasourcePlugins: state.datasourcePlugins,
+	        pluginRegistryApiKey: state.config.pluginRegistryApiKey,
+	        pluginRegistryUrl: state.config.pluginRegistryUrl
 	    };
 	}, function (dispatch) {
 	    return {
 	        closeDialog: function () { return dispatch(Modal.closeModal()); },
 	        // TODO: Render loading indicator while Plugin loads
 	        // maybe build some generic solution for Ajax calls where the state can hold all information to render loading indicators / retry buttons etc...
-	        loadPlugin: function (url) { return dispatch(Plugins.startLoadingPluginFromUrl(url)); }
+	        loadPlugin: function (url) { return dispatch(Plugins.startLoadingPluginFromUrl(url)); },
+	        setConfigValue: function (key, value) { return dispatch(Config.setConfigValue(key, value)); }
 	    };
 	})(PluginsModal);
 	var PluginTileProps = (function () {
@@ -4787,10 +4792,109 @@ webpackJsonp([0],[
 	    };
 	    return LookupMenu;
 	}(React.Component));
+	var PluginRegistrySettings = (function (_super) {
+	    __extends(PluginRegistrySettings, _super);
+	    function PluginRegistrySettings(props) {
+	        _super.call(this, props);
+	        this.state = { actionMenuOpen: false };
+	    }
+	    PluginRegistrySettings.prototype.toggleActionMenu = function () {
+	        this.clearTimeout();
+	        this.setState({ actionMenuOpen: !this.state.actionMenuOpen });
+	    };
+	    PluginRegistrySettings.prototype.closeActionMenu = function () {
+	        this.clearTimeout();
+	        this.setState({ actionMenuOpen: false });
+	    };
+	    PluginRegistrySettings.prototype.closeActionMenuIn = function (ms) {
+	        var _this = this;
+	        this.clearTimeout();
+	        this.timeout = setTimeout(function () { return _this.closeActionMenu(); }, ms);
+	    };
+	    PluginRegistrySettings.prototype.clearTimeout = function () {
+	        if (this.timeout) {
+	            clearTimeout(this.timeout);
+	        }
+	    };
+	    PluginRegistrySettings.prototype.onRegistryUrlChanged = function (e) {
+	        var target = e.target;
+	        this.props.onRegistryUrlChanged(target.value);
+	    };
+	    PluginRegistrySettings.prototype.onApiKeyChanged = function (e) {
+	        var target = e.target;
+	        this.props.onApiKeyChanged(target.value);
+	    };
+	    PluginRegistrySettings.prototype.render = function () {
+	        var _this = this;
+	        return React.createElement("div", {className: "slds-shrink-none slds-dropdown-trigger slds-dropdown-trigger--click" + (this.state.actionMenuOpen ? " slds-is-open" : "")}, React.createElement("button", {className: "slds-button slds-button--icon-border-filled slds-button--icon-x-small", "aria-haspopup": "true", onClick: function () { return _this.toggleActionMenu(); }, onBlur: function () { return _this.closeActionMenuIn(200); }}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon slds-button__icon--hint"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#settings"})), React.createElement("span", {className: "slds-assistive-text"}, "Actions")), React.createElement("div", {className: "slds-dropdown slds-dropdown--left slds-dropdown--large"}, React.createElement("ul", {className: "dropdown__list", role: "menu"}, React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, React.createElement("span", {className: "slds-truncate slds-m-around--x-small"}, "Registry Url")), React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, React.createElement("div", {className: "slds-form-element__control"}, React.createElement("input", {className: "slds-input", type: "text", placeholder: "http://dashboard.lobaro.com", defaultValue: this.props.pluginRegistryUrl, onFocus: function () { return _this.clearTimeout(); }, onBlur: function () { return _this.closeActionMenuIn(200); }, onChange: function (e) { return _this.onRegistryUrlChanged(e); }}))), React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, React.createElement("span", {className: "slds-truncate slds-m-around--x-small"}, "Api Key")), React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, React.createElement("div", {className: "slds-form-element__control"}, React.createElement("input", {className: "slds-input", type: "text", placeholder: "Api Key", defaultValue: this.props.pluginRegistryApiKey, onFocus: function () { return _this.clearTimeout(); }, onBlur: function () { return _this.closeActionMenuIn(200); }, onChange: function (e) { return _this.onApiKeyChanged(e); }}))))));
+	    };
+	    return PluginRegistrySettings;
+	}(React.Component));
 
 
 /***/ },
 /* 105 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+	var _ = __webpack_require__(21);
+	var Action = __webpack_require__(47);
+	var configJson = __webpack_require__(106);
+	var defaultConfig = {
+	    version: "",
+	    revision: "",
+	    revisionShort: "",
+	    branch: "",
+	    persistenceTarget: "local-storage",
+	    devMode: true,
+	    auth: {
+	        username: null,
+	        logoutUrl: null
+	    },
+	    pluginRegistryApiKey: "",
+	    pluginRegistryUrl: "https://dashboard.lobaro.com"
+	};
+	function setConfigValue(key, value) {
+	    return {
+	        type: Action.SET_CONFIG_VALUE,
+	        key: key,
+	        value: value
+	    };
+	}
+	exports.setConfigValue = setConfigValue;
+	function config(state, action) {
+	    if (state === void 0) { state = configJson; }
+	    switch (action.type) {
+	        case Action.SET_CONFIG_VALUE: {
+	            return _.assign({}, defaultConfig, state, (_a = {}, _a[action.key] = action.value, _a), configJson);
+	        }
+	        default:
+	            // Content of configJson overrides everything else!
+	            return _.assign({}, defaultConfig, state, configJson);
+	    }
+	    var _a;
+	}
+	exports.config = config;
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = config;
+
+
+/***/ },
+/* 106 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"version": "0.1.17",
+		"revision": "b8c2ed3708f155a037119958a1e2cb25d56c3621",
+		"revisionShort": "b8c2ed3",
+		"branch": "Detatched: b8c2ed3708f155a037119958a1e2cb25d56c3621"
+	};
+
+/***/ },
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -4886,7 +4990,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 106 */
+/* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -4894,8 +4998,8 @@ webpackJsonp([0],[
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
 	var Redux = __webpack_require__(44);
-	var redux_thunk_1 = __webpack_require__(107);
-	var createLogger = __webpack_require__(108);
+	var redux_thunk_1 = __webpack_require__(109);
+	var createLogger = __webpack_require__(110);
 	var Widgets = __webpack_require__(49);
 	var WidgetConfig = __webpack_require__(53);
 	var Layouts = __webpack_require__(90);
@@ -4903,13 +5007,13 @@ webpackJsonp([0],[
 	var Global = __webpack_require__(46);
 	var Import = __webpack_require__(99);
 	var Modal = __webpack_require__(54);
-	var Persist = __webpack_require__(105);
+	var Persist = __webpack_require__(107);
 	var Plugins = __webpack_require__(63);
 	var redux_form_1 = __webpack_require__(95);
 	var Action = __webpack_require__(47);
 	var WidgetPlugins = __webpack_require__(65);
 	var DatasourcePlugins = __webpack_require__(64);
-	var Config = __webpack_require__(109);
+	var Config = __webpack_require__(105);
 	// TODO: name all reducers ***Reducer
 	var appReducer = Redux.combineReducers({
 	    config: Config.config,
@@ -5005,54 +5109,6 @@ webpackJsonp([0],[
 	}
 	exports.clearState = clearState;
 
-
-/***/ },
-/* 107 */,
-/* 108 */,
-/* 109 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
-	var _ = __webpack_require__(21);
-	var configJson = __webpack_require__(110);
-	var defaultConfig = {
-	    version: "",
-	    revision: "",
-	    revisionShort: "",
-	    branch: "",
-	    persistenceTarget: "local-storage",
-	    devMode: true,
-	    auth: {
-	        username: null,
-	        logoutUrl: null
-	    }
-	};
-	function config(state, action) {
-	    if (state === void 0) { state = configJson; }
-	    switch (action.type) {
-	        default:
-	            // Content of configJson overrides everything else!
-	            return _.assign({}, defaultConfig, state, configJson);
-	    }
-	}
-	exports.config = config;
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = config;
-
-
-/***/ },
-/* 110 */
-/***/ function(module, exports) {
-
-	module.exports = {
-		"version": "0.1.17",
-		"revision": "329ea8df7c8bf1916f180da6c62788daa002f130",
-		"revisionShort": "329ea8d",
-		"branch": "Detatched: 329ea8df7c8bf1916f180da6c62788daa002f130"
-	};
 
 /***/ }
 ]);
