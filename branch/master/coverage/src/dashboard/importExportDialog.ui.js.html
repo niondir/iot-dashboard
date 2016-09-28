@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">61.54% </span>
+        <span class="strong">60.78% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>32/52</span>
+        <span class='fraction'>31/51</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">44.44% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>7/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">64.58% </span>
+        <span class="strong">63.83% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>31/48</span>
+        <span class='fraction'>30/47</span>
       </div>
     </div>
   </div>
@@ -128,8 +128,7 @@
 83
 84
 85
-86
-87</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+86</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -138,7 +137,6 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -227,8 +225,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
 var React = require('react');
 var react_redux_1 = require('react-redux');
 var Import = require('./import');
-var modalDialog_ui_js_1 = require('../modal/modalDialog.ui.js');
-var ModalIds = require('../modal/modalDialogIds');
+var modalDialog_ui_1 = require('../modal/modalDialog.ui');
 var react_1 = require("react");
 var ImportExportDialog = (function (_super) {
     __extends(ImportExportDialog, _super);
@@ -282,7 +279,7 @@ var ImportExportDialog = (function (_super) {
                 }
             }
         ];
-        return React.createElement(modalDialog_ui_js_1.default, {id: ModalIds.DASHBOARD_IMPORT_EXPORT, title: "Import / Export Dashboard", actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, React.createElement("button", {className: "ui compact labeled icon button", onClick: this._loadData.bind(this)}, React.createElement("i", {className: "refresh icon"}), "Load Data"), React.createElement("button", {className: "ui compact labeled icon button", onClick: this._exportToClipboard.bind(this)}, React.createElement("i", {className: "upload icon"}), "Copy to Clipboard"), React.createElement("button", {className: "ui compact labeled icon button", onClick: this._clearData.bind(this)}, React.createElement("i", {className: "erase icon"}), "Clear Data")), React.createElement("div", {className: "column"}, React.createElement("form", {className: "ui form"}, React.createElement("div", {className: "field"}, React.createElement("label", null, "Data"), React.createElement("textarea", {className: "monospace", ref: "data", rows: "10", onFocus: <span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return e.target.select(); </span>}, placeholder: 'Click "Load Data" to get data for export or paste your data here ...'}))))));
+        return React.createElement(modalDialog_ui_1.default, {id: "dashboard-import-export-dialog", title: "Import / Export Dashboard", actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, React.createElement("button", {className: "ui compact labeled icon button", onClick: this._loadData.bind(this)}, React.createElement("i", {className: "refresh icon"}), "Load Data"), React.createElement("button", {className: "ui compact labeled icon button", onClick: this._exportToClipboard.bind(this)}, React.createElement("i", {className: "upload icon"}), "Copy to Clipboard"), React.createElement("button", {className: "ui compact labeled icon button", onClick: this._clearData.bind(this)}, React.createElement("i", {className: "erase icon"}), "Clear Data")), React.createElement("div", {className: "column"}, React.createElement("form", {className: "ui form"}, React.createElement("div", {className: "field"}, React.createElement("label", null, "Data"), React.createElement("textarea", {className: "monospace", ref: "data", rows: "10", onFocus: <span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return e.target.select(); </span>}, placeholder: 'Click "Load Data" to get data for export or paste your data here ...'}))))));
     };
     return ImportExportDialog;
 }(React.Component));
@@ -307,7 +304,7 @@ exports.default = react_redux_1.connect(function (state) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Sep 23 2016 17:19:19 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Sep 28 2016 14:18:25 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

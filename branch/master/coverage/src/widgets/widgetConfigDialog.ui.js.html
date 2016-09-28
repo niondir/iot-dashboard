@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">55.22% </span>
+        <span class="strong">54.55% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>37/67</span>
+        <span class='fraction'>36/66</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">23.81% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>7/18</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">60% </span>
+        <span class="strong">59.32% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>36/60</span>
+        <span class='fraction'>35/59</span>
       </div>
     </div>
   </div>
@@ -167,7 +167,13 @@
 122
 123
 124
-125</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+125
+126
+127
+128
+129
+130
+131</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -176,7 +182,6 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -271,6 +276,13 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -301,8 +313,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
     d.prototype = b === null ? <span class="branch-0 cbranch-no" title="branch not covered" >Object.create(b) </span>: (__.prototype = b.prototype, new __());
 };
 var React = require('react');
-var modalDialog_ui_js_1 = require("../modal/modalDialog.ui.js");
-var WidgetPlugins = require("./widgetPlugins");
+var modalDialog_ui_tsx_1 = require("../modal/modalDialog.ui.tsx");
 var WidgetConfig = require("./widgetConfig");
 var react_redux_1 = require("react-redux");
 var settingsForm_ui_1 = require("../ui/settingsForm.ui");
@@ -369,7 +380,7 @@ var WidgetConfigModal = (function (_super) {
             // TODO: Find a better (more generic way) to deal with uninitialized data for modals
             // TODO: The widgetConfig in the state is a bad idea. Solve this via state.modalDialog.data
             // This is needed for the very first time the page is rendered and the selected widget type is undefined
-            return React.createElement(modalDialog_ui_js_1.default, {id: DIALOG_ID, title: "Configure Widget: " + props.widgetType, actions: actions}, React.createElement("div", null, "Unknown WidgetType: ", props.widgetType));
+            return React.createElement(modalDialog_ui_tsx_1.default, {id: DIALOG_ID, title: "Configure Widget: " + props.widgetType, actions: actions}, React.createElement("div", null, "Unknown WidgetType: ", props.widgetType));
         }
         // Add additional fields
 <span class="cstat-no" title="statement not covered" >        var settings = selectedWidgetPlugin ? selectedWidgetPlugin.typeInfo.settings.slice() : [];</span>
@@ -388,7 +399,7 @@ var WidgetConfigModal = (function (_super) {
         }, {});
         // Overwrite with current widget props
 <span class="cstat-no" title="statement not covered" >        initialValues = Object.assign({}, initialValues, props.widgetSettings);</span>
-<span class="cstat-no" title="statement not covered" >        return React.createElement(modalDialog_ui_js_1.default, {id: DIALOG_ID, title: "Configure Widget: " + selectedWidgetPlugin.typeInfo.name, actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, selectedWidgetPlugin.description ?</span>
+<span class="cstat-no" title="statement not covered" >        return React.createElement(modalDialog_ui_tsx_1.default, {id: DIALOG_ID, title: "Configure Widget: " + selectedWidgetPlugin.typeInfo.name, actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, selectedWidgetPlugin.description ?</span>
             React.createElement("div", {className: "ui icon message"}, React.createElement("i", {className: "idea icon"}), React.createElement("div", {className: "content"}, selectedWidgetPlugin.description))
             : null, React.createElement(settingsForm_ui_1.default, {ref: "form", form: FORM_ID, settings: settings, onSubmit: this.onSubmit.bind(this), fields: fields.slice(), initialValues: initialValues}))));
     };
@@ -399,7 +410,14 @@ WidgetConfigModal.propTypes = {
     resetForm: react_1.PropTypes.func.isRequired,
     widgetType: react_1.PropTypes.string,
     widgetSettings: react_1.PropTypes.object.isRequired,
-    widgetPlugin: WidgetPlugins.widgetPluginType
+    widgetPlugin: react_1.PropTypes.shape({
+        id: react_1.PropTypes.string.isRequired,
+        typeInfo: react_1.PropTypes.shape({
+            type: react_1.PropTypes.string.isRequired,
+            name: react_1.PropTypes.string.isRequired,
+            settings: react_1.PropTypes.array
+        })
+    })
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = react_redux_1.connect(function (state) {
@@ -421,7 +439,7 @@ exports.default = react_redux_1.connect(function (state) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Sep 23 2016 17:19:19 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Sep 28 2016 14:18:25 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

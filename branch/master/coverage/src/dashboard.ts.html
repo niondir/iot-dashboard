@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">81.33% </span>
+        <span class="strong">81.01% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>61/75</span>
+        <span class='fraction'>64/79</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">43.75% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>7/16</span>
+        <span class='fraction'>9/18</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">78.95% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>15/19</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">81.33% </span>
+        <span class="strong">81.01% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>61/75</span>
+        <span class='fraction'>64/79</span>
       </div>
     </div>
   </div>
@@ -184,7 +184,9 @@
 139
 140
 141
-142</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+142
+143
+144</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -208,6 +210,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">12×</span>
 <span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -270,6 +276,9 @@
 <span class="cline-any cline-yes">20×</span>
 <span class="cline-any cline-yes">20×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">2×</span>
@@ -284,7 +293,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -297,11 +305,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -328,7 +332,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
 var datasourcePluginRegistry_1 = require("./datasource/datasourcePluginRegistry");
 var _ = require("lodash");
-var Plugins = require("./pluginApi/plugins");
+var Plugins = require("./pluginApi/pluginLoader");
 var PluginCache = require("./pluginApi/pluginCache");
 var scriptLoader_1 = require("./util/scriptLoader");
 var URI = require("urijs");
@@ -348,6 +352,10 @@ var Dashboard = (function () {
         _store.subscribe(function () {
             // Whenever a datasource is added that is still loading, we create an instance and update the loading state
             var state = _store.getState();
+            if (_this._lastLoadingUrls === state.pluginLoader.loadingUrls) {
+                return;
+            }
+            _this._lastLoadingUrls = state.pluginLoader.loadingUrls;
             state.pluginLoader.loadingUrls.forEach(function (urlToLoad) {
                 <span class="missing-if-branch" title="else path not taken" >E</span>if (!_this._scriptsLoading[urlToLoad]) {
                     _this.loadPluginScript(urlToLoad);
@@ -404,13 +412,16 @@ var Dashboard = (function () {
         var plugins = _.valuesIn(state.datasourcePlugins)
             .concat(_.valuesIn(state.widgetPlugins));
         plugins.forEach(function (plugin) {
-            _this._store.dispatch(Plugins.startLoadingPluginFromUrl(plugin.url, plugin.id));
+            _this._store.dispatch(Plugins.reloadExistingPlugin(plugin.url, plugin.id));
         });
     };
     Dashboard.prototype.dispose = function () {
         this._datasourcePluginRegistry.dispose();
         this._widgetPluginRegistry.dispose();
     };
+    /**
+     * Load plugin from URL
+     */
     Dashboard.prototype.loadPluginScript = function (url) {
         var _this = this;
         var loadScriptsPromise = scriptLoader_1.default.loadScript([url]);
@@ -424,8 +435,7 @@ var Dashboard = (function () {
             else {
 <span class="cstat-no" title="statement not covered" >                return Promise.reject(new Error("Failed to load Plugin. Make sure it called window.iotDashboardApi.register***Plugin from url " + url));</span>
             }
-        })
-            .then(function (plugin) {
+        }).then(function (plugin) {
             <span class="missing-if-branch" title="else path not taken" >E</span>if (plugin.Datasource) {
                 _this._datasourcePluginRegistry.registerDatasourcePlugin(plugin, url);
             }
@@ -437,13 +447,9 @@ var Dashboard = (function () {
             return Promise.resolve();
         }).catch(<span class="fstat-no" title="function not covered" >function (error) {</span>
 <span class="cstat-no" title="statement not covered" >            console.warn("Failed to load script: ", error);</span>
+<span class="cstat-no" title="statement not covered" >            delete _this._scriptsLoading[url];</span>
 <span class="cstat-no" title="statement not covered" >            _this._store.dispatch(Plugins.pluginFailedLoading(url));</span>
         });
-        /*.catch((error) =&gt; {
-         console.error(error.message);
-         delete this._scriptsLoading[url];
-         throw error;
-         }); */
         return this._scriptsLoading[url];
     };
     Dashboard.prototype.loadPluginScriptDependencies = function (plugin, url) {
@@ -472,7 +478,7 @@ exports.default = Dashboard;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Sep 23 2016 17:19:19 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Sep 28 2016 14:18:25 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../prettify.js"></script>
