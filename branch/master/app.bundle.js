@@ -4067,7 +4067,7 @@ webpackJsonp([0],[
 	            React.createElement("div", {className: "slds-notify slds-notify--alert slds-theme--error slds-theme--alert-texture", role: "alert"}, 
 	                React.createElement("button", {className: "slds-button slds-notify__close slds-button--icon-inverse", onClick: function () { return _this.close(); }}, 
 	                    React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, 
-	                        React.createElement("use", {xlinkHref: "/assets/icons/utility-sprite/svg/symbols.svg#close"})
+	                        React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#close"})
 	                    ), 
 	                    React.createElement("span", {className: "slds-assistive-text"}, "Close")), 
 	                React.createElement("span", {className: "slds-assistive-text"}, "Error"), 
@@ -5108,7 +5108,7 @@ webpackJsonp([0],[
 	                React.createElement("li", {role: "presentation"}, 
 	                    React.createElement("span", {className: "slds-lookup__item-action slds-lookup__item-action--label", id: props.id + "-header", role: "option"}, 
 	                        React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default"}, 
-	                            React.createElement("use", {xlinkHref: "/assets/icons/utility-sprite/svg/symbols.svg#search"})
+	                            React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#search"})
 	                        ), 
 	                        React.createElement("span", {className: "slds-truncate"}, 
 	                            "\"", 
@@ -5119,7 +5119,7 @@ webpackJsonp([0],[
 	                    return React.createElement("li", {role: "presentation", key: item.type, onClick: function (e) { return _this.props.onItemClicked(item); }}, 
 	                        React.createElement("span", {className: "slds-lookup__item-action slds-media slds-media--center", id: props.id + "-" + i, role: "option"}, 
 	                            React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon-standard-account slds-icon--small slds-media__figure"}, 
-	                                React.createElement("use", {xlinkHref: "/assets/icons/standard-sprite/svg/symbols.svg#dashboard"})
+	                                React.createElement("use", {xlinkHref: "assets/icons/standard-sprite/svg/symbols.svg#dashboard"})
 	                            ), 
 	                            React.createElement("div", {className: "slds-media__body"}, 
 	                                React.createElement("div", {className: "slds-lookup__result-text"}, 
@@ -5257,10 +5257,10 @@ webpackJsonp([0],[
 /***/ function(module, exports) {
 
 	module.exports = {
-		"version": "0.1.18",
-		"revision": "659f9c67cd82325f3648aebede3e3d7655216196",
-		"revisionShort": "659f9c6",
-		"branch": "Detatched: 659f9c67cd82325f3648aebede3e3d7655216196"
+		"version": "0.1.19",
+		"revision": "c39f441085b117a40ae49b5282cc2679ff13eaee",
+		"revisionShort": "c39f441",
+		"branch": "Detatched: c39f441085b117a40ae49b5282cc2679ff13eaee"
 	};
 
 /***/ },
