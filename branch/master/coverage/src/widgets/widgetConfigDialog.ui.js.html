@@ -173,7 +173,19 @@
 128
 129
 130
-131</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -253,6 +265,10 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -270,6 +286,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -380,7 +404,11 @@ var WidgetConfigModal = (function (_super) {
             // TODO: Find a better (more generic way) to deal with uninitialized data for modals
             // TODO: The widgetConfig in the state is a bad idea. Solve this via state.modalDialog.data
             // This is needed for the very first time the page is rendered and the selected widget type is undefined
-            return React.createElement(modalDialog_ui_tsx_1.default, {id: DIALOG_ID, title: "Configure Widget: " + props.widgetType, actions: actions}, React.createElement("div", null, "Unknown WidgetType: ", props.widgetType));
+            return React.createElement(modalDialog_ui_tsx_1.default, {id: DIALOG_ID, title: "Configure Widget: " + props.widgetType, actions: actions}, 
+                React.createElement("div", null, 
+                    "Unknown WidgetType: ", 
+                    props.widgetType)
+            );
         }
         // Add additional fields
 <span class="cstat-no" title="statement not covered" >        var settings = selectedWidgetPlugin ? selectedWidgetPlugin.typeInfo.settings.slice() : [];</span>
@@ -399,9 +427,17 @@ var WidgetConfigModal = (function (_super) {
         }, {});
         // Overwrite with current widget props
 <span class="cstat-no" title="statement not covered" >        initialValues = Object.assign({}, initialValues, props.widgetSettings);</span>
-<span class="cstat-no" title="statement not covered" >        return React.createElement(modalDialog_ui_tsx_1.default, {id: DIALOG_ID, title: "Configure Widget: " + selectedWidgetPlugin.typeInfo.name, actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, selectedWidgetPlugin.description ?</span>
-            React.createElement("div", {className: "ui icon message"}, React.createElement("i", {className: "idea icon"}), React.createElement("div", {className: "content"}, selectedWidgetPlugin.description))
-            : null, React.createElement(settingsForm_ui_1.default, {ref: "form", form: FORM_ID, settings: settings, onSubmit: this.onSubmit.bind(this), fields: fields.slice(), initialValues: initialValues}))));
+<span class="cstat-no" title="statement not covered" >        return React.createElement(modalDialog_ui_tsx_1.default, {id: DIALOG_ID, title: "Configure Widget: " + selectedWidgetPlugin.typeInfo.name, actions: actions}, </span>
+            React.createElement("div", {className: "ui one column grid"}, 
+                React.createElement("div", {className: "column"}, 
+                    selectedWidgetPlugin.description ?
+                        React.createElement("div", {className: "ui icon message"}, 
+                            React.createElement("i", {className: "idea icon"}), 
+                            React.createElement("div", {className: "content"}, selectedWidgetPlugin.description))
+                        : null, 
+                    React.createElement(settingsForm_ui_1.default, {ref: "form", form: FORM_ID, settings: settings, onSubmit: this.onSubmit.bind(this), fields: fields.slice(), initialValues: initialValues}))
+            )
+        );
     };
     return WidgetConfigModal;
 }(React.Component));
@@ -439,7 +475,7 @@ exports.default = react_redux_1.connect(function (state) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 29 2016 08:51:37 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 29 2016 10:19:46 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

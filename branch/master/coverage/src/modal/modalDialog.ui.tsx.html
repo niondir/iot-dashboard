@@ -35,9 +35,9 @@
         <span class='fraction'>10/27</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">61.9% </span>
+        <span class="strong">60.94% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>39/63</span>
+        <span class='fraction'>39/64</span>
       </div>
     </div>
   </div>
@@ -160,7 +160,23 @@
 115
 116
 117
-118</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -228,17 +244,24 @@
 <span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-yes">10×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -262,6 +285,15 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -343,18 +375,25 @@ var ModalDialog = (function (_super) {
         var _this = this;
         var key = 0;
         var actions = this.props.actions.map(function (action) {
-            return React.createElement("div", {key: key++, className: action.className, onClick: <span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return _this.onClick(e, action); </span>}}, action.label, action.iconClass ? React.createElement("i", {className: action.iconClass}) : null);
+            return React.createElement("div", {key: key++, className: action.className, onClick: <span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return _this.onClick(e, action); </span>}}, 
+                action.label, 
+                action.iconClass ? React.createElement("i", {className: action.iconClass}) : null);
         });
         var props = this.props;
         // TODO: realize Modals with React, then isOpen gets handy:
         //const isOpen = props.dialogState.dialogId == props.id &amp;&amp; props.dialogState.isVisible;
         var height = this.state.screen.height;
         var width = this.state.screen.width;
-        return React.createElement("div", {id: this.props.id, className: 'ui modal ' + this.props.id, style: { width: width - 80, top: 40, left: 40, margin: 1, minHeight: "500px" }}, React.createElement("div", {className: "header"}, props.title), React.createElement("div", {className: "content", style: { overflowY: 'scroll', height: height - 300, minHeight: "500px" }}, this.props.dialogState.errors ?
-<span class="branch-0 cbranch-no" title="branch not covered" >            this.props.dialogState.errors.map(<span class="fstat-no" title="function not covered" >function (message, i) {</span></span>
-<span class="cstat-no" title="statement not covered" >                return React.createElement(ModalErrorComponent, {key: i, errorMessage: message});</span>
-            })
-            : null, props.children), React.createElement("div", {className: "actions"}, actions));
+        return React.createElement("div", {id: this.props.id, className: 'ui modal ' + this.props.id, style: { width: width - 80, top: 40, left: 40, margin: 1, minHeight: "500px" }}, 
+            React.createElement("div", {className: "header"}, props.title), 
+            React.createElement("div", {className: "content", style: { overflowY: 'scroll', height: height - 300, minHeight: "500px" }}, 
+                this.props.dialogState.errors ?
+<span class="branch-0 cbranch-no" title="branch not covered" >                    this.props.dialogState.errors.map(<span class="fstat-no" title="function not covered" >function (message, i) {</span></span>
+<span class="cstat-no" title="statement not covered" >                        return React.createElement(ModalErrorComponent, {key: i, errorMessage: message});</span>
+                    })
+                    : null, 
+                props.children), 
+            React.createElement("div", {className: "actions"}, actions));
     };
     return ModalDialog;
 }(React.Component));
@@ -378,7 +417,16 @@ var ModalError = (function (_super) {
     };
     ModalError.prototype.render = <span class="fstat-no" title="function not covered" >function () {</span>
 <span class="cstat-no" title="statement not covered" >        var _this = this;</span>
-<span class="cstat-no" title="statement not covered" >        return React.createElement("div", {className: "slds-notify_container slds-is-relative slds-m-bottom--x-small"}, React.createElement("div", {className: "slds-notify slds-notify--alert slds-theme--error slds-theme--alert-texture", role: "alert"}, React.createElement("button", {className: "slds-button slds-notify__close slds-button--icon-inverse", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return _this.close(); </span>}}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, React.createElement("use", {xlinkHref: "/assets/icons/utility-sprite/svg/symbols.svg#close"})), React.createElement("span", {className: "slds-assistive-text"}, "Close")), React.createElement("span", {className: "slds-assistive-text"}, "Error"), React.createElement("h2", null, this.props.errorMessage)));</span>
+<span class="cstat-no" title="statement not covered" >        return React.createElement("div", {className: "slds-notify_container slds-is-relative slds-m-bottom--x-small"}, </span>
+            React.createElement("div", {className: "slds-notify slds-notify--alert slds-theme--error slds-theme--alert-texture", role: "alert"}, 
+                React.createElement("button", {className: "slds-button slds-notify__close slds-button--icon-inverse", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return _this.close(); </span>}}, 
+                    React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, 
+                        React.createElement("use", {xlinkHref: "/assets/icons/utility-sprite/svg/symbols.svg#close"})
+                    ), 
+                    React.createElement("span", {className: "slds-assistive-text"}, "Close")), 
+                React.createElement("span", {className: "slds-assistive-text"}, "Error"), 
+                React.createElement("h2", null, this.props.errorMessage))
+        );
     };
     return ModalError;
 }(React.Component));
@@ -400,7 +448,7 @@ var ModalErrorComponent = react_redux_1.connect(<span class="fstat-no" title="fu
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 29 2016 08:51:37 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 29 2016 10:19:46 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

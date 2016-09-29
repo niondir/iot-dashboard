@@ -35,9 +35,9 @@
         <span class='fraction'>11/14</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">93.02% </span>
+        <span class="strong">90.91% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>40/43</span>
+        <span class='fraction'>40/44</span>
       </div>
     </div>
   </div>
@@ -144,7 +144,28 @@
 99
 100
 101
-102</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -175,6 +196,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -202,6 +231,15 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -215,6 +253,10 @@
 <span class="cline-any cline-yes">6×</span>
 <span class="cline-any cline-yes">6×</span>
 <span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -272,9 +314,17 @@ var WidgetFrame = function (props) {
     <span class="missing-if-branch" title="if path not taken" >I</span>if (pluginLoaded) {
 <span class="cstat-no" title="statement not covered" >        widgetFactory = dashboard_1.default.getInstance().widgetPluginRegistry.getPlugin(widgetState.type);</span>
     }
-    return (React.createElement("div", {className: "lob-shadow--raised slds-card", style: { margin: 0, overflow: "hidden", backgroundColor: "#fff" }, key: widgetState.id, _grid: { x: widgetState.col, y: widgetState.row, w: widgetState.width, h: widgetState.height }}, React.createElement("div", {className: "slds-grid slds-wrap slds-has-dividers--bottom", style: { height: "100%" }}, React.createElement("div", {className: "slds-size--1-of-1 slds-item" + (props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >"" </span>: " drag"), style: { padding: 8 }}, props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >null </span>:
-        React.createElement("div", {className: "slds-float--right"}, React.createElement(ConfigWidgetButton, {widgetState: widgetState, description: "settings", visible: (props.widgetPlugin &amp;&amp; props.widgetPlugin.typeInfo.settings ? <span class="branch-0 cbranch-no" title="branch not covered" >true </span>: false), icon: "settings"}), React.createElement(DeleteWidgetButton, {widgetState: widgetState, description: "remove", icon: "remove", iconType: "action"})), React.createElement("div", {className: "" + (props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >"" </span>: " drag")}, widgetState.settings.name || <span class="branch-1 cbranch-no" title="branch not covered" >"\u00a0")</span>), React.createElement("div", {className: "slds-size--1-of-1 slds-is-relative", style: { height: widgetState.availableHeightPx, padding: 0, border: "red dashed 0px" }}, pluginLoaded ? <span class="branch-0 cbranch-no" title="branch not covered" >widgetFactory.getInstance(widgetState.id)</span>
-        : React.createElement(LoadingWidget, {widget: widgetState})))));
+    return (React.createElement("div", {className: "lob-shadow--raised slds-card", style: { margin: 0, overflow: "hidden", backgroundColor: "#fff" }, key: widgetState.id, _grid: { x: widgetState.col, y: widgetState.row, w: widgetState.width, h: widgetState.height }}, 
+        React.createElement("div", {className: "slds-grid slds-wrap slds-has-dividers--bottom", style: { height: "100%" }}, 
+            React.createElement("div", {className: "slds-size--1-of-1 slds-item" + (props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >"" </span>: " drag"), style: { padding: 8 }}, 
+                props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >null </span>:
+                    React.createElement("div", {className: "slds-float--right"}, 
+                        React.createElement(ConfigWidgetButton, {widgetState: widgetState, description: "settings", visible: (props.widgetPlugin &amp;&amp; props.widgetPlugin.typeInfo.settings ? <span class="branch-0 cbranch-no" title="branch not covered" >true </span>: false), icon: "settings"}), 
+                        React.createElement(DeleteWidgetButton, {widgetState: widgetState, description: "remove", icon: "remove", iconType: "action"})), 
+                React.createElement("div", {className: "" + (props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >"" </span>: " drag")}, widgetState.settings.name || <span class="branch-1 cbranch-no" title="branch not covered" >"\u00a0")</span>), 
+            React.createElement("div", {className: "slds-size--1-of-1 slds-is-relative", style: { height: widgetState.availableHeightPx, padding: 0, border: "red dashed 0px" }}, pluginLoaded ? <span class="branch-0 cbranch-no" title="branch not covered" >widgetFactory.getInstance(widgetState.id)</span>
+                : React.createElement(LoadingWidget, {widget: widgetState})))
+    ));
 };
 exports.widgetPropType = react_1.PropTypes.shape({
     id: react_1.PropTypes.string.isRequired,
@@ -301,7 +351,16 @@ WidgetFrame.propTypes = {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = WidgetFrame;
 var LoadingWidget = function (props) {
-    return React.createElement("div", {className: "slds-is-relative", style: { height: "100%", padding: "10px" }}, "Loading ", props.widget.type, " Widget ...", React.createElement("div", {className: "slds-spinner_container"}, React.createElement("div", {className: "slds-spinner slds-spinner--medium", role: "alert"}, React.createElement("span", {className: "slds-assistive-text"}, "Loading"), React.createElement("div", {className: "slds-spinner__dot-a"}), React.createElement("div", {className: "slds-spinner__dot-b"}))));
+    return React.createElement("div", {className: "slds-is-relative", style: { height: "100%", padding: "10px" }}, 
+        "Loading ", 
+        props.widget.type, 
+        " Widget ...", 
+        React.createElement("div", {className: "slds-spinner_container"}, 
+            React.createElement("div", {className: "slds-spinner slds-spinner--medium", role: "alert"}, 
+                React.createElement("span", {className: "slds-assistive-text"}, "Loading"), 
+                React.createElement("div", {className: "slds-spinner__dot-a"}), 
+                React.createElement("div", {className: "slds-spinner__dot-b"}))
+        ));
 };
 LoadingWidget.propTypes = {
     widget: exports.widgetPropType.isRequired
@@ -315,7 +374,11 @@ var WidgetButton = (function (_super) {
         var _this = this;
         var iconType = this.props.iconType || "utility";
         var data = this.props.widgetState;
-        return React.createElement("button", {className: "slds-button slds-button--icon no-drag" + (this.props.visible !== false ? "" : " slds-hide")}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon slds-button__icon--small", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return _this.props.onClick(data); </span>}}, React.createElement("use", {xlinkHref: "assets/icons/" + iconType + "-sprite/svg/symbols.svg#" + this.props.icon})), React.createElement("span", {className: "slds-assistive-text"}, this.props.description));
+        return React.createElement("button", {className: "slds-button slds-button--icon no-drag" + (this.props.visible !== false ? "" : " slds-hide")}, 
+            React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon slds-button__icon--small", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return _this.props.onClick(data); </span>}}, 
+                React.createElement("use", {xlinkHref: "assets/icons/" + iconType + "-sprite/svg/symbols.svg#" + this.props.icon})
+            ), 
+            React.createElement("span", {className: "slds-assistive-text"}, this.props.description));
     };
     return WidgetButton;
 }(React.Component));
@@ -352,7 +415,7 @@ var ConfigWidgetButton = react_redux_1.connect(function (state) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 29 2016 08:51:37 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 29 2016 10:19:46 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

@@ -35,9 +35,9 @@
         <span class='fraction'>7/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">63.83% </span>
+        <span class="strong">62.5% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>30/47</span>
+        <span class='fraction'>30/48</span>
       </div>
     </div>
   </div>
@@ -128,7 +128,26 @@
 83
 84
 85
-86</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -195,6 +214,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -279,7 +317,26 @@ var ImportExportDialog = (function (_super) {
                 }
             }
         ];
-        return React.createElement(modalDialog_ui_1.default, {id: "dashboard-import-export-dialog", title: "Import / Export Dashboard", actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, React.createElement("button", {className: "ui compact labeled icon button", onClick: this._loadData.bind(this)}, React.createElement("i", {className: "refresh icon"}), "Load Data"), React.createElement("button", {className: "ui compact labeled icon button", onClick: this._exportToClipboard.bind(this)}, React.createElement("i", {className: "upload icon"}), "Copy to Clipboard"), React.createElement("button", {className: "ui compact labeled icon button", onClick: this._clearData.bind(this)}, React.createElement("i", {className: "erase icon"}), "Clear Data")), React.createElement("div", {className: "column"}, React.createElement("form", {className: "ui form"}, React.createElement("div", {className: "field"}, React.createElement("label", null, "Data"), React.createElement("textarea", {className: "monospace", ref: "data", rows: "10", onFocus: <span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return e.target.select(); </span>}, placeholder: 'Click "Load Data" to get data for export or paste your data here ...'}))))));
+        return React.createElement(modalDialog_ui_1.default, {id: "dashboard-import-export-dialog", title: "Import / Export Dashboard", actions: actions}, 
+            React.createElement("div", {className: "ui one column grid"}, 
+                React.createElement("div", {className: "column"}, 
+                    React.createElement("button", {className: "ui compact labeled icon button", onClick: this._loadData.bind(this)}, 
+                        React.createElement("i", {className: "refresh icon"}), 
+                        "Load Data"), 
+                    React.createElement("button", {className: "ui compact labeled icon button", onClick: this._exportToClipboard.bind(this)}, 
+                        React.createElement("i", {className: "upload icon"}), 
+                        "Copy to Clipboard"), 
+                    React.createElement("button", {className: "ui compact labeled icon button", onClick: this._clearData.bind(this)}, 
+                        React.createElement("i", {className: "erase icon"}), 
+                        "Clear Data")), 
+                React.createElement("div", {className: "column"}, 
+                    React.createElement("form", {className: "ui form"}, 
+                        React.createElement("div", {className: "field"}, 
+                            React.createElement("label", null, "Data"), 
+                            React.createElement("textarea", {className: "monospace", ref: "data", rows: "10", onFocus: <span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return e.target.select(); </span>}, placeholder: 'Click "Load Data" to get data for export or paste your data here ...'}))
+                    )
+                ))
+        );
     };
     return ImportExportDialog;
 }(React.Component));
@@ -304,7 +361,7 @@ exports.default = react_redux_1.connect(function (state) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 29 2016 08:51:37 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 29 2016 10:19:46 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

@@ -177,7 +177,15 @@
 132
 133
 134
-135</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+135
+136
+137
+138
+139
+140
+141
+142
+143</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -236,6 +244,10 @@
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -259,6 +271,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -293,6 +307,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -367,8 +383,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = redux_form_1.reduxForm({ enableReinitialize: "true" })(SettingsForm);
 function LabeledField(props) {
     var setting = props.setting;
-    return React.createElement("div", {className: "field"}, React.createElement("label", null, setting.name, setting.description &amp;&amp; setting.type !== 'boolean' ?
-        React.createElement(ui.Icon, {type: "help circle", "data-content": setting.description}) : null), React.createElement(SettingsInput, {setting: props.setting}));
+    return React.createElement("div", {className: "field"}, 
+        React.createElement("label", null, 
+            setting.name, 
+            setting.description &amp;&amp; setting.type !== 'boolean' ?
+                React.createElement(ui.Icon, {type: "help circle", "data-content": setting.description}) : null), 
+        React.createElement(SettingsInput, {setting: props.setting}));
 }
 LabeledField.propTypes = {
     setting: react_1.PropTypes.shape({
@@ -392,11 +412,13 @@ function SettingsInput(props) {
 <span class="branch-4 cbranch-no" title="branch not covered" >        case "boolean":</span>
 <span class="cstat-no" title="statement not covered" >            return React.createElement(redux_form_1.Field, {name: setting.id, component: "input", type: "checkbox"});</span>
 <span class="branch-5 cbranch-no" title="branch not covered" >        case "option":</span>
-<span class="cstat-no" title="statement not covered" >            return React.createElement(redux_form_1.Field, {name: setting.id, component: "select", className: "ui fluid dropdown"}, React.createElement("option", null, "Select " + props.name + " ..."), setting.options.map(<span class="fstat-no" title="function not covered" >function (option) {</span></span>
-<span class="cstat-no" title="statement not covered" >                var optionValue = _.isObject(option) ? option.value : option;</span>
-<span class="cstat-no" title="statement not covered" >                var optionName = _.isObject(option) ? option.name : option;</span>
-<span class="cstat-no" title="statement not covered" >                return React.createElement("option", {key: optionValue, value: optionValue}, optionName);</span>
-            }));
+<span class="cstat-no" title="statement not covered" >            return React.createElement(redux_form_1.Field, {name: setting.id, component: "select", className: "ui fluid dropdown"}, </span>
+                React.createElement("option", null, "Select " + props.name + " ..."), 
+                setting.options.map(<span class="fstat-no" title="function not covered" >function (option) {</span>
+<span class="cstat-no" title="statement not covered" >                    var optionValue = _.isObject(option) ? option.value : option;</span>
+<span class="cstat-no" title="statement not covered" >                    var optionName = _.isObject(option) ? option.name : option;</span>
+<span class="cstat-no" title="statement not covered" >                    return React.createElement("option", {key: optionValue, value: optionValue}, optionName);</span>
+                }));
 <span class="branch-6 cbranch-no" title="branch not covered" >        case "datasource":</span>
 <span class="cstat-no" title="statement not covered" >            return React.createElement(DatasourceInputContainer, {setting: setting});</span>
 <span class="branch-7 cbranch-no" title="branch not covered" >        default:</span>
@@ -426,10 +448,12 @@ SettingsInput.propTypes = {
 var DatasourceInput = <span class="fstat-no" title="function not covered" >function (props) {</span>
 <span class="cstat-no" title="statement not covered" >    var datasources = props.datasources;</span>
 <span class="cstat-no" title="statement not covered" >    var setting = props.setting;</span>
-<span class="cstat-no" title="statement not covered" >    return React.createElement(redux_form_1.Field, {name: setting.id, component: "select", className: "ui fluid dropdown"}, React.createElement("option", null, "Select " + setting.name + " ..."), _.toPairs(datasources).map(<span class="fstat-no" title="function not covered" >function (_a) {</span></span>
-<span class="cstat-no" title="statement not covered" >        var id = _a[0], ds = _a[1];</span>
-<span class="cstat-no" title="statement not covered" >        return React.createElement("option", {key: id, value: id}, ds.settings.name + " (" + ds.type + ")");</span>
-    }));
+<span class="cstat-no" title="statement not covered" >    return React.createElement(redux_form_1.Field, {name: setting.id, component: "select", className: "ui fluid dropdown"}, </span>
+        React.createElement("option", null, "Select " + setting.name + " ..."), 
+        _.toPairs(datasources).map(<span class="fstat-no" title="function not covered" >function (_a) {</span>
+<span class="cstat-no" title="statement not covered" >            var id = _a[0], ds = _a[1];</span>
+<span class="cstat-no" title="statement not covered" >            return React.createElement("option", {key: id, value: id}, ds.settings.name + " (" + ds.type + ")");</span>
+        }));
 };
 DatasourceInput.propTypes = {
     datasources: react_1.PropTypes.object.isRequired,
@@ -451,7 +475,7 @@ var DatasourceInputContainer = react_redux_1.connect(<span class="fstat-no" titl
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 29 2016 08:51:37 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 29 2016 10:19:46 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

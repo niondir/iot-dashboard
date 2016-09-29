@@ -35,9 +35,9 @@
         <span class='fraction'>7/17</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">82.98% </span>
+        <span class="strong">78% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>39/47</span>
+        <span class='fraction'>39/50</span>
       </div>
     </div>
   </div>
@@ -118,7 +118,60 @@
 73
 74
 75
-76</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -170,7 +223,60 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -244,13 +350,66 @@ var Layout = (function (_super) {
         var props = this.props;
         var devMode = true;
         var showMenu = props.devMode &amp;&amp; (!props.isReadOnly || <span class="branch-2 cbranch-no" title="branch not covered" >this.state.hover)</span>;
-        return React.createElement("div", {className: "slds-grid slds-wrap", onKeyUp: <span class="fstat-no" title="function not covered" >function (event) {</span> <span class="cstat-no" title="statement not covered" >return _this.onReadOnlyModeKeyPress(event); </span>}}, React.createElement("div", null, React.createElement(widgetConfigDialog_ui_js_1.default, null), React.createElement(importExportDialog_ui_js_1.default, null), React.createElement(datasourceConfigDialog_ui_js_1.default, null), React.createElement(pluginsDialog_ui_1.default, null)), React.createElement("div", {className: showMenu ? "menu-trigger" : <span class="branch-1 cbranch-no" title="branch not covered" >"menu-trigger",</span> onMouseOver: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: true }); </span>}, onMouseEnter: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: true }); </span>}}), devMode ?
-            React.createElement("div", {className: "slds-size--1-of-1 slds-context-bar" + (showMenu ? " topnav--visible" : <span class="branch-1 cbranch-no" title="branch not covered" >" topnav--hidden")</span>, onMouseOver: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: true }); </span>}, onMouseLeave: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: false }); </span>}}, React.createElement("div", {className: "slds-context-bar__primary slds-context-bar__item--divider-right"}, React.createElement("div", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--click slds-no-hover"}, React.createElement("span", {className: "slds-context-bar__label-action slds-context-bar__app-name"}, React.createElement("span", {className: "slds-truncate"}, React.createElement("a", {href: "http://iot-dashboard.org"}, " IoT-Dashboard"))))), React.createElement("div", {className: "slds-context-bar__secondary", role: "navigation"}, React.createElement("ul", {className: "slds-grid"}, React.createElement(dashboardMenuEntry_ui_js_1.default, null), React.createElement(widgetsNavItem_ui_js_1.default, null), React.createElement(datasourceNavItem_ui_js_1.default, null), React.createElement(pluginNavItem_ui_1.default, null), React.createElement(layouts_ui_js_1.default, null), React.createElement("div", {className: "slds-context-bar__vertical-divider"}), React.createElement("li", {className: "slds-context-bar__item"}, React.createElement("a", {href: "javascript:void(0);", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return Persistence.clearData(); </span>}, className: "slds-context-bar__label-action", title: "Reset Everything!"}, React.createElement("span", {className: "slds-truncate"}, "Reset Everything!"))), React.createElement("li", {className: "slds-context-bar__item"}, React.createElement("div", {className: "slds-context-bar__icon-action", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return props.setReadOnly(!props.isReadOnly); </span>}}, React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--small slds-icon-text-default"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#" + (props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >"lock" </span>: "unlock")})), React.createElement("span", {className: "slds-assistive-text"}, "Lock / Unlock"))))), React.createElement("div", {className: "slds-context-bar__tertiary"}, React.createElement("ul", {className: "slds-grid slds-grid--vertical-align-center"}, props.config.auth &amp;&amp; props.config.auth.username ?
-<span class="branch-0 cbranch-no" title="branch not covered" >                React.createElement("div", {className: "slds-m-right--small"}, "Tobias")</span>
-                : null, props.config.auth &amp;&amp; props.config.auth.logoutUrl ?
-<span class="branch-0 cbranch-no" title="branch not covered" >                React.createElement("a", {className: "slds-button slds-button--neutral", href: props.config.auth.logoutUrl}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon slds-button__icon--left"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#logout"})), "Logout")</span>
-                : null, React.createElement("div", {className: "slds-context-bar__vertical-divider"}), React.createElement("span", {className: "slds-truncate slds-m-left--small"}, "v", this.props.config.version))))
-            : <span class="branch-1 cbranch-no" title="branch not covered" >null,</span> React.createElement("div", {className: "slds-size--1-of-1"}, React.createElement(widgetGrid_ui_js_1.default, null)));
+        return React.createElement("div", {className: "slds-grid slds-wrap", onKeyUp: <span class="fstat-no" title="function not covered" >function (event) {</span> <span class="cstat-no" title="statement not covered" >return _this.onReadOnlyModeKeyPress(event); </span>}}, 
+            React.createElement("div", null, 
+                React.createElement(widgetConfigDialog_ui_js_1.default, null), 
+                React.createElement(importExportDialog_ui_js_1.default, null), 
+                React.createElement(datasourceConfigDialog_ui_js_1.default, null), 
+                React.createElement(pluginsDialog_ui_1.default, null)), 
+            React.createElement("div", {className: showMenu ? "menu-trigger" : <span class="branch-1 cbranch-no" title="branch not covered" >"menu-trigger",</span> onMouseOver: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: true }); </span>}, onMouseEnter: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: true }); </span>}}), 
+            devMode ?
+                React.createElement("div", {className: "slds-size--1-of-1 slds-context-bar" + (showMenu ? " topnav--visible" : <span class="branch-1 cbranch-no" title="branch not covered" >" topnav--hidden")</span>, onMouseOver: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: true }); </span>}, onMouseLeave: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >_this.setState({ hover: false }); </span>}}, 
+                    React.createElement("div", {className: "slds-context-bar__primary slds-context-bar__item--divider-right"}, 
+                        React.createElement("div", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--click slds-no-hover"}, 
+                            React.createElement("span", {className: "slds-context-bar__label-action slds-context-bar__app-name"}, 
+                                React.createElement("span", {className: "slds-truncate"}, 
+                                    React.createElement("a", {href: "http://iot-dashboard.org"}, " IoT-Dashboard")
+                                )
+                            )
+                        )
+                    ), 
+                    React.createElement("div", {className: "slds-context-bar__secondary", role: "navigation"}, 
+                        React.createElement("ul", {className: "slds-grid"}, 
+                            React.createElement(dashboardMenuEntry_ui_js_1.default, null), 
+                            React.createElement(widgetsNavItem_ui_js_1.default, null), 
+                            React.createElement(datasourceNavItem_ui_js_1.default, null), 
+                            React.createElement(pluginNavItem_ui_1.default, null), 
+                            React.createElement(layouts_ui_js_1.default, null), 
+                            React.createElement("div", {className: "slds-context-bar__vertical-divider"}), 
+                            React.createElement("li", {className: "slds-context-bar__item"}, 
+                                React.createElement("a", {href: "javascript:void(0);", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return Persistence.clearData(); </span>}, className: "slds-context-bar__label-action", title: "Reset Everything!"}, 
+                                    React.createElement("span", {className: "slds-truncate"}, "Reset Everything!")
+                                )
+                            ), 
+                            React.createElement("li", {className: "slds-context-bar__item"}, 
+                                React.createElement("div", {className: "slds-context-bar__icon-action", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return props.setReadOnly(!props.isReadOnly); </span>}}, 
+                                    React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--small slds-icon-text-default"}, 
+                                        React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#" + (props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >"lock" </span>: "unlock")})
+                                    ), 
+                                    React.createElement("span", {className: "slds-assistive-text"}, "Lock / Unlock"))
+                            ))
+                    ), 
+                    React.createElement("div", {className: "slds-context-bar__tertiary"}, 
+                        React.createElement("ul", {className: "slds-grid slds-grid--vertical-align-center"}, 
+                            props.config.auth &amp;&amp; props.config.auth.username ?
+<span class="branch-0 cbranch-no" title="branch not covered" >                                React.createElement("div", {className: "slds-m-right--small"}, "Tobias")</span>
+                                : null, 
+                            props.config.auth &amp;&amp; props.config.auth.logoutUrl ?
+<span class="branch-0 cbranch-no" title="branch not covered" >                                React.createElement("a", {className: "slds-button slds-button--neutral", href: props.config.auth.logoutUrl}, </span>
+                                    React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon slds-button__icon--left"}, 
+                                        React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#logout"})
+                                    ), 
+                                    "Logout")
+                                : null, 
+                            React.createElement("div", {className: "slds-context-bar__vertical-divider"}), 
+                            React.createElement("span", {className: "slds-truncate slds-m-left--small"}, 
+                                "v", 
+                                this.props.config.version))
+                    ))
+                : <span class="branch-1 cbranch-no" title="branch not covered" >null, </span>
+            React.createElement("div", {className: "slds-size--1-of-1"}, 
+                React.createElement(widgetGrid_ui_js_1.default, null)
+            ));
     };
     return Layout;
 }(react_1.Component));
@@ -274,7 +433,7 @@ exports.default = react_redux_1.connect(function (state) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 29 2016 08:51:37 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 29 2016 10:19:46 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../prettify.js"></script>

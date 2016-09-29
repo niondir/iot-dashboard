@@ -35,9 +35,9 @@
         <span class='fraction'>20/30</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">83.61% </span>
+        <span class="strong">82.26% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>51/61</span>
+        <span class='fraction'>51/62</span>
       </div>
     </div>
   </div>
@@ -168,7 +168,33 @@
 123
 124
 125
-126</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -185,7 +211,27 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -222,6 +268,12 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -309,9 +361,29 @@ var Layouts = require('./layouts');
 var ui = require('../ui/elements.ui');
 var react_1 = require("react");
 var LayoutsTopNavItem = function (props) {
-    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Layouts"}, React.createElement("span", {className: "slds-truncate"}, "Layout")), React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})), React.createElement("span", {className: "slds-assistive-text"}, "Open Layout submenu"))), React.createElement("div", {className: "slds-dropdown slds-dropdown--right"}, React.createElement("ul", {className: "dropdown__list", role: "menu"}, React.createElement(SaveLayout, null), React.createElement(ResetLayoutButton, {text: "Reset Current Layout", icon: "undo"}), React.createElement(SaveLayoutButton, {text: "Save Layout", icon: "package"}), React.createElement("li", {className: "slds-dropdown__header slds-has-divider--top-space", role: "separator"}, React.createElement("span", {className: "slds-text-title--caps"}, "Layouts")), props.layouts.map(function (layout) {
-        return React.createElement(LayoutItem, {text: layout.name, icon: "plus", layout: layout, key: layout.id});
-    }))));
+    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, 
+        React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Layouts"}, 
+            React.createElement("span", {className: "slds-truncate"}, "Layout")
+        ), 
+        React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, 
+            React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, 
+                React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, 
+                    React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})
+                ), 
+                React.createElement("span", {className: "slds-assistive-text"}, "Open Layout submenu"))
+        ), 
+        React.createElement("div", {className: "slds-dropdown slds-dropdown--right"}, 
+            React.createElement("ul", {className: "dropdown__list", role: "menu"}, 
+                React.createElement(SaveLayout, null), 
+                React.createElement(ResetLayoutButton, {text: "Reset Current Layout", icon: "undo"}), 
+                React.createElement(SaveLayoutButton, {text: "Save Layout", icon: "package"}), 
+                React.createElement("li", {className: "slds-dropdown__header slds-has-divider--top-space", role: "separator"}, 
+                    React.createElement("span", {className: "slds-text-title--caps"}, "Layouts")
+                ), 
+                props.layouts.map(function (layout) {
+                    return React.createElement(LayoutItem, {text: layout.name, icon: "plus", layout: layout, key: layout.id});
+                }))
+        ));
 };
 LayoutsTopNavItem.propTypes = {
     layouts: react_1.PropTypes.arrayOf(react_1.PropTypes.shape({
@@ -346,7 +418,13 @@ var SaveInput = (function (_super) {
     };
     SaveInput.prototype.render = function () {
         var _this = this;
-        return React.createElement("div", {className: "slds-form-element"}, React.createElement("div", {className: "slds-form-element__control slds-input-has-icon slds-input-has-icon--right"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-input__icon slds-icon-text-default", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return _this.save(); </span>}}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#add"})), React.createElement("input", {id: "text-input-save-layout", className: "slds-input", type: "text", placeholder: "Save as ...", ref: "input", onKeyPress: this.onEnter.bind(this)})));
+        return React.createElement("div", {className: "slds-form-element"}, 
+            React.createElement("div", {className: "slds-form-element__control slds-input-has-icon slds-input-has-icon--right"}, 
+                React.createElement("svg", {"aria-hidden": "true", className: "slds-input__icon slds-icon-text-default", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return _this.save(); </span>}}, 
+                    React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#add"})
+                ), 
+                React.createElement("input", {id: "text-input-save-layout", className: "slds-input", type: "text", placeholder: "Save as ...", ref: "input", onKeyPress: this.onEnter.bind(this)}))
+        );
     };
     return SaveInput;
 }(React.Component));
@@ -424,7 +502,7 @@ var SaveLayoutButton = react_redux_1.connect(function (state) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 29 2016 08:51:37 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 29 2016 10:19:46 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

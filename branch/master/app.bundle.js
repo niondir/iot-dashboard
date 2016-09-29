@@ -824,7 +824,9 @@ webpackJsonp([0],[
 	var react_redux_1 = __webpack_require__(43);
 	var pageLayout_1 = __webpack_require__(45);
 	function render(element, store) {
-	    ReactDOM.render(React.createElement(react_redux_1.Provider, {store: store}, React.createElement(pageLayout_1.default, null)), element);
+	    ReactDOM.render(React.createElement(react_redux_1.Provider, {store: store}, 
+	        React.createElement(pageLayout_1.default, null)
+	    ), element);
 	}
 	exports.render = render;
 	
@@ -888,13 +890,66 @@ webpackJsonp([0],[
 	        var props = this.props;
 	        var devMode = true;
 	        var showMenu = props.devMode && (!props.isReadOnly || this.state.hover);
-	        return React.createElement("div", {className: "slds-grid slds-wrap", onKeyUp: function (event) { return _this.onReadOnlyModeKeyPress(event); }}, React.createElement("div", null, React.createElement(widgetConfigDialog_ui_js_1.default, null), React.createElement(importExportDialog_ui_js_1.default, null), React.createElement(datasourceConfigDialog_ui_js_1.default, null), React.createElement(pluginsDialog_ui_1.default, null)), React.createElement("div", {className: showMenu ? "menu-trigger" : "menu-trigger", onMouseOver: function () { _this.setState({ hover: true }); }, onMouseEnter: function () { _this.setState({ hover: true }); }}), devMode ?
-	            React.createElement("div", {className: "slds-size--1-of-1 slds-context-bar" + (showMenu ? " topnav--visible" : " topnav--hidden"), onMouseOver: function () { _this.setState({ hover: true }); }, onMouseLeave: function () { _this.setState({ hover: false }); }}, React.createElement("div", {className: "slds-context-bar__primary slds-context-bar__item--divider-right"}, React.createElement("div", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--click slds-no-hover"}, React.createElement("span", {className: "slds-context-bar__label-action slds-context-bar__app-name"}, React.createElement("span", {className: "slds-truncate"}, React.createElement("a", {href: "http://iot-dashboard.org"}, " IoT-Dashboard"))))), React.createElement("div", {className: "slds-context-bar__secondary", role: "navigation"}, React.createElement("ul", {className: "slds-grid"}, React.createElement(dashboardMenuEntry_ui_js_1.default, null), React.createElement(widgetsNavItem_ui_js_1.default, null), React.createElement(datasourceNavItem_ui_js_1.default, null), React.createElement(pluginNavItem_ui_1.default, null), React.createElement(layouts_ui_js_1.default, null), React.createElement("div", {className: "slds-context-bar__vertical-divider"}), React.createElement("li", {className: "slds-context-bar__item"}, React.createElement("a", {href: "javascript:void(0);", onClick: function () { return Persistence.clearData(); }, className: "slds-context-bar__label-action", title: "Reset Everything!"}, React.createElement("span", {className: "slds-truncate"}, "Reset Everything!"))), React.createElement("li", {className: "slds-context-bar__item"}, React.createElement("div", {className: "slds-context-bar__icon-action", onClick: function () { return props.setReadOnly(!props.isReadOnly); }}, React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--small slds-icon-text-default"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#" + (props.isReadOnly ? "lock" : "unlock")})), React.createElement("span", {className: "slds-assistive-text"}, "Lock / Unlock"))))), React.createElement("div", {className: "slds-context-bar__tertiary"}, React.createElement("ul", {className: "slds-grid slds-grid--vertical-align-center"}, props.config.auth && props.config.auth.username ?
-	                React.createElement("div", {className: "slds-m-right--small"}, "Tobias")
-	                : null, props.config.auth && props.config.auth.logoutUrl ?
-	                React.createElement("a", {className: "slds-button slds-button--neutral", href: props.config.auth.logoutUrl}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon slds-button__icon--left"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#logout"})), "Logout")
-	                : null, React.createElement("div", {className: "slds-context-bar__vertical-divider"}), React.createElement("span", {className: "slds-truncate slds-m-left--small"}, "v", this.props.config.version))))
-	            : null, React.createElement("div", {className: "slds-size--1-of-1"}, React.createElement(widgetGrid_ui_js_1.default, null)));
+	        return React.createElement("div", {className: "slds-grid slds-wrap", onKeyUp: function (event) { return _this.onReadOnlyModeKeyPress(event); }}, 
+	            React.createElement("div", null, 
+	                React.createElement(widgetConfigDialog_ui_js_1.default, null), 
+	                React.createElement(importExportDialog_ui_js_1.default, null), 
+	                React.createElement(datasourceConfigDialog_ui_js_1.default, null), 
+	                React.createElement(pluginsDialog_ui_1.default, null)), 
+	            React.createElement("div", {className: showMenu ? "menu-trigger" : "menu-trigger", onMouseOver: function () { _this.setState({ hover: true }); }, onMouseEnter: function () { _this.setState({ hover: true }); }}), 
+	            devMode ?
+	                React.createElement("div", {className: "slds-size--1-of-1 slds-context-bar" + (showMenu ? " topnav--visible" : " topnav--hidden"), onMouseOver: function () { _this.setState({ hover: true }); }, onMouseLeave: function () { _this.setState({ hover: false }); }}, 
+	                    React.createElement("div", {className: "slds-context-bar__primary slds-context-bar__item--divider-right"}, 
+	                        React.createElement("div", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--click slds-no-hover"}, 
+	                            React.createElement("span", {className: "slds-context-bar__label-action slds-context-bar__app-name"}, 
+	                                React.createElement("span", {className: "slds-truncate"}, 
+	                                    React.createElement("a", {href: "http://iot-dashboard.org"}, " IoT-Dashboard")
+	                                )
+	                            )
+	                        )
+	                    ), 
+	                    React.createElement("div", {className: "slds-context-bar__secondary", role: "navigation"}, 
+	                        React.createElement("ul", {className: "slds-grid"}, 
+	                            React.createElement(dashboardMenuEntry_ui_js_1.default, null), 
+	                            React.createElement(widgetsNavItem_ui_js_1.default, null), 
+	                            React.createElement(datasourceNavItem_ui_js_1.default, null), 
+	                            React.createElement(pluginNavItem_ui_1.default, null), 
+	                            React.createElement(layouts_ui_js_1.default, null), 
+	                            React.createElement("div", {className: "slds-context-bar__vertical-divider"}), 
+	                            React.createElement("li", {className: "slds-context-bar__item"}, 
+	                                React.createElement("a", {href: "javascript:void(0);", onClick: function () { return Persistence.clearData(); }, className: "slds-context-bar__label-action", title: "Reset Everything!"}, 
+	                                    React.createElement("span", {className: "slds-truncate"}, "Reset Everything!")
+	                                )
+	                            ), 
+	                            React.createElement("li", {className: "slds-context-bar__item"}, 
+	                                React.createElement("div", {className: "slds-context-bar__icon-action", onClick: function () { return props.setReadOnly(!props.isReadOnly); }}, 
+	                                    React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--small slds-icon-text-default"}, 
+	                                        React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#" + (props.isReadOnly ? "lock" : "unlock")})
+	                                    ), 
+	                                    React.createElement("span", {className: "slds-assistive-text"}, "Lock / Unlock"))
+	                            ))
+	                    ), 
+	                    React.createElement("div", {className: "slds-context-bar__tertiary"}, 
+	                        React.createElement("ul", {className: "slds-grid slds-grid--vertical-align-center"}, 
+	                            props.config.auth && props.config.auth.username ?
+	                                React.createElement("div", {className: "slds-m-right--small"}, "Tobias")
+	                                : null, 
+	                            props.config.auth && props.config.auth.logoutUrl ?
+	                                React.createElement("a", {className: "slds-button slds-button--neutral", href: props.config.auth.logoutUrl}, 
+	                                    React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon slds-button__icon--left"}, 
+	                                        React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#logout"})
+	                                    ), 
+	                                    "Logout")
+	                                : null, 
+	                            React.createElement("div", {className: "slds-context-bar__vertical-divider"}), 
+	                            React.createElement("span", {className: "slds-truncate slds-m-left--small"}, 
+	                                "v", 
+	                                this.props.config.version))
+	                    ))
+	                : null, 
+	            React.createElement("div", {className: "slds-size--1-of-1"}, 
+	                React.createElement(widgetGrid_ui_js_1.default, null)
+	            ));
 	    };
 	    return Layout;
 	}(react_1.Component));
@@ -1462,9 +1517,17 @@ webpackJsonp([0],[
 	    if (pluginLoaded) {
 	        widgetFactory = dashboard_1.default.getInstance().widgetPluginRegistry.getPlugin(widgetState.type);
 	    }
-	    return (React.createElement("div", {className: "lob-shadow--raised slds-card", style: { margin: 0, overflow: "hidden", backgroundColor: "#fff" }, key: widgetState.id, _grid: { x: widgetState.col, y: widgetState.row, w: widgetState.width, h: widgetState.height }}, React.createElement("div", {className: "slds-grid slds-wrap slds-has-dividers--bottom", style: { height: "100%" }}, React.createElement("div", {className: "slds-size--1-of-1 slds-item" + (props.isReadOnly ? "" : " drag"), style: { padding: 8 }}, props.isReadOnly ? null :
-	        React.createElement("div", {className: "slds-float--right"}, React.createElement(ConfigWidgetButton, {widgetState: widgetState, description: "settings", visible: (props.widgetPlugin && props.widgetPlugin.typeInfo.settings ? true : false), icon: "settings"}), React.createElement(DeleteWidgetButton, {widgetState: widgetState, description: "remove", icon: "remove", iconType: "action"})), React.createElement("div", {className: "" + (props.isReadOnly ? "" : " drag")}, widgetState.settings.name || "\u00a0")), React.createElement("div", {className: "slds-size--1-of-1 slds-is-relative", style: { height: widgetState.availableHeightPx, padding: 0, border: "red dashed 0px" }}, pluginLoaded ? widgetFactory.getInstance(widgetState.id)
-	        : React.createElement(LoadingWidget, {widget: widgetState})))));
+	    return (React.createElement("div", {className: "lob-shadow--raised slds-card", style: { margin: 0, overflow: "hidden", backgroundColor: "#fff" }, key: widgetState.id, _grid: { x: widgetState.col, y: widgetState.row, w: widgetState.width, h: widgetState.height }}, 
+	        React.createElement("div", {className: "slds-grid slds-wrap slds-has-dividers--bottom", style: { height: "100%" }}, 
+	            React.createElement("div", {className: "slds-size--1-of-1 slds-item" + (props.isReadOnly ? "" : " drag"), style: { padding: 8 }}, 
+	                props.isReadOnly ? null :
+	                    React.createElement("div", {className: "slds-float--right"}, 
+	                        React.createElement(ConfigWidgetButton, {widgetState: widgetState, description: "settings", visible: (props.widgetPlugin && props.widgetPlugin.typeInfo.settings ? true : false), icon: "settings"}), 
+	                        React.createElement(DeleteWidgetButton, {widgetState: widgetState, description: "remove", icon: "remove", iconType: "action"})), 
+	                React.createElement("div", {className: "" + (props.isReadOnly ? "" : " drag")}, widgetState.settings.name || "\u00a0")), 
+	            React.createElement("div", {className: "slds-size--1-of-1 slds-is-relative", style: { height: widgetState.availableHeightPx, padding: 0, border: "red dashed 0px" }}, pluginLoaded ? widgetFactory.getInstance(widgetState.id)
+	                : React.createElement(LoadingWidget, {widget: widgetState})))
+	    ));
 	};
 	exports.widgetPropType = react_1.PropTypes.shape({
 	    id: react_1.PropTypes.string.isRequired,
@@ -1491,7 +1554,16 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = WidgetFrame;
 	var LoadingWidget = function (props) {
-	    return React.createElement("div", {className: "slds-is-relative", style: { height: "100%", padding: "10px" }}, "Loading ", props.widget.type, " Widget ...", React.createElement("div", {className: "slds-spinner_container"}, React.createElement("div", {className: "slds-spinner slds-spinner--medium", role: "alert"}, React.createElement("span", {className: "slds-assistive-text"}, "Loading"), React.createElement("div", {className: "slds-spinner__dot-a"}), React.createElement("div", {className: "slds-spinner__dot-b"}))));
+	    return React.createElement("div", {className: "slds-is-relative", style: { height: "100%", padding: "10px" }}, 
+	        "Loading ", 
+	        props.widget.type, 
+	        " Widget ...", 
+	        React.createElement("div", {className: "slds-spinner_container"}, 
+	            React.createElement("div", {className: "slds-spinner slds-spinner--medium", role: "alert"}, 
+	                React.createElement("span", {className: "slds-assistive-text"}, "Loading"), 
+	                React.createElement("div", {className: "slds-spinner__dot-a"}), 
+	                React.createElement("div", {className: "slds-spinner__dot-b"}))
+	        ));
 	};
 	LoadingWidget.propTypes = {
 	    widget: exports.widgetPropType.isRequired
@@ -1505,7 +1577,11 @@ webpackJsonp([0],[
 	        var _this = this;
 	        var iconType = this.props.iconType || "utility";
 	        var data = this.props.widgetState;
-	        return React.createElement("button", {className: "slds-button slds-button--icon no-drag" + (this.props.visible !== false ? "" : " slds-hide")}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon slds-button__icon--small", onClick: function () { return _this.props.onClick(data); }}, React.createElement("use", {xlinkHref: "assets/icons/" + iconType + "-sprite/svg/symbols.svg#" + this.props.icon})), React.createElement("span", {className: "slds-assistive-text"}, this.props.description));
+	        return React.createElement("button", {className: "slds-button slds-button--icon no-drag" + (this.props.visible !== false ? "" : " slds-hide")}, 
+	            React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon slds-button__icon--small", onClick: function () { return _this.props.onClick(data); }}, 
+	                React.createElement("use", {xlinkHref: "assets/icons/" + iconType + "-sprite/svg/symbols.svg#" + this.props.icon})
+	            ), 
+	            React.createElement("span", {className: "slds-assistive-text"}, this.props.description));
 	    };
 	    return WidgetButton;
 	}(React.Component));
@@ -3353,9 +3429,29 @@ webpackJsonp([0],[
 	var ui = __webpack_require__(91);
 	var react_1 = __webpack_require__(20);
 	var LayoutsTopNavItem = function (props) {
-	    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Layouts"}, React.createElement("span", {className: "slds-truncate"}, "Layout")), React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})), React.createElement("span", {className: "slds-assistive-text"}, "Open Layout submenu"))), React.createElement("div", {className: "slds-dropdown slds-dropdown--right"}, React.createElement("ul", {className: "dropdown__list", role: "menu"}, React.createElement(SaveLayout, null), React.createElement(ResetLayoutButton, {text: "Reset Current Layout", icon: "undo"}), React.createElement(SaveLayoutButton, {text: "Save Layout", icon: "package"}), React.createElement("li", {className: "slds-dropdown__header slds-has-divider--top-space", role: "separator"}, React.createElement("span", {className: "slds-text-title--caps"}, "Layouts")), props.layouts.map(function (layout) {
-	        return React.createElement(LayoutItem, {text: layout.name, icon: "plus", layout: layout, key: layout.id});
-	    }))));
+	    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, 
+	        React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Layouts"}, 
+	            React.createElement("span", {className: "slds-truncate"}, "Layout")
+	        ), 
+	        React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, 
+	            React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, 
+	                React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, 
+	                    React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})
+	                ), 
+	                React.createElement("span", {className: "slds-assistive-text"}, "Open Layout submenu"))
+	        ), 
+	        React.createElement("div", {className: "slds-dropdown slds-dropdown--right"}, 
+	            React.createElement("ul", {className: "dropdown__list", role: "menu"}, 
+	                React.createElement(SaveLayout, null), 
+	                React.createElement(ResetLayoutButton, {text: "Reset Current Layout", icon: "undo"}), 
+	                React.createElement(SaveLayoutButton, {text: "Save Layout", icon: "package"}), 
+	                React.createElement("li", {className: "slds-dropdown__header slds-has-divider--top-space", role: "separator"}, 
+	                    React.createElement("span", {className: "slds-text-title--caps"}, "Layouts")
+	                ), 
+	                props.layouts.map(function (layout) {
+	                    return React.createElement(LayoutItem, {text: layout.name, icon: "plus", layout: layout, key: layout.id});
+	                }))
+	        ));
 	};
 	LayoutsTopNavItem.propTypes = {
 	    layouts: react_1.PropTypes.arrayOf(react_1.PropTypes.shape({
@@ -3390,7 +3486,13 @@ webpackJsonp([0],[
 	    };
 	    SaveInput.prototype.render = function () {
 	        var _this = this;
-	        return React.createElement("div", {className: "slds-form-element"}, React.createElement("div", {className: "slds-form-element__control slds-input-has-icon slds-input-has-icon--right"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-input__icon slds-icon-text-default", onClick: function () { return _this.save(); }}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#add"})), React.createElement("input", {id: "text-input-save-layout", className: "slds-input", type: "text", placeholder: "Save as ...", ref: "input", onKeyPress: this.onEnter.bind(this)})));
+	        return React.createElement("div", {className: "slds-form-element"}, 
+	            React.createElement("div", {className: "slds-form-element__control slds-input-has-icon slds-input-has-icon--right"}, 
+	                React.createElement("svg", {"aria-hidden": "true", className: "slds-input__icon slds-icon-text-default", onClick: function () { return _this.save(); }}, 
+	                    React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#add"})
+	                ), 
+	                React.createElement("input", {id: "text-input-save-layout", className: "slds-input", type: "text", placeholder: "Save as ...", ref: "input", onKeyPress: this.onEnter.bind(this)}))
+	        );
 	    };
 	    return SaveInput;
 	}(React.Component));
@@ -3618,7 +3720,9 @@ webpackJsonp([0],[
 	    var icon;
 	    var iconRight;
 	    if (props.icon) {
-	        icon = React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default slds-m-right--x-small" + (props.isCheckbox ? " slds-icon--selected" : "")}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#" + props.icon}));
+	        icon = React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default slds-m-right--x-small" + (props.isCheckbox ? " slds-icon--selected" : "")}, 
+	            React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#" + props.icon})
+	        );
 	    }
 	    if (props.iconRight) {
 	        iconRight = React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default slds-m-left--small slds-shrink-none", onClick: function (e) {
@@ -3627,13 +3731,22 @@ webpackJsonp([0],[
 	                e.preventDefault();
 	                props.iconRightClick(e);
 	            }
-	        }}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#" + props.iconRight}));
+	        }}, 
+	            React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#" + props.iconRight})
+	        );
 	    }
-	    return React.createElement("li", {className: "slds-dropdown__item" + (props.selected ? " slds-is-selected" : ""), role: "presentation"}, React.createElement("a", {href: "javascript:void(0);", role: props.isCheckbox ? "menuitemcheckbox" : "menuitem", "aria-checked": props.selected ? "true" : "false", onClick: function (e) {
-	        e.stopPropagation();
-	        e.preventDefault();
-	        props.onClick(e);
-	    }, tabindex: "-1"}, React.createElement("span", {className: "slds-truncate"}, icon, " ", props.text), iconRight));
+	    return React.createElement("li", {className: "slds-dropdown__item" + (props.selected ? " slds-is-selected" : ""), role: "presentation"}, 
+	        React.createElement("a", {href: "javascript:void(0);", role: props.isCheckbox ? "menuitemcheckbox" : "menuitem", "aria-checked": props.selected ? "true" : "false", onClick: function (e) {
+	            e.stopPropagation();
+	            e.preventDefault();
+	            props.onClick(e);
+	        }, tabindex: "-1"}, 
+	            React.createElement("span", {className: "slds-truncate"}, 
+	                icon, 
+	                " ", 
+	                props.text), 
+	            iconRight)
+	    );
 	};
 	exports.DropdownItem.propTypes = {
 	    onClick: react_1.PropTypes.func.isRequired,
@@ -3654,7 +3767,12 @@ webpackJsonp([0],[
 	        e.stopPropagation();
 	        e.preventDefault();
 	        props.onClick(props);
-	    }}, icon, " ", props.children, " ", props.text);
+	    }}, 
+	        icon, 
+	        " ", 
+	        props.children, 
+	        " ", 
+	        props.text);
 	};
 	exports.LinkItem.propTypes = {
 	    onClick: react_1.PropTypes.func.isRequired,
@@ -3767,7 +3885,11 @@ webpackJsonp([0],[
 	            // TODO: Find a better (more generic way) to deal with uninitialized data for modals
 	            // TODO: The widgetConfig in the state is a bad idea. Solve this via state.modalDialog.data
 	            // This is needed for the very first time the page is rendered and the selected widget type is undefined
-	            return React.createElement(modalDialog_ui_tsx_1.default, {id: DIALOG_ID, title: "Configure Widget: " + props.widgetType, actions: actions}, React.createElement("div", null, "Unknown WidgetType: ", props.widgetType));
+	            return React.createElement(modalDialog_ui_tsx_1.default, {id: DIALOG_ID, title: "Configure Widget: " + props.widgetType, actions: actions}, 
+	                React.createElement("div", null, 
+	                    "Unknown WidgetType: ", 
+	                    props.widgetType)
+	            );
 	        }
 	        // Add additional fields
 	        var settings = selectedWidgetPlugin ? selectedWidgetPlugin.typeInfo.settings.slice() : [];
@@ -3786,9 +3908,17 @@ webpackJsonp([0],[
 	        }, {});
 	        // Overwrite with current widget props
 	        initialValues = Object.assign({}, initialValues, props.widgetSettings);
-	        return React.createElement(modalDialog_ui_tsx_1.default, {id: DIALOG_ID, title: "Configure Widget: " + selectedWidgetPlugin.typeInfo.name, actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, selectedWidgetPlugin.description ?
-	            React.createElement("div", {className: "ui icon message"}, React.createElement("i", {className: "idea icon"}), React.createElement("div", {className: "content"}, selectedWidgetPlugin.description))
-	            : null, React.createElement(settingsForm_ui_1.default, {ref: "form", form: FORM_ID, settings: settings, onSubmit: this.onSubmit.bind(this), fields: fields.slice(), initialValues: initialValues}))));
+	        return React.createElement(modalDialog_ui_tsx_1.default, {id: DIALOG_ID, title: "Configure Widget: " + selectedWidgetPlugin.typeInfo.name, actions: actions}, 
+	            React.createElement("div", {className: "ui one column grid"}, 
+	                React.createElement("div", {className: "column"}, 
+	                    selectedWidgetPlugin.description ?
+	                        React.createElement("div", {className: "ui icon message"}, 
+	                            React.createElement("i", {className: "idea icon"}), 
+	                            React.createElement("div", {className: "content"}, selectedWidgetPlugin.description))
+	                        : null, 
+	                    React.createElement(settingsForm_ui_1.default, {ref: "form", form: FORM_ID, settings: settings, onSubmit: this.onSubmit.bind(this), fields: fields.slice(), initialValues: initialValues}))
+	            )
+	        );
 	    };
 	    return WidgetConfigModal;
 	}(React.Component));
@@ -3891,18 +4021,25 @@ webpackJsonp([0],[
 	        var _this = this;
 	        var key = 0;
 	        var actions = this.props.actions.map(function (action) {
-	            return React.createElement("div", {key: key++, className: action.className, onClick: function (e) { return _this.onClick(e, action); }}, action.label, action.iconClass ? React.createElement("i", {className: action.iconClass}) : null);
+	            return React.createElement("div", {key: key++, className: action.className, onClick: function (e) { return _this.onClick(e, action); }}, 
+	                action.label, 
+	                action.iconClass ? React.createElement("i", {className: action.iconClass}) : null);
 	        });
 	        var props = this.props;
 	        // TODO: realize Modals with React, then isOpen gets handy:
 	        //const isOpen = props.dialogState.dialogId == props.id && props.dialogState.isVisible;
 	        var height = this.state.screen.height;
 	        var width = this.state.screen.width;
-	        return React.createElement("div", {id: this.props.id, className: 'ui modal ' + this.props.id, style: { width: width - 80, top: 40, left: 40, margin: 1, minHeight: "500px" }}, React.createElement("div", {className: "header"}, props.title), React.createElement("div", {className: "content", style: { overflowY: 'scroll', height: height - 300, minHeight: "500px" }}, this.props.dialogState.errors ?
-	            this.props.dialogState.errors.map(function (message, i) {
-	                return React.createElement(ModalErrorComponent, {key: i, errorMessage: message});
-	            })
-	            : null, props.children), React.createElement("div", {className: "actions"}, actions));
+	        return React.createElement("div", {id: this.props.id, className: 'ui modal ' + this.props.id, style: { width: width - 80, top: 40, left: 40, margin: 1, minHeight: "500px" }}, 
+	            React.createElement("div", {className: "header"}, props.title), 
+	            React.createElement("div", {className: "content", style: { overflowY: 'scroll', height: height - 300, minHeight: "500px" }}, 
+	                this.props.dialogState.errors ?
+	                    this.props.dialogState.errors.map(function (message, i) {
+	                        return React.createElement(ModalErrorComponent, {key: i, errorMessage: message});
+	                    })
+	                    : null, 
+	                props.children), 
+	            React.createElement("div", {className: "actions"}, actions));
 	    };
 	    return ModalDialog;
 	}(React.Component));
@@ -3926,7 +4063,16 @@ webpackJsonp([0],[
 	    };
 	    ModalError.prototype.render = function () {
 	        var _this = this;
-	        return React.createElement("div", {className: "slds-notify_container slds-is-relative slds-m-bottom--x-small"}, React.createElement("div", {className: "slds-notify slds-notify--alert slds-theme--error slds-theme--alert-texture", role: "alert"}, React.createElement("button", {className: "slds-button slds-notify__close slds-button--icon-inverse", onClick: function () { return _this.close(); }}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, React.createElement("use", {xlinkHref: "/assets/icons/utility-sprite/svg/symbols.svg#close"})), React.createElement("span", {className: "slds-assistive-text"}, "Close")), React.createElement("span", {className: "slds-assistive-text"}, "Error"), React.createElement("h2", null, this.props.errorMessage)));
+	        return React.createElement("div", {className: "slds-notify_container slds-is-relative slds-m-bottom--x-small"}, 
+	            React.createElement("div", {className: "slds-notify slds-notify--alert slds-theme--error slds-theme--alert-texture", role: "alert"}, 
+	                React.createElement("button", {className: "slds-button slds-notify__close slds-button--icon-inverse", onClick: function () { return _this.close(); }}, 
+	                    React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, 
+	                        React.createElement("use", {xlinkHref: "/assets/icons/utility-sprite/svg/symbols.svg#close"})
+	                    ), 
+	                    React.createElement("span", {className: "slds-assistive-text"}, "Close")), 
+	                React.createElement("span", {className: "slds-assistive-text"}, "Error"), 
+	                React.createElement("h2", null, this.props.errorMessage))
+	        );
 	    };
 	    return ModalError;
 	}(React.Component));
@@ -4004,8 +4150,12 @@ webpackJsonp([0],[
 	exports.default = redux_form_1.reduxForm({ enableReinitialize: "true" })(SettingsForm);
 	function LabeledField(props) {
 	    var setting = props.setting;
-	    return React.createElement("div", {className: "field"}, React.createElement("label", null, setting.name, setting.description && setting.type !== 'boolean' ?
-	        React.createElement(ui.Icon, {type: "help circle", "data-content": setting.description}) : null), React.createElement(SettingsInput, {setting: props.setting}));
+	    return React.createElement("div", {className: "field"}, 
+	        React.createElement("label", null, 
+	            setting.name, 
+	            setting.description && setting.type !== 'boolean' ?
+	                React.createElement(ui.Icon, {type: "help circle", "data-content": setting.description}) : null), 
+	        React.createElement(SettingsInput, {setting: props.setting}));
 	}
 	LabeledField.propTypes = {
 	    setting: react_1.PropTypes.shape({
@@ -4029,11 +4179,13 @@ webpackJsonp([0],[
 	        case "boolean":
 	            return React.createElement(redux_form_1.Field, {name: setting.id, component: "input", type: "checkbox"});
 	        case "option":
-	            return React.createElement(redux_form_1.Field, {name: setting.id, component: "select", className: "ui fluid dropdown"}, React.createElement("option", null, "Select " + props.name + " ..."), setting.options.map(function (option) {
-	                var optionValue = _.isObject(option) ? option.value : option;
-	                var optionName = _.isObject(option) ? option.name : option;
-	                return React.createElement("option", {key: optionValue, value: optionValue}, optionName);
-	            }));
+	            return React.createElement(redux_form_1.Field, {name: setting.id, component: "select", className: "ui fluid dropdown"}, 
+	                React.createElement("option", null, "Select " + props.name + " ..."), 
+	                setting.options.map(function (option) {
+	                    var optionValue = _.isObject(option) ? option.value : option;
+	                    var optionName = _.isObject(option) ? option.name : option;
+	                    return React.createElement("option", {key: optionValue, value: optionValue}, optionName);
+	                }));
 	        case "datasource":
 	            return React.createElement(DatasourceInputContainer, {setting: setting});
 	        default:
@@ -4063,10 +4215,12 @@ webpackJsonp([0],[
 	var DatasourceInput = function (props) {
 	    var datasources = props.datasources;
 	    var setting = props.setting;
-	    return React.createElement(redux_form_1.Field, {name: setting.id, component: "select", className: "ui fluid dropdown"}, React.createElement("option", null, "Select " + setting.name + " ..."), _.toPairs(datasources).map(function (_a) {
-	        var id = _a[0], ds = _a[1];
-	        return React.createElement("option", {key: id, value: id}, ds.settings.name + " (" + ds.type + ")");
-	    }));
+	    return React.createElement(redux_form_1.Field, {name: setting.id, component: "select", className: "ui fluid dropdown"}, 
+	        React.createElement("option", null, "Select " + setting.name + " ..."), 
+	        _.toPairs(datasources).map(function (_a) {
+	            var id = _a[0], ds = _a[1];
+	            return React.createElement("option", {key: id, value: id}, ds.settings.name + " (" + ds.type + ")");
+	        }));
 	};
 	DatasourceInput.propTypes = {
 	    datasources: react_1.PropTypes.object.isRequired,
@@ -4128,7 +4282,22 @@ webpackJsonp([0],[
 	var ModalIds = __webpack_require__(55);
 	var react_1 = __webpack_require__(20);
 	var DashboardTopNavItem = function (props) {
-	    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Dashboard"}, React.createElement("span", {className: "slds-truncate"}, "Board")), React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})), React.createElement("span", {className: "slds-assistive-text"}, "Open Board submenu"))), React.createElement("div", {className: "slds-dropdown slds-dropdown--right"}, React.createElement("ul", {className: "dropdown__list", role: "menu"}, React.createElement(ui.DropdownItem, {text: "Import / Export", icon: "change_record_type", onClick: function () { return props.showModal(ModalIds.DASHBOARD_IMPORT_EXPORT); }}))));
+	    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, 
+	        React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Dashboard"}, 
+	            React.createElement("span", {className: "slds-truncate"}, "Board")
+	        ), 
+	        React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, 
+	            React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, 
+	                React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, 
+	                    React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})
+	                ), 
+	                React.createElement("span", {className: "slds-assistive-text"}, "Open Board submenu"))
+	        ), 
+	        React.createElement("div", {className: "slds-dropdown slds-dropdown--right"}, 
+	            React.createElement("ul", {className: "dropdown__list", role: "menu"}, 
+	                React.createElement(ui.DropdownItem, {text: "Import / Export", icon: "change_record_type", onClick: function () { return props.showModal(ModalIds.DASHBOARD_IMPORT_EXPORT); }})
+	            )
+	        ));
 	};
 	DashboardTopNavItem.propTypes = {
 	    showModal: react_1.PropTypes.func.isRequired
@@ -4215,7 +4384,26 @@ webpackJsonp([0],[
 	                }
 	            }
 	        ];
-	        return React.createElement(modalDialog_ui_1.default, {id: "dashboard-import-export-dialog", title: "Import / Export Dashboard", actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, React.createElement("button", {className: "ui compact labeled icon button", onClick: this._loadData.bind(this)}, React.createElement("i", {className: "refresh icon"}), "Load Data"), React.createElement("button", {className: "ui compact labeled icon button", onClick: this._exportToClipboard.bind(this)}, React.createElement("i", {className: "upload icon"}), "Copy to Clipboard"), React.createElement("button", {className: "ui compact labeled icon button", onClick: this._clearData.bind(this)}, React.createElement("i", {className: "erase icon"}), "Clear Data")), React.createElement("div", {className: "column"}, React.createElement("form", {className: "ui form"}, React.createElement("div", {className: "field"}, React.createElement("label", null, "Data"), React.createElement("textarea", {className: "monospace", ref: "data", rows: "10", onFocus: function (e) { return e.target.select(); }, placeholder: 'Click "Load Data" to get data for export or paste your data here ...'}))))));
+	        return React.createElement(modalDialog_ui_1.default, {id: "dashboard-import-export-dialog", title: "Import / Export Dashboard", actions: actions}, 
+	            React.createElement("div", {className: "ui one column grid"}, 
+	                React.createElement("div", {className: "column"}, 
+	                    React.createElement("button", {className: "ui compact labeled icon button", onClick: this._loadData.bind(this)}, 
+	                        React.createElement("i", {className: "refresh icon"}), 
+	                        "Load Data"), 
+	                    React.createElement("button", {className: "ui compact labeled icon button", onClick: this._exportToClipboard.bind(this)}, 
+	                        React.createElement("i", {className: "upload icon"}), 
+	                        "Copy to Clipboard"), 
+	                    React.createElement("button", {className: "ui compact labeled icon button", onClick: this._clearData.bind(this)}, 
+	                        React.createElement("i", {className: "erase icon"}), 
+	                        "Clear Data")), 
+	                React.createElement("div", {className: "column"}, 
+	                    React.createElement("form", {className: "ui form"}, 
+	                        React.createElement("div", {className: "field"}, 
+	                            React.createElement("label", null, "Data"), 
+	                            React.createElement("textarea", {className: "monospace", ref: "data", rows: "10", onFocus: function (e) { return e.target.select(); }, placeholder: 'Click "Load Data" to get data for export or paste your data here ...'}))
+	                    )
+	                ))
+	        );
 	    };
 	    return ImportExportDialog;
 	}(React.Component));
@@ -4464,13 +4652,27 @@ webpackJsonp([0],[
 	        if (this._isEditing()) {
 	            title = "Edit Datasource";
 	        }
-	        return React.createElement(modalDialog_ui_1.default, {id: DIALOG_ID, title: title, actions: actions}, React.createElement("div", {className: "ui one column grid"}, React.createElement("div", {className: "column"}, selectedDsPluginState && selectedDsPluginState.typeInfo.description ?
-	            React.createElement("div", {className: "ui icon message"}, React.createElement("i", {className: "idea icon"}), React.createElement("div", {className: "content"}, selectedDsPluginState.typeInfo.description))
-	            : null, React.createElement("div", {className: "field"}, React.createElement("label", null, "Type"), React.createElement("select", {className: "ui fluid dropdown", name: "type", value: this.state.selectedType, onChange: function (e) {
-	            _this.setState({ selectedType: e.target.value });
-	        }}, React.createElement("option", {key: "none", value: ""}, "Select Type..."), _.valuesIn(props.datasourcePlugins).map(function (dsPlugin) {
-	            return React.createElement("option", {key: dsPlugin.id, value: dsPlugin.id}, dsPlugin.typeInfo.name);
-	        }))), React.createElement(ui.Divider, null), React.createElement(settingsForm_ui_1.default, {ref: "form", form: FORM_ID, onSubmit: this.onSubmit.bind(this), settings: settings, initialValues: initialValues}))));
+	        return React.createElement(modalDialog_ui_1.default, {id: DIALOG_ID, title: title, actions: actions}, 
+	            React.createElement("div", {className: "ui one column grid"}, 
+	                React.createElement("div", {className: "column"}, 
+	                    selectedDsPluginState && selectedDsPluginState.typeInfo.description ?
+	                        React.createElement("div", {className: "ui icon message"}, 
+	                            React.createElement("i", {className: "idea icon"}), 
+	                            React.createElement("div", {className: "content"}, selectedDsPluginState.typeInfo.description))
+	                        : null, 
+	                    React.createElement("div", {className: "field"}, 
+	                        React.createElement("label", null, "Type"), 
+	                        React.createElement("select", {className: "ui fluid dropdown", name: "type", value: this.state.selectedType, onChange: function (e) {
+	                            _this.setState({ selectedType: e.target.value });
+	                        }}, 
+	                            React.createElement("option", {key: "none", value: ""}, "Select Type..."), 
+	                            _.valuesIn(props.datasourcePlugins).map(function (dsPlugin) {
+	                                return React.createElement("option", {key: dsPlugin.id, value: dsPlugin.id}, dsPlugin.typeInfo.name);
+	                            }))), 
+	                    React.createElement(ui.Divider, null), 
+	                    React.createElement(settingsForm_ui_1.default, {ref: "form", form: FORM_ID, onSubmit: this.onSubmit.bind(this), settings: settings, initialValues: initialValues}))
+	            )
+	        );
 	    };
 	    return DatasourceConfigModal;
 	}(React.Component));
@@ -4516,9 +4718,27 @@ webpackJsonp([0],[
 	var ui = __webpack_require__(91);
 	var react_1 = __webpack_require__(20);
 	var DatasourceTopNavItem = function (props) {
-	    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Datasources"}, React.createElement("span", {className: "slds-truncate"}, "Datasources")), React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})), React.createElement("span", {className: "slds-assistive-text"}, "Open Datasources submenu"))), React.createElement("div", {className: "slds-dropdown slds-dropdown--right"}, React.createElement("ul", {className: "dropdown__list", role: "menu"}, React.createElement(ui.DropdownItem, {text: "Add Datasource", icon: "add", onClick: function () { return props.createDatasource(); }}), React.createElement("li", {className: "slds-dropdown__header slds-has-divider--top-space", role: "separator"}, React.createElement("span", {className: "slds-text-title--caps"}, "Datasources")), _.valuesIn(props.datasources).map(function (ds) {
-	        return React.createElement(ui.DropdownItem, {key: ds.id, text: ds.settings.name, iconRight: "delete", iconRightClick: function () { return props.deleteDatasource(ds.id); }, onClick: function () { return props.editDatasource(ds.id); }});
-	    }))));
+	    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, 
+	        React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Datasources"}, 
+	            React.createElement("span", {className: "slds-truncate"}, "Datasources")
+	        ), 
+	        React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, 
+	            React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, 
+	                React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, 
+	                    React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})
+	                ), 
+	                React.createElement("span", {className: "slds-assistive-text"}, "Open Datasources submenu"))
+	        ), 
+	        React.createElement("div", {className: "slds-dropdown slds-dropdown--right"}, 
+	            React.createElement("ul", {className: "dropdown__list", role: "menu"}, 
+	                React.createElement(ui.DropdownItem, {text: "Add Datasource", icon: "add", onClick: function () { return props.createDatasource(); }}), 
+	                React.createElement("li", {className: "slds-dropdown__header slds-has-divider--top-space", role: "separator"}, 
+	                    React.createElement("span", {className: "slds-text-title--caps"}, "Datasources")
+	                ), 
+	                _.valuesIn(props.datasources).map(function (ds) {
+	                    return React.createElement(ui.DropdownItem, {key: ds.id, text: ds.settings.name, iconRight: "delete", iconRightClick: function () { return props.deleteDatasource(ds.id); }, onClick: function () { return props.editDatasource(ds.id); }});
+	                }))
+	        ));
 	};
 	DatasourceTopNavItem.propTypes = {
 	    createDatasource: react_1.PropTypes.func.isRequired,
@@ -4559,9 +4779,22 @@ webpackJsonp([0],[
 	var _ = __webpack_require__(21);
 	var ui = __webpack_require__(91);
 	var WidgetsNavItem = function (props) {
-	    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Widgets"}, React.createElement("span", {className: "slds-truncate"}, "Add Widget")), React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})), React.createElement("span", {className: "slds-assistive-text"}, "Open Add Widget submenu"))), React.createElement("div", {className: "slds-dropdown slds-dropdown--right"}, React.createElement("ul", {className: "dropdown__list", role: "menu"}, _.valuesIn(props.widgetPlugins).map(function (widgetPlugin) {
-	        return React.createElement(ui.DropdownItem, {key: widgetPlugin.id, text: widgetPlugin.typeInfo.name, icon: "add", onClick: function () { return props.createWidget(widgetPlugin.typeInfo.type); }});
-	    }))));
+	    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, 
+	        React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Widgets"}, 
+	            React.createElement("span", {className: "slds-truncate"}, "Add Widget")
+	        ), 
+	        React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, 
+	            React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, 
+	                React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, 
+	                    React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})
+	                ), 
+	                React.createElement("span", {className: "slds-assistive-text"}, "Open Add Widget submenu"))
+	        ), 
+	        React.createElement("div", {className: "slds-dropdown slds-dropdown--right"}, 
+	            React.createElement("ul", {className: "dropdown__list", role: "menu"}, _.valuesIn(props.widgetPlugins).map(function (widgetPlugin) {
+	                return React.createElement(ui.DropdownItem, {key: widgetPlugin.id, text: widgetPlugin.typeInfo.name, icon: "add", onClick: function () { return props.createWidget(widgetPlugin.typeInfo.type); }});
+	            }))
+	        ));
 	};
 	WidgetsNavItem.propTypes = {
 	    widgetPlugins: react_1.PropTypes.objectOf(react_1.PropTypes.shape({
@@ -4600,7 +4833,11 @@ webpackJsonp([0],[
 	var ModalIds = __webpack_require__(55);
 	var Modal = __webpack_require__(54);
 	var PluginsTopNavItem = function (props) {
-	    return React.createElement("li", {className: "slds-context-bar__item"}, React.createElement("a", {href: "javascript:void(0);", onClick: function () { return props.showPluginsDialog(); }, className: "slds-context-bar__label-action", title: "Plugins"}, React.createElement("span", {className: "slds-truncate"}, "Plugins")));
+	    return React.createElement("li", {className: "slds-context-bar__item"}, 
+	        React.createElement("a", {href: "javascript:void(0);", onClick: function () { return props.showPluginsDialog(); }, className: "slds-context-bar__label-action", title: "Plugins"}, 
+	            React.createElement("span", {className: "slds-truncate"}, "Plugins")
+	        )
+	    );
 	};
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = react_redux_1.connect(function (state) {
@@ -4674,15 +4911,39 @@ webpackJsonp([0],[
 	        var datasourcePluginStates = _.valuesIn(props.datasourcePlugins);
 	        var widgetPluginStates = _.valuesIn(props.widgetPlugins);
 	        var pluginUrlInput = this.refs['pluginUrl']; // HTMLInputElement
-	        return React.createElement(modalDialog_ui_1.default, {id: "plugins-dialog", title: "Plugins", actions: actions}, React.createElement("div", {className: "slds-grid"}, React.createElement("div", {className: "slds-size--1-of-1"}, React.createElement("h2", {className: "slds-section-title--divider slds-m-bottom--medium"}, "Load Plugin ", React.createElement(PluginRegistrySettings, {pluginRegistryApiKey: props.pluginRegistryApiKey, pluginRegistryUrl: props.pluginRegistryUrl, onApiKeyChanged: function (key) { return _this.props.setConfigValue("pluginRegistryApiKey", key); }, onRegistryUrlChanged: function (url) { return _this.props.setConfigValue("pluginRegistryUrl", url); }})), React.createElement("form", {className: "slds-form--inline slds-grid", onSubmit: function (e) {
-	            props.loadPlugin(pluginUrlInput.value);
-	            pluginUrlInput.value = "";
-	            e.preventDefault();
-	        }}, React.createElement("div", {className: "slds-form-element slds-has-flexi-truncate slds-lookup" + (this.state.isSearchOpen ? " slds-is-open" : ""), "data-select": "single"}, React.createElement("div", {className: "slds-form-element__control slds-size--1-of-1"}, React.createElement("div", {className: "slds-input-has-icon slds-input-has-icon--right"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-input__icon"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#search"})), React.createElement("input", {className: "slds-lookup__search-input slds-input", type: "search", placeholder: "URL or Id from Plugin Registry", id: "plugin-lookup-menu", ref: "pluginUrl", autoComplete: "off", defaultValue: "", onChange: function (e) { return _this.pluginSearchValueChange(e); }, onBlur: function (e) { return _this.onBlurPluginSearchInput(e); }, onFocus: function (e) { return _this.onFocusPluginSearchInput(e); }, "aria-owns": "plugin-lookup-menu", role: "combobox", "aria-activedescendent": "", "aria-expanded": (this.state.isSearchOpen ? "true" : "false"), "aria-autocomplete": "list"}))), React.createElement(LookupMenu, {id: "plugin-lookup-menu", searchString: this.state.pluginUrl, onItemClicked: function (item) { return props.loadPlugin('plugin://' + item.type); }})), React.createElement("div", {className: "slds-form-element slds-no-flex"}, React.createElement("button", {className: "slds-button slds-button--brand", type: "submit", tabIndex: "0"}, "Load Plugin"))), React.createElement("h4", {className: "slds-section-title--divider slds-m-top--medium slds-m-bottom--medium"}, "Datasource Plugins (Installed)"), React.createElement("div", {className: "slds-grid slds-grid--vertical-stretch slds-wrap slds-has-dividers--around-space"}, datasourcePluginStates.map(function (dsState) {
-	            return React.createElement(DatasourcePluginTile, {key: dsState.id, pluginId: dsState.id});
-	        })), React.createElement("h4", {className: "slds-section-title--divider slds-m-top--medium slds-m-bottom--medium"}, "Widget Plugins (Installed)"), React.createElement("div", {className: "slds-grid slds-grid--vertical-stretch slds-wrap slds-has-dividers--around-space"}, widgetPluginStates.map(function (dsState) {
-	            return React.createElement(WidgetPluginTile, {key: dsState.id, pluginId: dsState.id});
-	        })))));
+	        return React.createElement(modalDialog_ui_1.default, {id: "plugins-dialog", title: "Plugins", actions: actions}, 
+	            React.createElement("div", {className: "slds-grid"}, 
+	                React.createElement("div", {className: "slds-size--1-of-1"}, 
+	                    React.createElement("h2", {className: "slds-section-title--divider slds-m-bottom--medium"}, 
+	                        "Load Plugin ", 
+	                        React.createElement(PluginRegistrySettings, {pluginRegistryApiKey: props.pluginRegistryApiKey, pluginRegistryUrl: props.pluginRegistryUrl, onApiKeyChanged: function (key) { return _this.props.setConfigValue("pluginRegistryApiKey", key); }, onRegistryUrlChanged: function (url) { return _this.props.setConfigValue("pluginRegistryUrl", url); }})), 
+	                    React.createElement("form", {className: "slds-form--inline slds-grid", onSubmit: function (e) {
+	                        props.loadPlugin(pluginUrlInput.value);
+	                        pluginUrlInput.value = "";
+	                        e.preventDefault();
+	                    }}, 
+	                        React.createElement("div", {className: "slds-form-element slds-has-flexi-truncate slds-lookup" + (this.state.isSearchOpen ? " slds-is-open" : ""), "data-select": "single"}, 
+	                            React.createElement("div", {className: "slds-form-element__control slds-size--1-of-1"}, 
+	                                React.createElement("div", {className: "slds-input-has-icon slds-input-has-icon--right"}, 
+	                                    React.createElement("svg", {"aria-hidden": "true", className: "slds-input__icon"}, 
+	                                        React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#search"})
+	                                    ), 
+	                                    React.createElement("input", {className: "slds-lookup__search-input slds-input", type: "search", placeholder: "URL or Id from Plugin Registry", id: "plugin-lookup-menu", ref: "pluginUrl", autoComplete: "off", defaultValue: "", onChange: function (e) { return _this.pluginSearchValueChange(e); }, onBlur: function (e) { return _this.onBlurPluginSearchInput(e); }, onFocus: function (e) { return _this.onFocusPluginSearchInput(e); }, "aria-owns": "plugin-lookup-menu", role: "combobox", "aria-activedescendent": "", "aria-expanded": (this.state.isSearchOpen ? "true" : "false"), "aria-autocomplete": "list"}))
+	                            ), 
+	                            React.createElement(LookupMenu, {id: "plugin-lookup-menu", searchString: this.state.pluginUrl, onItemClicked: function (item) { return props.loadPlugin('plugin://' + item.type); }})), 
+	                        React.createElement("div", {className: "slds-form-element slds-no-flex"}, 
+	                            React.createElement("button", {className: "slds-button slds-button--brand", type: "submit", tabIndex: 0}, "Load Plugin")
+	                        )), 
+	                    React.createElement("h4", {className: "slds-section-title--divider slds-m-top--medium slds-m-bottom--medium"}, "Datasource Plugins (Installed)"), 
+	                    React.createElement("div", {className: "slds-grid slds-grid--vertical-stretch slds-wrap slds-has-dividers--around-space"}, datasourcePluginStates.map(function (dsState) {
+	                        return React.createElement(DatasourcePluginTile, {key: dsState.id, pluginId: dsState.id});
+	                    })), 
+	                    React.createElement("h4", {className: "slds-section-title--divider slds-m-top--medium slds-m-bottom--medium"}, "Widget Plugins (Installed)"), 
+	                    React.createElement("div", {className: "slds-grid slds-grid--vertical-stretch slds-wrap slds-has-dividers--around-space"}, widgetPluginStates.map(function (dsState) {
+	                        return React.createElement(WidgetPluginTile, {key: dsState.id, pluginId: dsState.id});
+	                    })))
+	            )
+	        );
 	    };
 	    return PluginsModal;
 	}(React.Component));
@@ -4732,7 +4993,63 @@ webpackJsonp([0],[
 	        var pluginState = props.pluginState;
 	        var description = pluginState.typeInfo.description ? pluginState.typeInfo.description : "No Description.";
 	        var url = pluginState.url ? pluginState.url : "Packaged";
-	        return React.createElement("div", {className: "slds-tile slds-item slds-size--1-of-5 slds-m-around--x-small", style: { marginTop: "0.5rem" }}, React.createElement("div", {className: "slds-grid slds-grid--align-spread slds-has-flexi-truncate slds-m-bottom--x-small"}, React.createElement("h3", {className: "slds-text-heading--medium"}, pluginState.typeInfo.name), React.createElement("div", {className: "slds-shrink-none slds-dropdown-trigger slds-dropdown-trigger--click" + (this.state.actionMenuOpen ? " slds-is-open" : "")}, React.createElement("button", {className: "slds-button slds-button--icon-border-filled slds-button--icon-x-small", "aria-haspopup": "true", onClick: function () { return _this.toggleActionMenu(); }, onBlur: function () { return setTimeout(function () { return _this.closeActionMenu(); }, 200); }}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon slds-button__icon--hint"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#down"})), React.createElement("span", {className: "slds-assistive-text"}, "Actions")), React.createElement("div", {className: "slds-dropdown slds-dropdown--left slds-dropdown--actions"}, React.createElement("ul", {className: "dropdown__list", role: "menu"}, React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, React.createElement("a", {href: "javascript:void(0);", role: "menuitem", tabIndex: "0", onClick: function () { return props.publishPlugin(pluginState.id); }}, React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default slds-m-right--x-small slds-shrink-none"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#upload"})), React.createElement("span", {className: "slds-truncate"}, "Publish"))), React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, React.createElement("a", {href: "javascript:void(0);", role: "menuitem", tabIndex: "0", onClick: function () { return props.removePlugin(pluginState.id); }}, React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default slds-m-right--x-small slds-shrink-none"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#delete"})), React.createElement("span", {className: "slds-truncate"}, "Remove"))))))), React.createElement("div", {className: "slds-tile__detail"}, React.createElement("dl", {className: "slds-dl--horizontal"}, React.createElement("dt", {className: "slds-dl--horizontal__label"}, React.createElement("p", {className: "slds-truncate", title: "Type"}, "Type:")), React.createElement("dd", {className: "slds-dl--horizontal__detail slds-tile__meta"}, React.createElement("p", {className: "slds-truncate", title: pluginState.typeInfo.type}, pluginState.typeInfo.type)), React.createElement("dt", {className: "slds-dl--horizontal__label"}, React.createElement("p", {className: "slds-truncate", title: "Version"}, "Version:")), React.createElement("dd", {className: "slds-dl--horizontal__detail slds-tile__meta"}, React.createElement("p", {className: "slds-truncate", title: pluginState.typeInfo.version}, pluginState.typeInfo.version)), React.createElement("dt", {className: "slds-dl--horizontal__label"}, React.createElement("p", {className: "slds-truncate", title: "Author"}, "Author:")), React.createElement("dd", {className: "slds-dl--horizontal__detail slds-tile__meta"}, React.createElement("p", {className: "slds-truncate", title: pluginState.typeInfo.author}, pluginState.typeInfo.author)), React.createElement("dt", {className: "slds-dl--horizontal__label"}, React.createElement("p", {className: "slds-truncate", title: "Type"}, "Url:")), React.createElement("dd", {className: "slds-dl--horizontal__detail slds-tile__meta"}, React.createElement("div", {className: "slds-form-element__control slds-input-has-icon slds-input-has-icon--left", title: url}, React.createElement("svg", {"aria-hidden": "true", className: "slds-input__icon slds-icon-text-default", onClick: function () { return _this._copyUrl(); }}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#copy"})), React.createElement("input", {className: "slds-input", type: "text", ref: "url", readOnly: true, style: { width: "100%", paddingRight: 0 }, placeholder: "Plugin Url ...", value: url})))), React.createElement("p", {className: "slds-m-top--x-small"}, description)));
+	        return React.createElement("div", {className: "slds-tile slds-item slds-size--1-of-5 slds-m-around--x-small", style: { marginTop: "0.5rem" }}, 
+	            React.createElement("div", {className: "slds-grid slds-grid--align-spread slds-has-flexi-truncate slds-m-bottom--x-small"}, 
+	                React.createElement("h3", {className: "slds-text-heading--medium"}, pluginState.typeInfo.name), 
+	                React.createElement("div", {className: "slds-shrink-none slds-dropdown-trigger slds-dropdown-trigger--click" + (this.state.actionMenuOpen ? " slds-is-open" : "")}, 
+	                    React.createElement("button", {className: "slds-button slds-button--icon-border-filled slds-button--icon-x-small", "aria-haspopup": "true", onClick: function () { return _this.toggleActionMenu(); }, onBlur: function () { return setTimeout(function () { return _this.closeActionMenu(); }, 200); }}, 
+	                        React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon slds-button__icon--hint"}, 
+	                            React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#down"})
+	                        ), 
+	                        React.createElement("span", {className: "slds-assistive-text"}, "Actions")), 
+	                    React.createElement("div", {className: "slds-dropdown slds-dropdown--left slds-dropdown--actions"}, 
+	                        React.createElement("ul", {className: "dropdown__list", role: "menu"}, 
+	                            React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, 
+	                                React.createElement("a", {href: "javascript:void(0);", role: "menuitem", tabIndex: 0, onClick: function () { return props.publishPlugin(pluginState.id); }}, 
+	                                    React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default slds-m-right--x-small slds-shrink-none"}, 
+	                                        React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#upload"})
+	                                    ), 
+	                                    React.createElement("span", {className: "slds-truncate"}, "Publish"))
+	                            ), 
+	                            React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, 
+	                                React.createElement("a", {href: "javascript:void(0);", role: "menuitem", tabIndex: 0, onClick: function () { return props.removePlugin(pluginState.id); }}, 
+	                                    React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default slds-m-right--x-small slds-shrink-none"}, 
+	                                        React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#delete"})
+	                                    ), 
+	                                    React.createElement("span", {className: "slds-truncate"}, "Remove"))
+	                            ))
+	                    ))), 
+	            React.createElement("div", {className: "slds-tile__detail"}, 
+	                React.createElement("dl", {className: "slds-dl--horizontal"}, 
+	                    React.createElement("dt", {className: "slds-dl--horizontal__label"}, 
+	                        React.createElement("p", {className: "slds-truncate", title: "Type"}, "Type:")
+	                    ), 
+	                    React.createElement("dd", {className: "slds-dl--horizontal__detail slds-tile__meta"}, 
+	                        React.createElement("p", {className: "slds-truncate", title: pluginState.typeInfo.type}, pluginState.typeInfo.type)
+	                    ), 
+	                    React.createElement("dt", {className: "slds-dl--horizontal__label"}, 
+	                        React.createElement("p", {className: "slds-truncate", title: "Version"}, "Version:")
+	                    ), 
+	                    React.createElement("dd", {className: "slds-dl--horizontal__detail slds-tile__meta"}, 
+	                        React.createElement("p", {className: "slds-truncate", title: pluginState.typeInfo.version}, pluginState.typeInfo.version)
+	                    ), 
+	                    React.createElement("dt", {className: "slds-dl--horizontal__label"}, 
+	                        React.createElement("p", {className: "slds-truncate", title: "Author"}, "Author:")
+	                    ), 
+	                    React.createElement("dd", {className: "slds-dl--horizontal__detail slds-tile__meta"}, 
+	                        React.createElement("p", {className: "slds-truncate", title: pluginState.typeInfo.author}, pluginState.typeInfo.author)
+	                    ), 
+	                    React.createElement("dt", {className: "slds-dl--horizontal__label"}, 
+	                        React.createElement("p", {className: "slds-truncate", title: "Type"}, "Url:")
+	                    ), 
+	                    React.createElement("dd", {className: "slds-dl--horizontal__detail slds-tile__meta"}, 
+	                        React.createElement("div", {className: "slds-form-element__control slds-input-has-icon slds-input-has-icon--left", title: url}, 
+	                            React.createElement("svg", {"aria-hidden": "true", className: "slds-input__icon slds-icon-text-default", onClick: function () { return _this._copyUrl(); }}, 
+	                                React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#copy"})
+	                            ), 
+	                            React.createElement("input", {className: "slds-input", type: "text", ref: "url", readOnly: true, style: { width: "100%", paddingRight: 0 }, placeholder: "Plugin Url ...", value: url}))
+	                    )), 
+	                React.createElement("p", {className: "slds-m-top--x-small"}, description)));
 	    };
 	    return PluginTile;
 	}(React.Component));
@@ -4786,9 +5103,38 @@ webpackJsonp([0],[
 	        var _this = this;
 	        var props = this.props;
 	        /*Icons for Widget = dashboard, report, poll / Datasource = feed */
-	        return React.createElement("div", {className: "slds-lookup__menu", id: props.id}, React.createElement("ul", {className: "slds-lookup__list", role: "presentation"}, React.createElement("li", {role: "presentation"}, React.createElement("span", {className: "slds-lookup__item-action slds-lookup__item-action--label", id: props.id + "-header", role: "option"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default"}, React.createElement("use", {xlinkHref: "/assets/icons/utility-sprite/svg/symbols.svg#search"})), React.createElement("span", {className: "slds-truncate"}, "\"", props.searchString, "\" in plugin registry"))), this.state.searchResult.map(function (item, i) {
-	            return React.createElement("li", {role: "presentation", key: item.type, onClick: function (e) { return _this.props.onItemClicked(item); }}, React.createElement("span", {className: "slds-lookup__item-action slds-media slds-media--center", id: props.id + "-" + i, role: "option"}, React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon-standard-account slds-icon--small slds-media__figure"}, React.createElement("use", {xlinkHref: "/assets/icons/standard-sprite/svg/symbols.svg#dashboard"})), React.createElement("div", {className: "slds-media__body"}, React.createElement("div", {className: "slds-lookup__result-text"}, React.createElement("mark", null, item.name), " (", item.type, ")"), React.createElement("span", {className: "slds-lookup__result-meta slds-text-body--small"}, "DS/Widget • by ", item.author, " • ", item.description))));
-	        })));
+	        return React.createElement("div", {className: "slds-lookup__menu", id: props.id}, 
+	            React.createElement("ul", {className: "slds-lookup__list", role: "presentation"}, 
+	                React.createElement("li", {role: "presentation"}, 
+	                    React.createElement("span", {className: "slds-lookup__item-action slds-lookup__item-action--label", id: props.id + "-header", role: "option"}, 
+	                        React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default"}, 
+	                            React.createElement("use", {xlinkHref: "/assets/icons/utility-sprite/svg/symbols.svg#search"})
+	                        ), 
+	                        React.createElement("span", {className: "slds-truncate"}, 
+	                            "\"", 
+	                            props.searchString, 
+	                            "\" in plugin registry"))
+	                ), 
+	                this.state.searchResult.map(function (item, i) {
+	                    return React.createElement("li", {role: "presentation", key: item.type, onClick: function (e) { return _this.props.onItemClicked(item); }}, 
+	                        React.createElement("span", {className: "slds-lookup__item-action slds-media slds-media--center", id: props.id + "-" + i, role: "option"}, 
+	                            React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon-standard-account slds-icon--small slds-media__figure"}, 
+	                                React.createElement("use", {xlinkHref: "/assets/icons/standard-sprite/svg/symbols.svg#dashboard"})
+	                            ), 
+	                            React.createElement("div", {className: "slds-media__body"}, 
+	                                React.createElement("div", {className: "slds-lookup__result-text"}, 
+	                                    React.createElement("mark", null, item.name), 
+	                                    " (", 
+	                                    item.type, 
+	                                    ")"), 
+	                                React.createElement("span", {className: "slds-lookup__result-meta slds-text-body--small"}, 
+	                                    "DS/Widget • by ", 
+	                                    item.author, 
+	                                    " • ", 
+	                                    item.description)))
+	                    );
+	                }))
+	        );
 	    };
 	    return LookupMenu;
 	}(React.Component));
@@ -4826,7 +5172,31 @@ webpackJsonp([0],[
 	    };
 	    PluginRegistrySettings.prototype.render = function () {
 	        var _this = this;
-	        return React.createElement("div", {className: "slds-shrink-none slds-dropdown-trigger slds-dropdown-trigger--click" + (this.state.actionMenuOpen ? " slds-is-open" : "")}, React.createElement("button", {className: "slds-button slds-button--icon-border-filled slds-button--icon-x-small", "aria-haspopup": "true", onClick: function () { return _this.toggleActionMenu(); }, onBlur: function () { return _this.closeActionMenuIn(200); }}, React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon slds-button__icon--hint"}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#settings"})), React.createElement("span", {className: "slds-assistive-text"}, "Actions")), React.createElement("div", {className: "slds-dropdown slds-dropdown--left slds-dropdown--large"}, React.createElement("ul", {className: "dropdown__list", role: "menu"}, React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, React.createElement("span", {className: "slds-truncate slds-m-around--x-small"}, "Registry Url")), React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, React.createElement("div", {className: "slds-form-element__control"}, React.createElement("input", {className: "slds-input", type: "text", placeholder: "http://dashboard.lobaro.com", defaultValue: this.props.pluginRegistryUrl, onFocus: function () { return _this.clearTimeout(); }, onBlur: function () { return _this.closeActionMenuIn(200); }, onChange: function (e) { return _this.onRegistryUrlChanged(e); }}))), React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, React.createElement("span", {className: "slds-truncate slds-m-around--x-small"}, "Api Key")), React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, React.createElement("div", {className: "slds-form-element__control"}, React.createElement("input", {className: "slds-input", type: "text", placeholder: "Api Key", defaultValue: this.props.pluginRegistryApiKey, onFocus: function () { return _this.clearTimeout(); }, onBlur: function () { return _this.closeActionMenuIn(200); }, onChange: function (e) { return _this.onApiKeyChanged(e); }}))))));
+	        return React.createElement("div", {className: "slds-shrink-none slds-dropdown-trigger slds-dropdown-trigger--click" + (this.state.actionMenuOpen ? " slds-is-open" : "")}, 
+	            React.createElement("button", {className: "slds-button slds-button--icon-border-filled slds-button--icon-x-small", "aria-haspopup": "true", onClick: function () { return _this.toggleActionMenu(); }, onBlur: function () { return _this.closeActionMenuIn(200); }}, 
+	                React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon slds-button__icon--hint"}, 
+	                    React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#settings"})
+	                ), 
+	                React.createElement("span", {className: "slds-assistive-text"}, "Actions")), 
+	            React.createElement("div", {className: "slds-dropdown slds-dropdown--left slds-dropdown--large"}, 
+	                React.createElement("ul", {className: "dropdown__list", role: "menu"}, 
+	                    React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, 
+	                        React.createElement("span", {className: "slds-truncate slds-m-around--x-small"}, "Registry Url")
+	                    ), 
+	                    React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, 
+	                        React.createElement("div", {className: "slds-form-element__control"}, 
+	                            React.createElement("input", {className: "slds-input", type: "text", placeholder: "http://dashboard.lobaro.com", defaultValue: this.props.pluginRegistryUrl, onFocus: function () { return _this.clearTimeout(); }, onBlur: function () { return _this.closeActionMenuIn(200); }, onChange: function (e) { return _this.onRegistryUrlChanged(e); }})
+	                        )
+	                    ), 
+	                    React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, 
+	                        React.createElement("span", {className: "slds-truncate slds-m-around--x-small"}, "Api Key")
+	                    ), 
+	                    React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, 
+	                        React.createElement("div", {className: "slds-form-element__control"}, 
+	                            React.createElement("input", {className: "slds-input", type: "text", placeholder: "Api Key", defaultValue: this.props.pluginRegistryApiKey, onFocus: function () { return _this.clearTimeout(); }, onBlur: function () { return _this.closeActionMenuIn(200); }, onChange: function (e) { return _this.onApiKeyChanged(e); }})
+	                        )
+	                    ))
+	            ));
 	    };
 	    return PluginRegistrySettings;
 	}(React.Component));
@@ -4888,9 +5258,9 @@ webpackJsonp([0],[
 
 	module.exports = {
 		"version": "0.1.18",
-		"revision": "7f16d76ee43072adbdacb1c20ec1f992e88d503c",
-		"revisionShort": "7f16d76",
-		"branch": "Detatched: 7f16d76ee43072adbdacb1c20ec1f992e88d503c"
+		"revision": "74180419f4d6f9636c646c3e8bdb87891ac76e65",
+		"revisionShort": "7418041",
+		"branch": "Detatched: 74180419f4d6f9636c646c3e8bdb87891ac76e65"
 	};
 
 /***/ },

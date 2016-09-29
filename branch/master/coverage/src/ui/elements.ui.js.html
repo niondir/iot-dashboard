@@ -131,7 +131,23 @@
 86
 87
 88
-89</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -154,6 +170,8 @@
 <span class="cline-any cline-yes">8×</span>
 <span class="cline-any cline-yes">7×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">8×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -163,10 +181,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -188,6 +215,11 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -240,7 +272,9 @@ exports.DropdownItem = function (props) {
     var icon;
     var iconRight;
     if (props.icon) {
-        icon = React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default slds-m-right--x-small" + (props.isCheckbox ? " slds-icon--selected" : "")}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#" + props.icon}));
+        icon = React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default slds-m-right--x-small" + (props.isCheckbox ? " slds-icon--selected" : "")}, 
+            React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#" + props.icon})
+        );
     }
     if (props.iconRight) {
         iconRight = React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default slds-m-left--small slds-shrink-none", onClick: <span class="fstat-no" title="function not covered" >function (e) {</span>
@@ -249,13 +283,22 @@ exports.DropdownItem = function (props) {
 <span class="cstat-no" title="statement not covered" >                e.preventDefault();</span>
 <span class="cstat-no" title="statement not covered" >                props.iconRightClick(e);</span>
             }
-        }}, React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#" + props.iconRight}));
+        }}, 
+            React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#" + props.iconRight})
+        );
     }
-    return React.createElement("li", {className: "slds-dropdown__item" + (props.selected ? <span class="branch-0 cbranch-no" title="branch not covered" >" slds-is-selected" </span>: ""), role: "presentation"}, React.createElement("a", {href: "javascript:void(0);", role: props.isCheckbox ? "menuitemcheckbox" : "menuitem", "aria-checked": props.selected ? <span class="branch-0 cbranch-no" title="branch not covered" >"true" </span>: "false", onClick: <span class="fstat-no" title="function not covered" >function (e) {</span>
-<span class="cstat-no" title="statement not covered" >        e.stopPropagation();</span>
-<span class="cstat-no" title="statement not covered" >        e.preventDefault();</span>
-<span class="cstat-no" title="statement not covered" >        props.onClick(e);</span>
-    }, tabindex: "-1"}, React.createElement("span", {className: "slds-truncate"}, icon, " ", props.text), iconRight));
+    return React.createElement("li", {className: "slds-dropdown__item" + (props.selected ? <span class="branch-0 cbranch-no" title="branch not covered" >" slds-is-selected" </span>: ""), role: "presentation"}, 
+        React.createElement("a", {href: "javascript:void(0);", role: props.isCheckbox ? "menuitemcheckbox" : "menuitem", "aria-checked": props.selected ? <span class="branch-0 cbranch-no" title="branch not covered" >"true" </span>: "false", onClick: <span class="fstat-no" title="function not covered" >function (e) {</span>
+<span class="cstat-no" title="statement not covered" >            e.stopPropagation();</span>
+<span class="cstat-no" title="statement not covered" >            e.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >            props.onClick(e);</span>
+        }, tabindex: "-1"}, 
+            React.createElement("span", {className: "slds-truncate"}, 
+                icon, 
+                " ", 
+                props.text), 
+            iconRight)
+    );
 };
 exports.DropdownItem.propTypes = {
     onClick: react_1.PropTypes.func.isRequired,
@@ -276,7 +319,12 @@ exports.LinkItem = <span class="fstat-no" title="function not covered" >function
 <span class="cstat-no" title="statement not covered" >        e.stopPropagation();</span>
 <span class="cstat-no" title="statement not covered" >        e.preventDefault();</span>
 <span class="cstat-no" title="statement not covered" >        props.onClick(props);</span>
-    }}, icon, " ", props.children, " ", props.text);
+    }}, 
+        icon, 
+        " ", 
+        props.children, 
+        " ", 
+        props.text);
 };
 exports.LinkItem.propTypes = {
     onClick: react_1.PropTypes.func.isRequired,
@@ -313,7 +361,7 @@ exports.Divider = function (props) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 29 2016 08:51:37 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 29 2016 10:19:46 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
