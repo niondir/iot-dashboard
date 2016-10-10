@@ -4930,7 +4930,7 @@ webpackJsonp([0],[
 	                                    ), 
 	                                    React.createElement("input", {className: "slds-lookup__search-input slds-input", type: "search", placeholder: "URL or Id from Plugin Registry", id: "plugin-lookup-menu", ref: "pluginUrl", autoComplete: "off", defaultValue: "", onChange: function (e) { return _this.pluginSearchValueChange(e); }, onBlur: function (e) { return _this.onBlurPluginSearchInput(e); }, onFocus: function (e) { return _this.onFocusPluginSearchInput(e); }, "aria-owns": "plugin-lookup-menu", role: "combobox", "aria-activedescendent": "", "aria-expanded": (this.state.isSearchOpen ? "true" : "false"), "aria-autocomplete": "list"}))
 	                            ), 
-	                            React.createElement(LookupMenu, {id: "plugin-lookup-menu", searchString: this.state.pluginUrl, onItemClicked: function (item) { return props.loadPlugin('plugin://' + item.type); }})), 
+	                            React.createElement(LookupMenu, {id: "plugin-lookup-menu", searchString: this.state.pluginUrl, pluginRegistryUrl: this.props.pluginRegistryUrl, onItemClicked: function (item) { return props.loadPlugin('plugin://' + item.type); }})), 
 	                        React.createElement("div", {className: "slds-form-element slds-no-flex"}, 
 	                            React.createElement("button", {className: "slds-button slds-button--brand", type: "submit", tabIndex: 0}, "Load Plugin")
 	                        )), 
@@ -5089,7 +5089,7 @@ webpackJsonp([0],[
 	            });
 	            return;
 	        }
-	        fetch("http://localhost:8081/api/plugins/?q=" + nextProps.searchString)
+	        fetch(nextProps.pluginRegistryUrl + "/api/plugins/?q=" + nextProps.searchString)
 	            .then(function (result) {
 	            return result.json();
 	        })
@@ -5239,7 +5239,11 @@ webpackJsonp([0],[
 	    if (state === void 0) { state = configJson; }
 	    switch (action.type) {
 	        case Action.SET_CONFIG_VALUE: {
-	            return _.assign({}, defaultConfig, state, (_a = {}, _a[action.key] = action.value, _a), configJson);
+	            var value = action.value;
+	            if (action.key === 'pluginRegistryUrl' && _.endsWith(value, '/')) {
+	                value = value.replace(/\/+$/, "");
+	            }
+	            return _.assign({}, defaultConfig, state, (_a = {}, _a[action.key] = value, _a), configJson);
 	        }
 	        default:
 	            // Content of configJson overrides everything else!
@@ -5258,9 +5262,9 @@ webpackJsonp([0],[
 
 	module.exports = {
 		"version": "0.1.19",
-		"revision": "c39f441085b117a40ae49b5282cc2679ff13eaee",
-		"revisionShort": "c39f441",
-		"branch": "Detatched: c39f441085b117a40ae49b5282cc2679ff13eaee"
+		"revision": "26ee088be8fce5090478c80dbefd15d80180f618",
+		"revisionShort": "26ee088",
+		"branch": "Detatched: 26ee088be8fce5090478c80dbefd15d80180f618"
 	};
 
 /***/ },
