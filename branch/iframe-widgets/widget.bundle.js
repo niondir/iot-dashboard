@@ -17641,7 +17641,6 @@
 	var widgetUrl = location.hash.replace(/#/, "");
 	var appElement = document.getElementById('widget');
 	var pluginInstance = new framePluginInstance_1.FramePluginInstance(widgetUrl, appElement);
-	console.log("URL: " + widgetUrl);
 	var pluginApi = {
 	    registerDatasourcePlugin: function () {
 	        console.error("Can not register datasource in Widget context");

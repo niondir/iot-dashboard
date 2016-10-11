@@ -890,7 +890,7 @@ webpackJsonp([0],[
 	    Layout.prototype.render = function () {
 	        var _this = this;
 	        var props = this.props;
-	        var devMode = true;
+	        var devMode = props.devMode;
 	        var showMenu = props.devMode && (!props.isReadOnly || this.state.hover);
 	        return React.createElement("div", {className: "slds-grid slds-wrap", onKeyUp: function (event) { return _this.onReadOnlyModeKeyPress(event); }}, 
 	            devMode ? React.createElement("div", null, 
@@ -1168,7 +1168,7 @@ webpackJsonp([0],[
 	var _ = __webpack_require__(21);
 	var reducer_js_1 = __webpack_require__(51);
 	var Action = __webpack_require__(47);
-	exports.HEADER_HEIGHT = 34;
+	exports.HEADER_HEIGHT = 35;
 	exports.ROW_HEIGHT = 100;
 	exports.initialWidgets = {
 	    "initial_chart": {
@@ -1341,7 +1341,7 @@ webpackJsonp([0],[
 	exports.widgets = widgets;
 	function calcAvaliableHeight(heightUnits) {
 	    // The 10 px extra seem to be based on a bug in the grid layout ...
-	    return (heightUnits * (exports.ROW_HEIGHT)) - exports.HEADER_HEIGHT;
+	    return (heightUnits * (exports.ROW_HEIGHT + 10)) - exports.HEADER_HEIGHT - 10;
 	}
 	function widget(state, action) {
 	    switch (action.type) {
@@ -3283,6 +3283,9 @@ webpackJsonp([0],[
 	        }).map(function (s) {
 	            return widgetState.settings[s.id];
 	        }).forEach(function (dsId) {
+	            if (state.datasources[dsId] === undefined) {
+	                return;
+	            }
 	            var data = state.datasources[dsId].data;
 	            if (data !== _this.oldDatasourceData[dsId]) {
 	                _this.oldDatasourceData[dsId] = data;
@@ -5327,9 +5330,9 @@ webpackJsonp([0],[
 
 	module.exports = {
 		"version": "0.1.20",
-		"revision": "457537949951ac2db032c9d95d727c0d39f60600",
-		"revisionShort": "4575379",
-		"branch": "Detatched: 457537949951ac2db032c9d95d727c0d39f60600"
+		"revision": "bd86bd783d06155934106f887f7b20d673373187",
+		"revisionShort": "bd86bd7",
+		"branch": "Detatched: bd86bd783d06155934106f887f7b20d673373187"
 	};
 
 /***/ },
