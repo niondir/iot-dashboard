@@ -17700,19 +17700,25 @@
 	        window.parent.postMessage(msg, '*');
 	    };
 	    FramePluginInstance.prototype.handleMessage = function (msg) {
-	        switch (msg.type) {
-	            case "widgetState": {
-	                this.widgetState = msg.payload;
-	                this.render();
-	                break;
+	        try {
+	            switch (msg.type) {
+	                case "widgetState": {
+	                    this.widgetState = msg.payload;
+	                    this.render();
+	                    break;
+	                }
+	                case "data": {
+	                    this.data[msg.payload.id] = msg.payload.data;
+	                    this.render();
+	                    break;
+	                }
+	                default:
+	                    console.log("frame got unknown message", msg);
+	                    break;
 	            }
-	            case "data": {
-	                this.data[msg.payload.id] = msg.payload.data;
-	                this.render();
-	                break;
-	            }
-	            default:
-	                break;
+	        }
+	        catch (e) {
+	            console.error("Failed to handle message", e);
 	        }
 	    };
 	    FramePluginInstance.prototype.render = function () {
@@ -17733,6 +17739,13 @@
 	            state: this.widgetState,
 	            data: this.data,
 	            updateSetting: function (settingId, value) {
+	                _this.sendMessage({
+	                    type: "updateSetting",
+	                    payload: {
+	                        id: settingId,
+	                        value: value
+	                    }
+	                });
 	                // TODO: Implement
 	                return;
 	            }

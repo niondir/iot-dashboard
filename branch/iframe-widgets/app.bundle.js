@@ -893,12 +893,14 @@ webpackJsonp([0],[
 	        var devMode = true;
 	        var showMenu = props.devMode && (!props.isReadOnly || this.state.hover);
 	        return React.createElement("div", {className: "slds-grid slds-wrap", onKeyUp: function (event) { return _this.onReadOnlyModeKeyPress(event); }}, 
-	            React.createElement("div", null, 
+	            devMode ? React.createElement("div", null, 
 	                React.createElement(widgetConfigDialog_ui_js_1.default, null), 
 	                React.createElement(importExportDialog_ui_js_1.default, null), 
 	                React.createElement(datasourceConfigDialog_ui_js_1.default, null), 
-	                React.createElement(pluginsDialog_ui_1.default, null)), 
-	            React.createElement("div", {className: showMenu ? "menu-trigger" : "menu-trigger", onMouseOver: function () { _this.setState({ hover: true }); }, onMouseEnter: function () { _this.setState({ hover: true }); }}), 
+	                React.createElement(pluginsDialog_ui_1.default, null))
+	                : null, 
+	            devMode ? React.createElement("div", {className: showMenu ? "menu-trigger" : "menu-trigger", onMouseOver: function () { _this.setState({ hover: true }); }, onMouseEnter: function () { _this.setState({ hover: true }); }})
+	                : null, 
 	            devMode ?
 	                React.createElement("div", {className: "slds-size--1-of-1 slds-context-bar" + (showMenu ? " topnav--visible" : " topnav--hidden"), onMouseOver: function () { _this.setState({ hover: true }); }, onMouseLeave: function () { _this.setState({ hover: false }); }}, 
 	                    React.createElement("div", {className: "slds-context-bar__primary slds-context-bar__item--divider-right"}, 
@@ -3235,6 +3237,7 @@ webpackJsonp([0],[
 	        var _this = this;
 	        this.id = id;
 	        this.store = store;
+	        this.frameInitialized = false;
 	        this.disposed = false;
 	        this.oldWidgetState = null;
 	        this.oldDatasourceData = {};
@@ -3249,25 +3252,17 @@ webpackJsonp([0],[
 	            });
 	        }
 	        this.unsubscribeStore = store.subscribe(function () {
+	            if (!_this.frameInitialized) {
+	                // We get invalid caches when we send state to the iFrame before it is ready
+	                return;
+	            }
 	            var state = store.getState();
 	            var widgetState = state.widgets[id];
 	            if (widgetState !== _this.oldWidgetState) {
 	                _this.oldWidgetState = widgetState;
 	                _this.sendPluginState();
 	            }
-	            // Update datasource data in iFrame
-	            var widgetPluginState = state.widgetPlugins[widgetState.type];
-	            widgetPluginState.typeInfo.settings.filter(function (s) {
-	                return s.type === "datasource";
-	            }).map(function (s) {
-	                return widgetState.settings[s.id];
-	            }).forEach(function (dsId) {
-	                var data = state.datasources[dsId].data;
-	                if (data !== _this.oldDatasourceData[dsId]) {
-	                    _this.oldDatasourceData[dsId] = data;
-	                    _this.sendDatasourceData(dsId);
-	                }
-	            });
+	            _this.updateDatasourceDataInFrame();
 	        });
 	    }
 	    Object.defineProperty(WidgetPluginInstance.prototype, "iFrame", {
@@ -3278,10 +3273,33 @@ webpackJsonp([0],[
 	        enumerable: true,
 	        configurable: true
 	    });
+	    WidgetPluginInstance.prototype.updateDatasourceDataInFrame = function () {
+	        var _this = this;
+	        var state = this.store.getState();
+	        var widgetState = state.widgets[this.id];
+	        var widgetPluginState = state.widgetPlugins[widgetState.type];
+	        widgetPluginState.typeInfo.settings.filter(function (s) {
+	            return s.type === "datasource";
+	        }).map(function (s) {
+	            return widgetState.settings[s.id];
+	        }).forEach(function (dsId) {
+	            var data = state.datasources[dsId].data;
+	            if (data !== _this.oldDatasourceData[dsId]) {
+	                _this.oldDatasourceData[dsId] = data;
+	                _this.sendDatasourceData(dsId);
+	            }
+	        });
+	    };
 	    WidgetPluginInstance.prototype.handleMessage = function (msg) {
 	        switch (msg.type) {
 	            case 'init': {
+	                this.frameInitialized = true;
 	                this.sendPluginState();
+	                this.updateDatasourceDataInFrame();
+	                break;
+	            }
+	            case 'updateSetting': {
+	                this.updateSetting(msg.payload.id, msg.payload.value);
 	                break;
 	            }
 	            default:
@@ -3309,9 +3327,9 @@ webpackJsonp([0],[
 	            }
 	        });
 	    };
-	    WidgetPluginInstance.prototype.updateSetting = function (widgetId, settingId, value) {
-	        console.log("update", settingId, "to", value, 'of', widgetId);
-	        this.store.dispatch(Widgets.updatedSingleSetting(widgetId, settingId, value));
+	    WidgetPluginInstance.prototype.updateSetting = function (settingId, value) {
+	        console.log("update", settingId, "to", value, 'of', this.id);
+	        this.store.dispatch(Widgets.updatedSingleSetting(this.id, settingId, value));
 	    };
 	    WidgetPluginInstance.prototype.dispose = function () {
 	        if (!this.disposed && _.isFunction(this.unsubscribeStore)) {
@@ -5309,9 +5327,9 @@ webpackJsonp([0],[
 
 	module.exports = {
 		"version": "0.1.20",
-		"revision": "f5b1e68237029470203c6f8d140b9af97de69cf0",
-		"revisionShort": "f5b1e68",
-		"branch": "Detatched: f5b1e68237029470203c6f8d140b9af97de69cf0"
+		"revision": "457537949951ac2db032c9d95d727c0d39f60600",
+		"revisionShort": "4575379",
+		"branch": "Detatched: 457537949951ac2db032c9d95d727c0d39f60600"
 	};
 
 /***/ },

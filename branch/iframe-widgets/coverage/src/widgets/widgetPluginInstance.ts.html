@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">21.82% </span>
+        <span class="strong">19.4% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>12/55</span>
+        <span class='fraction'>13/67</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/21</span>
+        <span class='fraction'>0/24</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">7.14% </span>
+        <span class="strong">6.67% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/14</span>
+        <span class='fraction'>1/15</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">21.82% </span>
+        <span class="strong">19.4% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>12/55</span>
+        <span class='fraction'>13/67</span>
       </div>
     </div>
   </div>
@@ -138,7 +138,23 @@
 93
 94
 95
-96</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -152,21 +168,13 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -176,8 +184,9 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -190,6 +199,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -240,6 +272,7 @@ var WidgetPluginInstance = (function () {
 <span class="cstat-no" title="statement not covered" >        var _this = this;</span>
 <span class="cstat-no" title="statement not covered" >        this.id = id;</span>
 <span class="cstat-no" title="statement not covered" >        this.store = store;</span>
+<span class="cstat-no" title="statement not covered" >        this.frameInitialized = false;</span>
 <span class="cstat-no" title="statement not covered" >        this.disposed = false;</span>
 <span class="cstat-no" title="statement not covered" >        this.oldWidgetState = null;</span>
 <span class="cstat-no" title="statement not covered" >        this.oldDatasourceData = {};</span>
@@ -254,25 +287,17 @@ var WidgetPluginInstance = (function () {
             });
         }
 <span class="cstat-no" title="statement not covered" >        this.unsubscribeStore = store.subscribe(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (!_this.frameInitialized) {</span>
+                // We get invalid caches when we send state to the iFrame before it is ready
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
 <span class="cstat-no" title="statement not covered" >            var state = store.getState();</span>
 <span class="cstat-no" title="statement not covered" >            var widgetState = state.widgets[id];</span>
 <span class="cstat-no" title="statement not covered" >            if (widgetState !== _this.oldWidgetState) {</span>
 <span class="cstat-no" title="statement not covered" >                _this.oldWidgetState = widgetState;</span>
 <span class="cstat-no" title="statement not covered" >                _this.sendPluginState();</span>
             }
-            // Update datasource data in iFrame
-<span class="cstat-no" title="statement not covered" >            var widgetPluginState = state.widgetPlugins[widgetState.type];</span>
-<span class="cstat-no" title="statement not covered" >            widgetPluginState.typeInfo.settings.filter(<span class="fstat-no" title="function not covered" >function (s) {</span></span>
-<span class="cstat-no" title="statement not covered" >                return s.type === "datasource";</span>
-            }).map(<span class="fstat-no" title="function not covered" >function (s) {</span>
-<span class="cstat-no" title="statement not covered" >                return widgetState.settings[s.id];</span>
-            }).forEach(<span class="fstat-no" title="function not covered" >function (dsId) {</span>
-<span class="cstat-no" title="statement not covered" >                var data = state.datasources[dsId].data;</span>
-<span class="cstat-no" title="statement not covered" >                if (data !== _this.oldDatasourceData[dsId]) {</span>
-<span class="cstat-no" title="statement not covered" >                    _this.oldDatasourceData[dsId] = data;</span>
-<span class="cstat-no" title="statement not covered" >                    _this.sendDatasourceData(dsId);</span>
-                }
-            });
+<span class="cstat-no" title="statement not covered" >            _this.updateDatasourceDataInFrame();</span>
         });
     }
     Object.defineProperty(WidgetPluginInstance.prototype, "iFrame", {
@@ -283,10 +308,33 @@ var WidgetPluginInstance = (function () {
         enumerable: true,
         configurable: true
     });
+    WidgetPluginInstance.prototype.updateDatasourceDataInFrame = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        var _this = this;</span>
+<span class="cstat-no" title="statement not covered" >        var state = this.store.getState();</span>
+<span class="cstat-no" title="statement not covered" >        var widgetState = state.widgets[this.id];</span>
+<span class="cstat-no" title="statement not covered" >        var widgetPluginState = state.widgetPlugins[widgetState.type];</span>
+<span class="cstat-no" title="statement not covered" >        widgetPluginState.typeInfo.settings.filter(<span class="fstat-no" title="function not covered" >function (s) {</span></span>
+<span class="cstat-no" title="statement not covered" >            return s.type === "datasource";</span>
+        }).map(<span class="fstat-no" title="function not covered" >function (s) {</span>
+<span class="cstat-no" title="statement not covered" >            return widgetState.settings[s.id];</span>
+        }).forEach(<span class="fstat-no" title="function not covered" >function (dsId) {</span>
+<span class="cstat-no" title="statement not covered" >            var data = state.datasources[dsId].data;</span>
+<span class="cstat-no" title="statement not covered" >            if (data !== _this.oldDatasourceData[dsId]) {</span>
+<span class="cstat-no" title="statement not covered" >                _this.oldDatasourceData[dsId] = data;</span>
+<span class="cstat-no" title="statement not covered" >                _this.sendDatasourceData(dsId);</span>
+            }
+        });
+    };
     WidgetPluginInstance.prototype.handleMessage = <span class="fstat-no" title="function not covered" >function (msg) {</span>
 <span class="cstat-no" title="statement not covered" >        switch (msg.type) {</span>
             case 'init': {
+<span class="cstat-no" title="statement not covered" >                this.frameInitialized = true;</span>
 <span class="cstat-no" title="statement not covered" >                this.sendPluginState();</span>
+<span class="cstat-no" title="statement not covered" >                this.updateDatasourceDataInFrame();</span>
+<span class="cstat-no" title="statement not covered" >                break;</span>
+            }
+            case 'updateSetting': {
+<span class="cstat-no" title="statement not covered" >                this.updateSetting(msg.payload.id, msg.payload.value);</span>
 <span class="cstat-no" title="statement not covered" >                break;</span>
             }
             default:
@@ -314,9 +362,9 @@ var WidgetPluginInstance = (function () {
             }
         });
     };
-    WidgetPluginInstance.prototype.updateSetting = <span class="fstat-no" title="function not covered" >function (widgetId, settingId, value) {</span>
-<span class="cstat-no" title="statement not covered" >        console.log("update", settingId, "to", value, 'of', widgetId);</span>
-<span class="cstat-no" title="statement not covered" >        this.store.dispatch(Widgets.updatedSingleSetting(widgetId, settingId, value));</span>
+    WidgetPluginInstance.prototype.updateSetting = <span class="fstat-no" title="function not covered" >function (settingId, value) {</span>
+<span class="cstat-no" title="statement not covered" >        console.log("update", settingId, "to", value, 'of', this.id);</span>
+<span class="cstat-no" title="statement not covered" >        this.store.dispatch(Widgets.updatedSingleSetting(this.id, settingId, value));</span>
     };
     WidgetPluginInstance.prototype.dispose = <span class="fstat-no" title="function not covered" >function () {</span>
 <span class="cstat-no" title="statement not covered" >        if (!this.disposed &amp;&amp; _.isFunction(this.unsubscribeStore)) {</span>
@@ -334,7 +382,7 @@ exports.WidgetPluginInstance = WidgetPluginInstance;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Oct 11 2016 12:38:48 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Oct 11 2016 13:59:29 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
