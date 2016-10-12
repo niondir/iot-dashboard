@@ -5163,7 +5163,7 @@ webpackJsonp([0],[
 	        })
 	            .then(function (json) {
 	            _this.setState({
-	                searchResult: json.plugins
+	                searchResult: json.plugins || []
 	            });
 	        });
 	    };
@@ -5329,10 +5329,10 @@ webpackJsonp([0],[
 /***/ function(module, exports) {
 
 	module.exports = {
-		"version": "0.1.20",
-		"revision": "645ef443d0cf3f7e59a7cef235dd3b4b6c3dc248",
-		"revisionShort": "645ef44",
-		"branch": "Detatched: 645ef443d0cf3f7e59a7cef235dd3b4b6c3dc248"
+		"version": "0.2.0",
+		"revision": "cc7cd858b57b6ab44016058cb90b0d2dd27dfdfe",
+		"revisionShort": "cc7cd85",
+		"branch": "Detatched: cc7cd858b57b6ab44016058cb90b0d2dd27dfdfe"
 	};
 
 /***/ },
