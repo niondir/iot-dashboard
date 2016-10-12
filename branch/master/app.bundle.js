@@ -2736,11 +2736,11 @@ webpackJsonp([0],[
 	        var state = getState();
 	        var registryBaseUrl = state.config.pluginRegistryUrl;
 	        if (_.startsWith(url, "plugin://")) {
-	            url = url.replace("plugin://", registryBaseUrl + "/plugins/");
+	            url = url.replace("plugin://", registryBaseUrl + "/api/plugin-files/");
 	        }
 	        // No absolute or relative URL
 	        if (!_.startsWith(url, "/") && !_.startsWith(url, ".") && !_.startsWith(url, "http:") && !_.startsWith(url, "https:")) {
-	            url = registryBaseUrl + "/plugins/" + url;
+	            url = registryBaseUrl + "/api/plugin-files/" + url;
 	        }
 	        if (_.some(_.valuesIn(state.datasourcePlugins), function (p) { return p.url === url && !p.isLoading; })) {
 	            dispatch(ModalDialog.addError("Plugin already loaded: " + url));
@@ -5330,9 +5330,9 @@ webpackJsonp([0],[
 
 	module.exports = {
 		"version": "0.2.0",
-		"revision": "372f5cc62af5303faf09cbc9b83738a61c231f91",
-		"revisionShort": "372f5cc",
-		"branch": "Detatched: 372f5cc62af5303faf09cbc9b83738a61c231f91"
+		"revision": "e79f05ce45495a1577a3c9b2cb30139cd1470a8d",
+		"revisionShort": "e79f05c",
+		"branch": "Detatched: e79f05ce45495a1577a3c9b2cb30139cd1470a8d"
 	};
 
 /***/ },
