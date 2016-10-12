@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/widgets/widgetPluginRegistry.ts</title>
+    <title>Code coverage report for src/widgets/widgetIFrame.ui.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">all files</a> / <a href="index.html">src/widgets/</a> widgetPluginRegistry.ts
+      <a href="../../index.html">all files</a> / <a href="index.html">src/widgets/</a> widgetIFrame.ui.tsx
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">89.47% </span>
+        <span class="strong">65.22% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>17/19</span>
+        <span class='fraction'>15/23</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">57.14% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>4/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>5/5</span>
+        <span class='fraction'>3/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">70% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>16/16</span>
+        <span class='fraction'>14/20</span>
       </div>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -71,7 +71,18 @@
 26
 27
 28
-29</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -85,14 +96,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">8×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -108,24 +130,35 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? <span class="branch-0 cbranch-no" title="branch not covered" >Object.create(b) </span>: (__.prototype = b.prototype, new __());
 };
-var pluginRegistry_1 = require("../pluginApi/pluginRegistry");
-var widgetPluginFactory_1 = require("./widgetPluginFactory");
+var React = require("react");
+var dashboard_1 = require("../dashboard");
 /**
- * Describes how we expect the plugin module to be
+ * The Dragable Frame of a Widget.
+ * Contains generic UI controls, shared by all Widgets
  */
-var WidgetPluginRegistry = (function (_super) {
-    __extends(WidgetPluginRegistry, _super);
-    function WidgetPluginRegistry(store) {
-        _super.call(this, store);
+var WidgetIFrame = (function (_super) {
+    __extends(WidgetIFrame, _super);
+<span class="fstat-no" title="function not covered" >    function WidgetIFrame(props) {</span>
+<span class="cstat-no" title="statement not covered" >        _super.call(this, props);</span>
     }
-    WidgetPluginRegistry.prototype.createPluginFromModule = function (module) {
-        console.assert(_.isObject(module.TYPE_INFO), "Missing TYPE_INFO on datasource module. Every module must export TYPE_INFO");
-        return new widgetPluginFactory_1.default(module.TYPE_INFO.type, this.store);
+    WidgetIFrame.prototype.componentDidMount = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        var element = this.refs['frame'];</span>
+<span class="cstat-no" title="statement not covered" >        var widgetFactory = dashboard_1.default.getInstance().widgetPluginRegistry.getPlugin(this.props.widgetState.type);</span>
+<span class="cstat-no" title="statement not covered" >        var widgetInstance = widgetFactory.getInstance(this.props.widgetState.id);</span>
+<span class="cstat-no" title="statement not covered" >        widgetInstance.iFrame = element;</span>
     };
-    return WidgetPluginRegistry;
-}(pluginRegistry_1.default));
+    // allow-popups allow-same-origin allow-modals allow-forms
+    // A sandbox that includes both the allow-same-origin and allow-scripts flags,
+    // then the framed page can reach up into the parent, and remove the sandbox attribute entirely.
+    // Only if the framed content comes from the same origin of course.
+    WidgetIFrame.prototype.render = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        return React.createElement("iframe", {id: 'frame-' + this.props.widgetState.id, ref: "frame", src: "widget.html#" + this.props.widgetPlugin.url, frameBorder: "0", width: "100%", height: "100%", scrolling: "no", sandbox: "allow-scripts"}, "Browser does not support iFrames.");</span>
+    };
+    ;
+    return WidgetIFrame;
+}(React.Component));
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = WidgetPluginRegistry;
+exports.default = WidgetIFrame;
 &nbsp;
 &nbsp;</pre></td></tr>
 </table></pre>

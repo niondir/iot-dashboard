@@ -28,8 +28,8 @@ webpackJsonp([0],[
 	__webpack_require__(36);
 	var es6promise = __webpack_require__(38);
 	var Renderer = __webpack_require__(41);
-	var Store = __webpack_require__(108);
-	var Persist = __webpack_require__(107);
+	var Store = __webpack_require__(109);
+	var Persist = __webpack_require__(108);
 	var dashboard_1 = __webpack_require__(56);
 	var $ = __webpack_require__(13);
 	var loadPredefinedState = $.get('./dashboard.json');
@@ -282,8 +282,8 @@ webpackJsonp([0],[
 /***/ function(module, exports) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
 	/**
 	 * When a Plugin is loaded via the UI, an action is called to do so.
@@ -310,6 +310,7 @@ webpackJsonp([0],[
 	        TYPE_INFO: typeInfo,
 	        Datasource: datasource
 	    });
+	    pluginCache.TYPE_INFO.kind = "datasource";
 	}
 	exports.registerDatasourcePlugin = registerDatasourcePlugin;
 	function registerWidgetPlugin(typeInfo, widget) {
@@ -318,6 +319,7 @@ webpackJsonp([0],[
 	        TYPE_INFO: typeInfo,
 	        Widget: widget
 	    });
+	    pluginCache.TYPE_INFO.kind = "widget";
 	}
 	exports.registerWidgetPlugin = registerWidgetPlugin;
 
@@ -854,16 +856,16 @@ webpackJsonp([0],[
 	var react_redux_1 = __webpack_require__(43);
 	var Global = __webpack_require__(46);
 	var widgetGrid_ui_js_1 = __webpack_require__(48);
-	var layouts_ui_js_1 = __webpack_require__(89);
-	var widgetConfigDialog_ui_js_1 = __webpack_require__(92);
-	var dashboardMenuEntry_ui_js_1 = __webpack_require__(97);
-	var importExportDialog_ui_js_1 = __webpack_require__(98);
-	var datasourceConfigDialog_ui_js_1 = __webpack_require__(100);
-	var datasourceNavItem_ui_js_1 = __webpack_require__(101);
-	var widgetsNavItem_ui_js_1 = __webpack_require__(102);
-	var pluginNavItem_ui_1 = __webpack_require__(103);
-	var pluginsDialog_ui_1 = __webpack_require__(104);
-	var Persistence = __webpack_require__(107);
+	var layouts_ui_js_1 = __webpack_require__(90);
+	var widgetConfigDialog_ui_js_1 = __webpack_require__(93);
+	var dashboardMenuEntry_ui_js_1 = __webpack_require__(98);
+	var importExportDialog_ui_js_1 = __webpack_require__(99);
+	var datasourceConfigDialog_ui_js_1 = __webpack_require__(101);
+	var datasourceNavItem_ui_js_1 = __webpack_require__(102);
+	var widgetsNavItem_ui_js_1 = __webpack_require__(103);
+	var pluginNavItem_ui_1 = __webpack_require__(104);
+	var pluginsDialog_ui_1 = __webpack_require__(105);
+	var Persistence = __webpack_require__(108);
 	var Layout = (function (_super) {
 	    __extends(Layout, _super);
 	    function Layout(props) {
@@ -888,15 +890,17 @@ webpackJsonp([0],[
 	    Layout.prototype.render = function () {
 	        var _this = this;
 	        var props = this.props;
-	        var devMode = true;
+	        var devMode = props.devMode;
 	        var showMenu = props.devMode && (!props.isReadOnly || this.state.hover);
 	        return React.createElement("div", {className: "slds-grid slds-wrap", onKeyUp: function (event) { return _this.onReadOnlyModeKeyPress(event); }}, 
-	            React.createElement("div", null, 
+	            devMode ? React.createElement("div", null, 
 	                React.createElement(widgetConfigDialog_ui_js_1.default, null), 
 	                React.createElement(importExportDialog_ui_js_1.default, null), 
 	                React.createElement(datasourceConfigDialog_ui_js_1.default, null), 
-	                React.createElement(pluginsDialog_ui_1.default, null)), 
-	            React.createElement("div", {className: showMenu ? "menu-trigger" : "menu-trigger", onMouseOver: function () { _this.setState({ hover: true }); }, onMouseEnter: function () { _this.setState({ hover: true }); }}), 
+	                React.createElement(pluginsDialog_ui_1.default, null))
+	                : null, 
+	            devMode ? React.createElement("div", {className: showMenu ? "menu-trigger" : "menu-trigger", onMouseOver: function () { _this.setState({ hover: true }); }, onMouseEnter: function () { _this.setState({ hover: true }); }})
+	                : null, 
 	            devMode ?
 	                React.createElement("div", {className: "slds-size--1-of-1 slds-context-bar" + (showMenu ? " topnav--visible" : " topnav--hidden"), onMouseOver: function () { _this.setState({ hover: true }); }, onMouseLeave: function () { _this.setState({ hover: false }); }}, 
 	                    React.createElement("div", {className: "slds-context-bar__primary slds-context-bar__item--divider-right"}, 
@@ -1087,8 +1091,8 @@ webpackJsonp([0],[
 	var _ = __webpack_require__(21);
 	var Widgets = __webpack_require__(49);
 	var widgetFrame_ui_1 = __webpack_require__(52);
-	var widthProvider_ui_1 = __webpack_require__(75);
-	var react_grid_layout_1 = __webpack_require__(76);
+	var widthProvider_ui_1 = __webpack_require__(76);
+	var react_grid_layout_1 = __webpack_require__(77);
 	var ResponsiveGrid = widthProvider_ui_1.default(react_grid_layout_1.Responsive);
 	var breakpoints = { lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 };
 	var cols = { lg: 12, md: 12, sm: 12, xs: 6, xxs: 3 };
@@ -1164,7 +1168,7 @@ webpackJsonp([0],[
 	var _ = __webpack_require__(21);
 	var reducer_js_1 = __webpack_require__(51);
 	var Action = __webpack_require__(47);
-	exports.HEADER_HEIGHT = 34;
+	exports.HEADER_HEIGHT = 35;
 	exports.ROW_HEIGHT = 100;
 	exports.initialWidgets = {
 	    "initial_chart": {
@@ -1337,7 +1341,7 @@ webpackJsonp([0],[
 	exports.widgets = widgets;
 	function calcAvaliableHeight(heightUnits) {
 	    // The 10 px extra seem to be based on a bug in the grid layout ...
-	    return (heightUnits * (exports.ROW_HEIGHT + 10)) - exports.HEADER_HEIGHT;
+	    return (heightUnits * (exports.ROW_HEIGHT + 10)) - exports.HEADER_HEIGHT - 10;
 	}
 	function widget(state, action) {
 	    switch (action.type) {
@@ -1365,13 +1369,24 @@ webpackJsonp([0],[
 	                console.warn("No layout for widget. Skipping position update of widget with id: " + state.id);
 	                return state;
 	            }
-	            return _.assign({}, state, {
-	                row: layout.y,
-	                col: layout.x,
-	                width: layout.w,
-	                height: layout.h,
-	                availableHeightPx: calcAvaliableHeight(layout.h)
-	            });
+	            var heightInPx = calcAvaliableHeight(layout.h);
+	            // Only change state when something actually changed!
+	            if (state.row !== layout.y ||
+	                state.col !== layout.x ||
+	                state.width !== layout.w ||
+	                state.height !== layout.h ||
+	                state.availableHeightPx !== heightInPx) {
+	                return _.assign({}, state, {
+	                    row: layout.y,
+	                    col: layout.x,
+	                    width: layout.w,
+	                    height: layout.h,
+	                    availableHeightPx: heightInPx
+	                });
+	            }
+	            else {
+	                return state;
+	            }
 	        default:
 	            return state;
 	    }
@@ -1505,18 +1520,16 @@ webpackJsonp([0],[
 	var widgets_1 = __webpack_require__(49);
 	var react_1 = __webpack_require__(20);
 	var dashboard_1 = __webpack_require__(56);
+	var widgetIFrame_ui_tsx_1 = __webpack_require__(75);
 	/**
 	 * The Dragable Frame of a Widget.
 	 * Contains generic UI controls, shared by all Widgets
 	 */
 	var WidgetFrame = function (props) {
 	    var widgetState = props.widget;
+	    var widgetPlugin = props.widgetPlugin;
 	    // If the plugin is not in the registry, we assume it's currently loading
 	    var pluginLoaded = dashboard_1.default.getInstance().widgetPluginRegistry.hasPlugin(widgetState.type);
-	    var widgetFactory;
-	    if (pluginLoaded) {
-	        widgetFactory = dashboard_1.default.getInstance().widgetPluginRegistry.getPlugin(widgetState.type);
-	    }
 	    return (React.createElement("div", {className: "lob-shadow--raised slds-card", style: { margin: 0, overflow: "hidden", backgroundColor: "#fff" }, key: widgetState.id, _grid: { x: widgetState.col, y: widgetState.row, w: widgetState.width, h: widgetState.height }}, 
 	        React.createElement("div", {className: "slds-grid slds-wrap slds-has-dividers--bottom", style: { height: "100%" }}, 
 	            React.createElement("div", {className: "slds-size--1-of-1 slds-item" + (props.isReadOnly ? "" : " drag"), style: { padding: 8 }}, 
@@ -1525,7 +1538,7 @@ webpackJsonp([0],[
 	                        React.createElement(ConfigWidgetButton, {widgetState: widgetState, description: "settings", visible: (props.widgetPlugin && props.widgetPlugin.typeInfo.settings ? true : false), icon: "settings"}), 
 	                        React.createElement(DeleteWidgetButton, {widgetState: widgetState, description: "remove", icon: "remove", iconType: "action"})), 
 	                React.createElement("div", {className: "" + (props.isReadOnly ? "" : " drag")}, widgetState.settings.name || "\u00a0")), 
-	            React.createElement("div", {className: "slds-size--1-of-1 slds-is-relative", style: { height: widgetState.availableHeightPx, padding: 0, border: "red dashed 0px" }}, pluginLoaded ? widgetFactory.getInstance(widgetState.id)
+	            React.createElement("div", {className: "slds-size--1-of-1 slds-is-relative", style: { height: widgetState.availableHeightPx, padding: 0, border: "red dashed 0px" }}, pluginLoaded ? React.createElement(widgetIFrame_ui_tsx_1.default, {widgetState: widgetState, widgetPlugin: widgetPlugin})
 	                : React.createElement(LoadingWidget, {widget: widgetState})))
 	    ));
 	};
@@ -1972,6 +1985,10 @@ webpackJsonp([0],[
 	        return this._scriptsLoading[url];
 	    };
 	    Dashboard.prototype.loadPluginScriptDependencies = function (plugin, url) {
+	        // Do not load dependencies of widgets anymore, they are loaded inside the iFrame
+	        if (plugin.TYPE_INFO.kind === "widget") {
+	            return Promise.resolve(plugin);
+	        }
 	        var dependencies = plugin.TYPE_INFO.dependencies;
 	        if (_.isArray(dependencies) && dependencies.length !== 0) {
 	            var dependencyPaths = dependencies.map(function (dependency) {
@@ -3149,6 +3166,9 @@ webpackJsonp([0],[
 	};
 	var pluginRegistry_1 = __webpack_require__(58);
 	var widgetPluginFactory_1 = __webpack_require__(73);
+	/**
+	 * Describes how we expect the plugin module to be
+	 */
 	var WidgetPluginRegistry = (function (_super) {
 	    __extends(WidgetPluginRegistry, _super);
 	    function WidgetPluginRegistry(store) {
@@ -3156,7 +3176,7 @@ webpackJsonp([0],[
 	    }
 	    WidgetPluginRegistry.prototype.createPluginFromModule = function (module) {
 	        console.assert(_.isObject(module.TYPE_INFO), "Missing TYPE_INFO on datasource module. Every module must export TYPE_INFO");
-	        return new widgetPluginFactory_1.default(module.TYPE_INFO.type, module.Widget, this.store);
+	        return new widgetPluginFactory_1.default(module.TYPE_INFO.type, this.store);
 	    };
 	    return WidgetPluginRegistry;
 	}(pluginRegistry_1.default));
@@ -3169,81 +3189,165 @@ webpackJsonp([0],[
 /* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
+	/* WEBPACK VAR INJECTION */(function(_) {/* This Source Code Form is subject to the terms of the Mozilla Public
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
-	var react_redux_1 = __webpack_require__(43);
-	var React = __webpack_require__(20);
-	var domWidgetContainer_1 = __webpack_require__(74);
-	var Widgets = __webpack_require__(49);
+	var widgetPluginInstance_1 = __webpack_require__(74);
 	var WidgetPluginFactory = (function () {
-	    function WidgetPluginFactory(type, widget, store) {
+	    function WidgetPluginFactory(type, store) {
 	        this.type = type;
-	        this.widget = widget;
 	        this.store = store;
+	        // TODO: The WidgetPluginInstance should be a plain class that might have access to the underlying component
 	        this.instances = {};
 	        this.disposed = false;
-	        // only bind the getData function once, so it can be safely used in the connect function
-	        this.getData = function (getState, dsId) {
-	            var ds = getState().datasources[dsId];
-	            if (!ds) {
-	                return [];
-	            }
-	            return ds.data || [];
-	        }.bind(this, this.store.getState);
 	    }
-	    WidgetPluginFactory.prototype.updateSetting = function (widgetId, settingId, value) {
-	        console.log("update", settingId, "to", value, 'of', widgetId);
-	        this.store.dispatch(Widgets.updatedSingleSetting(widgetId, settingId, value));
-	    };
 	    WidgetPluginFactory.prototype.getInstance = function (id) {
-	        var _this = this;
 	        if (this.disposed === true) {
 	            throw new Error("Try to create widget of destroyed type: " + this.type);
 	        }
 	        if (this.instances[id]) {
 	            return this.instances[id];
 	        }
-	        // TODO: check if module.Widget is a react component
-	        var widgetPlugin = this.store.getState().widgetPlugins[this.type];
-	        var rendering = widgetPlugin.typeInfo.rendering || "react";
-	        var widgetComponent = this.widget;
-	        if (rendering.toLowerCase() === "dom") {
-	            // TODO: any batter way to avoid the any cast?
-	            widgetComponent = domWidgetContainer_1.DomWidgetContainer;
-	        }
-	        var widget = react_redux_1.connect(function () {
-	            // This method will be used as mapStateToProps, leading to a constant "getData()" function per instance
-	            // Therefor the update is only called when actual state changes
-	            return function (state) {
-	                var widgetState = state.widgets[id];
-	                return {
-	                    state: widgetState,
-	                    // This is used to trigger re-rendering on Datasource change
-	                    // TODO: in future only the datasources the Widget is interested in should trigger re-rendering
-	                    _datasources: state.datasources,
-	                    getData: _this.getData,
-	                    updateSetting: _this.updateSetting.bind(_this, id)
-	                };
-	            };
-	        })(widgetComponent); // TODO: get rid of the any?
-	        this.instances[id] = React.createElement(widget, { _widgetClass: this.widget });
-	        // Should we create here or always outside?
+	        this.instances[id] = new widgetPluginInstance_1.WidgetPluginInstance(id, this.store);
 	        return this.instances[id];
 	    };
 	    WidgetPluginFactory.prototype.dispose = function () {
 	        this.disposed = true;
+	        _.valuesIn(this.instances).forEach(function (widgetPluginInstance) {
+	            widgetPluginInstance.dispose();
+	        });
 	        this.instances = {};
 	    };
 	    return WidgetPluginFactory;
 	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = WidgetPluginFactory;
-
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)))
 
 /***/ },
 /* 74 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(_) {"use strict";
+	var Widgets = __webpack_require__(49);
+	var WidgetPluginInstance = (function () {
+	    function WidgetPluginInstance(id, store) {
+	        var _this = this;
+	        this.id = id;
+	        this.store = store;
+	        this.frameInitialized = false;
+	        this.disposed = false;
+	        this.oldWidgetState = null;
+	        this.oldDatasourceData = {};
+	        if (typeof window !== 'undefined') {
+	            window.addEventListener('message', function (e) {
+	                if (!_this._iFrame && e.origin === "null") {
+	                    console.log("Discarding message because iFrame not set yet", e.data);
+	                }
+	                if (_this._iFrame !== undefined && e.origin === "null" && e.source === _this._iFrame.contentWindow) {
+	                    _this.handleMessage(e.data);
+	                }
+	            });
+	        }
+	        this.unsubscribeStore = store.subscribe(function () {
+	            if (!_this.frameInitialized) {
+	                // We get invalid caches when we send state to the iFrame before it is ready
+	                return;
+	            }
+	            var state = store.getState();
+	            var widgetState = state.widgets[id];
+	            if (widgetState !== _this.oldWidgetState) {
+	                _this.oldWidgetState = widgetState;
+	                _this.sendPluginState();
+	            }
+	            _this.updateDatasourceDataInFrame();
+	        });
+	    }
+	    Object.defineProperty(WidgetPluginInstance.prototype, "iFrame", {
+	        set: function (element) {
+	            this._iFrame = element;
+	            this.sendMessage({ type: "init" });
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    WidgetPluginInstance.prototype.updateDatasourceDataInFrame = function () {
+	        var _this = this;
+	        var state = this.store.getState();
+	        var widgetState = state.widgets[this.id];
+	        var widgetPluginState = state.widgetPlugins[widgetState.type];
+	        widgetPluginState.typeInfo.settings.filter(function (s) {
+	            return s.type === "datasource";
+	        }).map(function (s) {
+	            return widgetState.settings[s.id];
+	        }).forEach(function (dsId) {
+	            if (state.datasources[dsId] === undefined) {
+	                return;
+	            }
+	            var data = state.datasources[dsId].data;
+	            if (data !== _this.oldDatasourceData[dsId]) {
+	                _this.oldDatasourceData[dsId] = data;
+	                _this.sendDatasourceData(dsId);
+	            }
+	        });
+	    };
+	    WidgetPluginInstance.prototype.handleMessage = function (msg) {
+	        switch (msg.type) {
+	            case 'init': {
+	                this.frameInitialized = true;
+	                this.sendPluginState();
+	                this.updateDatasourceDataInFrame();
+	                break;
+	            }
+	            case 'updateSetting': {
+	                this.updateSetting(msg.payload.id, msg.payload.value);
+	                break;
+	            }
+	            default:
+	                break;
+	        }
+	    };
+	    WidgetPluginInstance.prototype.sendMessage = function (msg) {
+	        this._iFrame.contentWindow.postMessage(msg, '*');
+	    };
+	    WidgetPluginInstance.prototype.sendPluginState = function () {
+	        var state = this.store.getState();
+	        var widgetState = state.widgets[this.id];
+	        this.sendMessage({
+	            type: "widgetState",
+	            payload: widgetState
+	        });
+	    };
+	    WidgetPluginInstance.prototype.sendDatasourceData = function (dsId) {
+	        var state = this.store.getState();
+	        this.sendMessage({
+	            type: "data",
+	            payload: {
+	                id: dsId,
+	                data: state.datasources[dsId].data
+	            }
+	        });
+	    };
+	    WidgetPluginInstance.prototype.updateSetting = function (settingId, value) {
+	        console.log("update", settingId, "to", value, 'of', this.id);
+	        this.store.dispatch(Widgets.updatedSingleSetting(this.id, settingId, value));
+	    };
+	    WidgetPluginInstance.prototype.dispose = function () {
+	        if (!this.disposed && _.isFunction(this.unsubscribeStore)) {
+	            this.unsubscribeStore();
+	        }
+	        this.disposed = true;
+	    };
+	    return WidgetPluginInstance;
+	}());
+	exports.WidgetPluginInstance = WidgetPluginInstance;
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)))
+
+/***/ },
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3256,74 +3360,38 @@ webpackJsonp([0],[
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(20);
-	var DomWidgetContainer = (function (_super) {
-	    __extends(DomWidgetContainer, _super);
-	    function DomWidgetContainer(props) {
+	var dashboard_1 = __webpack_require__(56);
+	/**
+	 * The Dragable Frame of a Widget.
+	 * Contains generic UI controls, shared by all Widgets
+	 */
+	var WidgetIFrame = (function (_super) {
+	    __extends(WidgetIFrame, _super);
+	    function WidgetIFrame(props) {
 	        _super.call(this, props);
-	        this.state = {
-	            widget: new props._widgetClass(props)
-	        };
 	    }
-	    Object.defineProperty(DomWidgetContainer.prototype, "element", {
-	        get: function () {
-	            return this.refs['container'];
-	        },
-	        set: function (element) {
-	            throw new Error("Can not change element");
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    DomWidgetContainer.prototype.componentWillMount = function () {
-	        if (this.state.widget.componentWillMount) {
-	            this.state.widget.componentWillMount();
-	        }
+	    WidgetIFrame.prototype.componentDidMount = function () {
+	        var element = this.refs['frame'];
+	        var widgetFactory = dashboard_1.default.getInstance().widgetPluginRegistry.getPlugin(this.props.widgetState.type);
+	        var widgetInstance = widgetFactory.getInstance(this.props.widgetState.id);
+	        widgetInstance.iFrame = element;
 	    };
-	    DomWidgetContainer.prototype.componentDidMount = function () {
-	        this.state.widget.element = this.element;
-	        this.state.widget.render();
-	        if (this.state.widget.componentDidMount) {
-	            this.state.widget.componentDidMount();
-	        }
+	    // allow-popups allow-same-origin allow-modals allow-forms
+	    // A sandbox that includes both the allow-same-origin and allow-scripts flags,
+	    // then the framed page can reach up into the parent, and remove the sandbox attribute entirely.
+	    // Only if the framed content comes from the same origin of course.
+	    WidgetIFrame.prototype.render = function () {
+	        return React.createElement("iframe", {id: 'frame-' + this.props.widgetState.id, ref: "frame", src: "widget.html#" + this.props.widgetPlugin.url, frameBorder: "0", width: "100%", height: "100%", scrolling: "no", sandbox: "allow-scripts"}, "Browser does not support iFrames.");
 	    };
-	    DomWidgetContainer.prototype.componentWillReceiveProps = function (nextProps, nextContext) {
-	        if (this.state.widget.componentWillReceiveProps) {
-	            this.state.widget.componentWillReceiveProps(nextProps, nextContext);
-	        }
-	    };
-	    DomWidgetContainer.prototype.shouldComponentUpdate = function (nextProps, nextState, nextContext) {
-	        if (this.state.widget.shouldComponentUpdate) {
-	            return this.state.widget.shouldComponentUpdate(nextProps, nextState, nextContext);
-	        }
-	        return true;
-	    };
-	    DomWidgetContainer.prototype.componentWillUpdate = function (nextProps, nextState, nextContext) {
-	        if (this.state.widget.componentWillUpdate) {
-	            this.state.widget.componentWillUpdate(nextProps, nextState, nextContext);
-	        }
-	    };
-	    DomWidgetContainer.prototype.componentDidUpdate = function (prevProps, prevState, prevContext) {
-	        this.state.widget.element = this.element;
-	        this.state.widget.render();
-	        if (this.state.widget.componentDidUpdate) {
-	            this.state.widget.componentDidUpdate(prevProps, prevState, prevContext);
-	        }
-	    };
-	    DomWidgetContainer.prototype.componentWillUnmount = function () {
-	        if (this.state.widget.componentWillUnmount) {
-	            this.state.widget.componentWillUnmount();
-	        }
-	    };
-	    DomWidgetContainer.prototype.render = function () {
-	        return React.createElement("div", {ref: "container"}, "Widget Plugin missing rendering!");
-	    };
-	    return DomWidgetContainer;
+	    ;
+	    return WidgetIFrame;
 	}(React.Component));
-	exports.DomWidgetContainer = DomWidgetContainer;
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = WidgetIFrame;
 
 
 /***/ },
-/* 75 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3397,7 +3465,6 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 76 */,
 /* 77 */,
 /* 78 */,
 /* 79 */,
@@ -3410,7 +3477,8 @@ webpackJsonp([0],[
 /* 86 */,
 /* 87 */,
 /* 88 */,
-/* 89 */
+/* 89 */,
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3425,8 +3493,8 @@ webpackJsonp([0],[
 	var React = __webpack_require__(20);
 	var react_redux_1 = __webpack_require__(43);
 	var _ = __webpack_require__(21);
-	var Layouts = __webpack_require__(90);
-	var ui = __webpack_require__(91);
+	var Layouts = __webpack_require__(91);
+	var ui = __webpack_require__(92);
 	var react_1 = __webpack_require__(20);
 	var LayoutsTopNavItem = function (props) {
 	    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, 
@@ -3566,7 +3634,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 90 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3696,7 +3764,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 91 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3805,7 +3873,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 92 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -3818,11 +3886,11 @@ webpackJsonp([0],[
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(20);
-	var modalDialog_ui_tsx_1 = __webpack_require__(93);
+	var modalDialog_ui_tsx_1 = __webpack_require__(94);
 	var WidgetConfig = __webpack_require__(53);
 	var react_redux_1 = __webpack_require__(43);
-	var settingsForm_ui_1 = __webpack_require__(94);
-	var redux_form_1 = __webpack_require__(95);
+	var settingsForm_ui_1 = __webpack_require__(95);
+	var redux_form_1 = __webpack_require__(96);
 	var ModalIds = __webpack_require__(55);
 	var react_1 = __webpack_require__(20);
 	var DIALOG_ID = ModalIds.WIDGET_CONFIG;
@@ -3952,7 +4020,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 93 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -4091,7 +4159,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 94 */
+/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -4105,9 +4173,9 @@ webpackJsonp([0],[
 	};
 	var React = __webpack_require__(20);
 	var react_redux_1 = __webpack_require__(43);
-	var ui = __webpack_require__(91);
-	var redux_form_1 = __webpack_require__(95);
-	var collection_1 = __webpack_require__(96);
+	var ui = __webpack_require__(92);
+	var redux_form_1 = __webpack_require__(96);
+	var collection_1 = __webpack_require__(97);
 	var _ = __webpack_require__(21);
 	var react_1 = __webpack_require__(20);
 	var SettingsForm = (function (_super) {
@@ -4239,8 +4307,8 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 95 */,
-/* 96 */
+/* 96 */,
+/* 97 */
 /***/ function(module, exports) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -4268,7 +4336,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 97 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -4277,7 +4345,7 @@ webpackJsonp([0],[
 	"use strict";
 	var React = __webpack_require__(20);
 	var react_redux_1 = __webpack_require__(43);
-	var ui = __webpack_require__(91);
+	var ui = __webpack_require__(92);
 	var Modal = __webpack_require__(54);
 	var ModalIds = __webpack_require__(55);
 	var react_1 = __webpack_require__(20);
@@ -4315,7 +4383,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 98 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -4329,8 +4397,8 @@ webpackJsonp([0],[
 	};
 	var React = __webpack_require__(20);
 	var react_redux_1 = __webpack_require__(43);
-	var Import = __webpack_require__(99);
-	var modalDialog_ui_1 = __webpack_require__(93);
+	var Import = __webpack_require__(100);
+	var modalDialog_ui_1 = __webpack_require__(94);
 	var react_1 = __webpack_require__(20);
 	var ImportExportDialog = (function (_super) {
 	    __extends(ImportExportDialog, _super);
@@ -4424,7 +4492,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 99 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -4433,7 +4501,7 @@ webpackJsonp([0],[
 	"use strict";
 	var Action = __webpack_require__(47);
 	var actionNames_1 = __webpack_require__(47);
-	var layouts_js_1 = __webpack_require__(90);
+	var layouts_js_1 = __webpack_require__(91);
 	var _ = __webpack_require__(21);
 	var dashboard_1 = __webpack_require__(56);
 	/**
@@ -4496,7 +4564,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 100 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -4509,13 +4577,13 @@ webpackJsonp([0],[
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(20);
-	var modalDialog_ui_1 = __webpack_require__(93);
+	var modalDialog_ui_1 = __webpack_require__(94);
 	var Datasource = __webpack_require__(60);
 	var react_redux_1 = __webpack_require__(43);
 	var _ = __webpack_require__(21);
-	var ui = __webpack_require__(91);
-	var settingsForm_ui_1 = __webpack_require__(94);
-	var redux_form_1 = __webpack_require__(95);
+	var ui = __webpack_require__(92);
+	var settingsForm_ui_1 = __webpack_require__(95);
+	var redux_form_1 = __webpack_require__(96);
 	var ModalIds = __webpack_require__(55);
 	var react_1 = __webpack_require__(20);
 	var DIALOG_ID = ModalIds.DATASOURCE_CONFIG;
@@ -4704,7 +4772,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 101 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -4715,7 +4783,7 @@ webpackJsonp([0],[
 	var Datasource = __webpack_require__(60);
 	var react_redux_1 = __webpack_require__(43);
 	var _ = __webpack_require__(21);
-	var ui = __webpack_require__(91);
+	var ui = __webpack_require__(92);
 	var react_1 = __webpack_require__(20);
 	var DatasourceTopNavItem = function (props) {
 	    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, 
@@ -4765,7 +4833,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 102 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -4777,7 +4845,7 @@ webpackJsonp([0],[
 	var react_redux_1 = __webpack_require__(43);
 	var WidgetConfig = __webpack_require__(53);
 	var _ = __webpack_require__(21);
-	var ui = __webpack_require__(91);
+	var ui = __webpack_require__(92);
 	var WidgetsNavItem = function (props) {
 	    return React.createElement("li", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--hover", "aria-haspopup": "true"}, 
 	        React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Widgets"}, 
@@ -4821,7 +4889,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 103 */
+/* 104 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -4852,7 +4920,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 104 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -4865,11 +4933,11 @@ webpackJsonp([0],[
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(20);
-	var modalDialog_ui_1 = __webpack_require__(93);
+	var modalDialog_ui_1 = __webpack_require__(94);
 	var react_redux_1 = __webpack_require__(43);
 	var _ = __webpack_require__(21);
 	var Modal = __webpack_require__(54);
-	var Config = __webpack_require__(105);
+	var Config = __webpack_require__(106);
 	var Plugins = __webpack_require__(63);
 	var WidgetsPlugins = __webpack_require__(65);
 	var DatasourcePlugins = __webpack_require__(64);
@@ -5203,7 +5271,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 105 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -5212,7 +5280,7 @@ webpackJsonp([0],[
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	var _ = __webpack_require__(21);
 	var Action = __webpack_require__(47);
-	var configJson = __webpack_require__(106);
+	var configJson = __webpack_require__(107);
 	var defaultConfig = {
 	    version: "",
 	    revision: "",
@@ -5257,18 +5325,18 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 106 */
+/* 107 */
 /***/ function(module, exports) {
 
 	module.exports = {
 		"version": "0.1.20",
-		"revision": "fa9944c71f719fddb4ef08ed20460c01b19175e5",
-		"revisionShort": "fa9944c",
-		"branch": "Detatched: fa9944c71f719fddb4ef08ed20460c01b19175e5"
+		"revision": "645ef443d0cf3f7e59a7cef235dd3b4b6c3dc248",
+		"revisionShort": "645ef44",
+		"branch": "Detatched: 645ef443d0cf3f7e59a7cef235dd3b4b6c3dc248"
 	};
 
 /***/ },
-/* 107 */
+/* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -5364,7 +5432,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 108 */
+/* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -5372,22 +5440,22 @@ webpackJsonp([0],[
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
 	var Redux = __webpack_require__(44);
-	var redux_thunk_1 = __webpack_require__(109);
-	var createLogger = __webpack_require__(110);
+	var redux_thunk_1 = __webpack_require__(110);
+	var createLogger = __webpack_require__(111);
 	var Widgets = __webpack_require__(49);
 	var WidgetConfig = __webpack_require__(53);
-	var Layouts = __webpack_require__(90);
+	var Layouts = __webpack_require__(91);
 	var Datasource = __webpack_require__(60);
 	var Global = __webpack_require__(46);
-	var Import = __webpack_require__(99);
+	var Import = __webpack_require__(100);
 	var Modal = __webpack_require__(54);
-	var Persist = __webpack_require__(107);
+	var Persist = __webpack_require__(108);
 	var Plugins = __webpack_require__(63);
-	var redux_form_1 = __webpack_require__(95);
+	var redux_form_1 = __webpack_require__(96);
 	var Action = __webpack_require__(47);
 	var WidgetPlugins = __webpack_require__(65);
 	var DatasourcePlugins = __webpack_require__(64);
-	var Config = __webpack_require__(105);
+	var Config = __webpack_require__(106);
 	// TODO: name all reducers ***Reducer
 	var appReducer = Redux.combineReducers({
 	    config: Config.config,

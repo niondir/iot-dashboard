@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">88.89% </span>
+        <span class="strong">88.17% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>80/90</span>
+        <span class='fraction'>82/93</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">74.19% </span>
+        <span class="strong">65.79% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>23/31</span>
+        <span class='fraction'>25/38</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">88.89% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>16/18</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">89.53% </span>
+        <span class="strong">88.76% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>77/86</span>
+        <span class='fraction'>79/89</span>
       </div>
     </div>
   </div>
@@ -295,7 +295,18 @@
 250
 251
 252
-253</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -506,10 +517,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -555,7 +577,7 @@ var Uuid = require("../util/uuid.js");
 var _ = require("lodash");
 var reducer_js_1 = require("../util/reducer.js");
 var Action = require("../actionNames");
-exports.HEADER_HEIGHT = 34;
+exports.HEADER_HEIGHT = 35;
 exports.ROW_HEIGHT = 100;
 exports.initialWidgets = {
     "initial_chart": {
@@ -728,7 +750,7 @@ function widgets(state, action) {
 exports.widgets = widgets;
 function calcAvaliableHeight(heightUnits) {
     // The 10 px extra seem to be based on a bug in the grid layout ...
-    return (heightUnits * (exports.ROW_HEIGHT + 10)) - exports.HEADER_HEIGHT;
+    return (heightUnits * (exports.ROW_HEIGHT + 10)) - exports.HEADER_HEIGHT - 10;
 }
 function widget(state, action) {
     switch (action.type) {
@@ -756,13 +778,24 @@ function widget(state, action) {
                 console.warn("No layout for widget. Skipping position update of widget with id: " + state.id);
                 return state;
             }
-            return _.assign({}, state, {
-                row: layout.y,
-                col: layout.x,
-                width: layout.w,
-                height: layout.h,
-                availableHeightPx: calcAvaliableHeight(layout.h)
-            });
+            var heightInPx = calcAvaliableHeight(layout.h);
+            // Only change state when something actually changed!
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (state.row !== layout.y ||
+<span class="branch-1 cbranch-no" title="branch not covered" >                state.col !== layout.x </span>||
+<span class="branch-2 cbranch-no" title="branch not covered" >                state.width !== layout.w </span>||
+<span class="branch-3 cbranch-no" title="branch not covered" >                state.height !== layout.h </span>||
+<span class="branch-4 cbranch-no" title="branch not covered" >                state.availableHeightPx !== heightInPx)</span> {
+                return _.assign({}, state, {
+                    row: layout.y,
+                    col: layout.x,
+                    width: layout.w,
+                    height: layout.h,
+                    availableHeightPx: heightInPx
+                });
+            }
+            else {
+<span class="cstat-no" title="statement not covered" >                return state;</span>
+            }
 <span class="branch-4 cbranch-no" title="branch not covered" >        default:</span>
 <span class="cstat-no" title="statement not covered" >            return state;</span>
     }
@@ -805,7 +838,7 @@ exports.calcNewWidgetPosition = calcNewWidgetPosition;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Oct 12 2016 09:00:36 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Oct 12 2016 11:27:55 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

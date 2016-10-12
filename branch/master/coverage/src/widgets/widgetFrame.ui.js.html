@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">87.23% </span>
+        <span class="strong">89.13% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>41/47</span>
+        <span class='fraction'>41/46</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">62.96% </span>
+        <span class="strong">64% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>17/27</span>
+        <span class='fraction'>16/25</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">78.57% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>11/14</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">90.91% </span>
+        <span class="strong">93.02% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>40/44</span>
+        <span class='fraction'>40/43</span>
       </div>
     </div>
   </div>
@@ -163,9 +163,7 @@
 118
 119
 120
-121
-122
-123</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+121</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -174,6 +172,7 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -186,12 +185,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -302,18 +298,16 @@ var WidgetConfig = require('./widgetConfig');
 var widgets_1 = require('./widgets');
 var react_1 = require("react");
 var dashboard_1 = require('../dashboard');
+var widgetIFrame_ui_tsx_1 = require('./widgetIFrame.ui.tsx');
 /**
  * The Dragable Frame of a Widget.
  * Contains generic UI controls, shared by all Widgets
  */
 var WidgetFrame = function (props) {
     var widgetState = props.widget;
+    var widgetPlugin = props.widgetPlugin;
     // If the plugin is not in the registry, we assume it's currently loading
     var pluginLoaded = dashboard_1.default.getInstance().widgetPluginRegistry.hasPlugin(widgetState.type);
-    var widgetFactory;
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (pluginLoaded) {
-<span class="cstat-no" title="statement not covered" >        widgetFactory = dashboard_1.default.getInstance().widgetPluginRegistry.getPlugin(widgetState.type);</span>
-    }
     return (React.createElement("div", {className: "lob-shadow--raised slds-card", style: { margin: 0, overflow: "hidden", backgroundColor: "#fff" }, key: widgetState.id, _grid: { x: widgetState.col, y: widgetState.row, w: widgetState.width, h: widgetState.height }}, 
         React.createElement("div", {className: "slds-grid slds-wrap slds-has-dividers--bottom", style: { height: "100%" }}, 
             React.createElement("div", {className: "slds-size--1-of-1 slds-item" + (props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >"" </span>: " drag"), style: { padding: 8 }}, 
@@ -322,7 +316,7 @@ var WidgetFrame = function (props) {
                         React.createElement(ConfigWidgetButton, {widgetState: widgetState, description: "settings", visible: (props.widgetPlugin &amp;&amp; props.widgetPlugin.typeInfo.settings ? <span class="branch-0 cbranch-no" title="branch not covered" >true </span>: false), icon: "settings"}), 
                         React.createElement(DeleteWidgetButton, {widgetState: widgetState, description: "remove", icon: "remove", iconType: "action"})), 
                 React.createElement("div", {className: "" + (props.isReadOnly ? <span class="branch-0 cbranch-no" title="branch not covered" >"" </span>: " drag")}, widgetState.settings.name || <span class="branch-1 cbranch-no" title="branch not covered" >"\u00a0")</span>), 
-            React.createElement("div", {className: "slds-size--1-of-1 slds-is-relative", style: { height: widgetState.availableHeightPx, padding: 0, border: "red dashed 0px" }}, pluginLoaded ? <span class="branch-0 cbranch-no" title="branch not covered" >widgetFactory.getInstance(widgetState.id)</span>
+            React.createElement("div", {className: "slds-size--1-of-1 slds-is-relative", style: { height: widgetState.availableHeightPx, padding: 0, border: "red dashed 0px" }}, pluginLoaded ? <span class="branch-0 cbranch-no" title="branch not covered" >React.createElement(widgetIFrame_ui_tsx_1.default, {widgetState: widgetState, widgetPlugin: widgetPlugin})</span>
                 : React.createElement(LoadingWidget, {widget: widgetState})))
     ));
 };
@@ -415,7 +409,7 @@ var ConfigWidgetButton = react_redux_1.connect(function (state) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Oct 12 2016 09:00:36 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Oct 12 2016 11:27:55 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

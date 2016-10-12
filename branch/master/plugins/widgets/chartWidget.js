@@ -16,6 +16,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
     var TYPE_INFO = {
         type: "chart",
         name: "Chart",
+        version: "0.0.1",
+        author: "Lobaro",
         description: "Renders a chart. Will be way more flexible in future.",
         settings: [{
             id: 'datasource',
@@ -172,11 +174,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
             key: "render",
             value: function render() {
                 this._renderChart();
-                return React.createElement(
-                    "div",
-                    { style: { padding: "10px" } },
-                    React.createElement("div", { className: "", id: 'chart-' + this.props.state.id })
-                );
+                return React.createElement("div", { className: "", id: 'chart-' + this.props.state.id });
             }
         }, {
             key: "componentWillUnmount",
