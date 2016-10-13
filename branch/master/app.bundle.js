@@ -3242,22 +3242,38 @@ webpackJsonp([0],[
 	        this.oldWidgetState = null;
 	        this.oldDatasourceData = {};
 	        if (typeof window !== 'undefined') {
-	            window.addEventListener('message', function (e) {
+	            this.messageListener = function (e) {
+	                if (_this.disposed) {
+	                    // TODO: better unit test than runtime checking
+	                    console.error("Message listener called but WidgetPluginInstance is already disposed");
+	                    return;
+	                }
 	                if (!_this._iFrame && e.origin === "null") {
 	                    console.log("Discarding message because iFrame not set yet", e.data);
 	                }
 	                if (_this._iFrame !== undefined && e.origin === "null" && e.source === _this._iFrame.contentWindow) {
 	                    _this.handleMessage(e.data);
 	                }
-	            });
+	            };
+	            window.addEventListener('message', this.messageListener);
 	        }
 	        this.unsubscribeStore = store.subscribe(function () {
+	            if (_this.disposed) {
+	                // TODO: better unit test than runtime checking
+	                console.error("Store change observed but WidgetPluginInstance is already disposed");
+	                return;
+	            }
 	            if (!_this.frameInitialized) {
 	                // We get invalid caches when we send state to the iFrame before it is ready
 	                return;
 	            }
 	            var state = store.getState();
 	            var widgetState = state.widgets[id];
+	            if (widgetState === undefined) {
+	                // This happens for example during import. Where the state is cleared but this class not yet disposed.
+	                // So we just silently return.
+	                return;
+	            }
 	            if (widgetState !== _this.oldWidgetState) {
 	                _this.oldWidgetState = widgetState;
 	                _this.sendPluginState();
@@ -3310,6 +3326,11 @@ webpackJsonp([0],[
 	        }
 	    };
 	    WidgetPluginInstance.prototype.sendMessage = function (msg) {
+	        if (!this._iFrame.contentWindow) {
+	            // This happens during import. We ignore it silently and rely on later disposal to free memory.
+	            // TODO: Find a way to dispose this instance before this happens.
+	            return;
+	        }
 	        this._iFrame.contentWindow.postMessage(msg, '*');
 	    };
 	    WidgetPluginInstance.prototype.sendPluginState = function () {
@@ -3337,6 +3358,9 @@ webpackJsonp([0],[
 	    WidgetPluginInstance.prototype.dispose = function () {
 	        if (!this.disposed && _.isFunction(this.unsubscribeStore)) {
 	            this.unsubscribeStore();
+	        }
+	        if (!this.disposed && _.isFunction(this.messageListener)) {
+	            window.removeEventListener("message", this.messageListener);
 	        }
 	        this.disposed = true;
 	    };
@@ -5329,10 +5353,10 @@ webpackJsonp([0],[
 /***/ function(module, exports) {
 
 	module.exports = {
-		"version": "0.2.1",
-		"revision": "041a1eaddb15770fbe7367dd84c7354db6e84ddc",
-		"revisionShort": "041a1ea",
-		"branch": "Detatched: 041a1eaddb15770fbe7367dd84c7354db6e84ddc"
+		"version": "0.2.2",
+		"revision": "40091d6914fa1c23e830567b41fce3b25a8e52c9",
+		"revisionShort": "40091d6",
+		"branch": "Detatched: 40091d6914fa1c23e830567b41fce3b25a8e52c9"
 	};
 
 /***/ },
