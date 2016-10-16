@@ -43730,7 +43730,7 @@
 	/* 1 */
 	/***/ function(module, exports, __webpack_require__) {
 	
-		'use strict';
+		/* WEBPACK VAR INJECTION */(function(global) {'use strict';
 		
 		Object.defineProperty(exports, "__esModule", {
 		  value: true
@@ -43933,7 +43933,7 @@
 		    key: 'componentDidMount',
 		    value: function componentDidMount() {
 		      // Check to see if the element passed is an instanceof SVGElement
-		      if (typeof SVGElement !== 'undefined' && _reactDom2.default.findDOMNode(this) instanceof SVGElement) {
+		      if (typeof global.SVGElement !== 'undefined' && _reactDom2.default.findDOMNode(this) instanceof global.SVGElement) {
 		        this.setState({ isElementSVG: true });
 		      }
 		    }
@@ -44127,6 +44127,7 @@
 		  position: null
 		});
 		exports.default = Draggable;
+		/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 	
 	/***/ },
 	/* 2 */
@@ -44849,13 +44850,8 @@
 		
 		      var coreEvent = (0, _positionFns.createCoreData)(_this, x, y);
 		
-		      var _ReactDOM$findDOMNode = _reactDom2.default.findDOMNode(_this);
-		
-		      var ownerDocument = _ReactDOM$findDOMNode.ownerDocument;
-		
 		      // Remove user-select hack
-		
-		      if (_this.props.enableUserSelectHack) (0, _domFns.removeUserSelectStyles)(ownerDocument.body);
+		      if (_this.props.enableUserSelectHack) (0, _domFns.removeUserSelectStyles)(_reactDom2.default.findDOMNode(_this).ownerDocument.body);
 		
 		      (0, _log2.default)('DraggableCore: handleDragStop: %j', coreEvent);
 		
@@ -44870,6 +44866,11 @@
 		      _this.props.onStop(e, coreEvent);
 		
 		      // Remove event handlers
+		
+		      var _ReactDOM$findDOMNode = _reactDom2.default.findDOMNode(_this);
+		
+		      var ownerDocument = _ReactDOM$findDOMNode.ownerDocument;
+		
 		      (0, _log2.default)('DraggableCore: Removing handlers');
 		      (0, _domFns.removeEvent)(ownerDocument, dragEventFor.move, _this.handleDrag);
 		      (0, _domFns.removeEvent)(ownerDocument, dragEventFor.stop, _this.handleDragStop);
