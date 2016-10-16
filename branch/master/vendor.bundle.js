@@ -45366,7 +45366,7 @@
 	  Resizable.prototype.resizeHandler = function resizeHandler(handlerName /*: string*/) {
 	    var _this2 = this;
 	
-	    return function (e /*: Event*/, _ref) {
+	    return function (e, _ref) {
 	      var node = _ref.node;
 	      var deltaX = _ref.deltaX;
 	      var deltaY = _ref.deltaY;
@@ -45380,6 +45380,7 @@
 	      if (handlerName === 'onResize' && !widthChanged && !heightChanged) return;
 	
 	      // Set the appropriate state for this handler.
+	
 	      var _runConstraints = _this2.runConstraints(width, height);
 	
 	      width = _runConstraints[0];
@@ -45502,7 +45503,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	// React.addons.cloneWithProps look-alike that merges style & className.
-	module.exports = function cloneElement(element /*: React.Element<any>*/, props /*: Object*/) /*: React.Element<any>*/ {
+	module.exports = function cloneElement(element /*: React.Element*/, props /*: Object*/) /*: React.Element*/ {
 	  if (props.style && element.props.style) {
 	    props.style = _extends({}, element.props.style, props.style);
 	  }
@@ -45540,7 +45541,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	/*:: type State = {width: number, height: number};*/
+	/*:: type State = {width: number, height: number, aspectRatio: number};*/
 	/*:: type Size = {width: number, height: number};*/
 	
 	
@@ -45562,7 +45563,7 @@
 	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
 	      width: _this.props.width,
 	      height: _this.props.height
-	    }, _this.onResize = function (event /*: Event*/, _ref) {
+	    }, _this.onResize = function (event, _ref) {
 	      var element = _ref.element;
 	      var size = _ref.size;
 	      var width = size.width;
@@ -45581,7 +45582,6 @@
 	    // with a new width and height.
 	    var _props = this.props;
 	    var handleSize = _props.handleSize;
-	    var onResize = _props.onResize;
 	    var onResizeStart = _props.onResizeStart;
 	    var onResizeStop = _props.onResizeStop;
 	    var draggableOpts = _props.draggableOpts;
@@ -45591,7 +45591,7 @@
 	    var width = _props.width;
 	    var height = _props.height;
 	
-	    var props = _objectWithoutProperties(_props, ['handleSize', 'onResize', 'onResizeStart', 'onResizeStop', 'draggableOpts', 'minConstraints', 'maxConstraints', 'lockAspectRatio', 'width', 'height']);
+	    var props = _objectWithoutProperties(_props, ['handleSize', 'onResizeStart', 'onResizeStop', 'draggableOpts', 'minConstraints', 'maxConstraints', 'lockAspectRatio', 'width', 'height']);
 	
 	    return _react2.default.createElement(
 	      _Resizable2.default,
