@@ -25,7 +25,7 @@
     }
 
     function Datasource() {
-        var props = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+        var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
         var history = arguments[1];
 
 

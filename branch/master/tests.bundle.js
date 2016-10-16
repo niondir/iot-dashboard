@@ -3710,6 +3710,7 @@
 
 	'use strict'
 
+	exports.byteLength = byteLength
 	exports.toByteArray = toByteArray
 	exports.fromByteArray = fromByteArray
 
@@ -3717,23 +3718,17 @@
 	var revLookup = []
 	var Arr = typeof Uint8Array !== 'undefined' ? Uint8Array : Array
 
-	function init () {
-	  var code = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
-	  for (var i = 0, len = code.length; i < len; ++i) {
-	    lookup[i] = code[i]
-	    revLookup[code.charCodeAt(i)] = i
-	  }
-
-	  revLookup['-'.charCodeAt(0)] = 62
-	  revLookup['_'.charCodeAt(0)] = 63
+	var code = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+	for (var i = 0, len = code.length; i < len; ++i) {
+	  lookup[i] = code[i]
+	  revLookup[code.charCodeAt(i)] = i
 	}
 
-	init()
+	revLookup['-'.charCodeAt(0)] = 62
+	revLookup['_'.charCodeAt(0)] = 63
 
-	function toByteArray (b64) {
-	  var i, j, l, tmp, placeHolders, arr
+	function placeHoldersCount (b64) {
 	  var len = b64.length
-
 	  if (len % 4 > 0) {
 	    throw new Error('Invalid string. Length must be a multiple of 4')
 	  }
@@ -3743,9 +3738,19 @@
 	  // represent one byte
 	  // if there is only one, then the three characters before it represent 2 bytes
 	  // this is just a cheap hack to not do indexOf twice
-	  placeHolders = b64[len - 2] === '=' ? 2 : b64[len - 1] === '=' ? 1 : 0
+	  return b64[len - 2] === '=' ? 2 : b64[len - 1] === '=' ? 1 : 0
+	}
 
+	function byteLength (b64) {
 	  // base64 is 4/3 + up to two characters of the original data
+	  return b64.length * 3 / 4 - placeHoldersCount(b64)
+	}
+
+	function toByteArray (b64) {
+	  var i, j, l, tmp, placeHolders, arr
+	  var len = b64.length
+	  placeHolders = placeHoldersCount(b64)
+
 	  arr = new Arr(len * 3 / 4 - placeHolders)
 
 	  // if there are placeholders, only get up to the last complete 4 chars
@@ -26557,9 +26562,9 @@
 
 	module.exports = {
 		"version": "0.2.2",
-		"revision": "a86c23c44b4c73d750ae3c29b8dfa0d879fa5a0c",
-		"revisionShort": "a86c23c",
-		"branch": "Detatched: a86c23c44b4c73d750ae3c29b8dfa0d879fa5a0c"
+		"revision": "c0888179d070c8dc6626df8146c8bae4672f0aed",
+		"revisionShort": "c088817",
+		"branch": "Detatched: c0888179d070c8dc6626df8146c8bae4672f0aed"
 	};
 
 /***/ },
@@ -39494,7 +39499,7 @@
 	/* 1 */
 	/***/ function(module, exports, __webpack_require__) {
 
-		/* WEBPACK VAR INJECTION */(function(global) {'use strict';
+		'use strict';
 		
 		Object.defineProperty(exports, "__esModule", {
 		  value: true
@@ -39697,7 +39702,7 @@
 		    key: 'componentDidMount',
 		    value: function componentDidMount() {
 		      // Check to see if the element passed is an instanceof SVGElement
-		      if (typeof global.SVGElement !== 'undefined' && _reactDom2.default.findDOMNode(this) instanceof global.SVGElement) {
+		      if (typeof SVGElement !== 'undefined' && _reactDom2.default.findDOMNode(this) instanceof SVGElement) {
 		        this.setState({ isElementSVG: true });
 		      }
 		    }
@@ -39891,7 +39896,6 @@
 		  position: null
 		});
 		exports.default = Draggable;
-		/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 	/***/ },
 	/* 2 */
@@ -40614,8 +40618,13 @@
 		
 		      var coreEvent = (0, _positionFns.createCoreData)(_this, x, y);
 		
+		      var _ReactDOM$findDOMNode = _reactDom2.default.findDOMNode(_this);
+		
+		      var ownerDocument = _ReactDOM$findDOMNode.ownerDocument;
+		
 		      // Remove user-select hack
-		      if (_this.props.enableUserSelectHack) (0, _domFns.removeUserSelectStyles)(_reactDom2.default.findDOMNode(_this).ownerDocument.body);
+		
+		      if (_this.props.enableUserSelectHack) (0, _domFns.removeUserSelectStyles)(ownerDocument.body);
 		
 		      (0, _log2.default)('DraggableCore: handleDragStop: %j', coreEvent);
 		
@@ -40630,11 +40639,6 @@
 		      _this.props.onStop(e, coreEvent);
 		
 		      // Remove event handlers
-		
-		      var _ReactDOM$findDOMNode = _reactDom2.default.findDOMNode(_this);
-		
-		      var ownerDocument = _ReactDOM$findDOMNode.ownerDocument;
-		
 		      (0, _log2.default)('DraggableCore: Removing handlers');
 		      (0, _domFns.removeEvent)(ownerDocument, dragEventFor.move, _this.handleDrag);
 		      (0, _domFns.removeEvent)(ownerDocument, dragEventFor.stop, _this.handleDragStop);
@@ -41131,7 +41135,7 @@
 	  Resizable.prototype.resizeHandler = function resizeHandler(handlerName /*: string*/) {
 	    var _this2 = this;
 
-	    return function (e, _ref) {
+	    return function (e /*: Event*/, _ref) {
 	      var node = _ref.node;
 	      var deltaX = _ref.deltaX;
 	      var deltaY = _ref.deltaY;
@@ -41145,7 +41149,6 @@
 	      if (handlerName === 'onResize' && !widthChanged && !heightChanged) return;
 
 	      // Set the appropriate state for this handler.
-
 	      var _runConstraints = _this2.runConstraints(width, height);
 
 	      width = _runConstraints[0];
@@ -41268,7 +41271,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// React.addons.cloneWithProps look-alike that merges style & className.
-	module.exports = function cloneElement(element /*: React.Element*/, props /*: Object*/) /*: React.Element*/ {
+	module.exports = function cloneElement(element /*: React.Element<any>*/, props /*: Object*/) /*: React.Element<any>*/ {
 	  if (props.style && element.props.style) {
 	    props.style = _extends({}, element.props.style, props.style);
 	  }
@@ -41306,7 +41309,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	/*:: type State = {width: number, height: number, aspectRatio: number};*/
+	/*:: type State = {width: number, height: number};*/
 	/*:: type Size = {width: number, height: number};*/
 
 
@@ -41328,7 +41331,7 @@
 	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
 	      width: _this.props.width,
 	      height: _this.props.height
-	    }, _this.onResize = function (event, _ref) {
+	    }, _this.onResize = function (event /*: Event*/, _ref) {
 	      var element = _ref.element;
 	      var size = _ref.size;
 	      var width = size.width;
@@ -41347,6 +41350,7 @@
 	    // with a new width and height.
 	    var _props = this.props;
 	    var handleSize = _props.handleSize;
+	    var onResize = _props.onResize;
 	    var onResizeStart = _props.onResizeStart;
 	    var onResizeStop = _props.onResizeStop;
 	    var draggableOpts = _props.draggableOpts;
@@ -41356,7 +41360,7 @@
 	    var width = _props.width;
 	    var height = _props.height;
 
-	    var props = _objectWithoutProperties(_props, ['handleSize', 'onResizeStart', 'onResizeStop', 'draggableOpts', 'minConstraints', 'maxConstraints', 'lockAspectRatio', 'width', 'height']);
+	    var props = _objectWithoutProperties(_props, ['handleSize', 'onResize', 'onResizeStart', 'onResizeStop', 'draggableOpts', 'minConstraints', 'maxConstraints', 'lockAspectRatio', 'width', 'height']);
 
 	    return _react2.default.createElement(
 	      _Resizable2.default,

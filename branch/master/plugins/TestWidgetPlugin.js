@@ -28,7 +28,7 @@
     // The API is similar to React but it is actually NOT a react component.
     // On render you get the DOM "element" to renter the content.
     function Widget() {
-        var props = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+        var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
         var jq = $.noConflict();
         this.render = function (props, element) {
