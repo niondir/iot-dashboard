@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">56.41% </span>
+        <span class="strong">53.22% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>88/156</span>
+        <span class='fraction'>91/171</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">40% </span>
+        <span class="strong">31.58% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>10/25</span>
+        <span class='fraction'>12/38</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">31.94% </span>
+        <span class="strong">30.67% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>23/72</span>
+        <span class='fraction'>23/75</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">61.7% </span>
+        <span class="strong">57.69% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>87/141</span>
+        <span class='fraction'>90/156</span>
       </div>
     </div>
   </div>
@@ -389,7 +389,39 @@
 344
 345
 346
-347</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -419,6 +451,12 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -427,6 +465,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -547,6 +603,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -763,8 +827,14 @@ var PluginsModal = (function (_super) {
         };
     }
     PluginsModal.prototype.pluginSearchValueChange = <span class="fstat-no" title="function not covered" >function (e) {</span>
-<span class="cstat-no" title="statement not covered" >        var pluginUrlInput = this.refs['pluginUrl']; </span>// HTMLInputElement
-<span class="cstat-no" title="statement not covered" >        this.setState({ pluginUrl: pluginUrlInput.value });</span>
+<span class="cstat-no" title="statement not covered" >        var url = this.pluginUrlValue();</span>
+<span class="cstat-no" title="statement not covered" >        if (this.isUrl(url)) {</span>
+<span class="cstat-no" title="statement not covered" >            this.setState({ isSearchOpen: false });</span>
+        }
+        else {
+<span class="cstat-no" title="statement not covered" >            this.setState({ isSearchOpen: true });</span>
+        }
+<span class="cstat-no" title="statement not covered" >        this.setState({ pluginUrl: this.pluginUrlValue() });</span>
     };
     PluginsModal.prototype.onBlurPluginSearchInput = <span class="fstat-no" title="function not covered" >function (e) {</span>
 <span class="cstat-no" title="statement not covered" >        var _this = this;</span>
@@ -772,8 +842,26 @@ var PluginsModal = (function (_super) {
 <span class="cstat-no" title="statement not covered" >            _this.setState({ isSearchOpen: false });</span>
         }, 300);
     };
+    PluginsModal.prototype.isUrl = <span class="fstat-no" title="function not covered" >function (url) {</span>
+<span class="cstat-no" title="statement not covered" >        return url === '' || _.startsWith(url, ".") || _.startsWith(url, "/") || _.startsWith(url, "http:") || _.startsWith(url, "https:");</span>
+    };
     PluginsModal.prototype.onFocusPluginSearchInput = <span class="fstat-no" title="function not covered" >function (e) {</span>
-<span class="cstat-no" title="statement not covered" >        this.setState({ isSearchOpen: true });</span>
+<span class="cstat-no" title="statement not covered" >        var url = this.pluginUrlValue();</span>
+<span class="cstat-no" title="statement not covered" >        if (this.isUrl(url)) {</span>
+<span class="cstat-no" title="statement not covered" >            this.setState({ isSearchOpen: false });</span>
+        }
+        else {
+<span class="cstat-no" title="statement not covered" >            this.setState({ isSearchOpen: true });</span>
+        }
+    };
+    PluginsModal.prototype.pluginUrlValue = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        var pluginUrlInput = this.refs['pluginUrl'];</span>
+<span class="cstat-no" title="statement not covered" >        return _.trim(pluginUrlInput.value);</span>
+    };
+    PluginsModal.prototype.clearUrl = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        var pluginUrlInput = this.refs['pluginUrl'];</span>
+<span class="cstat-no" title="statement not covered" >        pluginUrlInput.value = "";</span>
+<span class="cstat-no" title="statement not covered" >        this.setState({ pluginUrl: "" });</span>
     };
     PluginsModal.prototype.render = function () {
         var _this = this;
@@ -791,7 +879,7 @@ var PluginsModal = (function (_super) {
         var datasourcePluginStates = _.valuesIn(props.datasourcePlugins);
         var widgetPluginStates = _.valuesIn(props.widgetPlugins);
         var pluginUrlInput = this.refs['pluginUrl']; // HTMLInputElement
-        return React.createElement(modalDialog_ui_1.default, {id: "plugins-dialog", title: "Plugins", actions: actions}, 
+        return React.createElement(modalDialog_ui_1.default, {id: "plugins-dialog", title: "Plugin Manager", actions: actions}, 
             React.createElement("div", {className: "slds-grid"}, 
                 React.createElement("div", {className: "slds-size--1-of-1"}, 
                     React.createElement("h2", {className: "slds-section-title--divider slds-m-bottom--medium"}, 
@@ -799,7 +887,7 @@ var PluginsModal = (function (_super) {
                         React.createElement(PluginRegistrySettings, {pluginRegistryApiKey: props.pluginRegistryApiKey, pluginRegistryUrl: props.pluginRegistryUrl, onApiKeyChanged: <span class="fstat-no" title="function not covered" >function (key) {</span> <span class="cstat-no" title="statement not covered" >return _this.props.setConfigValue("pluginRegistryApiKey", key); </span>}, onRegistryUrlChanged: <span class="fstat-no" title="function not covered" >function (url) {</span> <span class="cstat-no" title="statement not covered" >return _this.props.setConfigValue("pluginRegistryUrl", url); </span>}})), 
                     React.createElement("form", {className: "slds-form--inline slds-grid", onSubmit: <span class="fstat-no" title="function not covered" >function (e) {</span>
 <span class="cstat-no" title="statement not covered" >                        props.loadPlugin(pluginUrlInput.value);</span>
-<span class="cstat-no" title="statement not covered" >                        pluginUrlInput.value = "";</span>
+<span class="cstat-no" title="statement not covered" >                        _this.clearUrl();</span>
 <span class="cstat-no" title="statement not covered" >                        e.preventDefault();</span>
                     }}, 
                         React.createElement("div", {className: "slds-form-element slds-has-flexi-truncate slds-lookup" + (this.state.isSearchOpen ? <span class="branch-0 cbranch-no" title="branch not covered" >" slds-is-open" </span>: ""), "data-select": "single"}, 
@@ -808,7 +896,7 @@ var PluginsModal = (function (_super) {
                                     React.createElement("svg", {"aria-hidden": "true", className: "slds-input__icon"}, 
                                         React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#search"})
                                     ), 
-                                    React.createElement("input", {className: "slds-lookup__search-input slds-input", type: "search", placeholder: "URL or Id from Plugin Registry", id: "plugin-lookup-menu", ref: "pluginUrl", autoComplete: "off", defaultValue: "", onChange: <span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return _this.pluginSearchValueChange(e); </span>}, onBlur: <span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return _this.onBlurPluginSearchInput(e); </span>}, onFocus: <span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return _this.onFocusPluginSearchInput(e); </span>}, "aria-owns": "plugin-lookup-menu", role: "combobox", "aria-activedescendent": "", "aria-expanded": (this.state.isSearchOpen ? <span class="branch-0 cbranch-no" title="branch not covered" >"true" </span>: "false"), "aria-autocomplete": "list"}))
+                                    React.createElement("input", {className: "slds-lookup__search-input slds-input", type: "search", placeholder: "URL or Id from Plugin Registry", id: "plugin-lookup-menu", ref: "pluginUrl", autoComplete: (this.state.isSearchOpen ? <span class="branch-0 cbranch-no" title="branch not covered" >" off" </span>: "on"), defaultValue: "", onChange: <span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return _this.pluginSearchValueChange(e); </span>}, onBlur: <span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return _this.onBlurPluginSearchInput(e); </span>}, onFocus: <span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return _this.onFocusPluginSearchInput(e); </span>}, "aria-owns": "plugin-lookup-menu", role: "combobox", "aria-activedescendent": "", "aria-expanded": (this.state.isSearchOpen ? <span class="branch-0 cbranch-no" title="branch not covered" >"true" </span>: "false"), "aria-autocomplete": "list"}))
                             ), 
                             React.createElement(LookupMenu, {id: "plugin-lookup-menu", searchString: this.state.pluginUrl, pluginRegistryUrl: this.props.pluginRegistryUrl, onItemClicked: <span class="fstat-no" title="function not covered" >function (item) {</span> <span class="cstat-no" title="statement not covered" >return props.loadPlugin('plugin://' + item.type); </span>}})), 
                         React.createElement("div", {className: "slds-form-element slds-no-flex"}, 
@@ -882,7 +970,7 @@ var PluginTile = (function (_super) {
                             React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#down"})
                         ), 
                         React.createElement("span", {className: "slds-assistive-text"}, "Actions")), 
-                    React.createElement("div", {className: "slds-dropdown slds-dropdown--left slds-dropdown--actions"}, 
+                    React.createElement("div", {className: "slds-dropdown slds-dropdown--left slds-dropdown--actions", style: { zIndex: 9003 }}, 
                         React.createElement("ul", {className: "dropdown__list", role: "menu"}, 
                             React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, 
                                 React.createElement("a", {href: "javascript:void(0);", role: "menuitem", tabIndex: 0, onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return props.publishPlugin(pluginState.id); </span>}}, 
@@ -899,7 +987,15 @@ var PluginTile = (function (_super) {
                                     React.createElement("span", {className: "slds-truncate"}, "Remove"))
                             ))
                     ))), 
-            React.createElement("div", {className: "slds-tile__detail"}, 
+            React.createElement("div", {className: "slds-tile__detail slds-is-relative"}, 
+                pluginState.isLoading ?
+                    React.createElement("div", {className: "slds-spinner_container"}, 
+                        React.createElement("div", {className: "slds-spinner slds-spinner--small", role: "alert"}, 
+                            React.createElement("span", {className: "slds-assistive-text"}, "Loading"), 
+                            React.createElement("div", {className: "slds-spinner__dot-a"}), 
+                            React.createElement("div", {className: "slds-spinner__dot-b"}))
+                    )
+                    : <span class="branch-1 cbranch-no" title="branch not covered" >null, </span>
                 React.createElement("dl", {className: "slds-dl--horizontal"}, 
                     React.createElement("dt", {className: "slds-dl--horizontal__label"}, 
                         React.createElement("p", {className: "slds-truncate", title: "Type"}, "Type:")
@@ -1087,7 +1183,7 @@ var PluginRegistrySettings = (function (_super) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Oct 16 2016 19:19:36 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Oct 17 2016 13:05:26 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

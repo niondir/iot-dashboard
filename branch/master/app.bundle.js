@@ -915,9 +915,9 @@ webpackJsonp([0],[
 	                    React.createElement("div", {className: "slds-context-bar__secondary", role: "navigation"}, 
 	                        React.createElement("ul", {className: "slds-grid"}, 
 	                            React.createElement(dashboardMenuEntry_ui_js_1.default, null), 
+	                            React.createElement(pluginNavItem_ui_1.default, null), 
 	                            React.createElement(widgetsNavItem_ui_js_1.default, null), 
 	                            React.createElement(datasourceNavItem_ui_js_1.default, null), 
-	                            React.createElement(pluginNavItem_ui_1.default, null), 
 	                            React.createElement(layouts_ui_js_1.default, null), 
 	                            React.createElement("div", {className: "slds-context-bar__vertical-divider"}), 
 	                            React.createElement("li", {className: "slds-context-bar__item"}, 
@@ -2728,6 +2728,9 @@ webpackJsonp([0],[
 	var initialState = {
 	    loadingUrls: []
 	};
+	function isUrl(url) {
+	    return _.startsWith(url, "/") || !_.startsWith(url, ".") || !_.startsWith(url, "http:") || !_.startsWith(url, "https:");
+	}
 	/**
 	 *  Load plugin from URL or registry when starting with plugin://
 	 */
@@ -2739,7 +2742,7 @@ webpackJsonp([0],[
 	            url = url.replace("plugin://", registryBaseUrl + "/api/plugin-files/");
 	        }
 	        // No absolute or relative URL
-	        if (!_.startsWith(url, "/") && !_.startsWith(url, ".") && !_.startsWith(url, "http:") && !_.startsWith(url, "https:")) {
+	        if (!isUrl(url)) {
 	            url = registryBaseUrl + "/api/plugin-files/" + url;
 	        }
 	        if (_.some(_.valuesIn(state.datasourcePlugins), function (p) { return p.url === url && !p.isLoading; })) {
@@ -2918,8 +2921,12 @@ webpackJsonp([0],[
 	};
 	function unloadPlugin(type) {
 	    return function (dispatch) {
-	        var dsFactory = dashboard_1.default.getInstance().datasourcePluginRegistry.getPlugin(type);
-	        dsFactory.dispose();
+	        // When the plugin is still loading, or never loaded successfully we can not find it
+	        if (dashboard_1.default.getInstance().widgetPluginRegistry.hasPlugin(type)) {
+	            var dsFactory = dashboard_1.default.getInstance().datasourcePluginRegistry.getPlugin(type);
+	            dsFactory.dispose();
+	        }
+	        // TODO: Should we remove the url from plugin loader and cancel loading when the plugin is still loading?
 	        dispatch(deletePlugin(type));
 	    };
 	}
@@ -3032,8 +3039,12 @@ webpackJsonp([0],[
 	};
 	function unloadPlugin(type) {
 	    return function (dispatch) {
-	        var widgetPlugin = dashboard_1.default.getInstance().widgetPluginRegistry.getPlugin(type);
-	        widgetPlugin.dispose();
+	        // When the plugin is still loading, or never loaded successfully we can not find it
+	        if (dashboard_1.default.getInstance().widgetPluginRegistry.hasPlugin(type)) {
+	            var widgetPlugin_1 = dashboard_1.default.getInstance().widgetPluginRegistry.getPlugin(type);
+	            widgetPlugin_1.dispose();
+	        }
+	        // TODO: Should we remove the url from plugin loader and cancel loading when the plugin is still loading?
 	        dispatch(deletePlugin(type));
 	    };
 	}
@@ -4759,7 +4770,8 @@ webpackJsonp([0],[
 	                        }}, 
 	                            React.createElement("option", {key: "none", value: ""}, "Select Type..."), 
 	                            _.valuesIn(props.datasourcePlugins).map(function (dsPlugin) {
-	                                return React.createElement("option", {key: dsPlugin.id, value: dsPlugin.id}, dsPlugin.typeInfo.name);
+	                                return (!dsPlugin.isLoading ? React.createElement("option", {key: dsPlugin.id, value: dsPlugin.id}, dsPlugin.typeInfo.name)
+	                                    : null);
 	                            }))), 
 	                    React.createElement(ui.Divider, null), 
 	                    React.createElement(settingsForm_ui_1.default, {ref: "form", form: FORM_ID, onSubmit: this.onSubmit.bind(this), settings: settings, initialValues: initialValues}))
@@ -4927,7 +4939,7 @@ webpackJsonp([0],[
 	var PluginsTopNavItem = function (props) {
 	    return React.createElement("li", {className: "slds-context-bar__item"}, 
 	        React.createElement("a", {href: "javascript:void(0);", onClick: function () { return props.showPluginsDialog(); }, className: "slds-context-bar__label-action", title: "Plugins"}, 
-	            React.createElement("span", {className: "slds-truncate"}, "Plugins")
+	            React.createElement("span", {className: "slds-truncate"}, "Plugin Manager")
 	        )
 	    );
 	};
@@ -4975,8 +4987,14 @@ webpackJsonp([0],[
 	        };
 	    }
 	    PluginsModal.prototype.pluginSearchValueChange = function (e) {
-	        var pluginUrlInput = this.refs['pluginUrl']; // HTMLInputElement
-	        this.setState({ pluginUrl: pluginUrlInput.value });
+	        var url = this.pluginUrlValue();
+	        if (this.isUrl(url)) {
+	            this.setState({ isSearchOpen: false });
+	        }
+	        else {
+	            this.setState({ isSearchOpen: true });
+	        }
+	        this.setState({ pluginUrl: this.pluginUrlValue() });
 	    };
 	    PluginsModal.prototype.onBlurPluginSearchInput = function (e) {
 	        var _this = this;
@@ -4984,8 +5002,26 @@ webpackJsonp([0],[
 	            _this.setState({ isSearchOpen: false });
 	        }, 300);
 	    };
+	    PluginsModal.prototype.isUrl = function (url) {
+	        return url === '' || _.startsWith(url, ".") || _.startsWith(url, "/") || _.startsWith(url, "http:") || _.startsWith(url, "https:");
+	    };
 	    PluginsModal.prototype.onFocusPluginSearchInput = function (e) {
-	        this.setState({ isSearchOpen: true });
+	        var url = this.pluginUrlValue();
+	        if (this.isUrl(url)) {
+	            this.setState({ isSearchOpen: false });
+	        }
+	        else {
+	            this.setState({ isSearchOpen: true });
+	        }
+	    };
+	    PluginsModal.prototype.pluginUrlValue = function () {
+	        var pluginUrlInput = this.refs['pluginUrl'];
+	        return _.trim(pluginUrlInput.value);
+	    };
+	    PluginsModal.prototype.clearUrl = function () {
+	        var pluginUrlInput = this.refs['pluginUrl'];
+	        pluginUrlInput.value = "";
+	        this.setState({ pluginUrl: "" });
 	    };
 	    PluginsModal.prototype.render = function () {
 	        var _this = this;
@@ -5003,7 +5039,7 @@ webpackJsonp([0],[
 	        var datasourcePluginStates = _.valuesIn(props.datasourcePlugins);
 	        var widgetPluginStates = _.valuesIn(props.widgetPlugins);
 	        var pluginUrlInput = this.refs['pluginUrl']; // HTMLInputElement
-	        return React.createElement(modalDialog_ui_1.default, {id: "plugins-dialog", title: "Plugins", actions: actions}, 
+	        return React.createElement(modalDialog_ui_1.default, {id: "plugins-dialog", title: "Plugin Manager", actions: actions}, 
 	            React.createElement("div", {className: "slds-grid"}, 
 	                React.createElement("div", {className: "slds-size--1-of-1"}, 
 	                    React.createElement("h2", {className: "slds-section-title--divider slds-m-bottom--medium"}, 
@@ -5011,7 +5047,7 @@ webpackJsonp([0],[
 	                        React.createElement(PluginRegistrySettings, {pluginRegistryApiKey: props.pluginRegistryApiKey, pluginRegistryUrl: props.pluginRegistryUrl, onApiKeyChanged: function (key) { return _this.props.setConfigValue("pluginRegistryApiKey", key); }, onRegistryUrlChanged: function (url) { return _this.props.setConfigValue("pluginRegistryUrl", url); }})), 
 	                    React.createElement("form", {className: "slds-form--inline slds-grid", onSubmit: function (e) {
 	                        props.loadPlugin(pluginUrlInput.value);
-	                        pluginUrlInput.value = "";
+	                        _this.clearUrl();
 	                        e.preventDefault();
 	                    }}, 
 	                        React.createElement("div", {className: "slds-form-element slds-has-flexi-truncate slds-lookup" + (this.state.isSearchOpen ? " slds-is-open" : ""), "data-select": "single"}, 
@@ -5020,7 +5056,7 @@ webpackJsonp([0],[
 	                                    React.createElement("svg", {"aria-hidden": "true", className: "slds-input__icon"}, 
 	                                        React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#search"})
 	                                    ), 
-	                                    React.createElement("input", {className: "slds-lookup__search-input slds-input", type: "search", placeholder: "URL or Id from Plugin Registry", id: "plugin-lookup-menu", ref: "pluginUrl", autoComplete: "off", defaultValue: "", onChange: function (e) { return _this.pluginSearchValueChange(e); }, onBlur: function (e) { return _this.onBlurPluginSearchInput(e); }, onFocus: function (e) { return _this.onFocusPluginSearchInput(e); }, "aria-owns": "plugin-lookup-menu", role: "combobox", "aria-activedescendent": "", "aria-expanded": (this.state.isSearchOpen ? "true" : "false"), "aria-autocomplete": "list"}))
+	                                    React.createElement("input", {className: "slds-lookup__search-input slds-input", type: "search", placeholder: "URL or Id from Plugin Registry", id: "plugin-lookup-menu", ref: "pluginUrl", autoComplete: (this.state.isSearchOpen ? " off" : "on"), defaultValue: "", onChange: function (e) { return _this.pluginSearchValueChange(e); }, onBlur: function (e) { return _this.onBlurPluginSearchInput(e); }, onFocus: function (e) { return _this.onFocusPluginSearchInput(e); }, "aria-owns": "plugin-lookup-menu", role: "combobox", "aria-activedescendent": "", "aria-expanded": (this.state.isSearchOpen ? "true" : "false"), "aria-autocomplete": "list"}))
 	                            ), 
 	                            React.createElement(LookupMenu, {id: "plugin-lookup-menu", searchString: this.state.pluginUrl, pluginRegistryUrl: this.props.pluginRegistryUrl, onItemClicked: function (item) { return props.loadPlugin('plugin://' + item.type); }})), 
 	                        React.createElement("div", {className: "slds-form-element slds-no-flex"}, 
@@ -5094,7 +5130,7 @@ webpackJsonp([0],[
 	                            React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#down"})
 	                        ), 
 	                        React.createElement("span", {className: "slds-assistive-text"}, "Actions")), 
-	                    React.createElement("div", {className: "slds-dropdown slds-dropdown--left slds-dropdown--actions"}, 
+	                    React.createElement("div", {className: "slds-dropdown slds-dropdown--left slds-dropdown--actions", style: { zIndex: 9003 }}, 
 	                        React.createElement("ul", {className: "dropdown__list", role: "menu"}, 
 	                            React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, 
 	                                React.createElement("a", {href: "javascript:void(0);", role: "menuitem", tabIndex: 0, onClick: function () { return props.publishPlugin(pluginState.id); }}, 
@@ -5111,7 +5147,15 @@ webpackJsonp([0],[
 	                                    React.createElement("span", {className: "slds-truncate"}, "Remove"))
 	                            ))
 	                    ))), 
-	            React.createElement("div", {className: "slds-tile__detail"}, 
+	            React.createElement("div", {className: "slds-tile__detail slds-is-relative"}, 
+	                pluginState.isLoading ?
+	                    React.createElement("div", {className: "slds-spinner_container"}, 
+	                        React.createElement("div", {className: "slds-spinner slds-spinner--small", role: "alert"}, 
+	                            React.createElement("span", {className: "slds-assistive-text"}, "Loading"), 
+	                            React.createElement("div", {className: "slds-spinner__dot-a"}), 
+	                            React.createElement("div", {className: "slds-spinner__dot-b"}))
+	                    )
+	                    : null, 
 	                React.createElement("dl", {className: "slds-dl--horizontal"}, 
 	                    React.createElement("dt", {className: "slds-dl--horizontal__label"}, 
 	                        React.createElement("p", {className: "slds-truncate", title: "Type"}, "Type:")
@@ -5354,9 +5398,9 @@ webpackJsonp([0],[
 
 	module.exports = {
 		"version": "0.2.2",
-		"revision": "48e6eb194fb2f8d09a72004cc578055314d26420",
-		"revisionShort": "48e6eb1",
-		"branch": "Detatched: 48e6eb194fb2f8d09a72004cc578055314d26420"
+		"revision": "8e8b58491d4d8c3a04481c920d577aeb05e82d64",
+		"revisionShort": "8e8b584",
+		"branch": "Detatched: 8e8b58491d4d8c3a04481c920d577aeb05e82d64"
 	};
 
 /***/ },
