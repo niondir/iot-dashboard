@@ -12,6 +12,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var TYPE_INFO = {
         type: "random",
         name: "Random",
+        version: "0.0.1",
+        author: "Lobaro",
+        kind: "datasource",
         description: "A datasource that provides a random value each tick",
         settings: [{
             id: "min",

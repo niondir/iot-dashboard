@@ -12,6 +12,9 @@
     var TYPE_INFO = {
         type: "digimondo-gps-datasource",
         name: "Digimondo Gps",
+        version: "0.0.1",
+        author: "Lobaro",
+        kind: "datasource",
         description: "Fetch GPS Locations from the Digimondo API",
         settings: [{
             id: "auth",

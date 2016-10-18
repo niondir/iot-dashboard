@@ -16,6 +16,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var TYPE_INFO = {
         type: "digimondo-firefly-datasource",
         name: "Digimondo Firefly",
+        version: "0.0.1",
+        author: "Lobaro",
+        kind: "datasource",
         description: "Fetch parsed data from the Digimondo API",
         dependencies: ["https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"],
         settings: [{

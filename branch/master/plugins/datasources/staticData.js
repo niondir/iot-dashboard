@@ -14,6 +14,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var TYPE_INFO = {
         type: "static-data",
         name: "Static Data",
+        version: "0.0.1",
+        author: "Lobaro",
+        kind: "datasource",
         description: "Datasource that provides static data",
         settings: [{
             id: "data",

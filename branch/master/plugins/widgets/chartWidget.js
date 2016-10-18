@@ -18,6 +18,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
         name: "Chart",
         version: "0.0.1",
         author: "Lobaro",
+        kind: "widget",
         description: "Renders a chart. Will be way more flexible in future.",
         settings: [{
             id: 'datasource',

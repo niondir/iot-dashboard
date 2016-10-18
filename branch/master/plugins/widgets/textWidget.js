@@ -17,6 +17,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
     var TYPE_INFO = {
         type: "text",
         name: "Text",
+        version: "0.0.1",
+        author: "Lobaro",
+        kind: "widget",
         description: "Display content of a datasource as plain text",
         settings: [{
             id: 'datasource',

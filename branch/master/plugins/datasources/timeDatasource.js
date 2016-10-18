@@ -11,7 +11,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 (function (window) {
     var TYPE_INFO = {
         type: "time",
-        name: "Time"
+        name: "Time",
+        version: "0.0.1",
+        author: "Lobaro",
+        kind: "datasource"
     };
 
     var Datasource = function () {

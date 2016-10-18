@@ -17,6 +17,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
     var TYPE_INFO = {
         type: "static-image-widgets",
         name: "Image",
+        version: "0.0.1",
+        author: "Lobaro",
+        kind: "widget",
         description: "Display a static image",
         settings: [{
             id: 'datasource',
