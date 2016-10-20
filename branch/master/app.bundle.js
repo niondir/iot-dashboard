@@ -907,7 +907,7 @@ webpackJsonp([0],[
 	                        React.createElement("div", {className: "slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--click slds-no-hover"}, 
 	                            React.createElement("span", {className: "slds-context-bar__label-action slds-context-bar__app-name"}, 
 	                                React.createElement("span", {className: "slds-truncate"}, 
-	                                    React.createElement("a", {href: "http://iot-dashboard.org"}, " IoT-Dashboard")
+	                                    React.createElement("a", {href: this.props.config.title.url}, this.props.config.title.text)
 	                                )
 	                            )
 	                        )
@@ -5360,6 +5360,10 @@ webpackJsonp([0],[
 	        username: null,
 	        logoutUrl: null
 	    },
+	    title: {
+	        text: "IoT-Dashboard",
+	        url: "http://iot-dashboard.org"
+	    },
 	    pluginRegistryApiKey: "",
 	    pluginRegistryUrl: "https://dashboard.lobaro.com"
 	};
@@ -5398,9 +5402,9 @@ webpackJsonp([0],[
 
 	module.exports = {
 		"version": "0.2.4",
-		"revision": "5f91ed251e5d42925f6aa2ed8278aa22efeaac80",
-		"revisionShort": "5f91ed2",
-		"branch": "Detatched: 5f91ed251e5d42925f6aa2ed8278aa22efeaac80"
+		"revision": "4671495e9609a09e1243cfe0b3cc6a8191e8accd",
+		"revisionShort": "4671495",
+		"branch": "Detatched: 4671495e9609a09e1243cfe0b3cc6a8191e8accd"
 	};
 
 /***/ },
