@@ -16,10 +16,11 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
     var TYPE_INFO = {
         type: "chart",
         name: "Chart",
-        version: "0.0.1",
+        version: "0.0.2",
         author: "Lobaro",
         kind: "widget",
-        description: "Renders a chart. Will be way more flexible in future.",
+        description: "Renders a chart.",
+        dependencies: ["https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js", "https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js", "https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css"],
         settings: [{
             id: 'datasource',
             name: 'Datasource',
