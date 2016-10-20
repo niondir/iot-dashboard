@@ -936,7 +936,7 @@ webpackJsonp([0],[
 	                    React.createElement("div", {className: "slds-context-bar__tertiary"}, 
 	                        React.createElement("ul", {className: "slds-grid slds-grid--vertical-align-center"}, 
 	                            props.config.auth && props.config.auth.username ?
-	                                React.createElement("div", {className: "slds-m-right--small"}, "Tobias")
+	                                React.createElement("div", {className: "slds-m-right--small"}, props.config.auth.username)
 	                                : null, 
 	                            props.config.auth && props.config.auth.logoutUrl ?
 	                                React.createElement("a", {className: "slds-button slds-button--neutral", href: props.config.auth.logoutUrl}, 
@@ -5398,9 +5398,9 @@ webpackJsonp([0],[
 
 	module.exports = {
 		"version": "0.2.4",
-		"revision": "4979490cbe3267f40e2004cd147ef25025264519",
-		"revisionShort": "4979490",
-		"branch": "Detatched: 4979490cbe3267f40e2004cd147ef25025264519"
+		"revision": "ed40a29e084f0695e1ca45304d88041f26a6bef4",
+		"revisionShort": "ed40a29",
+		"branch": "Detatched: ed40a29e084f0695e1ca45304d88041f26a6bef4"
 	};
 
 /***/ },
