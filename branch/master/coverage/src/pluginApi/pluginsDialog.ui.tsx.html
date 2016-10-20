@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">53.22% </span>
+        <span class="strong">52.3% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>91/171</span>
+        <span class='fraction'>91/174</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">31.58% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>12/38</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">30.67% </span>
+        <span class="strong">29.49% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>23/75</span>
+        <span class='fraction'>23/78</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">57.69% </span>
+        <span class="strong">56.6% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>90/156</span>
+        <span class='fraction'>90/159</span>
       </div>
     </div>
   </div>
@@ -421,7 +421,16 @@
 376
 377
 378
-379</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -609,6 +618,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -659,6 +675,7 @@
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -667,6 +684,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -980,6 +998,13 @@ var PluginTile = (function (_super) {
                                     React.createElement("span", {className: "slds-truncate"}, "Publish"))
                             ), 
                             React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, 
+                                React.createElement("a", {href: "javascript:void(0);", role: "menuitem", tabIndex: 0, onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return props.publishAndUsePlugin(pluginState.id); </span>}}, 
+                                    React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default slds-m-right--x-small slds-shrink-none"}, 
+                                        React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#upload"})
+                                    ), 
+                                    React.createElement("span", {className: "slds-truncate"}, "Publish and use"))
+                            ), 
+                            React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, 
                                 React.createElement("a", {href: "javascript:void(0);", role: "menuitem", tabIndex: 0, onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return props.removePlugin(pluginState.id); </span>}}, 
                                     React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default slds-m-right--x-small slds-shrink-none"}, 
                                         React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#delete"})
@@ -1036,7 +1061,8 @@ var WidgetPluginTile = react_redux_1.connect(function (state, ownProps) {
 }, function (dispatch) {
     return {
         removePlugin: <span class="fstat-no" title="function not covered" >function (type) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(WidgetsPlugins.unloadPlugin(type)); </span>},
-        publishPlugin: <span class="fstat-no" title="function not covered" >function (type) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(Plugins.publishPlugin(type)); </span>}
+        publishPlugin: <span class="fstat-no" title="function not covered" >function (type) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(Plugins.publishPlugin(type, false)); </span>},
+        publishAndUsePlugin: <span class="fstat-no" title="function not covered" >function (type) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(Plugins.publishPlugin(type, true)); </span>}
     };
 })(PluginTile);
 var DatasourcePluginTile = react_redux_1.connect(function (state, ownProps) {
@@ -1046,7 +1072,8 @@ var DatasourcePluginTile = react_redux_1.connect(function (state, ownProps) {
 }, function (dispatch) {
     return {
         removePlugin: <span class="fstat-no" title="function not covered" >function (type) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(DatasourcePlugins.unloadPlugin(type)); </span>},
-        publishPlugin: <span class="fstat-no" title="function not covered" >function (type) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(Plugins.publishPlugin(type)); </span>}
+        publishPlugin: <span class="fstat-no" title="function not covered" >function (type) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(Plugins.publishPlugin(type, false)); </span>},
+        publishAndUsePlugin: <span class="fstat-no" title="function not covered" >function (type) {</span> <span class="cstat-no" title="statement not covered" >return dispatch(Plugins.publishPlugin(type, true)); </span>}
     };
 })(PluginTile);
 var LookupMenu = (function (_super) {
@@ -1183,7 +1210,7 @@ var PluginRegistrySettings = (function (_super) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Oct 20 2016 09:21:38 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Oct 20 2016 10:04:42 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

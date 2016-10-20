@@ -1062,14 +1062,14 @@ webpackJsonp([0],[
 	exports.DATASOURCE_PLUGIN_FINISHED_LOADING = "DATASOURCE_PLUGIN_FINISHED_LOADING";
 	exports.DELETE_WIDGET_PLUGIN = "DELETE_WIDGET_PLUGIN";
 	exports.DELETE_DATASOURCE_PLUGIN = "DELETE_DATASOURCE_PLUGIN";
-	exports.PUBLISHED_DATASOURCE_PLUGIN = "PUBLISHED_DATASOURCE_PLUGIN";
-	exports.PUBLISHED_WIDGET_PLUGIN = "PUBLISHED_WIDGET_PLUGIN";
+	exports.USE_PUBLISHED_DATASOURCE_PLUGIN = "USE_PUBLISHED_DATASOURCE_PLUGIN";
+	exports.USE_PUBLISHED_WIDGET_PLUGIN = "USE_PUBLISHED_WIDGET_PLUGIN";
 	exports.STARTED_LOADING_PLUGIN_FROM_URL = "STARTED_LOADING_PLUGIN_FROM_URL";
 	// Modal
 	exports.SHOW_MODAL = "SHOW_MODAL";
 	exports.HIDE_MODAL = "HIDE_MODAL";
-	exports.MODAL_ADD_ERROR = "MODAL_ADD_ERROR";
-	exports.MODAL_DELETE_ERROR = "MODAL_DELETE_ERROR";
+	exports.MODAL_ADD_USER_MESSAGE = "MODAL_ADD_USER_MESSAGE";
+	exports.MODAL_DELETED_USER_MESSAGE = "MODAL_DELETED_USER_MESSAGE";
 
 
 /***/ },
@@ -1731,8 +1731,8 @@ webpackJsonp([0],[
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($, _) {/* This Source Code Form is subject to the terms of the Mozilla Public
-	* License, v. 2.0. If a copy of the MPL was not distributed with this
-	* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	"use strict";
 	var Action = __webpack_require__(47);
 	var initialState = {
@@ -1793,18 +1793,27 @@ webpackJsonp([0],[
 	exports.closeModal = closeModal;
 	function addError(message) {
 	    return {
-	        type: Action.MODAL_ADD_ERROR,
+	        type: Action.MODAL_ADD_USER_MESSAGE,
+	        kind: "error",
 	        message: message
 	    };
 	}
 	exports.addError = addError;
-	function deleteError(message) {
+	function addInfo(message) {
 	    return {
-	        type: Action.MODAL_DELETE_ERROR,
+	        type: Action.MODAL_ADD_USER_MESSAGE,
+	        kind: "info",
 	        message: message
 	    };
 	}
-	exports.deleteError = deleteError;
+	exports.addInfo = addInfo;
+	function deleteUserMessage(userMessage) {
+	    return {
+	        type: Action.MODAL_DELETED_USER_MESSAGE,
+	        message: userMessage
+	    };
+	}
+	exports.deleteUserMessage = deleteUserMessage;
 	function modalDialog(state, action) {
 	    if (state === void 0) { state = initialState; }
 	    switch (action.type) {
@@ -1822,15 +1831,15 @@ webpackJsonp([0],[
 	                isVisible: false,
 	                errors: []
 	            });
-	        case Action.MODAL_ADD_ERROR: {
+	        case Action.MODAL_ADD_USER_MESSAGE: {
 	            var stateErrors = state.errors || [];
-	            var errors = stateErrors.concat([action.message]);
+	            var errors = stateErrors.concat([{ text: action.message, kind: action.kind }]);
 	            return Object.assign({}, state, {
 	                errors: errors
 	            });
 	        }
-	        case Action.MODAL_DELETE_ERROR: {
-	            var errors = _.filter(state.errors.slice(), function (e) { return e != action.message; });
+	        case Action.MODAL_DELETED_USER_MESSAGE: {
+	            var errors = _.filter(state.errors.slice(), function (e) { return e.text != action.message.text; });
 	            return Object.assign({}, state, {
 	                errors: errors
 	            });
@@ -2807,7 +2816,7 @@ webpackJsonp([0],[
 	    return newState;
 	}
 	exports.pluginLoaderReducer = pluginLoaderReducer;
-	function publishPlugin(id) {
+	function publishPlugin(id, usePlugin) {
 	    return function (dispatch, getState) {
 	        var state = getState();
 	        var dsPlugin = state.datasourcePlugins[id];
@@ -2843,11 +2852,14 @@ webpackJsonp([0],[
 	            }
 	            return response.json();
 	        }).then(function (json) {
-	            if (isDatasource) {
-	                dispatch(DatasourcePlugins.publishedDatasourcePlugin(id, registryBaseUrl + json.url, json.typeInfo));
-	            }
-	            else {
-	                dispatch(WidgetPlugins.publishedWidgetPlugin(id, registryBaseUrl + json.url, json.typeInfo));
+	            dispatch(ModalDialog.addInfo("Published plugin: " + id + " at " + registryBaseUrl + json.url));
+	            if (usePlugin) {
+	                if (isDatasource) {
+	                    dispatch(DatasourcePlugins.usePublishedDatasourcePlugin(id, registryBaseUrl + json.url, json.typeInfo));
+	                }
+	                else {
+	                    dispatch(WidgetPlugins.usePublishedWidgetPlugin(id, registryBaseUrl + json.url, json.typeInfo));
+	                }
 	            }
 	        }).catch(function (err) {
 	            dispatch(ModalDialog.addError(err.message));
@@ -2931,15 +2943,15 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.unloadPlugin = unloadPlugin;
-	function publishedDatasourcePlugin(type, url, typeInfo) {
+	function usePublishedDatasourcePlugin(type, url, typeInfo) {
 	    return {
-	        type: Action.PUBLISHED_DATASOURCE_PLUGIN,
+	        type: Action.USE_PUBLISHED_DATASOURCE_PLUGIN,
 	        id: type,
 	        url: url,
 	        typeInfo: typeInfo
 	    };
 	}
-	exports.publishedDatasourcePlugin = publishedDatasourcePlugin;
+	exports.usePublishedDatasourcePlugin = usePublishedDatasourcePlugin;
 	function deletePlugin(type) {
 	    return {
 	        type: Action.DELETE_DATASOURCE_PLUGIN,
@@ -2951,7 +2963,7 @@ webpackJsonp([0],[
 	    if (state === void 0) { state = initialState; }
 	    state = pluginsCrudReducer(state, action);
 	    switch (action.type) {
-	        case Action.PUBLISHED_DATASOURCE_PLUGIN: {
+	        case Action.USE_PUBLISHED_DATASOURCE_PLUGIN: {
 	            if (state[action.id]) {
 	                return _.assign({}, state, (_a = {},
 	                    _a[action.id] = datasourcePlugin(state[action.id], action),
@@ -2977,7 +2989,7 @@ webpackJsonp([0],[
 	exports.datasourcePlugins = datasourcePlugins;
 	function datasourcePlugin(state, action) {
 	    switch (action.type) {
-	        case Action.PUBLISHED_DATASOURCE_PLUGIN: {
+	        case Action.USE_PUBLISHED_DATASOURCE_PLUGIN: {
 	            return _.assign({}, state, {
 	                url: action.url,
 	                typeInfo: action.typeInfo
@@ -3055,21 +3067,21 @@ webpackJsonp([0],[
 	        id: type
 	    };
 	}
-	function publishedWidgetPlugin(type, url, typeInfo) {
+	function usePublishedWidgetPlugin(type, url, typeInfo) {
 	    return {
-	        type: Action.PUBLISHED_WIDGET_PLUGIN,
+	        type: Action.USE_PUBLISHED_WIDGET_PLUGIN,
 	        id: type,
 	        url: url,
 	        typeInfo: typeInfo
 	    };
 	}
-	exports.publishedWidgetPlugin = publishedWidgetPlugin;
+	exports.usePublishedWidgetPlugin = usePublishedWidgetPlugin;
 	var pluginsCrudReducer = reducer_js_1.genCrudReducer([Action.WIDGET_PLUGIN_FINISHED_LOADING, Action.DELETE_WIDGET_PLUGIN], widgetPlugin);
 	function widgetPlugins(state, action) {
 	    if (state === void 0) { state = initialState; }
 	    state = pluginsCrudReducer(state, action);
 	    switch (action.type) {
-	        case Action.PUBLISHED_WIDGET_PLUGIN: {
+	        case Action.USE_PUBLISHED_WIDGET_PLUGIN: {
 	            if (state[action.id]) {
 	                return _.assign({}, state, (_a = {},
 	                    _a[action.id] = widgetPlugin(state[action.id], action),
@@ -3096,7 +3108,7 @@ webpackJsonp([0],[
 	exports.widgetPlugins = widgetPlugins;
 	function widgetPlugin(state, action) {
 	    switch (action.type) {
-	        case Action.PUBLISHED_WIDGET_PLUGIN: {
+	        case Action.USE_PUBLISHED_WIDGET_PLUGIN: {
 	            return _.assign({}, state, {
 	                url: action.url,
 	                typeInfo: action.typeInfo
@@ -4138,7 +4150,7 @@ webpackJsonp([0],[
 	            React.createElement("div", {className: "content", style: { overflowY: 'scroll', height: height - 300, minHeight: "500px" }}, 
 	                this.props.dialogState.errors ?
 	                    this.props.dialogState.errors.map(function (message, i) {
-	                        return React.createElement(ModalErrorComponent, {key: i, errorMessage: message});
+	                        return React.createElement(ModalUserMessageComponent, {key: i, userMessage: message});
 	                    })
 	                    : null, 
 	                props.children), 
@@ -4156,40 +4168,47 @@ webpackJsonp([0],[
 	        closeDialog: function () { return dispatch(Modal.closeModal()); }
 	    };
 	})(ModalDialog);
-	var ModalError = (function (_super) {
-	    __extends(ModalError, _super);
-	    function ModalError() {
+	var ModalUserMessage = (function (_super) {
+	    __extends(ModalUserMessage, _super);
+	    function ModalUserMessage() {
 	        _super.apply(this, arguments);
 	    }
-	    ModalError.prototype.close = function () {
-	        this.props.close(this.props.errorMessage);
+	    ModalUserMessage.prototype.close = function () {
+	        this.props.close(this.props.userMessage);
 	    };
-	    ModalError.prototype.render = function () {
+	    ModalUserMessage.prototype.render = function () {
 	        var _this = this;
+	        var theme = "error";
+	        if (this.props.userMessage.kind === "info") {
+	            theme = "success";
+	        }
+	        if (this.props.userMessage.kind === "error") {
+	            theme = "error";
+	        }
 	        return React.createElement("div", {className: "slds-notify_container slds-is-relative slds-m-bottom--x-small"}, 
-	            React.createElement("div", {className: "slds-notify slds-notify--alert slds-theme--error slds-theme--alert-texture", role: "alert"}, 
+	            React.createElement("div", {className: "slds-notify slds-notify--alert slds-theme--alert-texture slds-theme--" + theme, role: "alert"}, 
 	                React.createElement("button", {className: "slds-button slds-notify__close slds-button--icon-inverse", onClick: function () { return _this.close(); }}, 
 	                    React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, 
 	                        React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#close"})
 	                    ), 
 	                    React.createElement("span", {className: "slds-assistive-text"}, "Close")), 
-	                React.createElement("span", {className: "slds-assistive-text"}, "Error"), 
-	                React.createElement("h2", null, this.props.errorMessage))
+	                React.createElement("span", {className: "slds-assistive-text"}, this.props.userMessage.kind), 
+	                React.createElement("h2", null, this.props.userMessage.text))
 	        );
 	    };
-	    return ModalError;
+	    return ModalUserMessage;
 	}(React.Component));
-	var ModalErrorComponent = react_redux_1.connect(function (state, ownProps) {
+	var ModalUserMessageComponent = react_redux_1.connect(function (state, ownProps) {
 	    return {
-	        errorMessage: ownProps.errorMessage
+	        userMessage: ownProps.userMessage
 	    };
 	}, function (dispatch) {
 	    return {
 	        close: function (message) {
-	            dispatch(Modal.deleteError(message));
+	            dispatch(Modal.deleteUserMessage(message));
 	        }
 	    };
-	})(ModalError);
+	})(ModalUserMessage);
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
@@ -5140,6 +5159,13 @@ webpackJsonp([0],[
 	                                    React.createElement("span", {className: "slds-truncate"}, "Publish"))
 	                            ), 
 	                            React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, 
+	                                React.createElement("a", {href: "javascript:void(0);", role: "menuitem", tabIndex: 0, onClick: function () { return props.publishAndUsePlugin(pluginState.id); }}, 
+	                                    React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default slds-m-right--x-small slds-shrink-none"}, 
+	                                        React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#upload"})
+	                                    ), 
+	                                    React.createElement("span", {className: "slds-truncate"}, "Publish and use"))
+	                            ), 
+	                            React.createElement("li", {className: "slds-dropdown__item", role: "presentation"}, 
 	                                React.createElement("a", {href: "javascript:void(0);", role: "menuitem", tabIndex: 0, onClick: function () { return props.removePlugin(pluginState.id); }}, 
 	                                    React.createElement("svg", {"aria-hidden": "true", className: "slds-icon slds-icon--x-small slds-icon-text-default slds-m-right--x-small slds-shrink-none"}, 
 	                                        React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#delete"})
@@ -5196,7 +5222,8 @@ webpackJsonp([0],[
 	}, function (dispatch) {
 	    return {
 	        removePlugin: function (type) { return dispatch(WidgetsPlugins.unloadPlugin(type)); },
-	        publishPlugin: function (type) { return dispatch(Plugins.publishPlugin(type)); }
+	        publishPlugin: function (type) { return dispatch(Plugins.publishPlugin(type, false)); },
+	        publishAndUsePlugin: function (type) { return dispatch(Plugins.publishPlugin(type, true)); }
 	    };
 	})(PluginTile);
 	var DatasourcePluginTile = react_redux_1.connect(function (state, ownProps) {
@@ -5206,7 +5233,8 @@ webpackJsonp([0],[
 	}, function (dispatch) {
 	    return {
 	        removePlugin: function (type) { return dispatch(DatasourcePlugins.unloadPlugin(type)); },
-	        publishPlugin: function (type) { return dispatch(Plugins.publishPlugin(type)); }
+	        publishPlugin: function (type) { return dispatch(Plugins.publishPlugin(type, false)); },
+	        publishAndUsePlugin: function (type) { return dispatch(Plugins.publishPlugin(type, true)); }
 	    };
 	})(PluginTile);
 	var LookupMenu = (function (_super) {
@@ -5402,9 +5430,9 @@ webpackJsonp([0],[
 
 	module.exports = {
 		"version": "0.2.4",
-		"revision": "4671495e9609a09e1243cfe0b3cc6a8191e8accd",
-		"revisionShort": "4671495",
-		"branch": "Detatched: 4671495e9609a09e1243cfe0b3cc6a8191e8accd"
+		"revision": "2b67e1429f09de99a522aeab168bb352cfd156d3",
+		"revisionShort": "2b67e14",
+		"branch": "Detatched: 2b67e1429f09de99a522aeab168bb352cfd156d3"
 	};
 
 /***/ },

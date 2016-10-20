@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">58.82% </span>
+        <span class="strong">54.79% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>40/68</span>
+        <span class='fraction'>40/73</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">34.78% </span>
+        <span class="strong">29.63% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>8/23</span>
+        <span class='fraction'>8/27</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">37.04% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>10/27</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">60.94% </span>
+        <span class="strong">56.52% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>39/64</span>
+        <span class='fraction'>39/69</span>
       </div>
     </div>
   </div>
@@ -176,7 +176,14 @@
 131
 132
 133
-134</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+134
+135
+136
+137
+138
+139
+140
+141</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -285,6 +292,13 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -389,7 +403,7 @@ var ModalDialog = (function (_super) {
             React.createElement("div", {className: "content", style: { overflowY: 'scroll', height: height - 300, minHeight: "500px" }}, 
                 this.props.dialogState.errors ?
 <span class="branch-0 cbranch-no" title="branch not covered" >                    this.props.dialogState.errors.map(<span class="fstat-no" title="function not covered" >function (message, i) {</span></span>
-<span class="cstat-no" title="statement not covered" >                        return React.createElement(ModalErrorComponent, {key: i, errorMessage: message});</span>
+<span class="cstat-no" title="statement not covered" >                        return React.createElement(ModalUserMessageComponent, {key: i, userMessage: message});</span>
                     })
                     : null, 
                 props.children), 
@@ -407,40 +421,47 @@ exports.default = react_redux_1.connect(function (state, ownProps) {
         closeDialog: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return dispatch(Modal.closeModal()); </span>}
     };
 })(ModalDialog);
-var ModalError = (function (_super) {
-    __extends(ModalError, _super);
-<span class="fstat-no" title="function not covered" >    function ModalError() {</span>
+var ModalUserMessage = (function (_super) {
+    __extends(ModalUserMessage, _super);
+<span class="fstat-no" title="function not covered" >    function ModalUserMessage() {</span>
 <span class="cstat-no" title="statement not covered" >        _super.apply(this, arguments);</span>
     }
-    ModalError.prototype.close = <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >        this.props.close(this.props.errorMessage);</span>
+    ModalUserMessage.prototype.close = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        this.props.close(this.props.userMessage);</span>
     };
-    ModalError.prototype.render = <span class="fstat-no" title="function not covered" >function () {</span>
+    ModalUserMessage.prototype.render = <span class="fstat-no" title="function not covered" >function () {</span>
 <span class="cstat-no" title="statement not covered" >        var _this = this;</span>
+<span class="cstat-no" title="statement not covered" >        var theme = "error";</span>
+<span class="cstat-no" title="statement not covered" >        if (this.props.userMessage.kind === "info") {</span>
+<span class="cstat-no" title="statement not covered" >            theme = "success";</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (this.props.userMessage.kind === "error") {</span>
+<span class="cstat-no" title="statement not covered" >            theme = "error";</span>
+        }
 <span class="cstat-no" title="statement not covered" >        return React.createElement("div", {className: "slds-notify_container slds-is-relative slds-m-bottom--x-small"}, </span>
-            React.createElement("div", {className: "slds-notify slds-notify--alert slds-theme--error slds-theme--alert-texture", role: "alert"}, 
+            React.createElement("div", {className: "slds-notify slds-notify--alert slds-theme--alert-texture slds-theme--" + theme, role: "alert"}, 
                 React.createElement("button", {className: "slds-button slds-notify__close slds-button--icon-inverse", onClick: <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return _this.close(); </span>}}, 
                     React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, 
                         React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#close"})
                     ), 
                     React.createElement("span", {className: "slds-assistive-text"}, "Close")), 
-                React.createElement("span", {className: "slds-assistive-text"}, "Error"), 
-                React.createElement("h2", null, this.props.errorMessage))
+                React.createElement("span", {className: "slds-assistive-text"}, this.props.userMessage.kind), 
+                React.createElement("h2", null, this.props.userMessage.text))
         );
     };
-    return ModalError;
+    return ModalUserMessage;
 }(React.Component));
-var ModalErrorComponent = react_redux_1.connect(<span class="fstat-no" title="function not covered" >function (state, ownProps) {</span>
+var ModalUserMessageComponent = react_redux_1.connect(<span class="fstat-no" title="function not covered" >function (state, ownProps) {</span>
 <span class="cstat-no" title="statement not covered" >    return {</span>
-        errorMessage: ownProps.errorMessage
+        userMessage: ownProps.userMessage
     };
 }, <span class="fstat-no" title="function not covered" >function (dispatch) {</span>
 <span class="cstat-no" title="statement not covered" >    return {</span>
         close: <span class="fstat-no" title="function not covered" >function (message) {</span>
-<span class="cstat-no" title="statement not covered" >            dispatch(Modal.deleteError(message));</span>
+<span class="cstat-no" title="statement not covered" >            dispatch(Modal.deleteUserMessage(message));</span>
         }
     };
-})(ModalError);
+})(ModalUserMessage);
 &nbsp;
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -448,7 +469,7 @@ var ModalErrorComponent = react_redux_1.connect(<span class="fstat-no" title="fu
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Oct 20 2016 09:21:38 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Oct 20 2016 10:04:42 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
