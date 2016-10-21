@@ -5202,7 +5202,10 @@ webpackJsonp([0],[
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 	var _ = __webpack_require__(19);
 	var Action = __webpack_require__(42);
-	var configJson = __webpack_require__(103);
+	var buildInfo = __webpack_require__(103);
+	/**
+	 * Override config values at runtime in dashboard.json, see: https://gitlab.com/lobaro/iot-dashboard/wikis/home#configuration
+	 */
 	var defaultConfig = {
 	    version: "",
 	    revision: "",
@@ -5230,18 +5233,18 @@ webpackJsonp([0],[
 	}
 	exports.setConfigValue = setConfigValue;
 	function config(state, action) {
-	    if (state === void 0) { state = configJson; }
+	    if (state === void 0) { state = buildInfo; }
 	    switch (action.type) {
 	        case Action.SET_CONFIG_VALUE: {
 	            var value = action.value;
 	            if (action.key === 'pluginRegistryUrl' && _.endsWith(value, '/')) {
 	                value = value.replace(/\/+$/, "");
 	            }
-	            return _.assign({}, defaultConfig, state, (_a = {}, _a[action.key] = value, _a), configJson);
+	            return _.assign({}, defaultConfig, state, (_a = {}, _a[action.key] = value, _a), buildInfo);
 	        }
 	        default:
 	            // Content of configJson overrides everything else!
-	            return _.assign({}, defaultConfig, state, configJson);
+	            return _.assign({}, defaultConfig, state, buildInfo);
 	    }
 	    var _a;
 	}
@@ -5256,9 +5259,9 @@ webpackJsonp([0],[
 
 	module.exports = {
 		"version": "0.2.4",
-		"revision": "019a943e6cb963d29788d2351525225bc359b61f",
-		"revisionShort": "019a943",
-		"branch": "Detatched: 019a943e6cb963d29788d2351525225bc359b61f"
+		"revision": "b8d5d8c72a103c263c57c8d247a0a8ccfbdfc119",
+		"revisionShort": "b8d5d8c",
+		"branch": "Detatched: b8d5d8c72a103c263c57c8d247a0a8ccfbdfc119"
 	};
 
 /***/ },
