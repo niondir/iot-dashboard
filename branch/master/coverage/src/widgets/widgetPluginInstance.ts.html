@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">15.85% </span>
+        <span class="strong">17.07% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>13/82</span>
+        <span class='fraction'>14/82</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>1/15</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">15.85% </span>
+        <span class="strong">17.07% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>13/82</span>
+        <span class='fraction'>14/82</span>
       </div>
     </div>
   </div>
@@ -185,6 +185,7 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -303,7 +304,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -321,6 +321,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
 var Widgets = require("./widgets");
+var pluginTypes_1 = require("../pluginApi/pluginTypes");
 var WidgetPluginInstance = (function () {
 <span class="fstat-no" title="function not covered" >    function WidgetPluginInstance(id, store) {</span>
 <span class="cstat-no" title="statement not covered" >        var _this = this;</span>
@@ -373,7 +374,7 @@ var WidgetPluginInstance = (function () {
     Object.defineProperty(WidgetPluginInstance.prototype, "iFrame", {
         set: <span class="fstat-no" title="function not covered" >function (element) {</span>
 <span class="cstat-no" title="statement not covered" >            this._iFrame = element;</span>
-<span class="cstat-no" title="statement not covered" >            this.sendMessage({ type: "init" });</span>
+<span class="cstat-no" title="statement not covered" >            this.sendMessage({ type: pluginTypes_1.MESSAGE_INIT });</span>
         },
         enumerable: true,
         configurable: true
@@ -391,7 +392,7 @@ var WidgetPluginInstance = (function () {
 <span class="cstat-no" title="statement not covered" >            if (state.datasources[dsId] === undefined) {</span>
 <span class="cstat-no" title="statement not covered" >                return;</span>
             }
-<span class="cstat-no" title="statement not covered" >            var data = state.datasources[dsId].data;</span>
+<span class="cstat-no" title="statement not covered" >            var data = state.datasourceData[dsId];</span>
 <span class="cstat-no" title="statement not covered" >            if (data !== _this.oldDatasourceData[dsId]) {</span>
 <span class="cstat-no" title="statement not covered" >                _this.oldDatasourceData[dsId] = data;</span>
 <span class="cstat-no" title="statement not covered" >                _this.sendDatasourceData(dsId);</span>
@@ -426,22 +427,21 @@ var WidgetPluginInstance = (function () {
 <span class="cstat-no" title="statement not covered" >        var state = this.store.getState();</span>
 <span class="cstat-no" title="statement not covered" >        var widgetState = state.widgets[this.id];</span>
 <span class="cstat-no" title="statement not covered" >        this.sendMessage({</span>
-            type: "widgetState",
+            type: pluginTypes_1.MESSAGE_STATE,
             payload: widgetState
         });
     };
     WidgetPluginInstance.prototype.sendDatasourceData = <span class="fstat-no" title="function not covered" >function (dsId) {</span>
 <span class="cstat-no" title="statement not covered" >        var state = this.store.getState();</span>
 <span class="cstat-no" title="statement not covered" >        this.sendMessage({</span>
-            type: "data",
+            type: pluginTypes_1.MESSAGE_DATA,
             payload: {
                 id: dsId,
-                data: state.datasources[dsId].data
+                data: state.datasourceData[dsId]
             }
         });
     };
     WidgetPluginInstance.prototype.updateSetting = <span class="fstat-no" title="function not covered" >function (settingId, value) {</span>
-<span class="cstat-no" title="statement not covered" >        console.log("update", settingId, "to", value, 'of', this.id);</span>
 <span class="cstat-no" title="statement not covered" >        this.store.dispatch(Widgets.updatedSingleSetting(this.id, settingId, value));</span>
     };
     WidgetPluginInstance.prototype.dispose = <span class="fstat-no" title="function not covered" >function () {</span>
@@ -463,7 +463,7 @@ exports.WidgetPluginInstance = WidgetPluginInstance;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Oct 20 2016 11:47:25 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Oct 21 2016 13:56:56 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
