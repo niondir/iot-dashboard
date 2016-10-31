@@ -17626,25 +17626,20 @@
 	        window.parent.postMessage(msg, '*');
 	    };
 	    FrameDatasourceInstance.prototype.handleMessage = function (msg) {
-	        try {
-	            switch (msg.type) {
-	                case pluginTypes_1.MESSAGE_INITIAL_STATE: {
-	                    this.dsState = msg.payload;
-	                    this.initializePluginInstance();
-	                    break;
-	                }
-	                case pluginTypes_1.MESSAGE_STATE: {
-	                    this.dsState = msg.payload;
-	                    this.updateInstanceWithState(this.dsState);
-	                    break;
-	                }
-	                default:
-	                    console.log("frame got unknown message", msg);
-	                    break;
+	        switch (msg.type) {
+	            case pluginTypes_1.MESSAGE_INITIAL_STATE: {
+	                this.dsState = msg.payload;
+	                this.initializePluginInstance();
+	                break;
 	            }
-	        }
-	        catch (e) {
-	            console.error("Failed to handle message", e);
+	            case pluginTypes_1.MESSAGE_STATE: {
+	                this.dsState = msg.payload;
+	                this.updateInstanceWithState(this.dsState);
+	                break;
+	            }
+	            default:
+	                console.log("frame got unknown message", msg);
+	                break;
 	        }
 	    };
 	    FrameDatasourceInstance.prototype.datasourceWillReceiveProps = function (newProps) {

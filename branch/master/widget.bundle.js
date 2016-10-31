@@ -17629,25 +17629,20 @@
 	        window.parent.postMessage(msg, '*');
 	    };
 	    FrameWidgetInstance.prototype.handleMessage = function (msg) {
-	        try {
-	            switch (msg.type) {
-	                case pluginTypes_1.MESSAGE_STATE: {
-	                    this.widgetState = msg.payload;
-	                    this.render();
-	                    break;
-	                }
-	                case pluginTypes_1.MESSAGE_DATA: {
-	                    this.data[msg.payload.id] = msg.payload.data;
-	                    this.render();
-	                    break;
-	                }
-	                default:
-	                    console.log("frame got unknown message", msg);
-	                    break;
+	        switch (msg.type) {
+	            case pluginTypes_1.MESSAGE_STATE: {
+	                this.widgetState = msg.payload;
+	                this.render();
+	                break;
 	            }
-	        }
-	        catch (e) {
-	            console.error("Failed to handle message", e);
+	            case pluginTypes_1.MESSAGE_DATA: {
+	                this.data[msg.payload.id] = msg.payload.data;
+	                this.render();
+	                break;
+	            }
+	            default:
+	                console.log("frame got unknown message", msg);
+	                break;
 	        }
 	    };
 	    FrameWidgetInstance.prototype.render = function () {

@@ -3695,6 +3695,7 @@
 
 	'use strict'
 
+	exports.byteLength = byteLength
 	exports.toByteArray = toByteArray
 	exports.fromByteArray = fromByteArray
 
@@ -3702,23 +3703,17 @@
 	var revLookup = []
 	var Arr = typeof Uint8Array !== 'undefined' ? Uint8Array : Array
 
-	function init () {
-	  var code = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
-	  for (var i = 0, len = code.length; i < len; ++i) {
-	    lookup[i] = code[i]
-	    revLookup[code.charCodeAt(i)] = i
-	  }
-
-	  revLookup['-'.charCodeAt(0)] = 62
-	  revLookup['_'.charCodeAt(0)] = 63
+	var code = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+	for (var i = 0, len = code.length; i < len; ++i) {
+	  lookup[i] = code[i]
+	  revLookup[code.charCodeAt(i)] = i
 	}
 
-	init()
+	revLookup['-'.charCodeAt(0)] = 62
+	revLookup['_'.charCodeAt(0)] = 63
 
-	function toByteArray (b64) {
-	  var i, j, l, tmp, placeHolders, arr
+	function placeHoldersCount (b64) {
 	  var len = b64.length
-
 	  if (len % 4 > 0) {
 	    throw new Error('Invalid string. Length must be a multiple of 4')
 	  }
@@ -3728,9 +3723,19 @@
 	  // represent one byte
 	  // if there is only one, then the three characters before it represent 2 bytes
 	  // this is just a cheap hack to not do indexOf twice
-	  placeHolders = b64[len - 2] === '=' ? 2 : b64[len - 1] === '=' ? 1 : 0
+	  return b64[len - 2] === '=' ? 2 : b64[len - 1] === '=' ? 1 : 0
+	}
 
+	function byteLength (b64) {
 	  // base64 is 4/3 + up to two characters of the original data
+	  return b64.length * 3 / 4 - placeHoldersCount(b64)
+	}
+
+	function toByteArray (b64) {
+	  var i, j, l, tmp, placeHolders, arr
+	  var len = b64.length
+	  placeHolders = placeHoldersCount(b64)
+
 	  arr = new Arr(len * 3 / 4 - placeHolders)
 
 	  // if there are placeholders, only get up to the last complete 4 chars
@@ -26558,9 +26563,9 @@
 
 	module.exports = {
 		"version": "0.2.5",
-		"revision": "7e1d502d0b6a06af7902d6fc31ceb9e355581ef2",
-		"revisionShort": "7e1d502",
-		"branch": "Detatched: 7e1d502d0b6a06af7902d6fc31ceb9e355581ef2"
+		"revision": "9a4fc72ecfdc1859641c799e9cf94c16a7c52548",
+		"revisionShort": "9a4fc72",
+		"branch": "Detatched: 9a4fc72ecfdc1859641c799e9cf94c16a7c52548"
 	};
 
 /***/ },
@@ -41137,7 +41142,7 @@
 	  Resizable.prototype.resizeHandler = function resizeHandler(handlerName /*: string*/) {
 	    var _this2 = this;
 
-	    return function (e, _ref) {
+	    return function (e /*: Event*/, _ref) {
 	      var node = _ref.node;
 	      var deltaX = _ref.deltaX;
 	      var deltaY = _ref.deltaY;
@@ -41151,7 +41156,6 @@
 	      if (handlerName === 'onResize' && !widthChanged && !heightChanged) return;
 
 	      // Set the appropriate state for this handler.
-
 	      var _runConstraints = _this2.runConstraints(width, height);
 
 	      width = _runConstraints[0];
@@ -41274,7 +41278,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// React.addons.cloneWithProps look-alike that merges style & className.
-	module.exports = function cloneElement(element /*: React.Element*/, props /*: Object*/) /*: React.Element*/ {
+	module.exports = function cloneElement(element /*: React.Element<any>*/, props /*: Object*/) /*: React.Element<any>*/ {
 	  if (props.style && element.props.style) {
 	    props.style = _extends({}, element.props.style, props.style);
 	  }
@@ -41312,7 +41316,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	/*:: type State = {width: number, height: number, aspectRatio: number};*/
+	/*:: type State = {width: number, height: number};*/
 	/*:: type Size = {width: number, height: number};*/
 
 
@@ -41334,7 +41338,7 @@
 	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
 	      width: _this.props.width,
 	      height: _this.props.height
-	    }, _this.onResize = function (event, _ref) {
+	    }, _this.onResize = function (event /*: Event*/, _ref) {
 	      var element = _ref.element;
 	      var size = _ref.size;
 	      var width = size.width;
@@ -41353,6 +41357,7 @@
 	    // with a new width and height.
 	    var _props = this.props;
 	    var handleSize = _props.handleSize;
+	    var onResize = _props.onResize;
 	    var onResizeStart = _props.onResizeStart;
 	    var onResizeStop = _props.onResizeStop;
 	    var draggableOpts = _props.draggableOpts;
@@ -41362,7 +41367,7 @@
 	    var width = _props.width;
 	    var height = _props.height;
 
-	    var props = _objectWithoutProperties(_props, ['handleSize', 'onResizeStart', 'onResizeStop', 'draggableOpts', 'minConstraints', 'maxConstraints', 'lockAspectRatio', 'width', 'height']);
+	    var props = _objectWithoutProperties(_props, ['handleSize', 'onResize', 'onResizeStart', 'onResizeStop', 'draggableOpts', 'minConstraints', 'maxConstraints', 'lockAspectRatio', 'width', 'height']);
 
 	    return _react2.default.createElement(
 	      _Resizable2.default,
