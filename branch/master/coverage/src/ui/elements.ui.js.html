@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">54.35% </span>
+        <span class="strong">36.96% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>25/46</span>
+        <span class='fraction'>17/46</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">53.57% </span>
+        <span class="strong">46.43% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>15/28</span>
+        <span class='fraction'>13/28</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">37.5% </span>
+        <span class="strong">12.5% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>3/8</span>
+        <span class='fraction'>1/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">55.56% </span>
+        <span class="strong">37.78% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>25/45</span>
+        <span class='fraction'>17/45</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -230,25 +230,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -333,17 +333,17 @@ exports.LinkItem.propTypes = {
     disabled: react_1.PropTypes.bool,
     children: react_1.PropTypes.any
 };
-exports.Icon = function (props) {
-    var classes = [];
-    classes.push(props.type);
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (props.align === 'right') {
+exports.Icon = <span class="fstat-no" title="function not covered" >function (props) {</span>
+<span class="cstat-no" title="statement not covered" >    var classes = [];</span>
+<span class="cstat-no" title="statement not covered" >    classes.push(props.type);</span>
+<span class="cstat-no" title="statement not covered" >    if (props.align === 'right') {</span>
 <span class="cstat-no" title="statement not covered" >        classes.push('right floated');</span>
     }
-    <span class="missing-if-branch" title="else path not taken" >E</span>if (props.size !== "normal") {
-        classes.push(props.size);
+<span class="cstat-no" title="statement not covered" >    if (props.size !== "normal") {</span>
+<span class="cstat-no" title="statement not covered" >        classes.push(props.size);</span>
     }
-    classes.push('icon');
-    return React.createElement("i", __assign({}, props, {className: classes.join(" ")}));
+<span class="cstat-no" title="statement not covered" >    classes.push('icon');</span>
+<span class="cstat-no" title="statement not covered" >    return React.createElement("i", __assign({}, props, {className: classes.join(" ")}));</span>
 };
 exports.Icon.propTypes = {
     type: react_1.PropTypes.string.isRequired,
@@ -351,8 +351,8 @@ exports.Icon.propTypes = {
     align: react_1.PropTypes.oneOf(["left", "right"]),
     size: react_1.PropTypes.oneOf(["mini", "tiny", "small", "normal", "large", "huge", "massive"])
 };
-exports.Divider = function (props) {
-    return React.createElement("div", {className: "ui divider"});
+exports.Divider = <span class="fstat-no" title="function not covered" >function (props) {</span>
+<span class="cstat-no" title="statement not covered" >    return React.createElement("div", {className: "ui divider"});</span>
 };
 &nbsp;
 &nbsp;</pre></td></tr>
@@ -361,7 +361,7 @@ exports.Divider = function (props) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Oct 26 2016 10:08:23 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Oct 31 2016 14:54:41 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

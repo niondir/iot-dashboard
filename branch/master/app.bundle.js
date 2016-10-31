@@ -3973,13 +3973,15 @@ webpackJsonp([0],[
 	        var width = this.state.screen.width;
 	        return React.createElement("div", {id: this.props.id, className: 'ui modal ' + this.props.id, style: { width: width - 80, top: 40, left: 40, margin: 1, minHeight: "500px" }}, 
 	            React.createElement("div", {className: "header"}, props.title), 
-	            React.createElement("div", {className: "content", style: { overflowY: 'scroll', height: height - 300, minHeight: "500px" }}, 
-	                this.props.dialogState.errors ?
-	                    this.props.dialogState.errors.map(function (message, i) {
-	                        return React.createElement(ModalUserMessageComponent, {key: i, userMessage: message});
-	                    })
-	                    : null, 
-	                props.children), 
+	            this.props.dialogState.isVisible ?
+	                React.createElement("div", {className: "content", style: { overflowY: 'scroll', height: height - 300, minHeight: "500px" }}, 
+	                    this.props.dialogState.errors ?
+	                        this.props.dialogState.errors.map(function (message, i) {
+	                            return React.createElement(ModalUserMessageComponent, {key: i, userMessage: message});
+	                        })
+	                        : null, 
+	                    props.children)
+	                : null, 
 	            React.createElement("div", {className: "actions"}, actions));
 	    };
 	    return ModalDialog;
@@ -5259,9 +5261,9 @@ webpackJsonp([0],[
 
 	module.exports = {
 		"version": "0.2.5",
-		"revision": "67f1554f7d621522d22c365109ada0680d28368a",
-		"revisionShort": "67f1554",
-		"branch": "Detatched: 67f1554f7d621522d22c365109ada0680d28368a"
+		"revision": "7e1d502d0b6a06af7902d6fc31ceb9e355581ef2",
+		"revisionShort": "7e1d502",
+		"branch": "Detatched: 7e1d502d0b6a06af7902d6fc31ceb9e355581ef2"
 	};
 
 /***/ },

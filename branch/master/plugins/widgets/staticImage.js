@@ -15,20 +15,35 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 (function () {
 
     var TYPE_INFO = {
-        type: "static-image-widgets",
+        type: "static-image",
         name: "Image",
-        version: "0.0.1",
+        version: "0.0.2",
         author: "Lobaro",
         kind: "widget",
         description: "Display a static image",
         settings: [{
-            id: 'datasource',
-            name: 'Datasource',
-            type: 'datasource'
-        }, {
             id: 'url',
             name: 'Image Url',
             type: 'string'
+        }, {
+            id: 'sizing',
+            name: "Sizing",
+            description: "How to size the image",
+            type: "option",
+            defaultValue: 'custom',
+            options: [{ name: "Full Width", value: "width" }, { name: "Full Height", value: "height" }, { name: "Custom", value: "custom" }, { name: "Original", value: "original" }]
+        }, {
+            id: 'width',
+            name: 'Width',
+            type: 'string',
+            description: 'Width of the image, used in img style attribute',
+            defaultValue: ''
+        }, {
+            id: 'height',
+            name: 'Height',
+            type: 'string',
+            description: 'Height of the image, used in img style attribute',
+            defaultValue: ''
         }]
     };
 
@@ -47,15 +62,31 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                 var props = this.props;
                 var settings = props.state.settings;
 
-                return React.createElement(
-                    "div",
-                    { style: { width: '100%', height: '100%' } },
-                    React.createElement("img", { style: {
-                            display: "block",
-                            marginLeft: "auto",
-                            marginRight: "auto"
-                        }, width: "100%", src: settings.url })
-                );
+                var style = {};
+                switch (settings.sizing) {
+                    case "width":
+                        {
+                            style.width = '100%';
+                            break;
+                        }
+                    case "height":
+                        {
+                            style.height = '100%';
+                            break;
+                        }
+                    case "custom":
+                        {
+                            style.width = settings.width;
+                            style.height = settings.height;
+                            break;
+                        }
+                }
+
+                return React.createElement("img", { style: _.assign({
+                        display: "block",
+                        marginLeft: "auto",
+                        marginRight: "auto"
+                    }, style), src: settings.url });
             }
         }]);
 
