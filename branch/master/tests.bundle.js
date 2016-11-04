@@ -26562,10 +26562,10 @@
 /***/ function(module, exports) {
 
 	module.exports = {
-		"version": "0.2.5",
-		"revision": "a85b3f38ccff8d2388beee568696053c143be961",
-		"revisionShort": "a85b3f3",
-		"branch": "Detatched: a85b3f38ccff8d2388beee568696053c143be961"
+		"version": "0.2.6",
+		"revision": "7e8447457fa3f0a3793a8e2ecd006ee12ea6bdd3",
+		"revisionShort": "7e84474",
+		"branch": "Detatched: 7e8447457fa3f0a3793a8e2ecd006ee12ea6bdd3"
 	};
 
 /***/ },
