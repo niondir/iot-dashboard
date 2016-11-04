@@ -17181,8 +17181,8 @@
 	        var _this = this;
 	        var iconType = this.props.iconType || "utility";
 	        var data = this.props.widgetState;
-	        return React.createElement("button", {className: "slds-button slds-button--icon no-drag" + (this.props.visible !== false ? "" : " slds-hide")}, 
-	            React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon slds-button__icon--small", onClick: function () { return _this.props.onClick(data); }}, 
+	        return React.createElement("button", {className: "slds-button slds-button--icon no-drag" + (this.props.visible !== false ? "" : " slds-hide"), onClick: function () { return _this.props.onClick(data); }}, 
+	            React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon slds-button__icon--small"}, 
 	                React.createElement("use", {xlinkHref: "assets/icons/" + iconType + "-sprite/svg/symbols.svg#" + this.props.icon})
 	            ), 
 	            React.createElement("span", {className: "slds-assistive-text"}, this.props.description));
@@ -27681,9 +27681,9 @@
 
 	module.exports = {
 		"version": "0.2.6",
-		"revision": "7e8447457fa3f0a3793a8e2ecd006ee12ea6bdd3",
-		"revisionShort": "7e84474",
-		"branch": "Detatched: 7e8447457fa3f0a3793a8e2ecd006ee12ea6bdd3"
+		"revision": "28509908487f8faec30a8d8c7d77e21468b17e9d",
+		"revisionShort": "2850990",
+		"branch": "Detatched: 28509908487f8faec30a8d8c7d77e21468b17e9d"
 	};
 
 /***/ },

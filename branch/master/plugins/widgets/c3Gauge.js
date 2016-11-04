@@ -182,17 +182,5 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
         return Widget;
     }(React.Component);
 
-    // TODO: Move to core, for simple reuse
-
-
-    var Prop = React.PropTypes;
-    Widget.propTypes = {
-        getData: Prop.func.isRequired,
-        state: Prop.shape({
-            height: Prop.number.isRequired,
-            id: Prop.string.isRequired
-        }).isRequired
-    };
-
     window.iotDashboardApi.registerWidgetPlugin(TYPE_INFO, Widget);
 })();
