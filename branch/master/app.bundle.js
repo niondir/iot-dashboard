@@ -3374,8 +3374,8 @@ webpackJsonp([0],[
 	        React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Layouts"}, 
 	            React.createElement("span", {className: "slds-truncate"}, "Layout")
 	        ), 
-	        React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, 
-	            React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, 
+	        React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabIndex: "0"}, 
+	            React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabIndex: "-1"}, 
 	                React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, 
 	                    React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})
 	                ), 
@@ -3681,7 +3681,7 @@ webpackJsonp([0],[
 	            e.stopPropagation();
 	            e.preventDefault();
 	            props.onClick(e);
-	        }, tabindex: "-1"}, 
+	        }, tabIndex: "-1"}, 
 	            React.createElement("span", {className: "slds-truncate"}, 
 	                icon, 
 	                " ", 
@@ -4236,8 +4236,8 @@ webpackJsonp([0],[
 	        React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Dashboard"}, 
 	            React.createElement("span", {className: "slds-truncate"}, "Board")
 	        ), 
-	        React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, 
-	            React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, 
+	        React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabIndex: "0"}, 
+	            React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabIndex: "-1"}, 
 	                React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, 
 	                    React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})
 	                ), 
@@ -4673,8 +4673,8 @@ webpackJsonp([0],[
 	        React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Datasources"}, 
 	            React.createElement("span", {className: "slds-truncate"}, "Datasources")
 	        ), 
-	        React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, 
-	            React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, 
+	        React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabIndex: "0"}, 
+	            React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabIndex: "-1"}, 
 	                React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, 
 	                    React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})
 	                ), 
@@ -4734,8 +4734,8 @@ webpackJsonp([0],[
 	        React.createElement("a", {href: "javascript:void(0);", className: "slds-context-bar__label-action", title: "Widgets"}, 
 	            React.createElement("span", {className: "slds-truncate"}, "Add Widget")
 	        ), 
-	        React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabindex: "0"}, 
-	            React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabindex: "-1"}, 
+	        React.createElement("div", {className: "slds-context-bar__icon-action slds-p-left--none", tabIndex: "0"}, 
+	            React.createElement("button", {className: "slds-button slds-button--icon slds-context-bar__button", tabIndex: "-1"}, 
 	                React.createElement("svg", {"aria-hidden": "true", className: "slds-button__icon"}, 
 	                    React.createElement("use", {xlinkHref: "assets/icons/utility-sprite/svg/symbols.svg#chevrondown"})
 	                ), 
@@ -5261,9 +5261,9 @@ webpackJsonp([0],[
 
 	module.exports = {
 		"version": "0.2.5",
-		"revision": "78ae747bd5f10048fa13bd141262e074ce5d03c9",
-		"revisionShort": "78ae747",
-		"branch": "Detatched: 78ae747bd5f10048fa13bd141262e074ce5d03c9"
+		"revision": "a85b3f38ccff8d2388beee568696053c143be961",
+		"revisionShort": "a85b3f3",
+		"branch": "Detatched: a85b3f38ccff8d2388beee568696053c143be961"
 	};
 
 /***/ },

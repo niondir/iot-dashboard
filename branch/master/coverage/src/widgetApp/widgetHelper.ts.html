@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/util/scriptLoader.ts</title>
+    <title>Code coverage report for src/widgetApp/widgetHelper.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,32 +16,32 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">all files</a> / <a href="index.html">src/util/</a> scriptLoader.ts
+      <a href="../../index.html">all files</a> / <a href="index.html">src/widgetApp/</a> widgetHelper.ts
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">53.85% </span>
+        <span class="strong">88.24% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>7/13</span>
+        <span class='fraction'>15/17</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>4/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">16.67% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/6</span>
+        <span class='fraction'>2/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">53.85% </span>
+        <span class="strong">88.24% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>7/13</span>
+        <span class='fraction'>15/17</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -70,29 +70,27 @@
 25
 26
 27
-28
-29</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+28</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -100,32 +98,31 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
-var loadjs = require('loadjs');
-// This is a class because we can not mock it on module level.
-var ScriptLoader = (function () {
-<span class="fstat-no" title="function not covered" >    function ScriptLoader() {</span>
+var WidgetHelper = (function () {
+<span class="fstat-no" title="function not covered" >    function WidgetHelper() {</span>
     }
-    ScriptLoader.loadScript = <span class="fstat-no" title="function not covered" >function (paths) {</span>
-<span class="cstat-no" title="statement not covered" >        return new Promise(<span class="fstat-no" title="function not covered" >function (resolve, reject) {</span></span>
-<span class="cstat-no" title="statement not covered" >            try {</span>
-<span class="cstat-no" title="statement not covered" >                loadjs(paths, {</span>
-                    success: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >                        resolve();</span>
-                    },
-                    error: <span class="fstat-no" title="function not covered" >function (error) {</span>
-<span class="cstat-no" title="statement not covered" >                        reject(error);</span>
-                    }
-                });
+    WidgetHelper.propertyByString = function (obj, path) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!path) {
+<span class="cstat-no" title="statement not covered" >            return obj;</span>
+        }
+        path = path.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+        path = path.replace(/^\./, ''); // strip a leading dot
+        var tokens = path.split('.');
+        for (var i = 0, n = tokens.length; i &lt; n; ++i) {
+            var tok = tokens[i];
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (obj != null &amp;&amp; tok in obj) {
+                obj = obj[tok];
             }
-            catch (error) {
-<span class="cstat-no" title="statement not covered" >                reject(error);</span>
+            else {
+<span class="cstat-no" title="statement not covered" >                return;</span>
             }
-        });
+        }
+        return obj;
     };
-    return ScriptLoader;
+    return WidgetHelper;
 }());
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = ScriptLoader;
+exports.default = WidgetHelper;
 &nbsp;
 &nbsp;</pre></td></tr>
 </table></pre>

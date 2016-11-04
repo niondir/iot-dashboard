@@ -45,7 +45,7 @@
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(125);
+	module.exports = __webpack_require__(183);
 
 
 /***/ },
@@ -17546,15 +17546,49 @@
 
 /***/ },
 
-/***/ 125:
+/***/ 175:
+/***/ function(module, exports) {
+
+	"use strict";
+	var WidgetHelper = (function () {
+	    function WidgetHelper() {
+	    }
+	    WidgetHelper.propertyByString = function (obj, path) {
+	        if (!path) {
+	            return obj;
+	        }
+	        path = path.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+	        path = path.replace(/^\./, ''); // strip a leading dot
+	        var tokens = path.split('.');
+	        for (var i = 0, n = tokens.length; i < n; ++i) {
+	            var tok = tokens[i];
+	            if (obj != null && tok in obj) {
+	                obj = obj[tok];
+	            }
+	            else {
+	                return;
+	            }
+	        }
+	        return obj;
+	    };
+	    return WidgetHelper;
+	}());
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = WidgetHelper;
+
+
+/***/ },
+
+/***/ 183:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	__webpack_require__(15);
 	__webpack_require__(17);
 	__webpack_require__(21);
-	__webpack_require__(126);
-	var frameWidgetInstance_1 = __webpack_require__(127);
+	var widgetHelper_1 = __webpack_require__(175);
+	__webpack_require__(184);
+	var frameWidgetInstance_1 = __webpack_require__(185);
 	var widgetUrl = location.hash.replace(/#/, "");
 	var appElement = document.getElementById('widget');
 	var pluginInstance = new frameWidgetInstance_1.FrameWidgetInstance(widgetUrl, appElement);
@@ -17570,19 +17604,20 @@
 	// TO be robust during tests in node and server side rendering
 	if (window) {
 	    window.iotDashboardApi = pluginApi;
+	    window.widgetHelper = widgetHelper_1.default;
 	}
 
 
 /***/ },
 
-/***/ 126:
+/***/ 184:
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "widget.html";
 
 /***/ },
 
-/***/ 127:
+/***/ 185:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(_) {"use strict";

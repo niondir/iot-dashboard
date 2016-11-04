@@ -45,7 +45,7 @@
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(120);
+	module.exports = __webpack_require__(179);
 
 
 /***/ },
@@ -17461,13 +17461,112 @@
 
 /***/ },
 
-/***/ 120:
+/***/ 167:
+/***/ function(module, exports) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+	"use strict";
+	var DatasourceScheduler = (function () {
+	    function DatasourceScheduler(dsInstance) {
+	        this.dsInstance = dsInstance;
+	        this._fetchInterval = 1000;
+	        this.disposed = false;
+	        this.running = false;
+	    }
+	    Object.defineProperty(DatasourceScheduler.prototype, "fetchInterval", {
+	        set: function (ms) {
+	            this._fetchInterval = ms;
+	            if (this._fetchInterval < 1000) {
+	                this.fetchInterval = 1000;
+	                console.warn("Datasource has fetch interval below 1000ms, it was forced to 1000ms\n" +
+	                    "Please do not set intervals shorter than 1000ms. If you really need this, file a ticket with explanation!");
+	            }
+	            this.scheduleFetch(this._fetchInterval);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    DatasourceScheduler.prototype.start = function () {
+	        this.running = true;
+	        // Fetch once as soon as possible
+	        this.scheduleFetch(0);
+	    };
+	    DatasourceScheduler.prototype.forceUpdate = function () {
+	        this.scheduleFetch(0);
+	    };
+	    DatasourceScheduler.prototype.dispose = function () {
+	        this.clearFetchTimeout();
+	        this.disposed = true;
+	        this.running = false;
+	    };
+	    DatasourceScheduler.prototype.scheduleFetch = function (ms) {
+	        var _this = this;
+	        this.clearFetchTimeout();
+	        if (ms === Infinity) {
+	            return;
+	        }
+	        if (!this.running) {
+	            return;
+	        }
+	        this.fetchTimeoutRef = setTimeout(function () {
+	            _this.doFetchData();
+	        }, ms);
+	    };
+	    DatasourceScheduler.prototype.clearFetchTimeout = function () {
+	        if (this.fetchTimeoutRef) {
+	            clearTimeout(this.fetchTimeoutRef);
+	            this.fetchTimeoutRef = null;
+	        }
+	    };
+	    DatasourceScheduler.prototype.doFetchData = function () {
+	        var _this = this;
+	        if (this.fetchPromise) {
+	            console.warn("Do not fetch data because a fetch is currently running on Datasource", this.dsInstance.id);
+	            return;
+	        }
+	        var fetchPromise = new Promise(function (resolve, reject) {
+	            _this.dsInstance.fetchData(resolve, reject);
+	            setTimeout(function () {
+	                if (_this.fetchPromise === fetchPromise) {
+	                    reject(new Error("Timeout! Datasource fetchData() took longer than 5 seconds."));
+	                }
+	            }, 5000);
+	        });
+	        this.fetchPromise = fetchPromise;
+	        fetchPromise.then(function (result) {
+	            _this.fetchPromise = null;
+	            if (!_this.disposed) {
+	                if (result !== undefined) {
+	                    _this.dsInstance.fetchedDatasourceData(result);
+	                }
+	                _this.scheduleFetch(_this._fetchInterval);
+	            }
+	            else {
+	                console.error("fetchData of disposed plugin finished - result discarded", _this.dsInstance.id, result);
+	            }
+	        }).catch(function (error) {
+	            console.warn("Failed to fetch data for Datasource of type " + _this.dsInstance.type + " with id " + _this.dsInstance.id);
+	            console.error(error);
+	            _this.fetchPromise = null;
+	            _this.scheduleFetch(_this._fetchInterval);
+	        });
+	    };
+	    return DatasourceScheduler;
+	}());
+	exports.DatasourceScheduler = DatasourceScheduler;
+
+
+/***/ },
+
+/***/ 179:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	__webpack_require__(21);
-	__webpack_require__(121);
-	var frameDatasourceInstance_1 = __webpack_require__(122);
+	__webpack_require__(180);
+	var frameDatasourceInstance_1 = __webpack_require__(181);
 	var datasourceUrl = location.hash.replace(/#/, "");
 	var pluginInstance = new frameDatasourceInstance_1.FrameDatasourceInstance(datasourceUrl);
 	var pluginApi = {
@@ -17487,21 +17586,21 @@
 
 /***/ },
 
-/***/ 121:
+/***/ 180:
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "datasource.html";
 
 /***/ },
 
-/***/ 122:
+/***/ 181:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(_) {"use strict";
 	var pluginTypes_1 = __webpack_require__(58);
 	var URI = __webpack_require__(64);
 	var scriptLoader_1 = __webpack_require__(62);
-	var datasourceScheduler_1 = __webpack_require__(123);
+	var datasourceScheduler_1 = __webpack_require__(167);
 	var FrameDatasourceInstance = (function () {
 	    function FrameDatasourceInstance(url) {
 	        var _this = this;
@@ -17670,105 +17769,6 @@
 	exports.FrameDatasourceInstance = FrameDatasourceInstance;
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(19)))
-
-/***/ },
-
-/***/ 123:
-/***/ function(module, exports) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
-	"use strict";
-	var DatasourceScheduler = (function () {
-	    function DatasourceScheduler(dsInstance) {
-	        this.dsInstance = dsInstance;
-	        this._fetchInterval = 1000;
-	        this.disposed = false;
-	        this.running = false;
-	    }
-	    Object.defineProperty(DatasourceScheduler.prototype, "fetchInterval", {
-	        set: function (ms) {
-	            this._fetchInterval = ms;
-	            if (this._fetchInterval < 1000) {
-	                this.fetchInterval = 1000;
-	                console.warn("Datasource has fetch interval below 1000ms, it was forced to 1000ms\n" +
-	                    "Please do not set intervals shorter than 1000ms. If you really need this, file a ticket with explanation!");
-	            }
-	            this.scheduleFetch(this._fetchInterval);
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    DatasourceScheduler.prototype.start = function () {
-	        this.running = true;
-	        // Fetch once as soon as possible
-	        this.scheduleFetch(0);
-	    };
-	    DatasourceScheduler.prototype.forceUpdate = function () {
-	        this.scheduleFetch(0);
-	    };
-	    DatasourceScheduler.prototype.dispose = function () {
-	        this.clearFetchTimeout();
-	        this.disposed = true;
-	        this.running = false;
-	    };
-	    DatasourceScheduler.prototype.scheduleFetch = function (ms) {
-	        var _this = this;
-	        this.clearFetchTimeout();
-	        if (ms === Infinity) {
-	            return;
-	        }
-	        if (!this.running) {
-	            return;
-	        }
-	        this.fetchTimeoutRef = setTimeout(function () {
-	            _this.doFetchData();
-	        }, ms);
-	    };
-	    DatasourceScheduler.prototype.clearFetchTimeout = function () {
-	        if (this.fetchTimeoutRef) {
-	            clearTimeout(this.fetchTimeoutRef);
-	            this.fetchTimeoutRef = null;
-	        }
-	    };
-	    DatasourceScheduler.prototype.doFetchData = function () {
-	        var _this = this;
-	        if (this.fetchPromise) {
-	            console.warn("Do not fetch data because a fetch is currently running on Datasource", this.dsInstance.id);
-	            return;
-	        }
-	        var fetchPromise = new Promise(function (resolve, reject) {
-	            _this.dsInstance.fetchData(resolve, reject);
-	            setTimeout(function () {
-	                if (_this.fetchPromise === fetchPromise) {
-	                    reject(new Error("Timeout! Datasource fetchData() took longer than 5 seconds."));
-	                }
-	            }, 5000);
-	        });
-	        this.fetchPromise = fetchPromise;
-	        fetchPromise.then(function (result) {
-	            _this.fetchPromise = null;
-	            if (!_this.disposed) {
-	                if (result !== undefined) {
-	                    _this.dsInstance.fetchedDatasourceData(result);
-	                }
-	                _this.scheduleFetch(_this._fetchInterval);
-	            }
-	            else {
-	                console.error("fetchData of disposed plugin finished - result discarded", _this.dsInstance.id, result);
-	            }
-	        }).catch(function (error) {
-	            console.warn("Failed to fetch data for Datasource of type " + _this.dsInstance.type + " with id " + _this.dsInstance.id);
-	            console.error(error);
-	            _this.fetchPromise = null;
-	            _this.scheduleFetch(_this._fetchInterval);
-	        });
-	    };
-	    return DatasourceScheduler;
-	}());
-	exports.DatasourceScheduler = DatasourceScheduler;
-
 
 /***/ }
 
