@@ -17655,7 +17655,8 @@
 	        var props = {
 	            state: this.dsState,
 	            setFetchInterval: function (ms) { return _this.setFetchInterval(ms); },
-	            setFetchReplaceData: function (replace) { return _this.setFetchReplaceData(replace); }
+	            setFetchReplaceData: function (replace) { return _this.setFetchReplaceData(replace); },
+	            pushData: function (data) { return _this.fetchedDatasourceData(data); }
 	        };
 	        var pluginInstance = new this.datasourceClass();
 	        this.dsInstance = pluginInstance;
