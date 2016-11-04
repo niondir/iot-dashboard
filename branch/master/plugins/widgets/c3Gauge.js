@@ -16,7 +16,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
     var TYPE_INFO = {
         type: "c3-gauge",
         name: "C3 Gauge",
-        version: "0.0.1",
+        version: "0.0.2",
         author: "Lobaro",
         kind: "widget",
         description: "Renders a Gauge using the C3 library. The gauge always shows a property from the last datasource value.",
@@ -50,6 +50,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
             name: "Units",
             description: "Set units of the gauge.",
             defaultValue: " %"
+        }, {
+            id: 'useRatio',
+            type: "boolean",
+            name: "Show Percentage",
+            description: "Do not show the value but the percentage based on min and max.",
+            defaultValue: false
         }, {
             id: 'showLabel',
             type: "boolean",
@@ -102,6 +108,11 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                 }
             }
         }, {
+            key: "componentDidUpdate",
+            value: function componentDidUpdate() {
+                this._renderChart();
+            }
+        }, {
             key: "getData",
             value: function getData() {
                 var props = this.props;
@@ -111,11 +122,15 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                     data = data[data.length - 1];
                 }
 
-                return widgetHelper.propertyByString(data, settings['dataPath']) || 0;
+                return widgetHelper.propertyByString(data, settings['dataPath']);
             }
         }, {
             key: "_createChart",
             value: function _createChart(props) {
+                var data = this.getData();
+                if (data == undefined) {
+                    return;
+                }
                 var config = props.state.settings;
 
                 this.chart = c3.generate({
@@ -124,7 +139,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                         height: props.state.availableHeightPx - 20
                     },
                     data: {
-                        columns: [['data', this.getData()]],
+                        columns: [['data', data]],
                         type: 'gauge'
                     },
                     gauge: {
@@ -134,6 +149,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                         label: {
                             show: config['showLabel'],
                             format: function format(value, ratio) {
+                                if (config['useRatio']) {
+                                    return (ratio * 100).toFixed(1) + "%";
+                                }
                                 return value;
                             }
                         },
@@ -156,26 +174,27 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                 if (!this.chart) {
                     return;
                 }
+                var data = this.getData();
+                if (data == undefined) {
+                    return;
+                }
 
                 this.chart.load({
-                    columns: [['data', this.getData()]]
+                    columns: [['data', data]]
                 });
             }
         }, {
             key: "render",
             value: function render() {
-                this._renderChart();
+                if (this.getData() == undefined) {
+                    return React.createElement(
+                        "div",
+                        null,
+                        "No data for path: ",
+                        this.props.state.settings['dataPath']
+                    );
+                }
                 return React.createElement("div", { id: 'chart-' + this.props.state.id });
-            }
-        }, {
-            key: "componentWillUnmount",
-            value: function componentWillUnmount() {
-                console.log("Unmounted Chart Widget");
-            }
-        }, {
-            key: "dispose",
-            value: function dispose() {
-                console.log("Disposed Chart Widget");
             }
         }]);
 
