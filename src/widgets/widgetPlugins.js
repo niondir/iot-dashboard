@@ -7,10 +7,29 @@ import PluginRegistry from '../pluginApi/pluginRegistry'
 import * as Action from "../actionNames";
 import {genCrudReducer} from "../util/reducer";
 import {PropTypes as Prop}  from "react";
+import Dashboard from '../dashboard'
 
 
 // TODO: Later load all plugins from external URL's ?
-const initialState = {};
+const initialState = {
+    "chart": {
+        id: "chart",
+        url: "./plugins/widgets/chartWidget.js",
+        typeInfo: {
+            type: "will-be-loaded",
+            name: "chart (not loaded yet)"
+        }
+    },
+    "text": {
+        id: "text",
+        url: "./plugins/widgets/textWidget.js",
+        typeInfo: {
+            type: "will-be-loaded",
+            name: "text (not loaded yet)"
+        }
+    }
+
+};
 
 export const widgetPluginType = Prop.shape({
     id: Prop.string.isRequired,
@@ -22,7 +41,11 @@ export const widgetPluginType = Prop.shape({
 });
 
 
-class WidgetPluginRegistry extends PluginRegistry {
+export class WidgetPluginRegistry extends PluginRegistry<any, any> {
+
+    constructor(store) {
+       super(store);
+    }
 
     createPluginFromModule(module) {
         return new WidgetPlugin(module, this.store);
@@ -30,11 +53,9 @@ class WidgetPluginRegistry extends PluginRegistry {
 }
 
 
-export const pluginRegistry = new WidgetPluginRegistry();
-
 export function unloadPlugin(type) {
     return function(dispatch) {
-        const widgetPlugin = pluginRegistry.getPlugin(type);
+        const widgetPlugin = Dashboard.getInstance().widgetPluginRegistry.getPlugin(type);
         widgetPlugin.dispose();
         dispatch(deletePlugin(type));
     }
@@ -47,7 +68,7 @@ function deletePlugin(type) {
     }
 }
 
-const pluginsCrudReducer = genCrudReducer([Action.ADD_WIDGET_PLUGIN, Action.DELETE_WIDGET_PLUGIN], widgetPlugin);
+const pluginsCrudReducer = genCrudReducer([Action.WIDGET_PLUGIN_FINISHED_LOADING, Action.DELETE_WIDGET_PLUGIN], widgetPlugin);
 export function widgetPlugins(state = initialState, action) {
 
     state = pluginsCrudReducer(state, action);
@@ -60,7 +81,7 @@ export function widgetPlugins(state = initialState, action) {
 
 function widgetPlugin(state, action) {
     switch (action.type) {
-        case Action.ADD_WIDGET_PLUGIN:
+        case Action.WIDGET_PLUGIN_FINISHED_LOADING:
             if (!action.typeInfo.type) {
                 // TODO: Catch this earlier
                 throw new Error("A Plugin needs a type name.");

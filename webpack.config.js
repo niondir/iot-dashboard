@@ -58,6 +58,8 @@ module.exports = {
             'react-redux': path.resolve('./node_modules/react-redux/dist/react-redux' + dotJs),
             'redux': path.resolve('./node_modules/redux/dist/redux' + dotJs),
             'redux-form': path.resolve('./node_modules/redux-form/dist/redux-form' + dotJs),
+            'sinon': path.resolve('./node_modules/sinon/pkg/sinon.js'),
+            'source-map-support': path.resolve('./node_modules/source-map-support/browser-source-map-support.js'),
             // Expose dependencies
             jquery: path.resolve('./node_modules/jquery/dist/jquery' + dotJs)
             //react: 'react',
@@ -69,16 +71,17 @@ module.exports = {
     },
     // resolveLoader: {root: path.join(__dirname, "node_modules")},
     module: {
+        noParse: [/sinon/],
         preLoaders: [],
         postLoaders: [],
         loaders: [
-            {
+           /* {
                 test: /\.(js|jsx)$/,
                 loader: 'babel?cacheDirectory',
                 include: paths.src
-            },
+            }, */
             {
-                test: /\.(ts|tsx)$/,
+                test: /\.(js|jsx|ts|tsx)$/,
                 //loader: 'typescript-loader',         // -- FAILS!
                 //loader: 'awesome-typescript-loader', // -- FAILS!
                 loader: 'ts-loader',      // ?compiler=jsx-typescript
@@ -104,11 +107,15 @@ module.exports = {
                 loader: "file-loader?name=img/[name].[sha256:hash:base58:10].[ext]",
                 include: paths.css
             }
+            // TODO: try with sinon-2.0.0-pre - maybe we do not need this anymore
+            //{ test: /sinon.*\.js$/,   loader: "imports?define=>false,require=>false"  }
+
         ]
     },
     plugins: [
         failPlugin,
         new ExtractTextPlugin("[name].bundle.css"),
+        new webpack.IgnorePlugin(/^fs$/),
         new webpack.ProvidePlugin({ // Makes things available in every module without an import
             $: "jquery",
             jQuery: "jquery",

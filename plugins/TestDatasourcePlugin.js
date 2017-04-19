@@ -1,7 +1,7 @@
 
 (function() {
 
-    var TYPE_INFO = {
+    const TYPE_INFO = {
         type: "test-datasource",
         name: "Test Source",
         description: "Static test value",
@@ -37,7 +37,7 @@
         };
 
         this.getValues = function () {
-            var valueString = this.props.value;
+            const valueString = this.props.value;
             return [safeParseJsonObject(valueString)];
         }
     }

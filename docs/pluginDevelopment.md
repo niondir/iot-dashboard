@@ -23,7 +23,7 @@ When a script is loaded by the browser it has to register the defined Plugin on 
 Since the plugin is loaded in global namespace it should be wrapped into a javascript module:
 
     (function(window) {
-        // Your plugin code. Declaring variables will not pullute the global namespace.
+        // Your plugin code. Declaring variables will not pollute the global namespace.
         var TYPE_INFO = { /* Type info for the plugin*/ }
         var Plugin = function() { /* Code that defines the plugin behaviour */}
 
@@ -36,24 +36,35 @@ As you can see each plugin contains two parts. The `TYPE_INFO` and the Implement
 
 ## TypeInfo
 
-The TypeInfo is mostly the same for `Datasource` and `Widget`. Additional properties for Datasources or Widgets are described below.
+The TypeInfo is mostly the same for `Datasource` and `Widget`. Additional properties for datasources or Widgets are described below.
 
-    interface TypeInfo {
-        type: string // The name of the type - must be unique
-        name: string // The user friendly name of the Plugin
-        description: string // A userfirnedly descripton that explains the Plugin
-        dependencies: string[] // A list of URL's to load external scripts from. Some scripts like jQuery will be avaliable by default in future
-        settings: Setting[] // A list of settings that can be changed by the user when the Plugin is initialized
+A good start for a typeInfo would be:
+
+    var TYPE_INFO = {
+        type: "my-awesome-plugin",
+        name: "My Awesome Plugin",
+        description: "This plugin does awesome stuff!",
+        dependencies: [],
+        settings: []
     }
 
-    interface Setting {
-    {
-       id: string // Technical id, used to retreive the value later
-       name: string // User friendly string to describe the value
-       description: string // User friendly desctiption with detail information about the value
-       defaultValue: string // The default value that is preset when a new Plugin is configured, curently must be a string
-       required: true // true when the setting is required
-       type: string // Defines how the setting is rendered, validated and interpreted
+The full specification looks like:
+
+    interface ITypeInfo {
+        type: string // The name of the type - must be unique
+        name: string // The user friendly name of the Plugin
+        description: string // A user friendly description that explains the Plugin
+        dependencies: string[] // A list of URL's to load external scripts from. Some scripts like jQuery will be available by default in future
+        settings: ISetting[] // A list of settings that can be changed by the user when the Plugin is initialized
+    }
+
+    interface ISetting {
+        id: string // Technical id, used to receive the value later
+        name: string // User friendly string to describe the value
+        description: string // User friendly description with detail information about the value
+        defaultValue: string // The default value that is preset when a new Plugin is configured, currently must be a string
+        required: boolean // true when the setting is required
+        type: string // Defines how the setting is rendered, validated and interpreted
     }
 
 Valid setting `types` are:
@@ -74,8 +85,8 @@ There is still some work left for settings. There is no validation yet, values a
 
 # Datasource Api
 
-A Datasource is a JavaScript object that is responsible for fetching and caching data, so it can pass on the fetched data when `getValues()` is called.
-All additional information is passed via an `props` object into the constructor.
+A Datasource is a JavaScript object that is responsible for fetching and caching data, so it can pass on the fetched data when `fetchData(resolve, reject)` is called.
+All additional information is passed via a `props` object into the constructor.
 
 ## Props
 
@@ -112,18 +123,17 @@ You can define some functions to handle certain events.
           // Handle updated props
      };
 
-     Datasource.prototype.getValues = function () {
+     Datasource.prototype.fetchData = function (resolve, reject) {
          // Return the data that is handed over to the Widgets.
          // Data must be an array containing JavaScript objects.
-         return [{value: "foo"}, {value: "bar"}];
+         // resolve and reject are callbacks, so you can return data that is loaded async
+         // Per default, resolved data is appended to the datasource data
+         resolve([{value: "foo"}, {value: "bar"}]);
      }.bind(Datasource);
 
      Datasource.prototype.dispose = function () {
          // Cleanup state when the datasource is unloaded (e.g. stop timers)
      }.bind(Datasource)
-
-
-
 
 # Widget Api
 

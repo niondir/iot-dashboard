@@ -3,10 +3,10 @@
 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import {assert} from 'chai'
-import URI from 'urijs'
+import * as URI from 'urijs'
 
 
-describe('Uri Tests', function () {
+describe('pluginApi > uri', function () {
     describe('Resolve URIs for plugin loading', function () {
         it("Check different uri's on absolute base", function () {
             const uri = URI("https://www.domain.de/folder/file.min.js");

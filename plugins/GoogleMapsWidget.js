@@ -1,6 +1,6 @@
 (function () {
 
-    var TYPE_INFO = {
+    const TYPE_INFO = {
         type: "google-maps",
         name: "Google Maps",
         rendering: "react",
@@ -49,13 +49,13 @@
 
     // The API is similar to React but it is actually NOT a react component.
     // On render you get the DOM "element" to renter the content.
-    var Widget = React.createClass({
+    const Widget = React.createClass({
         getInitialState: function () {
             return {};
         },
         componentDidMount: function () {
             const settings = this.props.state.settings;
-            var map = new google.maps.Map(document.getElementById('map-' + this.props.state.id), {
+            const map = new google.maps.Map(document.getElementById('map-' + this.props.state.id), {
                 center: {lat:settings.initLat, lng: settings.initLng},
                 zoom: Number(settings.initZoom)
             });
@@ -67,16 +67,16 @@
             }
         },
         render: function () {
-            var props = this.props;
+            const props = this.props;
             const settings = props.state.settings;
 
-            var data = props.getData(settings.datasource);
+            const data = props.getData(settings.datasource);
 
-            var gpsPoints = _.map(data, function (value) {
+            const gpsPoints = _.map(data, function (value) {
                 return value[settings.gpsProp];
             });
 
-            var path = new google.maps.Polyline({
+            const path = new google.maps.Polyline({
                 path: gpsPoints,
                 geodesic: true,
                 strokeColor: '#FF0000',

@@ -1,6 +1,6 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this
-* file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import * as React from 'react';
 import {connect} from 'react-redux'
@@ -9,6 +9,7 @@ import * as WidgetPlugins from './widgetPlugins'
 import {deleteWidget} from './widgets'
 import * as Widgets from './widgets'
 import {PropTypes as Prop}  from "react";
+import Dashboard from '../dashboard'
 
 /**
  * The Dragable Frame of a Widget.
@@ -17,8 +18,15 @@ import {PropTypes as Prop}  from "react";
 const WidgetFrame = (props) => {
     const widgetState = props.widget;
 
-    // Might be null or undefined!
-    const widgetFactory = WidgetPlugins.pluginRegistry.getPlugin(widgetState.type);
+    // If the plugin is not in the registry, we assume it's currently loading
+    const pluginLoaded = Dashboard.getInstance().widgetPluginRegistry.hasPlugin(widgetState.type)
+
+
+    let widgetFactory;
+    if (pluginLoaded) {
+        widgetFactory = Dashboard.getInstance().widgetPluginRegistry.getPlugin(widgetState.type);
+    }
+
 
     return (
         <div className="ui raised segments"
@@ -48,12 +56,10 @@ const WidgetFrame = (props) => {
             </div>
 
             <div className="ui segment"
-                 style={{height: widgetState.availableHeightPx, padding:0, border: "red dashed 0px"}}>
+                 style={{height: widgetState.availableHeightPx, padding: 0, border: "red dashed 0px"}}>
                 {
-                    widgetFactory ?
-                        widgetFactory.getOrCreateInstance(widgetState.id)
-                        :
-                        <LoadingWidget widget={widgetState}/>
+                    pluginLoaded ? widgetFactory.getOrCreateInstance(widgetState.id)
+                        : <LoadingWidget widget={widgetState}/>
                 }
             </div>
         </div>)

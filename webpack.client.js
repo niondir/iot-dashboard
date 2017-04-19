@@ -5,7 +5,7 @@ var PROD = (process.env.NODE_ENV === 'production');
 
 webpackConfig.entry = {
     app: ["./src/app.ts"],
-    "browser-tests": ['mocha!./src/browser-tests.js'],
+    "browser-tests": ['mocha!./src/browser-tests.ts'],
     vendor: [
         "react", "react-dom", "react-grid-layout", "react-grid-layout/css/styles.css",
         "redux", "react-redux", "redux-logger", "redux-thunk", "redux-form",

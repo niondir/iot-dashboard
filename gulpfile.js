@@ -20,15 +20,15 @@ gutil.log("NODE_ENV = '" + process.env.NODE_ENV + "'");
 /**
  * Setup everything for a smooth development
  */
-gulp.task("dev", sequence(['inject', 'copy'], 'webpack:dev-server'));
+gulp.task("dev", sequence(['inject', 'compile:plugins'], 'webpack:dev-server'));
 
 /**
  * Keeps files up to date that are not covered by Webpack
  */
-gulp.task('watch', ["inject:tests", "copy"], function () {
+gulp.task('watch', ["inject:tests", "compile:plugins"], function () {
     gulp.watch("src/**/*.test.js", ['inject:tests']);
     gulp.watch("src/**/*.test.ts", ['inject:tests']);
-    gulp.watch("plugins/**/*", ['copy:plugins']);
+    gulp.watch("plugins/**/*", ['compile:plugins']);
 });
 
 
@@ -44,7 +44,7 @@ gulp.task("build", sequence('test', ['compile', 'lint']));
  * Compile all code to /dist
  * - no tests, no overhead, just what is needed to generate a runnable application
  * */
-gulp.task('compile', sequence('copy:plugins', 'webpack:client'));
+gulp.task('compile', sequence('compile:plugins', 'webpack:client'));
 
 // TODO: We do not have uiTests yet. All tests are running with node
 // There is some ui test code already but it's considered unstable (should we just delete it for now?)
@@ -134,11 +134,12 @@ gulp.task("tslint", () =>
 //////////////////
 const webpack = require('webpack');
 const ts = require('gulp-typescript');
+const babel = require('gulp-babel');
 
 var tsProject = ts.createProject('./tsconfig.json');
 
 /**
- * It's not yet intended to compile the TS code without webpack.
+ * It's not yet intended to compile the code without webpack.
  * But if someone wants to use parts of the code as library this might get handy.
  */
 gulp.task('compile:ts', [], function () {
@@ -147,6 +148,19 @@ gulp.task('compile:ts', [], function () {
 
     return tsResult.js.pipe(gulp.dest('./lib'));
 });
+
+gulp.task('compile:js', [], function () {
+    return gulp.src('src/**/*.js')
+        .pipe(babel())
+        .pipe(gulp.dest('./lib'));
+});
+
+gulp.task('compile:plugins', [], function () {
+    return gulp.src('plugins/**/*.js')
+        .pipe(babel())
+        .pipe(gulp.dest('./dist/plugins'));
+});
+
 
 const webpackErrorHandler = function (callback, error, stats) {
     if (error) {
@@ -193,6 +207,7 @@ gulp.task('compile:config', function () {
         .pipe(gulp.dest("./src"));
 });
 
+
 //////////////////////////////
 // Inject/Modify files Tasks
 //////////////////////////////
@@ -206,7 +221,7 @@ gulp.task('inject:tests', function () {
     var sources = gulp.src(['./src/**/*.test.js', './src/**/*.test.ts'], {read: false})
         .pipe(sort());
 
-    return gulp.src(['./src/tests.ts', './src/browser-tests.js'])
+    return gulp.src(['./src/tests.ts', './src/browser-tests.ts'])
         .pipe(inject(sources, {
             relative: true,
             starttag: '/* inject:tests */',
@@ -235,35 +250,26 @@ gulp.task('clean:lib', function () {
         'lib/**/*'
     ]);
 });
-///////////////
-// Copy Tasks
-///////////////
-
-gulp.task('copy', ['copy:plugins']);
-
-gulp.task('copy:plugins', function () {
-    gulp.src('./plugins/**/*.*')
-        .pipe(gulp.dest('./dist/plugins'));
-});
 
 //////////////////////
 // Webpack Dev-Server
 //////////////////////
 
 var WebpackDevServer = require("webpack-dev-server");
-gulp.task("webpack:dev-server", ['copy', 'inject', 'compile:ts'], function (callback) {
+gulp.task("webpack:dev-server", ['compile:plugins', 'inject', 'compile:ts'], function (callback) {
     // Start a webpack-dev-server
     var webpackConfig = require('./webpack.client.js');
     webpackConfig.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
     webpackConfig.entry["browser-tests"].unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
     webpackConfig.bail = false;
     webpackConfig.devtool = '#cheap-module-source-map';
-    var compiler = webpack(webpackConfig, function(err, stats) {
-        if(err) throw new gutil.PluginError("webpack", err);
+    var compiler = webpack(webpackConfig, function (err, stats) {
+        if (err) throw new gutil.PluginError("webpack", err);
 
-        open("http://localhost:8080");
-        open("http://localhost:8080/webpack-dev-server/tests.html");
-        callback();
+        if (!gutil.env['no-browser']) {
+            open("http://localhost:8080");
+            open("http://localhost:8080/webpack-dev-server/tests.html");
+        }
     });
 
     new WebpackDevServer(compiler, {
